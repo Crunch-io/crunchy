@@ -2,7 +2,7 @@
 
 ## Installing
 
-If you're putting `crunchy` on CRAN, it can be installed with
+`crunchy` is not yet on CRAN, but when it is, it can be installed with
 
     install.packages("crunchy")
 
