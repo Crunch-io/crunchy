@@ -44,7 +44,7 @@ In addition to installing the `crunchy` package and its dependencies (including 
 
 Serve your app as you would any other Shiny app. There are a number of ways to do this; one example, for a directory named "demo" containing server.R and ui.R files, you can run this from the command line:
 
-    $ R -e 'shiny::runApp("demo", port=7765)'
+    $ R -e 'library(crunchy); runApp("demo", port=7765)'
 
 substituting the port of your choice, or omitting the `port` argument entirely if you want Shiny to choose a free one for you. The host file mapping lets you access this app at `http://local.crunch.io:7765`, and because the domain matches the Crunch service at `beta.crunch.io`, your authentication cookie from there works, and you will be able to load and query your datasets.
 
