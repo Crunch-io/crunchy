@@ -112,74 +112,7 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 
 </script>
 
-<!-- Ad Header -->
-<script type="text/javascript">
-window.adTechCallback = function() {
 
-
-  window.adSetAdURL('http://' + (document.domain || 'www.huffingtonpost.com') + (location.port?':'+location.port:'') + '/_uac/2014adpage.html');
-  window.tacProp={tags:"kvpagetype=atf:bpage:news:standard;kvsubj=980149:981465:981523:981525:979077:983039:983046:982065:6378649:6310529:4944926:981161:982227:6324154:6378551;kvtopic=police-brutality:polling;kventryid=57e00fb8e4b0071a6e087f9d;kvcmsid=hpo:57e00fb8e4b0071a6e087f9d;kveditags=@actionbutton:elections-2016:@health_models:@health_erectile:@health_ibs:huffpost-yougov-poll:@pollster:pollster-analysis;kvvert=politics;kvblogger=ariel-edwards-levy;kvent=5006981:4959217:3862709:3851651:2789214"};
-  window.tacProp.tags += ( (typeof window.HPAds!=="undefined") && (typeof window.HPAds.adtech_client_side_inf=="function") ) ? window.HPAds.adtech_client_side_inf() : "";
-  if (typeof window.adSetOthAT=="function") window.adSetOthAT(window.tacProp.tags);
-
-  window.adSetMOAT('1');
-
-};
-</script>
-
-<script src="http://o.aolcdn.com/ads/adsWrapper.js" async></script>
-<script>
-
-  window.waitForGlobal('adSetAdURL', function(){
-
-    window.adTechCallback();
-
-  });
-
-</script>
-
-<meta name="taboola.category" content="politics" />
-
-<script>
-function doTaboola(taboolaParams) {
-  if (typeof taboolaParams == 'undefined') return;
-
-  window._taboola = window._taboola || [];
-  if (!doTaboola.loaded) {
-    _taboola.push({article:'auto'});
-    !function (e, f, u) {
-      e.async = 1;
-      e.src = u;
-      f.parentNode.insertBefore(e, f);
-    }(document.createElement('script'), document.getElementsByTagName('script')[0], taboolaParams.loader);
-    doTaboola.loaded = true;
-  }
-  _taboola.push({
-    "listenTo": 'render',
-    "handler": function(e) {
-      var detail = e.detail;
-      var i = 0;
-      while ( window.jQuery && window.JSON && detail.items[i] ) {
-        var dataItemId = detail.items[i].id;
-        var itemUrl = detail.items[i].url;
-        var taboolaDomNode = window.jQuery("[data-item-id='" + dataItemId + "']");
-        var dataBeacon = {
-          "p": {
-            "mpid": (i+1).toString(),
-            "plid": itemUrl,
-            "mlid": "taboola"
-          }
-        };
-        taboolaDomNode.attr('data-beacon', window.JSON.stringify(dataBeacon));
-        i++;
-      }
-    }
-  });
-  var cb = function(o){}; // function(o){ o.container.removeAttribute('id'); }
-  _taboola.push({onrender: cb, mode:taboolaParams.mode, container:taboolaParams.container, placement:taboolaParams.placement, target_type:taboolaParams.target_type});
-
-}
-</script>
 <style>.trc-auto-size { height: auto !important; }</style>
 <style type="text/css">
 .mp_title {
