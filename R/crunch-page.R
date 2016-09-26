@@ -11,9 +11,8 @@
 crunchPage <- function (...) {
     fluidPage(
         tags$head(
-            ## Need a stable css link
-            # tags$link(rel="stylesheet", type="text/css",
-            #     href="https://beta.crunch.io/whaam-2.2.3-rc-3392-b218bc2/styles.css"),
+            tags$link(rel="stylesheet", type="text/css",
+                href="https://beta.crunch.io/styles.css"),
             includeCSS(system.file("extra.css", package="crunchy")),
             includeScript(system.file("extra.js", package="crunchy"))
         ),
