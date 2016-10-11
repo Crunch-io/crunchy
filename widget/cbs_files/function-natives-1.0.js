@@ -1,0 +1,1 @@
+define([],function(){Function.prototype.bind=function(t){var n=this,r=arguments.length>1?Array.prototype.slice(arguments,1):null,e=function(){},o=function(){var a=t,u=arguments.length;this instanceof o&&(e.prototype=n.prototype,a=new e);var i=r||u?n.apply(a,r&&u?r.concat(Array.prototype.slice(arguments)):r||arguments):n.call(a);return a==t?i:a};return o}});

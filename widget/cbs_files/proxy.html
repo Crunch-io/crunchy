@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- saved from url=(0111)http://urs.cbsnews.com/pageservices/social/oauth/proxy?xdm_e=http%3A%2F%2Fwww.cbsnews.com&xdm_c=urs1501&xdm_p=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <!--[if lt IE 8]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js" type="text/javascript"></script>
+        <![endif]-->
+        <script src="./easyXDM.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var AudEng = {};
+            AudEng.utils = {
+                easyXDM: easyXDM.noConflict('AudEng.utils')
+            };
+
+            var userAgentLower = window.navigator.userAgent.toLowerCase();
+            var IE = {
+                isIE7 : userAgentLower.indexOf('msie 7.') !== -1
+            };
+            var remoteApp = void(0);
+            var popupClosed = false;
+            var proxy = new AudEng.utils.easyXDM.Rpc({
+                swf: window.location.origin + '/assets/easyxdm/easyxdm.swf'
+            }, {
+                local: {
+                    makeRequest: function (args, success, error) {
+                        var url = args['url'];
+                        var postParams = args['postParams'];
+                        if (IE.isIE7) {
+                            var request = new XMLHttpRequest(), DONE = 4, SUCCESS = 200;
+                            request.onreadystatechange = function () {
+                                if (request.readyState === DONE && request.status === SUCCESS) {
+                                    success(request.responseText);
+                                }
+                            };
+
+                            if (typeof(postParams) !== 'undefined') {
+                                request.open('POST', url);
+                                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                request.setRequestHeader('Content-Length', postParams.length);
+                                request.setRequestHeader('Connection', 'close');
+                                request.send(postParams);
+                            } else {
+                                request.open('GET', url);
+                                request.send();
+                            }
+                        }
+                    },
+                    closeWindow: function () {
+                        if (remoteApp != null && !remoteApp.closed) {
+                            remoteApp.close();
+                        }
+                        popupClosed = true;
+                    }
+                },
+                remote: {
+                    setAccessCredentials: {},
+                    generalError: {}
+                }
+            });
+
+            function setApp (app) {
+                remoteApp = app;
+            }
+
+            function setAccessCredentials (response, extras, appId) {
+                proxy.setAccessCredentials(response, extras, appId);
+            }
+
+            function generalError (response, appId) {
+                proxy.generalError(response, appId);
+            }
+        </script>
+    </head>
+
+<body>
+</body></html>

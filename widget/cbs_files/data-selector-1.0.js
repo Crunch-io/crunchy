@@ -1,0 +1,1 @@
+define(["jquery"],function(e){e.extend(e.expr[":"],{data:e.expr.createPseudo(function(n){return function(t){return!!e.data(t,n)}})})});
