@@ -18,6 +18,6 @@ These pages are copied from sites where a crunchbox may be or has been embedded.
 - `mobile.html` is a Huffington Post page saved after having forced user-agent to Safari/iOS 10. It loads local `mobile.css` which has at least a couple `@media max-width` settings that may cause “less than amazing” results.
 - `cbs.html` is a CBS desktop page with a cbs survey in it.
 
-### Safari ‘responsive design mode’
+### :iphone: Safari ‘responsive design mode’
 
-After having enabled the [Develop menu](https://support.apple.com/kb/PH21491?locale=en_US), go to “Enter responsive design mode” and pick your poison.
+After having enabled the [Develop menu](https://support.apple.com/kb/PH21491?locale=en_US), go to “Enter responsive design mode” and pick your poison. 
