@@ -65,28 +65,28 @@ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:1
 <!-- ad header stuff -->
 <script type="text/javascript">
 window.adTechCallback = function() {
-  
-  
+
+
   window.adSetAdURL('http://' + (document.domain || 'www.huffingtonpost.com') + (location.port?':'+location.port:'') + '/_uac/2014adpage.html');
   window.tacProp={tags:"kvpagetype=atf:bpage:news:standard;kvsubj=979364:981465:981523:981525:981674:982065:4944927:6258423:6310529:6378649:983039:979077:983046:6258424:981284:4944926:4941760:979328:982061;kvtopic=new-hampshire-primary:polling:polls:pollster;kventryid=5807630ee4b0dd54ce365b20;kvismob=1;kvcmsid=hpo:5807630ee4b0dd54ce365b20;kveditags=election-polls:@health_depression:@health_models:@health_erectile:@health_ibs:donald-trump:hillary-clinton:@pollster:2016-election;kvvert=politics;kvblogger=ariel-edwards-levy:natalie-jackson;kvent=2789214:3482451:3862709:4967568:3694990:4959217:3470054:3690712:3851651:3582358:3596943:3646062:4958367:5006981:3018236:3449994:3465967:3617105:3688704:3690621:3696790:3696837:3843214:4019770:4152082"};
   window.tacProp.tags += ( (typeof window.HPAds!=="undefined") && (typeof window.HPAds.adtech_client_side_inf=="function") ) ? window.HPAds.adtech_client_side_inf() : "";
   window.tacProp.tags += ";kvrefd="+window.location.href;
   if (typeof window.adSetOthAT=="function") window.adSetOthAT(window.tacProp.tags);
-  
+
   window.adSetMOAT('1');
-  
+
 };
 </script>
 
 <script src="http://o.aolcdn.com/ads/adsWrapper.js" async></script>
 <script>
-  
+
   window.waitForGlobal('adSetAdURL', function(){
-  
+
     window.adTechCallback();
-  
+
   });
-  
+
 </script>
 
 <meta name="taboola.category" content="politics" />
@@ -104,20 +104,20 @@ window.debugadcode = function(title, properties, div) {
   for (key in properties) { body += '<div><em>'+key+'</em>: '+properties[key]+'</div>'; }
 
   var s = document.getElementsByClassName('advertisement');
-  
+
   var sLast = div || s[s.length - 1];
   var d = document.createElement('div');
   d.className = 'debugadcode-box';
   d.innerHTML = '<div class="debugadcode">'+head+body+'</div>';
   sLast.insertBefore(d, sLast.firstChild);
-  
+
 }
 </script>
 <!-- /debugadcode -->
 <script>
 function doTaboola(taboolaParams) {
   if (typeof taboolaParams == 'undefined') return;
-  
+
   window._taboola = window._taboola || [];
   if (!doTaboola.loaded) {
     _taboola.push({article:'auto'});
@@ -151,7 +151,7 @@ function doTaboola(taboolaParams) {
   });
   var cb = function(o){}; // function(o){ o.container.removeAttribute('id'); }
   _taboola.push({onrender: cb, mode:taboolaParams.mode, container:taboolaParams.container, placement:taboolaParams.placement, target_type:taboolaParams.target_type});
-  
+
   var elem = document.getElementById(taboolaParams.container);
   while (elem && elem.tagName != 'ARTICLE') { elem = elem.parentNode; };
   if (elem) {
@@ -159,7 +159,7 @@ function doTaboola(taboolaParams) {
     _taboola.push({article:'auto', url:canonical});
     _taboola.push({flush:true});
   }
-  
+
 }
 </script>
 <style>.trc-auto-size { height: auto !important; }</style>
@@ -682,30 +682,30 @@ Copyright &copy;2016 TheHuffingtonPost.com, Inc.
   if ( typeof polar_config == "undefined" ) {
     var hour_timestamp = Math.round(+new Date()/1000/60/60);
     var polar_config = [];
-    
-    
+
+
     polar_config.push({label:"Home 1", id:"93473492"});
-    
-    
-    
+
+
+
     polar_config.push({label:"Home 2", id:"93473493"});
-    
-    
-    
+
+
+
     polar_config.push({label:"Home 3", id:"93473494"});
-    
-    
-        
-    
+
+
+
+
       modulousQueue.add(function(){
         var script = document.createElement('script');
         script.async = true;
         script.src = pm_has_sponsored_tags ? "http://modulous.huffpost.com/2016/07/18/1468827379-huffpost_mobile_native_tracking_11072016-1.js" : "http://modulous.huffpost.com/2016/07/07/1467869719-huffpo_us_mobile_July2016-1.js";
         document.head.appendChild(script);
       });
-    
-    
-    
+
+
+
   }
 </script>
 
@@ -750,14 +750,14 @@ window.modulousQueue.add(function(){
 <div id="adtech_mobileweb_top"></div>
 <script>
 window.modulousQueue.add(function(){
-  
+
     waitForGlobal('htmlAdWH', function() {
       var adsDiv = document.querySelector('#adtech_mobileweb_top');
       adsDiv.removeAttribute('id');
       adsDiv.reloadCount = 0;
       var adId = '93434563';
-      try { adId = io_c3sd.ads["mobileweb_top"] || adId; } catch(e) {} 
-			
+      try { adId = io_c3sd.ads["mobileweb_top"] || adId; } catch(e) {}
+
 			// Override adtech_call_type
       var delivery_type = "" || "";
       var adtech_call_type = "";
@@ -770,25 +770,25 @@ window.modulousQueue.add(function(){
         default: adtech_call_type = "f"; break;
       }
 
-      
-      
+
+
       var args = ['320', '50'];
-      
-      
+
+
 
       htmlAdWH(adId, args[0], args[1], adtech_call_type, adsDiv);
       if (typeof debugadcode == 'function') { debugadcode('AdTech', {placement: 'mobileweb_top', mnid: adId}, adsDiv); }
-      
+
       jQuery(document).on('reloadAd', function(ev, elem) {
         if (elem && !elem.contains(adsDiv)) { return; }
-        var refreshRate = 1;  
+        var refreshRate = 1;
         adsDiv.reloadCount++;
         if (adsDiv.reloadCount % refreshRate == 0 && typeof adsReloadAd === 'function') { adsReloadAd(adsDiv); }
       });
-      
+
       adSetInView('0');
     });
-  
+
 });
 </script>
 </div>
@@ -932,7 +932,8 @@ Staff Reporter and Polling Director, The Huffington Post
 <a class="share-bar-highlight__twitter js-highlight-share-button" data-beacon="{&quot;p&quot;:{&quot;lnid&quot;:&quot;twitter&quot;,&quot;mnid&quot;:&quot;entry_text&quot;,&quot;plid&quot;:&quot;http://www.huffingtonpost.com/entry/trump-controversies-partisanship_us_5807630ee4b0dd54ce365b20&quot;}}" data-type="twitter"></a>
 <a class="share-bar-highlight__facebook js-highlight-share-button" data-beacon="{&quot;p&quot;:{&quot;lnid&quot;:&quot;facebook&quot;,&quot;mnid&quot;:&quot;entry_text&quot;,&quot;plid&quot;:&quot;http://www.huffingtonpost.com/entry/trump-controversies-partisanship_us_5807630ee4b0dd54ce365b20&quot;}}" data-type="facebook"></a>
 </div>
-<div class="content-list-component embed-asset"><div class='frame-container flex-video widescreen' ><iframe src="//d27smwjmpxcjmb.cloudfront.net/test01/widget/index.html#/ds/ca257cd36c39049f8bf331f33caa36c1/" width="600" height="600"></iframe></div></div>
+<div class="content-list-component embed-asset"><div class='frame-container flex-video widescreen' ><figure style="text-align: left;" class="content-list-component image">
+    <img src="HuffPoYougovCobrand.gif" style="height:auto; width:200px; margin-left:-4px"></img><iframe src="//d27smwjmpxcjmb.cloudfront.net/test01/widget/index.html#/ds/1a1577c91fbb2c1cbd3800e181188508/row/000445/column/000320" width="600" height="480" style="border: 1px solid #d3d3d3;"></iframe></figure></div></div>
 
 <div class="content-list-component text"><p><em><span style="font-weight: 400;">The reaction to new allegations against Donald Trump highlight deep partisan divides. A new set of polls finds Hillary Clinton ahead in key battleground states. And recent data suggests the presidential race in Texas is closer than expected. This is HuffPollster for Wednesday, October 19, 2016.</span></em></p>
 <p><strong>PARTISANSHIP DIVIDES REACTION TO TRUMP SCANDALS </strong><span style="font-weight: 400;">- HuffPollster: &ldquo;Americans are more likely than not to consider the </span><a href="http://www.huffingtonpost.com/entry/a-running-list-of-all-the-women-whove-accused-donald-trump-of-sexual-assault_us_57ffae1fe4b0162c043a7212"><span style="font-weight: 400;">sexual assault allegations</span></a><span style="font-weight: 400;"> against </span><a href="http://www.huffingtonpost.com/news/donald-trump/"><span style="font-weight: 400;">Donald Trump</span></a><span style="font-weight: 400;"> credible, according to a new</span><a href="https://today.yougov.com/news/2016/10/18/most-republicans-dont-think-sexual-assault-would-d/"><span style="font-weight: 400;"> HuffPost/YouGov poll</span></a><span style="font-weight: 400;">. But opinions are deeply divided along party lines, with many Republicans saying that, even if true, the allegations aren&rsquo;t enough to disqualify him from the presidency. If the allegations are true, 44 percent of Americans say that should disqualify Trump from the presidency. Twenty-seven percent say that it would be relevant to the election, but not disqualifying, while 22 percent believe it wouldn&rsquo;t be relevant to the election at all&hellip;.</span><strong>Although 19 percent of Republicans think the claims would be disqualifying, a 39 percent plurality say that, even if it were proven that Trump sexually assaulted women, it would not be relevant to the election</strong><span style="font-weight: 400;">&hellip;.Partisan divides go deeper than just the response to Trump. Feelings about the broader topic of sexual assault are also significantly polarized. As the political scientist Michael Tesler </span><a href="https://www.washingtonpost.com/news/monkey-cage/wp/2016/10/17/a-striking-poll-shows-that-many-trump-supporters-already-doubted-womens-claims-of-sexual-harassment-even-before-the-infamous-tape/"><span style="font-weight: 400;">noted this week</span></a><span style="font-weight: 400;">, Republicans ― especially those who supported Trump in the primaries ― were already more likely than others to believe that &lsquo;women who complain about harassment often cause more problems than they solve.&rsquo;&rdquo; [</span><a href="http://www.huffingtonpost.com/entry/trump-sex-assault-claims-poll_us_5806432be4b0180a36e66a8b?rb2vddtizneidx6r"><span style="font-weight: 400;">HuffPost</span></a><span style="font-weight: 400;">] &nbsp;</span></p>
@@ -1025,14 +1026,14 @@ Email us <a href="mailto:politics-corrections@huffingtonpost.com?subject=Correct
 <div id="adtech_mobileweb_transporter_mid"></div>
 <script>
 window.modulousQueue.add(function(){
-  
+
     waitForGlobal('htmlAdWH', function() {
       var adsDiv = document.querySelector('#adtech_mobileweb_transporter_mid');
       adsDiv.removeAttribute('id');
       adsDiv.reloadCount = 0;
       var adId = '93462920';
-      try { adId = io_c3sd.ads["mobileweb_transporter_mid"] || adId; } catch(e) {} 
-			
+      try { adId = io_c3sd.ads["mobileweb_transporter_mid"] || adId; } catch(e) {}
+
 			// Override adtech_call_type
       var delivery_type = "" || "";
       var adtech_call_type = "";
@@ -1045,25 +1046,25 @@ window.modulousQueue.add(function(){
         default: adtech_call_type = "f"; break;
       }
 
-      
-      
+
+
       var args = ['320', '50'];
-      
-      
+
+
 
       htmlAdWH(adId, 'mm','mm', adtech_call_type, adsDiv);
       if (typeof debugadcode == 'function') { debugadcode('AdTech', {placement: 'mobileweb_transporter_mid', mnid: adId}, adsDiv); }
-      
+
       jQuery(document).on('reloadAd', function(ev, elem) {
         if (elem && !elem.contains(adsDiv)) { return; }
-        var refreshRate = 1;  
+        var refreshRate = 1;
         adsDiv.reloadCount++;
         if (adsDiv.reloadCount % refreshRate == 0 && typeof adsReloadAd === 'function') { adsReloadAd(adsDiv); }
       });
-      
+
       adSetInView('0');
     });
-  
+
 });
 </scr+ipt>
 </div>
@@ -1082,14 +1083,14 @@ window.modulousQueue.add(function(){
 <div id="adtech_mobileweb_article_bottom_refresh"></div>
 <script>
 window.modulousQueue.add(function(){
-  
+
     waitForGlobal('htmlAdWH', function() {
       var adsDiv = document.querySelector('#adtech_mobileweb_article_bottom_refresh');
       adsDiv.removeAttribute('id');
       adsDiv.reloadCount = 0;
       var adId = '93463190';
-      try { adId = io_c3sd.ads["mobileweb_article_bottom_refresh"] || adId; } catch(e) {} 
-			
+      try { adId = io_c3sd.ads["mobileweb_article_bottom_refresh"] || adId; } catch(e) {}
+
 			// Override adtech_call_type
       var delivery_type = "" || "";
       var adtech_call_type = "";
@@ -1102,25 +1103,25 @@ window.modulousQueue.add(function(){
         default: adtech_call_type = "f"; break;
       }
 
-      
-      
+
+
       var args = ['320', '50'];
-      
-      
+
+
 
       htmlAdWH(adId, 'mm','mm', adtech_call_type, adsDiv);
       if (typeof debugadcode == 'function') { debugadcode('AdTech', {placement: 'mobileweb_article_bottom_refresh', mnid: adId}, adsDiv); }
-      
+
       jQuery(document).on('reloadAd', function(ev, elem) {
         if (elem && !elem.contains(adsDiv)) { return; }
-        var refreshRate = 1;  
+        var refreshRate = 1;
         adsDiv.reloadCount++;
         if (adsDiv.reloadCount % refreshRate == 0 && typeof adsReloadAd === 'function') { adsReloadAd(adsDiv); }
       });
-      
+
       adSetInView('0');
     });
-  
+
 });
 </script>
 </div>
@@ -1177,10 +1178,10 @@ window.modulousQueue.add(function(){ doTaboola(taboolaParams); });
     var assetname = "politics";
     var _nolParams = {
         nol_sfcode: 'dcr',
-        nol_ci: 'us-500136',              
-        nol_apid: 'P6987AC99-4DBA-45C3-BFE4-9CD649BA8C46',   
+        nol_ci: 'us-500136',
+        nol_apid: 'P6987AC99-4DBA-45C3-BFE4-9CD649BA8C46',
         nol_assetname: assetname,
-        nol_apn: 'huffingtonpostCOM',     
+        nol_apn: 'huffingtonpostCOM',
         nol_vc: 'c29',
         nol_segA: 'HPMG News',
         nol_segB: '',
@@ -1347,4 +1348,3 @@ _taboola.push({flush:true});
 </div>
 </body>
 </html>
-
