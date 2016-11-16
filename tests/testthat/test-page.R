@@ -5,3 +5,9 @@ test_that("crunchPage has a token div", {
     out <- format(cp)
     expect_true(grepl('input id="token"', out))
 })
+
+test_that("crunchFillPage has a token div", {
+    cfp <- crunchFillPage()
+    out <- format(cfp)
+    expect_true(grepl('input id="token"', out))
+})

@@ -10,15 +10,39 @@
 #' @importFrom shiny fluidPage includeCSS includeScript tags div
 crunchPage <- function (...) {
     fluidPage(
-        tags$head(
-            tags$link(rel="stylesheet", type="text/css",
-                href="https://beta.crunch.io/styles.css"),
-            includeCSS(system.file("extra.css", package="crunchy")),
-            includeScript(system.file("extra.js", package="crunchy"))
-        ),
-        div(class = "form-group shiny-input-container",
-            style = "display: none;",
-            tags$input(id = "token", type = "text", class = "form-control", value = "")),
+        loadCrunchAssets(),
+        crunchAuthPlaceholder(),
         ...
     )
+}
+
+#' @rdname crunchPage
+#' @export
+crunchFluidPage <- crunchPage
+
+#' @rdname crunchPage
+#' @export
+crunchFillPage <- function (...) {
+    fillPage(
+        loadCrunchAssets(),
+        crunchAuthPlaceholder(),
+        ...
+    )
+}
+
+#' @importFrom shiny includeCSS includeScript tags
+loadCrunchAssets <- function () {
+    tags$head(
+        tags$link(rel="stylesheet", type="text/css",
+            href="https://app.crunch.io/styles.css"),
+        includeCSS(system.file("extra.css", package="crunchy")),
+        includeScript(system.file("extra.js", package="crunchy"))
+    )
+}
+
+#' @importFrom shiny div
+crunchAuthPlaceholder <- function () {
+    div(class = "form-group shiny-input-container",
+        style = "display: none;",
+        tags$input(id = "token", type = "text", class = "form-control", value = ""))
 }
