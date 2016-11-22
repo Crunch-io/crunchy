@@ -5,4 +5,4 @@ r_github_packages:
   - jimhester/covr
   - Crunch-io/rcrunch
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - Rscript -e 'library(covr);codecov()'
