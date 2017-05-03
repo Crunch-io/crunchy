@@ -7,14 +7,13 @@
 shinyDataset(...)
 }
 \arguments{
-\item{...}{Arguments passed to \code{loadDataset}}
+\item{...}{Arguments passed to `loadDataset`}
 }
 \value{
-A Shiny \code{reactive} object.
+A Shiny `reactive` object.
 }
 \description{
-This function wraps \code{\link[crunch]{loadDataset}} in a
-\code{\link[shiny]{reactive}} object for use in a Shiny app. It also ensures
+This function wraps [crunch::loadDataset()] in a
+[shiny::reactive()] object for use in a Shiny app. It also ensures
 that the current user is authenticated with Crunch before proceeding.
 }
-

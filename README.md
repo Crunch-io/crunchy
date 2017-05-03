@@ -1,6 +1,6 @@
 # crunch + shiny = crunchy
 
-[![Build Status](https://travis-ci.org/Crunch-io/crunchy.png?branch=master)](https://travis-ci.org/Crunch-io/crunchy) [![codecov.io](https://codecov.io/github/Crunch-io/crunchy/coverage.svg?branch=master)](https://codecov.io/github/Crunch-io/crunchy?branch=master)
+[![Build Status](https://travis-ci.org/Crunch-io/crunchy.png?branch=master)](https://travis-ci.org/Crunch-io/crunchy) [![codecov.io](https://codecov.io/github/Crunch-io/crunchy/coverage.svg?branch=master)](https://codecov.io/github/Crunch-io/crunchy?branch=master) [![Build status](https://ci.appveyor.com/api/projects/status/53epi1s8f0slhemm/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/crunchy/branch/master)
 
 `crunchy` makes it easy to build Shiny apps with data stored in the [Crunch.io](http://crunch.io/) cloud data service. You can run these apps locally, or you can host them on Crunch.
 

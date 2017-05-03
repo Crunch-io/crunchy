@@ -1,10 +1,10 @@
 #' Load a dataset for a Shiny session
 #'
-#' This function wraps \code{\link[crunch]{loadDataset}} in a
-#' \code{\link[shiny]{reactive}} object for use in a Shiny app. It also ensures
+#' This function wraps [crunch::loadDataset()] in a
+#' [shiny::reactive()] object for use in a Shiny app. It also ensures
 #' that the current user is authenticated with Crunch before proceeding.
-#' @param ... Arguments passed to \code{loadDataset}
-#' @return A Shiny \code{reactive} object.
+#' @param ... Arguments passed to `loadDataset`
+#' @return A Shiny `reactive` object.
 #' @export
 #' @importFrom crunch tokenAuth
 shinyDataset <- function (...) {
