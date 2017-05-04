@@ -7,6 +7,17 @@
 #' @return A Shiny `reactive` object.
 #' @export
 #' @importFrom crunch tokenAuth
+#' @examples
+#' \dontrun{
+#' shinyServer(function(input, output, session) {
+#'     ds <- shinyDataset("Your dataset name")
+#'
+#'     freqs <- reactive({
+#'         fmla <- as.formula(paste("~", input$varname))
+#'         crtabs(fmla, data=ds())
+#'     })
+#' })
+#' }
 shinyDataset <- function (...) {
     env <- parent.frame()
     expr <- .shinyDatasetExpr(...)

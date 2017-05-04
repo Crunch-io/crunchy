@@ -17,3 +17,15 @@ This function wraps [crunch::loadDataset()] in a
 [shiny::reactive()] object for use in a Shiny app. It also ensures
 that the current user is authenticated with Crunch before proceeding.
 }
+\examples{
+\dontrun{
+shinyServer(function(input, output, session) {
+    ds <- shinyDataset("Your dataset name")
+
+    freqs <- reactive({
+        fmla <- as.formula(paste("~", input$varname))
+        crtabs(fmla, data=ds())
+    })
+})
+}
+}

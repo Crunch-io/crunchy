@@ -9,6 +9,29 @@
 #' @return The result of `fluidPage` or `fillPage`
 #' @export
 #' @importFrom shiny fluidPage fillPage includeCSS includeScript tags div
+#' @examples
+#' \dontrun{
+#' crunchPage(
+#'     fluidRow(
+#'         column(6,
+#'             selectInput("filter",
+#'                 label="Filter",
+#'                 choices=filterList,
+#'                 selected="All"),
+#'             br(),
+#'             plotOutput("funnel1", height="300"),
+#'         ),
+#'         column(6,
+#'             selectInput("brand",
+#'                 label="Competitor",
+#'                 choices=brands,
+#'                 selected="Nike"),
+#'             br(),
+#'             plotOutput("funnel2", height="300"),
+#'         )
+#'     )
+#' )
+#' }
 crunchPage <- function (...) {
     fluidPage(
         loadCrunchAssets(),

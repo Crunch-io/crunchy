@@ -25,3 +25,27 @@ Crunch UI style and keep your users authenticated. When building shiny apps
 with Crunch datasets, use these instead of [shiny::fluidPage()] or
 [shiny::fillPage()].
 }
+\examples{
+\dontrun{
+crunchPage(
+    fluidRow(
+        column(6,
+            selectInput("filter",
+                label="Filter",
+                choices=filterList,
+                selected="All"),
+            br(),
+            plotOutput("funnel1", height="300"),
+        ),
+        column(6,
+            selectInput("brand",
+                label="Competitor",
+                choices=brands,
+                selected="Nike"),
+            br(),
+            plotOutput("funnel2", height="300"),
+        )
+    )
+)
+}
+}
