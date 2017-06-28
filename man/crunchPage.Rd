@@ -4,6 +4,7 @@
 \alias{crunchPage}
 \alias{crunchFluidPage}
 \alias{crunchFillPage}
+\alias{crunchNavbarPage}
 \title{Build a Crunchy UI}
 \usage{
 crunchPage(...)
@@ -11,19 +12,23 @@ crunchPage(...)
 crunchFluidPage(...)
 
 crunchFillPage(...)
+
+crunchNavbarPage(title = NULL, ...)
 }
 \arguments{
-\item{...}{arguments passed to `fluidPage` or `fillPage`}
+\item{...}{arguments passed to `fluidPage`, `fillPage` or `navbarPage`}
+
+\item{title}{the title to be displayed in the navigation bar. Defaults to NULL.}
 }
 \value{
-The result of `fluidPage` or `fillPage`
+The result of `fluidPage`, `fillPage` or `navbarPage`
 }
 \description{
 Shiny provides page functions for defining UI layout. These
 functions wraps those and includes additional assets needed to match
 Crunch UI style and keep your users authenticated. When building shiny apps
-with Crunch datasets, use these instead of [shiny::fluidPage()] or
-[shiny::fillPage()].
+with Crunch datasets, use these instead of [shiny::fluidPage()],
+[shiny::fillPage()] or [shiny::navbarPage()].
 }
 \examples{
 \dontrun{
