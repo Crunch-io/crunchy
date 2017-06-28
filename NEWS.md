@@ -1,3 +1,7 @@
+### crunchy 0.2.2
+
+* `crunchNavbarPage` for Crunchy version of `navbarPage` (#2)
+
 ## crunchy 0.2.0
 
 * `crunchFillPage` for flexbox version of `crunchPage`
