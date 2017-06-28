@@ -3,12 +3,13 @@
 #' Shiny provides page functions for defining UI layout. These
 #' functions wraps those and includes additional assets needed to match
 #' Crunch UI style and keep your users authenticated. When building shiny apps
-#' with Crunch datasets, use these instead of [shiny::fluidPage()] or
-#' [shiny::fillPage()].
-#' @param ... arguments passed to `fluidPage` or `fillPage`
-#' @return The result of `fluidPage` or `fillPage`
+#' with Crunch datasets, use these instead of [shiny::fluidPage()],
+#' [shiny::fillPage()] or [shiny::navbarPage()].
+#' @param title the title to be displayed in the navigation bar. Defaults to NULL.
+#' @param ... arguments passed to `fluidPage`, `fillPage` or `navbarPage`
+#' @return The result of `fluidPage`, `fillPage` or `navbarPage`
 #' @export
-#' @importFrom shiny fluidPage fillPage includeCSS includeScript tags div
+#' @importFrom shiny fluidPage fillPage navbarPage includeCSS includeScript tags div
 #' @examples
 #' \dontrun{
 #' crunchPage(
@@ -52,6 +53,16 @@ crunchFillPage <- function (...) {
         crunchAuthPlaceholder(),
         ...
     )
+}
+
+#' @rdname crunchPage
+#' @export
+crunchNavbarPage <- function(title = NULL, ...) {
+  navbarPage(title = title,
+    loadCrunchAssets(),
+    crunchAuthPlaceholder(),
+    ...
+  )
 }
 
 #' @importFrom shiny includeCSS includeScript tags
