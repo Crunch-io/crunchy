@@ -1,3 +1,5 @@
+### crunchy 0.2.3 (under development)
+
 ### crunchy 0.2.2
 
 * `crunchNavbarPage` for Crunchy version of `navbarPage` (#2)
