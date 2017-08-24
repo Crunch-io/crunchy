@@ -262,7 +262,7 @@ ul {
 ul li {
     padding-left: 1em;
 }
-ul:not(.nav,.list-inline) li::before {
+ul:not(.nav,.list-inline,.dropdown-menu) li::before {
     content: '▪';
     color: #d3d3d3;
     display: inline-block;
@@ -424,7 +424,6 @@ blockquote {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    background: url(../img/shipping-containers-desaturated.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -571,4 +570,12 @@ pre code {
 pre {
     padding: 1rem;
     border: 0;
+}
+
+.dropdown-menu {
+    background: #d3d3d3; color: #0064a4;
+}
+
+ul.dropdown-menu > li > a.dropdown-menu-element {
+    color: #555;
 }
