@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>as.data.frame method for CrunchDataset — dataset-to-R • CRUNCH</title>
+<title>as.data.frame method for CrunchDataset — dataset-to-R • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,6 +25,20 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
+
+<meta property="og:description" content="<p>This method is defined principally so that you can use a CrunchDataset as
+a <code>data</code> argument to other R functions (such as
+<code>[stats::lm]</code>). Unless you give it the <code>force==TRUE</code>
+argument, this function does not in fact return a <code>data.frame</code>: it
+returns an object with an interface like a data.frame, such that you get
+R vectors when you access its columns (unlike a CrunchDataset, which
+returns CrunchVariable objects). This allows modeling functions that
+require select columns of a dataset to retrieve only those variables from
+the remote server, rather than pulling the entire dataset into local
+memory.</p>" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -33,6 +47,18 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50332119-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
   </head>
 
@@ -71,7 +97,7 @@
       <a href="../articles/datasets.html">Datasets</a>
     </li>
     <li>
-      <a href="../articles/vareiables.html">Variables</a>
+      <a href="../articles/variables.html">Variables</a>
     </li>
     <li>
       <a href="../articles/array-variables.html">Array Variables</a>
@@ -80,10 +106,10 @@
       <a href="../articles/variable-order.html">Reorder Variables</a>
     </li>
     <li>
-      <a href="../articles/derive-variables.html">Derive Variables</a>
+      <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
-      <a href="../articles/filters.html">Filter Dataå</a>
+      <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>

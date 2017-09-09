@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is it? — is.dataset • Crunch</title>
+<title>Merge a CrunchDataFrame — merge • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,15 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Is it? — is.dataset" />
+<meta property="og:title" content="Merge a CrunchDataFrame — merge" />
 
-<meta property="og:description" content="<p>Is it?</p>" />
+<meta property="og:description" content="<p><code>merge</code>ing a CrunchDataFrame with a local dataframe is useful in situations
+where you have new information in your local R session that you want to
+connect with Crunch data. For example, for making
+plots with Crunch and non-Crunch data. It produces a hybrid CrunchDataFrame
+that has the local data attached to it, but like normal CrunchDataFrames
+it is still judicious about downloading data from the server only when it
+is needed.</p>" />
 
 
 <!-- mathjax -->
@@ -127,57 +133,71 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is it?</h1>
+    <h1>Merge a CrunchDataFrame</h1>
     </div>
 
     
-    <p>Is it?</p>
+    <p><code>merge</code>ing a CrunchDataFrame with a local dataframe is useful in situations
+where you have new information in your local R session that you want to
+connect with Crunch data. For example, for making
+plots with Crunch and non-Crunch data. It produces a hybrid CrunchDataFrame
+that has the local data attached to it, but like normal CrunchDataFrames
+it is still judicious about downloading data from the server only when it
+is needed.</p>
     
 
-    <pre class="usage"><span class='fu'>is.dataset</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.CrunchExpr</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Expr</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Geodata</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.shoji</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.variable</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Numeric</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Categorical</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Text</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Datetime</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Multiple</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.MR</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.MultipleResponse</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.CA</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.Array</span>(<span class='no'>x</span>)
-
-<span class='fu'>is.CategoricalArray</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for CrunchDataFrame</span>
+<span class='fu'>merge</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>intersect</span>(<span class='fu'>names</span>(<span class='no'>x</span>), <span class='fu'>names</span>(<span class='no'>y</span>)),
+  <span class='kw'>by.x</span> <span class='kw'>=</span> <span class='no'>by</span>, <span class='kw'>by.y</span> <span class='kw'>=</span> <span class='no'>by</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>an object</p></td>
+      <td><p>a CrunchDataFrame</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>a standard data.frame</p></td>
+    </tr>
+    <tr>
+      <th>by</th>
+      <td><p>name of the variable to match in both data sources (default: the intersection of the names of x and y)</p></td>
+    </tr>
+    <tr>
+      <th>by.x</th>
+      <td><p>name of the variable to match in x</p></td>
+    </tr>
+    <tr>
+      <th>by.y</th>
+      <td><p>name of the variable to match in y</p></td>
+    </tr>
+    <tr>
+      <th>sort</th>
+      <td><p>character, either "x" or "y" (default: "x"). Which of the inputs should be used for the output order. Unlike merge.data.frame, merge.CrunchDataFrame will not re-sort the order of the output. It will use the order of either <code>x</code> or <code>y</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>ignored</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>logical</p>
+    <p>a CrunchDataFrame with columns from both <code>x</code> and <code>y</code></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Merging a CrunchDataFrame with a local dataframe does not allow specifying
+all rows from both sources. Instead, the resulting CrunchDataFrame will
+include all of the rows in whichever source is used for sorting (x or y). So
+if you specify <code>sort="x"</code> (the default) all rows of x will be present but
+rows in y that do not match with rows in x will not be present.</p>
+<p>Merging a CrunchDataFrame with a local dataframe is experiemental and might
+result in unexpected results. One known issue is that using <code>merge</code> on a
+CrunchDataFrame will change the both the CrunchDataFrame used as input as
+well as create a new CrunchDataFrame.</p>
     
 
   </div>
@@ -187,6 +207,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
