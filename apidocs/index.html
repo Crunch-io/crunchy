@@ -1544,7 +1544,7 @@ Location: /api/datasets/<span class="o">{</span>datasetid<span class="o">}</span
 
 <ul>
 <li>A reference to a categorical or categorical_array variable</li>
-<li>A list of the category ids to mark as &ldquo;selected&rdquo;</li>
+<li>A list of the category ids or category names to mark as &ldquo;selected&rdquo;</li>
 </ul>
 
 <p>Given a variable such as:</p>
@@ -10072,7 +10072,7 @@ line 24.</p>
 <li>If &ldquo;type&rdquo; is &ldquo;multiple_response&rdquo; or &ldquo;categorical_array&rdquo;: <strong>subvariables</strong>: an array of URLs of variables to be &ldquo;bound&rdquo; together to form the array variable</li>
 <li>If &ldquo;type&rdquo; is &ldquo;multiple_response&rdquo; or &ldquo;categorical_array&rdquo;: <strong>subreferences</strong>: an object keyed by each of the subvariable URLs where each value contains partial variable definitions, which will be created as categorical subvariables of the array. If included, the array definition must include &ldquo;categories&rdquo;, which are shared among the subvariables.</li>
 <li>If type is &ldquo;multiple_response&rdquo;, the definition may include <strong>selected_categories</strong>: an array of category names present in the subvariables. This will mark the specified category or categories as the &ldquo;selected&rdquo; response in the multiple response variable. If no &ldquo;selected_categories&rdquo; array is provided, the new variable will use any categories already flagged as &ldquo;selected&rdquo;: true. If no such category exists, the response will return a 400 status.</li>
-<li>If &ldquo;type&rdquo; is &ldquo;datetime&rdquo;: <strong>resolution</strong>: a string, such as &ldquo;Y&rdquo;, &ldquo;M&rdquo;, &ldquo;D&rdquo;, &ldquo;h&rdquo;, &ldquo;m&rdquo;, &ldquo;s&rdquo;, &ldquo;ms&rdquo;, that indicates the unit size of the datetime data.</li>
+<li>If &ldquo;type&rdquo; is &ldquo;datetime&rdquo;: <strong>resolution</strong>: a string, such as &ldquo;Y&rdquo;, &ldquo;Q&rdquo;, &ldquo;M&rdquo;, &ldquo;W&rdquo;, &ldquo;D&rdquo;, &ldquo;h&rdquo;, &ldquo;m&rdquo;, &ldquo;s&rdquo;, &ldquo;ms&rdquo;, that indicates the unit size of the datetime data.</li>
 </ul>
 
 <p>See <a href="#variable-definitions">Variable Definitions</a> for more details and examples of valid attributes, and
@@ -10606,6 +10606,8 @@ as well as basic summary statistics:</li>
 <li>D: Day</li>
 <li>h: Hour</li>
 <li>m: Minutes</li>
+<li>s: Seconds</li>
+<li>ms: Milliseconds </li>
 </ul></li>
 <li>From Text: Need to include a <code class="prettyprint">format</code> key containing a valid strftime string to format with.</li>
 <li>From Categorical: Need to include a <code class="prettyprint">format</code> key containing a valid strftime string to format with.</li>
