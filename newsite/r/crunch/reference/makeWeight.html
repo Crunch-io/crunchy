@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Revoke a user's access to a dataset — unshare • Crunch</title>
+<title>Generate a weight variable — makeWeight • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,12 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Revoke a user's access to a dataset — unshare" />
+<meta property="og:title" content="Generate a weight variable — makeWeight" />
 
-<meta property="og:description" content="Revoke a user's access to a dataset" />
+<meta property="og:description" content="This function allows you to generate a weight variable by supplying a set of
+categorical variables and the target distribution for each of the variables'
+categories. Weights are computed by iteratively 'raking' conditional 'cells'
+to the provided marginal targets." />
 
 
 <!-- mathjax -->
@@ -130,38 +133,72 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Revoke a user's access to a dataset</h1>
+    <h1>Generate a weight variable</h1>
     </div>
 
     
-    <p>Revoke a user's access to a dataset</p>
+    <p>This function allows you to generate a weight variable by supplying a set of
+categorical variables and the target distribution for each of the variables'
+categories. Weights are computed by iteratively 'raking' conditional 'cells'
+to the provided marginal targets.</p>
     
 
-    <pre class="usage"><span class='fu'>unshare</span>(<span class='no'>dataset</span>, <span class='no'>users</span>)</pre>
+    <pre class="usage"><span class='fu'>makeWeight</span>(<span class='no'>...</span>, <span class='no'>name</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dataset</th>
-      <td><p>a CrunchDataset</p></td>
+      <th>...</th>
+      <td><p>A series of expressions of the form <code>variable ~ target_weights</code>.
+The variable must be a categorical Crunch variable, and the target weights
+must be a numeric vector whose length should be equal to the number of
+categories contained in the variable, and whose sum is equal to 100 or 1. If
+you supply fewer target weights than there are categories <code>makeWeight</code> will
+pad the target weight vector with 0s.</p></td>
     </tr>
     <tr>
-      <th>users</th>
-      <td><p>character: email address(es) or URLs of the users or teams to
-unshare with.</p></td>
+      <th>name</th>
+      <td><p>The name of the resulting variable</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisibly, the dataset.</p>
+    <p>A crunch <code><a href='VariableDefinition.html'>VariableDefinition()</a></code> of the weight variable</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>For instance, if you wanted to create a
+weight variable which equally weighted four categories stored in <code>ds$var</code>
+you would call <code>ds$weight1 &lt;- makeWeight(ds$var ~ c(25, 25, 25, 25), name = "weight1")</code>.
+Note that <code>makeWeight</code> returns a <code>VariableDefinition</code>, an expression that
+when assigned into your Dataset becomes a derived variable. This does not on
+its own set the new variable as "the weight" for your dataset. To set that
+attribute, use <code><a href='weight.html'>weight()</a></code>. Alternatively, you can also create the variable
+and set the weight attribute in one step with
+<code>weight(ds) &lt;- makeWeight(ds$var ~ c(25, 25, 25, 25), name = "weight1")</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='share.html'>share</a></code></p>
+    <p><code><a href='weight.html'>weight&lt;-()</a></code>; <code><a href='settings.html'>settings()</a></code> for the "default weight" for other
+dataset viewers.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>mtcars</span>$<span class='no'>cyl</span> <span class='kw'>&lt;-</span> <span class='fu'>as.factor</span>(<span class='no'>mtcars</span>$<span class='no'>cyl</span>)
+<span class='no'>mtcars</span>$<span class='no'>gear</span> <span class='kw'>&lt;-</span> <span class='fu'>as.factor</span>(<span class='no'>mtcars</span>$<span class='no'>gear</span>)
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='newDataset.html'>newDataset</a></span>(<span class='no'>mtcars</span>)
+<span class='co'># Create a new "raked" variable</span>
+<span class='no'>ds</span>$<span class='no'>weight</span> <span class='kw'>&lt;-</span> <span class='fu'>makeWeight</span>(<span class='no'>ds</span>$<span class='no'>cyl</span> ~ <span class='fu'>c</span>(<span class='fl'>30</span>, <span class='fl'>30</span>, <span class='fl'>40</span>, <span class='fl'>0</span>),
+    <span class='no'>ds</span>$<span class='no'>gear</span> ~ <span class='fu'>c</span>(<span class='fl'>20</span>, <span class='fl'>20</span>, <span class='fl'>60</span>, <span class='fl'>0</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"weight"</span>)
+<span class='fu'>summary</span>(<span class='no'>ds</span>$<span class='no'>weight</span>)
+<span class='co'># ds$weight is not "the weight" for the dataset unless you set it:</span>
+<span class='fu'><a href='weight.html'>weight</a></span>(<span class='no'>ds</span>) <span class='kw'>&lt;-</span> <span class='no'>ds</span>$<span class='no'>weight</span>
+<span class='co'># Or, you can create the variable and set as weight in one step:</span>
+<span class='fu'><a href='weight.html'>weight</a></span>(<span class='no'>ds</span>) <span class='kw'>&lt;-</span>  <span class='fu'>makeWeight</span>(<span class='no'>ds</span>$<span class='no'>var</span> ~ <span class='fu'>c</span>(<span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"weight2"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -170,8 +207,12 @@ unshare with.</p></td>
       
       <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

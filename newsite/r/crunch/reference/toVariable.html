@@ -27,8 +27,7 @@
   
 <meta property="og:title" content="Generic method for converting objects to Crunch representations — toVariable" />
 
-<meta property="og:description" content="If you have other object types you wish to convert to Crunch variables,
-you can declare methods for toVariable" />
+<meta property="og:description" content="R objects are converted to crucnh objects using the following rules:" />
 
 
 <!-- mathjax -->
@@ -106,6 +105,9 @@ you can declare methods for toVariable" />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -132,8 +134,7 @@ you can declare methods for toVariable" />
     </div>
 
     
-    <p>If you have other object types you wish to convert to Crunch variables,
-you can declare methods for <code>toVariable</code></p>
+    <p>R objects are converted to crucnh objects using the following rules:</p>
     
 
     <pre class="usage"><span class='fu'>toVariable</span>(<span class='no'>x</span>, <span class='no'>...</span>)
@@ -183,6 +184,20 @@ you can declare methods for <code>toVariable</code></p>
     <p>a list object suitable for POSTing to the Crunch API. See the API
 documentation for specifications.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p>Character vectors are converted into Crunch text variables</p></li>
+<li><p>Numeric vectors are converted into Crunch numeric variables</p></li>
+<li><p>Factors are converted to categorical variables</p></li>
+<li><p>Date and POSIXt vectors are converted into Crunch datetime variables</p></li>
+<li><p>Logical vectors are converted to Crunch categorical variables</p></li>
+<li><p><a href='VariableDefinition.html'>VariableDefinition</a>s are not converted, but the function can still append
+additional metadata</p></li>
+</ul>
+    <p>If you have other object types you wish to convert to Crunch variables,
+you can declare methods for <code>toVariable</code></p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -191,6 +206,8 @@ documentation for specifications.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

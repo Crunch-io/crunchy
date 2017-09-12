@@ -105,6 +105,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -162,20 +165,20 @@ appended.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a VariableDefinition for the copy expression. Assign into a Dataset
+    <p>a VariableDefinition for the copied variable. Assign into a Dataset
 to make the copy happen.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Copies can be shallow (linked) or deep. Shallow copying is faster and should
-be preferred unless a true hard copy is required, though keep in mind the
-implications of shallow copying. When you append data to the original
+    <p>Copies can be shallow (linked) or deep. Shallow copying is faster and is preferable
+unless a true hard copy is required. Shallow copies are effectively pointers to the
+original variable, and then you append data to the original
 variable or otherwise alter its values, the values in the copy automatically
 update. This linking may be desirable, but it comes with some limitations.
 First, you cannot edit the values of the copy independently of the original.
 Second, some attributes of the copy are immutable: of note, properties of
-categories cannot be altered independely in the copy. Subvariable names and
-ordering within arrays, however, can.</p>
+categories cannot be altered independely in the copy, but you can alter Subvariable names and
+ordering within arrays.</p>
     
 
   </div>

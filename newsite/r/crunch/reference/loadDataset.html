@@ -105,6 +105,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -142,8 +145,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>character, the name of a Crunch dataset you have access
-to. Or, a <code>DatasetTuple</code>.</p></td>
+      <td><p>character, the name of a Crunch dataset that you have access
+to, or a <code>DatasetTuple</code>.</p></td>
     </tr>
     <tr>
       <th>kind</th>
@@ -153,14 +156,14 @@ datasets. Default is "active", i.e. non-archived.</p></td>
     <tr>
       <th>project</th>
       <td><p><code>CrunchProject</code> entity, character name of a project, or
-NULL, the default. If a Project entity or reference is supplied, the
-function will display datasets from that Project's datasets. If NULL,
+<code>NULL</code>, the default. If a Project entity or reference is supplied, the
+function will display datasets from that Project's datasets. If <code>NULL</code>,
 the primary dataset catalog for the user will be used.</p></td>
     </tr>
     <tr>
       <th>refresh</th>
       <td><p>logical: should the function check the Crunch API for new
-datasets? Default is FALSE.</p></td>
+datasets? Default is <code>FALSE</code>.</p></td>
     </tr>
     </table>
     
@@ -169,6 +172,11 @@ datasets? Default is FALSE.</p></td>
     <p>An object of class <code>CrunchDataset</code></p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>dsName</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='listDatasets.html'>listDatasets</a></span>()[<span class='fl'>1</span>]
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDatasets</span>(<span class='no'>dsName</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -176,7 +184,9 @@ datasets? Default is FALSE.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

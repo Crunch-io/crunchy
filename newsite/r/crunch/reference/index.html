@@ -103,6 +103,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -149,27 +152,21 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="newDataset.html">newDataset</a></code> <code><a href="newDataset.html">newDatasetByCSV</a></code> </p>
+            <p><code><a href="newDataset.html">newDataset</a></code> </p>
           </td>
-          <td><p>Upload a data.frame to Crunch to make a new dataset</p></td>
+          <td><p>Upload data to Crunch to make a new dataset</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="newDatasetByColumn.html">newDatasetByColumn</a></code> </p>
+            <p><code><a href="toVariable.html">toVariable</a></code> </p>
           </td>
-          <td><p>Upload a data.frame column-by-column to make a new dataset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="newDatasetFromFile.html">newDatasetFromFile</a></code> </p>
-          </td>
-          <td><p>Upload a file to Crunch to make a new dataset</p></td>
+          <td><p>Generic method for converting objects to Crunch representations</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="VariableDefinition.html">VariableDefinition</a></code> <code><a href="VariableDefinition.html">VarDef</a></code> </p>
           </td>
-          <td><p>Construct a variable definition with (optional) additional metadata</p></td>
+          <td><p>Construct a variable definition</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -181,13 +178,7 @@
           <td>
             <p><code><a href="appendStream.html">appendStream</a></code> </p>
           </td>
-          <td><p>Append data that has been streamed to a dataset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createWithPreparedData.html">createWithPreparedData</a></code> </p>
-          </td>
-          <td><p>Upload a prepared data.frame with metadata to Crunch</p></td>
+          <td><p>Manually trigger a pending append to a datadet</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -209,9 +200,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="toVariable.html">toVariable</a></code> </p>
+            <p><code><a href="createWithPreparedData.html">createWithPreparedData</a></code> </p>
           </td>
-          <td><p>Generic method for converting objects to Crunch representations</p></td>
+          <td><p>Upload a prepared data.frame with metadata to Crunch</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -225,7 +216,7 @@
           <td>
             <p><code><a href="listDatasets.html">listDatasets</a></code> </p>
           </td>
-          <td><p>Show the names of all Crunch datasets</p></td>
+          <td><p>Show the names of all Crunch datasets associated with a catalog</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -235,9 +226,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="updateDatasetList.html">updateDatasetList</a></code> </p>
+            <p><code><a href="datasets.html">datasets</a></code> <code><a href="datasets.html">datasets<-</a></code> </p>
           </td>
-          <td><p>Refresh the local list of Crunch datasets</p></td>
+          <td><p>Get the dataset catalog</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -270,12 +261,6 @@
             <p><code><a href="dataset-to-R.html">as.data.frame</a></code> </p>
           </td>
           <td><p>as.data.frame method for CrunchDataset</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="datasets.html">datasets</a></code> <code><a href="datasets.html">datasets<-</a></code> </p>
-          </td>
-          <td><p>Get the dataset catalog</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -459,7 +444,7 @@
           <td>
             <p><code><a href="hiddenVariables.html">hiddenVariables</a></code> </p>
           </td>
-          <td><p>Show the names of hidden variables within the dataset</p></td>
+          <td><p>Show the names of a dataset's hidden variables</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -471,13 +456,13 @@
           <td>
             <p><code><a href="hideVariables.html">hideVariables</a></code> <code><a href="hideVariables.html">hiddenVariables<-</a></code> <code><a href="hideVariables.html">unhideVariables</a></code> </p>
           </td>
-          <td><p>Hide and Unhide Variables Within a Dataset</p></td>
+          <td><p>Hide and unhide variables within a dataset</p></td>
         </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="interactVariables.html">interactVariables</a></code> </p>
           </td>
-          <td><p>Make a variable that is the interaction of two or more other variables</p></td>
+          <td><p>Create a variable by interacting categorical variables</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -495,7 +480,7 @@
           <td>
             <p><code><a href="type.html">type</a></code> <code><a href="type.html">type<-</a></code> </p>
           </td>
-          <td><p>Change the type of Crunch variables</p></td>
+          <td><p>Change Crunch variable types</p></td>
         </tr><tr>
           <!--  -->
           <td>

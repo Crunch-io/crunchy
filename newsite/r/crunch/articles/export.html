@@ -75,6 +75,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -169,6 +172,7 @@ df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
 <p>CSV export does have a “categories” option that governs whether categorical variables are exported as category names or ids. The latter is more concise and pairs well with the Crunch metadata export, but category names can be useful when taking the file without additional metadata.</p>
 <p>As with the <code>as.data.frame</code> methods, you can subset what you export by indexing the rows and columns. Following the previous example, we can get a CSV of that demographic subset by:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw">c</span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">file=</span><span class="st">"demo-demos.csv"</span>)</code></pre></div>
+<p><a href="crunch-internals.html">Next: Crunch internals</a></p>
 </div>
 </div>
 </div>

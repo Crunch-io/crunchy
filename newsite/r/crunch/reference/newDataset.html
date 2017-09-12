@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Upload a data.frame to Crunch to make a new dataset — newDataset • Crunch</title>
+<title>Upload data to Crunch to make a new dataset — newDataset • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,10 +25,12 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Upload a data.frame to Crunch to make a new dataset — newDataset" />
+<meta property="og:title" content="Upload data to Crunch to make a new dataset — newDataset" />
 
-<meta property="og:description" content="This function uses the CSV+JSON import format, which is generally faster and
-more effective than newDatasetByColumn." />
+<meta property="og:description" content="This function creates a new dataset on the Crunch server with either a
+data.frame or similar object in your R session, a file, or a URL to a file.
+It captures available metadata from your R object and translates it into
+Crunch types." />
 
 
 <!-- mathjax -->
@@ -106,6 +108,9 @@ more effective than newDatasetByColumn." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -128,33 +133,34 @@ more effective than newDatasetByColumn." />
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Upload a data.frame to Crunch to make a new dataset</h1>
+    <h1>Upload data to Crunch to make a new dataset</h1>
     </div>
 
     
-    <p>This function uses the CSV+JSON import format, which is generally faster and
-more effective than <code><a href='newDatasetByColumn.html'>newDatasetByColumn</a></code>.</p>
+    <p>This function creates a new dataset on the Crunch server with either a
+data.frame or similar object in your R session, a file, or a URL to a file.
+It captures available metadata from your R object and translates it into
+Crunch types.</p>
     
 
-    <pre class="usage"><span class='fu'>newDataset</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>deparseAndFlatten</span>(<span class='fu'>substitute</span>(<span class='no'>x</span>), <span class='kw'>max_length</span> <span class='kw'>=</span> <span class='fl'>40</span>), <span class='no'>...</span>)
-
-<span class='fu'>newDatasetByCSV</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>newDataset</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a data.frame or other rectangular R object</p></td>
+      <td><p>a <code>data.frame</code> or other rectangular R data object, or a string
+file name or URL to upload to create a dataset.</p></td>
     </tr>
     <tr>
       <th>name</th>
-      <td><p>character, the name to give the new Crunch dataset. Default is
-the name of the R object passed in <code>x</code></p></td>
+      <td><p>character name to give the new Crunch dataset. By default the
+function uses the name of the R object, or, if passing a file, the file name.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code> <a href='createDataset.html'>createDataset</a></code></p></td>
+      <td><p>additional arguments passed to <code><a href='createDataset.html'>createDataset()</a></code></p></td>
     </tr>
     </table>
     
@@ -162,7 +168,23 @@ the name of the R object passed in <code>x</code></p></td>
 
     <p>If successful, an object of class CrunchDataset.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>If you have an SPSS file, it is better specify the file name directly rather
+than first reading it into R. Uploading SPSS files directly to Crunch will
+preserve metadata that is stripped by the R import, regardless of the library
+used to read it into R.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='newDatasetFromFile.html'>newDatasetFromFile()</a></code>; <code><a href='newDatasetByColumn.html'>newDatasetByColumn()</a></code> for an alternate
+upload method.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>newDataset</span>(<span class='no'>mtcars</span>, <span class='st'>"cars"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -170,7 +192,13 @@ the name of the R object passed in <code>x</code></p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

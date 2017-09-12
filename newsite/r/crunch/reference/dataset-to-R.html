@@ -28,15 +28,15 @@
 <meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
 
 <meta property="og:description" content="This method is defined principally so that you can use a CrunchDataset as
-a data argument to other R functions (such as
-[stats::lm]). Unless you give it the force==TRUE
-argument, this function does not in fact return a data.frame: it
-returns an object with an interface like a data.frame, such that you get
-R vectors when you access its columns (unlike a CrunchDataset, which
-returns CrunchVariable objects). This allows modeling functions that
-require select columns of a dataset to retrieve only those variables from
+a data argument to other R functions (such as stats::lm()). By default,
+the function does not return a data.frame but instead CrunchDataFrame,  which
+behaves similarly to a data.frame without bringing the whole dataset into memory.
+When you access the variables of a CrunchDataFrame,
+you get an R vector, rather than a CrunchVariable. This allows modeling functions
+that require select columns of a dataset to retrieve only those variables from
 the remote server, rather than pulling the entire dataset into local
-memory." />
+memory. You can override this behavior by passing force = TRUE, which will
+cause the function to return a traditional data.frame." />
 
 
 <!-- mathjax -->
@@ -114,6 +114,9 @@ memory." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -141,15 +144,15 @@ memory." />
 
     
     <p>This method is defined principally so that you can use a CrunchDataset as
-a <code>data</code> argument to other R functions (such as
-<code>[stats::lm]</code>). Unless you give it the <code>force==TRUE</code>
-argument, this function does not in fact return a <code>data.frame</code>: it
-returns an object with an interface like a data.frame, such that you get
-R vectors when you access its columns (unlike a CrunchDataset, which
-returns CrunchVariable objects). This allows modeling functions that
-require select columns of a dataset to retrieve only those variables from
+a <code>data</code> argument to other R functions (such as <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm()</a></code>). By default,
+the function does not return a <code>data.frame</code> but instead <code>CrunchDataFrame</code>,  which
+behaves similarly to a <code>data.frame</code> without bringing the whole dataset into memory.
+When you access the variables of a <code>CrunchDataFrame</code>,
+you get an R vector, rather than a <code>CrunchVariable</code>. This allows modeling functions
+that require select columns of a dataset to retrieve only those variables from
 the remote server, rather than pulling the entire dataset into local
-memory.</p>
+memory. You can override this behavior by passing <code>force = TRUE</code>, which will
+cause the function to return a traditional <code>data.frame</code>.</p>
     
 
     <pre class="usage"><span class='co'># S3 method for CrunchDataset</span>
@@ -182,11 +185,13 @@ leave the columns as unevaluated promises. Default is <code>FALSE</code>.</p></t
     </tr>
     <tr>
       <th>row.order</th>
-      <td><p>vector of indeces. Which, and their order, of the rows of the dataset should be presented as (default: <code>NULL</code>). If <code>NULL</code>, then the Crunch Dataset order will be used.</p></td>
+      <td><p>vector of indices containing the order in which the rows of
+the dataset should be presented. If <code>NULL</code>, the Crunch Dataset order will be
+used.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to as.data.frame.default</p></td>
+      <td><p>additional arguments passed to <code>as.data.frame</code>.</p></td>
     </tr>
     </table>
     

@@ -27,7 +27,9 @@
   
 <meta property="og:title" content="Get the dataset catalog — datasets" />
 
-<meta property="og:description" content="Get the dataset catalog" />
+<meta property="og:description" content="Crunch datasets are associated with catalogs. A project catalog will
+have a set of datasets associated with it, as will a user or team. This
+function allows you to get or modify the datasets associated with a catalog." />
 
 
 <!-- mathjax -->
@@ -105,6 +107,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -131,7 +136,9 @@
     </div>
 
     
-    <p>Get the dataset catalog</p>
+    <p>Crunch datasets are associated with catalogs. A project catalog will
+have a set of datasets associated with it, as will a user or team. This
+function allows you to get or modify the datasets associated with a catalog.</p>
     
 
     <pre class="usage"><span class='fu'>datasets</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>getAPIRoot</span>())
@@ -144,8 +151,7 @@
     <tr>
       <th>x</th>
       <td><p>a <code>ShojiObject</code>, such as a <code>CrunchProject</code>. If omitted,
-the default value for <code>x</code> means that you will load the user's primary
-dataset catalog.</p></td>
+the function will load the user's primary dataset catalog. #'</p></td>
     </tr>
     <tr>
       <th>value</th>

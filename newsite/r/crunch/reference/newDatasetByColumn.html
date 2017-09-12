@@ -28,7 +28,8 @@
 <meta property="og:title" content="Upload a data.frame column-by-column to make a new dataset — newDatasetByColumn" />
 
 <meta property="og:description" content="Use this version if you have lots of variables, under 1M rows, perhaps
-backed by ff or other memory-mapped files, and time to kill." />
+backed by ff or other memory-mapped files, and time to kill. You really
+probably want newDataset() instead." />
 
 
 <!-- mathjax -->
@@ -106,6 +107,9 @@ backed by ff or other memory-mapped files, and time to kill." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,7 +137,8 @@ backed by ff or other memory-mapped files, and time to kill." />
 
     
     <p>Use this version if you have lots of variables, under 1M rows, perhaps
-backed by ff or other memory-mapped files, and time to kill.</p>
+backed by <code>ff</code> or other memory-mapped files, and time to kill. You really
+probably want <code><a href='newDataset.html'>newDataset()</a></code> instead.</p>
     
 
     <pre class="usage"><span class='fu'>newDatasetByColumn</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>deparseAndFlatten</span>(<span class='fu'>substitute</span>(<span class='no'>x</span>), <span class='kw'>max_length</span> <span class='kw'>=</span>
@@ -153,7 +158,7 @@ the name of the R object passed in <code>x</code></p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code> <a href='createDataset.html'>createDataset</a></code></p></td>
+      <td><p>additional arguments passed to <code><a href='createDataset.html'>createDataset()</a></code></p></td>
     </tr>
     </table>
     
@@ -163,7 +168,7 @@ the name of the R object passed in <code>x</code></p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='newDataset.html'>newDataset</a></code></p>
+    <p><code><a href='newDataset.html'>newDataset()</a></code></p>
     
 
   </div>

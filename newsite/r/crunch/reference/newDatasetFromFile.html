@@ -27,9 +27,10 @@
   
 <meta property="og:title" content="Upload a file to Crunch to make a new dataset — newDatasetFromFile" />
 
-<meta property="og:description" content="Use this import method if you have an SPSS data file. Reading such a file
-into R as a data.frame will result in lost metadata. You can just send it
-directly to Crunch and let the server process it." />
+<meta property="og:description" content="This function allows you to upload a .csv or .sav file directly to Crunch
+without first reading it into R. This is useful both because it preserves SPSS
+metadata that is lost when reading .sav files into R and because it is more
+efficient just to upload the file to the server." />
 
 
 <!-- mathjax -->
@@ -107,6 +108,9 @@ directly to Crunch and let the server process it." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,35 +137,46 @@ directly to Crunch and let the server process it." />
     </div>
 
     
-    <p>Use this import method if you have an SPSS data file. Reading such a file
-into R as a data.frame will result in lost metadata. You can just send it
-directly to Crunch and let the server process it.</p>
+    <p>This function allows you to upload a <code>.csv</code> or <code>.sav</code> file directly to Crunch
+without first reading it into R. This is useful both because it preserves SPSS
+metadata that is lost when reading <code>.sav</code> files into R and because it is more
+efficient just to upload the file to the server.</p>
     
 
-    <pre class="usage"><span class='fu'>newDatasetFromFile</span>(<span class='no'>file</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>basename</span>(<span class='no'>file</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>newDatasetFromFile</span>(<span class='no'>x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>basename</span>(<span class='no'>x</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>character, the path to a file to upload. This should either be
-a .csv or .sav (SPSS) file.</p></td>
-    </tr>
-    <tr>
       <th>name</th>
-      <td><p>character, the name to give the new Crunch dataset. Default is
-the file name</p></td>
+      <td><p>character, the name to give the new Crunch dataset. By default the
+name of the dataset will be the filename</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code> <a href='createDataset.html'>createDataset</a></code></p></td>
+      <td><p>additional arguments passed to <a href='createDataset.html'>createDataset</a></p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>character, the path to a local file to upload, or a URL. This
+should either be a <code>.csv</code> or <code>.sav</code> (SPSS) file</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>On success, an object of class <code>CrunchDataset</code>.</p>
+    <p>On success, an object of class <a href='CrunchDataset.html'>CrunchDataset</a></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You no longer need to call this function directly: you can call
+<code><a href='newDataset.html'>newDataset()</a></code> and pass the filename or URL, and it will handle it for you,
+thereby saving you eight keystrokes.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='newDataset.html'>newDataset()</a></code></p>
     
 
   </div>
@@ -171,6 +186,10 @@ the file name</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

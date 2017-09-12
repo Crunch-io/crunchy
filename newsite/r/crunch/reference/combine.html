@@ -27,7 +27,10 @@
   
 <meta property="og:title" content="Combine categories or responses — combine" />
 
-<meta property="og:description" content="Combine categories or responses" />
+<meta property="og:description" content="Crunch allows you to create a new categorical variable by combining
+the categories of another variable. For instance, you might want to
+recode a categorical variable with three categories small, medium, and large
+to one that has just small and large." />
 
 
 <!-- mathjax -->
@@ -105,6 +108,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -131,7 +137,10 @@
     </div>
 
     
-    <p>Combine categories or responses</p>
+    <p>Crunch allows you to create a new categorical variable by combining
+the categories of another variable. For instance, you might want to
+recode a categorical variable with three categories small, medium, and large
+to one that has just small and large.</p>
     
 
     <pre class="usage"><span class='fu'>combine</span>(<span class='no'>variable</span>, <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'>list</span>(), <span class='no'>...</span>)</pre>
@@ -146,14 +155,14 @@ variable</p></td>
     </tr>
     <tr>
       <th>combinations</th>
-      <td><p>list of named lists containing (1) "categories":
-category ids or names for categorical types, or for multiple response,
-"responses": subvariable names, aliases, or positional indices; (2) a
-"name" for the new category or response; and (3) optionally, other category
-("missing", "numeric_value") or subvariable ("alias", "description")
+      <td><p>list of named lists containing</p><ol>
+<li><p>"categories": category ids or names for categorical types, or for multiple response,
+"responses": subvariable names, aliases, or positional indices;</p></li>
+<li><p>a "name" for the new category or response; and</p></li>
+<li><p>optionally, other category ("missing", "numeric_value") or subvariable ("alias", "description")
 attributes. If <code>combinations</code> is omitted, the resulting variable will
-essentially be a copy (but see <code>link{copy}</code> for a more natural way to
-do that, if desired).</p></td>
+essentially be a copy (but see <code><a href='copyVariable.html'>copy()</a></code> for a more natural way to copy variables.</p></li>
+</ol></td>
     </tr>
     <tr>
       <th>...</th>
@@ -163,10 +172,9 @@ do that, if desired).</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='VariableDefinition.html'>VariableDefinition</a></code> that will create the new
-comined-category or -response derived variable. Categories/responses not
-referenced in <code>combinations</code> will be appended to the end of the
-combinations.</p>
+    <p>A <code><a href='VariableDefinition.html'>VariableDefinition</a></code> that will create the new combined-category or
+-response derived variable. Categories/responses not referenced in <code>combinations</code> will be
+appended to the end of the combinations.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

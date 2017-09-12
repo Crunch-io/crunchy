@@ -105,6 +105,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -153,15 +156,14 @@ that is to be merged in.</p></td>
       <td><p>logical If the merge fails, should <code>dataset</code> be
 restored to its state prior to the merge, or should it be left in its
 partially merged state for debugging and manual fixing? Default is
-<code>TRUE</code>, i.e. the former.</p></td>
+<code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>force</th>
       <td><p>logical Attempt to push through merge conflicts by dropping
-all changes to <code>dataset</code> since <code>fork</code> diverged from and take only
-the changes from <code>fork</code>? Default is <code>FALSE</code>, and it is recommended
-only to use force=TRUE after first attempting and failing to merge without
-forcing.</p></td>
+all changes to <code>dataset</code> that occured after <code>fork</code> diverged from and take only
+the changes from <code>fork</code>? Default is <code>FALSE</code>. You should only use force=TRUE after
+first attempting and failing to merge without forcing.</p></td>
     </tr>
     </table>
     

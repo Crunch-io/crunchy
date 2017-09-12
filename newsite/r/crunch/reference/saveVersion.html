@@ -27,7 +27,9 @@
   
 <meta property="og:title" content="Create a new saved version — saveVersion" />
 
-<meta property="og:description" content="Create a new saved version" />
+<meta property="og:description" content="Crunch datasets can be saved and restored using saveVersion and restoreVersion().
+Some Crunch functions, such as appendDataset() create new savepoints automatically. To
+see the list of savepoints use versions()." />
 
 
 <!-- mathjax -->
@@ -105,6 +107,9 @@
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -131,7 +136,9 @@
     </div>
 
     
-    <p>Create a new saved version</p>
+    <p>Crunch datasets can be saved and restored using <code>saveVersion</code> and <code><a href='restoreVersion.html'>restoreVersion()</a></code>.
+Some Crunch functions, such as <code><a href='appendDataset.html'>appendDataset()</a></code> create new savepoints automatically. To
+see the list of savepoints use <code><a href='versions.html'>versions()</a></code>.</p>
     
 
     <pre class="usage"><span class='fu'>saveVersion</span>(<span class='no'>dataset</span>, <span class='kw'>description</span> <span class='kw'>=</span> <span class='fu'>paste</span>(<span class='st'>"Version"</span>, <span class='fu'>length</span>(<span class='fu'><a href='versions.html'>versions</a></span>(<span class='no'>dataset</span>))
@@ -158,7 +165,7 @@ versions unique descriptions.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='versions.html'>versions</a></code> <code><a href='restoreVersion.html'>restoreVersion</a></code></p>
+    <p><a href='versions.html'>versions</a> <a href='restoreVersion.html'>restoreVersion</a></p>
     
 
   </div>

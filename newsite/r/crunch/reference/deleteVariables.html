@@ -27,10 +27,8 @@
   
 <meta property="og:title" content="Delete Variables Within a Dataset — deleteVariables" />
 
-<meta property="og:description" content="Deleting requires confirmation. In an interactive session, you will be asked
-to confirm. To avoid that prompt, or to delete variables from a
-non-interactive session, wrap the call in with_consent to give
-your permission to delete." />
+<meta property="og:description" content="This function permenantly deletes a variable from a dataset. For a non-destructive
+alternative see hide()." />
 
 
 <!-- mathjax -->
@@ -108,6 +106,9 @@ your permission to delete." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -134,10 +135,8 @@ your permission to delete." />
     </div>
 
     
-    <p>Deleting requires confirmation. In an interactive session, you will be asked
-to confirm. To avoid that prompt, or to delete variables from a
-non-interactive session, wrap the call in <code><a href='consent.html'>with_consent</a></code> to give
-your permission to delete.</p>
+    <p>This function permenantly deletes a variable from a dataset. For a non-destructive
+alternative see <code><a href='hide.html'>hide()</a></code>.</p>
     
 
     <pre class="usage"><span class='fu'>deleteVariables</span>(<span class='no'>dataset</span>, <span class='no'>variables</span>)
@@ -162,6 +161,13 @@ of variables to delete.</p></td>
 
     <p>(invisibly) <code>dataset</code> with the specified variables deleted</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In an interactive session, you will be prompted to confirm that you
+wish to delete the variable. To avoid that prompt, or to delete variables from a
+non-interactive session, wrap the call in <code><a href='consent.html'>with_consent()</a></code> to give
+your permission to delete.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><code><a href='hide.html'>hide</a></code></p>
@@ -174,6 +180,8 @@ of variables to delete.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>

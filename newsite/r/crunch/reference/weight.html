@@ -27,8 +27,8 @@
   
 <meta property="og:title" content="Dataset weights — weight" />
 
-<meta property="og:description" content=""weight" lets you view and set your user's currently applied weight on the
-server. "weightVariables" lets you view all of the variables that have been
+<meta property="og:description" content="weight lets you view and set your user's currently applied weight on the
+server. weightVariables lets you view all of the variables that have been
 designated as valid to use as weights." />
 
 
@@ -107,6 +107,9 @@ designated as valid to use as weights." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,8 +136,8 @@ designated as valid to use as weights." />
     </div>
 
     
-    <p>"weight" lets you view and set your user's currently applied weight on the
-server. "weightVariables" lets you view all of the variables that have been
+    <p><code>weight</code> lets you view and set your user's currently applied weight on the
+server. <code>weightVariables</code> lets you view all of the variables that have been
 designated as valid to use as weights.</p>
     
 
@@ -157,8 +160,10 @@ designated as valid to use as weights.</p>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>a Variable to set as weight, or NULL to remove the existing
-weight</p></td>
+      <td><p>a Variable, VariableDefinition, or <code>NULL</code>. If a
+VariableDefinition is passed, the variable will first be created and then set
+as the datasets weight. Set to <code>NULL</code> to remove existing weights from the
+dataset.</p></td>
     </tr>
     </table>
     

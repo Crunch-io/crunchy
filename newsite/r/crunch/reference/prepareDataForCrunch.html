@@ -27,7 +27,7 @@
   
 <meta property="og:title" content="Translate a data.frame to Crunch format — prepareDataForCrunch" />
 
-<meta property="og:description" content="This is called within newDataset(ByCsv) to extract the Crunch metadata
+<meta property="og:description" content="This is called within newDataset to extract the Crunch metadata
 from the data and to transform the data to match the extracted metadata. You
 can call this directly in order to tailor the data import flow more finely." />
 
@@ -107,6 +107,9 @@ can call this directly in order to tailor the data import flow more finely." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,7 +136,7 @@ can call this directly in order to tailor the data import flow more finely." />
     </div>
 
     
-    <p>This is called within <code><a href='newDataset.html'>newDataset(ByCsv)</a></code> to extract the Crunch metadata
+    <p>This is called within <code>newDataset</code> to extract the Crunch metadata
 from the data and to transform the data to match the extracted metadata. You
 can call this directly in order to tailor the data import flow more finely.</p>
     
@@ -145,11 +148,11 @@ can call this directly in order to tailor the data import flow more finely.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>A data.frame or other rectangular R object</p></td>
+      <td><p>A <code>data.frame</code> or other rectangular R object</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code> <a href='createDataset.html'>createDataset</a></code>.
+      <td><p>additional arguments passed to <a href='createDataset.html'>createDataset</a>.
 "name" will be required by the Crunch server but is not required by this
 function.</p></td>
     </tr>

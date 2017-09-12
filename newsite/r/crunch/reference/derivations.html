@@ -27,9 +27,9 @@
   
 <meta property="og:title" content="Get or set a derived variable's expression — derivations" />
 
-<meta property="og:description" content="Get a derived variable's derivation formula as a (CrunchExpr)expressions with
-derivation([variable]). Set (change) a derived variable's derivation with
-derivation([variable]) &lt;- [expression]." />
+<meta property="og:description" content="Get a derived variable's derivation formula as a CrunchExpr with
+derivation(variable). Set (change) a derived variable's derivation with
+derivation(variable) &lt;- expression." />
 
 
 <!-- mathjax -->
@@ -107,6 +107,9 @@ derivation([variable]) &lt;- [expression]." />
     <li>
       <a href="../articles/export.html">Export Data</a>
     </li>
+    <li>
+      <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -133,9 +136,9 @@ derivation([variable]) &lt;- [expression]." />
     </div>
 
     
-    <p>Get a derived variable's derivation formula as a (<code>CrunchExpr</code>)<a href='expressions.html'>expressions</a> with
-<code>derivation([variable])</code>. Set (change) a derived variable's derivation with
-<code>derivation([variable]) &lt;- [expression]</code>.</p>
+    <p>Get a derived variable's derivation formula as a <a href='expressions.html'>CrunchExpr</a> with
+<code>derivation(variable)</code>. Set (change) a derived variable's derivation with
+<code>derivation(variable) &lt;- expression</code>.</p>
     
 
     <pre class="usage"><span class='co'># S4 method for CrunchVariable</span>
@@ -175,12 +178,11 @@ can be used to integrate a derived variable.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>To integrate (aka realize or instantiate) a variable so that it is no longer
-linked to the source variables that made up the derivation, use
-<code>derivation([variable]) &lt;- NULL</code>
+    <p>To break a derivation link between a derived variable and the originating variable, set
+the derivation value of the derived variable to <code>NULL</code> with <code>derivation(variable) &lt;- NULL</code>
     <code>is.derived</code> can be used to see if a variable is derived or not. Additionally
-setting a derived variable's <code>is.derived</code> to <code>FALSE</code> will integrate the
-derived variable.</p>
+setting a derived variable's <code>is.derived</code> to <code>FALSE</code> will break the derivation link between
+two variables.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
