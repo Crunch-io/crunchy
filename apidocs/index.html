@@ -7977,7 +7977,7 @@ options.  The limit and offset are returned in relationship to datasets related 
 <tr>
 <td>max_variables_per_dataset</td>
 <td>Integer</td>
-<td>limit the number of variables that match to this number (default: 1000, max: 1000)</td>
+<td>limit the number of variables that match to this number (default: 100, max: 100) (deprecated, use variable_limit)</td>
 </tr>
 <tr>
 <td>embedded_variables</td>
@@ -7998,6 +7998,21 @@ options.  The limit and offset are returned in relationship to datasets related 
 <td>grouping</td>
 <td>String</td>
 <td>One of <code class="prettyprint">datasets</code> or <code class="prettyprint">variables</code>. Tells if search results should be grouped by datasets or variables.</td>
+</tr>
+<tr>
+<td>variable_limit</td>
+<td>Integer</td>
+<td>Limit the number of variables returned per dataset to this value, (default: 100, max: 100)</td>
+</tr>
+<tr>
+<td>variable_offset</td>
+<td>Integer</td>
+<td>Offset into the variables returned per dataset, default 0</td>
+</tr>
+<tr>
+<td>max_subfield_entries_per_variable</td>
+<td>Integer</td>
+<td>Number of items in the subfields of a variable (such as categories or subvariables), (default: 10, max: 100)</td>
 </tr>
 </tbody></table>
 
