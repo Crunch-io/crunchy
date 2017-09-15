@@ -4127,9 +4127,12 @@ lacking, response will instead be 404.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="nt">"display_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"minBaseSize"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">},</span><span class="w">
     </span><span class="nt">"palette"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"#111111"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#222222"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#333333"</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"primary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#111111"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#222222"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#333333"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nt">"static_colors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"#444444"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#555555"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#666666"</span><span class="p">],</span><span class="w">
-        </span><span class="nt">"base"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"#777777"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#888888"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#999999"</span><span class="p">],</span><span class="w">
         </span><span class="nt">"category_lookup"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"category name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#aaaaaa"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"another category:"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bbbbbb"</span><span class="w">
@@ -4140,7 +4143,7 @@ lacking, response will instead be 404.</p>
 
 <h5 id="brand">Brand</h5>
 
-<p>The CrunchBox interface uses three colors, in order. By default, these are Crunch brand colors of green, blue, and purple. These are used, for example, as the background colors at the top of the interface and the color of the filter selector.</p>
+<p>The CrunchBox interface uses three colors, named Primary, Secondary, and Messages. By default, these are Crunch brand colors of green, blue, and purple. These are used, for example, as the background colors at the top of the interface and the color of the filter selector.</p>
 
 <h5 id="static-colors">Static colors</h5>
 
@@ -8073,11 +8076,6 @@ a second call to fetch the dataset info.</p>
 <td>url or id of the project to limit results (user must have access to the project)</td>
 </tr>
 <tr>
-<td>organization</td>
-<td>string</td>
-<td>if you are the owner for a given organization, you can filter all of the search results pertaining to the datasets in your organization.</td>
-</tr>
-<tr>
 <td>user</td>
 <td>string</td>
 <td>url or id of the user that has read access to the datasets to limit results (user must match with the provided one)</td>
@@ -8089,7 +8087,7 @@ a second call to fetch the dataset info.</p>
 </tr>
 <tr>
 <td>label</td>
-<td>string</td>
+<td>String</td>
 <td>The dataset must be in a folder or subfolder with the given name.</td>
 </tr>
 <tr>
