@@ -7,7 +7,7 @@ These pages are copied from sites where a crunchbox may be or has been embedded.
 1. Set your `widget_root` in whaam’s `host.info` to the test bucket cdn location:
 
   ```
-  widget_root https://d27smwjmpxcjmb.cloudfront.net/test01/snapshots/cubes
+  widget_root https://t.crunch.io/test01/snapshots/cubes
   ```
 1. `grunt serve:widget` in whaam. It will serve on port 8001.
 1. Change the first part of the iframe src to `http://local.crunch.io:8001<DATASET_PART>`
@@ -20,4 +20,4 @@ These pages are copied from sites where a crunchbox may be or has been embedded.
 
 ### :iphone: Safari ‘responsive design mode’
 
-After having enabled the [Develop menu](https://support.apple.com/kb/PH21491?locale=en_US), go to “Enter responsive design mode” and pick your poison. 
+After having enabled the [Develop menu](https://support.apple.com/kb/PH21491?locale=en_US), go to “Enter responsive design mode” and pick your poison.
