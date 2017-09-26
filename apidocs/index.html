@@ -158,18 +158,22 @@ then attach them to datasets by following these steps.</p>
 <p>POST a Dataset Entity to the datasets catalog. See the documentation for <a href="#post">POST /datasets/</a> for details on valid attributes to include in the POST.</p>
 
 <h4 id="2-upload-the-file">2. Upload the file</h4>
-<pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/sources/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/csv</span>
+<pre class="highlight http"><code><span class="err">
+</span><span class="nf">POST</span> <span class="nn">/sources/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">8874357</span>
-<span class="na">Content-Disposition</span><span class="p">:</span> <span class="s">form-data; name="uploaded_file"; filename="my.csv"</span>
-<span class="s">...</span>
-<span class="s">"case_id","q1","q2"</span>
-<span class="s">234375,3,"sometimes"</span>
-<span class="s">234376,2,"always"</span>
-<span class="s">...</span>
-<span class="s">--------</span>
-<span class="s">201 Created</span>
-<span class="na">Location</span><span class="p">:</span> <span class="s">/sources/{source_id}/</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=df5b17ff463a4cb3aa61cf02224c7303</span>
+
+--df5b17ff463a4cb3aa61cf02224c7303
+Content-Disposition: form-data; name="uploaded_file"; filename="my.csv"
+Content-Type: text/csv
+
+"case_id","q1","q2"
+234375,3,"sometimes"
+234376,2,"always"
+...
+--------
+201 Created
+Location: /sources/{source_id}/
 </code></pre>
 
 <p>POST the file to the sources catalog.</p>
@@ -179,6 +183,7 @@ then attach them to datasets by following these steps.</p>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="s">...</span>
 <span class="s">{</span>
+<span class="s">    "element": "shoji:entity",</span>
 <span class="s">    "body": {</span>
 <span class="s">        "source": "/sources/{source_id}/"</span>
 <span class="s">    }</span>
