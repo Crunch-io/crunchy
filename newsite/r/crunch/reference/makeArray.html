@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Make a Categorical Array or Multiple Response variable — makeArray" />
-
-<meta property="og:description" content="Make a Categorical Array or Multiple Response variable" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -134,7 +129,11 @@
     </div>
 
     
-    <p>Make a Categorical Array or Multiple Response variable</p>
+    <p>Array variables are composed of a set of "subvariables" bound
+together for display in the app. For example, you might have a set of
+survey questions that ask how the respondent would rate a tv show from
+1-5. Array variables allow you to display all of their ratings in a compact
+table rather than a set of distinct variables.</p>
     
 
     <pre class="usage"><span class='fu'>makeArray</span>(<span class='no'>subvariables</span>, <span class='no'>name</span>, <span class='no'>...</span>)
@@ -149,13 +148,12 @@
     <tr>
       <th>subvariables</th>
       <td><p>a list of Variable objects to bind together, or a
-Dataset object containing only the Variables to bind (as in from subsetting
-a Dataset)</p></td>
+Dataset subset which contains only the Variables to bind.</p></td>
     </tr>
     <tr>
       <th>name</th>
       <td><p>character, the name that the new Categorical Array variable
-should have. Required.</p></td>
+should have.</p></td>
     </tr>
     <tr>
       <th>...</th>

@@ -25,13 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Get and set names, aliases on Catalog-type objects — names,BatchCatalog-method" />
-
-<meta property="og:description" content="These methods let you get and set names and aliases for variables in a
-Dataset's catalog, or within Subvariables in an array
-variable. They work like the base R names methods." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -200,7 +193,7 @@ variable. They work like the base R names methods.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a VariableCatalog, Subvariables, or similar object</p></td>
+      <td><p>a <code>VariableCatalog</code>, <code>Subvariables</code>, or similar object</p></td>
     </tr>
     <tr>
       <th>value</th>
@@ -216,15 +209,15 @@ return <code>x</code> duly modified.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Note that the <code>names</code> method on a Dataset returns the aliases of its
-variables by default. This is controlled by
-<code>getOption("crunch.namekey.dataset")</code>, which is "alias" by default.
+    <p>Note that the Dataset <code>names</code> method returns the aliases of its
+variables by default. This behavior is controlled by
+<code>getOption("crunch.namekey.dataset")</code>.
 Set <code>options(crunch.namekey.dataset="name")</code> if you wish to use
-variable names. See the vignette on variables for more information.</p>
+variable names. See the variables vignette for more information.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>Subvariables</code> <code>Categories</code> <code><a href='http://www.rdocumentation.org/packages/base/topics/names'>names</a></code> <code><a href='https://cran.rstudio.com/web/packages/crunch/vignettes/variables.html'>vignette("variables", package="crunch")</a></code></p>
+    <p><code>Subvariables</code> <code>Categories</code> <code><a href='http://www.rdocumentation.org/packages/base/topics/names'>base::names()</a></code> <code><a href='https://cran.rstudio.com/web/packages/crunch/vignettes/variables.html'>vignette("variables", package="crunch")</a></code></p>
     
 
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Utility to get a more human-readable view of a Shoji Catalog — catalogToDataFrame • Crunch</title>
+<title>A utility to return a data.frame from a ShojiCatalog. — catalogToDataFrame • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Utility to get a more human-readable view of a Shoji Catalog — catalogToDataFrame" />
-
-<meta property="og:description" content="Utility to get a more human-readable view of a Shoji Catalog" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -130,21 +125,26 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Utility to get a more human-readable view of a Shoji Catalog</h1>
+    <h1>A utility to return a data.frame from a ShojiCatalog.</h1>
     </div>
 
     
-    <p>Utility to get a more human-readable view of a Shoji Catalog</p>
+    <p>Some of the attributes of a <code>ShojiCatalog</code> will not naturally fit in
+a conventional data.frame. For example, an array variable contains a list of
+subvariables, and these subvariables will not easily fit in a single row of a
+data.frame. In this case, the list of subvariables are stored in a
+list-column in the resulting data.frame.</p>
     
 
-    <pre class="usage"><span class='fu'>catalogToDataFrame</span>(<span class='no'>x</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>rownames</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>catalogToDataFrame</span>(<span class='no'>x</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>list_columns</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"subvariables"</span>, <span class='st'>"subvariables_catalog"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>ShojiCatalog or subclass</p></td>
+      <td><p><code>ShojiCatalog</code> or subclass</p></td>
     </tr>
     <tr>
       <th>keys</th>
@@ -153,11 +153,15 @@ include in the result. Default is TRUE, which means all.</p></td>
     </tr>
     <tr>
       <th>rownames</th>
-      <td><p>See <code><a href='http://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></code>, the <code>row.names</code>
-argument, to which this is passed in <code>data.frame</code>. The difference here
-is that if <code>rownames</code> is explicitly set as <code>NULL</code>, the resulting
-object will not have row names set. By default, row names will be the URLs
-of the catalog tuples.</p></td>
+      <td><p>See <code><a href='http://www.rdocumentation.org/packages/base/topics/data.frame'>base::data.frame()</a></code> for the <code>row.names</code>
+argument. The difference here is that if <code>rownames</code> is explicitly set as
+<code>NULL</code>, the resulting object will not have row names set. By default, row
+names will be the URLs of the catalog tuples.</p></td>
+    </tr>
+    <tr>
+      <th>list_columns</th>
+      <td><p>A character vector of the names of the attributes that
+should be stored in a list-column.</p></td>
     </tr>
     <tr>
       <th>...</th>

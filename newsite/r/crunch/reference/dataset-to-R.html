@@ -25,20 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
-
-<meta property="og:description" content="This method is defined principally so that you can use a CrunchDataset as
-a data argument to other R functions (such as stats::lm()). By default,
-the function does not return a data.frame but instead CrunchDataFrame,  which
-behaves similarly to a data.frame without bringing the whole dataset into memory.
-When you access the variables of a CrunchDataFrame,
-you get an R vector, rather than a CrunchVariable. This allows modeling functions
-that require select columns of a dataset to retrieve only those variables from
-the remote server, rather than pulling the entire dataset into local
-memory. You can override this behavior by passing force = TRUE, which will
-cause the function to return a traditional data.frame." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -191,7 +177,7 @@ used.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code>as.data.frame</code>.</p></td>
+      <td><p>additional arguments passed to <code>as.data.frame</code> (default method).</p></td>
     </tr>
     </table>
     

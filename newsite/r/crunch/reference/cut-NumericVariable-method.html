@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get and set "archived" and "published" status of a dataset — is.archived,DatasetCatalog-method • Crunch</title>
+<title>Cut a numeric Crunch variable — cut,NumericVariable-method • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -125,97 +125,97 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get and set "archived" and "published" status of a dataset</h1>
+    <h1>Cut a numeric Crunch variable</h1>
     </div>
 
     
-    <p>"Archived" datasets are excluded from some views. "Draft" datasets are
-visible only to editors, while published datasets are available to all viewers.
-A dataset can either be published or in draft, but not both.
-These properties are accessed and set with the "is" methods. You can also
-set the properties by assigning into the function. The verb functions
-<code>archive</code> and <code>publish</code> are alternate versions of the setters.</p>
+    <p><code>crunch::cut()</code> is equivalent to <code><a href='http://www.rdocumentation.org/packages/base/topics/cut'>base::cut()</a></code> except that it operates on
+Crunch variables instead of in-memory R objects. The function takes a numeric
+variable and derives a new categorical variable from it based on the <code>breaks</code>
+argument. You can either break the variable into evenly spaced categories by
+specifying the number of breaks, or specify a numeric vector identifying
+the start and end point of each category. For example, specifying
+<code>breaks = 5</code> will break the numeric data into five evenly spaced portions
+while <code>breaks = c(1, 5, 10)</code> will recode the data into two groups based on
+whether the numeric vector falls between 1 and 5 or 5 and 10.</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for DatasetCatalog</span>
-<span class='fu'>is.archived</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for DatasetCatalog</span>
-<span class='fu'>is.draft</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for DatasetCatalog</span>
-<span class='fu'>is.published</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for DatasetCatalog,logical</span>
-<span class='fu'>is.archived</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for DatasetCatalog,logical</span>
-<span class='fu'>is.draft</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for DatasetCatalog,logical</span>
-<span class='fu'>is.published</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>is.archived</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>is.draft</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>is.published</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for CrunchDataset,logical</span>
-<span class='fu'>is.archived</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='fu'>archive</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for CrunchDataset,logical</span>
-<span class='fu'>is.draft</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for CrunchDataset,logical</span>
-<span class='fu'>is.published</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='fu'>publish</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for NumericVariable</span>
+<span class='fu'>cut</span>(<span class='no'>x</span>, <span class='no'>breaks</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>name</span>,
+  <span class='kw'>include.lowest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>right</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dig.lab</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>ordered_result</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>CrunchDataset</p></td>
+      <td><p>A Crunch <code>NumericVariable</code></p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>logical</p></td>
+      <th>breaks</th>
+      <td><p>Either a numeric vector of two or more unique cut points
+or a single number giving the number of intervals into which <code>x</code> is to be
+cut. If specifying cut points, values that are less than the smallest value
+in <code>breaks</code> or greater than the largest value in <code>breaks</code> will be marked
+missing in the resulting categorical variable.</p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
+      <td><p>A character vector representing the labels for the levels of
+the resulting categories. The length of the labels argument should be the
+same as the number of categories, which is one fewer than the number of
+breaks. If not specified, labels are constructed using interval notation.
+For example, <code>[1, 5)</code> indicates that the category goes from 1 to 5. The
+bracket shape indicates whether the boundary value is included in the
+category, i.e. whether it is "closed". <code>[1, 5)</code> indicates that the interval
+includes (is closed on) 1 but does not include (is open on) 5.
+If labels = FALSE, simple integer codes are returned instead of a factor.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>The name of the resulting Crunch variable as a character string.</p></td>
+    </tr>
+    <tr>
+      <th>include.lowest</th>
+      <td><p>logical, indicating if an <code>x[i]</code> equal to the lowest
+(or highest, for right = FALSE) <code>breaks</code> value should be included.</p></td>
+    </tr>
+    <tr>
+      <th>right</th>
+      <td><p>logical, indicating if the intervals should be closed on the
+right (and open on the left) or vice versa.</p></td>
+    </tr>
+    <tr>
+      <th>dig.lab</th>
+      <td><p>integer which is used when labels are not given.
+It determines the number of digits used in formatting the break numbers.</p></td>
+    </tr>
+    <tr>
+      <th>ordered_result</th>
+      <td><p>Ignored.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to <a href='makeCaseVariable.html'>makeCaseVariable</a></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>For the getters, the logical value of whether the dataset is
-archived, in draft mode, or published, where draft and published are
-inverses. The setters return the dataset.</p>
+    <p>a Crunch <code><a href='VariableDefinition.html'>VariableDefinition</a></code>. Assign it into the dataset to create
+it as a derived variable on the server.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"mtcars"</span>)
-<span class='fu'>is.draft</span>(<span class='no'>ds</span>)     <span class='co'># FALSE</span>
-<span class='fu'>is.published</span>(<span class='no'>ds</span>) <span class='co'># TRUE</span>
-<span class='fu'>identical</span>(<span class='fu'>is.draft</span>(<span class='no'>ds</span>), !<span class='fu'>is.published</span>(<span class='no'>ds</span>))
-<span class='co'># Can make a dataset a "draft" by:</span>
-<span class='fu'>is.draft</span>(<span class='no'>ds</span>) <span class='kw'>&lt;-</span> <span class='fl'>TRUE</span>
-<span class='fu'>is.published</span>(<span class='no'>ds</span>) <span class='co'># FALSE</span>
-<span class='co'># Could also have set is.published(ds) &lt;- FALSE</span>
-<span class='co'># Now, can go the other way by setting is.draft, is.published, or:</span>
-<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>publish</span>(<span class='no'>ds</span>)
-<span class='fu'>is.published</span>(<span class='no'>ds</span>) <span class='co'># TRUE</span>
-
-<span class='fu'>is.archived</span>(<span class='no'>ds</span>)  <span class='co'># FALSE</span>
-<span class='fu'>is.archived</span>(<span class='no'>ds</span>) <span class='kw'>&lt;-</span> <span class='fl'>TRUE</span>
-<span class='fu'>is.archived</span>(<span class='no'>ds</span>)  <span class='co'># TRUE</span>
-<span class='co'># Could have achieved the same effect by:</span>
-<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>archive</span>(<span class='no'>ds</span>)
+<span class='no'>ds</span>$<span class='no'>cat_var</span> <span class='kw'>&lt;-</span> <span class='fu'>cut</span>(<span class='no'>ds</span>$<span class='no'>mpg</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>20</span>),
+    <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"small"</span>, <span class='st'>"medium"</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Fuel efficiency"</span>)
+<span class='no'>ds</span>$<span class='no'>age</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>32</span>)
+<span class='no'>ds</span>$<span class='no'>age4</span> <span class='kw'>&lt;-</span> <span class='fu'>cut</span>(<span class='no'>df</span>$<span class='no'>age</span>, <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>30</span>, <span class='fl'>45</span>, <span class='fl'>65</span>, <span class='fl'>200</span>),
+           <span class='fu'>c</span>(<span class='st'>"Youth"</span>, <span class='st'>"Adult"</span>, <span class='st'>"Middle-aged"</span>, <span class='st'>"Elderly"</span>),
+           <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Age (4 category)"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

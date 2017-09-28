@@ -435,10 +435,6 @@ h1.text-on-dark-bg {
     text-shadow: 0px 0px 15px #222222;
 }
 
-iframe {
-    border: 1px solid #d3d3d3;
-}
-
 figcaption {
     font-size: 14px;
     font-style: italic;
@@ -593,23 +589,22 @@ a > code {
     text-decoration: underline;
 }
 
-.crunchbox {
-    position: relative;
-    padding-bottom: 75%;
-    height: 0;
-    overflow: hidden;
-}
-
-.crunchbox iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 .crunchbox-container {
     margin: auto;
     max-width: 600px;
     max-height: 480px;
+    min-height: 320px;
+    border: 1px solid #d3d3d3;
+    position: relative;
+    overflow: hidden;
+}
+
+.crunchbox-container iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
 }

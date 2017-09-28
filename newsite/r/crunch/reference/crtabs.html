@@ -25,12 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Crunch xtabs: Crosstab and otherwise aggregate variables in a Crunch Dataset — crtabs" />
-
-<meta property="og:description" content="Create a contingency table or other aggregation from cross-classifying
-variables in a CrunchDataset." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -151,7 +145,7 @@ variables in a CrunchDataset.</p>
 cross-classifying variables separated by '+' on the right side of the
 "~". If aggregating by functions other than counts, include the aggregation
 expression on the left-hand side.
-Compare to <code><a href='http://www.rdocumentation.org/packages/stats/topics/xtabs'>xtabs</a></code>.</p></td>
+Compare to <code><a href='http://www.rdocumentation.org/packages/stats/topics/xtabs'>stats::xtabs()</a></code>.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -161,18 +155,22 @@ Compare to <code><a href='http://www.rdocumentation.org/packages/stats/topics/xt
       <th>weight</th>
       <td><p>a CrunchVariable that has been designated as a potential
 weight variable for <code>data</code>, or <code>NULL</code> for unweighted results.
-Default is the currently applied weight, <code><a href='weight.html'>weight</a>(data)</code>.</p></td>
+Default is the currently applied <code><a href='weight.html'>weight</a></code>.</p></td>
     </tr>
     <tr>
       <th>useNA</th>
       <td><p>whether to include missing values in tabular results. See
-<code><a href='http://www.rdocumentation.org/packages/base/topics/table'>table</a></code>.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/base/topics/table'>base::table()</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>an object of class <code>CrunchCube</code></p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='weight.html'>weight()</a></code></p>
     
 
   </div>
@@ -182,6 +180,8 @@ Default is the currently applied weight, <code><a href='weight.html'>weight</a>(
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

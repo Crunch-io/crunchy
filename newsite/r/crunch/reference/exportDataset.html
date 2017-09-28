@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Export a dataset to a file — exportDataset" />
-
-<meta property="og:description" content="Export a dataset to a file" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -134,7 +129,7 @@
     </div>
 
     
-    <p>Export a dataset to a file</p>
+    <p>This function allows you to write a CrunchDataset to a .csv or SPSS .sav file.</p>
     
 
     <pre class="usage"><span class='fu'>exportDataset</span>(<span class='no'>dataset</span>, <span class='no'>file</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"csv"</span>, <span class='st'>"spss"</span>),
@@ -168,13 +163,15 @@ and "spss".</p></td>
     </tr>
     <tr>
       <th>na</th>
-      <td><p>Similar to the argument in <code><a href='http://www.rdocumentation.org/packages/utils/topics/write.table'>write.table</a></code>, 'na'
+      <td><p>Similar to the argument in <code><a href='http://www.rdocumentation.org/packages/utils/topics/write.table'>utils::write.table()</a></code>, 'na'
 lets you control how missing values are written into the CSV file.
-Supported values are (1) <code>NULL</code>, the default, which means that
+Supported values are:</p><ol>
+<li><p><code>NULL</code>, the default, which means that
 categorical variables will have the category name or id as the value, and
-numeric, text, and datetime variables will have the missing reason string;
-(2) a string to use for missing values. <code>""</code> means that empty cells will
-be written for missing values for all types.</p></td>
+numeric, text, and datetime variables will have the missing reason string;</p></li>
+<li><p>A string to use for missing values.</p></li>
+<li><p><code>""</code> means that empty cells will be written for missing values for all types.</p></li>
+</ol></td>
     </tr>
     <tr>
       <th>varlabel</th>
@@ -187,7 +184,7 @@ value.</p></td>
       <td><p>additional options. See the API documentation. Currently supported
 boolean options include 'include_personal' for personal variables (default:
 <code>FALSE</code>) and 'prefix_subvariables' for SPSS format: whether to include
-the array variable's name in each of its subvariables varlabels (default:
+the array variable's name in each of its subvariables "varlabels" (default:
 <code>FALSE</code>).</p></td>
     </tr>
     <tr>

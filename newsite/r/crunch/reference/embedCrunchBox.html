@@ -25,13 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Get HTML for embedding a CrunchBox — embedCrunchBox" />
-
-<meta property="og:description" content="crunchBox returns a URL to the box data that it generates, but
-in order to view it in a CrunchBox or to embed it on a website, you'll need
-to translate that to the Box's public URL and wrap it in some HTML." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -136,9 +129,10 @@ to translate that to the Box's public URL and wrap it in some HTML." />
     </div>
 
     
-    <p><code><a href='crunchBox.html'>crunchBox</a></code> returns a URL to the box data that it generates, but
+    <p><code><a href='crunchBox.html'>crunchBox()</a></code> returns a URL to the box data that it generates, but
 in order to view it in a CrunchBox or to embed it on a website, you'll need
-to translate that to the Box's public URL and wrap it in some HTML.</p>
+to translate that to the Box's public URL and wrap it in some HTML. This function
+takes a crunchBox and returns the HTLM which you can embed in a website.</p>
     
 
     <pre class="usage"><span class='fu'>embedCrunchBox</span>(<span class='no'>box</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>logo</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
@@ -159,9 +153,9 @@ is <code>NULL</code>, meaning no title shown</p></td>
     <tr>
       <th>logo</th>
       <td><p>character URL of a logo to show instead of a title. Default is
-<code>NULL</code>, meaning no logo shown. If both logo and title are provided, only
-logo will be shown. Note also that logo must be a URL of an image hosted
-somewhere--it cannot be a path to a local file.</p></td>
+<code>NULL</code>, meaning no logo shown. If both logo and title are provided, only the
+logo will be shown. Note also that logo must be a URL of a hosted image: it
+cannot be a path to a local file.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -175,7 +169,7 @@ somewhere--it cannot be a path to a local file.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='crunchBox.html'>crunchBox</a></code></p>
+    <p><code><a href='crunchBox.html'>crunchBox()</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

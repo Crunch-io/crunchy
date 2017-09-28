@@ -25,18 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="toJSON methods for Crunch objects — tojson-crunch" />
-
-<meta property="og:description" content="crunch uses the jsonlite package for (de)serialization of
-JSON. Unlike RJSONIO's toJSON, toJSON
-does not allow for defining S4 methods for other object types. So,
-crunch::toJSON wraps jsonprep, which exists to translate
-objects to base R objects, which jsonlite::toJSON can handle.
-jsonprep is defined as an S4 generic, and it is exported (unlike
-codejsonlite::asJSON), so you can define methods for it if you have other
-objects that you want to successfully serialize to JSON." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -141,13 +129,13 @@ objects that you want to successfully serialize to JSON." />
     </div>
 
     
-    <p><code>crunch</code> uses the <code>jsonlite</code> package for (de)serialization of
-JSON. Unlike <code>RJSONIO</code>'s <code>toJSON</code>, <code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>toJSON</a></code>
+    <p><code>crunch</code> uses the <code>jsonlite</code> package for JSON serialization and
+deserialization. Unfortunately, <code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON()</a></code>
 does not allow for defining S4 methods for other object types. So,
 <code><a href='http://www.rdocumentation.org/packages/crunch/topics/tojson-crunch'>crunch::toJSON</a></code> wraps <code>jsonprep</code>, which exists to translate
 objects to base R objects, which <code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON</a></code> can handle.
-<code>jsonprep</code> is defined as an S4 generic, and it is exported (unlike
-codejsonlite::asJSON), so you can define methods for it if you have other
+<code>jsonprep</code> is defined as an S4 generic, and it is exported, so you can define
+methods for it if you have other
 objects that you want to successfully serialize to JSON.</p>
     
 
@@ -190,7 +178,7 @@ can handle. <code>toJSON</code> returns the JSON-serialized character object.</p
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>toJSON</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON()</a></code></p>
     
 
   </div>

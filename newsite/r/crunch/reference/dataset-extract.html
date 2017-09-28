@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Subset datasets and extract variables — dataset-extract" />
-
-<meta property="og:description" content="Subset datasets and extract variables" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -183,15 +178,15 @@ $(x, name)</pre>
     </tr>
     <tr>
       <th>i</th>
-      <td><p>As with a <code>data.frame</code>, there are two cases: (1) if no other
-arguments are supplied (i.e <code>x[i]</code>), <code>i</code> provides for
+      <td><p>As with a <code>data.frame</code>, there are two cases:</p><ol>
+<li><p>if no other arguments are supplied (i.e <code>x[i]</code>, <code>i</code> provides for
 <code>as.list</code> extraction: columns of the dataset rather than rows. If
 character, identifies variables to extract based on their aliases (by
 default: set <code>options(crunch.namekey.dataset="name")</code> to use variable
-names); if numeric or logical,
-extracts variables accordingly. Alternatively, (2) if <code>j</code> is specified
-(as either <code>x[i, j]</code> or <code>x[i,]</code>), <code>i</code> is an object of class
-<code>CrunchLogicalExpr</code> that will define a subset of rows.</p></td>
+names); if numeric or logical, extracts variables accordingly.</p></li>
+<li><p>If <code>j</code> is specified as either <code>x[i, j]</code> or <code>x[i,]</code>), <code>i</code> is an object of class
+<code>CrunchLogicalExpr</code> that will define a subset of rows.</p></li>
+</ol></td>
     </tr>
     <tr>
       <th>j</th>

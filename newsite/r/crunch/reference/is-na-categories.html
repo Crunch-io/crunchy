@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="is.na for Categories — is-na-categories" />
-
-<meta property="og:description" content="is.na for Categories" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -134,7 +129,11 @@
     </div>
 
     
-    <p>is.na for Categories</p>
+    <p>Crunch categorical variables allow you to set multiple categories as missing.
+For instance, you might have "not answered" and "doesn't know" both coded as
+missing. This function returns a logical vector of all dataset entries that
+fall into any of the missing categories. It also allows you to append
+additional categories to the list of missing categories using the setter.</p>
     
 
     <pre class="usage"><span class='co'># S4 method for Categories</span>
@@ -161,11 +160,13 @@
     </tr>
     <tr>
       <th>value</th>
-      <td><p>To change the missingness of categories, supply either (1)
-a logical vector of equal length of the categories (or length 1 for the
-Category method), or (2) the names of the categories to mark as missing.
+      <td><p>To change the missingness of categories, supply either:</p><ol>
+<li><p>a logical vector of equal length of the categories (or length 1 for the
+Category method); or</p></li>
+<li><p>the names of the categories to mark as missing.
 If supplying the latter, any categories already indicated as missing will
-remain missing.</p></td>
+remain missing.</p></li>
+</ol></td>
     </tr>
     </table>
     

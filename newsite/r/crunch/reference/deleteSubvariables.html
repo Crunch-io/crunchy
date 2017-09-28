@@ -25,13 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Delete subvariables from an array — deleteSubvariables" />
-
-<meta property="og:description" content="This function conceals the dirty work in making this happen. The array
-gets unbound, the subvariables deleted, and then the remaining subvariable
-are rebound into a new array." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -136,9 +129,10 @@ are rebound into a new array." />
     </div>
 
     
-    <p>This function conceals the dirty work in making this happen. The array
-gets unbound, the subvariables deleted, and then the remaining subvariable
-are rebound into a new array.</p>
+    <p>Deleting variables requires confirmation. In an interactive session, you will be asked
+to confirm. To avoid that prompt, or to delete subvariables from a
+non-interactive session, wrap the call in <code><a href='consent.html'>with_consent()</a></code> to give
+your permission to delete.</p>
     
 
     <pre class="usage"><span class='fu'>deleteSubvariables</span>(<span class='no'>variable</span>, <span class='no'>to.delete</span>)
@@ -165,10 +159,8 @@ of variables to delete.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Deleting requires confirmation. In an interactive session, you will be asked
-to confirm. To avoid that prompt, or to delete subvariables from a
-non-interactive session, wrap the call in <code><a href='consent.html'>with_consent</a></code> to give
-your permission to delete.</p>
+    <p>To delete the subvariables the function unbinds the array, deletes the subvariable, and
+then binds the remaining subvariables into a new array.</p>
     
 
   </div>

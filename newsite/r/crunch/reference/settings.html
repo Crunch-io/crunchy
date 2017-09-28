@@ -25,20 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="View and modify dataset-level settings — settings" />
-
-<meta property="og:description" content="These methods allow access and control over dataset settings. Currently
-supported settings include 'viewers_can_export', 'viewers_can_share', and
-'viewers_can_change_weight', which govern specific authorizations for users
-with view-only access to this datset; and 'weight', which is the default
-weight variable for the dataset, the one that will be set for newly shared
-users and the one that viewers will have always on if they are not authorized
-to change weights. Additional settings will be added in the future. See
-http://docs.crunch.io/#fragments, under 'Settings', for an up-to-date
-list of settings supported throughout the Crunch system. Clients may also
-provide and use custom settings if they choose." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -144,15 +130,15 @@ provide and use custom settings if they choose." />
 
     
     <p>These methods allow access and control over dataset settings. Currently
-supported settings include 'viewers_can_export', 'viewers_can_share', and
-'viewers_can_change_weight', which govern specific authorizations for users
-with view-only access to this datset; and 'weight', which is the default
-weight variable for the dataset, the one that will be set for newly shared
-users and the one that viewers will have always on if they are not authorized
-to change weights. Additional settings will be added in the future. See
-<a href='http://docs.crunch.io/#fragments'>http://docs.crunch.io/#fragments</a>, under 'Settings', for an up-to-date
+supported settings include:</p><ul>
+<li><p>User Authorizations for view-only users ('viewers_can_export', 'viewers_can_share', and
+'viewers_can_change_weight'); and</p></li>
+<li><p>'weight', which determines the default weighting variable for the dataset
+Additional settings will be added in the future. See
+http://docs.crunch.io/#fragments, under 'Settings', for an up-to-date
 list of settings supported throughout the Crunch system. Clients may also
-provide and use custom settings if they choose.</p>
+provide and use custom settings if they choose.</p></li>
+</ul>
     
 
     <pre class="usage"><span class='fu'>settings</span>(<span class='no'>x</span>)
@@ -175,13 +161,14 @@ provide and use custom settings if they choose.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The getter returns a settings object (<code>ShojiEntity</code>). The setter
-returns the dataset (<code>x</code>).</p>
+returns the dataset (<code>x</code>), duly modified.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='fu'>settings</span>(<span class='no'>ds</span>)
 <span class='fu'>settings</span>(<span class='no'>ds</span>)$<span class='no'>viewers_can_export</span> <span class='kw'>&lt;-</span> <span class='fl'>TRUE</span>
+<span class='fu'>settings</span>(<span class='no'>ds</span>)$<span class='no'>weight</span> <span class='kw'>&lt;-</span> <span class='no'>ds</span>$<span class='no'>myWeightVariable</span>
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

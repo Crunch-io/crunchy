@@ -25,16 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Work with CrunchCubes, MultitableResults, and TabBookResults — cube-computing" />
-
-<meta property="og:description" content="Crunch.io supports more complex data types than base R does, such as
-multiple response and array types. If you want to compute margin or
-proportion tables on an aggregation of these variable types, special methods
-are required. These functions provide an interface like
-margin.table and prop.table for
-the CrunchCube object, handling those special data types." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -139,12 +129,9 @@ the CrunchCube object, handling those special data types." />
     </div>
 
     
-    <p>Crunch.io supports more complex data types than base R does, such as
-multiple response and array types. If you want to compute margin or
-proportion tables on an aggregation of these variable types, special methods
-are required. These functions provide an interface like
-<code><a href='http://www.rdocumentation.org/packages/base/topics/margin.table'>margin.table</a></code> and <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>prop.table</a></code> for
-the CrunchCube object, handling those special data types.</p>
+    <p>These functions provide an interface like <code><a href='http://www.rdocumentation.org/packages/base/topics/margin.table'>base::margin.table()</a></code>
+and <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code> for the CrunchCube object This handles special data
+types like array variables or MultitableResults.</p>
     
 
     <pre class="usage"><span class='co'># S4 method for CrunchCube</span>
@@ -181,13 +168,13 @@ the CrunchCube object, handling those special data types.</p>
     <tr>
       <th>margin</th>
       <td><p>index, or vector of indices to generate margin for. See
-<code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>prop.table</a></code>. <code>bases</code> accepts an additional valid
-value for <code>margin</code>, <code>0</code>, which yields the unweighted counts for the
-query, without reducing dimension.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code>. <code>bases</code> accepts <code>0</code> as an additional valid
+value for <code>margin</code> which yields the unweighted counts for the
+query, without reducing the dimensionality.</p></td>
     </tr>
     <tr>
       <th>digits</th>
-      <td><p>see <code><a href='http://www.rdocumentation.org/packages/base/topics/Round'>round</a></code></p></td>
+      <td><p>see  <code><a href='http://www.rdocumentation.org/packages/base/topics/Round'>base::round()</a></code></p></td>
     </tr>
     </table>
     
@@ -195,7 +182,7 @@ query, without reducing dimension.</p></td>
 
     <p>The appropriate margin.table or prop.table. Calling prop.table on
 a MultitableResult returns a list of prop.tables of the CrunchCubes it
-contains. Likewise, prop.table on a TabBookResult returns a list of list of
+contains. Likewise, prop.table on a TabBookResult returns a list of lists of
 prop.tables.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -208,7 +195,7 @@ gives all cell counts.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/margin.table'>margin.table</a></code> <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>prop.table</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/base/topics/margin.table'>base::margin.table()</a></code> <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code></p>
     
 
   </div>

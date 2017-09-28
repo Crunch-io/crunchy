@@ -25,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Make a CrunchBox — crunchBox" />
-
-<meta property="og:description" content="CrunchBoxes allow you to publish results to the world." />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -137,19 +132,39 @@
     <p>CrunchBoxes allow you to publish results to the world.</p>
     
 
-    <pre class="usage"><span class='fu'>crunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/crunch/topics/filter-catalog'>filters</a></span>(<span class='no'>dataset</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>crunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/crunch/topics/filter-catalog'>filters</a></span>(<span class='no'>dataset</span>), <span class='no'>brand_colors</span>,
+  <span class='no'>static_colors</span>, <span class='no'>category_color_lookup</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>CrunchDataset</p></td>
+      <td><p>A CrunchDataset, potentially a selection of variables from it</p></td>
     </tr>
     <tr>
       <th>filters</th>
       <td><p>FilterCatalog, or <code>NULL</code> for no filters. Default all
 filters in your catalog, <code><a href='filter-catalog.html'>filters(dataset)</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>brand_colors</th>
+      <td><p>an optional color vector of length 3 or less, or a named
+list with names 'primary', 'secondary', and 'message'. See "Details" for more
+about color specification.</p></td>
+    </tr>
+    <tr>
+      <th>static_colors</th>
+      <td><p>an optional vector of colors to use for categorical
+plots. Bars and lines are colored in the order of <code>static_colors</code>. See
+"Details" for more about color specification.</p></td>
+    </tr>
+    <tr>
+      <th>category_color_lookup</th>
+      <td><p>an optional list of category names to colors
+to use for that category, wherever it appears in the data. This allows you
+to always see a category displayed in a specific color. See
+"Details" for more about color specification.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -161,11 +176,39 @@ filters in your catalog, <code><a href='filter-catalog.html'>filters(dataset)</a
 
     <p>The URL to the newly created box.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>In addition to specifying the variables and filters to include in your
+CrunchBox, you can provide custom color palettes. The arguments
+<code>brand_colors</code>, <code>static_colors</code>, and <code>category_color_lookup</code> allow you to
+provide color lists to use. Colors should be either a valid hexadecimal
+string representation, like "#fa1af1", or they may also be an R named color,
+such as "darkgreen".</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='preCrunchBoxCheck.html'>preCrunchBoxCheck</a></code> to provide guidance on what you're including in the CrunchBox</p>
+    <p><code><a href='preCrunchBoxCheck.html'>preCrunchBoxCheck</a></code> to provide guidance on what you're including in the</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='co'># Creating a CrunchBox with three variables</span>
+<span class='fu'>crunchBox</span>(<span class='no'>ds</span>[<span class='fu'>c</span>(<span class='st'>"var1"</span>, <span class='st'>"var2"</span>, <span class='st'>"var3"</span>)], <span class='kw'>title</span><span class='kw'>=</span><span class='st'>"New CrunchBox"</span>)
+
+<span class='co'># Creating a CrunchBox changing primary, secondary, and message brand colors</span>
+<span class='fu'>crunchBox</span>(<span class='no'>ds</span>[<span class='fu'>c</span>(<span class='st'>"var1"</span>, <span class='st'>"var2"</span>, <span class='st'>"var3"</span>)],
+          <span class='kw'>title</span><span class='kw'>=</span><span class='st'>"Branded CrunchBox"</span>,
+          <span class='kw'>brand_colors</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"#ff0aa4"</span>, <span class='st'>"#af17ff"</span>, <span class='st'>"#260aff"</span>))
+
+<span class='co'># Creating a CrunchBox changing category-specific colors</span>
+<span class='fu'>crunchBox</span>(<span class='no'>ds</span>[<span class='fu'>c</span>(<span class='st'>"var1"</span>, <span class='st'>"var2"</span>, <span class='st'>"var3"</span>)],
+          <span class='kw'>title</span><span class='kw'>=</span><span class='st'>"CrunchBox with category colors"</span>,
+          <span class='kw'>category_color_lookup</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"agree"</span> <span class='kw'>=</span> <span class='st'>"#ff0aa4"</span>,
+                                       <span class='st'>"disagree"</span> <span class='kw'>=</span> <span class='st'>"#af17ff"</span>,
+                                       <span class='st'>"don't know"</span> <span class='kw'>=</span> <span class='st'>"#260aff"</span>))
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -174,8 +217,12 @@ filters in your catalog, <code><a href='filter-catalog.html'>filters(dataset)</a
       
       <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
