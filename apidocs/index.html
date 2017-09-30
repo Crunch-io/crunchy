@@ -5553,39 +5553,35 @@ streaming rows in order to protect the schema.</p>
 </ul>
 
 <p>To change the streaming configuration of the dataset, PATCH the entity&rsquo;s 
-<code class="prettyprint">streaming</code> attribute to either <code class="prettyprint">finished</code> or <code class="prettyprint">no</code> according to the following 
-table:</p>
+<code class="prettyprint">streaming</code> attribute to either <code class="prettyprint">streaming</code>, <code class="prettyprint">finished</code> or <code class="prettyprint">no</code> according
+to the following table:</p>
 
 <table><thead>
 <tr>
 <th>Value</th>
 <th>Allows schema changes</th>
 <th>Accepts streaming rows</th>
-<th>Next state</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code class="prettyprint">streaming</code></td>
 <td>No</td>
 <td>Yes</td>
-<td><code class="prettyprint">finished</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">finished</code></td>
 <td>No</td>
 <td>No</td>
-<td><code class="prettyprint">no</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">no</code></td>
 <td>Yes</td>
 <td>No</td>
-<td>-</td>
 </tr>
 </tbody></table>
 
-<p>Note that the only allowed sequence of states for the  <code class="prettyprint">streaming</code> attribute
-is <code class="prettyprint">streaming</code> -&gt; <code class="prettyprint">finished</code> -&gt; <code class="prettyprint">no</code>. It cannot be set in any other sequence.</p>
+<p>Note that only the <strong>dataset maintainer</strong> is allowed to modify the <code class="prettyprint">streaming</code>
+attribute.</p>
 
 <h6 id="sending-rows">Sending rows</h6>
 
