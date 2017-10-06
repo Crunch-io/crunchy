@@ -1853,6 +1853,29 @@ the <code class="prettyprint">derived</code> attribute set to <code class="prett
 contain <code class="prettyprint">null</code> from now in. Note that it is only possible to set the <code class="prettyprint">derived</code>
 attribute to <code class="prettyprint">false</code> and never to <code class="prettyprint">true</code>.</p>
 
+<h4 id="creating-unlinked-derivations">Creating unlinked derivations</h4>
+
+<p>It is possible to create a material copy, or one off copy of a variable or an
+expression of it.</p>
+
+<p>To create such variables, proceed normally creating a derived variable with
+the derivation expression, but also include <code class="prettyprint">derived: false</code> attribute to it.
+So the variable will be created with the values of the expression but will be
+unlinked from the original variable.</p>
+<pre class="highlight http"><code><span class="err">POST /api/dataset/abc/variables/
+</span></code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"element"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoji:entity"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"derivation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"copy_variable"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"variable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/datasets/abc/variables/123/"</span><span class="p">}]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"derived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
           <h2 id="array-variables">Array Variables</h2>
 
 <p>Simple variables have only one value per row; sometimes, however, it is convenient to consider multiple values (of the same type) as a single Variable. The Crunch system implements the data as a 2-dimensional array, but the array variable includes two additional attributes: &ldquo;subvariables&rdquo;, which is a list of subvariable URLs, and &ldquo;subreferences&rdquo;, which is an object of {name, alias, description, &hellip;} objects keyed by subvariable URL. There are two types of array variable: categorical array and multiple response.</p>
