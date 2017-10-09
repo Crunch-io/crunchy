@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>Improving end-to-end testing using Nightwatch, Selenium, and Docker</title>
+    <title>Our new open-source tool eliminates the &#34;works on my machine&#34; problem for automated end-to-end browser testing. Ensure that everyone&#39;s &#34;machine&#34; has the same configuration using Docker.</title>
 
     
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
@@ -36,8 +36,8 @@
     <link rel="shortcut icon" href="../../../img/favicon.ico">
     <meta name="msapplication-config" content="/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Improving end-to-end testing using Nightwatch, Selenium, and Docker" />
-<meta property="og:description" content="Using Docker containers to get more consistent Nightwatch testing results using Selenium" />
+    <meta property="og:title" content="Our new open-source tool eliminates the &#34;works on my machine&#34; problem for automated end-to-end browser testing. Ensure that everyone&#39;s &#34;machine&#34; has the same configuration using Docker." />
+<meta property="og:description" content="Nightwatchrun = Docker &#43; Selenium &#43; Nightwatch for Consistent End-to-End Testing" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://crunch-io.github.io/crunchy/newsite/dev/blog/nightwatch-selenium-docker/" />
 
@@ -56,8 +56,8 @@
 
 
 
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Improving end-to-end testing using Nightwatch, Selenium, and Docker"/>
-<meta name="twitter:description" content="Using Docker containers to get more consistent Nightwatch testing results using Selenium"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Our new open-source tool eliminates the &#34;works on my machine&#34; problem for automated end-to-end browser testing. Ensure that everyone&#39;s &#34;machine&#34; has the same configuration using Docker."/>
+<meta name="twitter:description" content="Nightwatchrun = Docker &#43; Selenium &#43; Nightwatch for Consistent End-to-End Testing"/>
 
 </head>
 <body>
@@ -120,9 +120,9 @@
 <div class="container">
 <div id="hero" class="row">
     <div class="intro-post col">
-        <h1 itemprop="headline">  Improving end-to-end testing using Nightwatch, Selenium, and Docker</h1>
+        <h1 itemprop="headline">  Our new open-source tool eliminates the "works on my machine" problem for automated end-to-end browser testing. Ensure that everyone's "machine" has the same configuration using Docker.</h1>
         
-            <blockquote itemprop="description">Using Docker containers to get more consistent Nightwatch testing results using Selenium</blockquote>
+            <blockquote itemprop="description">Nightwatchrun = Docker + Selenium + Nightwatch for Consistent End-to-End Testing</blockquote>
         
         <time class="post-time">
   Published <span datetime="2017-10-02T09:00:00-07:00">2 Oct 2017</span>
@@ -133,24 +133,23 @@
 <div id="post-box" class="row">
     <div class="col">
         <div id="post" itemprop="articleBody">
-            <p>At Crunch we value tests tremendously; we have unit tests, functional tests, and of course the stack wouldn&rsquo;t be complete without end-to-end tests. Good tests allow us to confidently update code quickly and efficiently.</p>
+            <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn&rsquo;t be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
 
-<p>For our end to end testing we use <a href="http://nightwatchjs.org">Nightwatch.js</a>, a JavaScript
+<p>For our end-to-end testing we use <a href="http://nightwatchjs.org">Nightwatch.js</a>, a JavaScript
 testing tool that uses <a href="http://www.seleniumhq.org">Selenium</a> to drive a browser to perform tests. Our goal is to be
-able to test our Python backend, our REST API&rsquo;s, as well as the
-behavior of our JavaScript single page application, using a real browser,
+able to test our Python backend, our REST APIs, and the
+behavior of our JavaScript single-page application, using a real browser,
 running real code.</p>
 
-<p>Anyone that has ever set up Selenium knows that it can be very picky about
+<p>Anyone that has set up Selenium knows that it can be very picky about
 the versions of the different tools you should have. Selenium 3.4.0 might need
 <a href="https://sites.google.com/a/chromium.org/chromedriver/">ChromeDriver</a> 2.31 which requires <a href="https://www.google.com/chrome/">Chrome</a> 56.3920.234034249324234329 (okay, so
 those version numbers may be made up), and unless you have
 the exact same versions every single time, it can easily result in tests
 that work on one developer&rsquo;s machine but not on another.</p>
 
-<p>At Crunch our entire stack is tested using a <a href="https://jenkins.io">Jenkins</a> setup. One of the issues we saw was that
-our developers would be testing on <a href="https://www.apple.com/macos/">Apple MacOS</a>, and our Jenkins pipeline
-was running on <a href="http://ubuntu.com">Ubuntu</a> or more recently on <a href="https://www.centos.org">CentOS</a>. This led to messages like these being posted to our Slack channel:</p>
+<p>Compounding the version mismatch problem, we build and test our entire stack on a <a href="https://jenkins.io">Jenkins</a> cluster. Many of our developers would code and test on <a href="https://www.apple.com/macos/">Apple MacOS</a>, but our Jenkins pipeline
+was running on <a href="http://ubuntu.com">Ubuntu</a> or <a href="https://www.centos.org">CentOS</a>. This led to messages like these being posted to our Slack channel:</p>
 
 <blockquote>
 <p>new variable tests pass locally so I&rsquo;m sending them to jenkins for failure</p>
@@ -163,40 +162,34 @@ was running on <a href="http://ubuntu.com">Ubuntu</a> or more recently on <a hre
 passes the Jenkins Arbitron 5000</p>
 </blockquote>
 
-<p>This led to developers no longer running tests locally before pushing because Jenkins was the final arbiter
-anyway, and well, it would pass locally anyway.</p>
+<p>As a result, developers were less likely to run all tests locally before pushing because Jenkins was the final arbiter
+of truth, and well, it would pass locally anyway (right?). Moreover, trying to debug this kind of &ldquo;works on my machine&rdquo; problem was really, really painful.</p>
 
-<p>There was one other issue around the setup: operations was spending an awful
+<p>In addition to the cost to developers, operations spent an awful
 lot of time testing Selenium/ChromeDriver/Chrome versions to verify that
 everything continued to work. Linux package management makes installing the
-latest version of a package incredibly simple, but unless you manually keep
-around the old versions of packages you end up scouring the net for just the
+latest version of a package incredibly simple, but rolling back is less so. Unless you manually keep
+around the old versions of packages, you end up scouring the net for just the
 right <code>.deb</code> or <code>.rpm</code> that would make everything function again. In the mean
-time developers are unhappy because you&rsquo;ve just taken down their only testing
+time, developers are unhappy because you&rsquo;ve just taken down their testing
 platform.</p>
 
 <p>This is where <a href="https://www.docker.com">Docker</a> containers presented a perfect solution for us.
 Selenium makes Docker containers available in a variety of configurations on
-the <a href="https://hub.docker.com/u/selenium/">Selenium Dockerhub</a>. Using the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">standalone-chrome</a> container we
+the <a href="https://hub.docker.com/u/selenium/">Selenium Dockerhub</a>. Using the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">standalone-chrome</a> container, we
 can easily spawn a Selenium server that allows us to connect and spawn Chrome
-browsers for testing. The docker container is easy to start up, and easy to
-tear down, and due to it&rsquo;s self-contained nature won&rsquo;t require installation of
-packages or software, and thus makes upgrading a breeze.</p>
+browsers for testing. The docker container is easy to start up, easy to
+tear down, and because it is self contained and doesn&rsquo;t require installation of
+packages or software, easy to upgrade.</p>
 
-<p>Thus <a href="https://github.com/crunch-io/nightwatchrun/">nightwatchrun</a> was born. Given our existing test suite of nightwatch
-tests we wanted to be able to quickly spin up a new container, run our tests,
-and after tests were completed tear down the container. Thus solving our two
-problems:</p>
-
-<ul>
-<li>Jenkins is running the exact same software/container as developers</li>
-<li>Operations is no longer in the business of testing all kinds of different
-versions against each other</li>
-</ul>
-
-<p>Using <a href="https://www.docker.com/docker-mac">Docker for Mac</a> our developers can now easily run their Nightwatch
-tests against the exact same software stack used by Jenkins. &ldquo;Passes locally, but not on Jenkins&rdquo;
-is a thing of the past.</p>
+<p>Hence the birth of <a href="https://github.com/crunch-io/nightwatchrun/">nightwatchrun</a>, which we have just made public under the MIT license. Given our existing test suite of Nightwatch
+tests, we wanted to be able to quickly spin up a new container, run our tests,
+and after the tests were completed, tear down the container. This approach solved our two big problems.
+Because Jenkins is running the exact same software/container as developers, &ldquo;Passes locally, but not on Jenkins&rdquo;
+is a thing of the past. Our developers can now easily run their Nightwatch
+tests against the exact same software stack used by Jenkins with <a href="https://www.docker.com/docker-mac">Docker for Mac</a>.
+Moreover, operations is no longer in the business of testing all kinds of different
+  versions against each other to find the right combination of dependencies.</p>
 
 <p><code>nightwatchrun.sh</code> is a simple shell script that, given a Nightwatch.js
 configuration file, will run a Docker container, get its IP address/port
@@ -291,12 +284,25 @@ issue tracker</a>, or provide a pull request with your suggested changes.</p>
     in <span itemprop="articleSection"><a href="../../../categories/general/">general</a></span>
   
   
-    and tagged <a href="../../../tags/testing/">testing</a>
+    and tagged <a href="../../../tags/automation/">automation</a> and <a href="../../../tags/testing/">testing</a>
   
 </p>
 
             
+  
 
+
+
+  <aside>
+    <heade><strong>Related Content</strong></header>
+    <hr>
+    <ul>
+      
+      
+        <li><a href="../../../crunchy/newsite/dev/blog/building-the-blog-on-travis/">Using Travis-CI to Build Static Sites</a> &ndash; 9 minutes
+      
+    </ul>
+  </aside>
 
 
         </div>
