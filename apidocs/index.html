@@ -178,6 +178,18 @@ Location: /sources/{source_id}/
 
 <p>POST the file to the sources catalog.</p>
 
+<p><strong>Note</strong> that if the file is large (&gt;100 megabytes), you should consider
+uploading it to a file-sharing service, like Dropbox.</p>
+
+<p>To import from a URL (rather than a local file), use a JSON body with a <code class="prettyprint">location</code> property giving the URL.</p>
+<pre class="highlight http"><code><span class="err">
+</span><span class="nf">POST</span> <span class="nn">/sources/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">71</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="nt">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.dropbox.com/s/znpoawnhg0rdzhw/iris.csv?dl=1"</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h4 id="3-add-the-source-to-the-dataset">3. Add the Source to the Dataset</h4>
 <pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/datasets/{dataset_id}/batches/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
