@@ -9425,12 +9425,16 @@ Filtering Endpoints</p>
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List of all the teams where the current user is member"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/teams/d07edb/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The A-Team"</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The A-Team"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/teams/67fe89/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto Data Science"</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Palo Alto Data Science"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9442,7 +9446,7 @@ Filtering Endpoints</p>
 
 <h4 id="post">POST</h4>
 
-<p>To create a new team, POST a Shoji Entity with a team &ldquo;name&rdquo; in the body. No other attributes are required, and you will be automatically assigned as the &ldquo;owner&rdquo;. </p>
+<p>To create a new team, POST a Shoji Entity with a team &ldquo;name&rdquo; in the body. No other attributes are required, and you will be automatically assigned as a &ldquo;team_admin&rdquo;. </p>
 <pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/teams/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">app.crunch.io</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -9486,7 +9490,8 @@ Filtering Endpoints</p>
     </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/d07edb/"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Details for a specific team"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d07edb"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The A-Team"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"catalogs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9503,11 +9508,13 @@ Filtering Endpoints</p>
 <span class="c1">## [1] "https://app.crunch.io/api/teams/d07edb/"
 </span></code></pre>
 
-<p>A GET request on a team entity URL returns the same &ldquo;name&rdquo; and &ldquo;owner&rdquo; attributes as shown in the team catalog, as well as references to the &ldquo;datasets&rdquo; and &ldquo;members&rdquo; catalogs corresponding to the team. Authorization is required: if the requesting user is not a member of the team, a 404 response will result.</p>
+<p>A GET request on a team entity URL returns the same &ldquo;name&rdquo;, &ldquo;id&rdquo; and &ldquo;creator&rdquo; attributes as shown in the team catalog, as well as references to the &ldquo;datasets&rdquo; and &ldquo;members&rdquo; catalogs corresponding to the team. 
+Authorization is required: if the requesting user is not a member of the team, a 404 response will result.</p>
 
 <h4 id="patch">PATCH</h4>
 
-<p>Team names are editable by PATCHing the team entity. Authorization is required: only the team owner may edit the team&rsquo;s name; other team members will receive a 403 response on PATCH.</p>
+<p>Team names are editable by PATCHing the team entity. 
+Authorization is required: only team members with &ldquo;team_admin&rdquo; permission may edit the team&rsquo;s name; other team members will receive a 403 response on PATCH.</p>
 <pre class="highlight http"><code><span class="nf">PATCH</span> <span class="nn">/teams/03df2a/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">app.crunch.io</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
@@ -9547,13 +9554,13 @@ Filtering Endpoints</p>
         </span><span class="nt">"https://app.crunch.io/api/users/47193a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B. A. Baracus"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hannibal"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -9586,12 +9593,12 @@ Filtering Endpoints</p>
 <p>Supported <code class="prettyprint">permissions</code>, all boolean, include:</p>
 
 <ul>
-<li><strong>manage_members</strong>: Whether the user may add or remove users from the team, as well as modify the permissions of users on the team; i.e., PATCH the member catalog. Default is False, except for the team owner.</li>
+<li><strong>team_admin</strong>: Allows add/remove and manage the members and permissions of a team as well modify and delete the team in question. Defaults as <code class="prettyprint">false</code>.</li>
 </ul>
 
 <h4 id="patch">PATCH</h4>
 
-<p>Authorization is required: team members who do not have the &ldquo;manage_members&rdquo; permission and who attempt to PATCH the member catalog will receive a 403 response. As with the team entity, non-members will receive 404 on attempted PATCH.</p>
+<p>Authorization is required: team members who do not have the &ldquo;team_admin&rdquo; permission and who attempt to PATCH the member catalog will receive a 403 response. As with the team entity, non-members will receive 404 on attempted PATCH.</p>
 
 <p>PATCH a partial Shoji Catalog to add users to the team, to modify permissions of members already on the team, and to remove team members. The examples below illustrate each of those actions separately, but all can be done together in a single PATCH request, in fact. </p>
 
@@ -9606,13 +9613,13 @@ Filtering Endpoints</p>
 <span class="s">    "index": {</span>
 <span class="s">        "https://app.crunch.io/api/users/47193a/": {</span>
 <span class="s">            "permissions": {</span>
-<span class="s">                "manage_members": true</span>
+<span class="s">                "team_admin": true</span>
 <span class="s">            }</span>
 <span class="s">        },</span>
 <span class="s">        "https://app.crunch.io/api/users/e3211a/": {},</span>
 <span class="s">        "templeton.peck@army.gov": {</span>
 <span class="s">            "permissions": {</span>
-<span class="s">                "manage_members": true</span>
+<span class="s">                "team_admin": true</span>
 <span class="s">            }</span>
 <span class="s">        }</span>
 <span class="s">    },</span>
@@ -9623,9 +9630,9 @@ Filtering Endpoints</p>
 <span class="s">204 No Content</span>
 </code></pre>
 
-<p>If the index object keys correspond to users that already appear in the member catalog, their permissions will be updated with the corresponding value. In this example, user <code class="prettyprint">47193a</code>, B. A. Baracus, has been given the <code class="prettyprint">manage_members</code> permission.</p>
+<p>If the index object keys correspond to users that already appear in the member catalog, their permissions will be updated with the corresponding value. In this example, user <code class="prettyprint">47193a</code>, B. A. Baracus, has been given the <code class="prettyprint">team_admin</code> permission.</p>
 
-<p>If the index object keys do not correspond to users already found in the member catalog, the indicated users will be added to the team. And, if the indicated user, as specified by email address, does not yet exist, they will be invited to Crunch and added to the team. In this example, we added existing user <code class="prettyprint">e3211a</code>, implicitly with <code class="prettyprint">manage_members</code> set to False, to the team, and we also added &ldquo;templeton.peck@army.gov&rdquo;, who did not previously have a Crunch account. </p>
+<p>If the index object keys do not correspond to users already found in the member catalog, the indicated users will be added to the team. And, if the indicated user, as specified by email address, does not yet exist, they will be invited to Crunch and added to the team. In this example, we added existing user <code class="prettyprint">e3211a</code>, implicitly with <code class="prettyprint">team_admin</code> set to False, to the team, and we also added &ldquo;templeton.peck@army.gov&rdquo;, who did not previously have a Crunch account. </p>
 
 <p>If &ldquo;send_notification&rdquo; was included and true in the request, new-to-Crunch users will receive a notification email informing them that they have been invited to Crunch. New users, unless they have an OAuth provider specified, will need to set a password, and the client application should send a URL template that directs them to a place where they can set that password. To do so, include a &ldquo;url_base&rdquo; attribute in the payload, a URL template with a <code class="prettyprint">${token}</code> variable into which the server will insert the password-setting token. For the Crunch web application, this template is <code class="prettyprint">https://app.crunch.io/password/change/${token}/</code>.</p>
 
@@ -9644,25 +9651,25 @@ Filtering Endpoints</p>
         </span><span class="nt">"https://app.crunch.io/api/users/47193a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B. A. Baracus"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hannibal"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/e3211a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Howling Mad Murdock"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/89eb3a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templeton.peck@army.gov"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -9699,19 +9706,19 @@ Filtering Endpoints</p>
         </span><span class="nt">"https://app.crunch.io/api/users/47193a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B. A. Baracus"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/41c69d/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hannibal"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/users/89eb3a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"templeton.peck@army.gov"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"manage_members"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="nt">"team_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
