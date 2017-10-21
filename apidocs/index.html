@@ -3088,7 +3088,7 @@ subdomain&rsquo;s available configurations, if any; if none exists, the body wil
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="crunchbox">Crunchbox</h3>
+<h3 id="crunchbox">CrunchBox</h3>
 
 <p>A CrunchBox represents a snapshot of a crunch dataset. These snapshots are
 intended for public proliferation and therefore the endpoints for interacting with
@@ -3098,7 +3098,7 @@ this data is housed under the unauthed API path.</p>
 
 <p>The share endpoint is for retrieving the HTML code for rendering the share page, complete
 with the meta data utilized by social sharing platform crawlers in constructing
-a share-preview. Among this metadata is a url to a preview image of the rendered crunchbox.</p>
+a share-preview. Among this metadata is a url to a preview image of the rendered CrunchBox.</p>
 <pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/crunchbox/share/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 </code></pre>
 
@@ -3114,7 +3114,7 @@ a share-preview. Among this metadata is a url to a preview image of the rendered
 <tr>
 <td>data</td>
 <td>string</td>
-<td>crunchbox widget url (URL encoded)<br>e.g. &ldquo;https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000&rdquo; (the encoded string of &ldquo;https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000&rdquo;)</td>
+<td>CrunchBox widget url (URL encoded)<br>e.g. &ldquo;https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000&rdquo; (the encoded string of &ldquo;https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000&rdquo;)</td>
 </tr>
 </tbody></table>
 
@@ -3130,13 +3130,13 @@ a share-preview. Among this metadata is a url to a preview image of the rendered
 <tr>
 <td>ref</td>
 <td>string</td>
-<td>referring url (URL encoded) to pull content from the referring page for inclusion on the crunchbox share page and provide a link back to the referrer<br>e.g. &ldquo;http%3A%2F%2Fcrunch.io%2Fcrunching-the-data-of-politics&rdquo; (the encoded string of &ldquo;http://crunch.io/crunching-the-data-of-politics&rdquo;)</td>
+<td>referring url (URL encoded) to pull content from the referring page for inclusion on the CrunchBox share page and provide a link back to the referrer<br>e.g. &ldquo;http%3A%2F%2Fcrunch.io%2Fcrunching-the-data-of-politics&rdquo; (the encoded string of &ldquo;http://crunch.io/crunching-the-data-of-politics&rdquo;)</td>
 </tr>
 </tbody></table>
 
 <h4 id="preview">Preview</h4>
 
-<p>The preview endpoint is used to preemptively initiate rendering a given crunchbox configuration to a raster image. This image will be requested by social network platform crawlers during construction of the post share preview. The preview-rendering process can be time-consuming. Therefore, it is preferable to initiate it as soon as is reasonable before a request for the image data.</p>
+<p>The preview endpoint is used to preemptively initiate rendering a given CrunchBox configuration to a raster image. This image will be requested by social network platform crawlers during construction of the post share preview. The preview-rendering process can be time-consuming. Therefore, it is preferable to initiate it as soon as is reasonable before a request for the image data.</p>
 
 <p>This endpoint returns no data.</p>
 <pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">/crunchbox/preview/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -3152,7 +3152,7 @@ a share-preview. Among this metadata is a url to a preview image of the rendered
 <tr>
 <td>data</td>
 <td>string</td>
-<td>crunchbox widget url (URL encoded)<br>e.g. &ldquo;https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000&rdquo; (the encoded string of &ldquo;https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000&rdquo;)</td>
+<td>CrunchBox widget url (URL encoded)<br>e.g. &ldquo;https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000&rdquo; (the encoded string of &ldquo;https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000&rdquo;)</td>
 </tr>
 </tbody></table>
 
@@ -4123,7 +4123,7 @@ lacking, response will instead be 404.</p>
 
 <h4 id="post-catalog">POST catalog</h4>
 
-<p>Use POST to create a new datasource for crunchbox.  Note that new boxdata is only created when there is a new
+<p>Use POST to create a new datasource for CrunchBox.  Note that new boxdata is only created when there is a new
  combination of where and filter data.  If the same variables and filteres are indicated by the POST data,
  the existing combination will result in a modification of metadata associated with the cube data.  This is to keep
  avoid recomputing analysis needlessly.</p>
@@ -6744,8 +6744,7 @@ current user can use on this Dataset.</p>
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My filter"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1442ea"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/4152de/"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/680abc/"</span><span class="w">
+    </span><span class="nt">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/4152de/"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -6772,19 +6771,14 @@ that will contain a Location header with the URL of the newly created filter.</p
         </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nt">"expression"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
         </span><span class="nt">"last_update"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-31"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"creation_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-12T12:34:56"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/680abc/"</span><span class="w">
+        </span><span class="nt">"creation_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-11-12T12:34:56"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>PATCH an entity to edit its <code class="prettyprint">expression</code>, <code class="prettyprint">name</code>, <code class="prettyprint">team</code> or <code class="prettyprint">is_public</code> attributes. 
-Successful PATCH requests return 204 status. As with the POSTing new entities to the catalog, only the dataset&rsquo;s current editor can alter a filter.</p>
+<p>PATCH an entity to edit its <code class="prettyprint">expression</code>, <code class="prettyprint">name</code>, or <code class="prettyprint">is_public</code> attributes. Successful PATCH requests return 204 status. As with the POSTing new entities to the catalog, only the dataset&rsquo;s current editor can alter <code class="prettyprint">is_public</code>.</p>
 
 <p>The <code class="prettyprint">expression</code> attribute must contain a valid Crunch filter expression.</p>
-
-<p>The <code class="prettyprint">team</code> attribute will point to the team this filter is shared with, in case
-it isn&rsquo;t shared with any teams, it will default to <code class="prettyprint">null</code>.</p>
 
 <!-- Discuss valid crunch filter expressions -->
 
