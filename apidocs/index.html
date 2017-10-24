@@ -6019,8 +6019,7 @@ the user, as well as public decks shared with all users of the dataset.</p>
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4fa25"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="nt">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/abcd3/"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Real Person"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Real Person"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nt">"https://app.crunch.io/api/datasets/cc9161/decks/2b53e/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default deck"</span><span class="p">,</span><span class="w">
@@ -6028,8 +6027,7 @@ the user, as well as public decks shared with all users of the dataset.</p>
           </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2b53e"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
           </span><span class="nt">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/4cba5/"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other Person"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/58acf7/"</span><span class="w">
+          </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other Person"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/datasets/223fd4/decks/order/"</span><span class="w">
@@ -6075,11 +6073,6 @@ the user, as well as public decks shared with all users of the dataset.</p>
 <td>string</td>
 <td>Name of the owner of the deck (referred by <code class="prettyprint">owner_id</code>)</td>
 </tr>
-<tr>
-<td>team</td>
-<td>url</td>
-<td>If the deck is shared through a team, it will point to it. <code class="prettyprint">null</code> by default</td>
-</tr>
 </tbody></table>
 
 <p>To determine if a deck belongs to the current user, check the <code class="prettyprint">owner_id</code> attribute.</p>
@@ -6093,8 +6086,7 @@ the user, as well as public decks shared with all users of the dataset.</p>
     </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my new deck"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This deck will contain analyses for a variable"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/58acf7/"</span><span class="w">
+        </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6109,8 +6101,7 @@ the user, as well as public decks shared with all users of the dataset.</p>
 &mdash;- | &mdash;- | &mdash;&mdash;&mdash;&ndash;
 name | string | Yes | Human-friendly string identifier
 description | string | No | Optional longer string with additional notes
-is_public | boolean | No | If <code class="prettyprint">true</code>, all users with view access to this dataset will be able to read and export this deck and its analyses; if <code class="prettyprint">false</code>, the default value, the deck remains private for the current user only.
-team | url | No | If set means that all members of this team will have read-only access to this deck. Else private or dataset-public.</p>
+is_public | boolean | No | If <code class="prettyprint">true</code>, all users with view access to this dataset will be able to read and export this deck and its analyses; if <code class="prettyprint">false</code>, the default value, the deck remains private for the current user only.</p>
 
 <h4 id="patch">PATCH</h4>
 
@@ -6136,9 +6127,7 @@ the decks&rsquo; catalog.</p>
 <li>is_public</li>
 </ul>
 
-<p>For decks that the current user owns, &ldquo;name&rdquo;, &ldquo;description&rdquo; and &ldquo;is_public&rdquo; are editable. 
-Only the deck owner can edit the mentioned attributes on a deck even if the deck is public. 
-Other deck attributes are not editable and will respond with 400 status if the request tries to change them.</p>
+<p>For decks that the current user owns, &ldquo;name&rdquo;, &ldquo;description&rdquo;, and &ldquo;is_public&rdquo; are editable. Users with edit permissions on the dataset may edit &ldquo;name&rdquo; and &ldquo;description&rdquo; of public decks, but they cannot edit &ldquo;is_public&rdquo; unless they own the deck. Other deck attributes are not editable and will respond with 400 status if the request tries to change them.</p>
 
 <p>On success, the server will reply with a 204 response.</p>
 
@@ -6159,8 +6148,7 @@ Other deck attributes are not editable and will respond with 400 status if the r
         </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explanation about the deck"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"is_public"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nt">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/users/abcd3/"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Real Person"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/58acf7/"</span><span class="w">
+        </span><span class="nt">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Real Person"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -6207,11 +6195,6 @@ Other deck attributes are not editable and will respond with 400 status if the r
 <td>string</td>
 <td>Name of the owner of the deck (referred by <code class="prettyprint">owner_id</code>)</td>
 </tr>
-<tr>
-<td>team</td>
-<td>url</td>
-<td>If the deck is shared through a team, it will point to it. <code class="prettyprint">null</code> by default</td>
-</tr>
 </tbody></table>
 
 <h4 id="patch">PATCH</h4>
@@ -6226,16 +6209,14 @@ if the request is invalid.</p>
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Presentation deck"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"223fd4"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"creation_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1987-10-15T11:45:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explanation about the deck"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://app.crunch.io/api/teams/58acf7/"</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Explanation about the deck"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 </code></pre>
 
-<p>For deck entities that the current user owns, &ldquo;name&rdquo;, &ldquo;description&rdquo;, &ldquo;teams&rdquo; and &ldquo;is_public&rdquo; are editable. 
-Other deck attributes are not editable.</p>
+<p>As with the catalog, for decks that the current user owns, &ldquo;name&rdquo;, &ldquo;description&rdquo;, and &ldquo;is_public&rdquo; are editable. Users with edit permissions on the dataset may edit &ldquo;name&rdquo; and &ldquo;description&rdquo; of public decks, but they cannot edit &ldquo;is_public&rdquo; unless they own the deck. Other deck attributes are not editable.</p>
 
 <h4 id="delete">DELETE</h4>
 
