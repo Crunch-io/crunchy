@@ -23,8 +23,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="All news" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +70,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +108,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -130,6 +136,148 @@
     </div>
 
     <div class="contents">
+    <div id="crunch-1-18-5-under-development" class="section level2">
+<h2 class="hasAnchor">
+<a href="#crunch-1-18-5-under-development" class="anchor"></a>crunch 1.18.5 (under development)</h2>
+<ul>
+<li>Variable groups (folders) can now be referenced by “path”: either a vector of nested folder names (as in <code>ordering(ds)[[c("Top folder", "Nested folder")]]</code>) or a single string with nested folders separated by a delimiter (as in <code>ordering(ds)[["Top folder/Nested folder"]]</code>). “/” is the default path delimiter, and this is configurable via <code>options(crunch.delimiter)</code>. If you have folders that actually contain “/” in the folder name, this may be a breaking change. If so, set <code>options(crunch.delimiter="|")</code> or some other string so that folder names are not incorrectly interpreted as paths.</li>
+<li>Introduce new <code><a href="../reference/mv.html">mv()</a></code> and <code><a href="../reference/mv.html">mkdir()</a></code> functions for creating variable folders and moving variables into them. These take a Dataset as their argument and can be chained together for convenience/readability.</li>
+<li>Other helper functions <code><a href="../reference/folder.html">folder()</a></code> and <code>folder&lt;-</code> to locate a variable in the folder hierarchy and to move it to a new folder. <code>folder(ds$var) &lt;- "New folder/subfolder"</code> is equivalent to <code>ds &lt;- mv(ds, "var", c("New folder", "subfolder"))</code>.</li>
+<li>Create new variables that take on different values when specific conditions are met using <code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code> (#64)</li>
+<li>Deep copying variables with <code><a href="../reference/copyVariable.html">copy()</a></code> has been made more efficient</li>
+<li>
+<code>CrunchDataFrames</code> have been improved to act more <code>data.frame</code>-like. You can now access and overwrite values with standard <code>data.frame</code> methods like <code>crdf$variable1</code> or <code>crdf[,"variable1"]</code> and <code>crdf$variable1 &lt;- 1</code> or <code>crdf[,"variable1"] &lt;- 1</code>. <code>CrunchDataFrames</code> now also support adding arbitrary columns, although it should be noted that these columns are not stored on the Crunch server, so if you want to keep that data outside of your current R session, you should send it back to your Dataset as a new variable.</li>
+<li>
+<code><a href="../reference/describe-category.html">is.selected()</a></code> is now vectorized to work with Categories, as <code>is.na()</code> has always been. You can also now assign into the function. (#123)</li>
+<li>
+<code><a href="../reference/addSubvariable.html">addSubvariable()</a></code> now accepts variable definitions directly (#72)</li>
+</ul>
+<div id="crunch-1-18-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-18-4" class="anchor"></a>crunch 1.18.4</h3>
+<ul>
+<li>All catalog objects now have an <code>as.data.frame()</code> method.</li>
+<li>The list of dataset “weight variables” can now be set with <code><a href="../reference/modifyWeightVariables.html">modifyWeightVariables()</a></code>, <code>weightVariables(ds) &lt;- ds$newWeight</code> or <code>is.weightVariables(ds$var) &lt;- TRUE</code>
+</li>
+<li>Users with account admin privileges can now <code><a href="../reference/expropriateUser.html">expropriateUser()</a></code> to transfer datasets, projects, and other objects owned by one user to another, as when that user has left your organization.</li>
+<li>Access members of user <code>UserCatalogs</code> by email (e.g. <code>catalog[["you@example.com"]]</code>) by default. All catalog extract methods (<code>[</code> and <code>[[</code>) now also accept a <code>secondary</code> argument for setting an index to match against to change that default.</li>
+<li>Crunch authentication email and password can be stored in and read from the environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</li>
+<li>Cube queries with <code>as_selected</code> multiple-response variables have margin and prop.table methods</li>
+<li>Cube <code><a href="../reference/dataset-variables.html">variables()</a></code> now contain additional metadata, including “type”</li>
+<li>Fix <code><a href="../reference/cube-computing.html">bases()</a></code> when called on a univariate statistic (#124)</li>
+<li>Update some tests and code to anticipate changes in an upcoming release of <code>testthat</code>
+</li>
+</ul>
+</div>
+<div id="crunch-1-18-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-18-2" class="anchor"></a>crunch 1.18.2</h3>
+<ul>
+<li>
+<code><a href="../reference/makeWeight.html">makeWeight()</a></code> allows you to generate new weighting variables based on categorical variables (#80).</li>
+<li>
+<code>cut()</code>, equivalent to <code><a href="http://www.rdocumentation.org/packages/base/topics/cut">base::cut</a></code>, allows you to generate a derived categorical variable based on a numeric variable (#93).</li>
+<li>Create a new Crunch dataset from a file by calling <code><a href="../reference/newDataset.html">newDataset()</a></code> directly instead of <code>newDatasetFromFile</code>. Also, you can now create a dataset from a hosted file passing its URL to <code><a href="../reference/newDataset.html">newDataset(FromFile)</a></code>.</li>
+<li>
+<code>as.data.frame()</code> method for <code>VariableCatalog</code> for a view of variable metadata (#75)</li>
+<li>
+<code><a href="../reference/crunchBox.html">crunchBox()</a></code> now allows you to specify colors for branding or even category-specific coloring.</li>
+<li>RStudio users will now be prompted for their password on <code><a href="../reference/login.html">login()</a></code> in a way that conceals the input.</li>
+<li>Changed the behavior of <code><a href="../reference/changeCategoryID.html">changeCategoryID()</a></code> to only update numeric values of the category having its id changed when the id and the numeric value are the same.</li>
+<li>The <code>autorollback</code> argument of <code><a href="../reference/appendDataset.html">appendDataset()</a></code> has been deprecated. The option no longer has any effect and a warning will be printed to notify users about the deprecation.</li>
+<li>Long-deprecated <code>newDatasetByCSV</code> was removed.</li>
+</ul>
+</div>
+</div>
+    <div id="crunch-1-18-0" class="section level2">
+<h2 class="hasAnchor">
+<a href="#crunch-1-18-0" class="anchor"></a>crunch 1.18.0</h2>
+<div id="support-for-mapping" class="section level3">
+<h3 class="hasAnchor">
+<a href="#support-for-mapping" class="anchor"></a>Support for mapping</h3>
+<ul>
+<li>Crunch-hosted geographic data can now be set and updated. Use <code><a href="../reference/geo.html">geo()</a></code> on a variable to see if there is already associated geographic data.</li>
+<li>
+<code><a href="../reference/addGeoMetadata.html">addGeoMetadata()</a></code> function to match a text or categorical variable with available geodata based on the contents of the variable and metadata associated with Crunch-hosted geographic data.</li>
+</ul>
+</div>
+<div id="better-derived-variable-support" class="section level3">
+<h3 class="hasAnchor">
+<a href="#better-derived-variable-support" class="anchor"></a>Better derived variable support</h3>
+<ul>
+<li>Derivation expressions can now be retrieved from derived variables with <code><a href="../reference/derivations.html">derivation()</a></code>
+</li>
+<li>Derived variables can be integrated or instantiated by setting <code>derivation() &lt;- NULL</code>
+</li>
+</ul>
+</div>
+<div id="other-new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#other-new-functions" class="anchor"></a>Other new functions</h3>
+<ul>
+<li>
+<code><a href="../reference/resetPassword.html">resetPassword()</a></code> function</li>
+<li>
+<code><a href="../reference/copyOrder.html">copyOrder()</a></code> to copy the ordering of variables from one dataset to another.</li>
+<li>Pass a web app URL to <code><a href="../reference/loadDataset.html">loadDataset()</a></code> and it will now load the same dataset in your R session.</li>
+<li>
+<code><a href="../reference/webApp.html">webApp()</a></code> function to go the other way: open the dataset from your R session in your web browser.</li>
+<li>
+<code><a href="../reference/categoriesFromLevels.html">categoriesFromLevels()</a></code> is now exported (#77)</li>
+</ul>
+</div>
+<div id="fixes-and-adjustments" class="section level3">
+<h3 class="hasAnchor">
+<a href="#fixes-and-adjustments" class="anchor"></a>Fixes and adjustments</h3>
+<ul>
+<li>Categories are now selectable by names as well as ids</li>
+<li>Fix issue where <code><a href="../reference/deleteSubvariables.html">deleteSubvariable()</a></code> by index instead deleted the parent variable</li>
+<li>Add a missing import from the <code>methods</code> package so that <code>Rscript</code> works (#90)</li>
+<li>Allow deep copying of multiple-response type variables</li>
+<li>Experimental support for merging <code>CrunchDataFrame</code>s with standard <code>data.frame</code>s</li>
+</ul>
+</div>
+<div id="crunch-1-17-8" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-17-8" class="anchor"></a>crunch 1.17.8</h3>
+<p>Two attempts to fix download issues introduced by 1.17.4:</p>
+<ul>
+<li>Changed file downloads to <code>crGET</code> with <code><a href="http://www.rdocumentation.org/packages/httr/topics/write_disk">httr::write_disk()</a></code> to hopefully work around issues caused by <code><a href="http://www.rdocumentation.org/packages/utils/topics/download.file">utils::download.file</a></code> with method “libcurl”.</li>
+<li>Add a <code>retry</code> for downloads to hopefully work around a delay in CDN population.</li>
+</ul>
+</div>
+<div id="crunch-1-17-6" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-17-6" class="anchor"></a>crunch 1.17.6</h3>
+<ul>
+<li>
+<code><a href="../reference/searchDatasets.html">searchDatasets()</a></code> to use the Crunch search API.</li>
+<li>Added support for viewing and changing the number of digits after the decimal place to be printed with <code><a href="../reference/describe.html">digits()</a></code> (useful when exporting to SPSS files).</li>
+<li>
+<code>crtabs</code> and <code>table</code> where a dimension is a <code>CrunchLogicalExpr</code> now return a boolean dimension with names “FALSE” and “TRUE”, rather than the previous behavior of dropping the dimension and only returning the <code>TRUE</code> value.</li>
+</ul>
+</div>
+<div id="crunch-1-17-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-17-4" class="anchor"></a>crunch 1.17.4</h3>
+<ul>
+<li>Added support for case variables (#36): <code><a href="../reference/makeCaseVariable.html">makeCaseVariable()</a></code> takes a sequence of case statements to derive a new variable based on the values from other variables.</li>
+<li>Added a function to create interactions of variables (#42): <code><a href="../reference/interactVariables.html">interactVariables()</a></code> takes two or more categorical variables and derives a new variable with the combination of each.</li>
+<li>Fixed a bug where exports (data and tab book) might not work on Windows. If you’re using a version of R older than 3.3, and you <em>now</em> have problems downloading, and you’re not on Windows, try <code>options(download.file.method="curl")</code>.</li>
+</ul>
+</div>
+<div id="crunch-1-17-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#crunch-1-17-2" class="anchor"></a>crunch 1.17.2</h3>
+<ul>
+<li>Support for streaming data: check for received data with <code><a href="../reference/pendingStream.html">pendingStream()</a></code>; append that pending stream data to the dataset with <code><a href="../reference/appendStream.html">appendStream()</a></code> (#40)</li>
+<li>Multitables can now be updated with <code>multitables(ds)[["Multitable name"]] &lt;- ~ var1 + var2</code> syntax. Similarly, multitables can be deleted with <code>multitables(ds)[["Multitable name"]] &lt;- NULL</code>. Multitables also have new <code><a href="../reference/describe.html">name()</a></code> and <code><a href="../reference/delete.html">delete()</a></code> methods.</li>
+<li>
+<code><a href="../reference/toVariable.html">toVariable()</a></code> now accepts (and then strips) arguments of class <code>AsIs</code> (#44)</li>
+<li>Fixed a bug where <code><a href="../reference/changeCategoryID.html">changeCategoryID()</a></code> failed on multiple response variables.</li>
+</ul>
+</div>
+</div>
     <div id="crunch-1-17-0" class="section level2">
 <h2 class="hasAnchor">
 <a href="#crunch-1-17-0" class="anchor"></a>crunch 1.17.0</h2>
@@ -828,7 +976,6 @@
 </ul>
 </div>
 </div>
-    NA
     </div>
   </div>
 
@@ -836,6 +983,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#crunch-1-18-5-under-development">1.18.5</a></li>
+        <li><a href="#crunch-1-18-0">1.18.0</a></li>
         <li><a href="#crunch-1-17-0">1.17.0</a></li>
         <li><a href="#crunch-1-16-0">1.16.0</a></li>
         <li><a href="#crunch-1-15-0">1.15.0</a></li>
@@ -854,7 +1003,6 @@
         <li><a href="#crunch-1-2-0">1.2.0</a></li>
         <li><a href="#crunch-1-1-0">1.1.0</a></li>
         <li><a href="#crunch-1-0-0">1.0.0</a></li>
-        <li><a href="#NA">NA</a></li>
       </ul>
     </div>
   </div>

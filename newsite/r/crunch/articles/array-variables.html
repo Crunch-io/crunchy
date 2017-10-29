@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Array Variables">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--><!-- Google analytics --><script>
@@ -41,7 +43,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -78,6 +80,9 @@
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -118,10 +123,10 @@
 <p>One of the reasons to use R with Crunch is to leverage the power of scripting for tasks that would be repetitive in a GUI. Many crunch functions operating on Crunch datasets have an optional <code>pattern</code> argument that lets you use regular expressions for these “bulk” operations.</p>
 <p>In our sample <em>Economist</em> dataset, we have set of variables prefixed with “imiss”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grep</span>(<span class="st">"^imiss_"</span>, <span class="kw">names</span>(ds), <span class="dt">value=</span><span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>##  [1] "imiss_c" "imiss_q" "imiss_j" "imiss_r" "imiss_t" "imiss_m" "imiss_d"
-##  [8] "imiss_f" "imiss_p" "imiss_h" "imiss_s" "imiss_g" "imiss_b"</code></pre>
+<pre><code>##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"
+##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</code></pre>
 <p>These correspond to a survey grid question about how important respondents view a set of issues. Examining one of them, we see</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$imiss_b</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>imiss_b</code></pre></div>
 <pre><code>## imiss_b (categorical)
 ## 
 ##                    Count
@@ -130,8 +135,8 @@
 ## Not very Important     8
 ## Unimportant            1</code></pre>
 <p>All of these “imiss” categorical variables have the same structure. We can combine them into a categorical array variable with <code>makeArray</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$imiss &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeArray.html">makeArray</a></span>(ds[<span class="kw">grep</span>(<span class="st">"^imiss_"</span>, <span class="kw">names</span>(ds))], <span class="dt">name=</span><span class="st">"Issue importance"</span>)
-ds$imiss</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>imiss &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeArray.html">makeArray</a></span>(ds[<span class="kw">grep</span>(<span class="st">"^imiss_"</span>, <span class="kw">names</span>(ds))], <span class="dt">name=</span><span class="st">"Issue importance"</span>)
+ds<span class="op">$</span>imiss</code></pre></div>
 <pre><code>## Issue importance (categorical_array)
 ## Subvariables:
 ##   $`imiss_b`
@@ -152,7 +157,7 @@ ds$imiss</code></pre></div>
 <img src="http://support.crunch.io/crunch/images/VariableCardArray.png" alt="Categorical Array variable card"><p class="caption">Categorical Array variable card</p>
 </div>
 <p>In our example dataset, the categorical variables <code>imiss_*</code> are now not visible in the dataset directly, but we can access them as “subvariables” of the array we just created.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)</code></pre></div>
 <pre><code>## Subvariables:
 ##   $`imiss_b`
 ##   $`imiss_c`
@@ -168,7 +173,7 @@ ds$imiss</code></pre></div>
 ##   $`imiss_s`
 ##   $`imiss_t`</code></pre>
 <p>We can also step into the subvariables and access the underlying categorical variables:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$imiss$imiss_b</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>imiss<span class="op">$</span>imiss_b</code></pre></div>
 <pre><code>## imiss_b (categorical)
 ## 
 ##                    Count
@@ -182,15 +187,15 @@ ds$imiss</code></pre></div>
 <a href="#manipulating-subvariables" class="anchor"></a>Manipulating subvariables</h2>
 <p>The names <code>imiss_b</code> through <code>imiss_t</code> are unsatisfying from a human-readability perspective: you can’t tell which political issues correspond to the variables. Unfortunately, we didn’t have additional metadata on these survey questions in the <code>data.frame</code> we imported initially. However, we can rectify this.</p>
 <p>Subvariables have methods similar to those for <a href="variables.html">categories</a>. They have a names attribute that we can get:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss))</code></pre></div>
 <pre><code>##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"
 ##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</code></pre>
 <p>We can set it, too:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"The economy"</span>, <span class="st">"Immigration"</span>,
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"The economy"</span>, <span class="st">"Immigration"</span>,
     <span class="st">"The environment"</span>, <span class="st">"Terrorism"</span>, <span class="st">"Gay rights"</span>, <span class="st">"Education"</span>,
     <span class="st">"Health care"</span>, <span class="st">"Social security"</span>, <span class="st">"The budget deficit"</span>,
     <span class="st">"The war in Afghanistan"</span>, <span class="st">"Taxes"</span>, <span class="st">"Medicare"</span>, <span class="st">"Abortion"</span>)
-<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)</code></pre></div>
+<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)</code></pre></div>
 <pre><code>## Subvariables:
 ##   $`The economy`
 ##   $`Immigration`
@@ -206,9 +211,9 @@ ds$imiss</code></pre></div>
 ##   $`Medicare`
 ##   $`Abortion`</code></pre>
 <p>Another useful thing we can do with array subvariables is reorder them. Let’s alphabetize the subvariables:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sorting &lt;-<span class="st"> </span><span class="kw">order</span>(<span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)))
-<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)[sorting]
-<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds$imiss)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sorting &lt;-<span class="st"> </span><span class="kw">order</span>(<span class="kw">names</span>(<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)))
+<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)[sorting]
+<span class="kw"><a href="../reference/Subvariables.html">subvariables</a></span>(ds<span class="op">$</span>imiss)</code></pre></div>
 <pre><code>## Subvariables:
 ##   $`Abortion`
 ##   $`Education`
@@ -229,7 +234,7 @@ ds$imiss</code></pre></div>
 <a href="#creating-multiple-response-variables" class="anchor"></a>Creating multiple response variables</h2>
 <p>Just as we created a categorical array, we can create a multiple response variable. Like categorical arrays, multiple responses contain a set of subvariables, categorical variables with a common list of categories. However, the subvariables in a multiple response are treated as dichotomous indicators. We specify one or more categories that indicate “selected” versus “not selected”. Hence, when a multiple response appears in the web app, it looks like a single categorical variable, each subvariable shown like a category. Unlike a categorical variable, though, the multiple responses are not mutually exclusive, so tabulations with them may not sum to 100 percent.</p>
 <p>In the <em>Economist</em> dataset, we have another set of parallel categorical variables, “boap”, which indicate approval of President Obama on a range of issues.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$boap_4</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>boap_<span class="dv">4</span></code></pre></div>
 <pre><code>## boap_4 (categorical)
 ## 
 ##                     Count
@@ -240,10 +245,10 @@ ds$imiss</code></pre></div>
 ## Strongly approve       26</code></pre>
 <p>In the questionnaire that collected this data, “boap” appeared as a grid question, just as “imiss” did. But, for illustration purposes—and to show how you can convert between categorical array and multiple response—let’s treat this as multiple response.</p>
 <p>The function <code>makeMR</code> works like <code>makeArray</code> but with an additional argument, “selections”, in which you specify the category name(s) that identify which category or categories should be the dichotomous indicator.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeArray.html">makeMR</a></span>(ds[<span class="kw">grep</span>(<span class="st">"^boap_[0-9]+"</span>, <span class="kw">names</span>(ds))],
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/makeArray.html">makeMR</a></span>(ds[<span class="kw">grep</span>(<span class="st">"^boap_[0-9]+"</span>, <span class="kw">names</span>(ds))],
     <span class="dt">name=</span><span class="st">"Approval of Obama on issues"</span>,
     <span class="dt">selections=</span><span class="kw">c</span>(<span class="st">"Strongly approve"</span>, <span class="st">"Somewhat approve"</span>))
-ds$boap</code></pre></div>
+ds<span class="op">$</span>boap</code></pre></div>
 <pre><code>## Approval of Obama on issues (multiple_response)
 ## Subvariables:
 ##   $`boap_2`
@@ -265,8 +270,8 @@ ds$boap</code></pre></div>
 <a href="#undichotomize" class="anchor"></a>(un)dichotomize</h2>
 <p>Multiple response variables can be thought of as categorical arrays that have extra metadata indicating which categories are “selected”. This metadata can be manipulated, and we can thus transform categorical arrays into multiple response and vice versa.</p>
 <p>The function <code>undichotomize</code> removes the dichotomization metadata:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dichotomize.html">undichotomize</a></span>(ds$boap)
-ds$boap</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dichotomize.html">undichotomize</a></span>(ds<span class="op">$</span>boap)
+ds<span class="op">$</span>boap</code></pre></div>
 <pre><code>## Approval of Obama on issues (categorical_array)
 ## Subvariables:
 ##   $`boap_2`
@@ -283,8 +288,8 @@ ds$boap</code></pre></div>
 ##   $`boap_13`
 ##   $`boap_14`</code></pre>
 <p>We can add that information with <code>dichotomize</code>. Taking our categorical array “boap,” let’s make it into a multiple response, but this time, let’s only include the “Strongly approve” category:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dichotomize.html">dichotomize</a></span>(ds$boap, <span class="st">"Strongly approve"</span>)
-ds$boap</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>boap &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dichotomize.html">dichotomize</a></span>(ds<span class="op">$</span>boap, <span class="st">"Strongly approve"</span>)
+ds<span class="op">$</span>boap</code></pre></div>
 <pre><code>## Approval of Obama on issues (multiple_response)
 ## Subvariables:
 ##   $`boap_2`
@@ -308,13 +313,13 @@ ds$boap</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grep</span>(<span class="st">"boap"</span>, <span class="kw">names</span>(ds), <span class="dt">value=</span><span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## [1] "boap"</code></pre>
 <p>We can access the subvariables and do things with them directly via the <code>subvariables</code> method, but the case may arise in which we want to undo our binding of these subvariables into the array. The function <code>unbind</code> deletes the array variable and restores the subvariables as top-level variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/unbind.html">unbind</a></span>(ds$boap)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/unbind.html">unbind</a></span>(ds<span class="op">$</span>boap)
 ds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/refresh.html">refresh</a></span>(ds)</code></pre></div>
 <p>Note the use of <code>refresh</code>. Most functions that modify objects on the server refresh their local copies in our R session automatically; however, because <code>unbind</code> doesn’t assign back into <code>ds</code>, the local dataset object doesn’t get updated with the change, so we need to refresh it manually.</p>
 <p>Now, if we check the names of <code>ds</code>, we see our full set of <code>boap_*</code> former subvariables:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">grep</span>(<span class="st">"boap"</span>, <span class="kw">names</span>(ds), <span class="dt">value=</span><span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>##  [1] "boap_3"  "boap_11" "boap_6"  "boap_2"  "boap_4"  "boap_14" "boap_9" 
-##  [8] "boap_5"  "boap_12" "boap_13" "boap_7"  "boap_10" "boap_8"</code></pre>
+<pre><code>##  [1] "boap_2"  "boap_3"  "boap_4"  "boap_5"  "boap_6"  "boap_7"  "boap_8" 
+##  [8] "boap_9"  "boap_10" "boap_11" "boap_12" "boap_13" "boap_14"</code></pre>
 <p><a href="variable-order.html">Next: variable organization</a></p>
 </div>
 </div>

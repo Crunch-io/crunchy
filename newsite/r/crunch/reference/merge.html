@@ -23,8 +23,19 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Merge a CrunchDataFrame — merge" />
+
+<meta property="og:description" content="mergeing a CrunchDataFrame with a local dataframe is useful in situations
+where you have new information in your local R session that you want to
+connect with Crunch data. For example, for making
+plots with Crunch and non-Crunch data. It produces a hybrid CrunchDataFrame
+that has the local data attached to it, but like normal CrunchDataFrames
+it is still judicious about downloading data from the server only when it
+is needed." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +78,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -104,6 +115,9 @@
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/">News</a>
 </li>
       </ul>
       
@@ -170,7 +184,7 @@ intersection of the names of x and y)</p></td>
       <th>sort</th>
       <td><p>character, either "x" or "y" (default: "x"). Which of the inputs
 should be used for the output order. Unlike merge.data.frame,
-merge.CrunchDataFrame will not re-sort the order of the output. It will use
+<code>merge.CrunchDataFrame</code> will not re-sort the order of the output. It will use
 the order of either <code>x</code> or <code>y</code>.</p></td>
     </tr>
     <tr>

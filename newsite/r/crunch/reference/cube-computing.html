@@ -23,8 +23,20 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Work with CrunchCubes, MultitableResults, and TabBookResults — cube-computing" />
+
+<meta property="og:description" content="These functions provide an interface like base::margin.table()
+and base::prop.table() for the CrunchCube object. CrunchCubes contain
+richer metadata than standard R array objects, and they also conceal
+certain complexity in the data structures from the user. In particular,
+multiple-response variables are generally represented as single dimensions
+in result tables, but in the actual data, they may comprise two dimensions.
+These methods understand the subtleties in the Crunch data types and
+correctly compute margins and percentages off of them." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +79,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +117,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -130,8 +145,13 @@
 
     
     <p>These functions provide an interface like <code><a href='http://www.rdocumentation.org/packages/base/topics/margin.table'>base::margin.table()</a></code>
-and <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code> for the CrunchCube object This handles special data
-types like array variables or MultitableResults.</p>
+and <code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code> for the CrunchCube object. CrunchCubes contain
+richer metadata than standard R <code>array</code> objects, and they also conceal
+certain complexity in the data structures from the user. In particular,
+multiple-response variables are generally represented as single dimensions
+in result tables, but in the actual data, they may comprise two dimensions.
+These methods understand the subtleties in the Crunch data types and
+correctly compute margins and percentages off of them.</p>
     
 
     <pre class="usage"><span class='co'># S4 method for CrunchCube</span>
@@ -168,26 +188,31 @@ types like array variables or MultitableResults.</p>
     <tr>
       <th>margin</th>
       <td><p>index, or vector of indices to generate margin for. See
-<code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code>. <code>bases</code> accepts <code>0</code> as an additional valid
-value for <code>margin</code> which yields the unweighted counts for the
-query, without reducing the dimensionality.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/base/topics/prop.table'>base::prop.table()</a></code>. <code>bases()</code> accepts <code>0</code> as an additional valid
+value for <code>margin</code>, which yields the unweighted counts for the
+query without reducing the dimensionality.</p></td>
     </tr>
     <tr>
       <th>digits</th>
-      <td><p>see  <code><a href='http://www.rdocumentation.org/packages/base/topics/Round'>base::round()</a></code></p></td>
+      <td><p>For <code>round</code>, the number of decimal places to round to. See
+<code><a href='http://www.rdocumentation.org/packages/base/topics/Round'>base::round()</a></code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The appropriate margin.table or prop.table. Calling prop.table on
+    <p>When called on CrunchCubes, these functions return an <code>array</code>.
+Calling prop.table on
 a MultitableResult returns a list of prop.tables of the CrunchCubes it
 contains. Likewise, prop.table on a TabBookResult returns a list of lists of
 prop.tables.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>bases</code> is an additional method for CrunchCubes. When making weighted
+    <p>These functions also generalize to MultitableResults and TabBookResults,
+which are returned from a <code><a href='tabBook.html'>tabBook()</a></code> request. When called on one of those
+objects, they effectively apply over each CrunchCube contained in them.
+    <code>bases</code> is an additional method for CrunchCubes. When making weighted
 requests, <code>bases</code> allows you to access the unweighted counts for every
 cell in the resulting table (array). The <code>bases</code> function takes a
 "margin" argument to work like <code>margin.table</code>, or with <code>margin=0</code>

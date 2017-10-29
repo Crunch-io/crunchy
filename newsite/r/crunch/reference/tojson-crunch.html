@@ -23,8 +23,20 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="toJSON methods for Crunch objects — tojson-crunch" />
+
+<meta property="og:description" content="crunch uses the jsonlite package for JSON serialization and
+deserialization. Unfortunately, jsonlite::toJSON()
+does not allow for defining S4 methods for other object types. So,
+crunch::toJSON wraps jsonprep, which exists to translate
+objects to base R objects, which jsonlite::toJSON can handle.
+jsonprep is defined as an S4 generic, and it is exported, so you can define
+methods for it if you have other
+objects that you want to successfully serialize to JSON." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +79,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -104,6 +116,9 @@
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/">News</a>
 </li>
       </ul>
       
@@ -142,9 +157,6 @@ objects that you want to successfully serialize to JSON.</p>
     <pre class="usage"><span class='fu'>jsonprep</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for Categories</span>
-<span class='fu'>jsonprep</span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for list</span>
 <span class='fu'>jsonprep</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>

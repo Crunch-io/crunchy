@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract and modify subsets of Catalog-type objects — catalog-extract • Crunch</title>
+<title>Extract and modify subsets of Catalog-type objects — [,CubeDims,ANY,ANY-method • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,8 +23,13 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Extract and modify subsets of Catalog-type objects — [,CubeDims,ANY,ANY-method" />
+
+<meta property="og:description" content="Extract and modify subsets of Catalog-type objects" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +72,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +110,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -132,7 +140,10 @@
     <p>Extract and modify subsets of Catalog-type objects</p>
     
 
-    <pre class="usage"># S4 method for DatasetCatalog,numeric
+    <pre class="usage"># S4 method for CubeDims,ANY,ANY
+[(x, i, j, ..., drop = TRUE)
+
+# S4 method for DatasetCatalog,numeric
 [[(x, i, j, ...)
 
 # S4 method for DatasetCatalog,character,missing,DatasetTuple
@@ -231,6 +242,12 @@ $(x, name) <- value
 # S4 method for TeamCatalog,character,missing,CrunchTeam
 [[(x, i, j) <- value
 
+# S4 method for UserCatalog,character,ANY
+[(x, i, j, ..., drop = TRUE)
+
+# S4 method for UserCatalog,character
+[[(x, i, j, ...)
+
 # S4 method for VariableCatalog,numeric
 [[(x, i, j, ...)
 
@@ -273,16 +290,17 @@ $(x, name) <- value
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments</p></td>
+      <td><p>additional arguments (for example <code>secondary</code> a vector of elements to match
+against like <code><a href='describe-catalog.html'>emails(x)</a></code> or <code><a href='owners.html'>owners(x)</a></code> by default this is <code>names(x)</code>)</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>Invalid</p></td>
     </tr>
     <tr>
       <th>value</th>
       <td><p>For updating, an object of the appropriate class and size to
 insert</p></td>
-    </tr>
-    <tr>
-      <th>drop</th>
-      <td><p>Invalid</p></td>
     </tr>
     <tr>
       <th>name</th>

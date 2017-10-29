@@ -23,8 +23,19 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Authenticate with the Crunch API — login" />
+
+<meta property="og:description" content="Note that you can store your Crunch account info in your .Rprofile under
+crunch.email and crunch.pw for convenience. If you do so, you can simply
+login() to authenticate. For running batch jobs, this could be
+particularly useful. However, be warned that storing your
+password in a plain text file such as .Rprofile is a security risk (though
+perhaps less so than in every .R script you write), and we
+cannot officially recommend that you do so." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +78,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +116,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -130,7 +144,7 @@
 
     
     <p>Note that you can store your Crunch account info in your .Rprofile under
-"crunch.email" and "crunch.pw" for convenience. If you do so, you can simply
+<code>crunch.email</code> and <code>crunch.pw</code> for convenience. If you do so, you can simply
 <code>login()</code> to authenticate. For running batch jobs, this could be
 particularly useful. However, be warned that storing your
 password in a plain text file such as .Rprofile is a security risk (though
@@ -138,8 +152,8 @@ perhaps less so than in every .R script you write), and we
 cannot officially recommend that you do so.</p>
     
 
-    <pre class="usage"><span class='fu'>login</span>(<span class='kw'>email</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"crunch.email"</span>), <span class='kw'>password</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"crunch.pw"</span>),
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>login</span>(<span class='kw'>email</span> <span class='kw'>=</span> <span class='fu'><a href='envOrOption.html'>envOrOption</a></span>(<span class='st'>"crunch.email"</span>),
+  <span class='kw'>password</span> <span class='kw'>=</span> <span class='fu'><a href='envOrOption.html'>envOrOption</a></span>(<span class='st'>"crunch.pw"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -161,7 +175,9 @@ currently supported by the Crunch API.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If a password is not supplied (or, if no arguments are supplied and only
+    <p>Additionally, your email and password can be stored in and read from the
+environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</p>
+<p>If a password is not supplied (or, if no arguments are supplied and only
 the <code>crunch.email</code> is specified in .Rprofile), and you are in an
 interactive session, you will be prompted to enter your password. At
 present, this is the most secure practice as your password is not stored

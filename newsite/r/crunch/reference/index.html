@@ -23,8 +23,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +70,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +108,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -127,7 +133,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;1.18.2</small>
+        <small>version&nbsp;1.18.5</small>
       </h1>
     </div>
 
@@ -315,9 +321,27 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="weight.html">weight</a></code> <code><a href="weight.html">weight<-</a></code> <code><a href="weight.html">weightVariables</a></code> </p>
+            <p><code><a href="weight.html">weight</a></code> <code><a href="weight.html">weight<-</a></code> <code><a href="weight.html">is.weight</a></code> <code><a href="weight.html">is.weight<-</a></code> </p>
           </td>
           <td><p>Dataset weights</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="weightVariables.html">weightVariables</a></code> </p>
+          </td>
+          <td><p>Get a dataset's weightVariables</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="settings.html">settings</a></code> <code><a href="settings.html">settings<-</a></code> </p>
+          </td>
+          <td><p>View and modify dataset-level settings</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="lock.html">lock</a></code> <code><a href="lock.html">unlock</a></code> </p>
+          </td>
+          <td><p>Lock and unlock a dataset for editing</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -397,18 +421,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="combine.html">combine</a></code> </p>
-          </td>
-          <td><p>Combine categories or responses</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="copyVariable.html">copyVariable</a></code> <code><a href="copyVariable.html">copy</a></code> </p>
-          </td>
-          <td><p>Copy a variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="dataset-variables.html">variables</a></code> <code><a href="dataset-variables.html">variables<-</a></code> <code><a href="dataset-variables.html">allVariables</a></code> <code><a href="dataset-variables.html">allVariables<-</a></code> </p>
           </td>
           <td><p>Access a Dataset's Variables Catalog</p></td>
@@ -427,7 +439,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="describe-category.html">name</a></code> <code><a href="describe-category.html">name<-</a></code> <code><a href="describe-category.html">value</a></code> <code><a href="describe-category.html">value<-</a></code> <code><a href="describe-category.html">id</a></code> <code><a href="describe-category.html">is.selected</a></code> </p>
+            <p><code><a href="describe-category.html">name</a></code> <code><a href="describe-category.html">name<-</a></code> <code><a href="describe-category.html">value</a></code> <code><a href="describe-category.html">value<-</a></code> <code><a href="describe-category.html">id</a></code> </p>
           </td>
           <td><p>Category attributes</p></td>
         </tr><tr>
@@ -457,18 +469,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="interactVariables.html">interactVariables</a></code> </p>
-          </td>
-          <td><p>Create a variable by interacting categorical variables</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="makeCaseVariable.html">makeCaseVariable</a></code> </p>
-          </td>
-          <td><p>Make a case variable</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="na-omit-categories.html">na.omit</a></code> </p>
           </td>
           <td><p>Omit missing categories</p></td>
@@ -490,6 +490,56 @@
             <p><code><a href="variableMetadata.html">variableMetadata</a></code> </p>
           </td>
           <td><p>Get all variable metadata for a dataset</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-deriving-variables" class="hasAnchor"><a href="#section-deriving-variables" class="anchor"></a>Deriving variables</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="combine.html">combine</a></code> </p>
+          </td>
+          <td><p>Combine categories or responses</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="copyVariable.html">copyVariable</a></code> <code><a href="copyVariable.html">copy</a></code> </p>
+          </td>
+          <td><p>Copy a variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="makeCaseVariable.html">makeCaseVariable</a></code> </p>
+          </td>
+          <td><p>Make a case variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="crunch-cut.html">cut</a></code> </p>
+          </td>
+          <td><p>Cut a numeric Crunch variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="interactVariables.html">interactVariables</a></code> </p>
+          </td>
+          <td><p>Create a variable by interacting categorical variables</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="conditionalTransform.html">conditionalTransform</a></code> </p>
+          </td>
+          <td><p>Conditional transformation</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="makeWeight.html">makeWeight</a></code> </p>
+          </td>
+          <td><p>Generate a weight variable</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -534,6 +584,12 @@
             <p><code><a href="makeArray.html">makeArray</a></code> <code><a href="makeArray.html">makeMR</a></code> <code><a href="makeArray.html">deriveArray</a></code> </p>
           </td>
           <td><p>Make a Categorical Array or Multiple Response variable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="is-selected-categories.html">is.selected</a></code> <code><a href="is-selected-categories.html">is.selected<-</a></code> </p>
+          </td>
+          <td><p>is.selected for Categories</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -631,7 +687,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="cube-methods.html">dimnames</a></code> <code><a href="cube-methods.html">dim</a></code> <code><a href="cube-methods.html">is.na</a></code> <code><a href="cube-methods.html">dimensions</a></code> <code><a href="cube-methods.html">variables</a></code> <code><a href="cube-methods.html">names</a></code> <code><a href="cube-methods.html">aliases</a></code> <code><a href="cube-methods.html">descriptions</a></code> </p>
+            <p><code><a href="cube-methods.html">dimnames</a></code> <code><a href="cube-methods.html">dim</a></code> <code><a href="cube-methods.html">is.na</a></code> <code><a href="cube-methods.html">dimensions</a></code> <code><a href="cube-methods.html">variables</a></code> <code><a href="cube-methods.html">measures</a></code> <code><a href="cube-methods.html">names</a></code> <code><a href="cube-methods.html">aliases</a></code> <code><a href="cube-methods.html">descriptions</a></code> <code><a href="cube-methods.html">types</a></code> <code><a href="cube-methods.html">notes</a></code> </p>
           </td>
           <td><p>Methods on Cube objects</p></td>
         </tr><tr>
@@ -705,7 +761,7 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="crunchBox.html">crunchBox</a></code> </p>
+            <p><code><a href="crunchBox.html">crunchBox</a></code> <code><a href="crunchBox.html">CrunchBox</a></code> </p>
           </td>
           <td><p>Make a CrunchBox</p></td>
         </tr><tr>
@@ -829,12 +885,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="lock.html">lock</a></code> <code><a href="lock.html">unlock</a></code> </p>
-          </td>
-          <td><p>Lock and unlock a dataset for editing</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="login.html">login</a></code> </p>
           </td>
           <td><p>Authenticate with the Crunch API</p></td>
@@ -889,12 +939,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="settings.html">settings</a></code> <code><a href="settings.html">settings<-</a></code> </p>
-          </td>
-          <td><p>View and modify dataset-level settings</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="share.html">share</a></code> </p>
           </td>
           <td><p>Share a dataset</p></td>
@@ -910,6 +954,12 @@
             <p><code><a href="unshare.html">unshare</a></code> </p>
           </td>
           <td><p>Revoke a user's access to a dataset</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="expropriateUser.html">expropriateUser</a></code> </p>
+          </td>
+          <td><p>Expropriate all Crunch objects from a user</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -1079,7 +1129,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="catalog-extract.html">catalog-extract</a></code> </p>
+            <p><code><a href="catalog-extract.html">[,CubeDims,ANY,ANY-method</a></code> </p>
           </td>
           <td><p>Extract and modify subsets of Catalog-type objects</p></td>
         </tr><tr>
@@ -1200,6 +1250,7 @@
       <li><a href="#section-dataset-manipulation">Dataset manipulation</a></li>
       <li><a href="#section-multiple-datasets">Multiple datasets</a></li>
       <li><a href="#section-variable-manipulation">Variable manipulation</a></li>
+      <li><a href="#section-deriving-variables">Deriving variables</a></li>
       <li><a href="#section-array-variables">Array variables</a></li>
       <li><a href="#section-ordering">Ordering</a></li>
       <li><a href="#section-analysis">Analysis</a></li>

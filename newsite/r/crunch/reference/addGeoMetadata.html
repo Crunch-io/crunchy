@@ -23,8 +23,16 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Add geodata metadata to a crunch variable — addGeoMetadata" />
+
+<meta property="og:description" content="If the variable matches a single geographic shapefile hosted by crunch,
+addGeoMetadata will make the appropriate CrunchGeography to add to a
+variable's geo() metadata. It matches based on how well the contents of the
+variable match the feature properties that are in each shapefile." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +75,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +113,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -129,10 +140,13 @@
     </div>
 
     
-    <p>Add geodata metadata to a crunch variable</p>
+    <p>If the variable matches a single geographic shapefile hosted by crunch,
+<code>addGeoMetadata</code> will make the appropriate <code>CrunchGeography</code> to add to a
+variable's <code><a href='geo.html'>geo()</a></code> metadata. It matches based on how well the contents of the
+variable match the feature properties that are in each shapefile.</p>
     
 
-    <pre class="usage"><span class='fu'>addGeoMetadata</span>(<span class='no'>variable</span>)</pre>
+    <pre class="usage"><span class='fu'>addGeoMetadata</span>(<span class='no'>variable</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -142,16 +156,31 @@
       <td><p>a Crunch variable to use for matching. This must be either
 a text or a categorical variable.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments passed on to <code><a href='matchCatToFeat.html'>matchCatToFeat()</a></code> for example a set of
+available geographic features as <code>all_features</code> if you want to limit the
+number of features to be considered.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a CrunchGeography object that can be assigned into <code><a href='geo.html'>geo(variable)</a></code></p>
+    <p>a <code>CrunchGeography</code> object that can be assigned into <code><a href='geo.html'>geo(variable)</a></code></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If more than one property of the same geographic shapefile has the same
+highest matching score, the first one will be used.</p>
+<p>If more than one geographic shapefile has the same highest matching score, an
+error will be printed listing the geographic shapefiles that matched.
+Information from this error can be used to setup an appropriate
+<code>CrunchGeography</code> by hand to connect a variable with the metadata needed.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='geo.html'>geo</a></span>(<span class='no'>ds</span>$<span class='no'>state</span>) <span class='kw'>&lt;-</span> <span class='fu'>addGeoMetadata</span>(<span class='st'>"state"</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>ds</span>)
+<span class='fu'><a href='geo.html'>geo</a></span>(<span class='no'>ds</span>$<span class='no'>state</span>) <span class='kw'>&lt;-</span> <span class='fu'>addGeoMetadata</span>(<span class='no'>ds</span>$<span class='no'>state</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -160,6 +189,8 @@ a text or a categorical variable.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

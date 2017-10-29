@@ -23,8 +23,15 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Dataset weights — weight" />
+
+<meta property="og:description" content="weight lets you view and set your user's currently applied weight on the
+server. weightVariables lets you view all of the variables that have been
+designated as valid to use as weights." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +74,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +112,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -138,11 +148,10 @@ designated as valid to use as weights.</p>
 
 <span class='fu'>weight</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>weightVariables</span>(<span class='no'>x</span>)
+<span class='fu'>is.weight</span>(<span class='no'>x</span>)
 
-<span class='co'># S4 method for VariableCatalog</span>
-<span class='fu'>weightVariables</span>(<span class='no'>x</span>)</pre>
+<span class='co'># S4 method for NumericVariable</span>
+<span class='fu'>is.weight</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -167,6 +176,10 @@ NULL. For the setter, x, modified accordingly. <code>weightVariables</code> retu
 the aliases (or names, according to <code>options(crunch.namekey.dataset)</code>),
 of the variables designated as weights.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='weightVariables.html'>weightVariables()</a></code> <code><a href='makeWeight.html'>makeWeight()</a></code></p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -175,6 +188,8 @@ of the variables designated as weights.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

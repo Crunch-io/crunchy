@@ -23,8 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Make a case variable — makeCaseVariable" />
+
+<meta property="og:description" content="The makeCaseVariable function derives a variable using values from other
+variables. These are evaluated in the order they are supplied in the list
+as the cases argument (they proceed in an IF, ELSE IF, ELSE IF, ..., ELSE
+fashion); the first one that matches selects the corresponding value from
+the case list." />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +76,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +114,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -136,7 +148,7 @@ fashion); the first one that matches selects the corresponding value from
 the case list.</p>
     
 
-    <pre class="usage"><span class='fu'>makeCaseVariable</span>(<span class='no'>...</span>, <span class='no'>cases</span>, <span class='no'>name</span>)</pre>
+    <pre class="usage"><span class='fu'>makeCaseVariable</span>(<span class='no'>...</span>, <span class='no'>cases</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>name</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -151,6 +163,11 @@ properties to pass about the case variable (i.e. alias, description)</p></td>
       <td><p>a list of lists with each case condition to use each must
 include at least a <code>name</code> and an <code>expression</code> element. Cases may also include
 <code>missing</code> (logical) and <code>numeric_value</code> (numeric).</p></td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td><p>(optional) a crunch dataset to use. Specifying this means you
+don't have to put <code>dataset$</code> in front of each variable name.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -194,6 +211,9 @@ details.</p>
                             <span class='fu'>list</span>(<span class='kw'>expression</span><span class='kw'>=</span><span class='st'>"else"</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"other"</span>)),
                  <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"new case"</span>)
 <span class='fu'>makeCaseVariable</span>(<span class='kw'>case1</span><span class='kw'>=</span><span class='no'>ds</span>$<span class='no'>v1</span> <span class='kw'>==</span> <span class='fl'>1</span>, <span class='kw'>case2</span><span class='kw'>=</span><span class='no'>ds</span>$<span class='no'>v2</span> <span class='kw'>==</span> <span class='fl'>2</span>, <span class='kw'>other</span><span class='kw'>=</span><span class='st'>"else"</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"new case"</span>)
+
+<span class='co'># the dataset can be specified with data=</span>
+<span class='fu'>makeCaseVariable</span>(<span class='kw'>case1</span><span class='kw'>=</span><span class='no'>v1</span> <span class='kw'>==</span> <span class='fl'>1</span>, <span class='kw'>case2</span><span class='kw'>=</span><span class='no'>v2</span> <span class='kw'>==</span> <span class='fl'>2</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>ds</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"new case"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

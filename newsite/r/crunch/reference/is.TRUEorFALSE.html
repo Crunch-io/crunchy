@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>as.data.frame method for VariableCatalog — as.data.frame.VariableCatalog • Crunch</title>
+<title>Check that a value is TRUE or FALSE — is.TRUEorFALSE • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,8 +23,13 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+  <link href="../extra.css" rel="stylesheet">
   
-  
+<meta property="og:title" content="Check that a value is TRUE or FALSE — is.TRUEorFALSE" />
+
+<meta property="og:description" content="Check that a value is TRUE or FALSE" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -67,7 +72,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -105,6 +110,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/">News</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -125,66 +133,29 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>as.data.frame method for VariableCatalog</h1>
+    <h1>Check that a value is TRUE or FALSE</h1>
     </div>
 
     
-    <p>This method gives you a view of a <code>VariableCatalog</code> as a <code>data.frame</code> in
-order to facilitate further exploration.</p>
+    <p>Check that a value is TRUE or FALSE</p>
     
 
-    <pre class="usage"><span class='co'># S3 method for VariableCatalog</span>
-<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"type"</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>is.TRUEorFALSE</span>(<span class='no'>value</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A <code>VariableCatalog</code>, as produced by <code><a href='dataset-variables.html'>variables(ds)</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>row.names</th>
-      <td><p>part of <code>as.data.frame</code> signature. Ignored.</p></td>
-    </tr>
-    <tr>
-      <th>optional</th>
-      <td><p>part of <code>as.data.frame</code> signature. Ignored.</p></td>
-    </tr>
-    <tr>
-      <th>keys</th>
-      <td><p>A character vector of the variable catalog attributes which you
-would like included in the data.frame. To include all attributes or see
-which ones are available, set keys to "all". By default, the function will
-return three fields: <code>c("alias", "name", "type")</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments passed to <code>data.frame</code></p></td>
+      <th>value</th>
+      <td><p>Value to check</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> including metadata about each variable stored in the
-variable catalog. The fields in the data.frame match the <code>keys</code> argument
-provided to the function, and each row represents a variable.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Modifying the <code>data.frame</code> produced by this function will not update the
-dataset on the Crunch server. Other methods exist for updating the metadata
-in the variable catalog. See <code>vingette("variables", package = "crunch")</code>.</p>
+    <p><code>TRUE</code> if <code>value</code> is either <code>TRUE</code> or <code>FALSE</code>, <code>FALSE</code> otherwise</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"iris"</span>)
-<span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dataset-variables.html'>variables</a></span>(<span class='no'>ds</span>)
-<span class='no'>var_df</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.frame</span>(<span class='no'>vars</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='st'>"all"</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -192,11 +163,7 @@ in the variable catalog. See <code>vingette("variables", package = "crunch")</co
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Reordering Variables">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--><!-- Google analytics --><script>
@@ -41,7 +43,7 @@
   <a href="../articles/getting-started.html">Intro</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -78,6 +80,9 @@
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -162,9 +167,9 @@
 <a href="#creating-groups" class="anchor"></a>Creating groups</h2>
 <p>Since I know how this dataset is organized, I’m going quickly toss the variables into one of a small number of groups, instantiated with <code>VariableGroup</code>, and collect them in a container object called <code>VariableOrder</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/VariableOrder.html">VariableOrder</a></span>(
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span>:<span class="dv">37</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>:<span class="dv">20</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span>:<span class="dv">11</span>])
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">37</span>)]),
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)]),
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>])
     )</code></pre></div>
 <p>Now, our variable tree has some structure:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
@@ -207,8 +212,7 @@
 ##     Penalty for Snowden
 ##     manningknowledge
 ##     manningfavorability
-##     manningguilt
-##     manningpenalty</code></pre>
+##     manningguilt</code></pre>
 <p>Groups can be created with several kinds of inputs. You can specify a vector or list of variable references (URLs), as returned from the <code>self</code> method of variables. That list of references may also contain <code>VariableGroup</code> objects as well, which will nest those Groups inside the Group you’re creating (see “Nested Groups” below). You can also provide a list of variable entities or, as in this example, a subset of a dataset entity (which can be thought of as a list of variables).</p>
 </div>
 <div id="group-names" class="section level2">
@@ -235,11 +239,12 @@
 <h2 class="hasAnchor">
 <a href="#nested-groups" class="anchor"></a>Nested groups</h2>
 <p>We can create groups within groups as well. In the “This week” group, we have a set of questions about Edward Snowden: the first four variables in the group. Let’s nest them inside their own group inside “This week”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span>:<span class="dv">4</span>]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
 <span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
 <pre><code>## [+] Tracking questions
 ##     newsint2
 ##     Direction of country
+##     manningpenalty
 ##     Issue importance
 ##     imissf
 ##     obamaapp
@@ -253,7 +258,6 @@
 ##     manningknowledge
 ##     manningfavorability
 ##     manningguilt
-##     manningpenalty
 ##     [+] Snowden
 ##         Favorability of Edward Snowden
 ##         Approval of Snowden's Leak
