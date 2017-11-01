@@ -11810,7 +11810,7 @@ is read from the &ldquo;subvariables&rdquo; attribute.</p>
 
 <h5 id="private">private</h5>
 
-<p>If <code class="prettyprint">true</code>, the variable will not show in the common variable catalog; instead, it will be included in the personal variables catalog. </p>
+<p>If <code class="prettyprint">true</code>, the variable will not show in the common variable catalog; instead, it will be included in the personal variables catalog.</p>
 
 <h5 id="missing_reasons">missing_reasons</h5>
 
@@ -12005,58 +12005,58 @@ to compose an expression.</p>
 
 <h5 id="frame-functions">Frame Functions</h5>
 
-<p>* <code class="prettyprint">page</code> Return the given frame, limited/offset by the given values.
-    * <code class="prettyprint">select</code> Return a Frame of results from the given map of variables.
-    * <code class="prettyprint">sheet</code> Return the given frame, limited/offset in the number of variables.
-    * <code class="prettyprint">dependents</code> Return the given frame with only dependents of the given variable.
-    * <code class="prettyprint">deselect</code> Return a frame NOT including the indicated variables.
-    * <code class="prettyprint">adapt</code> Return the given frame adapted to the given to_key.
-    * <code class="prettyprint">join</code> Return a JoinedFrame from the given list of subframes.
-    * <code class="prettyprint">find</code> Return a Frame with those variables which match the given criteria.
-    * <code class="prettyprint">flatten</code> Return a frame including all variables, plus all subvariables at dotted ids.</p>
-
-<h6 id="examples">Examples</h6>
-
 <ul>
-<li><strong>select</strong>: Receives an argument which is a map expression in the following shape:
-&ldquo;`json</li>
+<li><code class="prettyprint">page</code> Return the given frame, limited/offset by the given values.</li>
+<li><code class="prettyprint">select</code> Return a Frame of results from the given map of variables.</li>
+<li><code class="prettyprint">sheet</code> Return the given frame, limited/offset in the number of variables.</li>
+<li><code class="prettyprint">dependents</code> Return the given frame with only dependents of the given variable.</li>
+<li><code class="prettyprint">deselect</code> Return a frame NOT including the indicated variables.</li>
+<li><code class="prettyprint">adapt</code> Return the given frame adapted to the given to_key.</li>
+<li><code class="prettyprint">join</code> Return a JoinedFrame from the given list of subframes.</li>
+<li><code class="prettyprint">find</code> Return a Frame with those variables which match the given criteria.</li>
+<li><code class="prettyprint">flatten</code> Return a frame including all variables, plus all subvariables at dotted ids.</li>
 </ul>
 
-<p>{
-  &quot;function&rdquo;: &ldquo;select&rdquo;,
-  &ldquo;args&rdquo;: [{
-    &ldquo;map&rdquo;: {
-      <destination id>: {variable: <source frame id>},
-      <destination id>: {variable: <source frame id>},
-      &hellip;
-    }
-  }]</p>
+<h6 id="examples">Examples</h6>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"map"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">&lt;destination</span><span class="w"> </span><span class="err">id&gt;:</span><span class="w"> </span><span class="err">{variable:</span><span class="w"> </span><span class="err">&lt;source</span><span class="w"> </span><span class="err">frame</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">},</span><span class="w">
+      </span><span class="err">&lt;destination</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">variable:</span><span class="w"> </span><span class="err">&lt;source</span><span class="w"> </span><span class="err">frame</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+  </span><span class="err">}</span><span class="p">]</span><span class="w">
 
-<p>}
-&ldquo;<code class="prettyprint">
-Where</code>destination id<code class="prettyprint">is the ID that the mapped variable will have on the
-resulting frame by selecting only the</code>source frame id` variables from the
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<ul>
+<li><strong>select</strong>: Receives an argument which is a map expression in the following shape:</li>
+</ul>
+
+<p>Where <code class="prettyprint">destination id</code> is the ID that the mapped variable will have on the
+resulting frame by selecting only the <code class="prettyprint">source frame id</code> variables from the
 frame where this function is applied on.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deselect"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"map"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">&lt;destination</span><span class="w"> </span><span class="err">id&gt;:</span><span class="w"> </span><span class="err">{variable:</span><span class="w"> </span><span class="err">&lt;source</span><span class="w"> </span><span class="err">frame</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">},</span><span class="w">
+      </span><span class="err">&lt;destination</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">variable:</span><span class="w"> </span><span class="err">&lt;source</span><span class="w"> </span><span class="err">frame</span><span class="w"> </span><span class="err">id&gt;</span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+  </span><span class="err">}</span><span class="p">]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <ul>
 <li><strong>deselect</strong>: Same as <code class="prettyprint">select</code> but will exclude the variable ids mentioned
 from the source frame. On this usage the <code class="prettyprint">destination id</code> part of the <code class="prettyprint">map</code>
-argument are disregarded.
-&rdquo;`json</li>
+argument are disregarded.</li>
 </ul>
-
-<p>{
-  &ldquo;function&rdquo;: &ldquo;deselect&rdquo;,
-  &ldquo;args&rdquo;: [{
-    &ldquo;map&rdquo;: {
-      <destination id>: {variable: <source frame id>},
-      <destination id>: {variable: <source frame id>},
-      &hellip;
-    }
-  }]</p>
-
-<p>}
-&ldquo;`</p>
 
 <h5 id="measures-functions">Measures Functions</h5>
 
@@ -12090,7 +12090,7 @@ argument are disregarded.
 
 <h4 id="filter-terms">Filter terms</h4>
 
-<p>Terms that refer to filters entities by URL are shorthand for the boolean expression stored in the entity. So, <code class="prettyprint">{&quot;filter&quot;: &quot;../filters/59fc4d/&quot;}</code> yields the Crunch expression contained in the Filter entity&rsquo;s &quot;expression&rdquo; attribute. Filter terms can be combined together with other expressions as well. For example, <code class="prettyprint">{&quot;function&quot;: &quot;and&quot;, &quot;args&quot;: [{&quot;filter&quot;: &quot;../filters/59fc4d/&quot;}, {&quot;function&quot;: &quot;==&quot;, &quot;args&quot;: [{&quot;variable&quot;: &quot;../variables/X/&quot;}, {&quot;value&quot;: 13}]}]}</code> would &ldquo;and&rdquo; together the boolean expression in filter 59fc4d with the <code class="prettyprint">X == 13</code> expression.</p>
+<p>Terms that refer to filters entities by URL are shorthand for the boolean expression stored in the entity. So, <code class="prettyprint">{&quot;filter&quot;: &quot;../filters/59fc4d/&quot;}</code> yields the Crunch expression contained in the Filter entity&rsquo;s &ldquo;expression&rdquo; attribute. Filter terms can be combined together with other expressions as well. For example, <code class="prettyprint">{&quot;function&quot;: &quot;and&quot;, &quot;args&quot;: [{&quot;filter&quot;: &quot;../filters/59fc4d/&quot;}, {&quot;function&quot;: &quot;==&quot;, &quot;args&quot;: [{&quot;variable&quot;: &quot;../variables/X/&quot;}, {&quot;value&quot;: 13}]}]}</code> would &ldquo;and&rdquo; together the boolean expression in filter 59fc4d with the <code class="prettyprint">X == 13</code> expression.</p>
 
 <h2 id="documents">Documents</h2>
 
