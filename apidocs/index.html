@@ -6954,11 +6954,11 @@ geojson or topojson.</p>
 </tr>
 </tbody></table>
 
-<h3 id="catalog">Catalog</h3>
-
-<p><code class="prettyprint">/geodata/id/</code></p>
+<h3 id="entity">Entity</h3>
 
 <h4 id="get">GET</h4>
+
+<p><code class="prettyprint">GET /geodata/{geodata_id}/</code></p>
 
 <p>Crunch maintains a few geojson/topojson resources and publishes them on CDN.
 Most of their properties, with the exception of <code class="prettyprint">metadata</code>, are present on the catalog
@@ -6992,6 +6992,12 @@ resources. For other formats, users may supply relevant metadata for the geodatu
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<h4 id="delete">DELETE</h4>
+
+<p><code class="prettyprint">DELETE /geodata/{geodata_id}/</code></p>
+
+<p>Deletes the geodata entity. Returns 204.</p>
 
 <h3 id="geodata-for-common-applications">Geodata for common applications</h3>
 
