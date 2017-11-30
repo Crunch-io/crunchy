@@ -7449,7 +7449,7 @@ return 204 status. As with the POSTing new entities to the catalog, only the dat
 
           <h2 id="projects">Projects</h2>
 
-<p>Projects represent groups of users that share a common set of datasets. Any user
+<p>Projects represent groups of users or teams that share a common set of datasets. Any user
 can belong to none or many projects.</p>
 
 <p>They live under /projects/ and will list the projects that the authenticated user
@@ -7713,7 +7713,7 @@ a 400 response.</p>
 
 <h4 id="members-permissions">Members permissions</h4>
 
-<p>Members of a project can be wither viewers or editors. By default all members
+<p>Members of a project can be either viewers or editors. By default all members
 will be viewers and a selected group of them (at least one) will be editor.</p>
 
 <p>These permissions are available on the members catalog under the <code class="prettyprint">permissions</code> 
@@ -7733,10 +7733,16 @@ editors.</p>
 make changes on the project itself such as changing its name, icon, members 
 management or change members&rsquo; permissions.</p>
 
+<p>A project can have users or teams as members. Teams represent groups of users
+to be handled together. When a team gets access to a project, all members of
+the team inherit those permissions. In the case that a user has access
+to a project through several teams or direct access, the final permissions
+will be added together.</p>
+
 <h4 id="get">GET</h4>
 
-<p>Returns a catalog with all users that have access to this project and their 
-project permissions in the following format:</p>
+<p>Returns a catalog with all users and teams that have access to this project and 
+their project permissions in the following format:</p>
 <pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/projects/abcd/members/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -7746,6 +7752,7 @@ project permissions in the following format:</p>
     </span><span class="nt">"http://app.crunch.io/api/users/00002/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean-Luc Picard"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"captain@crunch.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"collaborator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -7758,6 +7765,7 @@ project permissions in the following format:</p>
     </span><span class="nt">"http://app.crunch.io/api/users/00005/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William Riker"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstofficer@crunch.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"collaborator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -7766,12 +7774,19 @@ project permissions in the following format:</p>
         </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"http://app.crunch.io/api/teams/000a5/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Viewers teams"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>The catalog will be indexed by each user&rsquo;s entity URL and its tuple will contain
+<p>The catalog will be indexed by each entity&rsquo;s URL and its tuple will contain
 basic information (name and email) as well as the permissions each user has
 on the given project.</p>
 
@@ -7813,6 +7828,7 @@ email does not exist, the server will return a 400 response.</p>
   </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.crunch.io/api/projects/6c01/members/"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"http://app.crunch.io/api/users/001/"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="nt">"http://app.crunch.io/api/teams/00a/"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
     </span><span class="nt">"http://app.crunch.io/api/users/002/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nt">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -7851,6 +7867,44 @@ user to configure their account in order to use the app.</p>
 part that the server will replace with the project&rsquo;s ID.</p>
 
 <p>This behavior is the same as described for <a href="#inviting-new-users">inviting new users when sharing a dataset</a></p>
+
+<h3 id="users">Users</h3>
+
+<p>A read only endpoint that lists all the individual users that have access to
+this project, independent from their access type (via team or direct project 
+membership).</p>
+
+<p>The payload shares a similar shape as the members endpoint, but this catalog
+contains only users.</p>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/projects/abcd/users/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"element"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoji:catalog"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://app.crunch.io/api/projects/6c01/members/"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"http://app.crunch.io/api/users/00002/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean-Luc Picard"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"captain@crunch.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"collaborator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"allowed_dataset_permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"http://app.crunch.io/api/users/00005/"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"William Riker"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstofficer@crunch.io"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"collaborator"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"allowed_dataset_permissions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"edit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"view"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"teams"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"http://app.crunch.io/api/teams/000a5/"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="datasets">Datasets</h3>
 
