@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Datasets &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Decks" href="endpoint-deck.html" />
+    <link rel="prev" title="Comparisons" href="endpoint-comparison.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-comparison.html" title="Previous Chapter: Comparisons"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Comparisons</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-deck.html" title="Next Chapter: Decks"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Decks &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drafts">Drafts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#changing-ownership">Changing ownership</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#post">POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-catalogs">Other catalogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#team-datasets">Team datasets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-datasets">Project datasets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter-datasets-by-name">Filter datasets by name</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-order">Dataset order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put">PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">PATCH</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">GET</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#url-parameters">URL Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#dataset-attributes">Dataset attributes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#dataset-catalogs">Dataset catalogs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">PATCH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#changing-dataset-ownership">Changing dataset ownership</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#copying-over-from-another-dataset">Copying over from another dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#views">Views</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#applied-filters">Applied filters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cube">Cube</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#export">Export</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#match">Match</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#fragments">Fragments</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#table">Table</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#state">State</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#exclusion">Exclusion</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#stream">Stream</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#preferences">Preferences</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#primary-key">Primary key</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#catalogs">Catalogs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#users">Users</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#actions">Actions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#batches">Batches</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#decks">Decks</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#comparisons">Comparisons</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#filters">Filters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#forks">Forks</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#joins">Joins</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#multitables">Multitables</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#permissions">Permissions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#savepoints">Savepoints</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#weight-variables">Weight variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="datasets">
+<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"> 🔗</a></h1>
+<p>Datasets are the primary containers of statistical data in Crunch.
+Datasets contain a collection of <a class="reference external" href="#variables">variables</a>, with which
+analyses can be composed, saved, and exported. These analyses may
+include filters, which users can define and persist. Users can also
+share datasets with each other.</p>
+<p>Datasets are comprised of one or more batches of data uploaded to
+Crunch, and additional batches can be appended to datasets. Similarly,
+variables from other datasets can be joined onto a dataset.</p>
+<p>As with other objects in Crunch, references to the set of dataset
+entities are exposed in a catalog. This catalog can be organized and
+ordered.</p>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2be04a8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2be04a8_R">R</a></li>
+<li><a data-toggle="tab" href="#2b27d2be04a8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2be04a8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2be04a8_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
+<span class="n">login</span><span class="p">()</span>
+
+<span class="c1"># Upon logging in, a GET /datasets/ is done automatically, to populate:</span>
+<span class="n">listDatasets</span><span class="p">()</span> <span class="c1"># Shows the names of all datasets you have</span>
+<span class="n">listDatasets</span><span class="p">(</span><span class="n">refresh</span><span class="o">=</span><span class="n">TRUE</span><span class="p">)</span> <span class="c1"># Refreshes that list (and does GET /datasets/)</span>
+
+<span class="c1"># To get the raw Shoji object, should you need it,</span>
+<span class="n">crGET</span><span class="p">(</span><span class="s2">&quot;https://app.crunch.io/api/datasets/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2be04a8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;by_name&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/by_name/</span><span class="si">{name}</span><span class="s2">/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;search&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/search/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/order/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;specification&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/specifications/datasets/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalog of Datasets that belong to this user. POST a Dataset representation (serialized JSON) here to create a new one; a 201 response indicates success and returns the location of the new object. GET that URL to retrieve the object.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/datasets/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;James T. Kirk&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Voyage Home&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Stardate 8390&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+                <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="mi">67</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;is_published&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cc9161&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/685722/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2286&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/ff9443/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leonard Nimoy&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Wrath of Khan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;is_published&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a598c7&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/af432c/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-03&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Awesome Dataset</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">description</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">(optional) This dataset is awesome because I made it, and you can do it too.</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/datasets/</span></code></p>
+<p>When authenticated, GET returns 200 status with a Shoji Catalog of
+datasets to which the authenticated user has access. Catalog tuples
+contain the following attributes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="11%" />
+<col width="36%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Required. The name of the dataset</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>“”</td>
+<td>A longer description of the dataset</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>&#160;</td>
+<td>The dataset’s id</td>
+</tr>
+<tr class="row-odd"><td>archived</td>
+<td>bool</td>
+<td>false</td>
+<td>Whether the dataset is “archived” or active</td>
+</tr>
+<tr class="row-even"><td>permissions</td>
+<td>object</td>
+<td><code class="docutils literal"><span class="pre">{&quot;edit&quot;:</span> <span class="pre">false}</span></code></td>
+<td>Authorizations on this dataset;
+see <a class="reference external" href="#permissions">Permissions</a></td>
+</tr>
+<tr class="row-odd"><td>owner_id</td>
+<td>URL</td>
+<td>&#160;</td>
+<td>URL of the user entity of the dataset’s owner</td>
+</tr>
+<tr class="row-even"><td>owner_name</td>
+<td>string</td>
+<td>“”</td>
+<td>That user’s name, for display</td>
+</tr>
+<tr class="row-odd"><td>size</td>
+<td>object</td>
+<td><code class="docutils literal"><span class="pre">{&quot;rows&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;columns&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;unfiltered_rows&quot;:</span> <span class="pre">0}</span></code></td>
+<td>Dimensions of the dataset</td>
+</tr>
+<tr class="row-even"><td>creation_time</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>Datetime at which the dataset was created in Crunch</td>
+</tr>
+<tr class="row-odd"><td>modification_time</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>Datetime of the last modification for this dataset
+globally</td>
+</tr>
+<tr class="row-even"><td>start_date</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>Date/time for which the data in the dataset
+corresponds</td>
+</tr>
+<tr class="row-odd"><td>end_date</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>End date/time of the dataset’s data,
+defining a start_date:end_date range</td>
+</tr>
+<tr class="row-even"><td>streaming</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Possible values “no”, “finished”, and “streaming”
+to enable/disable streaming</td>
+</tr>
+<tr class="row-odd"><td>current_editor</td>
+<td>URL or null</td>
+<td>&#160;</td>
+<td>URL of the user entity that is currently editing
+the dataset, or <code class="docutils literal"><span class="pre">null</span></code> if there is no current
+editor</td>
+</tr>
+<tr class="row-even"><td>current_editor_name</td>
+<td>string or null</td>
+<td>&#160;</td>
+<td>That user’s name, for display</td>
+</tr>
+<tr class="row-odd"><td>is_published</td>
+<td>boolean</td>
+<td>true</td>
+<td>Indicates if the dataset is published to viewers
+or not</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A user may have access to a dataset because someone has shared it directly
+with him, or because someone has shared it with a team of which he is a
+member. If a user has access to a dataset from different sources, be it by
+multiple teams or by direct sharing, the final permissions they have on the
+dataset will be the maximum of all the permissions granted.</p>
+</div>
+</div>
+<div class="section" id="drafts">
+<h3>Drafts<a class="headerlink" href="#drafts" title="Permalink to this headline"> 🔗</a></h3>
+<p>A dataset marked as <code class="docutils literal"><span class="pre">is_published:</span> <span class="pre">false</span></code> can only be accessed by
+dataset editors. They will still be available on the catalog for all
+shared users but API clients should know to display these to the
+appropriate users.</p>
+<p>The <code class="docutils literal"><span class="pre">is_published</span></code> flag of a dataset can be changed by editors from
+the catalog or directly on the dataset entity.</p>
+</div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1dadf98_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d1dadf98_R">R</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1dadf98_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">231</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Stardate 8130.4&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d1dadf98_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span>library(crunch)
+login()
+
+# Dataset objects contain information from
+# the catalog tuple and the dataset entity.
+# Editing attributes by &lt;- assignment will
+# PATCH or PUT the right payload to the
+# right place--you don&#39;t have to think about
+# catalogs and entities.
+ds &lt;- loadDataset(&quot;The Wrath of Khan&quot;)
+description(ds)
+## [1] &quot;&quot;
+description(ds) &lt;- &quot;Stardate 8130.4&quot;
+description(ds)
+## [1] &quot;Stardate 8130.4&quot;
+
+# If you needed to touch HTTP more directly,
+# you could:
+payload &lt;- list(
+    `https://app.crunch.io/api/datasets/a598c7/`=list(
+        description=&quot;Stardate 8130.4&quot;
+    )
+)
+crPATCH(&quot;https://app.crunch.io/api/datasets/&quot;,
+    body=toJSON(payload))
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">PATCH</span> <span class="pre">/datasets/</span></code></p>
+<p>Use PATCH to edit the “name”, “description”, “start_date”, “end_date”,
+or “archived” state of one or more datasets. A successful request
+returns a 204 response. The attributes changed will be seen by all users
+with access to this dataset; i.e., names, descriptions, and archived
+state are not merely attributes of your view of the data but of the
+datasets themselves.</p>
+<p>Authorization is required: you must have “edit” privileges on the
+dataset(s) being modified, as shown in the “permissions” object in the
+catalog tuples. If you try to PATCH and are not authorized, you will
+receive a 403 response and no changes will be made.</p>
+<p>The tuple attributes other than “name”, “description”, and “archived”
+cannot be modified here by PATCH. Attempting to modify other attributes,
+or including new attributes, will return a 400 response. Changing
+permissions is accomplished by PATCH on the permissions catalog, and
+changing the owner is a PATCH on the dataset entity. The “owner_name”
+and “current_editor_name” attributes are modifiable, assuming
+authorization, by PATCH on the associated user entity. Dataset “size” is
+a cached property of the data, changing only if the number of rows or
+columns in the dataset change. Dataset “id”, “modification_time” and
+“creation_time” are immutable/system generated.</p>
+<p>When PATCHing, you may include only the keys in each tuple that are
+being modified, or you may send the complete tuple. As long as the keys
+that cannot be modified via PATCH here are not modified, the request
+will succeed.</p>
+<p>Note that, unlike other Shoji Catalog resources, you cannot PATCH to add
+new datasets, nor can you PATCH a null tuple to delete them. Attempting
+either will return a 400 response. Creating datasets is allowed only by
+POST to the catalog, while deleting datasets is accomplished via a
+DELETE on the dataset entity.</p>
+<div class="section" id="changing-ownership">
+<h4>Changing ownership<a class="headerlink" href="#changing-ownership" title="Permalink to this headline"> 🔗</a></h4>
+<p>Any changes to the ownership of a dataset need to be done by the current
+editor.</p>
+<p>Only the dataset owner can change the ownership to another user. This
+can be done by PATCH request with the new owners’ email of API URL. The
+new owner must have advanced permissions on Crunch.</p>
+<p>Other editors of the dataset can change the ownership of a dataset only
+to a Project as long as they andthe current owner of the dataset are
+both editors on such project.</p>
+</div>
+</div>
+<div class="section" id="post">
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d202dc18_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d202dc18_R">R</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d202dc18_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">88</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Trouble with Tribbles&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Stardate 4523.3&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">223</span><span class="n">fd4</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d202dc18_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
+<span class="n">login</span><span class="p">()</span>
+
+<span class="c1"># To create just the dataset entity, you can</span>
+<span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">createDataset</span><span class="p">(</span><span class="s2">&quot;Trouble with Tribbles&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Stardate 4523.3&quot;</span><span class="p">)</span>
+
+<span class="c1"># More likely, you&#39;ll have a data.frame or</span>
+<span class="c1"># similar object in R, and you&#39;ll want to send</span>
+<span class="c1"># it to Crunch. To do that,</span>
+<span class="n">df</span> <span class="o">&lt;-</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;~/tribbles.csv&quot;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">newDataset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Trouble with Tribbles&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Stardate 4523.3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/datasets/</span></code></p>
+<p>POST a JSON object to create a new Dataset; a 201 indicates success, and
+the returned Location header refers to the new Dataset resource.</p>
+<p>The body must contain a “name”. You can also include a Crunch Table in a
+“table” key, as discussed in the <a class="reference external" href="#metadata-document-csv">Feature
+Guide</a>. The full set of possible attributes
+to include when POSTing to create a new dataset entity are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="11%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Human-friendly string identifier</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>Optional longer string</td>
+</tr>
+<tr class="row-even"><td>archived</td>
+<td>boolean</td>
+<td>Whether the variable should be hidden from
+most views; default: false</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>URL</td>
+<td>Provide a project URL to set the owner to that
+project; if omitted, the authenticated user
+will be the owner</td>
+</tr>
+<tr class="row-even"><td>notes</td>
+<td>string</td>
+<td>Blank if omitted. Optional notes for the
+dataset</td>
+</tr>
+<tr class="row-odd"><td>start_date</td>
+<td>date</td>
+<td>ISO-8601 formatted date with day resolution</td>
+</tr>
+<tr class="row-even"><td>end_date</td>
+<td>date</td>
+<td>ISO-8601 formatted date with day resolution</td>
+</tr>
+<tr class="row-odd"><td>streaming</td>
+<td>string</td>
+<td>Only “streaming”, “finished” and “no” available
+values to define if a dataset will accept
+streaming data or not</td>
+</tr>
+<tr class="row-even"><td>is_published</td>
+<td>boolean</td>
+<td>If false, only project editors will have access
+to this dataset</td>
+</tr>
+<tr class="row-odd"><td>weight_variables</td>
+<td>array</td>
+<td>Contains aliases of weight variables to start
+this dataset with; variables must be numeric
+type.</td>
+</tr>
+<tr class="row-even"><td>table</td>
+<td>object</td>
+<td>Metadata definition for the variables in
+the dataset</td>
+</tr>
+<tr class="row-odd"><td>maintainer</td>
+<td>URL</td>
+<td>User URL that will be the maintainer of this
+dataset in case of system notifications;
+if omitted, the authenticated user will be the
+maintainer</td>
+</tr>
+<tr class="row-even"><td>settings</td>
+<td>object</td>
+<td><a class="reference external" href="#settings">Settings object</a> containing
+<code class="docutils literal"><span class="pre">weight</span></code>, <code class="docutils literal"><span class="pre">viewers_can_export</span></code>,
+<code class="docutils literal"><span class="pre">viewers_can_change_weight</span></code>,
+<code class="docutils literal"><span class="pre">viewers_can_share</span></code>, <code class="docutils literal"><span class="pre">dashboard_deck</span></code>,
+and/or <code class="docutils literal"><span class="pre">min_base_size</span></code> attributes. If a
+“weight” is specified, it will be automatically
+added to “weight_variables” if not already
+specified there.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="other-catalogs">
+<h2>Other catalogs<a class="headerlink" href="#other-catalogs" title="Permalink to this headline"> 🔗</a></h2>
+<p>In addition to <code class="docutils literal"><span class="pre">/datasets/</span></code>, there are a few other catalogs of
+datasets in the API:</p>
+<div class="section" id="team-datasets">
+<h3>Team datasets<a class="headerlink" href="#team-datasets" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/teams/{team_id}/datasets/</span></code></p>
+<p>A Shoji Catalog of datasets that have been shared with this team. These
+datasets are not included in the primary dataset catalog. See
+<a class="reference external" href="#teams">teams</a> for more.</p>
+</div>
+<div class="section" id="project-datasets">
+<h3>Project datasets<a class="headerlink" href="#project-datasets" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/projects/{project_id}/datasets/</span></code></p>
+<p>A Shoji Catalog of datasets that belong to this project. These datasets
+are not included in the primary dataset catalog. See
+<a class="reference external" href="#projects">projects</a> for more.</p>
+</div>
+<div class="section" id="filter-datasets-by-name">
+<h3>Filter datasets by name<a class="headerlink" href="#filter-datasets-by-name" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/by_name/{dataset_name}/</span></code></p>
+<p>The <code class="docutils literal"><span class="pre">by_name</span></code> catalog returns (on GET) a Shoji Catalog that is a
+subset of <code class="docutils literal"><span class="pre">/datasets/</span></code> where the dataset name matches the
+“dataset_name” value. Matches are case sensitive.</p>
+<p>Verbs other than GET are not supported on this subcatalog. PATCH and
+POST at the primary dataset catalog.</p>
+</div>
+</div>
+<div class="section" id="dataset-order">
+<h2>Dataset order<a class="headerlink" href="#dataset-order" title="Permalink to this headline"> 🔗</a></h2>
+<p>The dataset order allows each user to organize the order in which their
+datasets are presented.</p>
+<p>This endpoint returns a <code class="docutils literal"><span class="pre">shoji:order</span></code>. Like all shoji orders, it may
+not contain all available datasets. The catalog should always be the
+authoritative source of available datasets.</p>
+<p>Any dataset not present on the order graph should be considered to be at
+the bottom of the root list in arbitrary order.</p>
+<div class="section" id="id1">
+<h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/datasets/{dataset_id}/order/</span></code></p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2524ef0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2524ef0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/order/&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;dataset_url&quot;</span><span class="p">,</span>
+        <span class="p">{</span><span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;dataset_url&quot;</span>
+        <span class="p">]}</span>
+     <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="put">
+<h3>PUT<a class="headerlink" href="#put" title="Permalink to this headline"> 🔗</a></h3>
+<p>Receives a complete <code class="docutils literal"><span class="pre">shoji:order</span></code> payload and replaces the existing
+graph with the new one.</p>
+<p>It cannot contain dataset references that are not in the dataset
+catalog, else the API will return a 400 response.</p>
+<p>Standard <code class="docutils literal"><span class="pre">shoji:order</span></code> graph validation will apply.</p>
+</div>
+<div class="section" id="id2">
+<h3>PATCH<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h3>
+<p>Same semantics as PUT</p>
+</div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="id3">
+<h3>GET<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/datasets/{dataset_id}/</span></code></p>
+<div class="section" id="url-parameters">
+<h4>URL Parameters<a class="headerlink" href="#url-parameters" title="Permalink to this headline"> 🔗</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dataset_id</td>
+<td>The id of the dataset</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dataset-attributes">
+<h4>Dataset attributes<a class="headerlink" href="#dataset-attributes" title="Permalink to this headline"> 🔗</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="11%" />
+<col width="34%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Required. The name of the dataset</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>“”</td>
+<td>A longer description of the dataset</td>
+</tr>
+<tr class="row-even"><td>notes</td>
+<td>string</td>
+<td>“”</td>
+<td>Additional information you want to associate with this
+dataset</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>string</td>
+<td>&#160;</td>
+<td>The dataset’s id</td>
+</tr>
+<tr class="row-even"><td>archived</td>
+<td>bool</td>
+<td>false</td>
+<td>Whether the dataset is “archived” or active</td>
+</tr>
+<tr class="row-odd"><td>permissions</td>
+<td>object</td>
+<td><code class="docutils literal"><span class="pre">{&quot;edit&quot;:</span> <span class="pre">false}</span></code></td>
+<td>Authorizations on this dataset;
+see <a class="reference external" href="#permissions">Permissions</a></td>
+</tr>
+<tr class="row-even"><td>owner_id</td>
+<td>URL</td>
+<td>&#160;</td>
+<td>URL of the user entity of the dataset’s owner</td>
+</tr>
+<tr class="row-odd"><td>owner_name</td>
+<td>string</td>
+<td>“”</td>
+<td>That user’s name, for display</td>
+</tr>
+<tr class="row-even"><td>size</td>
+<td>object</td>
+<td><code class="docutils literal"><span class="pre">{&quot;rows&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;unfiltered_rows&quot;,</span> <span class="pre">&quot;columns&quot;:</span> <span class="pre">0}</span></code></td>
+<td>Dimensions of the dataset</td>
+</tr>
+<tr class="row-odd"><td>creation_time</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>Datetime at which the dataset was created in Crunch</td>
+</tr>
+<tr class="row-even"><td>start_date</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>Date/time for which the data in the dataset corresponds</td>
+</tr>
+<tr class="row-odd"><td>end_date</td>
+<td>ISO-8601 string</td>
+<td>&#160;</td>
+<td>End date/time of the dataset’s data, defining a
+start_date:end_date range</td>
+</tr>
+<tr class="row-even"><td>streaming</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Possible values “no”, “finished”, and “streaming”
+to determine if a dataset is streamed or not</td>
+</tr>
+<tr class="row-odd"><td>current_editor</td>
+<td>URL or null</td>
+<td>&#160;</td>
+<td>URL of the user entity that is currently editing the
+dataset, or <code class="docutils literal"><span class="pre">null</span></code> if there is no current editor</td>
+</tr>
+<tr class="row-even"><td>current_editor_name</td>
+<td>string or null</td>
+<td>&#160;</td>
+<td>That user’s name, for display</td>
+</tr>
+<tr class="row-odd"><td>maintainer</td>
+<td>URL</td>
+<td>&#160;</td>
+<td>The URL of the dataset maintener. Will always point to
+a user</td>
+</tr>
+<tr class="row-even"><td>app_settings</td>
+<td>object</td>
+<td><code class="docutils literal"><span class="pre">{}</span></code></td>
+<td>A place for API clients to store values they need per
+dataset; It is recommended that clients namespace their
+keys to avoid collisions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dataset-catalogs">
+<h4>Dataset catalogs<a class="headerlink" href="#dataset-catalogs" title="Permalink to this headline"> 🔗</a></h4>
+<p>A dataset contains a number of catalog resources that contain
+collections of related objects. They are available under the
+<code class="docutils literal"><span class="pre">catalogs</span></code> attribute of the dataset Shoji entity.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2082748_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2082748_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;batches&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/batches/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;joins&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/joins/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;parent&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/variables/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/actions/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;savepoints&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/savepoints/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/filters/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;multitables&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/multitables/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;comparisons&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/comparisons/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;forks&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/forks/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;decks&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/decks/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/permissions/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Catalog name</th>
+<th class="head">Resource</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>batches</td>
+<td>Returns
+all the
+batches
+(successful
+and
+failed)
+used for
+this
+dataset.
+See
+<a class="reference external" href="#batches">Batches</a>.</td>
+</tr>
+<tr class="row-odd"><td>joins</td>
+<td>Contains
+the list
+of all
+datasets
+joined to
+the
+current
+dataset.
+See
+<a class="reference external" href="#joins">Joins</a>.</td>
+</tr>
+<tr class="row-even"><td>parent</td>
+<td>Indicates
+the
+catalog
+where
+this
+dataset
+is found
+(project
+or main
+dataset
+catalog)</td>
+</tr>
+<tr class="row-odd"><td>variables</td>
+<td>Catalog
+of all
+public
+variables
+of this
+dataset.
+See
+<a class="reference external" href="#variables">Variables</a>.</td>
+</tr>
+<tr class="row-even"><td>actions</td>
+<td>All
+actions
+executed
+on this
+dataset</td>
+</tr>
+<tr class="row-odd"><td>savepoints</td>
+<td>Lists the
+saved
+versions
+for this
+dataset.
+See
+<a class="reference external" href="#versions">Versions</a>.</td>
+</tr>
+<tr class="row-even"><td>filters</td>
+<td>Makes
+available
+the
+public
+and
+user-created
+filters.
+See
+<a class="reference external" href="#filters">Filters</a>.</td>
+</tr>
+<tr class="row-odd"><td>multitables</td>
+<td>Similar
+to
+filters,
+displays
+all
+available
+multitables.
+See
+<a class="reference external" href="#mulitables">Multitables</a></td>
+</tr>
+<tr class="row-even"><td>comparisons</td>
+<td>Contains
+all
+available
+comparisons.
+See
+<a class="reference external" href="#comparisons">Comparisons</a>.</td>
+</tr>
+<tr class="row-odd"><td>forks</td>
+<td>Returns
+all the
+forks
+created
+from this
+dataset</td>
+</tr>
+<tr class="row-even"><td>decks</td>
+<td>The list
+of all
+decks on
+this
+dataset
+for the
+authentic
+ated
+user</td>
+</tr>
+<tr class="row-odd"><td>permissions</td>
+<td>Returns
+the list
+of all
+users and
+teams
+with
+access to
+this
+dataset.
+See
+<a class="reference external" href="#permissions">Permissions</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>PATCH<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">PATCH</span> <span class="pre">/datasets/{dataset_id}/</span></code></p>
+<p>See above about PATCHing the dataset catalog for all attributes
+duplicated on the entity and the catalog. You may PATCH those attributes
+on the entity, but you are encouraged to PATCH the catalog instead. The
+two attributes appearing on the entity and not the catalog, “notes” is
+modifiable by PATCH here.</p>
+<p>A successful PATCH request returns a 204 response. The attributes
+changed will be seen by all users with access to this dataset; i.e.,
+names, descriptions, and archived state are not merely attributes of
+your view of the data but of the datasets themselves.</p>
+<p>Authorization is required: you must have “edit” privileges on this
+dataset. If you try to PATCH and are not authorized, you will receive a
+403 response and no changes will be made. If you have edit permissions
+but are not the current editor of this dataset, PATCH requests of
+anything other than “current_editor” will respond with 409 status. You
+will need first to PATCH to make yourself the current editor and then
+proceed to make the desired changes.</p>
+<p>When PATCHing, you may include only the keys that are being modified, or
+you may send the complete entity. As long as the keys that cannot be
+modified via PATCH here are not modified, the request will succeed.</p>
+<div class="section" id="changing-dataset-ownership">
+<h4>Changing dataset ownership<a class="headerlink" href="#changing-dataset-ownership" title="Permalink to this headline"> 🔗</a></h4>
+<p>If you are the current editor of a dataset you can change its owner by
+PATCHing the <code class="docutils literal"><span class="pre">owner</span></code> attribute witht he URL of the new owner.</p>
+<p>Only Users, Teams or Projects can be set as owners of a dataset.</p>
+<ul class="simple">
+<li>Users: New owner needs to be advanced users to be owner of a dataset.</li>
+<li>Teams: Authenticated user needs to be a member of the team.</li>
+<li>Projects: Authenticated user needs to have edit permissions on the
+project.</li>
+</ul>
+</div>
+<div class="section" id="copying-over-from-another-dataset">
+<h4>Copying over from another dataset<a class="headerlink" href="#copying-over-from-another-dataset" title="Permalink to this headline"> 🔗</a></h4>
+<p>In the needed case to copy over the work from another dataset to the
+current one, it is possible to issue a PATCH request with the
+<code class="docutils literal"><span class="pre">copy_from</span></code> attribute pointing to the URL of the source dataset to
+use.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1e91588_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1e91588_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;copy_from&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/1234/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>All dataset attributes, permissions, derivations, private variables, etc
+will be brought over to the current dataset:</p>
+<ul class="simple">
+<li>Decks</li>
+<li>Filters</li>
+<li>Multitables</li>
+<li>Comparisons</li>
+<li>Personal variable order</li>
+<li>Derived variables</li>
+<li>Personal variables</li>
+<li>Permissions</li>
+</ul>
+<p>The response will be a <code class="docutils literal"><span class="pre">shoji:entity</span></code> containing as a body an object
+with keys for each entity type that uas not been copied. In the case of
+variables these entities will display their name, alias and owner (if
+personal).</p>
+<p>All the URLs will refer to entities on the source dataset.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1f843c8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1f843c8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;https://app.crunch.io/dataset/1234/variables/abc/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Variable name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Variable alias&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/users/qwe/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Angus MacGyver&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;https://app.crunch.io/dataset/1234/variables/cde/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Variable name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Variable alias&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner_url&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;https://app.crunch.io/filters/abcd/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;filter name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/users/qwe/&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;http://app.crunch.io/filters/cdef/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;filter name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/users/qwe/&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>It is possible to copy information only for one user from another
+dataset, the payload will need the extra <code class="docutils literal"><span class="pre">user</span></code> key. It can contain
+either a user URL or a user email:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d20205c0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d20205c0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;copy_from&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/1234/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/abcd/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="delete">
+<h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/datasets/{dataset_id}/</span></code></p>
+<p>With sufficient authorization, a successful DELETE request removes the
+dataset from the Crunch system and responds with 204 status.</p>
+</div>
+<div class="section" id="views">
+<h3>Views<a class="headerlink" href="#views" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="applied-filters">
+<h4>Applied filters<a class="headerlink" href="#applied-filters" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="cube">
+<h4>Cube<a class="headerlink" href="#cube" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/cube/?q</span></code></p>
+<p>See <a class="reference external" href="#multidimensional-analysis">Multidimensional Analysis</a>.</p>
+</div>
+<div class="section" id="export">
+<h4>Export<a class="headerlink" href="#export" title="Permalink to this headline"> 🔗</a></h4>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d248bf60_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d248bf60_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span>GET `/datasets/{id}/export/` HTTP/1.1
+Host: app.crunch.io
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>GET returns a Shoji View of available dataset export formats.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d23a6940_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d23a6940_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/export/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;spss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/export/spss/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;csv&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/export/csv/&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>A POST request on any of the export views will return 202 status with a
+Progress response in the body and a Location header pointing to the
+location of the exported file to be downloaded. Poll the progress URL
+for status on the completion of the export. When complete, GET the
+Location URL from the original response to download the file.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d23e75c0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d23e75c0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span>POST `/api/datasets/f2364cc66e604d63a3be3e8811fc902f/export/spss/` HTTP/1.1
+
+{
+  &quot;where&quot;: {
+    &quot;function&quot;: &quot;select&quot;,
+    &quot;args&quot;:[
+      {
+        &quot;map&quot;: {
+          &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000000/&quot;: {&quot;variable&quot;: &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000000/&quot;},
+          &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000001/&quot;: {&quot;variable&quot;: &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000001/&quot;},
+          &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000002/&quot;: {&quot;variable&quot;: &quot;https://app.crunch.io/api/datasets/f2364cc66e604d63a3be3e8811fc902f/variables/000002/&quot;}
+          }
+      }
+    ]
+  }
+}
+
+HTTP/1.1 202 Accepted
+Content-Length: 176
+Access-Control-Allow-Methods: OPTIONS, AUTH, POST, GET, HEAD, PUT, PATCH, DELETE
+Access-Control-Expose-Headers: Allow, Location, Expires
+Content-Encoding: gzip
+Location: https://crunch-io.s3.amazonaws.com/exports/dataset_exports/f2364cc66e604d63a3be3e8811fc902f/My_Dataset.sav?Signature=sOmeSigNaTurE%3D&amp;Expires=1470265052&amp;AWSAccessKeyId=SOMEKEY
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To export a subset of the dataset, instead perform a POST request and
+include a JSON body with an optional “filter” expression for the rows
+and a “where” attribute to specify variables to include.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="26%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>filter</td>
+<td>A Crunch filter expression
+defining a filter for the given
+export</td>
+<td><code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;==&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;variable&quot;:</span> <span class="pre">&quot;000000&quot;},</span> <span class="pre">{&quot;value&quot;:</span> <span class="pre">1}]}</span></code></td>
+</tr>
+<tr class="row-odd"><td>where</td>
+<td>A Crunch expression defining
+which variables to export.
+Refer to <a class="reference external" href="#frame-functions">Frame functions</a> for the
+available functions here.</td>
+<td><code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;select&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;map&quot;:</span> <span class="pre">{&quot;000000&quot;:</span> <span class="pre">{&quot;variable&quot;:</span> <span class="pre">000000&quot;}}}]}</span></code></td>
+</tr>
+<tr class="row-even"><td>options</td>
+<td>An object of extra settings,
+which may be format specific.
+See below.</td>
+<td><code class="docutils literal"><span class="pre">{&quot;use_category_ids&quot;:</span> <span class="pre">true}</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference external" href="#expressions">“Expressions”</a> for more on Crunch expressions.</p>
+<p>The following rules apply for all formats:</p>
+<ul class="simple">
+<li>The dataset’s exclusion filter will be applied; however, any of the
+user’s personal “applied filters” are not, unless they are explicitly
+included in the request.</li>
+<li>Hidden/discarded variables are not exported unless editors use a
+<code class="docutils literal"><span class="pre">where</span></code> clause, then it will be evaluated over all non hidden
+variables.</li>
+<li>Personal (private) variables are not exported unless indicated, then
+only the current user’s personal variables will be exported</li>
+<li>Variables (columns) will be ordered in a flattened version of the
+dataset’s hierarchical order.</li>
+<li>Derived variables will be exported with their values, without their
+functional links.</li>
+</ul>
+<p>Some format-specific properties and options:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="25%" />
+<col width="49%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Format</th>
+<th class="head">Attribute</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>csv</td>
+<td>use_category_ids</td>
+<td>Export categorical data as its numeric IDs
+instead of category names?</td>
+<td>false</td>
+</tr>
+<tr class="row-odd"><td>csv</td>
+<td>missing_values</td>
+<td>If present, will use the specified string
+to indicate missing values. If omitted,
+will use the missing reason strings</td>
+<td><em>omitted</em></td>
+</tr>
+<tr class="row-even"><td>csv</td>
+<td>header_field</td>
+<td>Use the variable’s alias/name/description
+in the CSV header row, or <code class="docutils literal"><span class="pre">null</span></code> for no
+header row</td>
+<td>“alias”</td>
+</tr>
+<tr class="row-odd"><td>spss</td>
+<td>var_label_field</td>
+<td>Use the variable’s name/description as
+SPSS variable label</td>
+<td>“description”</td>
+</tr>
+<tr class="row-even"><td>spss</td>
+<td>prefix_subvariables</td>
+<td>Prefix subvariable labels with the parent
+array variable’s label?</td>
+<td>false</td>
+</tr>
+<tr class="row-odd"><td>all</td>
+<td>include_personal</td>
+<td>Include the user’s personal variables in
+the exported file?</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>SPSS</p>
+<p>Categorical-array and multiple-response variables will be exported as
+“mrsets”, as supported by SPSS. If the <code class="docutils literal"><span class="pre">prefix_subvariables</span></code> option is
+set to <code class="docutils literal"><span class="pre">true</span></code>, then the subvariables’ labels will be prefixed with the
+parent’s label.</p>
+<p>To pick which variable field to use on the <code class="docutils literal"><span class="pre">label</span></code> field on the SPSS
+variables, use the <code class="docutils literal"><span class="pre">var_label_field</span></code> in the <code class="docutils literal"><span class="pre">options</span></code> attribute in
+the POST body. The only valid fields are <code class="docutils literal"><span class="pre">description</span></code> and <code class="docutils literal"><span class="pre">name</span></code>.</p>
+<p>CSV</p>
+<p>By default, categorical variable values will be exported using the
+category name and missing values will use their corresponding reason
+string for all variables.</p>
+<p>The missing values will be exported with their configured missing reason
+in the CSV file. If specified on the <code class="docutils literal"><span class="pre">missing_values</span></code> export option,
+then all missing values on all columns will use such string instead of
+the reason.</p>
+<p>To control the output of the header row, use the <code class="docutils literal"><span class="pre">header_field</span></code>
+option. Valid values for this option are:</p>
+<ul class="simple">
+<li>alias (default)</li>
+<li>name</li>
+<li>description</li>
+<li><code class="docutils literal"><span class="pre">null</span></code> - Sending <code class="docutils literal"><span class="pre">null</span></code> will make the resulting CSV without a
+header row.</li>
+</ul>
+<p>Refer to the options described on the table above for the <code class="docutils literal"><span class="pre">csv</span></code> format
+to change this behavior.</p>
+</div>
+<div class="section" id="match">
+<h4>Match<a class="headerlink" href="#match" title="Permalink to this headline"> 🔗</a></h4>
+<p>The match endpoint provides a list of matches indicating which variables
+match amongst the datasets provided. To use it, send a post request
+representing an ordered list of datasets you would like to match.
+Include the “minimum_matches” parameter in your graph if you would like
+to limit the output of the matches based on the number of datasets
+matching. The default minim_matches is 2. Currently, only alias is
+utilized to match the variables to one another.</p>
+<p>The result of a match endpoint request can be one of two things. If the
+same match has been completed previously, the api with return a 201
+status code and a Location header to the existing results. Otherwise,
+the endpoint will return a 202 status code, with a Progress result that
+provides status information as the match is completed. Either request
+will result in the location header being set to the URI for staticly
+generated comparison result that can be accessed with the match is
+completed.</p>
+<p>The results are a Shoji Entity with an attribute <code class="docutils literal"><span class="pre">matches</span></code>. The
+matches are listed by order of the number of variables matched. Each
+variable inside the matches will contain the dataset, the variable id
+and the confidence that the variable matches the others in the list. The
+order of the variables inside the matches returned will match the order
+of the datasets provided. The first variable will also contain some
+additional information to allow previewing a match. To retrieve complete
+details about all the matching variables the endpoints listed in
+<code class="docutils literal"><span class="pre">metadata</span></code> field can be called, those provide all the matching
+metadata chunked by groups of matches.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22fa400_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d22fa400_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22fa400_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">match</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22fa400_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span>  <span class="p">{</span>
+        <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;http://app.crunch.io/api/datasets/8274bf/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://app.crunch.io/api/datasets/699a33/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://app.crunch.io/api/datasets/8274bf/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;http://app.crunch.io/api/datasets/699a33/&quot;</span>
+        <span class="p">],</span>
+         <span class="s2">&quot;minimum_matches&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Response:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d257acc0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d257acc0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d257acc0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">matches</span><span class="o">/</span><span class="mi">394</span><span class="n">d9e</span><span class="o">/</span>
+
+<span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">matches</span><span class="o">/</span><span class="mi">394</span><span class="n">d9e</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d257acc0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io:50976/api/datasets/match/3c7df5/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;matches&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;SomeVariable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Some Variable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;521b5c014e1e474fa5173d95000bd6e9&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;This is some variable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;8274bfb842d645728a49634414b999c4&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;3fa1d3358888474eb949ae586e80f9a4&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;699a3315c3f347d4923257380938f9b9&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;AnotherVariableThatHasMatches&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Another Variable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;234e8e76d0e1a32667ab33bc30a9900&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="s2">&quot;This is another variable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;8274bfb842d645728a49634414b999c4&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;9373729ac990b009e0a90dca99092789&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;confidence&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;699a3315c3f347d4923257380938f9b9&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="o">...</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;http://app.crunch.io/api/datasets/match/3c7df5/0-500/&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="summary">
+<h4>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/summary/{?filter}</span></code></p>
+<p>Query Parameters</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>filter</td>
+<td>A Crunch filter expression</td>
+</tr>
+</tbody>
+</table>
+<p>GET returns a Shoji View with summary information about this dataset
+containing its number of rows (weighted and unweighted, with and without
+your applied filters), as well as the number of variables and columns.
+The column count will differ from the variable count when derived and
+array variables are present–these variable types don’t necessarily have
+their own columns of d ata behind them. The column count is useful for
+estimating load time and file size when exporting.</p>
+<p>If a <code class="docutils literal"><span class="pre">filter</span></code> is included, the “filtered” counts will be with respect
+to that expression. If omitted, your applied filters will be used.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d6e0b8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d6e0b8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/summary/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;unweighted&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;filtered&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="mi">2000</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;weighted&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;filtered&quot;</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
+            <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="mf">2000.0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="mi">529</span><span class="p">,</span>
+        <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="mi">530</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="fragments">
+<h3>Fragments<a class="headerlink" href="#fragments" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="table">
+<h4>Table<a class="headerlink" href="#table" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="state">
+<h4>State<a class="headerlink" href="#state" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="exclusion">
+<h4>Exclusion<a class="headerlink" href="#exclusion" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/exclusion/</span></code></p>
+<p>Exclusion filters allow you to drop rows of data without permanently
+deleting them.</p>
+<p>GET on this resource returns a Shoji Entity with a filter “expression”
+attribute in its body. Rows that match the filter expression will be
+excluded from all views of the data.</p>
+<p>PATCH the “expression” attribute to modify. An empty “expression”
+object, like <code class="docutils literal"><span class="pre">{&quot;body&quot;:</span> <span class="pre">{&quot;expression&quot;:</span> <span class="pre">{}}}</span></code>, is equivalent to “no
+exclusion”, i.e. no rows are dropped.</p>
+</div>
+<div class="section" id="stream">
+<h4>Stream<a class="headerlink" href="#stream" title="Permalink to this headline"> 🔗</a></h4>
+<p>Stream lock</p>
+<p>When a dataset is configured to receive streaming data, the /stream/
+endpoint will accept POST requests to append new rows to the streaming
+queue.</p>
+<p>A dataset is able to receive streaming data while its <code class="docutils literal"><span class="pre">streaming</span></code>
+attribute is set to <code class="docutils literal"><span class="pre">streaming</span></code>.</p>
+<p>While a dataset is receiving streams, any other kind of append is
+disabled returning 409 if attempted. Only streaming data is allowed.</p>
+<p>The following operations are forbidden on a dataset while it is
+accepting streaming rows in order to protect the schema.</p>
+<ul class="simple">
+<li>Deleting public non derived variables</li>
+<li>Casting variables (Includes changing resolution on datetime
+variables)</li>
+<li>Changing variable aliases</li>
+<li>Deleting categories from categorical variables</li>
+<li>Changing ID of category IDs</li>
+<li>Removing subvariables from arrays</li>
+<li>Merging forks</li>
+<li>Reverting to savepoints</li>
+<li>Modifying the Primary Key, once it has been set</li>
+</ul>
+<p>To change the streaming configuration of the dataset, PATCH the entity’s
+<code class="docutils literal"><span class="pre">streaming</span></code> attribute to either <code class="docutils literal"><span class="pre">streaming</span></code>, <code class="docutils literal"><span class="pre">finished</span></code> or <code class="docutils literal"><span class="pre">no</span></code>
+according to the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="37%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Allows schema changes</th>
+<th class="head">Accepts streaming rows</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">streaming</span></code></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">finished</span></code></td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">no</span></code></td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Note that only the <strong>dataset maintainer</strong> is allowed to modify the
+<code class="docutils literal"><span class="pre">streaming</span></code> attribute.</p>
+<p>Sending rows</p>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/stream/</span></code></p>
+<p>Stream allows for sending data to a dataset as it is gathered.</p>
+<p>GET on this resource returns a Shoji Entity with two attributes in its
+body:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c310f0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c310f0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/stream/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A stream for this Dataset. Each stream acts as a write buffer, from which Sources are periodically made and appended as Batches to the owning Dataset.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;pending_messages&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;received_messages&quot;</span><span class="p">:</span> <span class="mi">8</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pending_messages</td>
+<td>The number of messages the stream has that have yet to
+be appended to the dataset (note: a message might
+contain more than one row, each POST that is made to
+<code class="docutils literal"><span class="pre">/datasets/{id}/stream/</span></code> will result in a single
+message).</td>
+</tr>
+<tr class="row-odd"><td>received_messages</td>
+<td>The total number of messages that this stream has
+received.</td>
+</tr>
+</tbody>
+</table>
+<p>POST to this endpoint to add rows. The payload should be a multi line
+string where each line contains a json representation of objects
+indicating the value for each variable keyed by <strong>alias</strong>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;alias1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;alias2&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;alias3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">&quot;alias1&quot;</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="s2">&quot;alias2&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span> <span class="s2">&quot;alias3&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">&quot;alias1&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;alias2&quot;</span><span class="p">:</span> <span class="s2">&quot;empty&quot;</span><span class="p">,</span> <span class="s2">&quot;alias3&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="settings">
+<h4>Settings<a class="headerlink" href="#settings" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/settings/</span></code></p>
+<p>The dataset settings allow editors to store dataset wide permissions and
+configurations for it.</p>
+<p>Will always return all the available settings with default values a
+dataset can have.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d233cac8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d233cac8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/settings/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;viewers_can_export&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;viewers_can_change_weight&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;viewers_can_share&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/variables/123456/&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To make changes, clients should PATCH the settings they wish to change
+with new values. Additional settings are not allowed, the server will
+return a 400 response.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>viewers_can_export</td>
+<td>When false, only editor can export; else, all
+users with view access can export the data</td>
+</tr>
+<tr class="row-odd"><td>viewers_can_change_weight</td>
+<td>When true, all users with access can set their
+own personal weight; else, the editor configured
+<code class="docutils literal"><span class="pre">weight</span></code> will be applied to all without option to
+change</td>
+</tr>
+<tr class="row-even"><td>viewers_can_share</td>
+<td>When true, all users can share the dataset with
+other users or teams; Defaults to <code class="docutils literal"><span class="pre">True</span></code></td>
+</tr>
+<tr class="row-odd"><td>weight</td>
+<td>Default initial weight for all new users on this
+dataset, and when <code class="docutils literal"><span class="pre">viewers_can_change_weight</span></code>
+is false, this variable will be the always-applied
+weight for all viewers of the dataset.</td>
+</tr>
+<tr class="row-even"><td>dashboard_deck</td>
+<td>When set, points to a deck that will become
+publicly visible and be used as dashboard by the
+web client</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preferences">
+<h4>Preferences<a class="headerlink" href="#preferences" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/preferences/</span></code></p>
+<p>The dataset preferences provide API clients with a key/value store for
+settings or customizations each would need for each user.</p>
+<p>By default, all dataset preferences start out with only a <code class="docutils literal"><span class="pre">weight</span></code> key
+set to <code class="docutils literal"><span class="pre">null</span></code>, unless otherwise set. Clients can PATCH to add
+additional attributes.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b30eb8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b30eb8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/preferences/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To delete attributes from the preferences resources, PATCH them with
+<code class="docutils literal"><span class="pre">null</span></code>.</p>
+<p>Preferences are unordered; clients should not assume that they are
+ordered.</p>
+<p>Weight</p>
+<p>If the dataset has <code class="docutils literal"><span class="pre">viewers_can_change_weight</span></code> setting set to false,
+then all users’ preferences <code class="docutils literal"><span class="pre">weight</span></code> will be set to the dataset wide
+configured weight without option to change it. Attempts to modify it
+will return a 403 response.</p>
+</div>
+<div class="section" id="primary-key">
+<h4>Primary key<a class="headerlink" href="#primary-key" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/pk/</span></code></p>
+<p>URL Parameters</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dataset_id</td>
+<td>The id of the dataset</td>
+</tr>
+</tbody>
+</table>
+<p>Setting a primary key on a dataset causes updates (particularly streamed
+updates) mentioning existing rows to be updated instead of new rows
+being inserted. A primary key can only be set on a variable that is type
+“numeric” or “text” and that has no duplicate or missing values, and it
+can only be set after that variable has been added to the dataset.</p>
+<p>GET</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2abd828_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2abd828_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2abd828_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+
+<span class="o">--------</span>
+<span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">;</span><span class="n">charset</span><span class="o">=</span><span class="n">utf</span><span class="o">-</span><span class="mi">8</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/000001/&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2abd828_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
+<span class="go">[&#39;https://app.crunch.io/api/datasets/{dataset_id}/variables/000001/&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/datasets/{dataset_id}/pk/</span></code></p>
+<p>GET on this resource returns a Shoji Entity. It contains one body key:
+<code class="docutils literal"><span class="pre">pk</span></code>, which is an array. The “pk” member indicates the URLs of the
+variables in the dataset which comprise the primary key. If there is no
+primary key for this dataset, the <code class="docutils literal"><span class="pre">pk</span></code> value will be <code class="docutils literal"><span class="pre">[]</span></code>.</p>
+<p>POST</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a9de80_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2a9de80_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a9de80_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">15</span>
+
+<span class="p">{</span><span class="s2">&quot;pk&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/000001/&quot;</span><span class="p">]}</span>
+
+<span class="o">--------</span>
+<span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2a9de80_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">post</span><span class="p">({</span><span class="s1">&#39;pk&#39;</span><span class="p">:[</span><span class="s1">&#39;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s1">/variables/000001/&#39;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
+<span class="go">[&#39;000001&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/datasets/{dataset_id}/pk/</span></code></p>
+<p>When POSTing, set the body to a JSON object containing the key “pk” to
+modify the primary key. The “pk” key should be a list containing zero or
+more variable URLs. The variables referenced must be either text or
+numeric type and must have no duplicate or missing values. Setting pk to
+<code class="docutils literal"><span class="pre">[]</span></code> is equivalent to deleting the primary key for a dataset.</p>
+<aside class="notice"><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">currently</span> <span class="n">support</span> <span class="n">only</span> <span class="n">a</span> <span class="n">single</span> <span class="n">primary</span> <span class="n">key</span> <span class="n">variable</span><span class="p">,</span> <span class="n">so</span> <span class="n">the</span> <span class="n">POST</span> <span class="n">payload</span>
+<span class="n">array</span> <span class="n">should</span> <span class="n">be</span> <span class="n">of</span> <span class="n">length</span> <span class="n">zero</span> <span class="ow">or</span> <span class="n">one</span><span class="o">.</span>
+</pre></div>
+</div>
+</aside><p>DELETE</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a82208_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2a82208_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a82208_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+
+<span class="o">--------</span>
+<span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2a82208_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/datasets/{dataset_id}/pk/</span></code></p>
+<p>DELETE the “pk” resource to delete the primary key for this dataset.
+Upon success, this method returns no body and a 204 response code.</p>
+</div>
+</div>
+<div class="section" id="catalogs">
+<h3>Catalogs<a class="headerlink" href="#catalogs" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="users">
+<h4>Users<a class="headerlink" href="#users" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/users/</span></code></p>
+<p>This catalog exposes the full list of users that have access to the
+dataset via the different sources:</p>
+<ul class="simple">
+<li>When the dataset belongs to a project, as project members</li>
+<li>Members of teams that are shared with the dataset</li>
+<li>Direct shares to specific users</li>
+</ul>
+<p>This endpoint only supports GET, the response will be a catalog with
+each user as member with the tuple indicating the coalesced permissions
+and information about the type of access:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="63%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>Name of the
+user</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>Email of the
+user</td>
+</tr>
+<tr class="row-even"><td>teams</td>
+<td>URLs of
+teams with
+dataset
+access this
+user belongs
+to</td>
+</tr>
+<tr class="row-odd"><td>last_accessed</td>
+<td>Timestamp of
+last access
+to dataset
+via web app</td>
+</tr>
+<tr class="row-even"><td>project_member</td>
+<td>If dataset
+is part of a
+project and
+this user
+too</td>
+</tr>
+<tr class="row-odd"><td>coalesced_permissions</td>
+<td>Permissions
+this user
+has to this
+access,
+combining
+all sources</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a57f60_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a57f60_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;https://app.crunch.io/api/users/411aa32a075b4b57bf25a4ace1baf920/&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jean-Luc Picard&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_accessed&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-25T00:00:00+00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/teams/c6dbeb7c57e34dd08ab2316f3363e895/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/teams/d0abf4e933fc44e38190247ae4d593f9/&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;project_member&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;jeanluc@crunch.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coalesced_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;https://app.crunch.io/api/users/60f18c51699b4ba992721197743286a4/&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;William Riker&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_accessed&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/teams/d0abf4e933fc44e38190247ae4d593f9/&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;project_member&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;number1@crunch.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coalesced_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+      <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;https://app.crunch.io/api/users/80d89e4e876344ecb46c528a910e3877/&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Geordi La Forge&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_accessed&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-01-31T00:00:00+00:00&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/teams/c6dbeb7c57e34dd08ab2316f3363e895/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/teams/d0abf4e933fc44e38190247ae4d593f9/&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;project_member&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;geordilf@crunch.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;coalesced_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="actions">
+<h4>Actions<a class="headerlink" href="#actions" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="batches">
+<h4>Batches<a class="headerlink" href="#batches" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/batches/</span></code></p>
+<p>See <a class="reference external" href="#batches">Batches</a> and the feature guides for
+<a class="reference external" href="#importing-data">importing</a> and <a class="reference external" href="#appending-data">appending</a>.</p>
+</div>
+<div class="section" id="decks">
+<h4>Decks<a class="headerlink" href="#decks" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/decks/</span></code></p>
+<p>See <a class="reference external" href="#decks">Decks</a>.</p>
+</div>
+<div class="section" id="comparisons">
+<h4>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="filters">
+<h4>Filters<a class="headerlink" href="#filters" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/filters/</span></code></p>
+<p>See <a class="reference external" href="#filters">Filters</a>.</p>
+</div>
+<div class="section" id="forks">
+<h4>Forks<a class="headerlink" href="#forks" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="joins">
+<h4>Joins<a class="headerlink" href="#joins" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="multitables">
+<h4>Multitables<a class="headerlink" href="#multitables" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+<div class="section" id="permissions">
+<h4>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/permissions/</span></code></p>
+<p>See <a class="reference external" href="#permissions">Permissions</a>.</p>
+</div>
+<div class="section" id="savepoints">
+<h4>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/savepoints/</span></code></p>
+<p>See <a class="reference external" href="#versions">Versions</a>.</p>
+</div>
+<div class="section" id="variables">
+<h4>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"> 🔗</a></h4>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/variables/</span></code></p>
+<p>See <a class="reference external" href="#variables">Variables</a>.</p>
+</div>
+<div class="section" id="weight-variables">
+<h4>Weight variables<a class="headerlink" href="#weight-variables" title="Permalink to this headline"> 🔗</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

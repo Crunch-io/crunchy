@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Accounts &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Batches" href="endpoint-batch.html" />
+    <link rel="prev" title="Public" href="endpoint-public.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-public.html" title="Previous Chapter: Public"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Public</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-batch.html" title="Next Chapter: Batches"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Batches &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accounts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#permissions">Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-entity">Account entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#applications">Applications</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#application-entity">Application entity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#change-application-logo">Change application logo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#account-users">Account users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post">POST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#account-datasets">Account datasets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-projects">Account projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-teams">Account teams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#account-collaborators">Account Collaborators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#collaborators-order">Collaborators order</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#collaborators-datasets">Collaborators datasets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="accounts">
+<h1>Accounts<a class="headerlink" href="#accounts" title="Permalink to this headline"> 🔗</a></h1>
+<p>Accounts provide an organization-level scope for Crunch.io customers.
+All Users belong to one and only one Account. Account managers can
+administer their various users and entities and have visibility on them.</p>
+<div class="section" id="permissions">
+<h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline"> 🔗</a></h2>
+<p>A user is an “account manager” if their <code class="docutils literal"><span class="pre">account_permissions</span></code> have
+<code class="docutils literal"><span class="pre">alter_users</span></code> set to <code class="docutils literal"><span class="pre">True</span></code>.</p>
+</div>
+<div class="section" id="account-entity">
+<h2>Account entity<a class="headerlink" href="#account-entity" title="Permalink to this headline"> 🔗</a></h2>
+<p>The account entity is available on the API root following the Shoji
+<code class="docutils literal"><span class="pre">views.account</span></code> path, which will point to the authenticated user’s
+account.</p>
+<p>If the account has a name, it will be available here, as well as the
+path to the account’s users.</p>
+<p>If the authenticated user is an account manager, the response will
+include paths to these additional catalogs: * Account projects *
+Account teams * Account datasets</p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d293ccc0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d293ccc0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d293ccc0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d293ccc0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Account&#39;s name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;abcd&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;oauth_providers&quot;</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Service auth&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;provider&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Service auth&quot;</span>
+    <span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/account/teams/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;projects&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/account/projects/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/account/users/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/account/datasets/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;applications&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/account/applications/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d28c1b00_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d28c1b00_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>GET returns a Shoji Catalog with the list of all the configured
+subdomains an account has.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d28c1630_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d28c1630_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;./mycompany/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a Shoji Entity here to make a new application. The <code class="docutils literal"><span class="pre">subdomain</span></code>:</p>
+<ul class="simple">
+<li>must be unique system-wide, case insensitive</li>
+<li>can only contain letters, numbers, and <code class="docutils literal"><span class="pre">-</span></code> (dash)</li>
+<li>must be between 3 and 32 characters in length</li>
+<li>cannot start with <code class="docutils literal"><span class="pre">-</span></code> or a number</li>
+</ul>
+<p>If the requested subdomain is unavailable or invalid, the server will
+return a 400 response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2944e80_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2944e80_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my company&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;subdomain&quot;</span><span class="p">:</span> <span class="s2">&quot;mycompany&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFAABB&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Color</span> <span class="n">of</span> <span class="n">links</span><span class="p">,</span> <span class="n">interactable</span> <span class="n">things</span>
+                <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;#G4EEBB&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Titles</span> <span class="ow">and</span> <span class="n">such</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;#BAA5E7&quot;</span>
+            <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;manifest&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Attributes <code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">subdomain</span></code> are required; <code class="docutils literal"><span class="pre">palette</span></code> and
+<code class="docutils literal"><span class="pre">manifest</span></code> are optional. Note that you cannot specify logos in the
+POST request. Use the created entity’s <code class="docutils literal"><span class="pre">logo/</span></code> resource to upload the
+image files to the app (see below).</p>
+<div class="section" id="application-entity">
+<h4>Application entity<a class="headerlink" href="#application-entity" title="Permalink to this headline"> 🔗</a></h4>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d299e358_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d299e358_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>GET this endpoint for a Shoji Entity containing all details about the
+configured application.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d299e550_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d299e550_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Application name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subdomain&quot;</span><span class="p">:</span> <span class="s2">&quot;mycompany&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logos&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;small&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;URL&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;large&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;URL&gt;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;favicon&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;URL&gt;&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFAABB&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Color</span> <span class="n">of</span> <span class="n">links</span><span class="p">,</span> <span class="n">interactable</span> <span class="n">things</span>
+                <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;#G4EEBB&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">Titles</span> <span class="ow">and</span> <span class="n">such</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;#BAA5E7&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;manifest&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;logo&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/account/applications/mycompany/logo/&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>PATCH this endpoint to change the name, palette, or manifest. Logos are
+controlled by the logo subresource.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="22%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Name of the
+configured
+application on
+the given
+subdomain</td>
+</tr>
+<tr class="row-odd"><td>logo</td>
+<td>object</td>
+<td>Contains two
+attributes,
+<code class="docutils literal"><span class="pre">large</span></code>,
+<code class="docutils literal"><span class="pre">small</span></code> and
+<code class="docutils literal"><span class="pre">favicon</span></code>, with
+different
+resolution
+company logos</td>
+</tr>
+<tr class="row-even"><td>palette</td>
+<td>object</td>
+<td>Contains three
+colors,
+<code class="docutils literal"><span class="pre">primary</span></code>,
+<code class="docutils literal"><span class="pre">secondary</span></code> and
+<code class="docutils literal"><span class="pre">message</span></code>,
+under the
+<code class="docutils literal"><span class="pre">brand</span></code>
+attribute to
+theme the web app</td>
+</tr>
+<tr class="row-odd"><td>manifest</td>
+<td>object</td>
+<td>Optional,
+contains further
+client
+configurations</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="change-application-logo">
+<h4>Change application logo<a class="headerlink" href="#change-application-logo" title="Permalink to this headline"> 🔗</a></h4>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29cd860_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29cd860_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span><span class="n">logo</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To set/change an application’s logo the client needs to make a
+<code class="docutils literal"><span class="pre">multipart/form-data</span></code> request containing either or both <code class="docutils literal"><span class="pre">large</span></code> and
+<code class="docutils literal"><span class="pre">small</span></code> fields containing the desired image files to use. Only account
+admins are authorized to change this resource.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29cdbe0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29cdbe0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span><span class="n">logo</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">multipart</span><span class="o">/</span><span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">boundary</span><span class="o">=----------</span><span class="mi">123456789</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">500326</span>
+
+<span class="o">----------</span><span class="mi">123456789</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;large&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;newlogo.jpg&quot;</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
+
+<span class="n">xxxxxxxxxx</span>
+<span class="o">----------</span><span class="mi">123456789</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;newlogo_small.jpg&quot;</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
+
+<span class="n">xxxxxxxxxx</span>
+<span class="o">----------</span><span class="mi">123456789</span><span class="o">--</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The server will update the images accordingly. The only valid file
+extensions are GIF, JPEG and PNG image files.</p>
+</div>
+</div>
+</div>
+<div class="section" id="account-users">
+<h2>Account users<a class="headerlink" href="#account-users" title="Permalink to this headline"> 🔗</a></h2>
+<p>Provides a catalog of all the users that belong to this account. Any
+account member can GET, but only account managers can POST/PATCH on it.</p>
+<div class="section" id="id1">
+<h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29df588_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d29df588_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29df588_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d29df588_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/123/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id_method&quot;</span><span class="p">:</span> <span class="s2">&quot;pwhash&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id_provider&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;email@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Steve Austin&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/234/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id_method&quot;</span><span class="p">:</span> <span class="s2">&quot;pwhash&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id_provider&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;email1@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Shawn Michaels&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/345/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id_method&quot;</span><span class="p">:</span> <span class="s2">&quot;oauth&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id_provider&quot;</span><span class="p">:</span> <span class="s2">&quot;google&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;email2@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rocky Maivia&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post">
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<p>Account members can POST to the account’s users catalog to create new
+users. If the a user with the provided email address already exists in
+the application (on another account), the server will return a 400
+response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a23fd0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2a23fd0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a23fd0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2a23fd0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;new_email@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Initial name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;list of team urls&gt;&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;projects&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;list of project urls&gt;&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;id_method&quot;</span><span class="p">:</span> <span class="s2">&quot;pwhash/oauth&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id_provider&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;send_invite&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+      <span class="s2">&quot;url_base&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>It is possible to create a user to belong to different teams or projects
+by including those teams or projects’ urls in the payload, for example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a49630_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a49630_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;new_email@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Initial name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;teams&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/teams/abc/&quot;</span><span class="p">,</span> <span class="s2">&quot;https://app.crunch.io/api/teams/123/&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;projects&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/projects/def/&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;id_method&quot;</span><span class="p">:</span> <span class="s2">&quot;pwhash&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The <code class="docutils literal"><span class="pre">teams</span></code> and <code class="docutils literal"><span class="pre">projects</span></code> attributes are optional and can be omited
+or empty lists.</p>
+</div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<p>PATCH to the users’ catalog allows account admins to edit users’
+permissions in batch. It is only possible to change the
+<code class="docutils literal"><span class="pre">account_permissions</span></code> attribute. Additionally, it is possible to
+delete users from the account by sending <code class="docutils literal"><span class="pre">null</span></code> as their tuple.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a647f0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2a647f0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a647f0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2a647f0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/123/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;account_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alter_users&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;create_datasets&quot;</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/234/&quot;</span><span class="p">:</span> <span class="n">null</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="account-datasets">
+<h2>Account datasets<a class="headerlink" href="#account-datasets" title="Permalink to this headline"> 🔗</a></h2>
+<p>Only account managers have access to this catalog. It is a read only
+shoji catalog containing all the datasets that users of this account
+have created (potentially very large catalog).</p>
+<p>Account managers have implicit editor access to all the account
+datasets.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a72d30_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2a72d30_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a72d30_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2a72d30_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/datasets/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;James T. Kirk&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Voyage Home&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Stardate 8390&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+                <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="mi">67</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;is_published&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cc9161&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/685722/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2286&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/ff9443/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leonard Nimoy&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Wrath of Khan&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;is_published&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a598c7&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/af432c/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-03&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="account-projects">
+<h2>Account projects<a class="headerlink" href="#account-projects" title="Permalink to this headline"> 🔗</a></h2>
+<p>This catalog is available for account managers and lists all the
+projects that the users have created. Account managers have implicit
+edit access on all projects.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2acc3c8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2acc3c8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2acc3c8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2acc3c8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/projects/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cc9161&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/users/abcdef/&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://app.crunch.io/api/projects/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a598c7&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/users/123456/&quot;</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="account-teams">
+<h2>Account teams<a class="headerlink" href="#account-teams" title="Permalink to this headline"> 🔗</a></h2>
+<p>This catalog is available for account managers and lists all the teams
+that the users have created. Account managers have implicit edit access
+on all teams.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2adceb8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2adceb8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2adceb8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">teams</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2adceb8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/teams/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Team 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cc9161&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/users/123456/&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://app.crunch.io/api/teams/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Team 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a598c7&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/users/123456/&quot;</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="account-collaborators">
+<h2>Account Collaborators<a class="headerlink" href="#account-collaborators" title="Permalink to this headline"> 🔗</a></h2>
+<p>An account collaborator is a Crunch.io user that is not a member of your
+account and has access to some/any of your account’s datasets.</p>
+<p>Account admins can visit the account’s collaborators catalog to view the
+list of all collaborators for all datasets of the account.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2af8a20_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2af8a20_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">collaborators</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>This catalog lists all the users that are not members of the account
+that have access to any of the account’s datasets, projects or teams.</p>
+<p>Each element in the catalog tuple links to the user’s entity endpoint
+and has the name and email attribute.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2af8c50_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2af8c50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/users/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John doe&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user1@example.com&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://app.crunch.io/api/users/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;John notdoe&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;user2@example.com&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="collaborators-order">
+<h3>Collaborators order<a class="headerlink" href="#collaborators-order" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b18550_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b18550_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">collaborators</span><span class="o">/</span><span class="n">order</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>It is possible to group collaborators using a Shoji order.</p>
+<p>It is possible to PATCH the <code class="docutils literal"><span class="pre">graph</span></code> attribute with a standard shoji
+order payload indicating the groups and collaborators (user URLs) for
+each group.</p>
+</div>
+<div class="section" id="collaborators-datasets">
+<h3>Collaborators datasets<a class="headerlink" href="#collaborators-datasets" title="Permalink to this headline"> 🔗</a></h3>
+<p>The full list of datasets a collaborator has access to is available
+through its user’s entity endpoint by following the <code class="docutils literal"><span class="pre">visible_datasets</span></code>
+catalog.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Xlsx &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Object Reference" href="../object-reference/object-reference.html" />
+    <link rel="prev" title="Versions" href="endpoint-version.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-version.html" title="Previous Chapter: Versions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Versions</span>
+    </a>
+  </li>
+  <li>
+    <a href="../object-reference/object-reference.html" title="Next Chapter: Object Reference"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Object Reference &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Xlsx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post">POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint-parameters">Endpoint Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#result">Result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-settings">Display Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quirks">Quirks</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#complete-example">Complete example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="xlsx">
+<h1>Xlsx<a class="headerlink" href="#xlsx" title="Permalink to this headline"> 🔗</a></h1>
+<p>The <code class="docutils literal"><span class="pre">xlsx</span></code> endpoint takes as input a prepared table (intended for use
+with multitables) and returns an xlsx file, with some basic formatting
+conventions.</p>
+<p>A POST request to <code class="docutils literal"><span class="pre">/api/xlsx/</span></code> will return an xlsx file directly, with
+correct content-disposition and type headers.</p>
+<div class="section" id="post">
+<h2>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h2>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1f7cb70_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1f7cb70_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">xlsx</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><hr class="docutils" />
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1fc7470_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d1fc7470_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1fc7470_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">attachment</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="n">Crunch</span><span class="o">-</span><span class="n">export</span><span class="o">.</span><span class="n">xlsx</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">openxmlformats</span><span class="o">-</span><span class="n">officedocument</span><span class="o">.</span><span class="n">spreadsheetml</span><span class="o">.</span><span class="n">sheet</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d1fc7470_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[],</span>
+                <span class="s2">&quot;etc.&quot;</span><span class="p">:</span> <span class="s2">&quot;described below&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="endpoint-parameters">
+<h2>Endpoint Parameters<a class="headerlink" href="#endpoint-parameters" title="Permalink to this headline"> 🔗</a></h2>
+<p>At the top level, the xlsx takes a <code class="docutils literal"><span class="pre">result</span></code> <em>array</em> and
+<code class="docutils literal"><span class="pre">display_settings</span></code> object which defines some formatting to be used on
+the values. Multiple tables can be placed on a single sheet.</p>
+<div class="section" id="result">
+<h3>Result<a class="headerlink" href="#result" title="Permalink to this headline"> 🔗</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="8%" />
+<col width="38%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Typical element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>rows</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">30,</span> <span class="pre">&quot;class&quot;:</span>
+<span class="pre">&quot;formatted&quot;}</span></code></td>
+<td>Cells are objects with at
+least a <code class="docutils literal"><span class="pre">value</span></code> member,
+and optional <code class="docutils literal"><span class="pre">class</span></code>,
+where a value of
+<code class="docutils literal"><span class="pre">&quot;formatted</span> <span class="pre">&quot;</span></code> prevents
+the exporter from applying
+any number format to the
+result cell</td>
+</tr>
+<tr class="row-odd"><td>colLabels</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">&quot;All&quot;}</span></code></td>
+<td>Array of objects with a
+<code class="docutils literal"><span class="pre">value</span></code> member</td>
+</tr>
+<tr class="row-even"><td>colTitles</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">&quot;Age&quot;</span></code></td>
+<td>Array of strings</td>
+</tr>
+<tr class="row-odd"><td>spans</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">4</span></code></td>
+<td>array of integers matching
+the length of colTitles,
+indicating the number of
+cells to be joined for
+each colTitle after the
+first one. The first
+colTitle is assumed to be
+only one column wide.</td>
+</tr>
+<tr class="row-even"><td>rowTitle</td>
+<td>string</td>
+<td><code class="docutils literal"><span class="pre">&quot;Dog</span> <span class="pre">food</span> <span class="pre">brands&quot;</span></code></td>
+<td>A title, which is
+formatted bold above the
+first column of the table
+(the rowLabels, below)</td>
+</tr>
+<tr class="row-odd"><td>rowLabels</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">&quot;Canine</span>
+<span class="pre">Crunch&quot;}</span></code></td>
+<td>labels for rows of the
+table</td>
+</tr>
+<tr class="row-even"><td>rowVariableName</td>
+<td>string</td>
+<td><code class="docutils literal"><span class="pre">&quot;Preferred</span> <span class="pre">dog</span> <span class="pre">food&quot;</span></code></td>
+<td>title to display at the
+very top left of the
+result sheet</td>
+</tr>
+<tr class="row-odd"><td>filter_names</td>
+<td>array</td>
+<td><code class="docutils literal"><span class="pre">&quot;Breed:</span> <span class="pre">Dachshund&quot;</span></code></td>
+<td>Names of any filters to
+print beneath the table,
+will be labeled “Filters”.
+If multiple result objects
+are included in the
+payload, the filter names
+from the <em>first</em> result
+are used, and placed at
+the bottom of the sheet
+beneath all results.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="display-settings">
+<h3>Display Settings<a class="headerlink" href="#display-settings" title="Permalink to this headline"> 🔗</a></h3>
+<p>Further customization for the resulting output.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="8%" />
+<col width="20%" />
+<col width="23%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>decimal Places</td>
+<td>object</td>
+<td>0</td>
+<td>number of decimal
+places to diaplay</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">0}</span></code></td>
+</tr>
+<tr class="row-odd"><td>countsOrPercents</td>
+<td>object</td>
+<td>percent</td>
+<td>use counts or
+percents</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span>
+<span class="pre">&quot;percent&quot;}</span></code></td>
+</tr>
+<tr class="row-even"><td>percentageDirection</td>
+<td>object</td>
+<td>{“value” :
+“colPct” }</td>
+<td>row or column
+based percents</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span>
+<span class="pre">&quot;colPct&quot;}</span></code></td>
+</tr>
+<tr class="row-odd"><td>valuesAreMeans</td>
+<td>object</td>
+<td>false</td>
+<td>are values means?
+(If so, will be
+formatted with
+decimal places)</td>
+<td><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span>
+<span class="pre">false}</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quirks">
+<h3>Quirks<a class="headerlink" href="#quirks" title="Permalink to this headline"> 🔗</a></h3>
+<p>Because the formatted output was designed to display values computed by
+other clients, it abuses some assumptions about the tables it is
+displaying. Some of these are enumerated below.</p>
+<ol class="arabic simple">
+<li>Rows have a ‘marginal’ column positioned first after the row label.</li>
+<li>If display settings indicate <code class="docutils literal"><span class="pre">rowPct</span></code>, rows have an additional
+marginal column intended to show unconditional N for each row.</li>
+<li>The remaining row labels are all accounted for in the sum of
+<code class="docutils literal"><span class="pre">spans</span></code>.</li>
+<li>Column titles are placed in merged cells above one or more labels.</li>
+<li>The same filter(s) are applied to all tables on a page.</li>
+<li>No “freeze panes” are applied to the result.</li>
+<li>If the table contains percentages, they should be percentages, not
+proportions (0 to 100, not 0 to 1).</li>
+</ol>
+<div class="section" id="complete-example">
+<h4>Complete example<a class="headerlink" href="#complete-example" title="Permalink to this headline"> 🔗</a></h4>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d23a6c88_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d23a6c88_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+<span class="s2">&quot;body&quot;</span><span class="p">:{</span>
+    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;filter_names&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Name_of_filter&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;colLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2014&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-0&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2015&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-1&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;spans&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">2</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;ca_subvar_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rowVariableName&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colTitles&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;quarter&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">16.666666666666664</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mf">0.24821309601845032</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2482130960184501</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">33.33333333333333</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.5464935495198773</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mf">0.5464935495198773</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;colLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2014&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-0&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2015&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-1&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;spans&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">2</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;ca_subvar_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rowVariableName&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colTitles&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;quarter&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">33.33333333333333</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mf">0.045500259780248964</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.045500259780248964</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mf">16.666666666666664</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mf">0.24821309601845032</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2482130960184501</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal marginal-percentage&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0005320055485602548</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-0&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+          <span class="s2">&quot;pValue&quot;</span><span class="p">:</span> <span class="mf">0.0005320055485602548</span><span class="p">,</span>
+          <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;subtable-0 col-1&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;colLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;All&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2014&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-0&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2015&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;col-1&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;spans&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="mi">2</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowLabels&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;row-label&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;rowTitle&quot;</span><span class="p">:</span> <span class="s2">&quot;ca_subvar_3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rowVariableName&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colTitles&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;quarter&quot;</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">],</span>
+<span class="s2">&quot;display_settings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;valuesAreMeans&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+        <span class="s2">&quot;countsOrPercents&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;percent&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;percentageDirection&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;colPct&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;decimalPlaces&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

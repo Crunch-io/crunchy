@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Multidimensional analysis &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Versioning Datasets" href="feature-versioning.html" />
+    <link rel="prev" title="Array Variables" href="feature-arrays.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-arrays.html" title="Previous Chapter: Array Variables"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Array Variables</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-versioning.html" title="Next Chapter: Versioning Datasets"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Versioning Datasets &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Multidimensional analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dimensions">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#measures">Measures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comparisons">Comparisons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multitables">Multitables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#template-query">Template query</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#transforming-analyses-for-presentation">Transforming analyses for presentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#insertions">Insertions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-transform-in-a-saved-analysis">Example transform in a saved analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-transform-in-a-multitable-template">Example transform in a multitable template</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-complex-multitable-templates">More complex multitable templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="multidimensional-analysis">
+<h1>Multidimensional analysis<a class="headerlink" href="#multidimensional-analysis" title="Permalink to this headline"> 🔗</a></h1>
+<p>In the Crunch system, any analysis is also referred to as a “cube”.
+Cubes are the mechanical means of representing analyses to and from the
+Crunch system; you can think of them as spreadsheets that might have
+other than two dimensions. A cube consists of two primary parts:
+“dimensions” which supply the cube axes, and “measures” which populate
+the cells. Although both the request and response include dimensions and
+measures, it is important to distinguish between them. The request
+supplies expressions for each, while the response has data (and
+metadata) for each. The request declares what variables to use and what
+to do with them, while the response includes and describes the results.
+See Object Reference:Cube for complete details.</p>
+<div class="section" id="dimensions">
+<h2>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline"> 🔗</a></h2>
+<p>Each dimension of an analysis can be simply one variable, a function
+over it, a traversal of its subvariables (for array variables), or even
+a combination of multiple variables (e.g. A + B). Any expression you can
+use in a “select” command can be used as a dimension. The big difference
+is that the system will consider the distinct values rather than all
+values of the result. Variables which are already “categorical” or
+“enumerated” will simply use their “categories” or “elements” as the
+extent. Other variables form their extents from their distinct values.</p>
+<p>For example, if “3ffd45” is a categorical variable with three categories
+(one of which is “No Data”: -1), then the following dimension
+expressions:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d252dd30_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d252dd30_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/3ffd45/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/2098f1/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>…would form a result cube with two dimensions: one using the
+categories of variable “3ffd45”, and one using the distinct values of
+(variable “2098f1” + 5). If variable “2098f1” has the distinct values
+[5, 15, 25, 35], then we would obtain a cube with the following extents:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="23%" />
+<col width="23%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">-1</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Each dimension used in a cube query needs to be reduced to distinct
+values. For categorical or enumerated variables, we only need to refer
+to the variable, and the system will automatically use the “categories”
+or “elements” metadata to determine the distinct values. For other
+types, the default is to scan the variable’s data to find the unique
+values present and use those. Often, however, we want a more
+sophisticated approach: numeric variables, for example, are usually more
+useful when binned into a handful of ranges, like “0 to 10, 10 to 20,
+…90 to 100” rather than 100 distinct points (or many more when dealing
+with non-integers). The available dimensioning functions vary from type
+to type; the most common are:</p>
+<ul class="simple">
+<li>categorical: {“variable”: url}</li>
+<li>text: {“variable”: url}</li>
+<li>numeric: Group the distinct values into a smaller number of bins via:</li>
+<li>{“function”: “bin”, “args”: [{“variable”: url}]}</li>
+<li>datetime: Roll up seconds into hours, days into months, or any other
+grouping via:</li>
+<li>{“function”: “rollup”, “args”: [{“variable”: url}, {“value”:
+variable.rollup_resolution}]}</li>
+<li>categorical_array:</li>
+<li>One dimension for the subvariables: {“each”: url}</li>
+<li>One dimension for the categories: {“variable”: url}</li>
+<li>multiple response:</li>
+<li>One dimension for the subvariables: {“each”: url}</li>
+<li>One dimension for the selected-ness, which means transforming the
+array from a set of arbitrary categories to a standard “selected” set
+of categories (1, 0, -1) via:<ul>
+<li>{“function”: “selections”, “args”: [{“variable”: url}]}</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="measures">
+<h2>Measures<a class="headerlink" href="#measures" title="Permalink to this headline"> 🔗</a></h2>
+<p>A set of named functions to populate each cell of the cube. You can
+request multiple functions over the same dimensions (such as
+“cube_mean” and “cube_stddev”) or more commonly just one (like
+“cube_count”). For example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2524dd8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2524dd8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>or:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b09b00_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b09b00_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/1/variables/3&quot;</span><span class="p">}]},</span>
+    <span class="s2">&quot;stddev&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_stddev&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/1/variables/3/&quot;</span><span class="p">}]}</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>When applied to the dimensions we defined above, this second example
+might fill the table thusly for the “mean” measure:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">mean</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">-1</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>5</td>
+<td>4.3</td>
+<td>12.3</td>
+<td>8.1</td>
+</tr>
+<tr class="row-odd"><td>15</td>
+<td>13.1</td>
+<td>0.0</td>
+<td>9.2</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>72.4</td>
+<td>4.2</td>
+<td>55.5</td>
+</tr>
+<tr class="row-odd"><td>35</td>
+<td>8.9</td>
+<td>9.1</td>
+<td>0.4</td>
+</tr>
+</tbody>
+</table>
+<p>…and produce a similar one for the “stddev” measure. You can think of
+multiple measures as producing “overlays” over the same dimensions.
+However, the actual output format (in JSON) is more compact in that the
+dimensions are not repeated; see Object Reference:Cube output for
+details.</p>
+<p>ZCL expressions are composable. If you need, for example, to find the
+mean of a categorical variable’s “numeric_value” attributes, cast the
+variable to the “numeric” type class before including it as the cube
+argument:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1bfb710_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1bfb710_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_mean&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cast&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/1/variables/3&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="comparisons">
+<h2>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline"> 🔗</a></h2>
+<p>Occasionally, it is useful to compare analyses from different sources. A
+common example is to define “benchmarks” for a given analysis, so that
+you can quickly compare an analysis to an established target. These are,
+in effect, one analysis laid over another in such a way that at least
+one of their dimensions lines up (and typically, using the same
+measures). These are also therefore defined in terms of cubes: one set
+which defines the base analyses, and another which defines the overlay.</p>
+<p>For example, if we have an analysis over two categorical variables
+“88dd88” and “ee4455”:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29b4ef0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29b4ef0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/88dd88/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/ee4455/&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>then we might obtain a cube with the following output:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="26%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">-1</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>15</td>
+<td>12</td>
+<td>9</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>72</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>23</td>
+<td>4</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s say we then want to overlay a comparison showing benchmarks for
+88dd88 as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">-1</th>
+<th class="head">benchmarks</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>15</td>
+<td>12</td>
+<td>9</td>
+<td>20</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>72</td>
+<td>8</td>
+<td>3</td>
+<td>70</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>23</td>
+<td>4</td>
+<td>17</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>Our first pass at this might be to generate the benchmark targets in
+some other system, and hand-enter them into Crunch. To accomplish this,
+we need to define a comparison. First, we need to define the “bases”:
+the cube(s) to which our comparison applies, which in our case is just
+the above cube:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29bd198_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29bd198_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My benchmark&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bases&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;88dd88&quot;</span><span class="p">}],</span>
+        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}}</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Notice, however, that we’ve left out the second dimension. This means
+that this comparison will be available for any analysis where “88dd88”
+is the row dimension. The base cube here is a sort of “supercube”: a
+superset of the cubes to which we might apply the comparison. We include
+the measure to indicate that this comparison should apply to a
+“cube_count” (frequency count) involving variable “88dd88”.</p>
+<p>Then, we need to define target data. We are supplying these in a
+hand-generated way, so our measure is simply a static column instead of
+a function:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d23b3be0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d23b3be0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;overlay&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;88dd88&quot;</span><span class="p">}],</span>
+        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;typeof&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;88dd88&quot;</span><span class="p">}]}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Note that our overlay has to have a dimension, too. In this case, we
+simply re-use variable “88dd88” as the dimension. This ensures that our
+target data is interpreted with the same category metadata as our base
+analysis.</p>
+<p>We POST the above to datasets/{id}/comparisons/ and can obtain the
+overlay output at datasets/{id}/comparisons/{comparison_id}/cube/. See
+the Endpoint Reference for details.</p>
+</div>
+<div class="section" id="multitables">
+<h2>Multitables<a class="headerlink" href="#multitables" title="Permalink to this headline"> 🔗</a></h2>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c826d8_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c826d8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="mi">200</span> <span class="n">OK</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;1/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Major demographics&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;2/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Political tendencies&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">POST</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Geographical indicators&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/de85b32/&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;is_public&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Analyses as described above are truly multidimensional; when you add
+another variable, the resulting cube obtains another dimension.
+Sometimes, however, you want to compare analyses side by side, typically
+looking at several (even <em>all</em>) variables against a common set of
+conditioning variables. For example, you might nominate “Gender”, “Age”,
+and “Race” as the conditioning variables and cross every other variable
+with those, in order to quickly discover common correlations.</p>
+<p>Multi-table definitions mainly provide a <code class="docutils literal"><span class="pre">template</span></code> member that
+clients can use to construct a valid query with the variable(s) of
+interest.</p>
+<p>Crunch provides a separate catalog where you can define and manage these
+common sets of variables. Like most catalogs, you can <a class="reference external" href="#multitables162">GET
+it</a> to see which multitables are defined.</p>
+<div class="section" id="template-query">
+<h3>Template query<a class="headerlink" href="#template-query" title="Permalink to this headline"> 🔗</a></h3>
+<p>A multitable is a set of queries that form groups of ‘columns’ for
+different later chosen ‘row’ variables. It is defined by a <strong>name</strong> and
+a <strong>template</strong>. At minimum the template must contain a <code class="docutils literal"><span class="pre">query</span></code>
+fragment: this will be later inserted after some function of a row
+variable to form the <a class="reference external" href="#dimensions">dimension</a> of a result. Each
+template dimension can currently only be a function of one variable.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22d3128_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22d3128_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitable</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Geographical indicators&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/de85b32/&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Each multi-table template may be a list of variable references and other
+information used to construct the dimension and transform its output.</p>
+</div>
+</div>
+<div class="section" id="transforming-analyses-for-presentation">
+<h2>Transforming analyses for presentation<a class="headerlink" href="#transforming-analyses-for-presentation" title="Permalink to this headline"> 🔗</a></h2>
+<p>The <code class="docutils literal"><span class="pre">transform</span></code> member of an analysis specification (or multitable
+definition) is a declarative definition of what the dimension should
+look like after computation. The cube result dimension itself will
+always be derived from the <code class="docutils literal"><span class="pre">query</span></code> part of the request
+(<code class="docutils literal"><span class="pre">{variable:</span> <span class="pre">$variableId})</span></code>,
+<code class="docutils literal"><span class="pre">{function:</span> <span class="pre">f,</span> <span class="pre">args:</span> <span class="pre">[$variableId,</span> <span class="pre">…]}</span></code>, &amp;c., after which clients
+should do what is necessary to arrive at the transformed result —
+changing element names, orders, etc.</p>
+<div class="section" id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Permalink to this headline"> 🔗</a></h3>
+<p>A <code class="docutils literal"><span class="pre">transform</span></code> can contain <code class="docutils literal"><span class="pre">elements</span></code> or <code class="docutils literal"><span class="pre">categoriees</span></code>, which is an
+array of target transforms for output-dimension elements. Therefore to
+create a valid element/category <code class="docutils literal"><span class="pre">transform</span></code> it is generally necessary
+to make a cube query, inspect the result dimension, and proceed from
+there. For categorical and multiple response variables, elements may
+also be obtained from the variable entity.</p>
+<p>Transforms are designed for variables that are more stable than not,
+with element ids that inhere in the underlying elements, such as
+category or subvariable ids. Dynamic elements such as results of
+<code class="docutils literal"><span class="pre">bin</span></code>ning a numeric variable, may not be transformed.</p>
+<p>Transformations stored on a variable’s <code class="docutils literal"><span class="pre">view</span></code> are the default
+transforms for that variable. They may be shorter, alternate versions of
+category names, or contain insertions, described below.</p>
+</div>
+<div class="section" id="insertions">
+<h3>Insertions<a class="headerlink" href="#insertions" title="Permalink to this headline"> 🔗</a></h3>
+<p>In addition to transforming the categories or elements already defined
+on a cube ‘dimension’, it is possible to insert headings and subtotals
+to the result. These <code class="docutils literal"><span class="pre">insertions</span></code> are attached after an <code class="docutils literal"><span class="pre">anchor</span></code>
+element/category id.</p>
+<p>Insertions are processed <strong>last</strong>, after renaming, reordering, or
+sorting elements according to the elements/categories transform
+specification. They are “attached” to their anchor, always following it
+in the result; or, simply appended to the end of the result. If the
+result is sorted by some column’s value, it may make the most sense to
+choose to display insertions last, rather than inserting them into a
+result table because their values will not be considered when sorting
+the non-inserted elements themselves.</p>
+<p>An insertion is defined by an anchor and a name, which will be displayed
+alongside the names of categories/elements. It may also contain
+<code class="docutils literal"><span class="pre">&quot;function&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;combine&quot;:</span> <span class="pre">[]}</span></code>, where array arguments are the
+<code class="docutils literal"><span class="pre">id</span></code>s of elements to combine as “subtotals”.</p>
+<p>Use an anchor of <code class="docutils literal"><span class="pre">0</span></code> to indicate an insertion before other results.
+Any anchor other than <code class="docutils literal"><span class="pre">0</span></code> that does not match an id in the
+elements/categories will be included at the end of results.</p>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"> 🔗</a></h3>
+<p>Consider the following example result dimension:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="35%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">missing</th>
+<th class="head">id</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Element A</td>
+<td>&#160;</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>Element B</td>
+<td>&#160;</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Element C</td>
+<td>&#160;</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>Don’t know</td>
+<td>&#160;</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>Not asked</td>
+<td>true</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>An element transform can specify a new order of output elements, new
+names, and in the future, bases for hypothesis testing, result sorting,
+and aggregation of results. A <code class="docutils literal"><span class="pre">transform</span></code> has elements that look
+generally like the dimension’s extent, with some optional properties:</p>
+<ul class="simple">
+<li><strong>id</strong>: (required) id of the target element/category</li>
+<li><strong>name</strong>: name of new target element/category</li>
+<li><strong>sort</strong>: <code class="docutils literal"><span class="pre">-1</span></code> or <code class="docutils literal"><span class="pre">1</span></code> indicating to sort results descending or
+ascending by this element</li>
+<li><strong>compare</strong>: <code class="docutils literal"><span class="pre">neq</span></code>, <code class="docutils literal"><span class="pre">leq</span></code>, <code class="docutils literal"><span class="pre">geq</span></code> indicating to test other
+rows/columns against the hypothesis that they are ≠, ≤, or ≥ to the
+present element</li>
+<li><strong>hide</strong>: suppress this element’s row/column from displaying at all.
+Defaults to false for valid elements, true for missing, so that if an
+element is added, it will be present until a transform with
+<code class="docutils literal"><span class="pre">hide:</span> <span class="pre">true</span></code> is added to suppress it.</li>
+</ul>
+<p>A <code class="docutils literal"><span class="pre">transform</span></code> with object members can do lots of things. Suppose we
+want to put <em>Element C</em> first, hide the <em>Don’t know</em>, and more compactly
+represent the result as just <em>C, A, B</em>:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2669ac8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2669ac8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;transform&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;hide&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+    <span class="p">]}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="example-transform-in-a-saved-analysis">
+<h3>Example transform in a saved analysis<a class="headerlink" href="#example-transform-in-a-saved-analysis" title="Permalink to this headline"> 🔗</a></h3>
+<p>In a saved analysis the transforms are an array in <code class="docutils literal"><span class="pre">display_settings</span></code>
+with the same extents output dimensions (as well as, of course, the
+query used to generate them). This syntax makes a univariate table of a
+multiple response variable and re-orders the result.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d270c240_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d270c240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;selections&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span><span class="p">}]</span>
+            <span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/398620f/&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;display_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;transform&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f007&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;My preferred first item&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;fee7&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;The zeroth response&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c001&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Third response&quot;</span>
+            <span class="p">}],</span>
+            <span class="s2">&quot;insertions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;anchor&quot;</span><span class="p">:</span> <span class="s2">&quot;fee7&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Feet&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;combine&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;f00t&quot;</span><span class="p">,</span> <span class="s2">&quot;fee7&quot;</span><span class="p">]}}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="example-transform-in-a-multitable-template">
+<h3>Example transform in a multitable template<a class="headerlink" href="#example-transform-in-a-multitable-template" title="Permalink to this headline"> 🔗</a></h3>
+<p>In a multitable, the <code class="docutils literal"><span class="pre">transform</span></code> is part of each dimension definition
+object in the <code class="docutils literal"><span class="pre">template</span></code> array.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2229438_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2229438_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;transform&quot;</span><span class="p">:</span> <span class="p">[{},</span> <span class="p">{}]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;rollup&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;M&quot;</span><span class="p">},</span>
+                        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="more-complex-multitable-templates">
+<h2>More complex multitable templates<a class="headerlink" href="#more-complex-multitable-templates" title="Permalink to this headline"> 🔗</a></h2>
+<p>The template may contain in addition to variable references and their
+query arguments, an optional <code class="docutils literal"><span class="pre">transform</span></code>: To obtain their multiple
+output cubes, you <code class="docutils literal"><span class="pre">GET</span> <span class="pre">datasets/{id}/cube?query=&lt;q&gt;</span></code> where <code class="docutils literal"><span class="pre">&lt;q&gt;</span></code> is
+a ZCL object in JSON format (which must then be URI encoded for
+inclusion in the querystring). Use the “each” function to iterate over
+the overview variables’ <code class="docutils literal"><span class="pre">query</span></code>, producing one output cube for each
+one as “variable x”. For example, to cross each of the above 3 variables
+against another variable “449b421”:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21de278_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21de278_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;each&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span>
+        <span class="p">},</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;de85b32&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;398620f&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;c116a77&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;block&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;449b421&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">null</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The result will be an array of output cubes:</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

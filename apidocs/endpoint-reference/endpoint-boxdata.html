@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Boxdata &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comparisons" href="endpoint-comparison.html" />
+    <link rel="prev" title="Batches" href="endpoint-batch.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-batch.html" title="Previous Chapter: Batches"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Batches</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-comparison.html" title="Next Chapter: Comparisons"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Comparisons &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boxdata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-catalog">GET catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-catalog">POST catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#display-settings">Display Settings</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#brand">Brand</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#static-colors">Static colors</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#base">Base</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#category-lookup">Category Lookup</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="boxdata">
+<h1>Boxdata<a class="headerlink" href="#boxdata" title="Permalink to this headline"> 🔗</a></h1>
+<p>Boxdata is the data that Crunch provides to the CrunchBox for rendering
+web components that are made publicly available. This endpoint provides
+a catalog of data that has been precomputed to provide visualizations
+cubes of json data. Metadata associated with this raw computed data is
+accessed and manipulated through this endpoint.</p>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/boxdata/</span></code></p>
+<p>A Shoji Catalog of boxdata for a given dataset.</p>
+<div class="section" id="get-catalog">
+<h3>GET catalog<a class="headerlink" href="#get-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>When authenticated and authorized to view the given dataset, GET returns
+200 status with a Shoji Catalog of boxdata associated with the dataset.
+If authorization is lacking, response will instead be 404.</p>
+<p>Catalog tuples contain the following keys:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="10%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title</td>
+<td>string</td>
+<td>Human friendly identifier</td>
+</tr>
+<tr class="row-odd"><td>notes</td>
+<td>string</td>
+<td>Other information relevent for this CrunchBox</td>
+</tr>
+<tr class="row-even"><td>header</td>
+<td>string</td>
+<td>header information for the CrunchBox</td>
+</tr>
+<tr class="row-odd"><td>footer</td>
+<td>string</td>
+<td>footer information for the CrunchBox</td>
+</tr>
+<tr class="row-even"><td>dataset</td>
+<td>string</td>
+<td>URL of the dataset associated with the CrunchBox</td>
+</tr>
+<tr class="row-odd"><td>filters</td>
+<td>object</td>
+<td>A Crunch expression indicating which filters to
+include in the CrunchBox</td>
+</tr>
+<tr class="row-even"><td>where</td>
+<td>object</td>
+<td>A Crunch expression indicating which variables
+to include in the CrunchBox.  An undefined value
+is equavilent to specifying all dataset
+variables.</td>
+</tr>
+<tr class="row-odd"><td>creation_time</td>
+<td>string</td>
+<td>A timestamp of the date when this CrunchBox was
+created</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d273b470_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d273b470_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/44a4d477d70c85da4b8298677e527ad8/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;footer&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the footer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;just a couple of variables&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the header&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-03-14T00:13:42.024000+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;44a4d477d70c85da4b8298677e527ad8&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/75ff1d67ed698e0986f1c1c3daebf9a2/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;xz&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-03-14T00:13:42.024000+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000000/&quot;</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;75ff1d67ed698e0986f1c1c3daebf9a2&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post-catalog">
+<h3>POST catalog<a class="headerlink" href="#post-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>Use POST to create a new datasource for CrunchBox. Note that new boxdata
+is only created when there is a new combination of where and filter
+data. If the same variables and filteres are indicated by the POST data,
+the existing combination will result in a modification of metadata
+associated with the cube data. This is to keep avoid recomputing
+analysis needlessly.</p>
+<p>A POST to this resource must be a Shoji Entity with the following “body”
+attributes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title</td>
+<td>Human friendly identifier</td>
+</tr>
+<tr class="row-odd"><td>notes</td>
+<td>Other information relevent for this CrunchBox</td>
+</tr>
+<tr class="row-even"><td>header</td>
+<td>header information for the CrunchBox</td>
+</tr>
+<tr class="row-odd"><td>footer</td>
+<td>footer information for the CrunchBox</td>
+</tr>
+<tr class="row-even"><td>dataset</td>
+<td>URL of the dataset associated with the CrunchBox</td>
+</tr>
+<tr class="row-odd"><td>filters</td>
+<td>A Crunch expression indicating which <strong>filters</strong> to include</td>
+</tr>
+<tr class="row-even"><td>where</td>
+<td>A Crunch expression indicating which <strong>variables</strong> to include</td>
+</tr>
+<tr class="row-odd"><td>display_settings</td>
+<td>Options to customize how it looks and behaves</td>
+</tr>
+</tbody>
+</table>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c02e10_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c02e10_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">},</span>
+                  <span class="s2">&quot;000003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span><span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;force&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;just a couple of variables&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the header&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;footer&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the footer&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="display-settings">
+<h3>Display Settings<a class="headerlink" href="#display-settings" title="Permalink to this headline"> 🔗</a></h3>
+<p>The <code class="docutils literal"><span class="pre">display_settings</span></code> member of a CrunchBox payload allows you to
+customize several aspects of how it will be displayed.</p>
+<p>A <code class="docutils literal"><span class="pre">minBaseSize</span></code> member will suppress display of values in tables or
+graphs where the sample size is below a given threshold.</p>
+<p>To customize a CrunchBox’s color scheme, you may include an optional
+<code class="docutils literal"><span class="pre">palette</span></code> member in the <code class="docutils literal"><span class="pre">display_settings</span></code> of the body of the
+request to create or edit the boxdata. There are four types of
+customization available.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1e6a668_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1e6a668_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;display_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;minBaseSize&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;#111111&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;#222222&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="s2">&quot;#333333&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;static_colors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#444444&quot;</span><span class="p">,</span> <span class="s2">&quot;#555555&quot;</span><span class="p">,</span> <span class="s2">&quot;#666666&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;category_lookup&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;category name&quot;</span><span class="p">:</span> <span class="s2">&quot;#aaaaaa&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;another category:&quot;</span><span class="p">:</span> <span class="s2">&quot;bbbbbb&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="brand">
+<h4>Brand<a class="headerlink" href="#brand" title="Permalink to this headline"> 🔗</a></h4>
+<p>The CrunchBox interface uses three colors, named Primary, Secondary, and
+Messages. By default, these are Crunch brand colors of green, blue, and
+purple. These are used, for example, as the background colors at the top
+of the interface and the color of the filter selector.</p>
+</div>
+<div class="section" id="static-colors">
+<h4>Static colors<a class="headerlink" href="#static-colors" title="Permalink to this headline"> 🔗</a></h4>
+<p>Include an array of <code class="docutils literal"><span class="pre">static_colors</span></code> and every categorical color will
+be taken from the list in order. If none of your variables have more
+categories than colors provided here, the generator (below) will never
+be used, but category lookup will be performed.</p>
+</div>
+<div class="section" id="base">
+<h4>Base<a class="headerlink" href="#base" title="Permalink to this headline"> 🔗</a></h4>
+<p>If the number of categories exceeds the number of static colors, or no
+static colors are specified, “base” colors are used to generate a
+categorical palette. By default, these are also the Crunch green, blue,
+and purple, and are not overridden by <code class="docutils literal"><span class="pre">brand</span></code>. Each color is
+interpolated in HCL space from itself to Hue + 100, Lightness + 20; and
+then colors are ordered to maximize sequential absolute distance in
+L<em>a</em>b* space so adjacent colors can be easily distinguished.</p>
+</div>
+<div class="section" id="category-lookup">
+<h4>Category Lookup<a class="headerlink" href="#category-lookup" title="Permalink to this headline"> 🔗</a></h4>
+<p>Finally, you may include an object where keys are exact category names
+that should always be assigned a specific color. Using semantically
+resonant colors in this manner is a boon for interpretation and is
+highly recommended when possible. For example, to ensure that the Green
+Party is a verdant shade, include a member such as
+<code class="docutils literal"><span class="pre">&quot;Green&quot;:</span> <span class="pre">&quot;#00dd00&quot;</span></code>. Building a category lookup list requires some
+attention to the specific categories in a dataset; they must match
+exactly, and not partially; to ensure that “Green Party” is also green,
+include an additional <code class="docutils literal"><span class="pre">&quot;Green</span> <span class="pre">Party&quot;</span></code> key with the same value. Lookup
+values are processed <strong>last</strong>, replacing erstwhile static or generated
+colors.</p>
+</div>
+</div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/boxdata/{id}/</span></code></p>
+<p>This endpoint represents each of the boxdata entities listed in the
+catalog.</p>
+<p>The body of any of the entities is the same as the catalog’s tuple:</p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns the body of the boxdata entity</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2524b70_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2524b70_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;footer&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the footer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;just a couple of variables&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the header&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;44a4d477d70c85da4b8298677e527ad8&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="delete">
+<h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
+<p>Deletes the boxdata entity. Returns 204.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

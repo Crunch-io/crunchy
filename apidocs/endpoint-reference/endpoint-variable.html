@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Variables &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Versions" href="endpoint-version.html" />
+    <link rel="prev" title="Users" href="endpoint-user.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-user.html" title="Previous Chapter: Users"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Users</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-version.html" title="Next Chapter: Versions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Versions &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-catalog">GET catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch-catalog">PATCH catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-catalog">POST catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#private-variables-catalog">Private variables catalog</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-order">Hierarchical Order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put">PUT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#personal-variable-order">Personal Variable Order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">PATCH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">PUT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#weights">Weights</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">PATCH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">PUT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">PATCH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post">POST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#numeric">numeric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#categorical">categorical</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#text">text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#univariate-frequencies">Univariate frequencies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#transforming">Transforming</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#convert-type">Convert type</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#casting-to-datetime">Casting to datetime</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#casting-from-datetime">Casting from datetime</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#array-variables">Array variables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#missing-values">Missing values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subvariables">Subvariables</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id9">GET</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">PATCH</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#values">Values</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#private-variables">Private Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"> 🔗</a></h1>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{?relative}</span></code></p>
+<p>A Shoji Catalog of variables.</p>
+<div class="section" id="get-catalog">
+<h3>GET catalog<a class="headerlink" href="#get-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>When authenticated and authorized to view the given dataset, GET returns
+200 status with a Shoji Catalog of variables in the dataset. If
+authorization is lacking, response will instead be 404.</p>
+<p>Array subvariables are not included in the index of this catalog. Their
+metadata are instead accessible in each array variable’s
+“subvariables_catalog”.</p>
+<p>Private variables are not included in the index of this catalog,
+although entities may be present at <code class="docutils literal"><span class="pre">variables/{id}/</span></code>. See Private
+Variables for an index of those.</p>
+<p>Catalog tuples contain the following keys:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="17%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Human-friendly string identifier</td>
+</tr>
+<tr class="row-odd"><td>alias</td>
+<td>string</td>
+<td>More machine-friendly, traditional name for
+a variable</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>Optional longer string</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>string</td>
+<td>Immutable internal identifier</td>
+</tr>
+<tr class="row-even"><td>notes</td>
+<td>string</td>
+<td>Optional annotations for a variable</td>
+</tr>
+<tr class="row-odd"><td>discarded</td>
+<td>boolean</td>
+<td>Whether the variable should be hidden from
+most views; default: false</td>
+</tr>
+<tr class="row-even"><td>derived</td>
+<td>boolean</td>
+<td>Whether the variable is a function of
+another; default: false</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>The string type name, one of “numeric”,
+“text”, “categorical”, “datetime”,
+“categorical_array”, or “multiple_response”</td>
+</tr>
+<tr class="row-even"><td>subvariables</td>
+<td>array of URLs</td>
+<td>For arrays, array of (ordered) references to
+subvariables</td>
+</tr>
+<tr class="row-odd"><td>subvariables_catalog</td>
+<td>URL</td>
+<td>For arrays, link to a Shoji Catalog of
+subvariables</td>
+</tr>
+<tr class="row-even"><td>resolution</td>
+<td>string</td>
+<td>Present in datetime variables; current
+resolution of data</td>
+</tr>
+<tr class="row-odd"><td>rollup_resolution</td>
+<td>string</td>
+<td>Present in datetime variables; resolution
+used for rolled up summaries</td>
+</tr>
+<tr class="row-even"><td>geodata</td>
+<td>URL</td>
+<td>Present only in variables that have geodata
+associated; points to the catalog of geodata
+related to this variable</td>
+</tr>
+<tr class="row-odd"><td>uniform_basis</td>
+<td>boolean</td>
+<td>Whether each subvariable should be
+considered the same length as the total
+array. Only on <code class="docutils literal"><span class="pre">multiple_response</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>The catalog has two optional query parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="8%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>relative</td>
+<td>string</td>
+<td>If “on”, all URLs in the “index” will be relative to the
+catalog’s “self”</td>
+</tr>
+</tbody>
+</table>
+<p>With the relative flag enabled, the variable catalog looks something
+like this:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2accda0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2accda0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;hier&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5330a0/variables/hier/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;personal&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5330a0/variables/personal/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/weights/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;specification&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/specifications/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;List of Variables of this dataset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;a77d9f/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Birth Year&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;birthyear&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a77d9f&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;In what year were you born?&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;9e4c84/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Comments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;qccomments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9e4c84&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;Global notes about this variable.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Do you have any comments on your experience of taking this survey (optional)?&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;aad4ad/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;subvariables_catalog&quot;</span><span class="p">:</span> <span class="s2">&quot;aad4ad/subvariables/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;arrayvar&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;439dcf/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;1c99ea/&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;All variable types can have notes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;aad4ad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="patch-catalog">
+<h3>PATCH catalog<a class="headerlink" href="#patch-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>Use PATCH to edit the “name”, “description”, “alias”, or “discarded”
+state of one or more variables. A successful request returns a 204
+response. The attributes changed will be seen by all users with access
+to this dataset; i.e., names, descriptions, aliases, and discarded state
+are not merely attributes of your view of the data but of the datasets
+themselves.</p>
+<p>Authorization is required: you must have “edit” privileges on the
+dataset being modified, as shown in the “permissions” object in the
+dataset’s catalog tuple. If you try to PATCH and are not authorized, you
+will receive a 403 response and no changes will be made.</p>
+<p>The tuple attributes other than “name”, “description”, “alias”, and
+“discarded” cannot be modified here by PATCH. Attempting to modify other
+attributes, or including new attributes, will return a 400 response.
+Variable “type” can only be modified by the “cast” method, described
+below. The “subvariables” can be modified by PATCH on the variable
+entity. “subvariables_catalog” is a URL to a different variable catalog
+and is thus not editable, though you can navigate to its location and
+modify subvariable attributes there. A variable’s “id” and its “derived”
+state are immutable.</p>
+<p>When PATCHing, you may include only the keys in each tuple that are
+being modified, or you may send the complete tuple. As long as the keys
+that cannot be modified via PATCH here are not modified, the request
+will succeed.</p>
+<p>Note that, because this catalog contains its entities (rather than
+collecting them), you cannot PATCH to add new variables, nor can you
+PATCH a null tuple to delete them. Attempting either will return a 400
+response. Creating variables is allowed only by POST to the catalog,
+while deleting variables is accomplished via a DELETE on the variable
+entity.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1efb208_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1efb208_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;9e4c84/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>PATCHing this payload on the above catalog will return a 204 status. A
+subsequent GET of the catalog returns the following response; note the
+change in line 24.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2c4ba90_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2c4ba90_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;hier&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5330a0/variables/hier/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;personal&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5330a0/variables/personal/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/weights/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;specification&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/specifications/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;List of Variables of this dataset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;a77d9f/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Birth Year&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;birthyear&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a77d9f&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;In what year were you born?&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;9e4c84/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Comments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;qccomments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;9e4c84&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;Global notes about this variable.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Do you have any comments on your experience of taking this survey (optional)?&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;aad4ad/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;subvariables_catalog&quot;</span><span class="p">:</span> <span class="s2">&quot;aad4ad/subvariables/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;arrayvar&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;439dcf/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;1c99ea/&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;All variable types can have notes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;aad4ad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post-catalog">
+<h3>POST catalog<a class="headerlink" href="#post-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>A POST to this resource must be a Shoji Entity with the following “body”
+attributes:</p>
+<ul class="simple">
+<li><strong>name</strong></li>
+<li><strong>type</strong></li>
+<li>If “type” is “categorical”, “multiple_response”, or
+“categorical_array”: <strong>categories</strong>: an array of category
+definitions</li>
+<li>If “type” is “multiple_response” or “categorical_array”:
+<strong>subvariables</strong>: an array of URLs of variables to be “bound”
+together to form the array variable</li>
+<li>If “type” is “multiple_response” or “categorical_array”:
+<strong>subreferences</strong>: an object keyed by each of the subvariable URLs
+where each value contains partial variable definitions, which will be
+created as categorical subvariables of the array. If included, the
+array definition must include “categories”, which are shared among
+the subvariables.</li>
+<li>If type is “multiple_response”, the definition may include
+<strong>selected_categories</strong>: an array of category names present in the
+subvariables. This will mark the specified category or categories as
+the “selected” response in the multiple response variable. If no
+“selected_categories” array is provided, the new variable will use
+any categories already flagged as “selected”: true. If no such
+category exists, the response will return a 400 status.</li>
+<li>If “type” is “datetime”: <strong>resolution</strong>: a string, such as “Y”, “Q”,
+“M”, “W”, “D”, “h”, “m”, “s”, “ms”, that indicates the unit size of
+the datetime data.</li>
+</ul>
+<p>See <a class="reference external" href="#variable-definitions">Variable Definitions</a> for more details
+and examples of valid attributes, and <a class="reference external" href="#array-variables">Feature Guide:
+Arrays</a> for more information on the various cases
+for creating array variables.</p>
+<p>It is encouraged, but not required, to include an “alias” in the body.
+If omitted, one will be generated from the required “name”.</p>
+<p>You may also include “values”, which will create the column of data
+corresponding to this variable definition. See <a class="reference external" href="#column-by-column">Importing Data:
+Column-by-column</a> for details and examples.</p>
+<p>You may instead also include an “derivation” to derive a variable as a
+function of other variables. In this case, “type” is not required
+because it depends on the output of the specified derivation function.
+For details and examples, see <a class="reference external" href="#deriving-variables">Deriving
+Variables</a>.</p>
+<p>A 201 indicates success and includes the URL of the newly-created
+variable in the Location header.</p>
+</div>
+<div class="section" id="private-variables-catalog">
+<h3>Private variables catalog<a class="headerlink" href="#private-variables-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/private/{?relative}</span></code></p>
+<p><code class="docutils literal"><span class="pre">GET</span></code> returns a Shoji Catalog of variables, as described above,
+containing those variables that are private to the authenticated user.
+You may <code class="docutils literal"><span class="pre">PATCH</span></code> this catalog to edit names, aliases, descriptions,
+etc. of the private variables. <code class="docutils literal"><span class="pre">POST</span></code>, however, is not supported at
+this endpoint. To create new private variables, <code class="docutils literal"><span class="pre">POST</span></code> to the main
+variables catalog with a <code class="docutils literal"><span class="pre">&quot;private&quot;:</span> <span class="pre">true</span></code> body attribute.</p>
+</div>
+</div>
+<div class="section" id="hierarchical-order">
+<h2>Hierarchical Order<a class="headerlink" href="#hierarchical-order" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/hier/</span></code></p>
+<p>Dataset global order containing references to all public variables.</p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a Shoji Order.</p>
+</div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<p>Will expect a Shoji Order representation containing a replacement or new
+grouped entities. This allows one to create new groups on the fly or
+overwrite existing groups with new ‘entities’.</p>
+<p>The match happens by each group name and will overwrite the values of
+each group with the received one.</p>
+<p>After PATCH any variable not present in the order will always be
+appended to the root of the graph.</p>
+</div>
+<div class="section" id="put">
+<h3>PUT<a class="headerlink" href="#put" title="Permalink to this headline"> 🔗</a></h3>
+<p>Receives a Shoji Order representation with a completely new graph. Any
+previously existing group will be eliminated and any new groups will be
+added. This will overwrite the complete set of current groups.</p>
+<p>After PUT any variable not present on any of the groups will always be
+appended to the root of the graph.</p>
+</div>
+</div>
+<div class="section" id="personal-variable-order">
+<h2>Personal Variable Order<a class="headerlink" href="#personal-variable-order" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/personal/</span></code></p>
+<p>Unlike the hierarchical order, the personal variable order returns
+different content per user. Each user can add variable references to it
+including personal variables and will not be shared with other users.</p>
+<p>The personal variable order defaults to an empty Shoji order until each
+user makes changes to it.</p>
+<p>The allowed variables on this order are: * Any public variable
+available on the variable catalog * Any personal variable or
+subvariable for the authenticated user * Any subvariable of an array
+variable on the variable catalog</p>
+<div class="section" id="id1">
+<h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a Shoji Order for this user.</p>
+</div>
+<div class="section" id="id2">
+<h3>PATCH<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h3>
+<p>Same as hierarchical order, receives a Shoji Order representation to
+overwrite the existing order. Personal variables are allowed here.</p>
+</div>
+<div class="section" id="id3">
+<h3>PUT<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
+<p>Behaves sames as PATCH.</p>
+</div>
+</div>
+<div class="section" id="weights">
+<h2>Weights<a class="headerlink" href="#weights" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/weights/</span></code></p>
+<div class="section" id="id4">
+<h3>GET<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<p>GET a <code class="docutils literal"><span class="pre">shoji:order</span></code> that contains the urls of the variables that have
+been designated as possible weight variables.</p>
+</div>
+<div class="section" id="id5">
+<h3>PATCH<a class="headerlink" href="#id5" title="Permalink to this headline"> 🔗</a></h3>
+<p>PATCH the <code class="docutils literal"><span class="pre">graph</span></code> with a list of the desired list of weight variables.
+The list will always be overwritten with the new values. This order can
+only be a flat list of URLs, any nesting will be rejected with a 400
+response.</p>
+<p>If the dataset has a default weight variable configured, it will always
+be present on the response even if it wasn’t included on a PATCH
+request.</p>
+<p>Removing variables from this list will have the side effect of changing
+any user’s preference that had such variables set as their weight to the
+current dataset’s default weight.</p>
+<p>Only numeric variables are allowed to be used as weight. If a variable
+of another type is included in the list, the server will abort and
+return a 409 response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1f33080_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1f33080_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/42d0a3/variables/42229f&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">It is only possible to submit variables that belong to the main dataset.
+That is, variables from joined datasets cannot be set as weight.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>PUT<a class="headerlink" href="#id6" title="Permalink to this headline"> 🔗</a></h3>
+<p>Behaves sames as PATCH.</p>
+</div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/</span></code></p>
+<p>A Shoji Entity which exposes most of the metadata about a Variable in
+the dataset.</p>
+<div class="section" id="id7">
+<h3>GET<a class="headerlink" href="#id7" title="Permalink to this headline"> 🔗</a></h3>
+<p>Variable entities’ <code class="docutils literal"><span class="pre">body</span></code> attributes contain the following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Human-friendly string identifier</td>
+</tr>
+<tr class="row-odd"><td>alias</td>
+<td>string</td>
+<td>More machine-friendly, traditional name for a
+variable</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>Optional longer string</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>string</td>
+<td>Immutable internal identifier</td>
+</tr>
+<tr class="row-even"><td>notes</td>
+<td>string</td>
+<td>Optional annotations for the variable</td>
+</tr>
+<tr class="row-odd"><td>discarded</td>
+<td>boolean</td>
+<td>Whether the variable should be hidden from
+most views; default: false</td>
+</tr>
+<tr class="row-even"><td>private</td>
+<td>boolean</td>
+<td>If true, the variable is only visible to the
+owner and is only included in the private
+variables catalog, not the common catalog</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>url</td>
+<td>If the variable is private it will point to
+the url of its owner; null for non private
+variables</td>
+</tr>
+<tr class="row-even"><td>derived</td>
+<td>boolean</td>
+<td>Whether the variable is a function of
+another; default: false</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>string</td>
+<td>The string type name</td>
+</tr>
+<tr class="row-even"><td>categories</td>
+<td>array</td>
+<td>If “type” is “categorical”,
+“multiple_response”, or “categorical_array”,
+an array of category definitions (see below).
+Other types have an empty array</td>
+</tr>
+<tr class="row-odd"><td>subvariables</td>
+<td>array of URLs</td>
+<td>For array variables, an ordered array of
+subvariable ids</td>
+</tr>
+<tr class="row-even"><td>subreferences</td>
+<td>object of objects</td>
+<td>For array variables, an object of {“name”:
+…, “alias”: …, …} objects keyed by
+subvariable url</td>
+</tr>
+<tr class="row-odd"><td>resolution</td>
+<td>string</td>
+<td>For datetime variables, a string, such as
+“Y”, “M”, “D”, “h”, “m”, “s”, “ms”, that
+indicates the unit size of the datetime data.</td>
+</tr>
+<tr class="row-even"><td>derivation</td>
+<td>object</td>
+<td>For derived variables, a Crunch expression
+which was used to derive this variable; or
+null</td>
+</tr>
+<tr class="row-odd"><td>format</td>
+<td>object</td>
+<td>An object with various members to control the
+display of Variable data (see below)</td>
+</tr>
+<tr class="row-even"><td>view</td>
+<td>object</td>
+<td>An object with various members to control the
+display of Variable data (see below)</td>
+</tr>
+<tr class="row-odd"><td>dataset_id</td>
+<td>string</td>
+<td>The id of the Dataset to which this Variable
+belongs</td>
+</tr>
+<tr class="row-even"><td>missing_reasons</td>
+<td>object</td>
+<td>An object whose keys are reason phrases and
+whose values are missing codes; missing
+entries in Variable data are represented by a
+{“?”: code} missing marker; clients may look
+up the corresponding reason phrase for each
+code in this one-to-one map</td>
+</tr>
+</tbody>
+</table>
+<p>Category objects have the following members:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="9%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>integer</td>
+<td>identifier for the category, corresponding to values in
+the column of data</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>string</td>
+<td>A unique label identifying the category</td>
+</tr>
+<tr class="row-even"><td>numeric_value</td>
+<td>numeric</td>
+<td>A quantity assigned to this category for numeric
+aggregation. May be <code class="docutils literal"><span class="pre">null</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>missing</td>
+<td>boolean</td>
+<td>If true, the given category is marked as “missing”, and
+is omitted from most calculations.</td>
+</tr>
+<tr class="row-even"><td>selected</td>
+<td>boolean</td>
+<td>For categories in multiple response variables, those with
+<code class="docutils literal"><span class="pre">&quot;selected&quot;</span> <span class="pre">:</span> <span class="pre">true</span></code> which values correspond to the
+“response” being selected. If omitted, the category is
+treated as not selected. Multiple response variables must
+have at least one category marked as selected and may
+have more than one.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For variables with categories, you can get the “missing reasons” from
+the category definitions. You don’t need the “missing_reasons” body
+attribute.</p>
+</div>
+<p>Format objects may contain:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="8%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>data</td>
+<td>object</td>
+<td>An object with an integer “digits” member, stating how many
+digits to display after the decimal point when showing data
+values</td>
+</tr>
+<tr class="row-odd"><td>summary</td>
+<td>object</td>
+<td>An object with an integer “digits” member, stating how many
+digits to display after the decimal point when showing
+aggregates values</td>
+</tr>
+</tbody>
+</table>
+<p>View objects may contain:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="9%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>show_codes</td>
+<td>boolean</td>
+<td>For categorical types only; if true, numeric
+values are shown</td>
+</tr>
+<tr class="row-odd"><td>show_counts</td>
+<td>boolean</td>
+<td>If true, show counts; if false, show percents</td>
+</tr>
+<tr class="row-even"><td>include_missing</td>
+<td>boolean</td>
+<td>For categorical types only; if true, include
+missing categories</td>
+</tr>
+<tr class="row-odd"><td>include_noneoftheabove</td>
+<td>boolean</td>
+<td>For multiple response types only; if true,
+display a “none of the above” category in the
+requested summary or analysis</td>
+</tr>
+<tr class="row-even"><td>rollup_resolution</td>
+<td>string</td>
+<td>For datetime variables, a unit to which data
+should be “rolled up” by default. See
+“resolution” above.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h3>PATCH<a class="headerlink" href="#id8" title="Permalink to this headline"> 🔗</a></h3>
+<p>PATCH variable entities to edit their metadata. Send a Shoji Entity with
+a “body” member containing the attributes to modify. Omitted body
+attributes will be unchanged.</p>
+<p>Successful requests return 204 status. Among the actions achievable by
+PATCHing variable entities:</p>
+<ul class="simple">
+<li>Editing category attributes and adding categories. Include all
+categories.</li>
+<li>Remove categories by sending all categories except for the ones you
+wish to remove. You can only remove categories that don’t have any
+corresponding data values. Attempting to remove categories that have
+data associated will fail with a 400 response status.</li>
+<li>Reordering or removing subvariables in an array. Unlike categories,
+subvariables cannot be added via PATCH here.</li>
+<li>Editing derivation expressions</li>
+<li>Editing format and view settings</li>
+<li>Changing a datetime variable’s resolution</li>
+</ul>
+<p>Actions that are best or only achieved elsewhere include:</p>
+<ul class="simple">
+<li>changing variable names, aliases, and descriptions, which is best
+accomplished by PATCHing the variable catalog, as described above;</li>
+<li>changing a variable’s type, which can only be done by POSTing to the
+variable’s “cast” resource (see <a class="reference external" href="#convert-type">Convert type</a>
+below);</li>
+<li>editing names, aliases, and descriptions of subvariables in an array,
+which is done by PATCHing the array’s subvariable catalog;</li>
+<li>altering missing rules.</li>
+</ul>
+<p>Variable “id” and “dataset_id” are immutable.</p>
+<p>Example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a33a90_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a33a90_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0008/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0007/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0009/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;subreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0008/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar_2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;v2_new_name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0007/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar_1_new_name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;v1_new_name&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0009/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar_3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar_3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;new description&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post">
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<p>Calling POST on an array resource will “unbind” the variable. On
+success, <code class="docutils literal"><span class="pre">POST</span></code> returns 200 status with a Shoji View, containing the
+URLs of the (formerly sub-)variables, which are promoted to regular
+variables.</p>
+</div>
+<div class="section" id="delete">
+<h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
+<p>Calling DELETE on this resource will delete the variable. On success,
+<code class="docutils literal"><span class="pre">DELETE</span></code> returns 200 status with an empty Shoji View. Deleting an
+array deletes all its subvariable data as well.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/summary/{?filter}</span></code></p>
+<p>A collection of summary information describing the variable. A
+successful GET returns an object containing various scalars and tabular
+results in various formats. The set of included members varies by
+variable type. Exclusions, filters, and weights may all alter the
+output.</p>
+<p>For example, given a numeric variable with data [1, 2, 3, 4, 5, 4, {“?”:
+-1}, 3, 5, {“?”: -1}, 4, 3], a successful GET with no exclusions,
+filters, or weights returns:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d299aeb8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d299aeb8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">&quot;valid_count&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;fivenum&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;0.25&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;0.5&quot;</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;0.75&quot;</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;missing_count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="s2">&quot;histogram&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span> <span class="s2">&quot;bins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;stddev&quot;</span><span class="p">:</span> <span class="mf">1.2649110640673518</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mf">3.4</span><span class="p">,</span>
+    <span class="s2">&quot;missing_frequencies&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">}],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="numeric">
+<h3>numeric<a class="headerlink" href="#numeric" title="Permalink to this headline"> 🔗</a></h3>
+<p>The members include several counts:</p>
+<ul class="simple">
+<li>count: The number of entries in the variable.</li>
+<li>valid_count: The number of entries in the variable which are not
+missing.</li>
+<li>missing_count: The number of entries in the variable which are
+missing.</li>
+<li>missing_frequencies: An array of row objects. Each row represents a
+distinct missing reason, and includes the reason phrase as the
+“value” member and the number of entries which are missing for that
+reason as the “count” member.</li>
+<li>histogram: An array of row objects. Each row represents a discrete
+interval in the probability distribution, whose boundaries are given
+by the “bins” pair. An “at” member is included giving the midpoint
+between the two boundaries. The “value” member gives a count of
+entries which fall into the given bin. as well as basic summary
+statistics:</li>
+<li>fivenum: An array of five [quartile, point] pairs, where the
+“quartile” element is one of the strings “0”, “0.25”, “0.5”, “0.75”,
+“1”, representing the min, first quartile, median, third quartile,
+and max boundaries to divide the data values into four equal groups.
+The “point” is the real number at each boundary, and is estimated
+using the same algorithm as Excel or R’s “algorithm 7”, where h is:
+(N - 1)p + 1.</li>
+<li>min, median, max: taken from “fivenum”, above.</li>
+<li>mean: the sum of the values divided by the number of values, or, if
+weighted, the sum of weight times value divided by the sum of the
+weights.</li>
+<li>stddev: The standard deviation of the values.</li>
+</ul>
+</div>
+<div class="section" id="categorical">
+<h3>categorical<a class="headerlink" href="#categorical" title="Permalink to this headline"> 🔗</a></h3>
+<p>The basic counts are included:</p>
+<ul class="simple">
+<li>count: The number of entries in the variable.</li>
+<li>valid_count: The number of entries in the variable which are not
+missing.</li>
+<li>missing_count: The number of entries in the variable which are
+missing.</li>
+<li>missing_frequencies: An array of row objects. Each row represents a
+distinct missing reason, and includes the reason phrase as the
+“value” member. The number of entries which are missing for that
+reason is included as the “count” member.</li>
+</ul>
+<p>And the typical “frequencies” member is expanded into a custom
+“categories” member:</p>
+<ul class="simple">
+<li>categories: An array of row objects. Each row represents a distinct
+category (whether valid or missing), and includes its id the <code class="docutils literal"><span class="pre">_id</span></code>
+member (note the leading underscore), and its name as the “name”
+member. The “missing” member is true or false depending on whether
+the category is marked missing or not. The number of entries which
+possess that value is included as the “count” member.</li>
+</ul>
+</div>
+<div class="section" id="text">
+<h3>text<a class="headerlink" href="#text" title="Permalink to this headline"> 🔗</a></h3>
+<p>The basic counts are included:</p>
+<ul class="simple">
+<li>count: The number of entries in the variable.</li>
+<li>valid_count: The number of entries in the variable which are not
+missing.</li>
+<li>missing_count: The number of entries in the variable which are
+missing.</li>
+<li>nunique: The number of distinct values in the data.</li>
+<li>sample: A sample of 5 entries of the data.</li>
+</ul>
+<p>In addition:</p>
+<ul class="simple">
+<li>max_chars: The number of characters of the longest value in the
+data.</li>
+</ul>
+</div>
+<div class="section" id="univariate-frequencies">
+<h3>Univariate frequencies<a class="headerlink" href="#univariate-frequencies" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/frequencies/{?filter,exclude_exclusion_filter}</span></code></p>
+<p>An array of row objects, giving the count of distinct values. The exact
+members vary by type:</p>
+<ul class="simple">
+<li>numeric: Each row represents a distinct valid value, and includes it
+as the “value” member. The number of entries which possess that value
+is included as the “count” member.</li>
+<li>categorical: Each row represents a distinct category (whether valid
+or missing), and includes its id the <code class="docutils literal"><span class="pre">_id</span></code> member (note the leading
+underscore), and its name as the “name” member. The “missing” member
+is true or false depending on whether the category is marked missing
+or not. The number of entries which possess that value is included as
+the “count” member.</li>
+<li>text: Each row represents a distinct valid value, and includes it as
+the “value” member. The number of entries which possess that value is
+included as the “count” member. The length of the array is limited to
+10 entries; if more than 10 distinct values are present in the data,
+an 11th row is added with a “value” member of “(Others)”, summing
+their counts.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="transforming">
+<h2>Transforming<a class="headerlink" href="#transforming" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="convert-type">
+<h3>Convert type<a class="headerlink" href="#convert-type" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/cast/</span></code></p>
+<p>A POST to this resource, with a JSON request body of {“cast_as”: type},
+will alter the variable to the given type. If the variable cannot be
+cast to the given type, 409 is returned. See next to obtain a preview
+summary of such a cast before committing to it.</p>
+<div class="section" id="casting-to-datetime">
+<h4>Casting to datetime<a class="headerlink" href="#casting-to-datetime" title="Permalink to this headline"> 🔗</a></h4>
+<ul class="simple">
+<li>From Numeric: Need to include keys: <code class="docutils literal"><span class="pre">offset</span></code> as an ISO-8601 date
+string and <code class="docutils literal"><span class="pre">resolution</span></code> which is one of the following strings:</li>
+<li>Y: Year</li>
+<li>Q: Quarter</li>
+<li>M: Month</li>
+<li>W: Week</li>
+<li>D: Day</li>
+<li>h: Hour</li>
+<li>m: Minutes</li>
+<li>s: Seconds</li>
+<li>ms: Milliseconds</li>
+<li>From Text: Need to include a <code class="docutils literal"><span class="pre">format</span></code> key containing a valid
+strftime string to format with.</li>
+<li>From Categorical: Need to include a <code class="docutils literal"><span class="pre">format</span></code> key containing a valid
+strftime string to format with.</li>
+</ul>
+</div>
+<div class="section" id="casting-from-datetime">
+<h4>Casting from datetime<a class="headerlink" href="#casting-from-datetime" title="Permalink to this headline"> 🔗</a></h4>
+<ul class="simple">
+<li>To Numeric: Not supported</li>
+<li>To Text: Need to include a <code class="docutils literal"><span class="pre">format</span></code> key containing a valid strftime
+string that matches the variable values to parse with.</li>
+<li>To Categorical: Need to include a <code class="docutils literal"><span class="pre">format</span></code> key containing a valid
+strftime string that matches the category names to parse with.</li>
+</ul>
+</div>
+<div class="section" id="array-variables">
+<h4>Array variables<a class="headerlink" href="#array-variables" title="Permalink to this headline"> 🔗</a></h4>
+<ul class="simple">
+<li>Multiple Response: Not supported</li>
+<li>Categorical Array: Not supported</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/cast/?cast_as={type}</span></code></p>
+<p>A GET on this resource will return the same response as ../summary would
+if the variable were cast to the given type. If the given type is not
+valid, 404 is returned.</p>
+</div>
+</div>
+</div>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="missing-values">
+<h3>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/missing_rules/</span></code></p>
+<p>A Shoji Entity whose “body” member contains an array of missing rule
+objects. POST a {reason: rule} to this URL to add a new rule. Rules take
+one of the following forms:</p>
+<ul class="simple">
+<li>{‘value’: v}: Entries which match the given value will be marked as
+missing for the given reason.</li>
+<li>{‘set’: [v1, v2, …]}: Entries which are present in the given set
+will be marked as missing for the given reason.</li>
+<li>{‘range’: [lower, upper], ‘inclusive’: [true, false]}: Entries which
+exist between the given boundaries will be marked as missing for the
+given reason. If either “inclusive” element is null, the
+corresponding boundary is unbounded.</li>
+<li>{‘function’: ‘…’, ‘args’: […]}: Entries which match the given
+filter function will be marked as missing for the given reason. This
+is typically a tree of simple rules logical-OR’d together.</li>
+</ul>
+<p>Example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1ef41d0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1ef41d0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Invalid&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s2">&quot;Sarai doesn&#39;t know how to use a calculator :(&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="n">null</span><span class="p">],</span> <span class="s2">&quot;inclusive&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">true</span><span class="p">,</span> <span class="n">false</span><span class="p">]}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Missing rules consist on filter expressions that can <strong>only</strong> refer to
+the same variable ID where they are defined. Marking values as missing
+based on the contents of another column is not supported.</p>
+</div>
+</div>
+<div class="section" id="subvariables">
+<h3>Subvariables<a class="headerlink" href="#subvariables" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/subvariables/</span></code></p>
+<div class="section" id="id9">
+<h4>GET<a class="headerlink" href="#id9" title="Permalink to this headline"> 🔗</a></h4>
+<p>This endpoint will return 404 for any variable that is not an array
+variable (Multiple response and Categorical variable).</p>
+<p>For array variables, this endpoint will return a Shoji Catalog
+containing a tuples for the subvariables. The tuples will have the same
+shape as the main variables catalog.</p>
+</div>
+<div class="section" id="id10">
+<h4>PATCH<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h4>
+<p>On PATCH, this endpoint allows modification to the variables attributes
+exposed on the tuples (name, description, alias, discarded).</p>
+<p>It is possible to add new subvariables to the array variable in
+question. To do so include the URL of another variable (currently
+existing on the dataset) on the payload with an empty tuple and such
+variable will be converted into a subvariable and added at the end.</p>
+<p>In the case of derived arrays, an attempt to PATCH this catalog will
+return a 405 response. This is because the list of subvariables for this
+array is a function of its derivation expression. The correct way to
+make modifications to derived arrays’ subvariables is by editing its
+<code class="docutils literal"><span class="pre">derivation</span></code> attribute with the desired expressions for each of them.</p>
+</div>
+</div>
+<div class="section" id="values">
+<h3>Values<a class="headerlink" href="#values" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/values/{?start,total,filter}</span></code></p>
+<p>A GET on this set of resources will return a JSON array of values from
+the variable’s data. Numeric variables will return numbers, text
+variables will return strings, and categorical variables will return
+category names for valid categories and {“?”: code} missing markers for
+missing categories. The “start” and “total” parameters paginate the
+results. The “filter” is a Crunch filter expression.</p>
+<p>Note that this endpoint is only accessible by dataset editors unless the
+<code class="docutils literal"><span class="pre">viewers_can_export</span></code> dataset setting is set to <code class="docutils literal"><span class="pre">true</span></code>, else the
+server will return a 403 response.</p>
+</div>
+</div>
+<div class="section" id="private-variables">
+<h2>Private Variables<a class="headerlink" href="#private-variables" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/private/</span></code></p>
+<p>Private variables are variables that, instead of being shared with
+everyone, are viewable only by the user that created them. In Crunch,
+users with view-only permissions on a dataset can still make variables
+of their own–just as they can make private filters.</p>
+<p>Private variables are not shown in the common variable catalog. Instead,
+they have their own Shoji Catalog of private variables belonging to the
+specified dataset for the authenticated user. Aside from this separate
+catalog, private variable entities and the catalog behave just as
+described above for public variables.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

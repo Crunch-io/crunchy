@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Batches &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boxdata" href="endpoint-boxdata.html" />
+    <link rel="prev" title="Accounts" href="endpoint-account.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-account.html" title="Previous Chapter: Accounts"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Accounts</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-boxdata.html" title="Next Chapter: Boxdata"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Boxdata &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Batches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post">POST</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#appending-a-dataset">Appending a dataset</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#appending-a-source">Appending a source</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#appending-a-crunch-table">Appending a Crunch Table</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#append-failures">Append Failures</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#checking-if-an-append-will-cause-problems">Checking if an append will cause problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lining-up-datasets-for-append-combine">Lining up datasets for append/combine</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-conflicts-object">The conflicts object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#table">Table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="batches">
+<h1>Batches<a class="headerlink" href="#batches" title="Permalink to this headline"> 🔗</a></h1>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/batches/</span></code></p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<p>A GET request on this resource returns a Shoji Catalog enumerating the
+batches present in the Dataset. Each tuple in the index includes a
+“status” member, which may be one of “analyzing”, “conflict”, “error”,
+“importing”, “imported”, or “appended”.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2c0a278_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2c0a278_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;...datasets/837498a/batches/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;0/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;appended&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;2/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;3/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;importing&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post">
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<p>A POST to this resource adds a new batch. The request payload can
+contain (1) the URL of another Dataset, (2) the URL of a Source object,
+or (3) a Crunch Table definition with variable metadata, row data, or
+both.</p>
+<p>A successful request will return either 201 status, if sufficiently
+fast, or 202, if the task is large enough to require processing outside
+of the request cycle. In both cases, the newly created batch entity’s
+URL is returned in the Location header. The 202 response contains a body
+with a Progress resource in it; poll that URL for updates on the
+completion of the append. See <a class="reference external" href="#progress">Progress</a>.</p>
+<p>Batches are created in <code class="docutils literal"><span class="pre">analyzing</span></code> state and will be advanced through
+<code class="docutils literal"><span class="pre">importing</span></code>, <code class="docutils literal"><span class="pre">imported</span></code>, and <code class="docutils literal"><span class="pre">appended</span></code> states if there are no
+problems. If there was a problem in processing it, its status will be
+<code class="docutils literal"><span class="pre">conflict</span></code> or <code class="docutils literal"><span class="pre">error</span></code>. Note that the response status code will
+always be 202 for asynchronous or 201 for synchronous creation of the
+batch whether there were conflicts or not. So you need to GET the new
+batch’s URL to see if the data is good to go (status <code class="docutils literal"><span class="pre">appended</span></code>).</p>
+<p>If an append is already in process on the dataset, the POST request will
+return 409 status.</p>
+<div class="section" id="appending-a-dataset">
+<h4>Appending a dataset<a class="headerlink" href="#appending-a-dataset" title="Permalink to this headline"> 🔗</a></h4>
+<p>To append a Dataset, POST a Shoji Entity with a dataset URL. You must
+have at least view (read) permissions on this dataset. Internally, this
+action will create a Source entity pointing to that dataset.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2232cc0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2232cc0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The variables from the incoming dataset to be included by default will
+depend on the current user’s permissions. Those with edit permissions on
+the incoming dataset will append all public and hidden
+(<code class="docutils literal"><span class="pre">discarded</span> <span class="pre">=</span> <span class="pre">true</span></code>) variables. Those with only view permissions will
+just include public variables that aren’t hidden.</p>
+<p>To append only certain variables from the incoming dataset, include an
+<code class="docutils literal"><span class="pre">where</span></code> attribute in the entity body. See <a class="reference external" href="#frame-functions">Frame
+functions</a> for how to compose the <code class="docutils literal"><span class="pre">where</span></code>
+expression.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22cdd68_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22cdd68_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;function&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span>
+                    <span class="p">{</span><span class="s2">&quot;000001&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">},</span>
+                     <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">}}</span>
+                <span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Users with edit permissions on the incoming dataset can select hidden
+variables to be included, but viewers cannot. Editors and viewers can
+however both specify their personal variables to be included.</p>
+<p>To select a subset of rows to append, include an <code class="docutils literal"><span class="pre">filter</span></code> attribute in
+the entity body, containing a Crunch filter expression.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22419e8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22419e8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;function&quot;</span><span class="p">:</span><span class="s2">&quot;select&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span>
+                    <span class="p">{</span><span class="s2">&quot;000001&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">},</span>
+                     <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">}}</span>
+                <span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;function&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;value&gt;&quot;</span><span class="p">}</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="appending-a-source">
+<h4>Appending a source<a class="headerlink" href="#appending-a-source" title="Permalink to this headline"> 🔗</a></h4>
+<p>POST a Shoji Entity with a Source URL. The user must have permission to
+view the Source entity. Use Source appending to send data in CSV format
+that matches the schema of the Dataset.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22936d8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22936d8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="appending-a-crunch-table">
+<h4>Appending a Crunch Table<a class="headerlink" href="#appending-a-crunch-table" title="Permalink to this headline"> 🔗</a></h4>
+<p>The variables IDs must match those of the target dataset since their
+types will be matched based on ID. The data is expected to match the
+target dataset’s variable types. This action will create a new Source
+entity, its name and description will match those provided on the JSON
+response, if not provided they’ll default to empty string.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d6eac8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d6eac8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;optional string&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;optional string&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;var_url_1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+      <span class="s2">&quot;var_url_2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="append-failures">
+<h4>Append Failures<a class="headerlink" href="#append-failures" title="Permalink to this headline"> 🔗</a></h4>
+<p>For single appends, if a batch fails, the dataset will be automatically
+reverted back to the state it was before the append; the batch is
+automatically deleted.</p>
+<p>When multiple appends are performed in immediate succession, it’s not
+efficient to checkpoint the state of each one. In this case, only the
+first append is rolled back on failure.</p>
+</div>
+</div>
+<div class="section" id="checking-if-an-append-will-cause-problems">
+<h3>Checking if an append will cause problems<a class="headerlink" href="#checking-if-an-append-will-cause-problems" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/batches/compare/</span></code></p>
+<p>An append cannot proceed if there are any conditions in the involved
+datasets that will cause ambiguous situations. If such datasets were to
+be appended the server will return a 409 response.</p>
+<p>It is possible to verify these conditions before trying the append using
+the batches compare endpoint.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>GET /datasets/4bc6af/batches/compare/?dataset=http://app.crunch.io/api/datasets/3e2cfb/
+</pre></div>
+</div>
+<p>The response will contain a conflicts key that can contain either
+<code class="docutils literal"><span class="pre">current</span></code>, <code class="docutils literal"><span class="pre">incoming</span></code> or <code class="docutils literal"><span class="pre">union</span></code> depending on the type and
+location of the problem. The response status will always be 200, with
+conflicts, described below, or an empty body.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">current</span></code> refers to issues find on the dataset where new data would
+be added</li>
+<li><code class="docutils literal"><span class="pre">incoming</span></code> has issues on the far dataset that contains the new data
+to add</li>
+<li><code class="docutils literal"><span class="pre">union</span></code> expresses problems on the combined variables(metadata) of
+the final dataset after append.</li>
+</ul>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d98fd0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d98fd0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;union&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+    <span class="s2">&quot;current&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>
+    <span class="s2">&quot;incoming&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>A successful response will not contain any of the keys returning an
+empty object.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22a91d0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22a91d0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The possible keys in the conflicts and verifications made are:</p>
+<ul class="simple">
+<li><strong>Variables missing alias</strong>: All variables should have a valid alias
+string. This will indicate the IDs of those that don’t.</li>
+<li><strong>Variables missing name</strong>: All variables should have a valid name
+string. This will indicate the IDs of those that don’t.</li>
+<li><strong>Variables with duplicate alias</strong>: In the event of two or more
+variables sharing an alias, they will be reported here. When this
+occurs as a <em>union</em> conflict, it is likely that names and aliases of
+a variable or subvariable in <em>current</em> and <em>incoming</em> are swapped
+(e.g., VariantOne:AliasOne, Variant1:Alias1 in current but
+VariantOne:Alias1, Variant1:AliasOne in incoming).</li>
+<li><strong>Variables with duplicate name</strong>: Variable names should be unique
+across non subvariables.</li>
+<li><strong>Subvariable in different arrays per dataset</strong>: If a subvariable is
+used for different arrays that are impossible to match, it will be
+reported here. User action will be needed to fix this.</li>
+</ul>
+<p>For each of these, a list of variable IDs will be made available
+indicating the conflicting entities. <em>Union</em> conflicting ids generally
+refer to variables in the <em>current</em> dataset and may be referenced by
+alias in <em>incoming</em>.</p>
+</div>
+<div class="section" id="lining-up-datasets-for-append-combine">
+<h3>Lining up datasets for append/combine<a class="headerlink" href="#lining-up-datasets-for-append-combine" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/align/</span></code></p>
+<p>Given that some datasets may be close to being fit for appending but
+could need some work before proceeding, the <code class="docutils literal"><span class="pre">align</span></code> endpoint provides
+API expressions that can be used directly on the append steps as
+<code class="docutils literal"><span class="pre">where</span></code> parameter in order to avoid such conflicts.</p>
+<p>Currently, this endpoint will provide an expression that will exclude
+the troubling variables from the append.</p>
+<ul class="simple">
+<li>Exclude different arrays that may share subvariables by alias.</li>
+<li>Exclude variables with matching aliases but different types.</li>
+</ul>
+<p>Those are currently not allowed and would reject the append operation.</p>
+<p>To use this endpoint, the client needs to provide a list of variables
+they wish to line up together as a list of lists.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2510f98_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2510f98_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/123/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/234/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/345/&quot;</span><span class="p">}</span>
+  <span class="p">],</span>
+  <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/678/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/789/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/890/&quot;</span><span class="p">}</span>
+  <span class="p">],</span>
+  <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/1ab/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/ab2/&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/b23/&quot;</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The example above indicates that the client wishes to line up three
+variables from three datasets as indicated by the groups.</p>
+<p>From the input, the endpoint wil analyze the groups and return an
+expression which will only include those variables that can be appended
+without conflict among all of them. This expression is ready to be used
+as a <code class="docutils literal"><span class="pre">where</span></code> parameter on the append <code class="docutils literal"><span class="pre">/batches/</span></code> endpoint.</p>
+<p>The payload needs to be sent as JSON encoded <code class="docutils literal"><span class="pre">variables</span></code> POST
+parameter:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d208a3c8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d208a3c8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d208a3c8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">align</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d208a3c8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+<span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/123/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/234/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/345/&quot;</span><span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/678/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/789/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/890/&quot;</span><span class="p">}</span>
+      <span class="p">],</span>
+      <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/1ab/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/variables/ab2/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/variables/b23/&quot;</span><span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">]}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The response will be a 202 with a Progress resource in it; poll that URL
+for updates on the completion and follow <code class="docutils literal"><span class="pre">Location</span></code> once it completed.
+See <a class="reference external" href="#progress">Progress</a>.</p>
+<p>On completion the align response will be a <code class="docutils literal"><span class="pre">shoji:view</span></code> containing the
+<code class="docutils literal"><span class="pre">where</span></code> expression used for each dataset:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d24ac978_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d24ac978_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;abc&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;678&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;678&quot;</span><span class="p">},</span>
+      <span class="s2">&quot;1ab&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;1ab&quot;</span><span class="p">}</span>
+    <span class="p">}}]},</span>
+    <span class="s2">&quot;def&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;789&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;789&quot;</span><span class="p">},</span>
+      <span class="s2">&quot;ab2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2&quot;</span><span class="p">}</span>
+    <span class="p">}}]},</span>
+    <span class="s2">&quot;hij&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;890&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;890&quot;</span><span class="p">},</span>
+      <span class="s2">&quot;b23&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;b23&quot;</span><span class="p">}</span>
+    <span class="p">}}]}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Following the example above, in the case that the first group could not
+be appended because conflicts between their variables, it will be
+excluded from the final expressions.</p>
+<p>Later, using the expressions obtained, it is possible to append all the
+datasets to a new one without conflicts.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22d3240_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d22d3240_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2b27d22d3240_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d22d3240_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2b27d22d3240_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d22d3240_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22d3240_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">abd</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22d3240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;678&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;678&quot;</span><span class="p">},</span>
+          <span class="s2">&quot;1ab&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;1ab&quot;</span><span class="p">}</span>
+        <span class="p">}}]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22d3240_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">abd</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22d3240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/def/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;789&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;789&quot;</span><span class="p">},</span>
+          <span class="s2">&quot;ab2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ab2&quot;</span><span class="p">}</span>
+        <span class="p">}}]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22d3240_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">abd</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d22d3240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/hij/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;890&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;890&quot;</span><span class="p">},</span>
+          <span class="s2">&quot;b23&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;b23&quot;</span><span class="p">}</span>
+        <span class="p">}}]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/batches/{id}/</span></code></p>
+<p>A GET on this resource returns a Shoji Entity describing the batch, and
+a link to its Crunch Table (see next).</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2064630_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2064630_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;conflicts&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;source_children&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;target_children&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;source_columns&quot;</span><span class="p">:</span> <span class="mi">3500</span><span class="p">,</span>
+    <span class="s2">&quot;source_rows&quot;</span><span class="p">:</span> <span class="mi">235490</span><span class="p">,</span>
+    <span class="s2">&quot;target_columns&quot;</span><span class="p">:</span> <span class="mi">3499</span><span class="p">,</span>
+    <span class="s2">&quot;target_rows&quot;</span><span class="p">:</span> <span class="mi">120000</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+    <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;appended&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="the-conflicts-object">
+<h3>The conflicts object<a class="headerlink" href="#the-conflicts-object" title="Permalink to this headline"> 🔗</a></h3>
+<p>Each batch has a “conflicts” member describing any unresolvable
+differences found between variables in the two datasets. On a successful
+append, this object will be empty; if the batch status is “conflict”,
+the object will contain conflict information keyed by id of the variable
+in the target dataset. The conflict data for each variable follows this
+shape:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21de438_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21de438_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[{}]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;source_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;id of the matching variable in the source frame&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;source_metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name, etc&quot;</span><span class="p">:</span> <span class="s2">&quot;as above&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;conflicts&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string&gt;&quot;</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Each conflict has four attributes: <code class="docutils literal"><span class="pre">metadata</span></code> about the variable on
+the target dataset (unless it is a variable that only exists on the
+source dataset), <code class="docutils literal"><span class="pre">source_id</span></code> and <code class="docutils literal"><span class="pre">source_metadata</span></code>, which describe
+the corresponding variable in the source frame (if any), and a
+<code class="docutils literal"><span class="pre">conflicts</span></code> member. The <code class="docutils literal"><span class="pre">conflicts</span></code> member contains an array with a
+list of individual conflicts that indicate what situations were found
+during batch preparation.</p>
+<p>If there are conflicts in your batch, address the conflicting issues in
+your datasets, DELETE the batch entity from the failed append attempt,
+and POST a new one.</p>
+</div>
+<div class="section" id="table">
+<h3>Table<a class="headerlink" href="#table" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/batches/{id}/table/{?offset,limit}</span></code></p>
+<p>A GET returns the rows of data from the Dataset for the identified batch
+as a Crunch Table.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

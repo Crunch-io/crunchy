@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Array Variables &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multidimensional analysis" href="feature-analyzing.html" />
+    <link rel="prev" title="Deriving Variables" href="feature-deriving.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-deriving.html" title="Previous Chapter: Deriving Variables"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Deriving Variables</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-analyzing.html" title="Next Chapter: Multidimensional analysis"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Multidimensio... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Array Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#categorical-arrays">Categorical arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-response">Multiple response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-uniform-basis">Non-uniform basis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-subvariables">Adding new subvariables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="array-variables">
+<h1>Array Variables<a class="headerlink" href="#array-variables" title="Permalink to this headline"> 🔗</a></h1>
+<p>Simple variables have only one value per row; sometimes, however, it is
+convenient to consider multiple values (of the same type) as a single
+Variable. The Crunch system implements the data as a 2-dimensional
+array, but the array variable includes two additional attributes:
+“subvariables”, which is a list of subvariable URLs, and
+“subreferences”, which is an object of {name, alias, description, …}
+objects keyed by subvariable URL. There are two types of array variable:
+categorical array and multiple response.</p>
+<div class="section" id="categorical-arrays">
+<h2>Categorical arrays<a class="headerlink" href="#categorical-arrays" title="Permalink to this headline"> 🔗</a></h2>
+<p>For the “categorical_array” type, a row has multiple values, and may
+have a different value for each subvariable. For example, you might
+field a survey where you ask respondents to rate soft drinks by filling
+in a grid of a set of brands versus a set of ratings:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>72. How much do you like each soft drink?
+       Not at all   Not much   OK   A bit   A lot
+ Coke       o           o      o      o       o
+Pepsi       o           o      o      o       o
+   RC       o           o      o      o       o
+</pre></div>
+</div>
+<p>The respondent may only select one rating in each row. To represent that
+answer data in Crunch, you would define an array. For example, you might
+POST a Variable Entity with the payload:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2726048_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2726048_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Soft Drinks&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;./subvariables/001/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./subvariables/002/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./subvariables/003/&quot;</span>
+         <span class="p">],</span>
+        <span class="s2">&quot;subreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;./subvariables/002/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Coke&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;coke&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;./subvariables/003/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pepsi&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;pepsi&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;./subvariables/001/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;RC&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;rc&quot;</span><span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>    <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>  <span class="n">true</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not at all&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not much&quot;</span><span class="p">,</span>   <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>         <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A bit&quot;</span><span class="p">,</span>      <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A lot&quot;</span><span class="p">,</span>      <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Skipped&quot;</span><span class="p">,</span>    <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>  <span class="n">true</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="mi">99</span><span class="p">}],</span>
+            <span class="p">[{</span><span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">},</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}],</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The “Soft Drinks” categorical array variable may now be included in
+analyses like any other variable, but has 2 dimensions instead of the
+typical 1. For example, a crosstab of a 1-dimensional “Gender” variable
+with a 1-dimensional “Education” variable yields a 2-D cube. A crosstab
+of 1-D “Gender” by 2-D “Soft Drinks” yields a 3-D cube.</p>
+<p>In rare cases, you may have already added a separate Variable for
+“Coke”, one for “Pepsi”, and one for “RC”. You may move them to a single
+array variable by POSTing a Variable Entity for the array that instead
+of a “subreferences” attribute has a “subvariables” attribute, a list of
+URL’s of the variables you’d like to bind together:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a647f0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a647f0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Soft Drinks&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;Coke&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;Pepsi&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;RC&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The existing variables are removed from the normal order and become
+virtual subvariables of the new array. This approach will cast all
+subvariables to a common set of categories if they differ. The existing
+name and alias of each subvariable will be moved to the array’s
+“subreferences” attribute.</p>
+<p>If you wish to analyze a set of categorical variables as an array
+<em>without</em> moving them, you need to build a derived array instead.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d208a7b8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d208a7b8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Soft Drinks&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;000000&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;Coke&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">},</span>
+                    <span class="s2">&quot;000001&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;Pepsi&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">},</span>
+                    <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">URI</span> <span class="n">of</span> <span class="n">the</span> <span class="s2">&quot;RC&quot;</span> <span class="n">variable</span><span class="o">&gt;</span><span class="p">}</span>
+                <span class="p">}}]</span>
+            <span class="p">}]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Your client library may have helper functions to construct the above
+more easily. This is a bit more advanced, but consequently more
+powerful: you can grab subvariables from other existing arrays, use more
+powerful subsetting functions like “deselect” and “subvariables”, cast,
+combine, what-have-you.</p>
+</div>
+<div class="section" id="multiple-response">
+<h2>Multiple response<a class="headerlink" href="#multiple-response" title="Permalink to this headline"> 🔗</a></h2>
+<p>The second type of array is “multiple_response”. These arrays look very
+similar to categorical_array variables in their data representations,
+but are usually gathered very differently and behave differently in
+analyses. For example, you might field a survey where you ask
+respondents to select countries they have visited:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>38. Which countries have you visited?
+
+[] USA
+[] Germany
+[] Japan
+[] None of the above
+</pre></div>
+</div>
+<p>The respondent may check the box or not for each row. To represent that
+answer data in Crunch, you would define an array Variable with separate
+subreferences for “USA”, “Germany”, “Japan”, and “None of the above”:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21bab00_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21bab00_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Countries Visited&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple_response&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;./subvariables/001/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./subvariables/002/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./subvariables/003/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./subvariables/004/&quot;</span>
+         <span class="p">],</span>
+        <span class="s2">&quot;subreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;./subvariables/002/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;visited_usa&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;./subvariables/004/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;visited_germany&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;./subvariables/001/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;visited_japan&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;./subvariables/003/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;None of the above&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;visited_none_of_the_above&quot;</span><span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>     <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>  <span class="n">true</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Checked&quot;</span><span class="p">,</span>     <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;selected&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span>  <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not checked&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">98</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not shown&quot;</span><span class="p">,</span>   <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>  <span class="n">true</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Skipped&quot;</span><span class="p">,</span>     <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>  <span class="n">true</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Aside from the new type name, the primary difference from the basic
+categorical array is that one or more categories are marked as
+“selected”. These are then used to dichotomize the categories such that
+any subvariable response is treated more as if it were true or false
+(selected or unselected) than maintaining the difference between each
+category. If POSTing to create “multiple_response”, you may include a
+“selected_categories” key in the body, containing an array of category
+names that indicate the dichotomous selection. If you do not include
+“selected_categories”, there must be at least one “selected”: true
+category in the subvariables you are binding into the multiple-response
+variable to indicate the dichotomous selection–see Object
+Reference#categories. If neither are true, the request will return 400
+status.</p>
+<p>The “Countries Visited” multiple response variable may now be included
+in analyses like any other variable, but with a noticeable difference.
+Rather than contributing a dimension of distinct categories, it instead
+contributes a dimension of distinct subvariables. For example, a
+crosstab of a 1-dimensional “Gender” variable with a 1-dimensional
+“Education” variable yields a 2-D cube: one dimension of the categories
+of Gender and one dimension of the categories of Education. A crosstab
+of 1-D “Gender” by the multiple response “Countries Visited” also yields
+a 2-D cube: one dimension of the categories of Gender but the other
+dimension has one entry for “USA”, one for “Germany”, one for “Japan”,
+and one for “None of the above”.</p>
+<p>A quirk of multiple response variables is that analyses of them often
+require knowledge across subvariables: which rows had any subvariable
+selected, which rows had no subvariable selected, and which rows had all
+subvariables marked as “missing”. The Crunch system calculates these
+ancillary “subvariables” for you, and includes them in analysis output.
+Including an explicit “None of the above” subvariable in the example
+above complicates this, since Crunch has no way of knowing to treat such
+subvariables specially; it will faithfully consider the “None of the
+above” subvariable like any other subvariable when calculating the
+any/none/missing views. Depending on your application, you may wish to
+1) not even include that option in your survey, 2) skip adding that
+variable to your Crunch dataset, 3) add it but do not bind it into the
+parent array variable, or 4) include it and have it be treated like any
+other multiple response subvariable in your analyses.</p>
+</div>
+<div class="section" id="non-uniform-basis">
+<h2>Non-uniform basis<a class="headerlink" href="#non-uniform-basis" title="Permalink to this headline"> 🔗</a></h2>
+<p>As presented above, multiple response variables assume that subvariables
+have a consistent, uniform basis or number of rows in each subvariable.
+In some cases, the number of valid and missing entries may be wildly
+different from one subvariable to the next. In a survey example, a new
+response may be added to a longer-running series, or different responses
+may be presented to subsets of respondents in the context of an
+experiment. The boolean field <code class="docutils literal"><span class="pre">uniform_basis</span></code>, if <code class="docutils literal"><span class="pre">false</span></code>, provides
+a hint to users that, rather than using the <code class="docutils literal"><span class="pre">__any__</span></code> column (from the
+<code class="docutils literal"><span class="pre">selections</span></code> function output) in an analysis query, they should
+instead calculate the basis per subvariable by summing the ‘selected’
+and ‘not selected’ categories. The field’s default is <code class="docutils literal"><span class="pre">true</span></code>.</p>
+</div>
+<div class="section" id="adding-new-subvariables">
+<h2>Adding new subvariables<a class="headerlink" href="#adding-new-subvariables" title="Permalink to this headline"> 🔗</a></h2>
+<p>In the scenario that a variable was left out when creating an array
+variable, it is possible to modify the array variable so that new
+subvariables get added (always on the last position).</p>
+<p>To do so, the subvariable-to-be should currently be a variable of the
+dataset and have the same type as the subvariables (“categorical”).</p>
+<p>Send a PATCH request containing the url of the new subvariable with an
+empty object as its tuple:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d299a5c0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d299a5c0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="o">...</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;http://.../url/new/subvariable/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>A 204 response will indicate that the catalog was updated, and the new
+subvariable now is part of the array variable.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

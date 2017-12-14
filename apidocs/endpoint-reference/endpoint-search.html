@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Search &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sources" href="endpoint-source.html" />
+    <link rel="prev" title="Projects" href="endpoint-projects.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-projects.html" title="Previous Chapter: Projects"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Projects</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-source.html" title="Next Chapter: Sources"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Sources &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fields-searched">Fields Searched</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="search">
+<h1>Search<a class="headerlink" href="#search" title="Permalink to this headline"> 🔗</a></h1>
+<p>You can perform a cross-dataset search of dataset metadata (including
+variables) via the search endpoint. This search will return associated
+variables and dataset metadata. A query string, along with filtering
+properties can be provided to the search endpoint in order to refine the
+results. The query string provided is only used in plain-text format,
+any non-text or numeric characters are ignored at this time.</p>
+<p>Results are limited only to those datasets the user has access to.
+Offset and limit parameters are also provided in order to provide
+performance-chunking options. The limit and offset are returned in
+relationship to datasets related to the search. You have reached the
+limit of available search entries when there are no longer records in
+the dataset field.</p>
+<p>Here are the parameters that can be passed to the search endpoint.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="14%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>q</td>
+<td>String</td>
+<td>query string</td>
+</tr>
+<tr class="row-odd"><td>f</td>
+<td>Json
+Object</td>
+<td>used to filter the output of the
+search (see below)</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>Integer</td>
+<td>limit the number of dataset results
+returned by the api to less than
+this amount (default: 10)</td>
+</tr>
+<tr class="row-odd"><td>offset</td>
+<td>Integer</td>
+<td>offset into the search index to
+start gathering results from
+pre-filter</td>
+</tr>
+<tr class="row-even"><td>max_variables_per_dataset</td>
+<td>Integer</td>
+<td>limit the number of variables that
+match to this number (default: 100,
+max: 100) (deprecated, use
+variable_limit)</td>
+</tr>
+<tr class="row-odd"><td>embedded_variables</td>
+<td>Boolean</td>
+<td>embed the results within the dataset
+results (this will become the
+default in the future)</td>
+</tr>
+<tr class="row-even"><td>projection</td>
+<td>Json
+Object</td>
+<td>used to limit the fields that should
+be returned in the search results.
+ID is always provided.</td>
+</tr>
+<tr class="row-odd"><td>scope</td>
+<td>Json
+Object</td>
+<td>used to limit the fields that the
+search should look at.</td>
+</tr>
+<tr class="row-even"><td>grouping</td>
+<td>String</td>
+<td>One of <code class="docutils literal"><span class="pre">datasets</span></code> or
+<code class="docutils literal"><span class="pre">variables</span></code>. Tells if search
+results should be grouped by
+datasets or variables.</td>
+</tr>
+<tr class="row-odd"><td>variable_limit</td>
+<td>Integer</td>
+<td>Limit the number of variables
+returned per dataset to this value,
+(default: 100, max: 100)</td>
+</tr>
+<tr class="row-even"><td>variable_offset</td>
+<td>Integer</td>
+<td>Offset into the variables returned
+per dataset, default 0</td>
+</tr>
+<tr class="row-odd"><td>max_subfield_entries_per_variable</td>
+<td>Integer</td>
+<td>Number of items in the subfields of
+a variable (such as categories or
+subvariables), (default: 10, max:
+100)</td>
+</tr>
+</tbody>
+</table>
+<aside class="notice"><p>By default there are only 10 datasets returned. Inside the response you
+will find a <code class="docutils literal"><span class="pre">totals.datasets</span></code> that indicates the total number of
+datasets that matched the search. Use this to set offset and limit to
+appropriately limit and compile your search results. Note that
+<code class="docutils literal"><span class="pre">totals.variables</span></code> should not be used for pagination.</p>
+</aside><p>Providing a Projection:</p>
+<p><code class="docutils literal"><span class="pre">projection</span></code> argument must be a JSON array containing the name of the
+fields that should be projected for datasets and variables. The fields
+are specified with the namespace they refer to, like
+<code class="docutils literal"><span class="pre">&quot;variables.fieldname&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;datasets.fieldname&quot;</span></code>. The namespace is
+the same as the key where the relevant search results are returned.
+Performing a search with an invalid field will pinpoint the invalid one
+and provide the list of accepted values.</p>
+<p>Providing a Scope:</p>
+<p><code class="docutils literal"><span class="pre">scope</span></code> parameter must be a JSON array containing the name of the
+fields that should be used to resolve the query. Much like
+<code class="docutils literal"><span class="pre">projection</span></code> paramter this one accepts a list of fields with their
+namespace (<code class="docutils literal"><span class="pre">datasets</span></code> or <code class="docutils literal"><span class="pre">variables</span></code>). T he provided query will be
+looked up only in the specified fields if a <code class="docutils literal"><span class="pre">scope</span></code> is provided. A
+special field name <code class="docutils literal"><span class="pre">*</span></code> is accepted to specify that default fields
+should be looked for a specific namespace. A scope like
+<code class="docutils literal"><span class="pre">datasets.name,</span> <span class="pre">variables.*</span></code> will search the query in the default
+variable fields and in dataset name.</p>
+<p>Grouping:</p>
+<p>Default grouping is <code class="docutils literal"><span class="pre">datasets</span></code> which will enable searching in dataset
+data and its variables. The returned entries in “datasets” are datasets
+that match the query or contain a variable that matches it. Search
+results are limited to 1000 variables per dataset when grouping per
+dataset.</p>
+<p>Switching to <code class="docutils literal"><span class="pre">variables</span></code> grouping makes the search only look in
+variables. Note that a “datasets” field is still returned, the entries
+there are the datasets the matching variables are part of, <em>not</em>
+datasets that match the query. This is done to allow providing dataset
+details for a variable without the need for a second call to fetch the
+dataset info.</p>
+<p>Allowable filter parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="22%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dataset_ids</td>
+<td>array of
+strings</td>
+<td>limit results to particular dataset_ids
+or urls (user must have read access to
+that dataset)</td>
+</tr>
+<tr class="row-odd"><td>team</td>
+<td>string</td>
+<td>url or id of the team to limit results
+(user must have read access to the team)</td>
+</tr>
+<tr class="row-even"><td>project</td>
+<td>string</td>
+<td>url or id of the project to limit
+results (user must have access to the
+project)</td>
+</tr>
+<tr class="row-odd"><td>organization</td>
+<td>string</td>
+<td>if you are the owner for a given
+organization, you can filter all of the
+search results pertaining to the
+datasets in your organization.</td>
+</tr>
+<tr class="row-even"><td>user</td>
+<td>string</td>
+<td>url or id of the user that has read
+access to the datasets to limit results
+(user must match with the provided one)</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>string</td>
+<td>url or id of the dataset owner to limit
+results</td>
+</tr>
+<tr class="row-even"><td>label</td>
+<td>string</td>
+<td>The dataset must be in a folder or
+subfolder with the given name.</td>
+</tr>
+<tr class="row-odd"><td>start_date</td>
+<td>array of
+strings</td>
+<td>array of <code class="docutils literal"><span class="pre">[begin,</span> <span class="pre">end]</span></code> range of
+values in ISO8601 format. Provide same
+for exact matching.</td>
+</tr>
+<tr class="row-even"><td>end_date</td>
+<td>array of
+strings</td>
+<td>array of <code class="docutils literal"><span class="pre">[begin,</span> <span class="pre">end]</span></code> range of
+values in ISO8601 format. Provide same
+for exact matching.</td>
+</tr>
+<tr class="row-odd"><td>modification_time</td>
+<td>array of
+strings</td>
+<td>array of <code class="docutils literal"><span class="pre">[begin,</span> <span class="pre">end]</span></code> range of
+values in ISO8601 format. Provide same
+for exact matching.</td>
+</tr>
+<tr class="row-even"><td>creation_time</td>
+<td>array of
+strings</td>
+<td>array of <code class="docutils literal"><span class="pre">[begin,</span> <span class="pre">end]</span></code> range of
+values in ISO8601 format. Provide same
+for exact matching.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The query string can only be alpha-numeric characters (including
+underscores) logical operators are not allowed at this time.</p>
+</div>
+<div class="section" id="fields-searched">
+<h2>Fields Searched<a class="headerlink" href="#fields-searched" title="Permalink to this headline"> 🔗</a></h2>
+<p>Here is a list of the fields that are searched by the Crunch search
+endpoint</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="14%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>category_names</td>
+<td>List of
+Strings</td>
+<td>Category names (associated with categorical
+variables)</td>
+</tr>
+<tr class="row-odd"><td>dataset_id</td>
+<td>String</td>
+<td>ID of the dataset</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>String</td>
+<td>description of the variable</td>
+</tr>
+<tr class="row-odd"><td>id</td>
+<td>String</td>
+<td>ID of the variable</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>String</td>
+<td>name of the variable</td>
+</tr>
+<tr class="row-odd"><td>owner</td>
+<td>String</td>
+<td>owner’s ID of the variable</td>
+</tr>
+<tr class="row-even"><td>subvar_names</td>
+<td>List of
+Strings</td>
+<td>Names of the subvariables associated with the
+variable</td>
+</tr>
+<tr class="row-odd"><td>users</td>
+<td>List of
+Strings</td>
+<td>User IDs having read-access to the variable</td>
+</tr>
+<tr class="row-even"><td>group_names</td>
+<td>List of
+Strings</td>
+<td>group names (from the variable ordering) associated
+with the variable</td>
+</tr>
+<tr class="row-odd"><td>dataset_labels</td>
+<td>List of
+Objects</td>
+<td>dataset_labels associated with the user associated
+with the variable</td>
+</tr>
+<tr class="row-even"><td>dataset_name</td>
+<td>String</td>
+<td>dataset_name associated with this variable</td>
+</tr>
+<tr class="row-odd"><td>dataset_owner</td>
+<td>String</td>
+<td>ID of the owner of the dataset associated with the
+variable</td>
+</tr>
+<tr class="row-even"><td>dataset_users</td>
+<td>List of
+Strings</td>
+<td>User IDs having read-access to the dataset
+associated with the variable</td>
+</tr>
+<tr class="row-odd"><td>dataset_teams</td>
+<td>List of
+Strings</td>
+<td>Team IDs having read-access to the dataset
+associated with the variable</td>
+</tr>
+<tr class="row-even"><td>dataset_projects</td>
+<td>List of
+Strings</td>
+<td>Project IDs having read-access to the dataset
+associated with the variable</td>
+</tr>
+</tbody>
+</table>
+<p>Grouping by datasets:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1db09b0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d1db09b0_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1db09b0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span>GET /search/?q={query}&amp;f={filter}&amp;limit={limit}&amp;offset={offset}&amp;projection={projection}&amp;grouping=datasets  HTTP/1.1
+
+{
+   &quot;element&quot;: &quot;shoji:view&quot;,
+    &quot;self&quot;: &quot;https://app.crunch.io/api/search/?q=blue&amp;grouping=datasets&quot;,
+    &quot;description&quot;: &quot;Returns a view with relevant search information&quot;,
+    &quot;value&quot;: {
+        &quot;groups&quot;: [
+            {
+                &quot;group&quot;: &quot;Search Results&quot;,
+                &quot;datasets&quot;: {
+                    &quot;https://app.crunch.io/api/datasets/173b4eec13f542588b9b0a9cbcd764c9/&quot;: {
+                        &quot;labels&quot;: [],
+                        &quot;name&quot;: &quot;econ_few_columns_0&quot;,
+                        &quot;description&quot;: &quot;&quot;
+                    },
+                    &quot;https://app.crunch.io/api/datasets/4473ab4ee84b40b2a7cd5cab4548d584/&quot;: {
+                        &quot;labels&quot;: [],
+                        &quot;name&quot;: &quot;simple_alltypes&quot;,
+                        &quot;description&quot;: &quot;&quot;
+                    }
+                },
+                &quot;variables&quot;: {
+                    &quot;https://app.crunch.io/api/datasets/4473ab4ee84b40b2a7cd5cab4548d584/variables/000000/&quot;: {
+                        &quot;dataset_labels&quot;: [],
+                        &quot;users&quot;: [
+                            &quot;00002&quot;
+                        ],
+                        &quot;alias&quot;: &quot;x&quot;,
+                        &quot;dataset_end_date&quot;: null,
+                        &quot;category_names&quot;: [
+                            &quot;red&quot;,
+                            &quot;green&quot;,
+                            &quot;blue&quot;,
+                            &quot;4&quot;,
+                            &quot;8&quot;,
+                            &quot;9&quot;,
+                            &quot;No Data&quot;
+                        ],
+                        &quot;dataset_start_date&quot;: null,
+                        &quot;name&quot;: &quot;x&quot;,
+                        &quot;dataset_description&quot;: &quot;&quot;,
+                        &quot;dataset_archived&quot;: false,
+                        &quot;group_names&quot;: null,
+                        &quot;dataset&quot;: &quot;https://app.crunch.io/api/datasets/4473ab4ee84b40b2a7cd5cab4548d584/&quot;,
+                        &quot;dataset_id&quot;: &quot;bb987b45a5b04caba10dec4dad7b37a8&quot;,
+                        &quot;dataset_created_time&quot;: null,
+                        &quot;subvar_names&quot;: [],
+                        &quot;dataset_name&quot;: &quot;export test 94&quot;,
+                        &quot;description&quot;: &quot;Numeric variable with value labels&quot;
+                    }
+                },
+                &quot;variable_count&quot;: 14,
+                &quot;totals&quot;: {
+                    &quot;variables&quot;: 4,
+                    &quot;datasets&quot;: 2
+                }
+            }
+        ]
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d1db09b0_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycrunch</span>
+<span class="n">site</span> <span class="o">=</span> <span class="n">pycrunch</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;me@mycompany.com&quot;</span><span class="p">,</span> <span class="s2">&quot;yourpassword&quot;</span><span class="p">,</span> <span class="s2">&quot;https://app.crunch.io/api/&quot;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;q=findme&amp;embedded_variables=True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="n">datasets_found</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;groups&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;datasets&#39;</span><span class="p">]</span>
+<span class="n">variables_by_dataset</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;variables&#39;</span><span class="p">,</span> <span class="p">[])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">datasets_found</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Search results are limited to 1000 variables per dataset.</p>
+<p>Grouping by variables:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1ef4ba8_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1ef4ba8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span>GET /search/?q={query}&amp;f={filter}&amp;limit={limit}&amp;offset={offset}&amp;grouping=variables  HTTP/1.1
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

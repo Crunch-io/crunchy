@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Importing Data &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Appending Data" href="feature-appending.html" />
+    <link rel="prev" title="Password policy" href="feature-password-policy.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-password-policy.html" title="Previous Chapter: Password policy"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Password policy</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-appending.html" title="Next Chapter: Appending Data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Appending Data &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Importing Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-from-a-data-file">Import from a data file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-dataset-entity">1. Create a Dataset entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upload-the-file">2. Upload the file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-source-to-the-dataset">3. Add the Source to the Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-document-csv">Metadata document + CSV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-dataset-entity-with-variable-definitions">1. Create a Dataset entity with variable definitions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#validation-rules">Validation rules</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#add-row-data">2. Add row data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#column-by-column">Column-by-column</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1. Create a Dataset entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-variable-definitions-and-column-data">2. Add Variable definitions and column data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="importing-data">
+<h1>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline"> 🔗</a></h1>
+<p>There are several ways to build a Crunch dataset. The most appropriate
+method for you to create a dataset depends primarily on the format in
+which the data is currently stored.</p>
+<div class="section" id="import-from-a-data-file">
+<h2>Import from a data file<a class="headerlink" href="#import-from-a-data-file" title="Permalink to this headline"> 🔗</a></h2>
+<p>In some cases, you already have a file sitting on your computer which
+has source data, in CSV or SPSS format (or a Zip file containing a
+single file in CSV or SPSS format). You can upload these to Crunch and
+then attach them to datasets by following these steps.</p>
+<div class="section" id="create-a-dataset-entity">
+<h3>1. Create a Dataset entity<a class="headerlink" href="#create-a-dataset-entity" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29d09b0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d29d09b0_R">R</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29d09b0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my survey&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d29d09b0_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">newDatasetFromFile</span><span class="p">(</span><span class="s2">&quot;my.csv&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my survey&quot;</span><span class="p">)</span>
+<span class="c1"># All three steps are handled within newDatasetFromFile</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a Dataset Entity to the datasets catalog. See the documentation for
+<a class="reference external" href="#post">POST /datasets/</a> for details on valid attributes to include
+in the POST.</p>
+</div>
+<div class="section" id="upload-the-file">
+<h3>2. Upload the file<a class="headerlink" href="#upload-the-file" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d248b8d0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d248b8d0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">sources</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">8874357</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">multipart</span><span class="o">/</span><span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">boundary</span><span class="o">=</span><span class="n">df5b17ff463a4cb3aa61cf02224c7303</span>
+
+<span class="o">--</span><span class="n">df5b17ff463a4cb3aa61cf02224c7303</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;uploaded_file&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;my.csv&quot;</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">csv</span>
+
+<span class="s2">&quot;case_id&quot;</span><span class="p">,</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span><span class="s2">&quot;q2&quot;</span>
+<span class="mi">234375</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;sometimes&quot;</span>
+<span class="mi">234376</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;always&quot;</span>
+<span class="o">...</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">sources</span><span class="o">/</span><span class="p">{</span><span class="n">source_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST the file to the sources catalog.</p>
+<p><strong>Note</strong> that if the file is large (&gt;100 megabytes), you should consider
+uploading it to a file-sharing service, like Dropbox.</p>
+<p>To import from a URL (rather than a local file), use a JSON body with a
+<code class="docutils literal"><span class="pre">location</span></code> property giving the URL.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22485f8_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22485f8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">sources</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">71</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span><span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.dropbox.com/s/znpoawnhg0rdzhw/iris.csv?dl=1&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="add-the-source-to-the-dataset">
+<h3>3. Add the Source to the Dataset<a class="headerlink" href="#add-the-source-to-the-dataset" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1f84a20_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1f84a20_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;/sources/</span><span class="si">{source_id}</span><span class="s2">/&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">202</span> <span class="n">Continue</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span><span class="p">{</span><span class="n">batch_id</span><span class="p">}</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/progress/</span><span class="si">{progress_id}</span><span class="s2">/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST the URL of the just-created source entity (the Location in the 201
+response from the previous step) to the batches catalog of the dataset
+entity created in step 1.</p>
+<p>The POST to the batches catalog will return 202 Continue status, and the
+response body contains a progress URL. Poll that URL to monitor the
+completion of the batch addition. See “<a class="reference external" href="#progress">Progress</a>” for
+more. The 202 response will also contain a Location header with the URL
+of the newly created batch.</p>
+</div>
+</div>
+<div class="section" id="metadata-document-csv">
+<h2>Metadata document + CSV<a class="headerlink" href="#metadata-document-csv" title="Permalink to this headline"> 🔗</a></h2>
+<p>This approach may be most natural for importing data from databases that
+store data by rows. You can dump or export your database to Crunch’s
+JSON metadata format, plus a CSV of data, and upload those to Crunch,
+without requiring much back-and-forth with the API.</p>
+<div class="section" id="create-a-dataset-entity-with-variable-definitions">
+<h3>1. Create a Dataset entity with variable definitions<a class="headerlink" href="#create-a-dataset-entity-with-variable-definitions" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d252d128_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d252d128_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my survey&quot;</span><span class="p">,</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;educ&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;educ&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">},</span>
+                <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Favorite color&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+                <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;State&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;geodata&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;geodatum&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">uri</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;feature_key&quot;</span><span class="p">:</span> <span class="s2">&quot;properties.postal-code&quot;</span><span class="p">}]}}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;educ&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;my group&quot;: &quot;color&quot;}]</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a Dataset Entity to the datasets catalog, and in the “body”,
+include a Crunch Table object with variable definitions and order.</p>
+<p>The “metadata” member in the table is an object containing all variable
+definitions, keyed by variable alias. See the Object Reference: Variable
+Definitions discussion for specific requirements for defining variables
+of various types, as well as the example below.</p>
+<p>The “order” member is a Shoji Order object specifying the order,
+potentially hierarchically nested, of the variables in the dataset. The
+example below illustrates how this can be used. Shoji is JSON, which
+means the “metadata” object is explicitly unordered. If you wish the
+variables to have an order, you must supply an order object rather than
+relying on any order of the “metadata” object.</p>
+<p>It is possible to create derived variables using any of the <a class="reference external" href="#Deriving-Variables">derivation
+functions available</a> simulaneously in one
+request when creating the dataset along its metadata. The variable
+references inside the derivation expressions must point to declared
+aliases of variables or subvariables.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1ca2c18_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1ca2c18_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">3294</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset with derived arrays&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;viewers_can_export&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;viewers_can_change_weight&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;min_base_size&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;weight_variable&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dashboard_deck&quot;</span><span class="p">:</span> <span class="n">null</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;table&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+           <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span>
+           <span class="s2">&quot;weight_variable&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;weight variable&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;weight_variable&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span>
+           <span class="p">},</span>
+           <span class="s2">&quot;combined&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;combined CA&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;combine_categories&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;CA1&quot;</span>
+                  <span class="p">},</span>
+                  <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="p">{</span>
+                        <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;even&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                      <span class="p">},</span>
+                      <span class="p">{</span>
+                        <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;odd&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                      <span class="p">}</span>
+                    <span class="p">]</span>
+                  <span class="p">}</span>
+                <span class="p">]</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+          <span class="s2">&quot;numeric&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric variable&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;numeric_copy&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Copy of numeric&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;copy_variable&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">}]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;MR1&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple response&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select_categories&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;CA3&quot;</span>
+                  <span class="p">},</span>
+                  <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                      <span class="mi">1</span>
+                    <span class="p">]</span>
+                  <span class="p">}</span>
+                <span class="p">]</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+          <span class="s2">&quot;CA3&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                      <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;var1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar2&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subvar 2&quot;</span>
+                          <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="s2">&quot;var0&quot;</span><span class="p">:</span> <span class="p">{</span>
+                          <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar1&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subvar 1&quot;</span>
+                          <span class="p">}</span>
+                        <span class="p">}</span>
+                      <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="p">{</span>
+                      <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;var1&quot;</span><span class="p">,</span> <span class="s2">&quot;var0&quot;</span><span class="p">]</span>
+                    <span class="p">}</span>
+                  <span class="p">]</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;CA2&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-1&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;CA1&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-2&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-3&quot;</span>
+              <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span>
+              <span class="p">},</span>
+              <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span>
+              <span class="p">}</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The example above does a number of things:</p>
+<ul class="simple">
+<li>Creates variables <code class="docutils literal"><span class="pre">numeric</span></code> and arrays <code class="docutils literal"><span class="pre">CA1</span></code> and <code class="docutils literal"><span class="pre">CA2</span></code>.</li>
+<li>Makes a shallow copy of variable <code class="docutils literal"><span class="pre">numeric</span></code> as <code class="docutils literal"><span class="pre">numeric_copy</span></code>.</li>
+<li>Makes an ad hoc array <code class="docutils literal"><span class="pre">CA3</span></code> reusing subvariables from <code class="docutils literal"><span class="pre">CA1</span></code> and
+<code class="docutils literal"><span class="pre">CA2</span></code>.</li>
+<li>Makes a multiple response view <code class="docutils literal"><span class="pre">MR1</span></code> selecting category 1 from
+categorical array <code class="docutils literal"><span class="pre">CA3</span></code>.</li>
+</ul>
+<div class="section" id="validation-rules">
+<h4>Validation rules<a class="headerlink" href="#validation-rules" title="Permalink to this headline"> 🔗</a></h4>
+<p>All variables mentioned in the metadata must contain a valid variable
+definition with a matching alias.</p>
+<p>Array variables definitions should contain valid subvariable or
+subreferences members.</p>
+<p>Any attribute that contains a <code class="docutils literal"><span class="pre">null</span></code> value will be ignored and get the
+attribute’s default value instead.</p>
+<p>An empty <code class="docutils literal"><span class="pre">order</span></code> for the dataset will be handled as if no order was
+passed in.</p>
+</div>
+</div>
+<div class="section" id="add-row-data">
+<h3>2. Add row data<a class="headerlink" href="#add-row-data" title="Permalink to this headline"> 🔗</a></h3>
+<blockquote>
+<div>By file:</div></blockquote>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d25248d0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d25248d0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">csv</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">8874357</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;thedata.csv&quot;</span>
+<span class="o">...</span>
+<span class="s2">&quot;educ&quot;</span><span class="p">,</span><span class="s2">&quot;color&quot;</span>
+<span class="mi">3</span><span class="p">,</span><span class="s2">&quot;red&quot;</span>
+<span class="mi">2</span><span class="p">,</span><span class="s2">&quot;yellow&quot;</span>
+<span class="o">...</span>
+<span class="o">--------</span>
+<span class="mi">202</span> <span class="n">Continue</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span><span class="p">{</span><span class="n">batch_id</span><span class="p">}</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/progress/</span><span class="si">{progress_id}</span><span class="s2">/&quot;</span>
+<span class="p">}</span>
+
+<span class="n">By</span> <span class="n">S3</span> <span class="n">URL</span><span class="p">:</span>
+
+<span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">341</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;s3://bucket_name/dir/subdir/?accessKey=ASILC6CBA&amp;secretKey=KdJy7ZRK8fDIBQ&amp;token=AQoDYXdzECAa%3D%3D&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">202</span> <span class="n">Continue</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span><span class="p">{</span><span class="n">batch_id</span><span class="p">}</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/progress/</span><span class="si">{progress_id}</span><span class="s2">/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a CSV file or URL to the new dataset’s batches catalog. The CSV
+must include a header row of variable identifiers, which should be the
+aliases of the variables (and array subvariables) defined in step (1).</p>
+<aside class="success"><p>The CSV may be gzipped. In fact, you are encouraged to gzip it.</p>
+</aside><p>The values in the CSV MUST be the same format as the values you get out
+of Crunch, and it must match the metadata specified in the previous
+step. This includes:</p>
+<ul class="simple">
+<li>Categorical variables should have data identified by the integer
+category ids, not strings, and all values must be defined in the
+“categories” metadata for each variable.</li>
+<li>Datetimes must all be valid ISO 8601 strings</li>
+<li>Numeric variables must have only (unquoted) numeric values</li>
+<li>The only special value allowed is an empty “cell” in the CSV, which
+will be read as the system-missing value “No Data”</li>
+</ul>
+<p>Violation of any of these validation criteria will result in a 409
+Conflict response status. To resolve, you can either (1) fix your CSV
+locally and re-POST it, or (2) PATCH the variable metadata that is
+invalid and then re-POST the CSV.</p>
+<p>Imports are done in “strict” mode by default. Strict imports are faster,
+and using strict mode will alert you if there is any mismatch between
+data and metadata. However, in some cases, it may be convenient to be
+more flexible and silently ignore or resolve inconsistencies. For
+example, you may have a large CSV dumped out of a database, and the data
+format isn’t exactly Crunch’s format, but it would be costly to
+read-munge-write the whole file for minor changes. In cases like this,
+you may append <code class="docutils literal"><span class="pre">?strict=0</span></code> to the URL of the POST request to loosen
+that strictness.</p>
+<p>With non-strict imports:</p>
+<ul class="simple">
+<li>The CSV may contain columns not described by the metadata; these
+columns will be ignored, rather than returning an error response</li>
+<li>The metadata may describe variables not contained in the CSV; these
+variables will be filled with missing values, rather than returning
+an error response</li>
+<li>And more things to come</li>
+</ul>
+<p>The CSV can be sent in one of two ways:</p>
+<ol class="arabic simple">
+<li>Upload a file by POSTing a multipart form</li>
+<li>POST a Shoji entity with a “url” in the body, containing all
+necessary auth keys as query parameters. If the URL points to a
+single file, it should be a CSV or gzipped CSV, as described above.
+If the URL points to a directory, the contents will be assumed to be
+(potentially zipped) batches of a CSV and will be concatenated for
+appending. In the latter case, only the first CSV in the directory
+listing should contain a header row.</li>
+</ol>
+<p>A 201 response to the POST request indicates success. All rows added in
+a single request become part of a new Batch, whose URL is returned in
+the response Location. You may inspect the new rows in isolation by
+following its batch/ link.</p>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline"> 🔗</a></h3>
+<p>Here’s an example <a class="reference external" href="../_static/examples/dataset.json">dataset metadata</a> and
+corresponding <a class="reference external" href="../_static/examples/dataset.csv">csv</a>.</p>
+<p>Several things to note:</p>
+<ul class="simple">
+<li>Everything–metadata, order, and data–is keyed by variable “alias”,
+not “name”, because Crunch believes that names are for people, not
+computers, to understand. Aliases must be unique across the whole
+dataset, while variable “names” must only be unique within their
+group or array variable.</li>
+<li>For categorical variables, all values in the CSV correspond to
+category ids, not category names, and also not “numeric_values”,
+which need not be unique or present for all categories in a variable.</li>
+<li>The array variables defined in the metadata (“allpets” and “petloc”)
+don’t themselves have columns in the CSV, but all of their
+“subvariables” do, keyed by their aliases.</li>
+<li>With the exception of those array variable definitions, all variables
+and subvariables defined in the metadata have columns in the CSV, and
+there are no columns in the CSV that are not defined in the metadata.</li>
+<li>For internal variables, such as a case identifier in this example,
+that you don’t want to be visible in the UI, you can add them as
+“hidden” from the beginning by including <code class="docutils literal"><span class="pre">&quot;discarded&quot;:</span> <span class="pre">&quot;true&quot;</span></code> in
+their definition, as in the example of “caseid”.</li>
+<li>Missing values<ul>
+<li>Variables with categories (categorical, multiple_response,
+categorical_array) have missing values defined as categories with
+<code class="docutils literal"><span class="pre">&quot;missing&quot;:</span> <span class="pre">&quot;true&quot;</span></code></li>
+<li>Text, numeric, and datetime variables have missing variables
+defined as “missing_rules”, which can be “value”, “set”, or
+“range”. See, for example, “q3” and “ndogs”.</li>
+<li>Empty cells in the CSV, if present, will automatically be
+translated as the “No Data” system missing value in Crunch. See,
+for example, “ndogs_b”.</li>
+</ul>
+</li>
+<li>Order<ul>
+<li>All variables should be referenced by alias in the “order” object,
+inside a group’s “entities” key. Any omitted variables (in this
+case, the hidden variable “caseid”) will automatically be added to
+a group named “ungrouped”.</li>
+<li>Variables may appear in multiple groups.</li>
+<li>Groups may be nested within each other.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="column-by-column">
+<h2>Column-by-column<a class="headerlink" href="#column-by-column" title="Permalink to this headline"> 🔗</a></h2>
+<p>Crunch stores data by column internally, so if your data are stored in a
+column-major format as well, importing by column may be the most
+efficient way to import data.</p>
+<div class="section" id="id1">
+<h3>1. Create a Dataset entity<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2013710_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2013710_R">R</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2013710_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my survey&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2013710_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">createDataset</span><span class="p">(</span><span class="s2">&quot;my suryey&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a Dataset Entity to the datasets catalog, just as in the first
+import method.</p>
+</div>
+<div class="section" id="add-variable-definitions-and-column-data">
+<h3>2. Add Variable definitions and column data<a class="headerlink" href="#add-variable-definitions-and-column-data" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2229e10_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2229e10_R">R</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2229e10_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">38475</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Gender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;gender&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Skipped&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span><span class="p">{</span><span class="n">variable_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2229e10_R">
+<div class="code r highlight-default"><div class="highlight"><pre><span></span># Here&#39;s a similar example. R&#39;s factor type becomes &quot;categorical&quot;.
+gender.names &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Skipped&quot;)
+gen &lt;- factor(gender.names[c(1, 3, 1, 2, 2, 1, 1, 1, 1, 2, 3, 1)],
+    levels=gender.names)
+# Assigning an R vector into a dataset will create a variable entity.
+ds$gender &lt;- gen
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST a Variable Entity to the newly created dataset’s variables catalog,
+and include with that Entity definition a “values” key that contains the
+column of data. Do this for all columns in your dataset.</p>
+<p>If the <code class="docutils literal"><span class="pre">values</span></code> attribute is not present, the new column will be
+filled with “No Data” in all rows.</p>
+<p>The data passed in <code class="docutils literal"><span class="pre">values</span></code> can correspond to either the full data
+column for the new variable or a single value, in which case it will be
+used to fill up the column.</p>
+<p>In the case of arrays, the single value should be a list containing the
+correct categorical values.</p>
+<p>If the type of the values passed in does not correspond with the
+variable’s type, the server will return a 400 response indicating the
+error and the variable will not be created.</p>
+<aside class="notice"><p>Note that the lengths of the columns of data you include in the “values”
+key must be the same for all variables, though if you’re importing from
+a normal, rectangular data store, this should already be the case.</p>
+</aside></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

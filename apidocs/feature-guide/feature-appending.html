@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Appending Data &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Merging and Joining Datasets" href="feature-extending.html" />
+    <link rel="prev" title="Importing Data" href="feature-importing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-importing.html" title="Previous Chapter: Importing Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Importing Data</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-extending.html" title="Next Chapter: Merging and Joining Datasets"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Merging and J... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Appending Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-subsequent-source">Adding a subsequent Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reporting-and-resolving-conflicts">Reporting and Resolving Conflicts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#streaming-rows">Streaming rows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-rows-to-a-stream">Send rows to a stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#append-the-new-rows-to-the-dataset">Append the new rows to the dataset</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pending-rows-will-be-added-automatically">Pending rows will be added automatically</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#combining-datasets">Combining datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transformations-during-combination">Transformations during combination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-a-subset-of-variables-to-combine">Selecting a subset of variables to combine</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="appending-data">
+<h1>Appending Data<a class="headerlink" href="#appending-data" title="Permalink to this headline"> 🔗</a></h1>
+<p>Appending data to an existing Dataset is not much different from
+uploading the initial data; both use a “Batch” resource which represents
+the process of importing the data from the source into the dataset. Once
+you have created a Source for your data, POST its URL to
+datasets/{id}/batches/ to start the import process. That process may
+take some time, depending on the size of the dataset. The returned
+Location is the URI of the new Batch; GET the batches catalog and look
+up the Batch URI in the catalog’s index and inspect its status attribute
+until it moves from “analyzing” to “appended”. User interfaces may
+choose here to show a progress meter or some other widget.</p>
+<p>During the “analyzing” stage, the Crunch system imports the data into a
+temporary table, and matches its variables with any existing variables.
+During the “importing” stage, the new rows will move to the target
+Dataset, and once “appended”, the new rows will be included in all
+queries against that Dataset.</p>
+<div class="section" id="adding-a-subsequent-source">
+<h2>Adding a subsequent Source<a class="headerlink" href="#adding-a-subsequent-source" title="Permalink to this headline"> 🔗</a></h2>
+<p>Once you have created a Dataset, you can upload new files and append
+rows to the same Dataset as often as you like. If the structure of each
+file is the same as that of the first uploaded file, Crunch should
+automatically pass your new rows through exactly the same process as the
+old rows. If there are any derived variables in your Dataset, new data
+will be derived in the new rows following the same rules as the old
+data. You can follow the progress as above via the batch’s status
+attribute.</p>
+<p>Let’s look at an example: you had uploaded an initial CSV of 3 columns,
+A, B and C. Then:</p>
+<ul class="simple">
+<li>The Crunch system automatically converted column A from the few
+strings that were found in it to a Categorical type.</li>
+<li>You derived a new column D that consisted of B * C.</li>
+</ul>
+<p>Then you decide to upload another CSV of new rows. What will happen?</p>
+<p>When you POST to create the second Batch, the service will: 1) match up
+the new A with the old A and cast the new strings to existing categories
+by name, and 2) fill column D for you with B * C for each new row.</p>
+<p>However, from time to time, the new source has significant differences:
+a new variable, a renamed variable, and other changes. When you append
+the first Source to a Dataset, there is nothing with which to conflict.
+But a subsequent POST to batches/ may result in a conflict if the new
+source cannot be confidently reconciled with the existing data. Even
+though you get a 201 Created response for the new batch resource, it
+will have a status of “conflict”.</p>
+</div>
+<div class="section" id="reporting-and-resolving-conflicts">
+<h2>Reporting and Resolving Conflicts<a class="headerlink" href="#reporting-and-resolving-conflicts" title="Permalink to this headline"> 🔗</a></h2>
+<p>When you append a Source to an existing Dataset, the system attempts to
+match up the new data with the old. If the source’s schema can be
+automatically aligned with the target Dataset, the new rows from the
+Batch are appended. When things go wrong, however, the Batch can be
+inspected to see what conflicted with the target (or vice-versa, in some
+cases!).</p>
+<p>GET the new Batch:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2469cf8_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2469cf8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span><span class="p">{</span><span class="n">batch_id</span><span class="p">}</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="o">...</span>
+<span class="o">--------</span>
+<span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;conflicts&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;cdbd11/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s2">&quot;conflicts&quot;</span><span class="p">:</span> <span class="p">[{</span>
+              <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Types do not match and cannot be converted&quot;</span><span class="p">,</span>
+            <span class="p">}]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>If any variable conflicts, it will possess one or more “conflicts”
+members. For example, if the new variable “cdbd11” had a different type
+that could not be converted compared to the existing variable “cdbd11”,
+the Batch resource would contain the above message. Only unresolvable
+conflicts will be shown; if a variable is not reported in the conflicts
+object, it appended cleanly.</p>
+<p>See <a class="reference external" href="#batches">Batches</a> for more details on batch entities and
+conflicts.</p>
+</div>
+<div class="section" id="streaming-rows">
+<h2>Streaming rows<a class="headerlink" href="#streaming-rows" title="Permalink to this headline"> 🔗</a></h2>
+<p>Existing datasets are best sent to Crunch as a single Source, or a
+handful of subsequent Sources if gathered monthly or on some other
+schedule. Sometimes however you want to “stream” data to Crunch as it is
+being gathered, even one row at a time, rather than in a single
+post-processing phase. You do <em>not</em> want to make each row its own batch
+(it’s simply not worth the overhead). Instead, you should make a Stream
+and send rows to it, then periodically create a Source and Batch from
+it.</p>
+<div class="section" id="send-rows-to-a-stream">
+<h3>Send rows to a stream<a class="headerlink" href="#send-rows-to-a-stream" title="Permalink to this headline"> 🔗</a></h3>
+<p>To send one or more rows to a dataset stream, simply POST one or more
+lines of <a class="reference external" href="https://en.wikipedia.org/wiki/Line_Delimited_JSON">line-delimited
+JSON</a> to the
+dataset’s <code class="docutils literal"><span class="pre">stream</span></code> endpoint:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d20fc278_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2b27d20fc278_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d20fc278_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;var_id_1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;var_id_2&quot;</span><span class="p">:</span> <span class="s2">&quot;a&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d20fc278_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">by_alias</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">by</span><span class="p">(</span><span class="s1">&#39;alias&#39;</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">my_system</span><span class="o">.</span><span class="n">read_a_row</span><span class="p">()</span>
+    <span class="n">importing</span><span class="o">.</span><span class="n">importer</span><span class="o">.</span><span class="n">stream_rows</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Streamed values must be keyed either by id or by alias. The variable
+ids/aliases must correspond to existing variables in the dataset. The
+Python code shows how to efficiently map aliases to ids. The data must
+match the target variable types so that we can process the row as
+quickly as possible. We want no casting or other guesswork slowing us
+down here. Among other things, this means that categorical values must
+be represented as Crunch’s assigned category ids, not names or numeric
+values.</p>
+<p>You may also send more than one row at a time if you prefer. For
+example, your data collection system may already post-process row data
+in, say, 5 minute increments. The more rows you can send together, the
+less overhead spent processing each one and the more you can send in a
+given time. Send multiple lines of line-delimited JSON, or if using
+pycrunch, a list of dicts rather than a single dict.</p>
+<p>Each time you send a POST, all of the rows in that POST are assembled
+into a new message which is added to the stream. Each message can
+contain one or more rows of data.</p>
+<p>As when creating a new source, don’t worry about sending values for
+derived variables; Crunch will fill these out for you for each row using
+the data you send.</p>
+</div>
+<div class="section" id="append-the-new-rows-to-the-dataset">
+<h3>Append the new rows to the dataset<a class="headerlink" href="#append-the-new-rows-to-the-dataset" title="Permalink to this headline"> 🔗</a></h3>
+<p>The above added new rows to the Stream resource so that you can be
+confident that your data is completely safe with Crunch. To append those
+rows to the dataset requires another step. You could stream rows and
+then, once they are all assembled, append them all as a single Source to
+the dataset. However, if you’re streaming rows at intervals it’s likely
+you want to append them to the dataset at intervals, too. But doing so
+one row at a time is usually counter-productive; it slows the rate at
+which you can send rows, balloons metadata, and interrupts users who are
+analyzing the data.</p>
+<p>Instead, you control how often you want the streamed rows to be appended
+to the dataset. When you’re ready, POST to <code class="docutils literal"><span class="pre">/datasets/{id}/batches/</span></code>
+and provide the “stream” member, plus any extra metadata the new Source
+should possess:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c74d68_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2b27d1c74d68_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c74d68_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ldjson&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My streamed rows&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Yet Another batch from the stream&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d1c74d68_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">batches</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ldjson&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My streamed rows&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Yet Another batch from the stream&quot;</span>
+<span class="p">}})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The “stream” member tells Crunch to acquire the data from the stream to
+form this Batch. The “stream” member must be <code class="docutils literal"><span class="pre">null</span></code>, then the system
+will acquire all currently pending messages (any new messages which
+arrive during the formation of this Batch will be queued and not
+fetched). If there are no pending messages, <code class="docutils literal"><span class="pre">409</span> <span class="pre">Conflict</span></code> is returned
+instead of 201/202 for the new Batch.</p>
+<div class="section" id="pending-rows-will-be-added-automatically">
+<h4>Pending rows will be added automatically<a class="headerlink" href="#pending-rows-will-be-added-automatically" title="Permalink to this headline"> 🔗</a></h4>
+<p>Every hour, the Crunch system goes through all datasets, and for each
+that has pending streamed data, it batches up the pending rows and adds
+them to the dataset automatically, as long as the dataset is not
+currently in use by someone. That way, streamed data will magically
+appear in the dataset for the next time a user loads it, but if a user
+is actively working with the dataset, the system won’t update their view
+of the data and disrupt their session.</p>
+<p>See <a class="reference external" href="#stream">Stream</a> for more details on streams.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combining-datasets">
+<h1>Combining datasets<a class="headerlink" href="#combining-datasets" title="Permalink to this headline"> 🔗</a></h1>
+<p>Combining datasets consists on creating a new dataset formed by stacking
+a list of datasets together. It works under the same rules as a normal
+append.</p>
+<p>To create a new dataset combined from others, it is necessary to POST to
+the datasets catalog indicating a <code class="docutils literal"><span class="pre">combine_datasets</span></code> expression:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2469208_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2469208_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My combined dataset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Consists on dsA and dsB&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;combine_datasets&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/dsabc/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/ds123/&quot;</span><span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The server will verify that the authenticated user has view permission
+to all datasets, else will raise a 400 error.</p>
+<p>The resulting dataset will consist on the matched union of all included
+datasets with the rows in the same order. Private/public variable
+visibility and exclusion filters will be honored in the result.</p>
+<div class="section" id="transformations-during-combination">
+<h2>Transformations during combination<a class="headerlink" href="#transformations-during-combination" title="Permalink to this headline"> 🔗</a></h2>
+<p>The combine procedures will perform normal append matching rules which
+means that any mismatch on aliases or types will not proceed, as well
+limiting the existing union of variables from the present datasets as
+the result.</p>
+<p>It is possible to provide transformations on the datasets to ensure that
+they line up on the combination phase and to add extra columns with
+constant dataset metadata per dataset on the resulting combined result.</p>
+<p>Each <code class="docutils literal"><span class="pre">{&quot;dataset&quot;}</span></code> argument allows for an extra <code class="docutils literal"><span class="pre">frame</span></code> key that can
+contain a function expression on the desired dataset transformation, for
+example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2bfb080_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2bfb080_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;dataset_url&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;*&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;dataset_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;dataset_id&gt;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset ID&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset_id&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="selecting-a-subset-of-variables-to-combine">
+<h2>Selecting a subset of variables to combine<a class="headerlink" href="#selecting-a-subset-of-variables-to-combine" title="Permalink to this headline"> 🔗</a></h2>
+<p>In the same fashion that it is possible to add extra variables to the
+dataset transforms, it is possible to select which variables only to
+include.</p>
+<p>Note in the example above, we use the <code class="docutils literal"><span class="pre">&quot;*&quot;:</span> <span class="pre">{&quot;variable&quot;:</span> <span class="pre">&quot;*&quot;}</span></code>
+expressions which instructs the server to include all variables.
+Omitting that would cause to only include the selected variables, for
+example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d98b38_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d98b38_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;dataset_url&gt;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;dataset_id&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;dataset_id&gt;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset ID&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset_id&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>On this example, the expression indicates to only include variables with
+IDs <code class="docutils literal"><span class="pre">A</span></code>, <code class="docutils literal"><span class="pre">B</span></code> and <code class="docutils literal"><span class="pre">C</span></code> from the referenced dataset as well as add
+the new extra variable <code class="docutils literal"><span class="pre">dataset_id</span></code>. This would effectively append
+only these 4 variables instead of the full dataset’s variables.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

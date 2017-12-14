@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Merging and Joining Datasets &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deriving Variables" href="feature-deriving.html" />
+    <link rel="prev" title="Appending Data" href="feature-appending.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-appending.html" title="Previous Chapter: Appending Data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Appending Data</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-deriving.html" title="Next Chapter: Deriving Variables"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Deriving Variables &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Merging and Joining Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#joining-a-subset-of-variables">Joining a subset of variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#joining-a-subset-of-rows">Joining a subset of rows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="merging-and-joining-datasets">
+<h1>Merging and Joining Datasets<a class="headerlink" href="#merging-and-joining-datasets" title="Permalink to this headline"> 🔗</a></h1>
+<p>Crunch supports joining variables from one dataset to another by a key
+variable that maps rows from one to the other. To add a snapshot of
+those variables to the dataset, POST an <code class="docutils literal"><span class="pre">adapt</span></code> function expression to
+its variables catalog.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a3e550_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a3e550_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;adapt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_key_id}</span><span class="s2">/&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/</span><span class="si">{left_key_id}</span><span class="s2">/&quot;</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+
+<span class="o">-----</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
+
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/progress/5be82a/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>A successful request returns 202 Continue status with a progress
+resource in the response body; poll that to track the status of the
+asynchronous job that adds the data to your dataset.</p>
+<p>Currently Crunch only supports left joins: all rows of the left
+(current) dataset will be kept, and only rows from the right (incoming)
+dataset that have a key value present in the left dataset will be
+brought in. Rows in the left dataset that do not have a corresponding
+row in the right dataset will be filled with missing values for the
+incoming variables.</p>
+<p>The join key must be of type “numeric” or “text”, must be the same type
+in both datasets, and must have unique values within each dataset.</p>
+<div class="section" id="joining-a-subset-of-variables">
+<h2>Joining a subset of variables<a class="headerlink" href="#joining-a-subset-of-variables" title="Permalink to this headline"> 🔗</a></h2>
+<p>To select certain variables to bring over from the right dataset,
+include <code class="docutils literal"><span class="pre">select</span></code> function expression around the <code class="docutils literal"><span class="pre">adapt</span></code> function
+described above:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22fa390_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22fa390_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;</span><span class="si">{right_var1_id}</span><span class="s2">/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_var1_id}</span><span class="s2">/&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;</span><span class="si">{right_var2_id}</span><span class="s2">/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_var2_id}</span><span class="s2">/&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;</span><span class="si">{right_var3_id}</span><span class="s2">/&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_var3_id}</span><span class="s2">/&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;frame&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;adapt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_key_id}</span><span class="s2">/&quot;</span>
+        <span class="p">},</span> <span class="p">{</span>
+            <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/</span><span class="si">{left_key_id}</span><span class="s2">/&quot;</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">-----</span>
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
+
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/progress/5be82a/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="joining-a-subset-of-rows">
+<h2>Joining a subset of rows<a class="headerlink" href="#joining-a-subset-of-rows" title="Permalink to this headline"> 🔗</a></h2>
+<p>Rows to consider from the right dataset can also be filtered. To do so,
+include a <code class="docutils literal"><span class="pre">filter</span></code> attribute on the payload, containing either a
+filter expression, wrapped under <code class="docutils literal"><span class="pre">{&quot;expression&quot;:</span> <span class="pre">&lt;expr&gt;}</span></code>, or an
+existing filter entity URL (from the right-side dataset), wrapped as
+<code class="docutils literal"><span class="pre">{&quot;filter&quot;:</span> <span class="pre">&lt;url&gt;}</span></code>.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d255def0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d255def0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;adapt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{right_key_id}</span><span class="s2">/&quot;</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/variables/</span><span class="si">{left_key_id}</span><span class="s2">/&quot;</span>
+    <span class="p">}],</span>
+    <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;expression&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/</span><span class="si">{other_id}</span><span class="s2">/variables/</span><span class="si">{variable_id}</span><span class="s2">/&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;value&gt;&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>You can filter both rows and variables in the same request. Note that
+the “filter” parameter remains at the top-level function in the
+expression, which when specifying a variable subset is “select” instead
+of “adapt”:</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

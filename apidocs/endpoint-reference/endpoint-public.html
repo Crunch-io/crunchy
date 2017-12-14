@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Public &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accounts" href="endpoint-account.html" />
+    <link rel="prev" title="Endpoint Reference" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Endpoint Reference"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Endpoint Reference</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-account.html" title="Next Chapter: Accounts"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Accounts &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Public</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#application-configuration">Application configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crunchbox">CrunchBox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#share">Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preview">Preview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="public">
+<h1>Public<a class="headerlink" href="#public" title="Permalink to this headline"> 🔗</a></h1>
+<p><code class="docutils literal"><span class="pre">/</span></code></p>
+<p><code class="docutils literal"><span class="pre">/public/</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;signup_resend&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/signup_resend/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;inquire&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/inquire/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_reset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/password_reset/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;signup&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/signup/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;oauth2redirect&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/oauth2redirect/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;change_email&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/change_email/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/login/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/config/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_change&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/public/password_change/&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="application-configuration">
+<h2>Application configuration<a class="headerlink" href="#application-configuration" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/public/config/</span></code></p>
+<p>When accessing Crunch from a configured application via its subdomain:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://mycompany.crunch.io/api/public/config/">https://mycompany.crunch.io/api/public/config/</a></li>
+</ul>
+<p>A GET request on <code class="docutils literal"><span class="pre">/public/config/</span></code> return a Shoji Entity with the
+subdomain’s available configurations, if any; if none exists, the body
+will be empty.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d8dcc0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d8dcc0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Your Company&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;logo&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;small&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s.crunch.io/logos/yours_small.png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;large&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s.crunch.io/logos/yours_large.png&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;brand&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="s2">&quot;#FFAABB&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;#G4EEBB&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;#BAA5E7&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;manifest&quot;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="crunchbox">
+<h2>CrunchBox<a class="headerlink" href="#crunchbox" title="Permalink to this headline"> 🔗</a></h2>
+<p>A CrunchBox represents a snapshot of a crunch dataset. These snapshots
+are intended for public proliferation and therefore the endpoints for
+interacting with this data is housed under the unauthed API path.</p>
+<div class="section" id="share">
+<h3>Share<a class="headerlink" href="#share" title="Permalink to this headline"> 🔗</a></h3>
+<p>The share endpoint is for retrieving the HTML code for rendering the
+share page, complete with the meta data utilized by social sharing
+platform crawlers in constructing a share-preview. Among this metadata
+is a url to a preview image of the rendered CrunchBox.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c47390_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c47390_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">crunchbox</span><span class="o">/</span><span class="n">share</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Required parameters for this endpoint:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="8%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>data</td>
+<td>string</td>
+<td>CrunchBox widget url (URL encoded) e.g.
+“https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000”
+(the encoded string of “<a class="reference external" href="https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000">https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000</a>”)</td>
+</tr>
+</tbody>
+</table>
+<p>Optional parameters for this endpoint:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="13%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ref</td>
+<td>string</td>
+<td>referring url (URL encoded) to pull content from
+the referring page for inclusion on the CrunchBox
+share page and provide a link back to the
+referrer e.g.
+“http%3A%2F%2Fcrunch.io%2Fcrunching-the-data-of-politics”
+(the encoded string of
+“<a class="reference external" href="http://crunch.io/crunching-the-data-of-politics">http://crunch.io/crunching-the-data-of-politics</a>”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preview">
+<h3>Preview<a class="headerlink" href="#preview" title="Permalink to this headline"> 🔗</a></h3>
+<p>The preview endpoint is used to preemptively initiate rendering a given
+CrunchBox configuration to a raster image. This image will be requested
+by social network platform crawlers during construction of the post
+share preview. The preview-rendering process can be time-consuming.
+Therefore, it is preferable to initiate it as soon as is reasonable
+before a request for the image data.</p>
+<p>This endpoint returns no data.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b8a588_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b8a588_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">crunchbox</span><span class="o">/</span><span class="n">preview</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="8%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>data</td>
+<td>string</td>
+<td>CrunchBox widget url (URL encoded) e.g.
+“https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000”
+(the encoded string of “<a class="reference external" href="https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000">https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000</a>”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

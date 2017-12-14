@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Object Reference &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Xlsx" href="../endpoint-reference/endpoint-xlsx.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="../endpoint-reference/endpoint-xlsx.html" title="Previous Chapter: Xlsx"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Xlsx</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Object Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#response-types">Response types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#shoji-entity">Shoji entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shoji-catalog">Shoji catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shoji-view">Shoji view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shoji-order">Shoji order</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#statistical-data">Statistical data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#identifiers">Identifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-values">Data Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#missing-values">Missing values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arrays">Arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enumerations">Enumerations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-definitions">Variable Definitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variable-types">Variable types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-names">Variable names</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#name">name</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#alias">alias</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#description">description</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#type-specific-attributes">Type-specific attributes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#categories">categories</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#subvariables">subvariables</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#subreferences">subreferences</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#resolution">resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#other-definition-attributes">Other definition attributes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#format">format</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#view">view</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#discarded">discarded</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#private">private</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#missing-reasons">missing_reasons</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#values">Values</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#text">Text</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#numeric">Numeric</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#categorical">Categorical</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#datetime">Datetime</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id1">Arrays</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expressions">Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variable-terms">Variable terms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value-terms">Value terms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#column-terms">Column terms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-terms">Function terms</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#supported-functions">Supported functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#binary-functions">Binary functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#builtin-functions">Builtin functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#comparisons">Comparisons</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#date-functions">Date Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#frame-functions">Frame Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#measures-functions">Measures Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cube-functions">Cube Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#filter-terms">Filter terms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documents">Documents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#shoji">Shoji</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#entity">Entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#catalog">Catalog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#order">Order</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#crunch-objects">Crunch Objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#table">Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cube">Cube</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#cube-input">Cube input</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cube-output">Cube output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="object-reference">
+<h1>Object Reference<a class="headerlink" href="#object-reference" title="Permalink to this headline"> 🔗</a></h1>
+<p>version 0.15</p>
+<p>The Crunch REST API takes a decidedly column-oriented approach to data.
+A “column” is simply a sequence of values of the same type. A “variable”
+binds a name (and other metadata) to the column, and indeed may possess
+a series of columns over its lifetime as inserts and updates are made to
+it. A “dataset” is a set of variables. Each variable in the dataset is
+sorted the same way; the variables together form a relation. Reading the
+N’th item from each variable produces a row.</p>
+<p>Interaction with the Crunch REST API is by variables and columns. When
+you add data to Crunch, you send a set of columns. When you fetch data
+from Crunch, you send a set of variable expressions and receive a set of
+columns. When you update data in Crunch, you send a set of expressions
+which tells Crunch how to update variables with new column data.</p>
+<p>The Crunch API consists of just a few primitive objects, arranged
+differently for each request and response. Learning the basic components
+will help you create the most complicated queries.</p>
+<div class="section" id="response-types">
+<h2>Response types<a class="headerlink" href="#response-types" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="shoji-entity">
+<h3>Shoji entity<a class="headerlink" href="#shoji-entity" title="Permalink to this headline"> 🔗</a></h3>
+<p>A Shoji entity is identified by the <code class="docutils literal"><span class="pre">element</span></code> key having value
+<code class="docutils literal"><span class="pre">shoji:entity</span></code>. Its principal attribute is the <code class="docutils literal"><span class="pre">body</span></code> key, which is
+an object containing the attributes that describe the entity.</p>
+</div>
+<div class="section" id="shoji-catalog">
+<h3>Shoji catalog<a class="headerlink" href="#shoji-catalog" title="Permalink to this headline"> 🔗</a></h3>
+<p>A catalog is identified by its <code class="docutils literal"><span class="pre">element</span></code> key having value
+<code class="docutils literal"><span class="pre">shoji:catalog</span></code> with its principal attribute being <code class="docutils literal"><span class="pre">index</span></code> that
+contains an object keyed by the URLs of the entities it contains and for
+each key an object (tuple) with attributes from the referenced entity.</p>
+<p>Shoji catalogs are <strong>not</strong> ordered. For its ordered representations they
+may provide an <code class="docutils literal"><span class="pre">orders</span></code> set of Shoji order resources.</p>
+</div>
+<div class="section" id="shoji-view">
+<h3>Shoji view<a class="headerlink" href="#shoji-view" title="Permalink to this headline"> 🔗</a></h3>
+<p>A Shoji view is identified by its <code class="docutils literal"><span class="pre">element</span></code> key having value
+<code class="docutils literal"><span class="pre">shoji:view</span></code> with its principal attribute being <code class="docutils literal"><span class="pre">value</span></code>. This can
+contain any arbitrary JSON object.</p>
+</div>
+<div class="section" id="shoji-order">
+<h3>Shoji order<a class="headerlink" href="#shoji-order" title="Permalink to this headline"> 🔗</a></h3>
+<p>Shoji orders are identified by the <code class="docutils literal"><span class="pre">element</span></code> key having a value
+<code class="docutils literal"><span class="pre">shoji:order</span></code>. Their principal attribute is the <code class="docutils literal"><span class="pre">graph</span></code> key which is
+an array containing the order of present resources.</p>
+<p>A shoji order may be associated with a catalog. In such case it will
+contain a subset or totality of the entities present in the catalog. The
+catalog remains as the authoritative source of available entities.</p>
+<p>Any entity not present on the order but present in the catalog may be
+considered to belong at the bottom of the root of the graph in an
+arbitrary order, or may be excluded from view.</p>
+</div>
+</div>
+<div class="section" id="statistical-data">
+<h2>Statistical data<a class="headerlink" href="#statistical-data" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="identifiers">
+<h3>Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this headline"> 🔗</a></h3>
+<p>Datasets, variables, and other resources are always identified by
+strings. All identifiers are case-sensitive, and may contain any unicode
+character, including spaces. Examples:</p>
+<ul class="simple">
+<li>“q1”</li>
+<li>“My really useful dataset”</li>
+<li>“变量”</li>
+</ul>
+</div>
+<div class="section" id="data-values">
+<h3>Data Values<a class="headerlink" href="#data-values" title="Permalink to this headline"> 🔗</a></h3>
+<p>Individual data values follow the JSON representations where possible.
+JSON exposes the following types: number, string, array, object, true,
+false, null. Crunch adds additional types with special syntax (see
+Types, below). Examples:</p>
+<ul class="simple">
+<li>13</li>
+<li>45.330495</li>
+<li>“foo”</li>
+<li>[3, 4, 5]</li>
+<li>{“bar”: {“a”: [12.4, 89.2, 0]}}</li>
+<li>true</li>
+<li>null</li>
+<li>“2014-03-02T14:29:59Z”</li>
+</ul>
+<p>Because a single JSON type may be used to represent multiple Crunch
+types, you should never rely on the JSON type to interpret the class of
+a datum. Instead, inspect the type object (see below) to interpret the
+data.</p>
+<div class="section" id="missing-values">
+<h4>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline"> 🔗</a></h4>
+<p>Crunch provides a robust “missing entries” system. Anywhere a (valid)
+data value can appear, a missing value may also appear. Missing values
+are represented by an object with a single “?” key. The value is a
+missing integer code (see Missing reasons, below); negative integers are
+reserved for system-generated reasons, user-defined reasons are
+automatically assigned positive integers. Examples:</p>
+<ul class="simple">
+<li>{“?”: -1}</li>
+<li>{“?”: 24}</li>
+</ul>
+</div>
+<div class="section" id="arrays">
+<h4>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline"> 🔗</a></h4>
+<p>A set of data values (and/or missing values) which are of the same type
+can be ordered in an array. All entries in an array are of the same
+Crunch type.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li>[13, 4, 5, {“?”: -2}, 7, 2]</li>
+<li>[“foo”, “bar”]</li>
+</ul>
+</div>
+<div class="section" id="enumerations">
+<h4>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline"> 🔗</a></h4>
+<p>Some arrays, rather than repeating a small set of large values, benefit
+from storing a small integer code instead, moving the larger values they
+represent into the metadata, and doing lookups when needed to
+encode/decode. The “categorical” type is the most common example of
+this: rather than store an array of large string names like [“Internet
+Explorer”, “Internet Explorer”, “Firefox”, …] it instead stores
+integer codes like: [1, 1, 2], placing the longer strings in the
+metadata as type.categories = [{“id”: 1, “name”: “Internet Explorer”,
+…}, …]. We call this encoding process enumeration, and its opposite,
+where the coded are re-expanded into their original values, elaboration.</p>
+<p>Enumeration also provides the opportunity to order the possible values,
+as well as include potential values which do not yet exist in the data
+array itself.</p>
+<p>Enumeration typically causes the volume of data to shrink dramatically,
+and can speed up very common operations like filtering, grouping, and
+almost any data transfer. Because of this, it is common to:</p>
+<ul class="simple">
+<li>Enumerate a data array as early as possible. Indeed, when a variable
+can be enumerated, the fastest way to insert new data is to send the
+new values as the integer codes.</li>
+<li>Elaborate a data array as late as possible. As long as the metadata
+is shipped along with the enumerated data, the transfer size and
+therefore time is much smaller. Many cases do not even call for a
+complete elaboration of the entire column.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="variable-definitions">
+<h3>Variable Definitions<a class="headerlink" href="#variable-definitions" title="Permalink to this headline"> 🔗</a></h3>
+<p>Crunch employs a structural type system rather than a nominative one.
+The variable definition includes more knowledge than just the type name
+(numeric, text, categorical, etc); we also learn details about range,
+precision, missing values and reasons, order, etc. For example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1dea080_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1dea080_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Party ID&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Do you consider yourself generally a Democrat, a Republican, or an Independent?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Republican&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Democrat&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Independent&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>This section describes the metadata of a variable as exposed across
+HTTP, both expected response values and valid input values.</p>
+<div class="section" id="variable-types">
+<h4>Variable types<a class="headerlink" href="#variable-types" title="Permalink to this headline"> 🔗</a></h4>
+<p>The “type” of a Variable is a string which defines the superset of
+values from which the variable may draw. The type governs not only the
+set of values but also their syntax. (See below.)</p>
+<p>The following types are defined for public use:</p>
+<ul class="simple">
+<li>text</li>
+<li>numeric</li>
+<li>categorical</li>
+<li>datetime</li>
+<li>multiple_response</li>
+<li>categorical_array</li>
+</ul>
+</div>
+<div class="section" id="variable-names">
+<h4>Variable names<a class="headerlink" href="#variable-names" title="Permalink to this headline"> 🔗</a></h4>
+<p>Variables in Crunch have multiple attributes that provide identifying
+information: “name”, “alias”, and “description”.</p>
+<div class="section" id="name">
+<h5>name<a class="headerlink" href="#name" title="Permalink to this headline"> 🔗</a></h5>
+<p>Crunch takes a principled stand that variable “names” should be for
+people, not for computers.</p>
+<p>You may be used to domains that have variable “name”, “label”, and
+“description”. Name is some short, unique, machine-friendlier ID like
+“Q2”; label is short and human-friendly, something like “Brand
+awareness”, and description is where you might put question wording if
+you have survey data. Crunch has “alias”, “name”, and “description”.
+What you may be used to thinking of as a variable name, we consider as
+an alias: something for more internal use, not something appropriate for
+a polished dataset ready to share with people who didn’t create the
+dataset (See more in the “Alias” section below). In Crunch, the
+variable’s “name” is what you may be used to thinking of as a label.</p>
+<p>All variables must have a name, and these names must be unique across
+all variables, including “hidden” variables (see below) but excluding
+subvariables (see “Subvariables” below). Within an array variable,
+subvariable names must be unique. (You can think of subvariable names
+within an array as being variable_name.subvariable_name, and with that
+approach, all “variable names” must be unique.)</p>
+<p>Names must be a string of length greater than zero, and any valid
+unicode string is allowed. See “Identifiers” above.</p>
+</div>
+<div class="section" id="alias">
+<h5>alias<a class="headerlink" href="#alias" title="Permalink to this headline"> 🔗</a></h5>
+<p>Alias is a string identifier for variables. It must be unique across all
+variables, including subvariables, such that it can be used as an
+identifier. This is what legacy statistical software typically calls a
+variable name.</p>
+<p>Aliases have several uses. Client applications, such as those exposing a
+scripting interface, may want to use aliases as a more machine-friendly,
+yet still human-readable, way of referencing variables. Aliases may also
+be used to help line up variables across different import batches.</p>
+<p>When creating variables via the API, alias is not a required field; if
+omitted, an alias will be generated. If an alias is supplied, it must be
+unique across all variables, including subvariables, and the new
+variable request will be rejected if the alias is not unique. When data
+are imported from file formats that have unique variable names, those
+names will in many cases be used as the alias in Crunch.</p>
+</div>
+<div class="section" id="description">
+<h5>description<a class="headerlink" href="#description" title="Permalink to this headline"> 🔗</a></h5>
+<p>Description is an optional string that provides more information about
+the variable. It is displayed in the web application on variable summary
+cards and with analyses.</p>
+</div>
+</div>
+<div class="section" id="type-specific-attributes">
+<h4>Type-specific attributes<a class="headerlink" href="#type-specific-attributes" title="Permalink to this headline"> 🔗</a></h4>
+<p>These attributes must be present for the specified variable types when
+creating a variable, but they are not defined for other types.</p>
+<div class="section" id="categories">
+<h5>categories<a class="headerlink" href="#categories" title="Permalink to this headline"> 🔗</a></h5>
+<p>Categorical variables must contain an array of Category objects, each of
+which includes:</p>
+<ul class="simple">
+<li><strong>id</strong>: a read-only integer identifier for the category. These
+correspond to the data values.</li>
+<li><strong>name</strong>: the string name which applications should use to identify
+the category.</li>
+<li><strong>numeric_value</strong>: the numeric value bound to each name. If no
+numeric value should be bound, this should be null. numeric_values
+need not be unique, and they may be <code class="docutils literal"><span class="pre">null</span></code>.</li>
+<li><strong>missing</strong>: boolean indicating whether the data corresponding to
+this category should be interpreted as missing.</li>
+<li><strong>selected</strong>: (optional) boolean indicating whether this category
+corresponds to a selected value for a dichotomized variable, i.e.
+part of a multiple response variable. Not required for regular
+categorical variables, and defaults to <code class="docutils literal"><span class="pre">false</span></code> if omitted. There
+also is no requirement for Categories in a multiple-response variable
+that only one Category be marked “selected”.</li>
+</ul>
+<p>Categories are valid if:</p>
+<ul class="simple">
+<li>Category names are unique within the set</li>
+<li>Category ids are unique within the set</li>
+<li>Category ids for user-defined categories are positive integers no
+greater than 32767. Negative ids are reserved for system missing
+reasons. See “missing_reasons” below.</li>
+</ul>
+<p>The order of the array defines the order of the categories, and thus the
+order in which aggregate data will be presented. This order can be
+changed by saving a reordered set of Categories.</p>
+</div>
+<div class="section" id="subvariables">
+<h5>subvariables<a class="headerlink" href="#subvariables" title="Permalink to this headline"> 🔗</a></h5>
+<p>Multiple Response and Categorical Array variables contain an array of
+subvariable references. In the HTTP API, these are presented as URLs. To
+create a variable of type “multiple_response” or “categorical_array”,
+you must include a “subvariables” member with an array of subvariable
+references. These variables will become the subvariables in the new
+array variable.</p>
+<p>Like Categories, the array of subvariables within an array variable
+indicate the order in which they are presented; to reorder them, save a
+modified array of subvariable ids/urls.</p>
+</div>
+<div class="section" id="subreferences">
+<h5>subreferences<a class="headerlink" href="#subreferences" title="Permalink to this headline"> 🔗</a></h5>
+<p>Multiple Response and Categorical Array variables contain an object of
+subvariable “references”: names, alias, description, etc. To create a
+variable of type “multiple_response” or “categorical_array” directly,
+you must include a “subreferences” member with an object of objects.
+These label the subvariables in the new array variable.</p>
+<p>The shape of each subreferences member must contain a name and
+optionally an alias. Note that the subreferences is an unordered object.
+The order of the subvariables is read from the “subvariables” attribute.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2227320_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2227320_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Category 1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Category 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/1/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/2/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/3/&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;subreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/2/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;subvariable 2&quot;</span><span class="p">,</span> <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar2_alias&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/1/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;subvariable 1&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;/api/datasets/abcdef/variables/abc/subvariables/3/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;subvariable 3&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="resolution">
+<h5>resolution<a class="headerlink" href="#resolution" title="Permalink to this headline"> 🔗</a></h5>
+<p>Datetime variables must have a resolution string that indicates the unit
+size of the datetime data. Valid values include “Y”, “M”, “D”, “h”, “m”,
+“s”, and “ms”. Every datetime variable must have a resolution.</p>
+</div>
+</div>
+<div class="section" id="other-definition-attributes">
+<h4>Other definition attributes<a class="headerlink" href="#other-definition-attributes" title="Permalink to this headline"> 🔗</a></h4>
+<p>These attributes may be supplied on variable creation, and they are
+included in API responses unless otherwise noted.</p>
+<div class="section" id="format">
+<h5>format<a class="headerlink" href="#format" title="Permalink to this headline"> 🔗</a></h5>
+<p>An object with various members to control the display of Variable data:</p>
+<ul class="simple">
+<li>data: An object with a “digits” member, stating how many digits to
+display after the decimal point.</li>
+<li>summary: An object with a “digits” member, stating how many digits to
+display after the decimal point.</li>
+</ul>
+</div>
+<div class="section" id="view">
+<h5>view<a class="headerlink" href="#view" title="Permalink to this headline"> 🔗</a></h5>
+<p>An object with various members to control the display of Variable data:</p>
+<ul class="simple">
+<li>show_codes: For categorical types only. If true, numeric values are
+shown.</li>
+<li>show_counts: If true, show counts; if false, show percents.</li>
+<li>include_missing: For categorical types only. If true, include
+missing categories.</li>
+<li>include_noneoftheabove: For multiple-response types only. If true,
+display a “none of the above” category in the requested summary or
+analysis.</li>
+<li>geodata: A list of associations of a variable to Crunch geodatm
+entities. PATCH a variable entity amending the <code class="docutils literal"><span class="pre">view.geodata</span></code> in
+order to create, modify, or remove an association. An association is
+an object with required keys <code class="docutils literal"><span class="pre">geodatum</span></code>, <code class="docutils literal"><span class="pre">feature_key</span></code>, and
+optional <code class="docutils literal"><span class="pre">match_field</span></code>. The geodatum must exist; <code class="docutils literal"><span class="pre">feature_key</span></code> is
+the name of the property of each ‘feature’ in the geojson/topojson
+that corresponds to the <code class="docutils literal"><span class="pre">match_field</span></code> of the variable (perhaps a
+dotted string for nested properties; e.g. ”properties.postal-code”).
+By default, <code class="docutils literal"><span class="pre">match_field</span></code> is “name”: a categorical variable will
+match category names to the <code class="docutils literal"><span class="pre">feature_key</span></code> present in the given
+geodatum.</li>
+</ul>
+</div>
+<div class="section" id="discarded">
+<h5>discarded<a class="headerlink" href="#discarded" title="Permalink to this headline"> 🔗</a></h5>
+<p>Discarded is a boolean value indicating whether the variable should be
+viewed as part of the dataset. Hiding variables by setting discarded to
+True is like a soft, restorable delete method.</p>
+<p>Default is <code class="docutils literal"><span class="pre">false</span></code>.</p>
+</div>
+<div class="section" id="private">
+<h5>private<a class="headerlink" href="#private" title="Permalink to this headline"> 🔗</a></h5>
+<p>If <code class="docutils literal"><span class="pre">true</span></code>, the variable will not show in the common variable catalog;
+instead, it will be included in the personal variables catalog.</p>
+</div>
+<div class="section" id="missing-reasons">
+<h5>missing_reasons<a class="headerlink" href="#missing-reasons" title="Permalink to this headline"> 🔗</a></h5>
+<p>An object whose keys are reason strings and whose values are the codes
+used for missing entries.</p>
+<p>Crunch allows any entry in a column to be either a valid value or a
+missing code. Regardless of the class, missing codes are represented in
+the interface as an object with a single “?” key mapped to a single
+missing integer code. For example, a segment of [4.56, 9.23, {“?”: -1}]
+includes 2 valid values and 1 missing value.</p>
+<p>The missing codes map to a reason phrase via this “missing reasons” type
+member. Entries which are missing for reasons determined by the system
+are negative integers. Users may define their own missing reasons, which
+receive positive integer codes. Zero is a reserved value.</p>
+<p>In the above example, the code of -1 would be looked up in a missing
+reasons map such as:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d290d2b0_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d290d2b0_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;missing reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;no data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;type mismatch&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;my backup was corrupted&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>See the Endpoint Reference for user-defined missing reasons.</p>
+<p>Categorical variables do not require a missing_reasons object because
+the categories array contains the information about missingness.</p>
+</div>
+</div>
+<div class="section" id="values">
+<h4>Values<a class="headerlink" href="#values" title="Permalink to this headline"> 🔗</a></h4>
+<p>When creating a new variable, one can also include a “values” member
+that contains the data column corresponding to the variable metadata.
+See Importing Data: Column-by-column. This subsection outlines how the
+various variable types have their values formatted both when one
+supplies values to add to the dataset and when one requests values from
+a dataset.</p>
+<div class="section" id="text">
+<h5>Text<a class="headerlink" href="#text" title="Permalink to this headline"> 🔗</a></h5>
+<p>Text values are an array of quoted strings. Missing values are indicated
+as <code class="docutils literal"><span class="pre">{&quot;?&quot;:</span> <span class="pre">&lt;integer&gt;}</span></code>, as discussed above, and all integer missing
+value codes must be defined in the “missing_reasons” object of the
+variable’s metadata.</p>
+</div>
+<div class="section" id="numeric">
+<h5>Numeric<a class="headerlink" href="#numeric" title="Permalink to this headline"> 🔗</a></h5>
+<p>A “numeric” value will always be e.g. 500 (a number, without quotes) in
+the JSON request and response messages, not “500” (a string, with
+quotes). Missing values are handled as with text variables.</p>
+</div>
+<div class="section" id="categorical">
+<h5>Categorical<a class="headerlink" href="#categorical" title="Permalink to this headline"> 🔗</a></h5>
+<p>Insert an array of integers that correspond to the ids of the variable’s
+categories. Only integers found in the category ids are allowed. That
+is, you cannot insert values for which there is no category metadata. It
+is, however, permitted to have categories defined for which there are no
+values.</p>
+</div>
+<div class="section" id="datetime">
+<h5>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline"> 🔗</a></h5>
+<p>Datetime input and output are in ISO-8601 formatted strings.</p>
+</div>
+<div class="section" id="id1">
+<h5>Arrays<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h5>
+<p>Crunch supports array type variables, which contain an array of
+subvariables. “Multiple response” and “Categorical array” are both
+arrays of categorical subvariables. Subvariables do not exist as
+independent variables; they are exposed as “virtual” variables in some
+places, and can be analyzed independently, but they do not have their
+own type or categories.</p>
+<p>Arrays are currently always categorical, so they send and receive data
+in the same format: category ids. The only difference is that regular
+categorical variables send and receive one id per row, where arrays send
+and receive a list of ids (of equal length to the number of subvariables
+in the array).</p>
+</div>
+</div>
+</div>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"> 🔗</a></h3>
+<p>A complete Variable, then, is simply a Definition combined with its data
+array.</p>
+</div>
+<div class="section" id="expressions">
+<h3>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline"> 🔗</a></h3>
+<p>Crunch expressions are used to compute on a dataset, to do nuanced
+selects, updates, and deletes, and to accomplish many other routine
+operations. Expressions are JSON objects in which each term is wrapped
+in an object which declares whether the term is a variable, a value, or
+a function, etc. While verbose, doing so allows us to be more explicit
+about the operations we wish to do.</p>
+<p>Expressions generally contain references to <strong>variables</strong>, <strong>values</strong>,
+or <strong>columns</strong> of values, often composed in <strong>functions</strong>. The output of
+expressions can be other variables, values, boolean masks, or cube
+aggregations, depending on the context and expression content. Some
+endpoints have special semantics, but the general structure of the
+expressions follows the model described below.</p>
+<div class="section" id="variable-terms">
+<h4>Variable terms<a class="headerlink" href="#variable-terms" title="Permalink to this headline"> 🔗</a></h4>
+<p>Terms refer to variables when they include a “variable” member. The
+value is the URL for the desired variable. For example:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">{&quot;variable&quot;:</span> <span class="pre">&quot;../variables/X/&quot;}</span></code></li>
+<li><code class="docutils literal"><span class="pre">{&quot;variable&quot;:</span> <span class="pre">&quot;https://app.crunch.io/api/datasets/48ffc3/joins/abcd/variables/Y/&quot;}</span></code></li>
+</ul>
+<p>URLs must either be absolute or relative to the URL of the current
+request. For example, to refer to a variable in a query at
+<code class="docutils literal"><span class="pre">https://app.crunch.io/api/datasets/48ffc3/cube/</span></code>, a variable at
+<code class="docutils literal"><span class="pre">https://app.crunch.io/api/datasets/48ffc3/variables/9410fc/</span></code> may be
+referenced by its full URL or by “../variables/9410fc/”.</p>
+</div>
+<div class="section" id="value-terms">
+<h4>Value terms<a class="headerlink" href="#value-terms" title="Permalink to this headline"> 🔗</a></h4>
+<p>Terms refer to data values when they include a “value” member. Its value
+is any individual data value; that is, a value that is addressable by a
+column and row in the dataset. For example:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">13}</span></code></li>
+<li><code class="docutils literal"><span class="pre">{&quot;value&quot;:</span> <span class="pre">[3,</span> <span class="pre">4,</span> <span class="pre">5]}</span></code></li>
+</ul>
+<p>Note that individual values may themselves be complex arrays or objects,
+depending on their type. You may explicitly include a “type” member in
+the object, or let Crunch infer the type. One way to do this is to use
+the “typeof” function to indicate that the value you’re specifying
+corresponds to the exact type of an existing variable. See “functions”
+below for more details.</p>
+</div>
+<div class="section" id="column-terms">
+<h4>Column terms<a class="headerlink" href="#column-terms" title="Permalink to this headline"> 🔗</a></h4>
+<p>Terms refer to columns (construct them, actually) when they include a
+“column” member. The value is an array of data values. You may include
+“type” and/or “references” members as well.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">{&quot;column&quot;:</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">17]}</span></code></li>
+<li><code class="docutils literal"><span class="pre">{&quot;column&quot;:</span> <span class="pre">[{&quot;?&quot;:</span> <span class="pre">-2},</span> <span class="pre">1,</span> <span class="pre">4,</span> <span class="pre">1],</span> <span class="pre">&quot;type&quot;:</span> <span class="pre">{&quot;class&quot;:</span> <span class="pre">&quot;categorical&quot;,</span> <span class="pre">&quot;categories&quot;:</span> <span class="pre">[...],</span> <span class="pre">...}}</span></code></li>
+</ul>
+</div>
+<div class="section" id="function-terms">
+<h4>Function terms<a class="headerlink" href="#function-terms" title="Permalink to this headline"> 🔗</a></h4>
+<p>Terms refer to functions (and operators) when they include a “function”
+member. The value is the identifier for the desired function. They
+parameterize the function with an “args” member, whose value is an array
+of terms, one for each argument. Examples:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;==&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;variable&quot;:</span> <span class="pre">&quot;../variables/X/&quot;},</span> <span class="pre">{&quot;value&quot;:</span> <span class="pre">13}]}</span></code></li>
+<li><code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;contains&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;variable&quot;:</span> <span class="pre">&quot;../joins/abcd/variables/Y/&quot;},</span> <span class="pre">{&quot;value&quot;:</span> <span class="pre">&quot;foo&quot;}]}</span></code></li>
+</ul>
+<p>You may include a “references” member to provide a name, alias,
+description, etc to the output of the function.</p>
+<div class="section" id="supported-functions">
+<h5>Supported functions<a class="headerlink" href="#supported-functions" title="Permalink to this headline"> 🔗</a></h5>
+<p>Here is a list of all functions available for crunch expressions. Note
+that these functions can be used in conjuction to compose an expression.</p>
+</div>
+<div class="section" id="binary-functions">
+<h5>Binary functions<a class="headerlink" href="#binary-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">+</span></code> add</li>
+<li><code class="docutils literal"><span class="pre">-</span></code> subtract</li>
+<li><code class="docutils literal"><span class="pre">*</span></code> multiply</li>
+<li><code class="docutils literal"><span class="pre">/</span></code> div divide</li>
+<li><code class="docutils literal"><span class="pre">//</span></code> floor division</li>
+<li><code class="docutils literal"><span class="pre">^</span></code> power</li>
+<li><code class="docutils literal"><span class="pre">%</span></code> modulus</li>
+<li><code class="docutils literal"><span class="pre">&amp;</span></code> bitwise and</li>
+<li><code class="docutils literal"><span class="pre">|</span></code> bitwise or</li>
+<li><code class="docutils literal"><span class="pre">~</span></code> invert</li>
+</ul>
+</div>
+<div class="section" id="builtin-functions">
+<h5>Builtin functions<a class="headerlink" href="#builtin-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">array</span></code> Return the given Frame materialized as an array.</li>
+<li><code class="docutils literal"><span class="pre">as_selected</span></code> Return the given variable reduced to the [1, 0, -1]
+“selections” type.</li>
+<li><code class="docutils literal"><span class="pre">bin</span></code> Return column’s values broken into equidistant bins.</li>
+<li><code class="docutils literal"><span class="pre">case</span></code> Evaluate the given conditions in order, selecting the
+corresponding choice.</li>
+<li><code class="docutils literal"><span class="pre">cast</span></code> Return a Column of column’s values cast to the given type.</li>
+<li><code class="docutils literal"><span class="pre">char_length</span></code> Return the length of each string (or missing reason)
+in the given column.</li>
+<li><code class="docutils literal"><span class="pre">copy_variable</span></code> Returns a copy of the column with a copy of its
+metadata.</li>
+<li><code class="docutils literal"><span class="pre">combine_categories</span></code> Return a column of categories combined
+according to the category_info.</li>
+<li><code class="docutils literal"><span class="pre">combine_responses</span></code> Combine the given categorical variables into a
+new one.</li>
+<li><code class="docutils literal"><span class="pre">current_batch</span></code> Return the batch_id of the current frame.</li>
+<li><code class="docutils literal"><span class="pre">get</span></code> Return a subvariable from the given column.</li>
+<li><code class="docutils literal"><span class="pre">lookup</span></code> Map each row of source through its keys index to a
+corresponding value.</li>
+<li><code class="docutils literal"><span class="pre">missing</span></code> Return the given column as missing for the given reason.</li>
+<li><code class="docutils literal"><span class="pre">normalize</span></code> Return a Column with the given values normalized so
+sum(c) == len(c).</li>
+<li><code class="docutils literal"><span class="pre">row</span></code> Return a Numeric column with row indices.</li>
+<li><code class="docutils literal"><span class="pre">selected_array</span></code> Return a bool Array from the given categorical,
+plus None/<strong>none</strong>/<strong>any</strong> .</li>
+<li><code class="docutils literal"><span class="pre">selected_depth</span></code> Return a numeric column containing the number of
+selected categories in each row of the given array.</li>
+<li><code class="docutils literal"><span class="pre">selections</span></code> Return the given array, reduced to the [1, 0, -1]
+“selections” type, plus an <code class="docutils literal"><span class="pre">__any__</span></code> magic subvariable.</li>
+<li><code class="docutils literal"><span class="pre">subvariables</span></code> Return a Frame containing subvariables of the given
+array.</li>
+<li><code class="docutils literal"><span class="pre">tiered</span></code> Return a variable formed by collapsing the given array’s
+subvariables in the given category tiers.</li>
+<li><code class="docutils literal"><span class="pre">typeof</span></code> Return (a copy of) the Type of the given column.</li>
+<li><code class="docutils literal"><span class="pre">unmissing</span></code> Return the given column with user missing replaced by
+valid values.</li>
+</ul>
+</div>
+<div class="section" id="comparisons">
+<h5>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">==</span></code> equals</li>
+<li><code class="docutils literal"><span class="pre">!=</span></code> not equals</li>
+<li><code class="docutils literal"><span class="pre">=&gt;&lt;=</span></code> between</li>
+<li><code class="docutils literal"><span class="pre">between</span></code> between</li>
+<li><code class="docutils literal"><span class="pre">&lt;</span></code> less than</li>
+<li><code class="docutils literal"><span class="pre">&gt;</span></code> greater than</li>
+<li><code class="docutils literal"><span class="pre">&lt;=</span></code> less than or equal</li>
+<li><code class="docutils literal"><span class="pre">&gt;=</span></code> greater than or equal</li>
+<li><code class="docutils literal"><span class="pre">in</span></code> in</li>
+<li><code class="docutils literal"><span class="pre">all</span></code> True for each row where all subvariables in a
+multiple_response array are selected</li>
+<li><code class="docutils literal"><span class="pre">any</span></code> True for each row where any subvariable in a
+multiple_response array is selected</li>
+<li><code class="docutils literal"><span class="pre">is_none_of_the_above</span></code> True for each row where no subvariables in a
+multiple_response array are selected, unless all subvariables have
+missing values</li>
+<li><code class="docutils literal"><span class="pre">contains</span></code> Return a mask where A is an element of array B, or a key
+of object B.</li>
+<li><code class="docutils literal"><span class="pre">icontains</span></code> Case-insensitive version of ‘contains’</li>
+<li><code class="docutils literal"><span class="pre">~=</span></code> compare against regular expression (regex)</li>
+<li><code class="docutils literal"><span class="pre">and</span></code> logical and</li>
+<li><code class="docutils literal"><span class="pre">or</span></code> logical or</li>
+<li><code class="docutils literal"><span class="pre">not</span></code> logical not</li>
+<li><code class="docutils literal"><span class="pre">is_valid</span></code> Boolean array of rows which are valid for the given
+column</li>
+<li><code class="docutils literal"><span class="pre">is_missing</span></code> Boolean array of rows which are missing for the given
+column</li>
+<li><code class="docutils literal"><span class="pre">any_missing</span></code> Boolean array of rows where any of the subvariables
+are missing</li>
+<li><code class="docutils literal"><span class="pre">all_valid</span></code> Boolean array of rows where all of the subvariables are
+valid</li>
+<li><code class="docutils literal"><span class="pre">all_missing</span></code> Boolean array of rows where all of the subvariables
+are missing</li>
+</ul>
+</div>
+<div class="section" id="date-functions">
+<h5>Date Functions<a class="headerlink" href="#date-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">default_rollup_resolution</span></code> default_rollup_resolution</li>
+<li><code class="docutils literal"><span class="pre">datetime_to_numeric</span></code> Convert the given datetime column to numeric.</li>
+<li><code class="docutils literal"><span class="pre">format_datetime</span></code> Convert datetime values to strings using the fmt
+as strftime mask.</li>
+<li><code class="docutils literal"><span class="pre">numeric_to_datetime</span></code> Convert the given numeric column to datetime
+with the given resolution.</li>
+<li><code class="docutils literal"><span class="pre">parse_datetime</span></code> Parse string to datetime using optional format
+string</li>
+<li><code class="docutils literal"><span class="pre">rollup</span></code> Return column’s values (which must be type datetime) into
+calendrical bins.</li>
+</ul>
+</div>
+<div class="section" id="frame-functions">
+<h5>Frame Functions<a class="headerlink" href="#frame-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">page</span></code> Return the given frame, limited/offset by the given values.</li>
+<li><code class="docutils literal"><span class="pre">select</span></code> Return a Frame of results from the given map of variables.</li>
+<li><code class="docutils literal"><span class="pre">sheet</span></code> Return the given frame, limited/offset in the number of
+variables.</li>
+<li><code class="docutils literal"><span class="pre">dependents</span></code> Return the given frame with only dependents of the
+given variable.</li>
+<li><code class="docutils literal"><span class="pre">deselect</span></code> Return a frame NOT including the indicated variables.</li>
+<li><code class="docutils literal"><span class="pre">adapt</span></code> Return the given frame adapted to the given to_key.</li>
+<li><code class="docutils literal"><span class="pre">join</span></code> Return a JoinedFrame from the given list of subframes.</li>
+<li><code class="docutils literal"><span class="pre">find</span></code> Return a Frame with those variables which match the given
+criteria.</li>
+<li><code class="docutils literal"><span class="pre">flatten</span></code> Return a frame including all variables, plus all
+subvariables at dotted ids.</li>
+</ul>
+<p>Examples</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a5be48_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a5be48_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="o">&lt;</span><span class="n">destination</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">{</span><span class="n">variable</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">frame</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">},</span>
+      <span class="o">&lt;</span><span class="n">destination</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">{</span><span class="n">variable</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">frame</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">},</span>
+      <span class="o">...</span>
+    <span class="p">}</span>
+  <span class="p">}]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><ul class="simple">
+<li><strong>select</strong>: Receives an argument which is a map expression in the
+following shape:</li>
+</ul>
+<p>Where <code class="docutils literal"><span class="pre">destination</span> <span class="pre">id</span></code> is the ID that the mapped variable will have on
+the resulting frame by selecting only the <code class="docutils literal"><span class="pre">source</span> <span class="pre">frame</span> <span class="pre">id</span></code> variables
+from the frame where this function is applied on.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d25cb3c8_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d25cb3c8_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;deselect&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="o">&lt;</span><span class="n">destination</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">{</span><span class="n">variable</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">frame</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">},</span>
+      <span class="o">&lt;</span><span class="n">destination</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">:</span> <span class="p">{</span><span class="n">variable</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">source</span> <span class="n">frame</span> <span class="nb">id</span><span class="o">&gt;</span><span class="p">},</span>
+      <span class="o">...</span>
+    <span class="p">}</span>
+  <span class="p">}]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><ul class="simple">
+<li><strong>deselect</strong>: Same as <code class="docutils literal"><span class="pre">select</span></code> but will exclude the variable ids
+mentioned from the source frame. On this usage the <code class="docutils literal"><span class="pre">destination</span> <span class="pre">id</span></code>
+part of the <code class="docutils literal"><span class="pre">map</span></code> argument are disregarded.</li>
+</ul>
+</div>
+<div class="section" id="measures-functions">
+<h5>Measures Functions<a class="headerlink" href="#measures-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cube_count</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_distinct_count</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_max</span></code> A measure which returns the maximum value in a column.</li>
+<li><code class="docutils literal"><span class="pre">cube_mean</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_min</span></code> A measure which returns the minimum value in a column.</li>
+<li><code class="docutils literal"><span class="pre">cube_missing_frequencies</span></code> Return an object with parallel ‘code’
+and ‘count’ arrays.</li>
+<li><code class="docutils literal"><span class="pre">cube_quantile</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_stddev</span></code> A measure which returns the standard deviation value
+in a column.</li>
+<li><code class="docutils literal"><span class="pre">cube_sum</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_valid_count</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_weighted_max</span></code></li>
+<li><code class="docutils literal"><span class="pre">cube_weighted_min</span></code></li>
+<li><code class="docutils literal"><span class="pre">top</span></code> Return the given (1D/1M) cube, filtered to its top N members.</li>
+</ul>
+</div>
+<div class="section" id="cube-functions">
+<h5>Cube Functions<a class="headerlink" href="#cube-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">autocube</span></code> Return a cube crossing A by B (which may be None).</li>
+<li><code class="docutils literal"><span class="pre">autofreq</span></code> Return a cube of frequencies for A.</li>
+<li><code class="docutils literal"><span class="pre">cube</span></code> Return a Cube instance from the given arguments.</li>
+<li><code class="docutils literal"><span class="pre">each</span></code> Yield one expression result per item in the given iterable.</li>
+<li><code class="docutils literal"><span class="pre">multitable</span></code> Return cubes for each target variable crossed by None
++ each template variable.</li>
+<li><code class="docutils literal"><span class="pre">transpose</span></code> Transpose the given cube, rearranging its (0-based)
+axes to the given order.</li>
+<li><code class="docutils literal"><span class="pre">stack</span></code> Return a cube of 1 more dimension formed by stacking the
+given array.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="filter-terms">
+<h4>Filter terms<a class="headerlink" href="#filter-terms" title="Permalink to this headline"> 🔗</a></h4>
+<p>Terms that refer to filters entities by URL are shorthand for the
+boolean expression stored in the entity. So,
+<code class="docutils literal"><span class="pre">{&quot;filter&quot;:</span> <span class="pre">&quot;../filters/59fc4d/&quot;}</span></code> yields the Crunch expression
+contained in the Filter entity’s “expression” attribute. Filter terms
+can be combined together with other expressions as well. For example,
+<code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;and&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;filter&quot;:</span> <span class="pre">&quot;../filters/59fc4d/&quot;},</span> <span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;==&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;variable&quot;:</span> <span class="pre">&quot;../variables/X/&quot;},</span> <span class="pre">{&quot;value&quot;:</span> <span class="pre">13}]}]}</span></code>
+would “and” together the boolean expression in filter 59fc4d with the
+<code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">13</span></code> expression.</p>
+</div>
+</div>
+</div>
+<div class="section" id="documents">
+<h2>Documents<a class="headerlink" href="#documents" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="shoji">
+<h3>Shoji<a class="headerlink" href="#shoji" title="Permalink to this headline"> 🔗</a></h3>
+<p>Most representations returned from the API are Shoji Documents. Shoji is
+a media type designed to foster scalable API’s. Shoji is built with
+JSON, so any JSON parser should be able to at least deserialize Shoji
+documents. Shoji adds four document types: Entity, Catalog, View, and
+Order.</p>
+<div class="section" id="entity">
+<h4>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h4>
+<p>Anything that can be thought of as “a thing by itself” will probably be
+represented by a Shoji Entity Document. Entities possess a “body”
+member: a JSON object where each key/value pair is an attribute name and
+value. For example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2105278_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2105278_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/1/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Details for a User.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;specification&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/specifications/users/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fragments&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;address/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Genghis&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Khan&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>In general, an HTTP GET to the “self” URL will return the document, and
+a PUT of the same will update it. PUT should not be used for partial
+updates–use PATCH for that instead. In general, each member included in
+the “body” of a PATCH message will replace the current representation;
+attributes not included will not be altered. There is no facility to
+remove an attribute from an Entity.body via PATCH. In some cases,
+however, even finer-grained control is possible via PATCH; see the
+Endpoint Reference for details.</p>
+</div>
+<div class="section" id="catalog">
+<h4>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h4>
+<p>Catalogs collect or contain entities. They act as an index to a
+collection, and indeed possess an “index” member for this:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21b40b8_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21b40b8_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A list of all the users.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;specification&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/specifications/users/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;default_order/&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;2/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">},</span>
+        <span class="s2">&quot;1/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+        <span class="s2">&quot;4/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">},</span>
+        <span class="s2">&quot;3/&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Each key in the index is a URL (possibly relative to “self”) which
+refers to a different resource. Often, these are Shoji Entity documents,
+but not always. The index also allows some attributes to be published as
+a set, rather than in each individual Entity. This allows clients to act
+on the collection as a whole, such as when rendering a list of
+references from which the user might select one entity.</p>
+<p>In general, an HTTP GET to the “self” URL will return the document, and
+a PUT of the same will update it. Many catalogs allow POST to add a new
+entity to the collection. PUT should not be used for partial
+updates–use PATCH for that instead. In general, each member included in
+the “index” of a PATCH message will replace the current representation;
+tuples not included will not be altered. Tuples included in a PATCH
+which are not present in the server’s current representation of the
+index may be added; it is up to each resource whether to support (and
+document!) this approach or prefer POST to add entities to the
+collection. In general, catalogs that <em>contain</em> entities get new
+entities created by POST, while catalogs that <em>collect</em> entities that
+are contained by other catalogs (e.g. a catalog of users who have
+permissions on a dataset) will have entities added by PATCH.</p>
+<p>Similarly, removing entities from catalogs is supported in one of two
+ways, typically varying by catalog type. For catalogs that contain
+entities, entities are removed only by DELETE on the entity’s URL (its
+key in the Catalog.index). In contrast, for catalogs that collect
+entities, entities are removed by PATCHing the catalog with a <code class="docutils literal"><span class="pre">null</span></code>
+tuple. This removes the entity from the catalog but does not delete the
+entity (which is contained by a different catalog). T</p>
+</div>
+<div class="section" id="id2">
+<h4>View<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h4>
+<p>Views cut across entities. They can publish nearly any arrangement of
+data, and are especially good for exposing arrays of arrays and the
+like. In general, a Shoji View is read-only, and only a GET will be
+successful.</p>
+</div>
+<div class="section" id="order">
+<h4>Order<a class="headerlink" href="#order" title="Permalink to this headline"> 🔗</a></h4>
+<p>Orders can arrange any set of strings into an arbitrarily-nested tree;
+most often, they are used to provide one or more orderings of a
+Catalog’s index. For example, each user may have their own ordering for
+an index of variables; the same URL’s from the index keys are arranged
+in the Order. Given the Catalog above, for example, we might produce an
+Order like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d25a2b38_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d25a2b38_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/order/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;2/&quot;</span><span class="p">,</span>
+        <span class="p">{</span><span class="s2">&quot;group A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1/&quot;</span><span class="p">,</span> <span class="s2">&quot;3/&quot;</span><span class="p">,</span> <span class="s2">&quot;2/&quot;</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;group B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;4/&quot;</span><span class="p">]}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>This represents the tree:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">/</span>  <span class="o">|</span>  \
+<span class="mi">2</span>  <span class="p">{</span><span class="n">A</span><span class="p">}</span> <span class="p">{</span><span class="n">B</span><span class="p">}</span>
+  <span class="o">/</span> <span class="o">|</span> \  \
+ <span class="mi">1</span>  <span class="mi">3</span>  <span class="mi">2</span>  <span class="mi">4</span>
+</pre></div>
+</div>
+<p>The Order object itself allows lots of flexibility. Each of the
+following decisions are up to the API endpoint to constrain or not as it
+sees fit (see the Endpoint Reference for these details):</p>
+<ul class="simple">
+<li>Not every string in the original set has to be present, allowing
+partial orders.</li>
+<li>Strings from the original set which are not mentioned may be ignored,
+or default to an “ungrouped” group, or other behaviors as each
+application sees fit.</li>
+<li>Groups may contain member strings and other groups interleaved (but
+still ordered).</li>
+<li>Groups may exist without any members.</li>
+<li>Members may appear in more than one group.</li>
+<li>Group names may be repeated at different points within the tree.</li>
+<li>Group member arrays, although represented in a JSON array, may be
+declared to be non-strict in their order (that is, the array should
+be treated more like an unordered set).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="crunch-objects">
+<h3>Crunch Objects<a class="headerlink" href="#crunch-objects" title="Permalink to this headline"> 🔗</a></h3>
+<p>Most of the other representations returned from the API are Crunch
+Objects. They are built with JSON, so any JSON parser should be able to
+at least deserialize Crunch documents. Crunch adds two document types:
+Table and Cube.</p>
+<div class="section" id="table">
+<h4>Table<a class="headerlink" href="#table" title="Permalink to this headline"> 🔗</a></h4>
+<p>Tables collect columns of data and (optionally) their metadata into
+two-dimensional relations.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21a6dd8_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21a6dd8_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/datasets/.../table/?limit=7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The data belonging to this Dataset.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;1ef0455&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">},</span>
+        <span class="s2">&quot;588392a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Favorite color&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;1ef0455&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">&quot;588392a&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;RED&quot;</span><span class="p">,</span> <span class="s2">&quot;pink&quot;</span><span class="p">,</span> <span class="s2">&quot; red&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Each key in the “data” member is a variable identifier, and its
+corresponding value is a column of Crunch data values. The data values
+in a given column are homogeneous, but across columns they are
+heterogeneous. The lengths of all columns MUST be the same. The
+“metadata” member is optional; if given, it MUST contain matching keys
+that correspond to variable definitions.</p>
+<p>Like any JSON object, the “data” and “metadata” objects are explicitly
+unordered. When supplying a crunch:table, such as when POST’ing to
+datasets/ to create a new dataset, you must supply an Order if you want
+an explicit variable order.</p>
+</div>
+<div class="section" id="cube">
+<h4>Cube<a class="headerlink" href="#cube" title="Permalink to this headline"> 🔗</a></h4>
+<p>Cubes have both input and output formats. The “crunch:cube” element is
+used for the output only.</p>
+<div class="section" id="cube-input">
+<h5>Cube input<a class="headerlink" href="#cube-input" title="Permalink to this headline"> 🔗</a></h5>
+<p>The input format may vary slightly according to the API endpoint (since
+some parameters may be inherent in the particular resource), but
+involves the same basic ingredients.</p>
+<p>Example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21c6748_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21c6748_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/3ffd45/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/2098f1/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>dimensions</p>
+<p>An array of input expressions. Each expression contributes one dimension
+to the output cube. The only exception is when a dimension results in a
+boolean (true/false) column, in which case the data are filtered by it
+as a mask instead of adding a dimension to the output.</p>
+<p>When a dimension is added, the resulting axis consists of distinct
+values rather than all values. Variables which are already “categorical”
+or “enumerated” will simply use their “categories” or “elements” as the
+extent. Other variables form their extents from their distinct values.</p>
+<p>measures</p>
+<p>A set of cube functions to populate each cell of the cube. You can
+request multiple functions over the same dimensions (such as
+“cube_mean” and “cube_stddev”) or more commonly just one (like
+“cube_count”). Each member MUST be a ZZ9 cube function designed for the
+purpose. See ZZ9 User Guide:Cube Functions for a list of such functions
+and their arguments.</p>
+<p>filters</p>
+<p>An array containing references to filters that need to be applied to the
+dataset before starting the cube calculations. It can be an empty array
+or null, in which case no filtering will be applied.</p>
+<p>weight</p>
+<p>A reference to a variable to be used as the weight on all cube
+operations.</p>
+</div>
+<div class="section" id="cube-output">
+<h5>Cube output<a class="headerlink" href="#cube-output" title="Permalink to this headline"> 🔗</a></h5>
+<p>Cubes collect columns of measure data in an arbitrary number of
+dimensions. Multiple measures in the same cube share dimensions,
+effectively overlaying each other. For example, a cube might contain a
+“count” measure and a “mean” measure with the same shape:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1efb240_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1efb240_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:cube&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">210</span><span class="p">,</span>
+    <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="o">...</span><span class="p">}]}},</span>
+        <span class="p">{</span><span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span> <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="o">...</span><span class="p">}]}}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="o">...</span><span class="p">}},</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+            <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">12</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{},</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">}},</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">17.8</span><span class="p">,</span> <span class="mf">9.9</span><span class="p">,</span> <span class="mf">7.32</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">23.4</span><span class="p">],</span>
+            <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">12</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;margins&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">210</span><span class="p">],</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">110</span><span class="p">]},</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>dimensions</p>
+<p>The “dimensions” member is the most straightforward: an array of
+variable Definition objects. Each one defines an axis of the cube’s
+output. This may be different from the input dimensions’ definitions.
+For example, when counting numeric variables, the input dimension might
+be an expression involving the bin builtin function. Even though the
+input variable is of type “numeric”, the output dimension would be of
+type “enum” .</p>
+<p>n</p>
+<p>The number of rows considered for all measures.</p>
+<p>measures</p>
+<p>The “measures” member includes one object for each measure. The
+“metadata” member of each tells you the name, type and other definitions
+of the measure. The “data” member of each is a flattened array of values
+for that measure; the dimensions stride into that array in order, with
+the last dimension varying the fastest. In the example above, the first
+dimension (“A”) has 3 categories, while “B” has 2; therefore, the “flat”
+array [10, 20, 30, 40, 50, 60] for the “count” measure is interpreted as
+the “unflattened” array [[10, 20], [30, 40], [50, 60]]. Graphically:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="35%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">B:11</th>
+<th class="head">B:12</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A:1</td>
+<td>10</td>
+<td>20</td>
+</tr>
+<tr class="row-odd"><td>A:2</td>
+<td>30</td>
+<td>40</td>
+</tr>
+<tr class="row-even"><td>A:3</td>
+<td>50</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+<p>This is known in NumPy and other domains as “C order” (versus “Fortran
+order” which would be interpreted as [[10, 30, 50], [20, 40, 60]]
+instead).</p>
+<p>n_missing</p>
+<p>The number of rows that are missing for this measure. Because different
+measures may have different inputs (the column to take the mean of, for
+example, or weighted versus unweighted), this number may vary from one
+measure to another even though the total “n” is the same for all.</p>
+<p>margins</p>
+<p>The “margins” member is optional. When present, it is a tree of nested
+margins with one level of depth for each dimension. At the top, we
+always include the “grand total” for all dimensions. Then, we include a
+branch for each axis we “unroll”. So, for example, for a 3-dimensional
+cube of X, Y, and Z, the margins member might contain:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d29ef7f0_Json">Json</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d29ef7f0_Json">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;margins&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4526</span><span class="p">],</span>
+    <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1755</span><span class="p">,</span> <span class="mi">2771</span><span class="p">],</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">601</span><span class="p">,</span> <span class="mi">370</span><span class="p">,</span> <span class="mi">322</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">46</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">332</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">596</span><span class="p">,</span> <span class="mi">523</span><span class="p">,</span> <span class="mi">437</span><span class="p">,</span> <span class="mi">668</span><span class="p">]</span>
+        <span class="p">]},</span>
+        <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1198</span><span class="p">,</span> <span class="mi">557</span><span class="p">],</span> <span class="p">[</span><span class="mi">1493</span><span class="p">,</span> <span class="mi">1278</span><span class="p">]]}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">933</span><span class="p">,</span> <span class="mi">585</span><span class="p">,</span> <span class="mi">918</span><span class="p">,</span> <span class="mi">792</span><span class="p">,</span> <span class="mi">584</span><span class="p">,</span> <span class="mi">714</span><span class="p">],</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">601</span><span class="p">,</span> <span class="mi">370</span><span class="p">,</span> <span class="mi">322</span><span class="p">,</span> <span class="mi">269</span><span class="p">,</span> <span class="mi">147</span><span class="p">,</span> <span class="mi">46</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">332</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">596</span><span class="p">,</span> <span class="mi">523</span><span class="p">,</span> <span class="mi">437</span><span class="p">,</span> <span class="mi">668</span><span class="p">]</span>
+        <span class="p">]},</span>
+        <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">825</span><span class="p">,</span> <span class="mi">108</span><span class="p">],</span> <span class="p">[</span><span class="mi">560</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="p">[</span><span class="mi">325</span><span class="p">,</span> <span class="mi">593</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">417</span><span class="p">,</span> <span class="mi">375</span><span class="p">],</span> <span class="p">[</span><span class="mi">191</span><span class="p">,</span> <span class="mi">393</span><span class="p">],</span> <span class="p">[</span><span class="mi">373</span><span class="p">,</span> <span class="mi">341</span><span class="p">]</span>
+        <span class="p">]}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2691</span><span class="p">,</span> <span class="mi">1835</span><span class="p">],</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1198</span><span class="p">,</span> <span class="mi">557</span><span class="p">],</span> <span class="p">[</span><span class="mi">1493</span><span class="p">,</span> <span class="mi">1278</span><span class="p">]]},</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">825</span><span class="p">,</span> <span class="mi">108</span><span class="p">],</span> <span class="p">[</span><span class="mi">560</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="p">[</span><span class="mi">325</span><span class="p">,</span> <span class="mi">593</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">417</span><span class="p">,</span> <span class="mi">375</span><span class="p">],</span> <span class="p">[</span><span class="mi">191</span><span class="p">,</span> <span class="mi">393</span><span class="p">],</span> <span class="p">[</span><span class="mi">373</span><span class="p">,</span> <span class="mi">341</span><span class="p">]</span>
+        <span class="p">]}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Again, each branch in the tree is an axis we “unroll” from the grand
+total. So margins[0][2] contains the margin where X (axis 0) and Z (axis
+2) are unrolled, and only Y (axis 1) is still “rolled up”.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

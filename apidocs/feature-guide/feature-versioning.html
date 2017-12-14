@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Versioning Datasets &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Endpoint Reference" href="../endpoint-reference/index.html" />
+    <link rel="prev" title="Multidimensional analysis" href="feature-analyzing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-analyzing.html" title="Previous Chapter: Multidimensional analysis"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Multidimensio...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../endpoint-reference/index.html" title="Next Chapter: Endpoint Reference"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Endpoint Reference &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-deriving.html">Deriving Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Versioning Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#actions">Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-changes-diff">Viewing Changes Diff</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#savepoints">Savepoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#reverting-savepoints">Reverting savepoints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#forking-and-merging">Forking and Merging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filtered-merges">Filtered Merges</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#recording-the-filtered-actions">Recording the filtered actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="versioning-datasets">
+<h1>Versioning Datasets<a class="headerlink" href="#versioning-datasets" title="Permalink to this headline"> 🔗</a></h1>
+<aside class="notice"><p>Experimental</p>
+</aside><p>All Crunch datasets keep track of the changes you make to them, from the
+initial import, through name changes and deriving new variables, to
+appending new rows. You can review the changes to see who did what and
+when, revert to a previous version, “fork” a dataset to make a copy of
+it, make changes to the copy, and merge those changes back into the
+original dataset.</p>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline"> 🔗</a></h2>
+<p>The list of changes are available in the <code class="docutils literal"><span class="pre">dataset/{id}/actions/</span></code>
+catalog. GET it and sort/filter by the “datetime” and/or “user” members
+as desired. Follow the links to an individual action entity to get exact
+details about what changed.</p>
+<div class="section" id="viewing-changes-diff">
+<h3>Viewing Changes Diff<a class="headerlink" href="#viewing-changes-diff" title="Permalink to this headline"> 🔗</a></h3>
+<p>Through the actions catalog it’s possible to retrieve the differences of
+a “fork” dataset from its “upstream” dataset.</p>
+<p>Two endpoints are provided to do so, the
+<code class="docutils literal"><span class="pre">dataset/{id}/actions/since_forking</span></code> and the
+<code class="docutils literal"><span class="pre">dataset/{id}/actions/upstream_delta</span></code> endpoints.</p>
+<p>The <code class="docutils literal"><span class="pre">dataset/{id}/actions/since_forking</span></code> endpoint will return the
+state of the fork and the upstream and the the list of actions that were
+performed on the fork since the two diverged.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d257a4a8_Python">Python</a></li>
+<li><a data-toggle="tab" href="#2b27d257a4a8_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d257a4a8_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">forkds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">since_forking</span>
+<span class="go">pycrunch.shoji.View(**{</span>
+<span class="go">    &quot;self&quot;: &quot;https://app.crunch.io/api/datasets/051ebb979db44523822ffe29236a6670/actions/since_forking/&quot;,</span>
+<span class="go">    &quot;value&quot;: {</span>
+<span class="go">        &quot;dataset&quot;: {</span>
+<span class="go">            &quot;modification_time&quot;: &quot;2017-02-16T11:01:41.807000+00:00&quot;,</span>
+<span class="go">            &quot;revision&quot;: &quot;58a586950183667486130f0c&quot;,</span>
+<span class="go">            &quot;id&quot;: &quot;051ebb979db44523822ffe29236a6670&quot;,</span>
+<span class="go">            &quot;name&quot;: &quot;My fork&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;actions&quot;: [</span>
+<span class="go">            {</span>
+<span class="go">                &quot;hash&quot;: &quot;2a863871-c809-4cad-a20c-9fea86b9e763&quot;,</span>
+<span class="go">                &quot;state&quot;: {</span>
+<span class="go">                    &quot;failed&quot;: false,</span>
+<span class="go">                    &quot;completed&quot;: true,</span>
+<span class="go">                    &quot;played&quot;: true</span>
+<span class="go">                },</span>
+<span class="go">                &quot;params&quot;: {</span>
+<span class="go">                    &quot;variable&quot;: &quot;fab0c81d16b442089cc50019cf610961&quot;,</span>
+<span class="go">                    &quot;definition&quot;: {</span>
+<span class="go">                        &quot;alias&quot;: &quot;var1&quot;,</span>
+<span class="go">                        &quot;type&quot;: &quot;text&quot;,</span>
+<span class="go">                        &quot;name&quot;: &quot;var1&quot;,</span>
+<span class="go">                        &quot;id&quot;: &quot;fab0c81d16b442089cc50019cf610961&quot;</span>
+<span class="go">                    },</span>
+<span class="go">                    &quot;dataset&quot;: {</span>
+<span class="go">                        &quot;id&quot;: &quot;051ebb979db44523822ffe29236a6670&quot;,</span>
+<span class="go">                        &quot;branch&quot;: &quot;master&quot;</span>
+<span class="go">                    },</span>
+<span class="go">                    &quot;values&quot;: [</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;,</span>
+<span class="go">                        &quot;sample sentence&quot;</span>
+<span class="go">                    ],</span>
+<span class="go">                    &quot;owner_id&quot;: null</span>
+<span class="go">                },</span>
+<span class="go">                &quot;key&quot;: &quot;Variable.create&quot;</span>
+<span class="go">            }</span>
+<span class="go">        ],</span>
+<span class="go">        &quot;upstream&quot;: {</span>
+<span class="go">            &quot;modification_time&quot;: &quot;2017-02-16T11:01:40.131000+00:00&quot;,</span>
+<span class="go">            &quot;revision&quot;: &quot;58a586940183667486130efc&quot;,</span>
+<span class="go">            &quot;id&quot;: &quot;2730c0744cba4d7c9acc9f3551380e49&quot;,</span>
+<span class="go">            &quot;name&quot;: &quot;My Dataset&quot;</span>
+<span class="go">        }</span>
+<span class="go">    },</span>
+<span class="go">    &quot;element&quot;: &quot;shoji:view&quot;</span>
+<span class="go">})</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d257a4a8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">5</span><span class="n">de96a</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span><span class="n">since_forking</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">1769</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-16T11:01:41.807000+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;58a586950183667486130f0c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;051ebb979db44523822ffe29236a6670&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My fork&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;actions&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="s2">&quot;2a863871-c809-4cad-a20c-9fea86b9e763&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                    <span class="s2">&quot;completed&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                    <span class="s2">&quot;played&quot;</span><span class="p">:</span> <span class="n">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;fab0c81d16b442089cc50019cf610961&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;definition&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;var1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;var1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;fab0c81d16b442089cc50019cf610961&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;051ebb979db44523822ffe29236a6670&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;branch&quot;</span><span class="p">:</span> <span class="s2">&quot;master&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sample sentence&quot;</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="n">null</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;Variable.create&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;upstream&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-16T11:01:40.131000+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;58a586940183667486130efc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;2730c0744cba4d7c9acc9f3551380e49&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Dataset&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The <code class="docutils literal"><span class="pre">dataset/{id}/actions/upstream_delta</span></code> endpoint usage and response
+matches the one of the other endpoint, but the returned actions are
+instead the ones that were performed on the upstream since the two
+diverged.</p>
+</div>
+</div>
+<div class="section" id="savepoints">
+<h2>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this headline"> 🔗</a></h2>
+<p>You can snapshot the current state of the dataset at any time with a
+POST to <code class="docutils literal"><span class="pre">datasets/{id}/savepoints/</span></code>. This marks the current point in
+the actions history, allowing you to provide a description of your
+progress.</p>
+<p>The response will contain a Location header that will lead to the new
+version created.</p>
+<p>In case creating the new version can be created fast enough a 201
+response will be issued, when the new version takes too long a 202
+response will be issued and the creation will proceed in background. In
+case of a 202 response the body will be a Shoji:view containing a
+progress URL where you may query the progress.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d26fe780_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d26fe780_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">svp</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">savepoints</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;TestSVP&quot;</span><span class="p">}})</span>
+<span class="go">pycrunch.shoji.Entity(**{</span>
+<span class="go">    &quot;body&quot;: {</span>
+<span class="go">        &quot;creation_time&quot;: &quot;2017-05-09T14:18:07.761000+00:00&quot;,</span>
+<span class="go">        &quot;version&quot;: &quot;master__000003&quot;,</span>
+<span class="go">        &quot;user_name&quot;: &quot;captain-68305620&quot;,</span>
+<span class="go">        &quot;description&quot;: &quot;&quot;,</span>
+<span class="go">        &quot;last_update&quot;: &quot;2017-05-09T14:18:07.761000+00:00&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;self&quot;: &quot;http://local.crunch.io:19404/api/datasets/5283e3f4e3d645c0a750c09e854bdcb1/savepoints/6fbe47c97d8e4290a0c09227d6d6b63a/&quot;,</span>
+<span class="go">    &quot;views&quot;: {</span>
+<span class="go">        &quot;revert&quot;: &quot;http://local.crunch.io:19404/api/datasets/5283e3f4e3d645c0a750c09e854bdcb1/savepoints/6fbe47c97d8e4290a0c09227d6d6b63a/revert/&quot;</span>
+<span class="go">    },</span>
+<span class="go">    &quot;element&quot;: &quot;shoji:entity&quot;</span>
+<span class="go">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>There is no guarantee that creating a savepoint will lead to a savepoint
+that points to the exact revision the dataset was when the POST was
+issued. This is because the dataset might have moved forward in the
+meanwhile. For this reason instead of reponding with a <code class="docutils literal"><span class="pre">Location</span></code>
+header that points to an exact savepoint, the POST savepoints endpoint
+will respond with <code class="docutils literal"><span class="pre">Location</span></code> header that points to
+<code class="docutils literal"><span class="pre">/progress/{operation_id}/result</span></code> URL, which when accessed will
+redirect to the nearest savepoint for that revision.</p>
+<div class="section" id="reverting-savepoints">
+<h3>Reverting savepoints<a class="headerlink" href="#reverting-savepoints" title="Permalink to this headline"> 🔗</a></h3>
+<p>You can revert to any savepoint version (throwing away any changes since
+that time) with a POST to
+<code class="docutils literal"><span class="pre">/datasets/{dataset_id}/savepoints/{version_id}/revert/</span></code>.</p>
+<p>It will return a 202 response with a Shoji:view containing a progress
+URL on its value where the asynchronous job’s status can be observed.</p>
+</div>
+</div>
+<div class="section" id="forking-and-merging">
+<h2>Forking and Merging<a class="headerlink" href="#forking-and-merging" title="Permalink to this headline"> 🔗</a></h2>
+<p>A common pattern when collaborating on a dataset is for one person to
+make changes on their own and then, when all is ready, share the whole
+set of changes back to the other collaborators. Crunch implements this
+with two mechanisms: the ability to “fork” a dataset to make a copy, and
+then “merge” any changes made to it back to the original dataset.</p>
+<p>To fork a dataset, POST a new fork entity to the dataset’s forks
+catalog.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21baf60_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21baf60_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">index</span>
+<span class="go">{}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forked_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My fork&quot;</span><span class="p">}})</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">]</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="go">&quot;My fork&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The response will be a 201 response if the fork could happen in the
+allotted time limit for the request or a 202 if the fork requires too
+much time and is going to continue in background. Both cases will
+include a Location header with the URL of the new dataset that has been
+forked from the current one.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21bb748_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21bb748_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">forks</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">231</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My fork&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">----</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">forked_id</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>In case of a 202, in addition to the Location headers with the URL of
+the fork that is going to be created, the response will contain a Shoji
+view with the url of the endpoint that can be polled to track fork
+completion</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b33588_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b33588_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">forks</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">231</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My fork&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">----</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">forked_id</span><span class="p">}</span><span class="o">/</span>
+<span class="o">...</span>
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/progress/</span><span class="si">{progress_id}</span><span class="s2">/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The forked dataset can then be viewed and altered like the original;
+however, those changes do not alter the original until you merge them
+back with a POST to <code class="docutils literal"><span class="pre">datasets/{id}/actions/</span></code>.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2436ba8_Python">Python</a></li>
+<li><a data-toggle="tab" href="#2b27d2436ba8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2436ba8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2436ba8_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span> <span class="s2">&quot;autorollback&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2436ba8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">5</span><span class="n">de96a</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">231</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">forked</span> <span class="n">ds</span> <span class="n">URL</span><span class="p">},</span>
+        <span class="s2">&quot;autorollback&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">----</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+
+<span class="o">*</span><span class="ow">or</span><span class="o">*</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2436ba8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5de96a/actions/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/progress/912ab3/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The POST to the actions catalog tells the original dataset to replay a
+set of actions; since we specify a “dataset” url, we are telling it to
+replay all actions from the forked dataset. Crunch keeps track of which
+actions are already common between the two datasets, and won’t try to
+replay those. You can even make further changes to the forked dataset
+and merge again and again.</p>
+<p>Use the “autorollback” member to tell Crunch how to handle merge
+conflicts. If an action cannot be replayed on the original dataset
+(typically because it had conflicting changes or has been rolled back),
+then if “autorollback” is true (the default), the original dataset will
+be reverted to the previous state before any of the new changes were
+applied. If “autorollback” is false, the dataset is left to the last
+action that it could successfully play, which allows you to investigate
+the problem, repair it if possible (in either dataset as needed), and
+then POST again to continue the merge from that point.</p>
+<p>Per-user settings (filters, decks and slides, variable permissions etc)
+are copied to the new dataset when you fork. However, changes to them
+are not merged back at this time. Please reach out to us as you
+experiment so we can fine-tune which details to fork and merge as we
+discover use cases.</p>
+<p>Merging actions may take a few seconds, in which case the POST to
+actions/ will return 204 when finished. Merging many or large actions,
+however, may take longer, in which case the POST will return 202 with a
+Location header containing the URL of a <a class="reference external" href="#progress">progress
+resource</a>.</p>
+<div class="section" id="filtered-merges">
+<h3>Filtered Merges<a class="headerlink" href="#filtered-merges" title="Permalink to this headline"> 🔗</a></h3>
+<p>When merging actions it is possible to provide a filter to select which
+actions should be replayed from the other dataset. It is currently
+possible to filter them by <code class="docutils literal"><span class="pre">key</span></code> and by <code class="docutils literal"><span class="pre">hash</span></code>.</p>
+<p>When filtering by <code class="docutils literal"><span class="pre">hash</span></code>, only the provided actions will be merged:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1ec8978_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1ec8978_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
+             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;hash&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;000003&quot;</span><span class="p">]}}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>When filtering by <code class="docutils literal"><span class="pre">key</span></code>, only the actions that are part of that
+category will be merged:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a798d0_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a798d0_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
+             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Variable.create&quot;</span><span class="p">]}}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="recording-the-filtered-actions">
+<h4>Recording the filtered actions<a class="headerlink" href="#recording-the-filtered-actions" title="Permalink to this headline"> 🔗</a></h4>
+<p>If you know that you are going to merge from the same two datasets
+multiple times it is possible to tell crunch to remember the filtered
+actions so that a subsequent merge to the same target won’t try to apply
+them again if they were skipped in a previous merge.</p>
+<p>This behaviour can be changed by providing <code class="docutils literal"><span class="pre">remember:</span> <span class="pre">True</span></code> option to
+the filter, which means that the filtered actions will be recorded and a
+subsequent merge won’t try to apply them to the target if they are not
+explicitly filtered again.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b050f0_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b050f0_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
+             <span class="s2">&quot;remember&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Variable.create&quot;</span><span class="p">]}}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Note that only the actions skipped during this merge are recorded, so
+the previous example won’t skipp all the <code class="docutils literal"><span class="pre">Variable.create</span></code> actions
+forever, but will only remember the action that was skipped at that
+time.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

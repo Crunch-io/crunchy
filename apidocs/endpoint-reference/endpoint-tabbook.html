@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tab books &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Table" href="endpoint-table.html" />
+    <link rel="prev" title="Sources" href="endpoint-source.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-source.html" title="Previous Chapter: Sources"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Sources</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-table.html" title="Next Chapter: Table"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Table &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tab books</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post">POST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-body-parameters">POST body parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="tab-books">
+<h1>Tab books<a class="headerlink" href="#tab-books" title="Permalink to this headline"> 🔗</a></h1>
+<p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/multitables/{multitable_id}/tabbook/</span></code></p>
+<p>The default <code class="docutils literal"><span class="pre">tabbook</span></code> view of a multitable will generate an excel
+(.xlsx) workbook containing each variable in the dataset crosstabbed
+with a given multitable.</p>
+<div class="section" id="post">
+<h2>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h2>
+<p>A successful POST request to
+<code class="docutils literal"><span class="pre">/datasets/{dataset_id}/multitables/{multitable_id}/tabbook/</span></code> will
+generate a download location to which the exporter will write this file
+when it is done computing (it may take some time for large datasets).
+The server will return a 202 response indicating that the export job
+started with a Location header indicating where the final exported file
+will be available. The response’s body will contain the URL for the
+progress URL where to query the state of the export job. Clients should
+note the download URL, monitor progress, and when complete, GET the
+download location. See <a class="reference external" href="#progress">Progress</a> for details.</p>
+<p>Requesting the same job, if still in progress, will return the same 202
+response indicating the original progress to check. If the export is
+finished, the server will 302 redirect to the destination for download.</p>
+<p>If there have been changes on the dataset attributes, a new tab book
+will be generated regardless of the status of any other pending exports.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2726128_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2726128_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">a598c7</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span><span class="mi">7</span><span class="n">ab1e</span><span class="o">/</span><span class="n">tabbook</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><hr class="docutils" />
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2465c50_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2465c50_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2465c50_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="o">-</span><span class="n">url</span><span class="o">/</span><span class="n">filename</span><span class="o">.</span><span class="n">xlsx</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2465c50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/multitables/</span><span class="si">{id}</span><span class="s2">/tabbook/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/progress/5be83a/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Alternatively, you can request a JSON output for your tab book by adding
+an Accept request header.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1ec8198_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d1ec8198_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1ec8198_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">a598c7</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span><span class="mi">7</span><span class="n">ab1e</span><span class="o">/</span><span class="n">tabbook</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d1ec8198_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;weighted_simple_alltypes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;layout&quot;</span><span class="p">:</span> <span class="s2">&quot;many_sheets&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sheets&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;countsOrPercents&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;percent&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;currentTab&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;decimalPlaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;percentageDirection&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;colPct&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;showEmpty&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">false</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;showNotes&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">false</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;slicesOrGroups&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;groups&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;valuesAreMeans&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">false</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;vizType&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;table&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span>
+            <span class="p">},</span>
+            <span class="o">...</span> <span class="p">(</span><span class="n">one</span> <span class="n">entry</span> <span class="k">for</span> <span class="n">each</span> <span class="n">sheet</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;000002&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;00000a&quot;</span>
+                            <span class="p">},</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">null</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;rollup&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;sheets&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;counts&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric variable with value labels&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">3</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">4</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">8</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">9</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span>
+                                        <span class="p">}</span>
+                                    <span class="p">],</span>
+                                    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;ordinal&quot;</span><span class="p">:</span> <span class="n">false</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">1.234</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">3.14159</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span>
+                                <span class="p">],</span>
+                                <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                    <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                        <span class="s2">&quot;missing_reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;No Data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="s2">&quot;missing_rules&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">5</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">6</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;counts&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric variable with value labels&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">3</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">4</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">8</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">9</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span>
+                                        <span class="p">}</span>
+                                    <span class="p">],</span>
+                                    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;ordinal&quot;</span><span class="p">:</span> <span class="n">false</span>
+                                <span class="p">}</span>
+                            <span class="p">},</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Numberic variable with missing value range&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;z&quot;</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;elements&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                                <span class="s2">&quot;?&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                            <span class="p">}</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="mf">1.0</span><span class="p">,</span>
+                                                <span class="mf">1.5</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="mf">1.5</span><span class="p">,</span>
+                                                <span class="mf">2.0</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="mf">2.0</span><span class="p">,</span>
+                                                <span class="mf">2.5</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="mf">2.5</span><span class="p">,</span>
+                                                <span class="mf">3.0</span>
+                                            <span class="p">]</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                                <span class="mf">3.0</span><span class="p">,</span>
+                                                <span class="mf">3.5</span>
+                                            <span class="p">]</span>
+                                        <span class="p">}</span>
+                                    <span class="p">],</span>
+                                    <span class="s2">&quot;subtype&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;missing_reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;No Data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="s2">&quot;missing_rules&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">1.234</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">3.14159</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span>
+                                <span class="p">],</span>
+                                <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                    <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                        <span class="s2">&quot;missing_reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;No Data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="s2">&quot;missing_rules&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">5</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">6</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;counts&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">1</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span><span class="p">,</span>
+                            <span class="mi">0</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Numeric variable with value labels&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">3</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">4</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">8</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;9&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">9</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span>
+                                        <span class="p">}</span>
+                                    <span class="p">],</span>
+                                    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;ordinal&quot;</span><span class="p">:</span> <span class="n">false</span>
+                                <span class="p">}</span>
+                            <span class="p">},</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;date&quot;</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;enum&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;elements&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-11&quot;</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2014-12&quot;</span>
+                                        <span class="p">},</span>
+                                        <span class="p">{</span>
+                                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-01&quot;</span>
+                                        <span class="p">}</span>
+                                    <span class="p">],</span>
+                                    <span class="s2">&quot;subtype&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;missing_reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;No Data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="s2">&quot;missing_rules&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                        <span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;M&quot;</span>
+                                    <span class="p">}</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">],</span>
+                        <span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">1.234</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">3.14159</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="mf">0.0</span>
+                                <span class="p">],</span>
+                                <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                                    <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                        <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                                        <span class="s2">&quot;missing_reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="s2">&quot;No Data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                                        <span class="p">},</span>
+                                        <span class="s2">&quot;missing_rules&quot;</span><span class="p">:</span> <span class="p">{}</span>
+                                    <span class="p">}</span>
+                                <span class="p">},</span>
+                                <span class="s2">&quot;n_missing&quot;</span><span class="p">:</span> <span class="mi">5</span>
+                            <span class="p">}</span>
+                        <span class="p">},</span>
+                        <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">6</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="o">...</span> <span class="p">(</span><span class="n">one</span> <span class="n">entry</span> <span class="k">for</span> <span class="n">each</span> <span class="n">sheet</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="post-body-parameters">
+<h2>POST body parameters<a class="headerlink" href="#post-body-parameters" title="Permalink to this headline"> 🔗</a></h2>
+<p>At the top level, the tab book endpoint can take filtering and variable
+limiting parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="18%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>filter</td>
+<td>object</td>
+<td>null</td>
+<td>Filter by Crunch Expression.
+Variables used in the filter
+should be fully-expressed
+urls.</td>
+<td><div class="code json first last highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span>
+<span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/filters/5f14133582f34b8b85b408830f4b4a9b/&quot;</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>where</td>
+<td>object</td>
+<td>null</td>
+<td>Crunch Expression signifying
+which variables to use</td>
+<td><div class="code json first last highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/&quot;</span><span class="p">},</span>
+  <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/&quot;</span><span class="p">:</span> <span class="p">{</span>
+   <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/&quot;</span><span class="p">}}}]}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>options</td>
+<td>object</td>
+<td>{}</td>
+<td>further options defining
+the tabbook output.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>weight</td>
+<td>url</td>
+<td>null</td>
+<td>Provide a weight for the
+tabbook generation, if the
+weight is omitted from the
+request, the currently
+selected weight is used. If
+“null” is provided, then the
+tabbook generation will be
+unweighted.</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="options">
+<h3>Options<a class="headerlink" href="#options" title="Permalink to this headline"> 🔗</a></h3>
+<p>Options for generating tab books</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="8%" />
+<col width="13%" />
+<col width="40%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>display_settings</td>
+<td>object</td>
+<td>{}</td>
+<td>define how the output should be
+displayed</td>
+<td>See Below.</td>
+</tr>
+<tr class="row-odd"><td>layout</td>
+<td>string</td>
+<td>many_sheets</td>
+<td>“many_sheets” indicates each
+variable should have its own
+Sheet in the xls spreadsheet.
+“single_sheet” indicates all
+output should be in the same
+sheet.</td>
+<td>single_sheet</td>
+</tr>
+</tbody>
+</table>
+<p>Display Settings</p>
+<p>Further tab book viewing options.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="8%" />
+<col width="32%" />
+<col width="29%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>decimalPlaces</td>
+<td>object</td>
+<td>0</td>
+<td>number of decimal places to diaplay</td>
+<td>{“value”: 0}</td>
+</tr>
+<tr class="row-odd"><td>vizType</td>
+<td>object</td>
+<td>table</td>
+<td>Visialization Type</td>
+<td>{value:table},</td>
+</tr>
+<tr class="row-even"><td>countsOrPercents</td>
+<td>object</td>
+<td>percent</td>
+<td>use counts or percents</td>
+<td>{value:percent}</td>
+</tr>
+<tr class="row-odd"><td>percentageDirection</td>
+<td>object</td>
+<td>row or column based percents</td>
+<td>&#160;</td>
+<td>{value:colPct}</td>
+</tr>
+<tr class="row-even"><td>showNotes</td>
+<td>object</td>
+<td>display variable notes in sheet header</td>
+<td>&#160;</td>
+<td>{value:false}</td>
+</tr>
+<tr class="row-odd"><td>slicesOrGroups</td>
+<td>object</td>
+<td>groups</td>
+<td>slices or groups</td>
+<td>{value:groups}</td>
+</tr>
+<tr class="row-even"><td>valuesAreMeans</td>
+<td>object</td>
+<td>false</td>
+<td>are values means?</td>
+<td>{value:false}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

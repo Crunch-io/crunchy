@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Projects &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Search" href="endpoint-search.html" />
+    <link rel="prev" title="Progress" href="endpoint-progress.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-progress.html" title="Previous Chapter: Progress"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Progress</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-search.html" title="Next Chapter: Search"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Search &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Projects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post">POST</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#creating-a-project-with-an-icon">Creating a project with an icon</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#default-icon">Default icon</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#projects-order">Projects order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put">PUT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#members">Members</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#members-permissions">Members permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">PATCH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#sending-notifications">Sending notifications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#datasets">Datasets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-datasets-to-projects">Adding datasets to projects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch-to-dataset-entity">PATCH to dataset entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">GET</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#icon">Icon</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">PUT</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#file-upload">File upload</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#icon-url">Icon URL</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#datasets-order">Datasets order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">PUT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="projects">
+<h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline"> 🔗</a></h1>
+<p>Projects represent groups of users that share a common set of datasets.
+Any user can belong to none or many projects.</p>
+<p>They live under /projects/ and will list the projects that the
+authenticated user is a member or owner of.</p>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p>The projects catalog will list all the projects the authenticated user
+is a member of. Here you can create new projects via POST</p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d290a9b0_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d290a9b0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/projects/4643/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;4643&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;view&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6c01&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of project 2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;view&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="12%" />
+<col width="17%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Required when creating the project</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>“”</td>
+<td>Longer description of the project</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>autogenerated</td>
+<td>The project’s id</td>
+</tr>
+<tr class="row-odd"><td>icon</td>
+<td>url</td>
+<td>“”</td>
+<td>Url for the icon file for the project.
+Empty string if not set</td>
+</tr>
+<tr class="row-even"><td>permissions</td>
+<td>object</td>
+<td>{}</td>
+<td>permissions possessed by querying user
+against project</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="post">
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<p>New projects need a name (no uniqueness enforced) and will make the
+authenticated user its initial member and editor.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a3e128_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a3e128_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Payload example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a3eeb8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a3eeb8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My new project&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;icon_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://cdn.sample.com/project-icon.png&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="creating-a-project-with-an-icon">
+<h4>Creating a project with an icon<a class="headerlink" href="#creating-a-project-with-an-icon" title="Permalink to this headline"> 🔗</a></h4>
+<p>To create one with a starting icon you can POST an <code class="docutils literal"><span class="pre">icon_url</span></code>
+attribute indicating a url where to fetch that icon from (has to be a
+publicly accessible url).</p>
+<p>If the server cannot read that URL the request will return a 409 error.</p>
+<p>On success a copy of the file will be stored as the icon to be serve</p>
+<p>If the <code class="docutils literal"><span class="pre">icon_url</span></code> attribute is not provided the API will pick an
+available icon from the icons catalog.</p>
+</div>
+</div>
+<div class="section" id="default-icon">
+<h3>Default icon<a class="headerlink" href="#default-icon" title="Permalink to this headline"> 🔗</a></h3>
+<p>The API can provide default icons to be used in new projects. Performing
+a GET request will return a Shoji:catalog with a list of available icons
+for the client to pick.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2929ac8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2929ac8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2929ac8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">icons</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2929ac8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/icons/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/icons/01/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/icons/02/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/icons/03/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/icons/04/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="id1">
+<h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d23e77f0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d23e77f0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d23e77f0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d23e77f0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/icon/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Long description text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="12%" />
+<col width="17%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>&#160;</td>
+<td>Required when creating the project</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>“”</td>
+<td>Longer description of the project</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>autogenerated</td>
+<td>The project’s id</td>
+</tr>
+<tr class="row-odd"><td>icon</td>
+<td>url</td>
+<td>“”</td>
+<td>Url for the icon file for the project.
+Empty string if not set</td>
+</tr>
+<tr class="row-even"><td>user_icon</td>
+<td>boolean</td>
+<td>autogenerated</td>
+<td>Will indicate false if the icon used on
+creation is from the provided catalog</td>
+</tr>
+</tbody>
+</table>
+<p>Note about the <code class="docutils literal"><span class="pre">icon</span></code> attribute that points to the actual image file
+where the configured icon is. This url does not point to the
+<code class="docutils literal"><span class="pre">views.icon</span></code> Shoji view url.</p>
+<p>The <code class="docutils literal"><span class="pre">views.icon</span></code> Shoji view endpoint is used to PUT the icon as a file
+upload for this project.</p>
+</div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<p>The attributes that are allowed to be edited for a projet are:</p>
+<ul class="simple">
+<li>name</li>
+<li>description</li>
+<li>icon_url</li>
+</ul>
+<p>Only project editors can make these changes.</p>
+</div>
+<div class="section" id="delete">
+<h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
+<p>Deleting a project will <em>NOT</em> delete its datasets. It will change their
+ownership to the authenticated user. Only the project current owner can
+delete a project.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c31c18_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c31c18_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="projects-order">
+<h2>Projects order<a class="headerlink" href="#projects-order" title="Permalink to this headline"> 🔗</a></h2>
+<p>Returns the <code class="docutils literal"><span class="pre">shoji:order</span></code> in which the projects should be displayed
+for the user. This entity is independent for each user.</p>
+<p>As the user is added to more projects, these will be added at the end of
+the <code class="docutils literal"><span class="pre">shoji:order</span></code>.</p>
+<div class="section" id="id2">
+<h3>GET<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h3>
+<p>Will return a <code class="docutils literal"><span class="pre">shoji:order</span></code> containing a flat list of all the projects
+where the current user belongs to.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2064be0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2064be0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2064be0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2064be0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;https://app.crunch.io/api/projects/cc9161/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://app.crunch.io/api/projects/a598c7/&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="put">
+<h3>PUT<a class="headerlink" href="#put" title="Permalink to this headline"> 🔗</a></h3>
+<p>In order to change the order of the projects, the client will need to
+PUT the full payload back to the server.</p>
+<p>The graph attribute should contain all projects included, else it will
+return a 400 response.</p>
+<p>After a successful PUT request, the server will reply with a 204
+response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2aeb438_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2aeb438_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2aeb438_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2aeb438_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;https://app.crunch.io/api/projects/cc9161/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://app.crunch.io/api/projects/a598c7/&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="members">
+<h2>Members<a class="headerlink" href="#members" title="Permalink to this headline"> 🔗</a></h2>
+<p>Use this endpoint to manage the users that have access to this project.</p>
+<div class="section" id="members-permissions">
+<h3>Members permissions<a class="headerlink" href="#members-permissions" title="Permalink to this headline"> 🔗</a></h3>
+<p>Members of a project can be wither viewers or editors. By default all
+members will be viewers and a selected group of them (at least one) will
+be editor.</p>
+<p>These permissions are available on the members catalog under the
+<code class="docutils literal"><span class="pre">permissions</span></code> attribute on each member’s tuple.</p>
+<p>The possible permissions are:</p>
+<ul class="simple">
+<li>edit</li>
+<li>view</li>
+</ul>
+<p>That can have boolean values. Those with <code class="docutils literal"><span class="pre">edit:</span> <span class="pre">true</span></code> are considered
+project editors.</p>
+<p>Project editors have edit privileges on all datasets as well as
+permissions to make changes on the project itself such as changing its
+name, icon, members management or change members’ permissions.</p>
+</div>
+<div class="section" id="id3">
+<h3>GET<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a catalog with all users that have access to this project and
+their project permissions in the following format:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2af8710_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2af8710_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2af8710_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2af8710_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/00002/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jean-Luc Picard&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;captain@crunch.io&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;allowed_dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/00005/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;William Riker&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;firstofficer@crunch.io&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;allowed_dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The catalog will be indexed by each user’s entity URL and its tuple will
+contain basic information (name and email) as well as the permissions
+each user has on the given project.</p>
+<p>All project members have read access to this resource, but the
+<code class="docutils literal"><span class="pre">allowed_dataset_permissions</span></code> is only present to project editors. It
+contains the maximum dataset permissions each user can have. Assigning
+anything more permissive will not have effect.</p>
+</div>
+<div class="section" id="id4">
+<h3>PATCH<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<p>Use this method to add or remove members from the project. Only project
+editors have this capabilities, else you will get a 403 response.</p>
+<p>To add a new user, PATCH a catalog keyed by the new user URL and an
+empty object for its value or a permissions tuple to set specific
+permissions (only <code class="docutils literal"><span class="pre">edit</span></code> allowed at this point).</p>
+<p>To remove users, PATCH a catalog keyed by the user you want to remove
+and <code class="docutils literal"><span class="pre">null</span></code> for its value.</p>
+<p>Note that you cannot remove yourself from the project, you will get a
+400 response.</p>
+<p>It is possible to perform many additions/removals in one request, the
+following example adds users <code class="docutils literal"><span class="pre">/users/001/</span></code> and deletes users
+<code class="docutils literal"><span class="pre">/users/002/</span></code></p>
+<p>It is allowed to invite/add users to the project by email address. If
+the email is registered on the system the user will be invited to the
+project. If the email is not part of Crunch.io a new user invitation
+will be sent to that email with instructions to set up their account.
+They will be automatically part of this project only.</p>
+<p>Attempting to remove users also allows to do so by email. In the case
+that the email does not exist, the server will return a 400 response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d292c748_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d292c748_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d292c748_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d292c748_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/001/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/002/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;http://app.crunch.io/api/users/003/&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s2">&quot;user@email.com&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;send_notification&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;url_base&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/password/change/$</span><span class="si">{token}</span><span class="s2">/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;project_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/$</span><span class="si">{project_id}</span><span class="s2">/&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="sending-notifications">
+<h4>Sending notifications<a class="headerlink" href="#sending-notifications" title="Permalink to this headline"> 🔗</a></h4>
+<p>The users invited to a project can be both existing Crunch.io users or
+new users that don’t have a user account associated with the email.</p>
+<p>If desired, the API can send automated email notifications to the
+involved users indicating that they now belong to the project.</p>
+<p>It is necessary to add the <code class="docutils literal"><span class="pre">send_notification</span></code> boolean key on the
+index PATCHed to command the API to send these emails. Else, no
+notification will be sent.</p>
+<p>When sending notifications, it is necessary for the client to include a
+<code class="docutils literal"><span class="pre">url_base</span></code> key as well that includes a string template that should
+point to a client location where the password resetting should happen
+for brand new users.</p>
+<p>The server will replace the <code class="docutils literal"><span class="pre">${token}</span></code> part of the string with the
+generated token and will be included on the notification email as a link
+for the invited user to configure their account in order to use the app.</p>
+<p>Additionally, to indicate the URL of the project, the client can provide
+a <code class="docutils literal"><span class="pre">project_url</span></code> key that should be formatted as a URL containing a
+<code class="docutils literal"><span class="pre">${project_id}</span></code> part that the server will replace with the project’s
+ID.</p>
+<p>This behavior is the same as described for <a class="reference external" href="#inviting-new-users">inviting new users when
+sharing a dataset</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"> 🔗</a></h2>
+<p>Will list all the datasets that have this project as their owner.</p>
+<div class="section" id="adding-datasets-to-projects">
+<h3>Adding datasets to projects<a class="headerlink" href="#adding-datasets-to-projects" title="Permalink to this headline"> 🔗</a></h3>
+<p>The way to add a dataset to a project is by changing the dataset’s owner
+to the id of the project you want to take ownership.</p>
+<p>You must have edit and be current editor on any given dataset to change
+its owner and you must also have edit permissions on the target project.</p>
+</div>
+<div class="section" id="patch-to-dataset-entity">
+<h3>PATCH to dataset entity<a class="headerlink" href="#patch-to-dataset-entity" title="Permalink to this headline"> 🔗</a></h3>
+<p>Send a PATCH request to the dataset entity that you want to make part of
+the project.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d275ff28_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d275ff28_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d275ff28_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">cc9161</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d275ff28_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;owner&quot;</span><span class="p">:</span><span class="s2">&quot;https://app.crunch.io/api/projects/abcd/&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="id5">
+<h3>GET<a class="headerlink" href="#id5" title="Permalink to this headline"> 🔗</a></h3>
+<p>Will show the list of all datasets where this project is their owner,
+the shape of the dataset tuple will be the same as in other dataset
+catalogs.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b9acf8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2b9acf8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b9acf8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2b9acf8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/order/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;https://app.crunch.io/api/datasets/cc9161/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;James T. Kirk&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Voyage Home&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Stardate 8390&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+            <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="mi">67</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cc9161&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/685722/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2286&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/ff9443/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leonard Nimoy&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Spock&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;The Wrath of Khan&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="n">null</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;a598c7&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/af432c/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2285-10-20&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1982-06-04T09:16:23.231045&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="icon">
+<h2>Icon<a class="headerlink" href="#icon" title="Permalink to this headline"> 🔗</a></h2>
+<p>The icon endpoint for a project is a ShojiView that allows to change the
+project’s icon via file upload or URL.</p>
+<div class="section" id="id6">
+<h3>GET<a class="headerlink" href="#id6" title="Permalink to this headline"> 🔗</a></h3>
+<p>On GET, it will return a <code class="docutils literal"><span class="pre">shoji:view</span></code> with its value containing a url
+to the icon file or empty string in case there isn’t an icon for this
+project yet.</p>
+<p>By default all new projects have an empty icon URL.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2ac14a8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2ac14a8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2ac14a8_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2ac14a8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/icon/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="id7">
+<h3>PUT<a class="headerlink" href="#id7" title="Permalink to this headline"> 🔗</a></h3>
+<p>PUT to this endpoint to change a project’s icon.</p>
+<p>There are two ways to change the icon, either via file upload or via
+icon URL.</p>
+<p>Only the project’s editors can change the project’s icon.</p>
+<p>Valid image extensions: ‘png’, ‘gif’, ‘jpg’, ‘jpeg’ - Others will 400</p>
+<div class="section" id="file-upload">
+<h4>File upload<a class="headerlink" href="#file-upload" title="Permalink to this headline"> 🔗</a></h4>
+<p>The request should have be a standard <code class="docutils literal"><span class="pre">multipart/form-data</span></code> file
+upload with the file field named <code class="docutils literal"><span class="pre">icon</span></code>. The file’s contents will be
+stored and made available under the project’s url. The API will return a
+201 response with the stored icon’s URL on its Location header.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d25a2358_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d25a2358_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;newicon.jpg&quot;</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
+
+<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">223</span><span class="n">fd4</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="icon-url">
+<h4>Icon URL<a class="headerlink" href="#icon-url" title="Permalink to this headline"> 🔗</a></h4>
+<p>Expects a <code class="docutils literal"><span class="pre">Shoji:view</span></code> request with its value pointing to a publicly
+accessible image resource that will be used as the project’s icon. This
+image will be copied to an API local location.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d26a6518_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d26a6518_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2b27d26a6518_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d26a6518_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d26a6518_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/icon/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://public.domain.com/icon.png&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d26a6518_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">223</span><span class="n">fd4</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="id8">
+<h3>POST<a class="headerlink" href="#id8" title="Permalink to this headline"> 🔗</a></h3>
+<p>Same as PUT</p>
+</div>
+</div>
+<div class="section" id="datasets-order">
+<h2>Datasets order<a class="headerlink" href="#datasets-order" title="Permalink to this headline"> 🔗</a></h2>
+<p>Contains the <code class="docutils literal"><span class="pre">shoji:order</span></code> in which the datasets of this project are
+to be ordered.</p>
+<p>This is endpoint available for all project members but can only be
+updated by the project’s editors.</p>
+<div class="section" id="id9">
+<h3>GET<a class="headerlink" href="#id9" title="Permalink to this headline"> 🔗</a></h3>
+<p>Will return the <code class="docutils literal"><span class="pre">shoji:order</span></code> response containing the datasets that
+belong to the project.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21deb38_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d21deb38_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21deb38_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d21deb38_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/order/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;https://app.crunch.io/api/datasets/cc9161/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="id10">
+<h3>PUT<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h3>
+<p>Allow to make modifications to the <code class="docutils literal"><span class="pre">shoji:order</span></code> for the contained
+datasets. Only the project’s editors can make these changes.</p>
+<p>Trying to include an invalid dataset or an incomplete list will return a
+400 response.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d22d3128_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d22d3128_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

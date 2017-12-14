@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Permissions &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Progress" href="endpoint-progress.html" />
+    <link rel="prev" title="Multitables" href="endpoint-multitable.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-multitable.html" title="Previous Chapter: Multitables"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Multitables</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-progress.html" title="Next Chapter: Progress"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Progress &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Permissions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-catalog">GET Catalog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patch-catalog">PATCH Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modify-existing">Modify existing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-new-user-from-within-account">Add new user from within account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#revoking-access">Revoking access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation">Validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inviting-new-users">Inviting new users</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="permissions">
+<h1>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline"> 🔗</a></h1>
+<p>Authorization to view, edit, and manage a dataset is controlled by the
+dataset’s permissions catalog:</p>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/permissions/</span></code></p>
+<p>The permissions catalog is a Shoji Catalog that collects (not contains)
+Users. There are no permission “entities” to retrieve, create, or
+delete: all action is achieved directly on the permissions catalog.</p>
+<div class="section" id="get-catalog">
+<h2>GET Catalog<a class="headerlink" href="#get-catalog" title="Permalink to this headline"> 🔗</a></h2>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d20827f0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d20827f0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/1/permissions/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Lists all the users that have access to this dataset&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/users/42/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;is_owner&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lauren Ipsum&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;lipsum@crunch.io&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>If authorized to view the dataset, a successful GET returns a Shoji
+Catalog indicating the users who have access to this dataset and their
+respective permissions. This includes the current, authorized user
+making the request. Index tuples are keyed by User URL.</p>
+<p>Tuple values include:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Display name of the user</td>
+</tr>
+<tr class="row-odd"><td>email</td>
+<td>string</td>
+<td>Email address of the user</td>
+</tr>
+<tr class="row-even"><td>is_owner</td>
+<td>boolean</td>
+<td>Whether this user is the dataset’s “owner”</td>
+</tr>
+<tr class="row-odd"><td>dataset_permissions</td>
+<td>object</td>
+<td>Attributes governing the user’s
+authorization; see below</td>
+</tr>
+</tbody>
+</table>
+<p>Supported <code class="docutils literal"><span class="pre">dataset_permissions</span></code>, all boolean, are:</p>
+<ul class="simple">
+<li><strong>view</strong>: Whether the user can view the dataset. Note that “viewing”
+is not limited to just GET requests, for dataset viewers may create
+filters, private variables, and saved analyses, for example.</li>
+<li><strong>edit</strong>: Whether the user can edit the dataset. When editing, users
+with this permission may modify the common data of a dataset,
+including things like public filters available to all viewers of the
+dataset.</li>
+<li><strong>change_permissions</strong>: Whether the user may alter other users’
+authorization on this dataset, i.e., PATCH tuples for users that
+already exist on the catalog.</li>
+</ul>
+</div>
+<div class="section" id="patch-catalog">
+<h2>PATCH Catalog<a class="headerlink" href="#patch-catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p>The PATCH verb is used to make all modifications to dataset
+authorization: modifying existing permissions, revoking permissions for
+users with access, and granting access to users.</p>
+<div class="section" id="modify-existing">
+<h3>Modify existing<a class="headerlink" href="#modify-existing" title="Permalink to this headline"> 🔗</a></h3>
+<p>To change the permissions a user has, PATCH new dataset_permissions,
+like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d253edd8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d253edd8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;https://app.crunch.io/api/users/42/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;send_notification&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;dataset_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/dataset/1&quot;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Only the “dataset_permissions” key in the tuple can be modified by
+PATCHing this catalog. Other keys, such as “name”, are included only for
+facilitating human-readable display of the catalog. If sent, these other
+keys will be ignored. To modify users’ names, see users.</p>
+<p>If a subset of dataset_permissions are included in the payload, only
+the specified permissions will have their values updated. Omitted
+permissions will remain unchanged.</p>
+<p>Multiple users’ permissions can be modified in a single request by
+including multiple tuples keyed by User URL.</p>
+<p>The “send_notification” key in the payload is optional; if included and
+True, the server will send an email invitation to all newly added users
+(see below), as well as to users who are granted “edit” privileges.</p>
+<p>If “send_notification” is included and true, you may also include a
+“dataset_url”, which is the URL that will be included in the email
+notifying the users that they now have access to the dataset. The web
+application will send the “browse” view URL, for example, so that when
+the user receives the email notification, the link they follow will take
+them to the relevant dataset. If “send_notification” is true and
+“dataset_url” is omitted, the email link will default to
+<a class="reference external" href="https://app.crunch.io/">https://app.crunch.io/</a>.</p>
+</div>
+<div class="section" id="add-new-user-from-within-account">
+<h3>Add new user from within account<a class="headerlink" href="#add-new-user-from-within-account" title="Permalink to this headline"> 🔗</a></h3>
+<p>To add a user (i.e. share with them), there are two cases. First, if the
+user to be added is a member of the current user’s account, PATCH
+similar to above, using this user’s URL as key:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1c503c8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1c503c8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;/users/id/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;applied_filters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>This payload may include a “profile” member, which are initial values
+with which to populate the sharee’s user-dataset-profile.</p>
+<p>Valid “profile” members include:</p>
+<ul class="simple">
+<li><strong>weight</strong>: a URL to one of the dataset’s weight variables; if
+omitted, the sharer’s current weight variable will be used</li>
+<li><strong>applied_filters</strong>: an array of filter URLs which are shared with
+all dataset viewers. If any of the specified filters are private, the
+PATCH request will return 400 status. Default value for
+“applied_filters” is [].</li>
+</ul>
+<p>If the “profile” member is not included, the newly shared users will be
+created with their user dataset preferences matching the sharer’s
+current weight.</p>
+</div>
+<div class="section" id="revoking-access">
+<h3>Revoking access<a class="headerlink" href="#revoking-access" title="Permalink to this headline"> 🔗</a></h3>
+<p>To revoke users’ access to this dataset (aka “unshare” with them), PATCH
+a null tuple for their user URLs:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2248668_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2248668_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;/users/id/&quot;</span><span class="p">:</span> <span class="n">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Note that all of these PATCHes for add/edit/remove access to the dataset
+can be done in a single request that combines them all.</p>
+</div>
+<div class="section" id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline"> 🔗</a></h3>
+<p>The server will insist, and clients should also validate, that</p>
+<ul class="simple">
+<li>There is one and only one user with edit: true privileges for a
+dataset; if not, the PATCH request will return 400.</li>
+<li>The users who are receiving new authorization via PATCH must have
+corresponding dataset_permissions on their account authorization.
+For example, the user who is updated to have edit: true has a
+dataset_permission of edit: true on their account authorization. If
+not, the PATCH request will return 400.</li>
+<li>The user that is PATCHing this catalog must have share: true for this
+dataset; if not, the PATCH request will return 403.</li>
+</ul>
+</div>
+<div class="section" id="inviting-new-users">
+<h3>Inviting new users<a class="headerlink" href="#inviting-new-users" title="Permalink to this headline"> 🔗</a></h3>
+<p>It is possible to share a dataset with people that are not users of
+Crunch yet. To do so, it is necessary to send in an email address
+instead of a user URL as a sharing key.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2243780_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2243780_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;somebody@email.com&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dataset_permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;applied_filters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;send_notifications&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;url_base&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/password/change/$</span><span class="si">{token}</span><span class="s2">/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataset_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/dataset/1/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>A new user with such email address will be created and added to the
+account of the user that is making the request. The new user will
+receive an invitation email to Crunch.io with an activation link. In
+case the user exists on other or the same account, no changes to the
+user will be made.</p>
+<p>If “send_notification” was included and true in the request, the user
+will receive a notification email informing her about the new shared
+dataset if requested so. New users, unless they have an OAuth provider
+specified, will need to set a password, and the client application
+should send a URL template that directs them to a place where they can
+set that password. To do so, include a “url_base” attribute in the
+payload, a URL template with a <code class="docutils literal"><span class="pre">${token}</span></code> variable into which the
+server will insert the password-setting token. For the Crunch web
+application, this template is
+<code class="docutils literal"><span class="pre">https://app.crunch.io/password/change/${token}/</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may not know whether the email address you’re sharing with already has a Crunch account. To be safe, you can always include “url_base” whenever you include <cite>“send_notifications”: true</cite>. If it’s needed, your invitees will thank you. If it’s not needed, it will be ignored.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you share with a new user and don’t include <cite>“send_notifications”: true</cite>, they won’t receive an email inviting them to set a password for their new Crunch account. That’s okay, though: they can always go to the web application and click “Forgot password” to send a new password reset token.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Deriving Variables &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Array Variables" href="feature-arrays.html" />
+    <link rel="prev" title="Merging and Joining Datasets" href="feature-extending.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="feature-extending.html" title="Previous Chapter: Merging and Joining Datasets"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Merging and J...</span>
+    </a>
+  </li>
+  <li>
+    <a href="feature-arrays.html" title="Next Chapter: Array Variables"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Array Variables &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-extending.html">Merging and Joining Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deriving Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#combining-categories">Combining categories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-responses">Combining responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-statements">Case statements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-ad-hoc-arrays">Making ad hoc arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weights">Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-response-views">Multiple Response Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-analysis">Text Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sentiment-analysis">Sentiment Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-transformations">Other transformations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#arithmetic-operations">Arithmetic operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bin">bin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case">case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cast">cast</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#char-length">char_length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copy-variable">copy_variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combine-categories">combine_categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combine-responses">combine_responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#row">row</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remap-missing">remap_missing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integrating-variables">Integrating variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-unlinked-derivations">Creating unlinked derivations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="feature-arrays.html">Array Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-analyzing.html">Multidimensional analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-versioning.html">Versioning Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../endpoint-reference/index.html">Endpoint Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="deriving-variables">
+<h1>Deriving Variables<a class="headerlink" href="#deriving-variables" title="Permalink to this headline"> 🔗</a></h1>
+<p>Derived variables are variables that, instead of having a column of
+values backing them, are functionally dependent on other variables. In
+Crunch, users with view-only permissions on a dataset can still make
+derived variables of their own–just as they can make filters. Dataset
+editors can also derive other types of variables as permanent additions
+to the dataset, available for all viewers.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this section, sample variable documents have been trimmed to the attributes essential to the derivation examples. Actual variable documents in the wild will have more attributes than those shown here.</p>
+</div>
+<div class="section" id="combining-categories">
+<h2>Combining categories<a class="headerlink" href="#combining-categories" title="Permalink to this headline"> 🔗</a></h2>
+<p>The “combine_categories” function takes two arguments:</p>
+<ul class="simple">
+<li>A reference to the categorical or categorical_array variable to be
+combined</li>
+<li>A definition of the categories of the new variable, including all
+members found in categories, plus a “combined_ids” key that maps the
+derived category to one or more categories (by id) in the input
+variable.</li>
+</ul>
+<p>Given a variable such as:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2682828_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2682828_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;educ&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No HS&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;High school graduate&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Some college&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;2-year&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;4-year&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Post-grad&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Skipped&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not Asked&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Education&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST’ing to the private variables catalog a Shoji Entity containing a
+ZCL function like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d254e2b0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d254e2b0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Education (3 category)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Combined from six-category education&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;educ3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;combine_categories&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;High school or less&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Some college&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;4-year college or more&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Missing&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No data&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                            <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>results in a private categorical variable with three valid categories.</p>
+<p>Combining the categories of a categorical array is the same as it is for
+categorical variables. The resulting variable is also of type
+“categorical_array”. This variable type also has a
+“subvariables_catalog”, like the variable from which it is derived, and
+the subvariables contained in it are derived “combine_categories”
+categorical variables.</p>
+</div>
+<div class="section" id="combining-responses">
+<h2>Combining responses<a class="headerlink" href="#combining-responses" title="Permalink to this headline"> 🔗</a></h2>
+<p>For multiple response variables, you may combine responses rather than
+categories.</p>
+<p>Given a variable such as:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d267ac50_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d267ac50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/455288/variables/3c2e57/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Aided awareness&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;aided&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;../870a2d/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;../a8b0eb/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;../dc444f/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;../8e6279/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;../f775ab/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;../6405c2/&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;multiple_response&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;selected&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Selected&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not selected&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Skipped&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Not asked&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No data&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Which of the following coffee brands do you recognize? Check all that apply.&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POSTing to the variables catalog a Shoji Entity containing a ZCL
+function like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1eb0278_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1eb0278_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Aided awareness by region&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Combined from aided brand awareness&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;aided_region&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;combine_responses&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/455288/variables/3c2e57/&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;San Francisco&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;../870a2d/&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;../a8b0eb/&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;../dc444f/&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Portland&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;../8e6279/&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;../f775ab/&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">},</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;combined_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="s2">&quot;../6405c2/&quot;</span>
+                            <span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>results in a multiple response variable with three responses. The
+“selected” state of the responses in the derived variable is an “OR” of
+the combined subvariables.</p>
+</div>
+<div class="section" id="case-statements">
+<h2>Case statements<a class="headerlink" href="#case-statements" title="Permalink to this headline"> 🔗</a></h2>
+<p>The “case” function derives a variable using values from the first
+argument. Each of the remaining arguments contains a boolean expression.
+These are evaluated in order in an IF, ELSE IF, ELSE IF, …, ELSE
+fashion; the first one that matches selects the corresponding value from
+the first argument. For example, if the first two boolean expressions do
+not match (return False) but the third one matches, then the third value
+in the first argument is placed into that row in the output. You may
+include an extra value for the case when none of the boolean expressions
+match; if not provided, it defaults to the system “No Data” missing
+value.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d97ef0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d97ef0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Market segmentation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Super-scientific classification of people&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;segments&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;case&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+                                <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hipsters&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+                                <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Techies&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+                                <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Yuppies&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+                                <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Other&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">}</span>
+                            <span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;55fc29/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]}]},</span>
+                        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;673dde/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}]}</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;889dc3/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]}]},</span>
+                        <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;673dde/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}]}</span>
+                    <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;13cbf4/&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="making-ad-hoc-arrays">
+<h2>Making ad hoc arrays<a class="headerlink" href="#making-ad-hoc-arrays" title="Permalink to this headline"> 🔗</a></h2>
+<p>It is possible to create derived arrays reusing subvariables from other
+arrays using the <code class="docutils literal"><span class="pre">array</span></code> function and indicating the reference for
+each of its subvariables.</p>
+<p>The subvariables of an array are specified using the <code class="docutils literal"><span class="pre">select</span></code>
+function, with its first <code class="docutils literal"><span class="pre">map</span></code> argument indicating the IDs for each of
+these virtual subvariables. These IDs are user defined and can be any
+string. They remain unique inside the parent variable so they can be
+reused between different arrays. The second argument of the <code class="docutils literal"><span class="pre">select</span></code>
+function indicates the order of the subvariables in the array. They are
+referenced by the user defined IDs.</p>
+<p>Each of its variables must point to a variable expression, which can
+take an optional (but recommended) <code class="docutils literal"><span class="pre">references</span></code> attribute to specify a
+particular name and alias for the subvariable, if not specified, the
+same name from the original will be used and the alias will be padded to
+ensure uniqueness.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d257a208_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d257a208_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;CA3&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;var1&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar2&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subvar 2&quot;</span>
+                  <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;var0&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;subvar1&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subvar 1&quot;</span>
+                  <span class="p">}</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+              <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;var1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;var0&quot;</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;CA2&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-1&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca2-subvar-2&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;CA1&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-1&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-2&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;ca1-subvar-3&quot;</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cat array 1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;yes&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>On the above example, the array <code class="docutils literal"><span class="pre">CA3</span></code> uses the array function and uses
+subvariables <code class="docutils literal"><span class="pre">ca1-subvar-1</span></code> and <code class="docutils literal"><span class="pre">ca2-subvar-2</span></code> from <code class="docutils literal"><span class="pre">CA1</span></code> and
+<code class="docutils literal"><span class="pre">CA2</span></code> respectively. The <code class="docutils literal"><span class="pre">references</span></code> attribute is used to indicate
+specific name/alias for these subvariables.</p>
+<aside class="warning"><p>Note that when making an array with this method its subvariables catalog
+and subvariables will return 405 on PATCH attempts. The correct way to
+make modifications to them (add/remove subvariable, edit subvariable
+attributes) is to update the new array variable’s entity <code class="docutils literal"><span class="pre">derivation</span></code>
+attribute with the updated expression indicating the desired subvariable
+modifications.</p>
+</aside></div>
+<div class="section" id="weights">
+<h2>Weights<a class="headerlink" href="#weights" title="Permalink to this headline"> 🔗</a></h2>
+<p>A numeric variable suitable for use as row weights can be constructed
+from one or more categorical variables and target proportions of their
+categories. The sample distribution is “raked” iteratively to each
+categorical marginal target to produce a set of joint values that can be
+used as weights. Note that available weight variables are shared by all;
+you may not create private weights. To create a weight variable, POST a
+JSON variable definition to the variables catalog describing the
+properties of the weight variable, with an “derivation” member
+indicating to use the “rake” function, which takes arguments containing
+an array of variable targets:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d25b7630_Shell">Shell</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d25b7630_Shell">
+<div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">datasetid</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">739</span>
+<span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;weight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;my raked weight&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;rake&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="n">variabl1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.491</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.509</span><span class="p">]]</span>
+        <span class="p">}]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">---------</span>
+<span class="mi">201</span> <span class="n">Created</span>
+<span class="n">Location</span><span class="p">:</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">datasetid</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span><span class="p">{</span><span class="n">variableid</span><span class="p">}</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="multiple-response-views">
+<h2>Multiple Response Views<a class="headerlink" href="#multiple-response-views" title="Permalink to this headline"> 🔗</a></h2>
+<p>The “select_categories” function allows you to form a multiple response
+array from a categorical array, or alter the “selected” categories in an
+existing multiple response array. It takes two arguments:</p>
+<ul class="simple">
+<li>A reference to a categorical or categorical_array variable</li>
+<li>A list of the category ids or category names to mark as “selected”</li>
+</ul>
+<p>Given a variable such as:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d21a30b8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d21a30b8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cola&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;cola&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Never&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sometimes&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Frequently&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Always&quot;</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0001&quot;</span><span class="p">,</span> <span class="s2">&quot;0002&quot;</span><span class="p">,</span> <span class="s2">&quot;0003&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;subreferences&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;0003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Coke&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;0002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;Pepsi&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;0001&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;RC&quot;</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>POST’ing to the private variables catalog a Shoji Entity containing a
+ZCL function like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d26143c8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d26143c8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Cola likes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Cola preferences&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;cola_likes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select_categories&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>…results in a private multiple_response variable where the
+“Frequently” and “Always” categories are selected.</p>
+</div>
+<div class="section" id="text-analysis">
+<h2>Text Analysis<a class="headerlink" href="#text-analysis" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="sentiment-analysis">
+<h3>Sentiment Analysis<a class="headerlink" href="#sentiment-analysis" title="Permalink to this headline"> 🔗</a></h3>
+<p>The “sentiment” function allows you to derive a categorical variable
+from text variable data, which is classified and accumulated in three
+categories (positive, negative, and neutral). It takes one parameter:</p>
+<ul class="simple">
+<li>A reference to a text variable</li>
+</ul>
+<p>Given a variable such as:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2944240_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2944240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Zest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;zest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Zest is best&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Zest I can take it or leave it&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Zest is the worst&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p><code class="docutils literal"><span class="pre">POST</span></code>ing to the private variables catalog a Shoji Entity containing
+a ZCL function like:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d208a4a8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d208a4a8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Zesty Sentiment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Customer sentiment about Zest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;zest_sentiment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;derivation&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;sentiment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/3ad42c/variables/0000f5/&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Will result in a new categorical variable, where for each row the text
+variable is classified as “Negative”, “Neutral”, or “Positive” using the
+<a class="reference external" href="https://github.com/cjhutto/vaderSentiment">VADER</a> English
+social-media-tuned lexicon.</p>
+</div>
+</div>
+<div class="section" id="other-transformations">
+<h2>Other transformations<a class="headerlink" href="#other-transformations" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="arithmetic-operations">
+<h3>Arithmetic operations<a class="headerlink" href="#arithmetic-operations" title="Permalink to this headline"> 🔗</a></h3>
+<p>It is possible to create new numeric variables out of pairs of other
+numeric variables. The following arithmetic operations are available and
+will take two numeric variables as their arguments.</p>
+<ul class="simple">
+<li>“+” for adding up two numeric variables.</li>
+<li>“-” returns the difference between two numeric variables.</li>
+<li>“*” for the product of two numeric variables.</li>
+<li>“/” Real division.</li>
+<li>“//” Floor division; Returns always an integer.</li>
+<li>“^” Raises the first argument to the power of the second argument</li>
+<li>“%” Modulo operation; Accepts floats</li>
+</ul>
+<p>The usage is as follows for all operators:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1f45668_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1f45668_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">}</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/def/&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="bin">
+<h3>bin<a class="headerlink" href="#bin" title="Permalink to this headline"> 🔗</a></h3>
+<p>Receives a numeric variable and returns a categorical one where each
+category represents a bin of the numeric values.</p>
+<p>Each category on the new variable is annotated with a “boundaries”
+member that contains the lower/upper bound of each bin.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d8d438_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d8d438_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Optionally it is possible to pass a second argument indicating the
+desired bin size to use instead of allowing the API to decide them.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1b83c18_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1b83c18_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;bin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="case">
+<h3>case<a class="headerlink" href="#case" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a categorical variable with its categories following the
+specified conditions from different variables on the dataset. <a class="reference external" href="#Case-statements">View Case
+Statements</a></p>
+</div>
+<div class="section" id="cast">
+<h3>cast<a class="headerlink" href="#cast" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a new variable with its type and values casted. Not applicable
+on arrays or date variable; use <a class="reference external" href="#Date-Functions">Date Functions</a> to
+work with date variables.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2293e48_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2293e48_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cast&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The allowed output variable types are:</p>
+<ul class="simple">
+<li>numeric</li>
+<li>text</li>
+<li>categorical</li>
+</ul>
+<p>For categorical types it is necessary to indicate the categories as a
+type definition instead of a string name:</p>
+<p>To cast to categorical type, the second argument <code class="docutils literal"><span class="pre">value</span></code> should not be
+a name string (<code class="docutils literal"><span class="pre">numeric</span></code>, <code class="docutils literal"><span class="pre">text</span></code>) but a type definition indicating a
+<code class="docutils literal"><span class="pre">class</span></code> and <code class="docutils literal"><span class="pre">categories</span></code> as follow:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d299a198_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d299a198_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cast&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span> <span class="s2">&quot;numeric_value&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">},</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To change the type of a variable a client should POST to the
+<code class="docutils literal"><span class="pre">/variable/:id/cast/</span></code> endpoint. See <a class="reference external" href="#Convert-type">Convert type</a>
+for API examples.</p>
+</div>
+<div class="section" id="char-length">
+<h3>char_length<a class="headerlink" href="#char-length" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a numeric variable containing the text length of each value.
+Only applicable on text variables.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1da3dd8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1da3dd8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;char_length&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="copy-variable">
+<h3>copy_variable<a class="headerlink" href="#copy-variable" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a shallow copy of the indicated variable maintaining type and
+data.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2386eb8_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2386eb8_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;copy_variable&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/123/variables/abc/&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Changes on the data of the original variable will be reflected on this
+copy.</p>
+</div>
+<div class="section" id="combine-categories">
+<h3>combine_categories<a class="headerlink" href="#combine-categories" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a categorical variable with values combined following the
+specified combination rules. See <a class="reference external" href="#Combining-categories">Combining
+categories</a></p>
+</div>
+<div class="section" id="combine-responses">
+<h3>combine_responses<a class="headerlink" href="#combine-responses" title="Permalink to this headline"> 🔗</a></h3>
+<p>Given a list of categorical variables, return the selected value out of
+them. See <a class="reference external" href="#Combining-responses">Combining responses</a></p>
+</div>
+<div class="section" id="row">
+<h3>row<a class="headerlink" href="#row" title="Permalink to this headline"> 🔗</a></h3>
+<p>Returns a numeric variable with row 0 based indices. It takes no
+arguments.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d24ee240_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d24ee240_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;row&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="remap-missing">
+<h3>remap_missing<a class="headerlink" href="#remap-missing" title="Permalink to this headline"> 🔗</a></h3>
+<p>Given a text, numeric or datetime variable. return a new variable of the
+same type with its missing values mapped to new codes</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d1d8f278_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d1d8f278_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;remap_missing&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;varid&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Combined 1 and 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;mapped_codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Only 3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;mapped_codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;No Data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;mapped_codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The example above will return a copy of the variable with id <code class="docutils literal"><span class="pre">varid</span></code>
+with the new <code class="docutils literal"><span class="pre">missing_reasons</span></code> grouping and mapping following the
+original codes.</p>
+</div>
+</div>
+<div class="section" id="integrating-variables">
+<h2>Integrating variables<a class="headerlink" href="#integrating-variables" title="Permalink to this headline"> 🔗</a></h2>
+<p>“Integrating” a variable means to remove its derived properties and turn
+it into a regular <em>base</em> variable. Doing so will make this variable stop
+reflecting the expression if new data is added to its original parent
+variable and new rows will be filled with No Data <code class="docutils literal"><span class="pre">{&quot;?&quot;:</span> <span class="pre">-1}</span></code>.</p>
+<p>To integrate a variable it is necessary to PATCH to the variable entity
+with the <code class="docutils literal"><span class="pre">derived</span></code> attribute set to <code class="docutils literal"><span class="pre">false</span></code> as so:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2bfb048_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b27d2bfb048_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2bfb048_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">dataset</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span><span class="mi">123</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="2b27d2bfb048_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Will effectively integrate the variable and make its <code class="docutils literal"><span class="pre">derivation</span></code>
+attribute contain <code class="docutils literal"><span class="pre">null</span></code> from now in. Note that it is only possible to
+set the <code class="docutils literal"><span class="pre">derived</span></code> attribute to <code class="docutils literal"><span class="pre">false</span></code> and never to <code class="docutils literal"><span class="pre">true</span></code>.</p>
+<div class="section" id="creating-unlinked-derivations">
+<h3>Creating unlinked derivations<a class="headerlink" href="#creating-unlinked-derivations" title="Permalink to this headline"> 🔗</a></h3>
+<p>It is possible to create a material copy, or one off copy of a variable
+or an expression of it.</p>
+<p>To create such variables, proceed normally creating a derived variable
+with the derivation expression, but also include <code class="docutils literal"><span class="pre">derived:</span> <span class="pre">false</span></code>
+attribute to it. So the variable will be created with the values of the
+expression but will be unlinked from the original variable.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d221c470_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d221c470_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">dataset</span><span class="o">/</span><span class="n">abc</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

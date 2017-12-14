@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Geodata &#8212; API Docs 0.4.1 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/crunch.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Joins" href="endpoint-join.html" />
+    <link rel="prev" title="Filters" href="endpoint-filter.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../_static/logo.svg"></span>
+          API Docs</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+
+            
+              
+                
+  <li>
+    <a href="endpoint-filter.html" title="Previous Chapter: Filters"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Filters</span>
+    </a>
+  </li>
+  <li>
+    <a href="endpoint-join.html" title="Next Chapter: Joins"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Joins &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form><ul class="sidebar-toc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../feature-guide/index.html">Feature Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Endpoint Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="endpoint-public.html">Public</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-account.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-batch.html">Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-boxdata.html">Boxdata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-comparison.html">Comparisons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Geodata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#geodata-for-common-applications">Geodata for common applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-new-public-geodatum">Creating new public Geodatum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-your-public-geodata">Modifying your public Geodata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#associating-variables-with-geodata">Associating Variables with Geodata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-tabbook.html">Tab books</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-table.html">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-team.html">Teams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-user.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-variable.html">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-version.html">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-xlsx.html">Xlsx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../object-reference/object-reference.html">Object Reference</a></li>
+</ul>
+</ul><ul class="toc-footer">
+  <li><a href="http://crunch.io/">Sign Up</a></li>
+</ul>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="geodata">
+<h1>Geodata<a class="headerlink" href="#geodata" title="Permalink to this headline"> 🔗</a></h1>
+<p>Geodata allow you to associate a variable with features in a
+FeatureCollection of geojson or topojson.</p>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/geodata/</span></code></p>
+<div class="section" id="get">
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
+<p>Crunch maintains a few geojson/topojson resources and publishes them on
+CDN. GET the catalog <a class="reference external" href="https://app.crunch.io/api/geodata/">https://app.crunch.io/api/geodata/</a> for an index of
+available geographies, each of which then includes a location to
+download the actual geojson or topojson.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2abfa20_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2abfa20_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/geodata/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/geodata/7ae898e210b04a9a8992314452c6677b/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;use properties.name or properties.postal-code&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-08T16:33:44.601000+00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;US States GeoJSON Name + Postal Code&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s.crunch.io/geodata/leafletjs/us-states.geojson&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ae898e210b04a9a8992314452c6677b&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>The geodata catalog tuples contain the following keys:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="14%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>string</td>
+<td>Human-friendly string identifier</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>timestamp</td>
+<td>Time when the item was created</td>
+</tr>
+<tr class="row-even"><td>id</td>
+<td>string</td>
+<td>Global unique identifer for this deck</td>
+</tr>
+<tr class="row-odd"><td>location</td>
+<td>uri</td>
+<td>Location of crunch-curated geojson/topojson file.
+Users may need to inspect this actual file to
+learn about details of the FeatureCollection
+and individual Features.</td>
+</tr>
+<tr class="row-even"><td>description</td>
+<td>string</td>
+<td>Any additional information about the geodatum</td>
+</tr>
+<tr class="row-odd"><td>metadata</td>
+<td>object</td>
+<td>Information regarding the actual data provided by
+the location. For now, the properties in the
+geodata features are extracted for the purpose
+of matching geodata to variable categories.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="id1">
+<h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/geodata/{geodata_id}/</span></code></p>
+<p>Crunch maintains a few geojson/topojson resources and publishes them on
+CDN. Most of their properties, with the exception of <code class="docutils literal"><span class="pre">metadata</span></code>, are
+present on the catalog tuple, described above; metadata is an open field
+but may be populated at creation time by a Crunch utility that extracts
+and aggregates across features of geojson and topojson resources. For
+other formats, users may supply relevant metadata for the geodatum
+resource.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2b36470_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2b36470_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/geodata/7ae898e210b04a9a8992314452c6677b/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;use properties.name or properties.postal-code&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-07-08T16:33:44.601000+00:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;US States GeoJSON Name + Postal Code&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;https://s.crunch.io/geodata/leafletjs/us-states.geojson&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7ae898e210b04a9a8992314452c6677b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;postal-code&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;AL&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;AK&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;AZ&quot;</span><span class="p">,</span> <span class="s2">&quot;etc.&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;Alabama&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Arkansas&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Alaska&quot;</span><span class="p">,</span> <span class="s2">&quot;etcetera&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="delete">
+<h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
+<p><code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/geodata/{geodata_id}/</span></code></p>
+<p>Deletes the geodata entity. Returns 204.</p>
+</div>
+</div>
+<div class="section" id="geodata-for-common-applications">
+<h2>Geodata for common applications<a class="headerlink" href="#geodata-for-common-applications" title="Permalink to this headline"> 🔗</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://app.crunch.io/api/geodata/7ae898e210b04a9a8992314452c6677b/">https://app.crunch.io/api/geodata/7ae898e210b04a9a8992314452c6677b/</a>
+<strong>US States</strong> – Use <code class="docutils literal"><span class="pre">properties.name</span></code> or <code class="docutils literal"><span class="pre">properties.postal-code</span></code>
+as your <code class="docutils literal"><span class="pre">feature_key</span></code> depending on the variable (state name or
+abbreviation), or <code class="docutils literal"><span class="pre">id</span></code> is FIPS code.</li>
+<li><a class="reference external" href="https://app.crunch.io/api/geodata/8f9f5fed101042c4815d2dd1fd248cec/">https://app.crunch.io/api/geodata/8f9f5fed101042c4815d2dd1fd248cec/</a>
+<strong>World</strong> – <code class="docutils literal"><span class="pre">properties</span></code> include ISO3166 <code class="docutils literal"><span class="pre">name</span></code> as well as
+ISO3166-1 Alpha-3 <code class="docutils literal"><span class="pre">abbrev</span></code></li>
+<li><a class="reference external" href="https://app.crunch.io/api/geodata/d878d8471090417fa361536733e5f176/">https://app.crunch.io/api/geodata/d878d8471090417fa361536733e5f176/</a>
+<strong>UK Regions</strong> – <code class="docutils literal"><span class="pre">properties.EER13NM</span></code> matches a YouGov stylization
+of United Kingdom region names.</li>
+</ul>
+</div>
+<div class="section" id="creating-new-public-geodatum">
+<h2>Creating new public Geodatum<a class="headerlink" href="#creating-new-public-geodatum" title="Permalink to this headline"> 🔗</a></h2>
+<p>Users with permission to create datasets can also create geodata,
+although in practice Crunch curates and makes available many common
+geographies, listed in the geodata catalog. Note that geodata created
+outside of the Crunch domain (ie without a .crunch.io domain in the URL)
+will not be available in whaam due to browser constraints. If you would
+like to make your geodatum public and have Crunch serve it, please
+contact us!</p>
+<p>Adding a new geodatum is as easy as POSTing it to the geodata catalog,
+most easily via pycrunch. Crunch will attempt to download the geodata
+file and analyze the properties present on the features (generally
+polygons), which can then be associated with Crunch variables. The
+metadata extraction and summary can help you align variables and select
+the right property to associate with your Crunch geographic variable by
+category name.</p>
+<p>Include a <code class="docutils literal"><span class="pre">format</span></code> member in the payload (on post or patch) to trigger
+automatic metadata extraction. The server will fetch and aggregate
+properties from FeatureCollections in order to provide hints for
+eventual consumers of the Crunch geodatum. The automatic feature
+extractor supports GeoJSON and TopoJSON formats; you may register a
+Shapefile (shp) or other resource as a Crunch geodatum, but will have to
+supply <code class="docutils literal"><span class="pre">metadata</span></code> hints yourself and are advised to indicate its
+non-json format.</p>
+<p>The lists of properties returned in the metadata are correlated, such
+that if a feature in your geodata is missing a given property, it will
+return null.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2a17be0_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2a17be0_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycrunch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span> <span class="o">=</span> <span class="n">pycrunch</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;me@mycompany.com&quot;</span><span class="p">,</span> <span class="s2">&quot;yourpassword&quot;</span><span class="p">,</span> <span class="s2">&quot;https://app.crunch.io/api/&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">geodata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">geodata</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">as_entity</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;test_geojson&#39;</span><span class="p">,</span>
+<span class="go">                                                  &#39;location&#39;: &#39;https://s.crunch.io/geodata/leafletjs/us-states.geojson&#39;,</span>
+<span class="go">                                                  &#39;description&#39;: &#39;&#39;,</span>
+<span class="go">                                                  &#39;format&#39;: &#39;geojson&#39;}))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">geodata</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">metadata</span>
+<span class="go">pycrunch.elements.JSONObject(**{</span>
+<span class="go">    &quot;postal-code&quot;: [</span>
+<span class="go">        &quot;AL&quot;,</span>
+<span class="go">        &quot;AK&quot;,</span>
+<span class="go">        &quot;AZ&quot;,</span>
+<span class="go">        &quot;AK&quot;,</span>
+<span class="go">        &quot;CA&quot;, ...],</span>
+<span class="go">    &quot;name&quot;: [</span>
+<span class="go">        &quot;Alabama&quot;,</span>
+<span class="go">        &quot;Alaska&quot;,</span>
+<span class="go">        &quot;Arizona&quot;,</span>
+<span class="go">        &quot;Arkansas&quot;,</span>
+<span class="go">        &quot;California&quot;, ...]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="modifying-your-public-geodata">
+<h2>Modifying your public Geodata<a class="headerlink" href="#modifying-your-public-geodata" title="Permalink to this headline"> 🔗</a></h2>
+<p>You can modify any Geodatum that you own. Note that you can transfer
+ownership to another user if you change the owner_id of your geodatum.
+You may also change the metadata of your geodatum, but keep in mind that
+if you do this you will override any automated metadata extraction that
+Crunch provides. If you modify the location of the geodatum and do not
+provide a metadata parameter in the patch, Crunch will automatically
+extract metadata as long as the location is publicly accessible.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#2b27d2af8eb8_Python">Python</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="2b27d2af8eb8_Python">
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycrunch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span> <span class="o">=</span> <span class="n">pycrunch</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;me@mycompany.com&quot;</span><span class="p">,</span> <span class="s2">&quot;yourpassword&quot;</span><span class="p">,</span> <span class="s2">&quot;https://app.crunch.io/api/&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">geodata</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="s1">&#39;&lt;geodatum_url&gt;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">entity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span><span class="o">.</span><span class="n">patch</span><span class="p">({</span><span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;US States&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entity</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">description</span>
+<span class="go">US States</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="associating-variables-with-geodata">
+<h2>Associating Variables with Geodata<a class="headerlink" href="#associating-variables-with-geodata" title="Permalink to this headline"> 🔗</a></h2>
+<p>To make maps with variables, update a variable’s <code class="docutils literal"><span class="pre">view</span></code> (or include
+with metadata at creation) as follows, where <code class="docutils literal"><span class="pre">feature_key</span></code> is key
+defined for each Feature in the geojson/topojson that matches the
+relevant field on the variable at hand (generally category <code class="docutils literal"><span class="pre">name</span></code>s).</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Crunch.io.<br/>
+      Last updated on Dec 14, 2017.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
