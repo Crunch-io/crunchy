@@ -224,13 +224,6 @@ To edit a deck, PATCH it with a shoji:entity. The server will return a
               "creation_time": "1987-10-15T11:45:00",
               "description": "Explanation about the deck",
               "team": "https://app.crunch.io/api/teams/58acf7/"
-          },
-          "catalogs": {
-              "slides": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/slides/"
-          },
-          "urls": {
-              "xlsx_export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export_xlsx/",
-              "json_export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export_json/"
           }
       }
 
@@ -249,102 +242,6 @@ DELETE
 
 To delete a deck, DELETE the deck's entity URL. On success, the server
 returns a 204 response.
-
-
-Deck Exports
-~~~~~~~~~~~~~~~
-
-xlsx
-^^^^^^
-
-The xlsx export is just as described, it returns an MS Excel document representing the deck of slides,
-where each sheet is a separate slide.  Note that at this time, only the table data is exported, so
-any graphed analysis created in whaam will only be represented by the data that results from the
-query results generated in the analysis.
-
-json
-^^^^^^
-
-This provides a json output for the analysis for each slide in the deck.
-Note that you _must_ provide an "Accepts: application/json" header for this endpoint to work properly.
-
-.. language_specific::
-   --JSON
-   .. code:: json
-
-      {u'dataset': {u'name': u'New dataset', u'notes': u''},
-          u'slides': [{u'cube': {u'query': {u'dimensions': [{u'args': [{u'variable': u'000001'}],
-                                                       u'function': u'bin'},
-                                                      {u'variable': u'000000'}],
-                                      u'measures': {u'count': {u'args': [],
-                                                               u'function': u'cube_count'}},
-                                      u'weight': None},
-                           u'query_environment': {u'filter': []},
-                           u'result': {u'counts': [1, 3, 0, 0, 1, 0, 1, 1],
-                                       u'dimensions': [{u'derived': True,
-                                                        u'references': {u'alias': u'Age',
-                                                                        u'description': None,
-                                                                        u'name': u'Age'},
-                                                        u'type': {u'class': u'enum',
-                                                                  u'elements': [{u'id': 1,
-                                                                                 u'missing': False,
-                                                                                 u'value': [10.0,
-                                                                                            20.0]},
-                                                                                {u'id': 2,
-                                                                                 u'missing': False,
-                                                                                 u'value': [20.0,
-                                                                                            30.0]},
-                                                                                {u'id': 3,
-                                                                                 u'missing': False,
-                                                                                 u'value': [30.0,
-                                                                                            40.0]},
-                                                                                {u'id': 4,
-                                                                                 u'missing': False,
-                                                                                 u'value': [40.0,
-                                                                                            50.0]}],
-                                                                  u'subtype': {u'class': u'numeric',
-                                                                               u'missing_reasons': {u'No Data': -1},
-                                                                               u'missing_rules': {}}}},
-                                                       {u'derived': False,
-                                                        u'references': {u'alias': u'Gender',
-                                                                        u'description': None,
-                                                                        u'name': u'Gender'},
-                                                        u'type': {u'categories': [{u'id': 2,
-                                                                                   u'missing': False,
-                                                                                   u'name': u'F',
-                                                                                   u'numeric_value': None},
-                                                                                  {u'id': 1,
-                                                                                   u'missing': False,
-                                                                                   u'name': u'M',
-                                                                                   u'numeric_value': None}],
-                                                                  u'class': u'categorical',
-                                                                  u'ordinal': False}}],
-                                       u'element': u'crunch:cube',
-                                       u'measures': {u'count': {u'data': [1,
-                                                                          3,
-                                                                          0,
-                                                                          0,
-                                                                          1,
-                                                                          0,
-                                                                          1,
-                                                                          1],
-                                                                u'metadata': {u'derived': True,
-                                                                              u'references': {},
-                                                                              u'type': {u'class': u'numeric',
-                                                                                        u'integer': True,
-                                                                                        u'missing_reasons': {u'No Data': -1},
-                                                                                        u'missing_rules': {}}},
-                                                                u'n_missing': 0}},
-                                       u'missing': 0,
-                                       u'n': 7}},
-                 u'meta': {u'display_settings': {u'decimalPlaces': {u'value': 2}},
-                           u'filters': [],
-                           u'name': u'Slide #1 ',
-                           u'subtitle': u'',
-                           u'table_title': u'',
-                           u'title': u'Slide #1',
-                           u'weight': None}}]}
-
 
 Order
 ~~~~~
