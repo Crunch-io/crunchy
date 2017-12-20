@@ -105,6 +105,14 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#root">Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#folder-payload">Folder payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#creating-folders">Creating folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#moving-folders-and-variables">Moving folders and variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#deleting-folders">Deleting folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#trash">Trash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
@@ -198,10 +206,10 @@ is a member of. Here you can create new projects via POST</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ba2d518_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6400f16d8_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ba2d518_HTTP">
+<div class="tab-pane active section" id="2ac6400f16d8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 
 <span class="p">{</span>
@@ -279,10 +287,10 @@ authenticated user its initial member and editor.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ba2d390_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63f80aa90_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ba2d390_HTTP">
+<div class="tab-pane active section" id="2ac63f80aa90_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -292,10 +300,10 @@ authenticated user its initial member and editor.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971bae98d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63f80a2b0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971bae98d0_JSON">
+<div class="tab-pane active section" id="2ac63f80a2b0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My new project&quot;</span><span class="p">,</span>
@@ -325,16 +333,16 @@ for the client to pick.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b0841d0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b0841d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63fb7b9b0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac63fb7b9b0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b0841d0_HTTP">
+<div class="tab-pane active section" id="2ac63fb7b9b0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">icons</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b0841d0_JSON">
+<div class="tab-pane section" id="2ac63fb7b9b0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/icons/&quot;</span><span class="p">,</span>
@@ -358,16 +366,16 @@ for the client to pick.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ac89f98_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971ac89f98_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac640651be0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac640651be0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ac89f98_HTTP">
+<div class="tab-pane active section" id="2ac640651be0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971ac89f98_JSON">
+<div class="tab-pane section" id="2ac640651be0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/&quot;</span><span class="p">,</span>
@@ -458,10 +466,10 @@ delete a project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b2865f8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac64077c9e8_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b2865f8_HTTP">
+<div class="tab-pane active section" id="2ac64077c9e8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -482,16 +490,16 @@ where the current user belongs to.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b9307b8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b9307b8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63fc71cf8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac63fc71cf8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b9307b8_HTTP">
+<div class="tab-pane active section" id="2ac63fc71cf8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b9307b8_JSON">
+<div class="tab-pane section" id="2ac63fc71cf8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
@@ -516,16 +524,16 @@ response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971bb20780_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971bb20780_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6407406a0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac6407406a0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971bb20780_HTTP">
+<div class="tab-pane active section" id="2ac6407406a0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971bb20780_JSON">
+<div class="tab-pane section" id="2ac6407406a0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
@@ -568,16 +576,16 @@ their project permissions in the following format:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ba0fcc0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971ba0fcc0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac64078eac8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac64078eac8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ba0fcc0_HTTP">
+<div class="tab-pane active section" id="2ac64078eac8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971ba0fcc0_JSON">
+<div class="tab-pane section" id="2ac64078eac8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
@@ -644,16 +652,16 @@ that the email does not exist, the server will return a 400 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ba7fd68_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971ba7fd68_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6401a2160_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac6401a2160_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ba7fd68_HTTP">
+<div class="tab-pane active section" id="2ac6401a2160_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971ba7fd68_JSON">
+<div class="tab-pane section" id="2ac6401a2160_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
@@ -717,16 +725,16 @@ the project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971bb24278_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971bb24278_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6406f7748_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac6406f7748_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971bb24278_HTTP">
+<div class="tab-pane active section" id="2ac6406f7748_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">cc9161</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971bb24278_JSON">
+<div class="tab-pane section" id="2ac6406f7748_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;owner&quot;</span><span class="p">:</span><span class="s2">&quot;https://app.crunch.io/api/projects/abcd/&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -741,16 +749,16 @@ catalogs.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b9ddeb8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b9ddeb8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6406d0be0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac6406d0be0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b9ddeb8_HTTP">
+<div class="tab-pane active section" id="2ac6406d0be0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b9ddeb8_JSON">
+<div class="tab-pane section" id="2ac6406d0be0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/&quot;</span><span class="p">,</span>
@@ -827,16 +835,16 @@ project yet.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b5b2da0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b5b2da0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac640399320_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac640399320_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b5b2da0_HTTP">
+<div class="tab-pane active section" id="2ac640399320_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b5b2da0_JSON">
+<div class="tab-pane section" id="2ac640399320_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/icon/&quot;</span><span class="p">,</span>
@@ -863,10 +871,10 @@ stored and made available under the project’s url. The API will return a
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b548b38_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6403b11d0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b548b38_HTTP">
+<div class="tab-pane active section" id="2ac6403b11d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;newicon.jpg&quot;</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
@@ -886,17 +894,17 @@ image will be copied to an API local location.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b585eb8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b585eb8_JSON">JSON</a></li>
-<li><a data-toggle="tab" href="#2b971b585eb8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac6406f0588_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac6406f0588_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#2ac6406f0588_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b585eb8_HTTP">
+<div class="tab-pane active section" id="2ac6406f0588_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b585eb8_JSON">
+<div class="tab-pane section" id="2ac6406f0588_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/icon/&quot;</span><span class="p">,</span>
@@ -905,7 +913,7 @@ image will be copied to an API local location.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b585eb8_HTTP">
+<div class="tab-pane section" id="2ac6406f0588_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
 <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">223</span><span class="n">fd4</span><span class="o">/</span>
 </pre></div>
@@ -932,16 +940,16 @@ belong to the project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971b138828_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2b971b138828_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63fe8aa20_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2ac63fe8aa20_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971b138828_HTTP">
+<div class="tab-pane active section" id="2ac63fe8aa20_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2b971b138828_JSON">
+<div class="tab-pane section" id="2ac63fe8aa20_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/order/&quot;</span><span class="p">,</span>
@@ -964,10 +972,10 @@ datasets. Only the project’s editors can make these changes.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b971ad7f4a8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2ac63fedbe80_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b971ad7f4a8_HTTP">
+<div class="tab-pane active section" id="2ac63fedbe80_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -990,7 +998,7 @@ datasets. Only the project’s editors can make these changes.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Dec 19, 2017.<br/>
+      Last updated on Dec 20, 2017.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.<br/>
     </p>
   </div>
