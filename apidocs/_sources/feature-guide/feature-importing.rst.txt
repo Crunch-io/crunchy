@@ -121,7 +121,7 @@ entity created in step 1.
 
 The POST to the batches catalog will return 202 Continue status, and the
 response body contains a progress URL. Poll that URL to monitor the
-completion of the batch addition. See "`Progress <#progress>`__" for
+completion of the batch addition. See `Progress <../endpoint-reference/endpoint-progress.html>`__ for
 more. The 202 response will also contain a Location header with the URL
 of the newly created batch.
 

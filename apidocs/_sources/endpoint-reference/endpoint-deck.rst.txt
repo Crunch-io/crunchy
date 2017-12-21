@@ -257,12 +257,12 @@ Deck Exports
 xlsx
 ^^^^^^
 
-A successful POST request to `/datasets/{dataset_id}/decks/{deck_id}/export/` will generate a download
+A successful POST request to ``/datasets/{dataset_id}/decks/{deck_id}/export/`` will generate a download
 location to which the exporter will write this file when it is done computing
 (it may take some time for large datasets). The server will return a 202 response indicating that the export job started with
 a Location header indicating where the final exported file will be available. The response's body will contain the URL for the progress URL where to query
 the state of the export job. Clients should note the download URL,
-monitor progress, and when complete, GET the download location. See [Progress](#progress) for details.
+monitor progress, and when complete, GET the download location. See `Progress <endpoint-progress.html>`__ for details.
 If no header is provided, this endpoint will produce an xlsx file.
 
 Requesting the same job, if still in progress, will return the same 202 response
@@ -272,14 +272,14 @@ will 302 redirect to the destination for download.
 If there have been changes on the dataset attributes, a new tab book will be
 generated regardless of the status of any other pending exports.
 
-Note: You can provide an "Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" header to
+Note: You can provide an ``Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`` header to
 create an downloadable excel document.  If no Accept header is provided, the default download will be xlsx.
 
 json
 ^^^^^^
 
 This provides a json output for the analysis for each slide in the deck.
-Note that you _must_ provide an "Accept: application/json" header for this endpoint to work properly.
+Note that you _must_ provide an ``Accept: application/json`` header for this endpoint to work properly.
 
 .. language_specific::
    --JSON

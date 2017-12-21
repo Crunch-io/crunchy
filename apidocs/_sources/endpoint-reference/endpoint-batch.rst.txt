@@ -42,7 +42,7 @@ fast, or 202, if the task is large enough to require processing outside
 of the request cycle. In both cases, the newly created batch entity's
 URL is returned in the Location header. The 202 response contains a body
 with a Progress resource in it; poll that URL for updates on the
-completion of the append. See `Progress <#progress>`__.
+completion of the append. See `Progress <endpoint-progress.html>`__.
 
 Batches are created in ``analyzing`` state and will be advanced through
 ``importing``, ``imported``, and ``appended`` states if there are no
@@ -356,7 +356,7 @@ parameter:
 
 The response will be a 202 with a Progress resource in it; poll that URL
 for updates on the completion and follow ``Location`` once it completed.
-See `Progress <#progress>`__.
+See `Progress <endpoint-progress.html>`__.
 
 On completion the align response will be a ``shoji:view`` containing the
 ``where`` expression used for each dataset:

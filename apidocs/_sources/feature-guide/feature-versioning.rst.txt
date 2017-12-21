@@ -375,8 +375,7 @@ discover use cases.
 Merging actions may take a few seconds, in which case the POST to
 actions/ will return 204 when finished. Merging many or large actions,
 however, may take longer, in which case the POST will return 202 with a
-Location header containing the URL of a `progress
-resource <#progress>`__.
+Location header containing the URL of a `Progress <../endpoint-reference/endpoint-progress.html>`__ resource.
 
 Filtered Merges
 ^^^^^^^^^^^^^^^
