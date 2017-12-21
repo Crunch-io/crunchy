@@ -279,7 +279,7 @@ json
 ^^^^^^
 
 This provides a json output for the analysis for each slide in the deck.
-Note that you _must_ provide an "Accepts: application/json" header for this endpoint to work properly.
+Note that you _must_ provide an "Accept: application/json" header for this endpoint to work properly.
 
 .. language_specific::
    --JSON
