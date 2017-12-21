@@ -257,10 +257,23 @@ Deck Exports
 xlsx
 ^^^^^^
 
-The xlsx export is just as described, it returns an MS Excel document representing the deck of slides,
-where each sheet is a separate slide.  Note that at this time, only the table data is exported, so
-any graphed analysis created in whaam will only be represented by the data that results from the
-query results generated in the analysis.
+A successful POST request to `/datasets/{dataset_id}/decks/{deck_id}/export/` will generate a download
+location to which the exporter will write this file when it is done computing
+(it may take some time for large datasets). The server will return a 202 response indicating that the export job started with
+a Location header indicating where the final exported file will be available. The response's body will contain the URL for the progress URL where to query
+the state of the export job. Clients should note the download URL,
+monitor progress, and when complete, GET the download location. See [Progress](#progress) for details.
+If no header is provided, this endpoint will produce an xlsx file.
+
+Requesting the same job, if still in progress, will return the same 202 response
+indicating the original progress to check. If the export is finished, the server
+will 302 redirect to the destination for download.
+
+If there have been changes on the dataset attributes, a new tab book will be
+generated regardless of the status of any other pending exports.
+
+Note: You must provide an "Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" header to
+create an downloadable excel document.
 
 json
 ^^^^^^
@@ -345,6 +358,8 @@ Note that you _must_ provide an "Accepts: application/json" header for this endp
                            u'title': u'Slide #1',
                            u'weight': None}}]}
 
+
+Note that the export_xlsx endpoint is deprecated, no longer supported in favor of /export and will be removed shortly.
 
 Order
 ~~~~~
