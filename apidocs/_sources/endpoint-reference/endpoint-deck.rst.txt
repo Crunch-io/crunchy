@@ -230,7 +230,7 @@ To edit a deck, PATCH it with a shoji:entity. The server will return a
           },
           "urls": {
               "xlsx_export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export_xlsx/",
-              "json_export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export_json/"
+              "export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export/"
           }
       }
 
@@ -272,8 +272,8 @@ will 302 redirect to the destination for download.
 If there have been changes on the dataset attributes, a new tab book will be
 generated regardless of the status of any other pending exports.
 
-Note: You must provide an "Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" header to
-create an downloadable excel document.
+Note: You can provide an "Accept: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" header to
+create an downloadable excel document.  If no Accept header is provided, the default download will be xlsx.
 
 json
 ^^^^^^
@@ -285,79 +285,148 @@ Note that you _must_ provide an "Accepts: application/json" header for this endp
    --JSON
    .. code:: json
 
-      {u'dataset': {u'name': u'New dataset', u'notes': u''},
-          u'slides': [{u'cube': {u'query': {u'dimensions': [{u'args': [{u'variable': u'000001'}],
-                                                       u'function': u'bin'},
-                                                      {u'variable': u'000000'}],
-                                      u'measures': {u'count': {u'args': [],
-                                                               u'function': u'cube_count'}},
-                                      u'weight': None},
-                           u'query_environment': {u'filter': []},
-                           u'result': {u'counts': [1, 3, 0, 0, 1, 0, 1, 1],
-                                       u'dimensions': [{u'derived': True,
-                                                        u'references': {u'alias': u'Age',
-                                                                        u'description': None,
-                                                                        u'name': u'Age'},
-                                                        u'type': {u'class': u'enum',
-                                                                  u'elements': [{u'id': 1,
-                                                                                 u'missing': False,
-                                                                                 u'value': [10.0,
-                                                                                            20.0]},
-                                                                                {u'id': 2,
-                                                                                 u'missing': False,
-                                                                                 u'value': [20.0,
-                                                                                            30.0]},
-                                                                                {u'id': 3,
-                                                                                 u'missing': False,
-                                                                                 u'value': [30.0,
-                                                                                            40.0]},
-                                                                                {u'id': 4,
-                                                                                 u'missing': False,
-                                                                                 u'value': [40.0,
-                                                                                            50.0]}],
-                                                                  u'subtype': {u'class': u'numeric',
-                                                                               u'missing_reasons': {u'No Data': -1},
-                                                                               u'missing_rules': {}}}},
-                                                       {u'derived': False,
-                                                        u'references': {u'alias': u'Gender',
-                                                                        u'description': None,
-                                                                        u'name': u'Gender'},
-                                                        u'type': {u'categories': [{u'id': 2,
-                                                                                   u'missing': False,
-                                                                                   u'name': u'F',
-                                                                                   u'numeric_value': None},
-                                                                                  {u'id': 1,
-                                                                                   u'missing': False,
-                                                                                   u'name': u'M',
-                                                                                   u'numeric_value': None}],
-                                                                  u'class': u'categorical',
-                                                                  u'ordinal': False}}],
-                                       u'element': u'crunch:cube',
-                                       u'measures': {u'count': {u'data': [1,
-                                                                          3,
-                                                                          0,
-                                                                          0,
-                                                                          1,
-                                                                          0,
-                                                                          1,
-                                                                          1],
-                                                                u'metadata': {u'derived': True,
-                                                                              u'references': {},
-                                                                              u'type': {u'class': u'numeric',
-                                                                                        u'integer': True,
-                                                                                        u'missing_reasons': {u'No Data': -1},
-                                                                                        u'missing_rules': {}}},
-                                                                u'n_missing': 0}},
-                                       u'missing': 0,
-                                       u'n': 7}},
-                 u'meta': {u'display_settings': {u'decimalPlaces': {u'value': 2}},
-                           u'filters': [],
-                           u'name': u'Slide #1 ',
-                           u'subtitle': u'',
-                           u'table_title': u'',
-                           u'title': u'Slide #1',
-                           u'weight': None}}]}
-
+      {
+        "slides": [
+          {
+            "cube": {
+              "query": {
+                "measures": {
+                  "count": {
+                    "function": "cube_count",
+                    "args": []
+                  }
+                },
+                "dimensions": [
+                  {
+                    "function": "bin",
+                    "args": [
+                      {
+                        "variable": "000001"
+                      }
+                    ]
+                  },
+                  {
+                    "variable": "000000"
+                  }
+                ],
+                "weight": null
+              },
+              "query_environment": {
+                "filter": []
+              },
+              "result": {
+                "dimensions": [
+                  {
+                    "references": {
+                      "alias": "Age",
+                      "description": null,
+                      "name": "Age"
+                    },
+                    "derived": true,
+                    "type": {
+                      "subtype": {
+                        "missing_rules": {},
+                        "class": "numeric",
+                        "missing_reasons": {
+                          "No Data": -1
+                        }
+                      },
+                      "elements": [
+                        {
+                          "id": 1,
+                          "value": [10.0, 20.0],
+                          "missing": false
+                        },
+                        {
+                          "id": 2,
+                          "value": [20.0, 30.0],
+                          "missing": false
+                        },
+                        {
+                          "id": 3,
+                          "value": [30.0, 40.0],
+                          "missing": false
+                        },
+                        {
+                          "id": 4,
+                          "value": [40.0, 50.0],
+                          "missing": false
+                        }
+                      ],
+                      "class": "enum"
+                    }
+                  },
+                  {
+                    "references": {
+                      "alias": "Gender",
+                      "description": null,
+                      "name": "Gender"
+                    },
+                    "derived": false,
+                    "type": {
+                      "ordinal": false,
+                      "class": "categorical",
+                      "categories": [
+                        {
+                          "numeric_value": null,
+                          "id": 2,
+                          "name": "F",
+                          "missing": false
+                        },
+                        {
+                          "numeric_value": null,
+                          "id": 1,
+                          "name": "M",
+                          "missing": false
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "missing": 0,
+                "measures": {
+                  "count": {
+                    "data": [1, 3, 0, 0, 1, 0, 1, 1],
+                    "n_missing": 0,
+                    "metadata": {
+                      "references": {},
+                      "derived": true,
+                      "type": {
+                        "integer": true,
+                        "missing_rules": {},
+                        "class": "numeric",
+                        "missing_reasons": {
+                          "No Data": -1
+                        }
+                      }
+                    }
+                  }
+                },
+                "n": 7,
+                "counts": [1, 3, 0, 0, 1, 0, 1, 1],
+                "element": "crunch:cube"
+              }
+            },
+            "meta": {
+              "table_title": "",
+              "name": "Slide #1 ",
+              "weight": null,
+              "title": "Slide #1",
+              "filters": [],
+              "subtitle": "",
+              "display_settings": {
+                "decimalPlaces": {
+                  "value": 2
+                }
+              }
+            }
+          }
+        ],
+        "dataset": {
+          "notes": "",
+          "name": "New dataset"
+        }
+      }
 
 Note that the export_xlsx endpoint is deprecated, no longer supported in favor of /export and will be removed shortly.
 
