@@ -13,6 +13,7 @@ Endpoint Reference
    endpoint-dataset
    endpoint-deck
    endpoint-filter
+   endpoint-folders
    endpoint-geodata
    endpoint-join
    endpoint-multitable
