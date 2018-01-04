@@ -131,6 +131,14 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#root">Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#folder-payload">Folder payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#creating-folders">Creating folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#moving-folders-and-variables">Moving folders and variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#deleting-folders">Deleting folders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#trash">Trash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
@@ -182,16 +190,16 @@ Account teams * Account datasets</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae23f9cc0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae23f9cc0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809efaac88_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809efaac88_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae23f9cc0_HTTP">
+<div class="tab-pane active section" id="2b809efaac88_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae23f9cc0_JSON">
+<div class="tab-pane section" id="2b809efaac88_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -223,10 +231,10 @@ Account teams * Account datasets</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae23784a8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809ef254a8_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae23784a8_HTTP">
+<div class="tab-pane active section" id="2b809ef254a8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -237,10 +245,10 @@ subdomains an account has.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae237f7b8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809ef2e748_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae237f7b8_JSON">
+<div class="tab-pane active section" id="2b809ef2e748_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -263,10 +271,10 @@ return a 400 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae2403b00_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809efb2b70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae2403b00_JSON">
+<div class="tab-pane active section" id="2b809efb2b70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -295,10 +303,10 @@ image files to the app (see below).</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae23c9f98_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f00d048_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae23c9f98_HTTP">
+<div class="tab-pane active section" id="2b809f00d048_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -309,10 +317,10 @@ configured application.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae245f1d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f00d240_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae245f1d0_JSON">
+<div class="tab-pane active section" id="2b809f00d240_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span><span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -401,10 +409,10 @@ configurations</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae248e4e0_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f03f550_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae248e4e0_HTTP">
+<div class="tab-pane active section" id="2b809f03f550_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span><span class="n">logo</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -417,10 +425,10 @@ admins are authorized to change this resource.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae248e860_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f03f8d0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae248e860_HTTP">
+<div class="tab-pane active section" id="2b809f03f8d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">applications</span><span class="o">/</span><span class="n">app_id</span><span class="o">/</span><span class="n">logo</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">multipart</span><span class="o">/</span><span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">boundary</span><span class="o">=----------</span><span class="mi">123456789</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">500326</span>
@@ -456,16 +464,16 @@ account member can GET, but only account managers can POST/PATCH on it.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae24a0208_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae24a0208_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f050278_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f050278_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae24a0208_HTTP">
+<div class="tab-pane active section" id="2b809f050278_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae24a0208_JSON">
+<div class="tab-pane section" id="2b809f050278_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -527,16 +535,16 @@ response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae24e3c50_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae24e3c50_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f093cc0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f093cc0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae24e3c50_HTTP">
+<div class="tab-pane active section" id="2b809f093cc0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae24e3c50_JSON">
+<div class="tab-pane section" id="2b809f093cc0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -563,10 +571,10 @@ by including those teams or projects’ urls in the payload, for example:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae250c2b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f0ba320_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae250c2b0_JSON">
+<div class="tab-pane active section" id="2b809f0ba320_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -597,16 +605,16 @@ delete users from the account by sending <code class="docutils literal"><span cl
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae2525470_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae2525470_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f0d34e0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f0d34e0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae2525470_HTTP">
+<div class="tab-pane active section" id="2b809f0d34e0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae2525470_JSON">
+<div class="tab-pane section" id="2b809f0d34e0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -635,16 +643,16 @@ datasets.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae25339b0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae25339b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f0e1a20_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f0e1a20_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae25339b0_HTTP">
+<div class="tab-pane active section" id="2b809f0e1a20_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae25339b0_JSON">
+<div class="tab-pane section" id="2b809f0e1a20_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -703,16 +711,16 @@ edit access on all projects.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae258e048_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae258e048_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f13b0b8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f13b0b8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae258e048_HTTP">
+<div class="tab-pane active section" id="2b809f13b0b8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae258e048_JSON">
+<div class="tab-pane section" id="2b809f13b0b8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -741,16 +749,16 @@ on all teams.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae259bb38_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#2abae259bb38_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f149ba8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#2b809f149ba8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae259bb38_HTTP">
+<div class="tab-pane active section" id="2b809f149ba8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">teams</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="2abae259bb38_JSON">
+<div class="tab-pane section" id="2b809f149ba8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -780,10 +788,10 @@ list of all collaborators for all datasets of the account.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae25ba6a0_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f169710_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae25ba6a0_HTTP">
+<div class="tab-pane active section" id="2b809f169710_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">collaborators</span><span class="o">/</span>
 </pre></div>
 </div>
@@ -796,10 +804,10 @@ and has the name and email attribute.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae25ba8d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f169940_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae25ba8d0_JSON">
+<div class="tab-pane active section" id="2b809f169940_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -824,10 +832,10 @@ and has the name and email attribute.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2abae25d81d0_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#2b809f188240_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2abae25d81d0_HTTP">
+<div class="tab-pane active section" id="2b809f188240_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">account</span><span class="o">/</span><span class="n">collaborators</span><span class="o">/</span><span class="n">order</span><span class="o">/</span>
 </pre></div>
 </div>
