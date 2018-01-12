@@ -214,13 +214,13 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#154e11e40ef0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1471fa587c88_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="154e11e40ef0_JSON">
+<div class="tab-pane active section" id="1471fa587c88_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Folder name&quot;</span>
@@ -240,14 +240,14 @@ subfolders on the given folder.</td>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subfolder name&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/variables/456/&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;subvariables_catalog&quot;</span><span class="p">:</span> <span class="s2">&quot;aad4ad/subvariables/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subvariables_catalog&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/456/subvariables/&quot;</span><span class="p">,</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;An Array&quot;</span><span class="p">,</span>
             <span class="s2">&quot;derived&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
             <span class="s2">&quot;discarded&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
             <span class="s2">&quot;alias&quot;</span><span class="p">:</span> <span class="s2">&quot;arrayvar&quot;</span><span class="p">,</span>
             <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;439dcf/&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;1c99ea/&quot;</span>
+                <span class="s2">&quot;../../variables/456/subvariables/439dcf/&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;../../variables/456/subvariables/1c99ea/&quot;</span>
             <span class="p">],</span>
             <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;All variable types can have notes&quot;</span><span class="p">,</span>
             <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
@@ -256,9 +256,9 @@ subfolders on the given folder.</td>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/variables/456/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/variables/123/&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/folders/qwe/&quot;</span>
+        <span class="s2">&quot;../variables/456/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;../variables/123/&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;../folders/qwe/&quot;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
@@ -283,10 +283,10 @@ should be moved into the new folder after the fact via PATCH.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#154e1202f9b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1471fa935b70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="154e1202f9b0_JSON">
+<div class="tab-pane active section" id="1471fa935b70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -308,6 +308,9 @@ destination folder.</p>
 location.</p>
 <p>If the tuple of a folder or variable included on the payload is <cite>null</cite>, then
 that element will be promoted to the root folder.</p>
+<p>Inside a folder, subfolders and variables must be unique by name. Trying to
+move a folder or a variable that conflicts with the existing children of it,
+will return a 409 response from the server.</p>
 </div>
 <div class="section" id="reordering-a-folder-s-contents">
 <h1>Reordering a folder’s contents<a class="headerlink" href="#reordering-a-folder-s-contents" title="Permalink to this headline"> 🔗</a></h1>
@@ -347,7 +350,7 @@ deleted.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jan 11, 2018.<br/>
+      Last updated on Jan 12, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>

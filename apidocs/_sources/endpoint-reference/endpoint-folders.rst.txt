@@ -68,7 +68,7 @@ JSON example:
 
       {
           "element": "shoji:catalog",
-          "self": "https://app.crunch.io/api/datasets/5ee0a0/variables/",
+          "self": "https://app.crunch.io/api/datasets/5ee0a0/folders/",
           "size": 10000,
           "body": {
               "name": "Folder name"
@@ -88,14 +88,14 @@ JSON example:
                   "name": "Subfolder name"
               },
               "https://app.crunch.io/datasets/abcdef/variables/456/": {
-                  "subvariables_catalog": "aad4ad/subvariables/",
+                  "subvariables_catalog": "../variables/456/subvariables/",
                   "name": "An Array",
                   "derived": true,
                   "discarded": false,
                   "alias": "arrayvar",
                   "subvariables": [
-                      "439dcf/",
-                      "1c99ea/"
+                      "../../variables/456/subvariables/439dcf/",
+                      "../../variables/456/subvariables/1c99ea/"
                   ],
                   "notes": "All variable types can have notes",
                   "type": "categorical_array",
@@ -104,9 +104,9 @@ JSON example:
               }
           },
           "graph": [
-              "https://app.crunch.io/datasets/abcdef/variables/456/",
-              "https://app.crunch.io/datasets/abcdef/variables/123/",
-              "https://app.crunch.io/datasets/abcdef/folders/qwe/"
+              "../variables/456/",
+              "../variables/123/",
+              "../folders/qwe/"
           ]
       }
 
@@ -154,6 +154,9 @@ location.
 If the tuple of a folder or variable included on the payload is `null`, then
 that element will be promoted to the root folder.
 
+Inside a folder, subfolders and variables must be unique by name. Trying to
+move a folder or a variable that conflicts with the existing children of it,
+will return a 409 response from the server.
 
 Reordering a folder's contents
 ------------------------------
