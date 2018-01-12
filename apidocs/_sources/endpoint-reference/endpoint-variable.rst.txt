@@ -297,6 +297,29 @@ Variables <#deriving-variables>`__.
 A 201 indicates success and includes the URL of the newly-created
 variable in the Location header.
 
+Variables attributes catalog
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``/datasets/{id}/variables/fields/?fields{&ids}``
+
+``GET`` returns a Shoji catalog that will contain only the fields requested
+in the ``fields`` parameter. The output will match the regular variables
+catalog, but this can be used for performance and smaller payloads.
+
+Additionally, it supports an ``ids`` attribute that can be used to send a list
+of variable IDs to filter the payload by, allowing to query only certain
+attributes for the desired variables.
+
+The allowed fields to request are:
+
+ * alias
+ * name
+ * description
+ * notes
+ * discarded
+ * type
+
+
 Private variables catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
