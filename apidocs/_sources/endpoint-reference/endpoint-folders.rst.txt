@@ -85,6 +85,7 @@ JSON example:
                   "description": "In what year were you born?"
               },
               "https://app.crunch.io/datasets/abcdef/folders/qwe/": {
+                  "type": "folder",
                   "name": "Subfolder name"
               },
               "https://app.crunch.io/datasets/abcdef/variables/456/": {
@@ -124,7 +125,8 @@ variables included.
 Additionally a `graph` member can be included that must contain URLs of the
 varibles that will be children of the new folder. These variables cannot belong
 to another folder (must be ungrouped under root) else the server will return
- a 400 response.
+a 400 response.
+
 To include variables that belong to other folder in the new folder they
 should be moved into the new folder after the fact via PATCH.
 
@@ -150,9 +152,6 @@ destination folder.
 
 The new elements will be moved out of their existing parents into the new folder
 location.
-
-If the tuple of a folder or variable included on the payload is `null`, then
-that element will be promoted to the root folder.
 
 Inside a folder, subfolders and variables must be unique by name. Trying to
 move a folder or a variable that conflicts with the existing children of it,

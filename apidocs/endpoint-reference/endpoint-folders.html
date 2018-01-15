@@ -214,10 +214,10 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cdf8c810b8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#15084dbbb9e8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cdf8c810b8_JSON">
+<div class="tab-pane active section" id="15084dbbb9e8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
@@ -237,6 +237,7 @@ subfolders on the given folder.</td>
             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;In what year were you born?&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/folders/qwe/&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;folder&quot;</span><span class="p">,</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Subfolder name&quot;</span>
         <span class="p">},</span>
         <span class="s2">&quot;https://app.crunch.io/datasets/abcdef/variables/456/&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -275,18 +276,17 @@ the subfolder. Note that subfolder names must be unique between them and
 variables included.</p>
 <p>Additionally a <cite>graph</cite> member can be included that must contain URLs of the
 varibles that will be children of the new folder. These variables cannot belong
-to another folder (must be ungrouped under root) else the server will return</p>
-<blockquote>
-<div>a 400 response.</div></blockquote>
+to another folder (must be ungrouped under root) else the server will return
+a 400 response.</p>
 <p>To include variables that belong to other folder in the new folder they
 should be moved into the new folder after the fact via PATCH.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cdf91a36a0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#15084e229780_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cdf91a36a0_JSON">
+<div class="tab-pane active section" id="15084e229780_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -306,8 +306,6 @@ must be included in the <cite>index</cite> catalog sent via a PATCH request to t
 destination folder.</p>
 <p>The new elements will be moved out of their existing parents into the new folder
 location.</p>
-<p>If the tuple of a folder or variable included on the payload is <cite>null</cite>, then
-that element will be promoted to the root folder.</p>
 <p>Inside a folder, subfolders and variables must be unique by name. Trying to
 move a folder or a variable that conflicts with the existing children of it,
 will return a 409 response from the server.</p>
@@ -350,7 +348,7 @@ deleted.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jan 12, 2018.<br/>
+      Last updated on Jan 15, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
