@@ -275,6 +275,10 @@ attributes:
 -  If "type" is "datetime": **resolution**: a string, such as "Y", "Q",
    "M", "W", "D", "h", "m", "s", "ms", that indicates the unit size of
    the datetime data.
+-  **folder**: An URL of a valid/existing folder on the dataset. If omitted
+   the variable will be created on the root folder. Note that if the variable
+   is deemed as private it cannot be placed on any folder, this attribute
+   **should not** be included.
 
 See `Variable Definitions <#variable-definitions>`__ for more details
 and examples of valid attributes, and `Feature Guide:
@@ -572,6 +576,11 @@ rollup_resolution      string  For datetime variables, a unit to which data
                                should be "rolled up" by default. See           
                                "resolution" above.                             
 ====================== ======= ================================================
+
+Variable entities' ``catalog`` attributes contain the ``folder`` key that
+points to the variable's containing folder, this defaults to the root folder
+for variables that don't have a specific location.
+
 
 PATCH
 ^^^^^

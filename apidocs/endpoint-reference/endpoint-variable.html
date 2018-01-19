@@ -328,10 +328,10 @@ like this:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a186e76c50_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544bade1be0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a186e76c50_JSON">
+<div class="tab-pane active section" id="1544bade1be0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -419,10 +419,10 @@ entity.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a1869d4550_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544ba12da58_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a1869d4550_JSON">
+<div class="tab-pane active section" id="1544ba12da58_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -441,10 +441,10 @@ change in line 24.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a18739d5c0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544badd67b8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a18739d5c0_JSON">
+<div class="tab-pane active section" id="1544badd67b8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -527,6 +527,10 @@ category exists, the response will return a 400 status.</li>
 <li>If “type” is “datetime”: <strong>resolution</strong>: a string, such as “Y”, “Q”,
 “M”, “W”, “D”, “h”, “m”, “s”, “ms”, that indicates the unit size of
 the datetime data.</li>
+<li><strong>folder</strong>: An URL of a valid/existing folder on the dataset. If omitted
+the variable will be created on the root folder. Note that if the variable
+is deemed as private it cannot be placed on any folder, this attribute
+<strong>should not</strong> be included.</li>
 </ul>
 <p>See <a class="reference external" href="#variable-definitions">Variable Definitions</a> for more details
 and examples of valid attributes, and <a class="reference external" href="#array-variables">Feature Guide:
@@ -635,10 +639,10 @@ return a 409 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a186fad198_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544ba041b70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a186fad198_JSON">
+<div class="tab-pane active section" id="1544ba041b70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/42d0a3/variables/42229f&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -901,6 +905,9 @@ should be “rolled up” by default. See
 </tr>
 </tbody>
 </table>
+<p>Variable entities’ <code class="docutils literal"><span class="pre">catalog</span></code> attributes contain the <code class="docutils literal"><span class="pre">folder</span></code> key that
+points to the variable’s containing folder, this defaults to the root folder
+for variables that don’t have a specific location.</p>
 </div>
 <div class="section" id="id8">
 <h3>PATCH<a class="headerlink" href="#id8" title="Permalink to this headline"> 🔗</a></h3>
@@ -938,10 +945,10 @@ which is done by PATCHing the array’s subvariable catalog;</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a1869b92e8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544ba0ef748_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a1869b92e8_JSON">
+<div class="tab-pane active section" id="1544ba0ef748_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0008/&quot;</span><span class="p">,</span>
@@ -999,10 +1006,10 @@ filters, or weights returns:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a1869b2d30_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544ba0c86a0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a1869b2d30_JSON">
+<div class="tab-pane active section" id="1544ba0c86a0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
     <span class="s2">&quot;valid_count&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -1208,10 +1215,10 @@ is typically a tree of simple rules logical-OR’d together.</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14a187453710_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1544ba6237f0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14a187453710_JSON">
+<div class="tab-pane active section" id="1544ba6237f0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;Invalid&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
@@ -1297,7 +1304,7 @@ described above for public variables.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jan 17, 2018.<br/>
+      Last updated on Jan 19, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
