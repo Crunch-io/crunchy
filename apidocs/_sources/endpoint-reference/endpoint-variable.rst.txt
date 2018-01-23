@@ -276,7 +276,7 @@ attributes:
    "M", "W", "D", "h", "m", "s", "ms", that indicates the unit size of
    the datetime data.
 -  **folder**: optional, a URL of a variable folder in the dataset into which the new variable should be placed. If omitted,
-   the variable will be created on the root folder. Personal variables (with ``"private": true``) cannot be placed in a folder; attempting to do so returns 409 status.
+   the variable will be created on the root folder. Personal variables (with ``"private": true``) cannot be placed in a folder; attempting to do so returns 400 status.
    
 See `Variable Definitions <#variable-definitions>`__ for more details
 and examples of valid attributes, and `Feature Guide:
