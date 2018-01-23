@@ -275,11 +275,9 @@ attributes:
 -  If "type" is "datetime": **resolution**: a string, such as "Y", "Q",
    "M", "W", "D", "h", "m", "s", "ms", that indicates the unit size of
    the datetime data.
--  **folder**: An URL of a valid/existing folder on the dataset. If omitted
-   the variable will be created on the root folder. Note that if the variable
-   is deemed as private it cannot be placed on any folder, this attribute
-   **should not** be included.
-
+-  **folder**: optional, a URL of a variable folder in the dataset into which the new variable should be placed. If omitted,
+   the variable will be created on the root folder. Personal variables (with ``"private": true``) cannot be placed in a folder; attempting to do so returns 409 status.
+   
 See `Variable Definitions <#variable-definitions>`__ for more details
 and examples of valid attributes, and `Feature Guide:
 Arrays <#array-variables>`__ for more information on the various cases
@@ -310,7 +308,7 @@ Private variables catalog
 containing those variables that are private to the authenticated user.
 You may ``PATCH`` this catalog to edit names, aliases, descriptions,
 etc. of the private variables. ``POST``, however, is not supported at
-this endpoint. To create new private variables, ``POST`` to the main
+this endpoint. To create new personal variables, ``POST`` to the main
 variables catalog with a ``"private": true`` body attribute.
 
 Hierarchical Order
@@ -577,9 +575,8 @@ rollup_resolution      string  For datetime variables, a unit to which data
                                "resolution" above.                             
 ====================== ======= ================================================
 
-Variable entities' ``catalog`` attributes contain the ``folder`` key that
-points to the variable's containing folder, this defaults to the root folder
-for variables that don't have a specific location.
+Variable entities' ``catalog`` attributes contain the ``folder`` member that
+points to the variable's containing folder.
 
 
 PATCH
