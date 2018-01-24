@@ -449,12 +449,13 @@ the non-inserted elements themselves.
 
 An insertion is defined by an anchor and a name, which will be displayed
 alongside the names of categories/elements. It may also contain
-``"function": { "combine": []}``, where array arguments are the
-``id``\ s of elements to combine as “subtotals”.
+``"function": "subtotal"`` and ``"args": []``, where the array of ``args`` are
+the category ``id``\ s of elements to combine as “subtotals”.
 
-Use an anchor of ``0`` to indicate an insertion before other results.
-Any anchor other than ``0`` that does not match an id in the
-elements/categories will be included at the end of results.
+Use an anchor of ``top`` to indicate an insertion before other results. Use an
+anchor of ``bottom`` to indicate an insertion after other results. Any anchor
+that does not match an id in the elements/categories will be included at the end
+of results.
 
 Examples
 ^^^^^^^^
@@ -550,7 +551,7 @@ multiple response variable and re-orders the result.
                       "name": "Third response"
                   }],
                   "insertions": [
-                      {"anchor": "fee7", "name": "Feet", "function": {"combine": ["f00t", "fee7"]}}
+                      {"anchor": "fee7", "name": "Feet", "function": "subtotal", "args": ["f00t", "fee7"]}}
                   ]
               }
           }
@@ -653,3 +654,78 @@ against another variable "449b421":
 
 The result will be an array of output cubes:
 
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:view",
+          "value": [
+              {
+                  "query": {},
+                  "result": {
+                      "element": "crunch:cube",
+                      "dimensions": [
+                          {
+                              "references": "449b421",
+                              "type": "etc."
+                          },
+                          {
+                              "references": "de85b32",
+                              "type": "etc."
+                          }
+                      ],
+                      "measures": {
+                          "count": {
+                              "function": "cube_count",
+                              "args": []
+                          }
+                      }
+                  }
+              },
+              {
+                  "query": {},
+                  "result": {
+                      "element": "crunch:cube",
+                      "dimensions": [
+                          {
+                              "references": "449b421",
+                              "type": "etc."
+                          },
+                          {
+                              "references": "398620f",
+                              "type": "etc."
+                          }
+                      ],
+                      "measures": {
+                          "count": {
+                              "function": "cube_count",
+                              "args": []
+                          }
+                      }
+                  }
+              },
+              {
+                  "query": {},
+                  "result": {
+                      "element": "crunch:cube",
+                      "dimensions": [
+                          {
+                              "references": "449b421",
+                              "type": "etc."
+                          },
+                          {
+                              "references": "c116a77",
+                              "type": "etc."
+                          }
+                      ],
+                      "measures": {
+                          "count": {
+                              "function": "cube_count",
+                              "args": []
+                          }
+                      }
+                  }
+              }
+          ]
+      }
