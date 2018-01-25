@@ -173,13 +173,16 @@ Deleting folders
 ----------------
 
 Subfolders can be deleted by performing a DELETE request on their endpoints.
-It will effectively move the folder (and all the branch) to the trash folder.
+It will effectively move the folder to the trash folder.
 
-When deleting a folder, all the children will also be moved including the
-variables that were part of it.
+When deleting a folder, all the children will also be moved to the trash
+folder including the variables that were part of it.
 
-Deleting a folder does **not** delete variables nor their data, but only makes
-them unavailable from the folder hierarchy.
+Moving a folder to the trash does **not** delete variables nor their data,
+but only makes them unavailable from the folder hierarchy.
+
+Deleting a folder that is already in the trash **does** hard-delete that
+folder, including all variables & related data contained in that folder.
 
 
 Trash
@@ -189,5 +192,8 @@ Trash
 
 A special folder, the folders' trash exists to store folders after they get
 deleted.
+
+Performing a DELETE request to the trash endpoint will empty all items from
+the trash, hard-deleting all folders, variables, and related data.
 
 

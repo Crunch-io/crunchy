@@ -214,10 +214,10 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149ec998c940_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1466caf93908_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149ec998c940_JSON">
+<div class="tab-pane active section" id="1466caf93908_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
@@ -283,10 +283,10 @@ should be moved into the new folder after the fact via PATCH.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149eca482240_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#1466cb8b5cc0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149eca482240_JSON">
+<div class="tab-pane active section" id="1466cb8b5cc0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -322,17 +322,21 @@ them on the <cite>graph</cite>.</p>
 <div class="section" id="deleting-folders">
 <h1>Deleting folders<a class="headerlink" href="#deleting-folders" title="Permalink to this headline"> 🔗</a></h1>
 <p>Subfolders can be deleted by performing a DELETE request on their endpoints.
-It will effectively move the folder (and all the branch) to the trash folder.</p>
-<p>When deleting a folder, all the children will also be moved including the
-variables that were part of it.</p>
-<p>Deleting a folder does <strong>not</strong> delete variables nor their data, but only makes
-them unavailable from the folder hierarchy.</p>
+It will effectively move the folder to the trash folder.</p>
+<p>When deleting a folder, all the children will also be moved to the trash
+folder including the variables that were part of it.</p>
+<p>Moving a folder to the trash does <strong>not</strong> delete variables nor their data,
+but only makes them unavailable from the folder hierarchy.</p>
+<p>Deleting a folder that is already in the trash <strong>does</strong> hard-delete that
+folder, including all variables &amp; related data contained in that folder.</p>
 </div>
 <div class="section" id="trash">
 <h1>Trash<a class="headerlink" href="#trash" title="Permalink to this headline"> 🔗</a></h1>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/trash/</span></code></p>
 <p>A special folder, the folders’ trash exists to store folders after they get
 deleted.</p>
+<p>Performing a DELETE request to the trash endpoint will empty all items from
+the trash, hard-deleting all folders, variables, and related data.</p>
 </div>
 
 
@@ -348,7 +352,7 @@ deleted.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jan 24, 2018.<br/>
+      Last updated on Jan 25, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
     </p>
   </div>
