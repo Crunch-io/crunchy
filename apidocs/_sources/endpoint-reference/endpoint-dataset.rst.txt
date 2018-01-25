@@ -536,6 +536,9 @@ maintainer             URL                                                      
 app_settings           object           ``{}``                                             A place for API clients to store values they need per
                                                                                            dataset; It is recommended that clients namespace their
                                                                                            keys to avoid collisions
+---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
+population              object           null                                               An object with keys ``size`` and ``magnitude``, both integers: the total population represented by a sample. ``magnitude`` is the default power-of-ten for display; use 3 for thousands (“K”), 6 for millions (“M”), etc. Set “size: 3000”, rather than size 3 magnitude 3.
+
 ====================== ================ ================================================== ==========================================================
 
 Dataset catalogs
