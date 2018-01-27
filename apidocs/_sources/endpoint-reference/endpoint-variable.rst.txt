@@ -654,6 +654,11 @@ success, ``POST`` returns 200 status with a Shoji View, containing the
 URLs of the (formerly sub-)variables, which are promoted to regular
 variables.
 
+Trying to unbind a variable that is not an array will return a 400 response from
+the server.
+
+A derived array cannot be unbound. It must first be integrated (by PATCHing `null` to its derivation expression, making it non-derived for good) and may then be unbound. Since this "undoes" the array, you should first see if there's a way to refer to either a subvariable of the derived array, or one of the variables or subvariables from which it is derived, rather than unbinding.
+
 DELETE
 ^^^^^^
 
