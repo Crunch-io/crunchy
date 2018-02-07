@@ -122,13 +122,17 @@ The payload must contain a `body` member which indicates only the name of
 the subfolder. Note that subfolder names must be unique between them and
 variables included.
 
-Additionally a `graph` member can be included that must contain URLs of the
-varibles that will be children of the new folder. These variables cannot belong
-to another folder (must be ungrouped under root) else the server will return
-a 400 response.
+Additionally an `index` member can be included that must contain URLs of the
+variables that will be children of the new folder. The tuples associated with
+each variable should be an empty object.
 
-To include variables that belong to other folder in the new folder they
-should be moved into the new folder after the fact via PATCH.
+In case the variables mentioned belong in other folders, they will be moved
+into this newly created one.
+
+Additionally an optional `graph` member is allowed always that an `index`
+member is included. The graph should contain all the items that the index
+contains.
+
 
 .. language_specific::
    --JSON
@@ -139,7 +143,14 @@ should be moved into the new folder after the fact via PATCH.
          "body": {
             "name": "New subfolder name"
          },
-         "graph": []
+         "index": {
+            "http://app.crunch.io/api/datasets/abc/variables/123/": {},
+            "http://app.crunch.io/api/datasets/abc/variables/456/": {}
+         },
+         "graph": [
+            "http://app.crunch.io/api/datasets/abc/variables/123/",
+            "http://app.crunch.io/api/datasets/abc/variables/456/"
+         ]
       }
 
 

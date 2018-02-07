@@ -214,10 +214,10 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1526a7707940_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14b359913dd8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1526a7707940_JSON">
+<div class="tab-pane active section" id="14b359913dd8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
@@ -274,25 +274,34 @@ parent of the new subfolder).</p>
 <p>The payload must contain a <cite>body</cite> member which indicates only the name of
 the subfolder. Note that subfolder names must be unique between them and
 variables included.</p>
-<p>Additionally a <cite>graph</cite> member can be included that must contain URLs of the
-varibles that will be children of the new folder. These variables cannot belong
-to another folder (must be ungrouped under root) else the server will return
-a 400 response.</p>
-<p>To include variables that belong to other folder in the new folder they
-should be moved into the new folder after the fact via PATCH.</p>
+<p>Additionally an <cite>index</cite> member can be included that must contain URLs of the
+variables that will be children of the new folder. The tuples associated with
+each variable should be an empty object.</p>
+<p>In case the variables mentioned belong in other folders, they will be moved
+into this newly created one.</p>
+<p>Additionally an optional <cite>graph</cite> member is allowed always that an <cite>index</cite>
+member is included. The graph should contain all the items that the index
+contains.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1526a7b466d8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14b35a29acc0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1526a7b466d8_JSON">
+<div class="tab-pane active section" id="14b35a29acc0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
       <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;New subfolder name&quot;</span>
    <span class="p">},</span>
-   <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[]</span>
+   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/123/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/456/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/123/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;http://app.crunch.io/api/datasets/abc/variables/456/&quot;</span>
+   <span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -352,8 +361,8 @@ the trash, hard-deleting all folders, variables, and related data.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jan 30, 2018.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.<br/>
+      Last updated on Feb 07, 2018.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
 </footer>
