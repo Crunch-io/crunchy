@@ -11,6 +11,9 @@
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Importing datasets">
+<meta property="og:description" content="Datasets are the primary unit of data in Crunch. Here’s how to import data and load existing datasets in your R session.">
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png">
+<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -77,7 +80,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -121,9 +130,6 @@
 <h2 class="hasAnchor">
 <a href="#uploading-datasets" class="anchor"></a>Uploading datasets</h2>
 <p>To create new datasets, multiple paths exist. In the web application, you can upload files to create datasets. From <code>crunch</code>, there are two methods for creating datasets: one for <code>data.frames</code> and one for files of other (non-R) formats.</p>
-<div id="newdataset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#newdataset" class="anchor"></a>1. newDataset</h3>
 <p>The <code>crunch</code> package contains a sample dataset that we’ll use throughout the vignettes: a sample drawn from a political survey fielded by YouGov on behalf of the <em>Economist</em>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">"../vignettes/economist.RData"</span>)
 <span class="kw">dim</span>(economist)</code></pre></div>
@@ -139,12 +145,7 @@
 <li>factor –&gt; Categorical Variable</li>
 <li>Date –&gt; Datetime Variable</li>
 </ul>
-</div>
-<div id="newdatasetfromfile" class="section level3">
-<h3 class="hasAnchor">
-<a href="#newdatasetfromfile" class="anchor"></a>2. newDatasetFromFile</h3>
-<p>Alternatively, <code>newDatasetFromFile</code> essentially does what you would do in the web application: uploads your file and creates a dataset from it. If you have an SPSS or CSV file, you can upload it with that without first reading it into R.</p>
-</div>
+<p>It takes a data.frame as its input; alternatively, if you have an SPSS or CSV file, you can upload it with that without first reading it into R by giving <code>newDataset</code> the file name. In this case, it essentially does what you would do in the web application: uploads your file and creates a dataset from it.</p>
 </div>
 <div id="loading-existing-crunch-datasets" class="section level2">
 <h2 class="hasAnchor">
@@ -182,7 +183,7 @@
 <span class="kw"><a href="../reference/delete.html">delete</a></span>(ds)</code></pre></div>
 <p>The second way to delete is <code>deleteDataset</code>, which works like <code>loadDataset</code>: you supply a dataset name. This way is faster if you have not already loaded the dataset object into your R session: no need to fetch something from the server just to then tell the server to delete it.</p>
 <p>For details on both, see their help pages.</p>
-<p><a href="variables.html">Next: Variable metadata</a></p>
+<p><a href="variables.html">Next: variable metadata</a></p>
 </div>
 </div>
 </div>
@@ -213,7 +214,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

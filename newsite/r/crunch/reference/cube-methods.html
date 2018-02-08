@@ -30,7 +30,8 @@
 <meta property="og:description" content="These methods provide an array-like interface to the CrunchCube
 object." />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -107,7 +108,13 @@ object." />
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -142,47 +149,53 @@ object." />
 object.</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for CubeDims</span>
-<span class='fu'>dimnames</span>(<span class='no'>x</span>)
+    <pre class="usage"># S4 method for CubeDims
+dimnames(x)
 
-<span class='co'># S4 method for CubeDims</span>
-<span class='fu'>dim</span>(<span class='no'>x</span>)
+# S4 method for CubeDims
+dim(x)
 
-<span class='co'># S4 method for CubeDims</span>
-<span class='fu'>is.na</span>(<span class='no'>x</span>)
+# S4 method for CubeDims
+is.na(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'>dimensions</span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+dimensions(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'>dim</span>(<span class='no'>x</span>)
+# S4 method for CrunchCube,CubeDims
+dimensions(x) <- value
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'>dimnames</span>(<span class='no'>x</span>)
+# S4 method for CubeDims,ANY,ANY
+[(x, i, j, ..., drop = TRUE)
 
-<span class='co'># S4 method for CubeDims</span>
-<span class='fu'><a href='dataset-variables.html'>variables</a></span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+dim(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'>measures</span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+dimnames(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'><a href='dataset-variables.html'>variables</a></span>(<span class='no'>x</span>)
+# S4 method for CubeDims
+variables(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'>names</span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+measures(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'><a href='describe-catalog.html'>aliases</a></span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+variables(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'><a href='describe-catalog.html'>descriptions</a></span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+names(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'><a href='describe-catalog.html'>types</a></span>(<span class='no'>x</span>)
+# S4 method for CrunchCube
+aliases(x)
 
-<span class='co'># S4 method for CrunchCube</span>
-<span class='fu'><a href='describe.html'>notes</a></span>(<span class='no'>x</span>)</pre>
+# S4 method for CrunchCube
+descriptions(x)
+
+# S4 method for CrunchCube
+types(x)
+
+# S4 method for CrunchCube
+notes(x)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -190,6 +203,27 @@ object.</p>
     <tr>
       <th>x</th>
       <td><p>a CrunchCube or its CubeDims component.</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>for <code>dimensions&lt;-</code> a <code>CubeDims</code> object to overwrite a CrunchCube
+dimensions</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>used with <code>[</code> to extract a dimension</p></td>
+    </tr>
+    <tr>
+      <th>j</th>
+      <td><p>not used</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>not used</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>not used</p></td>
     </tr>
     </table>
     
@@ -223,7 +257,7 @@ return when applied to an <code>array</code> object.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

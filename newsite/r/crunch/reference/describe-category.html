@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Category attributes — describe-category • Crunch</title>
+<title>Category attributes — name,AbstractCategory-method • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,11 +25,12 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Category attributes — describe-category" />
+<meta property="og:title" content="Category attributes — name,AbstractCategory-method" />
 
 <meta property="og:description" content="Functions to access and set category attributes." />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -106,7 +107,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -140,14 +147,17 @@
     <p>Functions to access and set category attributes.</p>
     
 
-    <pre class="usage"><span class='co'># S4 method for Category</span>
+    <pre class="usage"><span class='co'># S4 method for AbstractCategory</span>
 <span class='fu'><a href='describe.html'>name</a></span>(<span class='no'>x</span>)
 
-<span class='co'># S4 method for Category</span>
+<span class='co'># S4 method for AbstractCategory</span>
 <span class='fu'><a href='describe.html'>name</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
 <span class='co'># S4 method for `NULL`</span>
 <span class='fu'><a href='describe.html'>name</a></span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for AbstractCategory</span>
+<span class='fu'>id</span>(<span class='no'>x</span>)
 
 <span class='co'># S4 method for Category</span>
 <span class='fu'>value</span>(<span class='no'>x</span>)
@@ -156,7 +166,7 @@
 <span class='fu'>value</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
 <span class='co'># S4 method for Category</span>
-<span class='fu'>id</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>is.selected</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -203,7 +213,7 @@ return <code>x</code> duly modified.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

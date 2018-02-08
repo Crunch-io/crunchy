@@ -27,7 +27,8 @@
   
 <meta property="og:title" content="All news" />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -104,7 +105,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -136,22 +143,79 @@
     </div>
 
     <div class="contents">
-    <div id="crunch-1-18-5-under-development" class="section level2">
+    <div id="crunch-1-20-0" class="section level2">
 <h2 class="hasAnchor">
-<a href="#crunch-1-18-5-under-development" class="anchor"></a>crunch 1.18.5 (under development)</h2>
+<a href="#crunch-1-20-0" class="anchor"></a>crunch 1.20.0</h2>
+<div id="subtotals-and-headings" class="section level3">
+<h3 class="hasAnchor">
+<a href="#subtotals-and-headings" class="anchor"></a>Subtotals and Headings</h3>
+<ul>
+<li>Added support for subtotals and headings on categorical variables and CrunchCubes. Subtotals can be set with <code>subtotals(variable) &lt;- Subtotal(name = 'subtotal', categories = c(1, 2), after = 2)</code>. Use <code><a href="../reference/SubtotalsHeadings.html">subtotals(variable)</a></code> to see what subtotals are set for a variable.</li>
+<li>By default, subtotals will be displayed on CrunchCube results. Arrays consisting of only subtotals can be created using <code>subtotalArray([cube])</code>
+</li>
+<li>See <code><a href="../reference/SubtotalsHeadings.html">?subtotals</a></code> or <code><a href="../articles/subtotals.html">vignette("subtotals", package="crunch")</a></code> for more information.</li>
+</ul>
+</div>
+<div id="multiple-response-in-crunchcubes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#multiple-response-in-crunchcubes" class="anchor"></a>Multiple response in CrunchCubes</h3>
+<ul>
+<li>The default method for including multiple response variables in CrunchCubes has changed, allowing for better handling of variables with different missingness across subvariables. (Internally: queries with multiple response variables now use the <code>as_selected</code> function instead of <code>selected_array</code>, which is now deprecated).</li>
+<li>For now, the deprecated method can be restored by setting <code>options(crunch.mr.selection = "selected_array")</code>.</li>
+</ul>
+</div>
+<div id="improvements-to-conditionaltransform" class="section level3">
+<h3 class="hasAnchor">
+<a href="#improvements-to-conditionaltransform" class="anchor"></a>Improvements to <code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code>
+</h3>
+<ul>
+<li>
+<code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code> now has a <code>formulas</code> argument to specify a list of conditions to be used.</li>
+<li>Errors and warnings are now more helpful when using <code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code>.</li>
+</ul>
+</div>
+<div id="optimizations-and-bugfixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#optimizations-and-bugfixes" class="anchor"></a>Optimizations and bugfixes</h3>
+<ul>
+<li>Improved efficiency when loading a dataset from URL.</li>
+<li>
+<code><a href="../reference/refresh.html">refresh()</a></code> for Datasets is now more efficient.</li>
+<li>Fixed a bug where CrunchCubes with categorical variables that had categories “Selected”, “Not selected”, and “No data” might not display correctly.</li>
+</ul>
+</div>
+</div>
+    <div id="crunch-1-19-0" class="section level2">
+<h2 class="hasAnchor">
+<a href="#crunch-1-19-0" class="anchor"></a>crunch 1.19.0</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
 <ul>
 <li>Variable groups (folders) can now be referenced by “path”: either a vector of nested folder names (as in <code>ordering(ds)[[c("Top folder", "Nested folder")]]</code>) or a single string with nested folders separated by a delimiter (as in <code>ordering(ds)[["Top folder/Nested folder"]]</code>). “/” is the default path delimiter, and this is configurable via <code>options(crunch.delimiter)</code>. If you have folders that actually contain “/” in the folder name, this may be a breaking change. If so, set <code>options(crunch.delimiter="|")</code> or some other string so that folder names are not incorrectly interpreted as paths.</li>
 <li>Introduce new <code><a href="../reference/mv.html">mv()</a></code> and <code><a href="../reference/mv.html">mkdir()</a></code> functions for creating variable folders and moving variables into them. These take a Dataset as their argument and can be chained together for convenience/readability.</li>
 <li>Other helper functions <code><a href="../reference/folder.html">folder()</a></code> and <code>folder&lt;-</code> to locate a variable in the folder hierarchy and to move it to a new folder. <code>folder(ds$var) &lt;- "New folder/subfolder"</code> is equivalent to <code>ds &lt;- mv(ds, "var", c("New folder", "subfolder"))</code>.</li>
-<li>Create new variables that take on different values when specific conditions are met using <code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code> (#64)</li>
+<li>Create new variables that take on different values when specific conditions are met using <code><a href="../reference/conditionalTransform.html">conditionalTransform()</a></code> (#64, #153)</li>
+<li>
+<code><a href="../reference/collapseCategories.html">collapseCategories()</a></code> allows you to combine categories in place without creating a new variable</li>
+</ul>
+</div>
+<div id="enhancements-and-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#enhancements-and-fixes" class="anchor"></a>Enhancements and fixes</h3>
+<ul>
 <li>Deep copying variables with <code><a href="../reference/copyVariable.html">copy()</a></code> has been made more efficient</li>
 <li>
 <code>CrunchDataFrames</code> have been improved to act more <code>data.frame</code>-like. You can now access and overwrite values with standard <code>data.frame</code> methods like <code>crdf$variable1</code> or <code>crdf[,"variable1"]</code> and <code>crdf$variable1 &lt;- 1</code> or <code>crdf[,"variable1"] &lt;- 1</code>. <code>CrunchDataFrames</code> now also support adding arbitrary columns, although it should be noted that these columns are not stored on the Crunch server, so if you want to keep that data outside of your current R session, you should send it back to your Dataset as a new variable.</li>
 <li>
-<code><a href="../reference/describe-category.html">is.selected()</a></code> is now vectorized to work with Categories, as <code>is.na()</code> has always been. You can also now assign into the function. (#123)</li>
+<code><a href="../reference/describe-category.html">is.selected()</a></code> is now vectorized to work with Categories, as <code>is.na()</code> has always been. You can also now assign into the function (#123)</li>
 <li>
 <code><a href="../reference/addSubvariable.html">addSubvariable()</a></code> now accepts variable definitions directly (#72)</li>
+<li>
+<code><a href="../reference/makeCaseVariable.html">makeCaseVariable()</a></code> has better errors when a user doesn’t name all of their case definitions (#158).</li>
+<li>The size limit on <code>as.data.frame()</code> when <code>force = TRUE</code> has been removed (#150)</li>
 </ul>
+</div>
 <div id="crunch-1-18-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#crunch-1-18-4" class="anchor"></a>crunch 1.18.4</h3>
@@ -983,7 +1047,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#crunch-1-18-5-under-development">1.18.5</a></li>
+        <li><a href="#crunch-1-20-0">1.20.0</a></li>
+        <li><a href="#crunch-1-19-0">1.19.0</a></li>
         <li><a href="#crunch-1-18-0">1.18.0</a></li>
         <li><a href="#crunch-1-17-0">1.17.0</a></li>
         <li><a href="#crunch-1-16-0">1.16.0</a></li>
@@ -1015,7 +1080,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

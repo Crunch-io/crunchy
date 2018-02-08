@@ -28,17 +28,12 @@
 <meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
 
 <meta property="og:description" content="This method is defined principally so that you can use a CrunchDataset as
-a data argument to other R functions (such as stats::lm()). By default,
-the function does not return a data.frame but instead CrunchDataFrame,  which
-behaves similarly to a data.frame without bringing the whole dataset into memory.
-When you access the variables of a CrunchDataFrame,
-you get an R vector, rather than a CrunchVariable. This allows modeling functions
-that require select columns of a dataset to retrieve only those variables from
-the remote server, rather than pulling the entire dataset into local
-memory. You can override this behavior by passing force = TRUE, which will
-cause the function to return a traditional data.frame." />
+a data argument to other R functions (such as stats::lm()) without
+needing to download the whole dataset. You can, however, choose to download
+a true data.frame." />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -115,7 +110,13 @@ cause the function to return a traditional data.frame." />
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -146,16 +147,10 @@ cause the function to return a traditional data.frame." />
     </div>
 
     
-    <p>This method is defined principally so that you can use a CrunchDataset as
-a <code>data</code> argument to other R functions (such as <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm()</a></code>). By default,
-the function does not return a <code>data.frame</code> but instead <code>CrunchDataFrame</code>,  which
-behaves similarly to a <code>data.frame</code> without bringing the whole dataset into memory.
-When you access the variables of a <code>CrunchDataFrame</code>,
-you get an R vector, rather than a <code>CrunchVariable</code>. This allows modeling functions
-that require select columns of a dataset to retrieve only those variables from
-the remote server, rather than pulling the entire dataset into local
-memory. You can override this behavior by passing <code>force = TRUE</code>, which will
-cause the function to return a traditional <code>data.frame</code>.</p>
+    <p>This method is defined principally so that you can use a <code>CrunchDataset</code> as
+a <code>data</code> argument to other R functions (such as <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm()</a></code>) without
+needing to download the whole dataset. You can, however, choose to download
+a true <code>data.frame</code>.</p>
     
 
     <pre class="usage"><span class='co'># S3 method for CrunchDataset</span>
@@ -172,15 +167,15 @@ cause the function to return a traditional <code>data.frame</code>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a CrunchDataset</p></td>
+      <td><p>a <code>CrunchDataset</code> or <code>CrunchDataFrame</code></p></td>
     </tr>
     <tr>
       <th>row.names</th>
-      <td><p>part of as.data.frame signature. Ignored.</p></td>
+      <td><p>part of <code>as.data.frame</code> signature. Ignored.</p></td>
     </tr>
     <tr>
       <th>optional</th>
-      <td><p>part of as.data.frame signature. Ignored.</p></td>
+      <td><p>part of <code>as.data.frame</code> signature. Ignored.</p></td>
     </tr>
     <tr>
       <th>force</th>
@@ -194,7 +189,7 @@ factor, numeric, id (default: factor)</p></td>
     </tr>
     <tr>
       <th>include.hidden</th>
-      <td><p>should hidden variables be included? (default: <code>FALSE</code>)</p></td>
+      <td><p>logical: should hidden variables be included? (default: <code>FALSE</code>)</p></td>
     </tr>
     <tr>
       <th>row.order</th>
@@ -210,8 +205,42 @@ Crunch Dataset order will be used.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>an object of class <code>CrunchDataFrame</code> unless <code>force</code>, in
-which case the return is a <code>data.frame</code>.</p>
+    <p>When called on a <code>CrunchDataset</code>, the method returns an object of
+class <code>CrunchDataFrame</code> unless <code>force = TRUE</code>, in which case the return is a
+<code>data.frame</code>. For <code>CrunchDataFrame</code>, the method returns a <code>data.frame</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>By default, the <code>as.data.frame</code> method for <code>CrunchDataset</code> does not return a
+<code>data.frame</code> but instead <code>CrunchDataFrame</code>, which behaves like  a
+<code>data.frame</code> without bringing the whole dataset into memory.
+When you access the variables of a <code>CrunchDataFrame</code>,
+you get an R vector, rather than a <code>CrunchVariable</code>. This allows modeling functions
+that require select columns of a dataset to retrieve only those variables from
+the remote server, rather than pulling the entire dataset into local
+memory.</p>
+<p>If you call <code>as.data.frame</code> on a <code>CrunchDataset</code> with <code>force = TRUE</code>, you
+will instead get a true <code>data.frame</code>. You can also get this <code>data.frame</code> by
+calling <code>as.data.frame</code> on a <code>CrunchDataFrame</code> (effectively calling
+<code>as.data.frame</code> on the dataset twice)</p>
+<p>When a <code>data.frame</code> is returned, the function coerces Crunch Variable
+values into their R equivalents using the following rules:</p><ul>
+<li><p>Numeric variables become numeric vectors</p></li>
+<li><p>Text variables become character vectors</p></li>
+<li><p>Datetime variables become either <code>Date</code> or <code>POSIXt</code> vectors</p></li>
+<li><p>Categorical variables become either factors with
+levels matching the Crunch Variable's categories (the default), or, if
+<code>categorical.mode</code> is specified as "id" or "numeric", a numeric vector of
+category ids or numeric values, respectively</p></li>
+<li><p>Array variables (Categorical Array, Multiple Response) are decomposed into
+their constituent categorical subvariables. An array with three subvariables,
+for example, will result in three columns in the <code>data.frame</code>.</p></li>
+</ul>
+    <p>Column names in the <code>data.frame</code> are the variable/subvariable aliases.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code>as.vector()</code></p>
     
 
   </div>
@@ -221,6 +250,10 @@ which case the return is a <code>data.frame</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
@@ -232,7 +265,7 @@ which case the return is a <code>data.frame</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

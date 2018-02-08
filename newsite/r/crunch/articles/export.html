@@ -11,6 +11,9 @@
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Exporting Data">
+<meta property="og:description" content="For times when you need to take data off the server, Crunch provides several means for exporting data, whether to various file formats or to objects in your R session.">
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png">
+<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -77,7 +80,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -111,7 +120,7 @@
     
     
 <div class="contents">
-<p><a href="filter.html">Previous: filtering data</a></p>
+<p><a href="filters.html">Previous: filtering data</a></p>
 <div id="downloading-and-exporting-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#downloading-and-exporting-data" class="anchor"></a>Downloading and exporting data</h1>
@@ -120,16 +129,16 @@
 <h2 class="hasAnchor">
 <a href="#as-data-frame-and-as-vector" class="anchor"></a>as.data.frame and as.vector</h2>
 <p>To get the local R representation of a Crunch variable, use <code>as.vector</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">party_id &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds<span class="op">$</span>pid3)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">party_id &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds$pid3)</code></pre></div>
 <p><code>as.vector</code> translates Crunch to R types in reverse of how they are mapped in translation from R to Crunch in <code>newDataset</code>: categoricals become factors, numerics are numeric, and so on. Array variables (categorical array and multiple response) return a <code>data.frame</code> of categoricals, despite the name of <code>as.vector</code>, because doing so allows natural indexing into the subvariables (like <code>ds$var$subvar</code>).</p>
 <p>While categorical variables by default are translated as factors, you can use the “mode” argument to <code>as.vector</code> to request either the category “id” or the “numeric” values of the categories.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">party_id &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds<span class="op">$</span>pid3, <span class="dt">mode=</span><span class="st">"id"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">party_id &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds$pid3, <span class="dt">mode=</span><span class="st">"id"</span>)</code></pre></div>
 <p>Requesting <code>mode="id"</code> may be particularly useful when you want to work with data locally that most closely matches the representation of the data on the server; however, the category names are disconnected from the data, so proceed with caution.</p>
 <p>Similarly, <code>as.data.frame</code> on a <code>CrunchDataset</code> gives you access to the values in the dataset, yet there is an important distinction: <code>as.data.frame</code> doesn’t itself pull data off the server. Rather, <code>as.data.frame</code> returns a <code>data.frame</code>-like object that lazily fetches columns only when requested.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1 &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds<span class="op">$</span>var)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1 &lt;-<span class="st"> </span><span class="kw">as.vector</span>(ds$var)
 
 df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ds)
-<span class="kw">identical</span>(v1, df<span class="op">$</span>var)
+<span class="kw">identical</span>(v1, df$var)
 ## TRUE</code></pre></div>
 <p>That way, you can call <code>as.data.frame</code> and get convenient access to the columns of data without having to download things you don’t need up front.</p>
 <p>Of course, you can download all of the data at once if you want–even though it’s discouraged!–by either calling <code>as.data.frame</code> a second time</p>
@@ -149,21 +158,21 @@ df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
 <a href="#filtering-and-subsetting" class="anchor"></a>Filtering and subsetting</h2>
 <p>Given the cost in network traffic to shipping data from the servers to your local computer, you should be mindful of what you extract. One way you can do this is by taking advantage of the lazy evaluation of the <code>as.data.frame</code> method, which only pulls variables you explicitly reference in your subsequent code. Another way is to filter the rows and columns of your data of interest.</p>
 <p>Suppose I wanted to look at the specific values on a couple of demographic variables just for self-identified Democrats. I can filter the rows and columns of my dataset just as if I was working with a <code>data.frame</code>, and only pull that subset to my computer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw">c</span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">force=</span><span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(ds[ds$pid3 ==<span class="st"> "Democrat"</span>, <span class="kw">c</span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">force=</span><span class="ot">TRUE</span>)</code></pre></div>
 <p>This dataset filtering is much more efficient (and thus faster) than attempting to download the entire dataset and then subsetting the resulting <code>data.frame</code>.</p>
 <p>You can also use this subsetting for convenience when lazily accessing the data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dems &lt;-<span class="st"> </span>ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dems &lt;-<span class="st"> </span>ds[ds$pid3 ==<span class="st"> "Democrat"</span>, ]</code></pre></div>
 <p>gives a view of the dataset that is filtered by party identification.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dem_age &lt;-<span class="st"> </span>dems<span class="op">$</span>age</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dem_age &lt;-<span class="st"> </span>dems$age</code></pre></div>
 <p>thus gives you just the values of “age” for those rows where “pid3” is equal to “Democrat”. This is equivalent to calling <code>as.vector</code> directly on a subsetted variable:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">identical</span>(<span class="kw">as.vector</span>(ds<span class="op">$</span>age[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>]), dem_age)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">identical</span>(<span class="kw">as.vector</span>(ds$age[ds$pid3 ==<span class="st"> "Democrat"</span>]), dem_age)
 ## TRUE</code></pre></div>
 </div>
 <div id="expressions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expressions" class="anchor"></a>Expressions</h2>
 <p>You can also get values for an on-the-fly derivation with <code>as.vector</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">perc_completed &lt;-<span class="st"> </span><span class="kw">as.vector</span>(<span class="dv">100</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>perc_skipped)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">perc_completed &lt;-<span class="st"> </span><span class="kw">as.vector</span>(<span class="dv">100</span> -<span class="st"> </span>ds$perc_skipped)</code></pre></div>
 <p>Even though <code>perc_completed</code> doesn’t exist in the dataset, we can get values for it by expression.</p>
 </div>
 <div id="exporting" class="section level2">
@@ -175,8 +184,8 @@ df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds, <span class="dt">file=</span><span class="st">"econ.csv"</span>)</code></pre></div>
 <p>CSV export does have a “categories” option that governs whether categorical variables are exported as category names or ids. The latter is more concise and pairs well with the Crunch metadata export, but category names can be useful when taking the file without additional metadata.</p>
 <p>As with the <code>as.data.frame</code> methods, you can subset what you export by indexing the rows and columns. Following the previous example, we can get a CSV of that demographic subset by:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw">c</span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">file=</span><span class="st">"demo-demos.csv"</span>)</code></pre></div>
-<p><a href="crunch-internals.html">Next: Crunch internals</a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds[ds$pid3 ==<span class="st"> "Democrat"</span>, <span class="kw">c</span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">file=</span><span class="st">"demo-demos.csv"</span>)</code></pre></div>
+<p><a href="subtotals.html">Next: subtotals</a></p>
 </div>
 </div>
 </div>
@@ -207,7 +216,7 @@ df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(df)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

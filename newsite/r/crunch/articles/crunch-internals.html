@@ -11,6 +11,9 @@
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Crunch Internals">
+<meta property="og:description" content="Here are some details on how the Crunch API works, which may be useful to know if you’re looking to do complex actions or trying to understand how to improve performance of your R code.">
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png">
+<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -77,7 +80,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -111,6 +120,7 @@
     
     
 <div class="contents">
+<p><a href="subtotals.html">Previous: subtotals</a></p>
 <p>The Crunch web app and the <code>crunch</code> package are both built on a <a href="http://docs.crunch.io/">REST API</a>. Users can interact with very large datasets because most of the heavy computation is done on the Crunch servers and not on the users computer. In most cases, you don’t need to know how the API works—the R package handles the HTTP requests and responses and presents meaningful objects and methods to you. To go beyond the basics, though, it can be useful to understand how the API works so that you can make more complex or more efficient (read: faster) operations.</p>
 <div id="catalogs" class="section level3">
 <h3 class="hasAnchor">
@@ -129,6 +139,7 @@ datasets(proj)</code></pre>
 <pre><code>ds &lt;- loadDataset(mydatasets[["Dataset name"]])
 datasets(proj) &lt;- ds</code></pre>
 <p>Internally there is actually a second method <code>datasets&lt;-</code> that takes the value on the right hand side of the <code>&lt;-</code> operator and posts that value to the datasets attribute of the project catalog. The projects catalog will then update to reflect that a dataset belongs to a particular catalog, and that will be reflected in the web app. Similar patterns happen when you get and set attributes on objects, like “names”.</p>
+<p><a href="abstract-categories.html">Next: Category objects</a></p>
 </div>
 </div>
   </div>
@@ -144,7 +155,7 @@ datasets(proj) &lt;- ds</code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

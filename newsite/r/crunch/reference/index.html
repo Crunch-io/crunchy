@@ -27,7 +27,8 @@
   
 <meta property="og:title" content="Function reference" />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -104,7 +105,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -133,7 +140,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;1.18.5</small>
+        <small>version&nbsp;1.20.0</small>
       </h1>
     </div>
 
@@ -333,6 +340,12 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="modifyWeightVariables.html">modifyWeightVariables</a></code> <code><a href="modifyWeightVariables.html">weightVariables<-</a></code> <code><a href="modifyWeightVariables.html">is.weightVariable</a></code> <code><a href="modifyWeightVariables.html">is.weightVariable<-</a></code> </p>
+          </td>
+          <td><p>Change which variables can be set as a dataset's weight.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="settings.html">settings</a></code> <code><a href="settings.html">settings<-</a></code> </p>
           </td>
           <td><p>View and modify dataset-level settings</p></td>
@@ -421,6 +434,12 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="collapseCategories.html">collapseCategories</a></code> </p>
+          </td>
+          <td><p>Combine Categories in place</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="dataset-variables.html">variables</a></code> <code><a href="dataset-variables.html">variables<-</a></code> <code><a href="dataset-variables.html">allVariables</a></code> <code><a href="dataset-variables.html">allVariables<-</a></code> </p>
           </td>
           <td><p>Access a Dataset's Variables Catalog</p></td>
@@ -439,7 +458,7 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="describe-category.html">name</a></code> <code><a href="describe-category.html">name<-</a></code> <code><a href="describe-category.html">value</a></code> <code><a href="describe-category.html">value<-</a></code> <code><a href="describe-category.html">id</a></code> </p>
+            <p><code><a href="describe-category.html">name</a></code> <code><a href="describe-category.html">name<-</a></code> <code><a href="describe-category.html">id</a></code> <code><a href="describe-category.html">value</a></code> <code><a href="describe-category.html">value<-</a></code> <code><a href="describe-category.html">is.selected</a></code> </p>
           </td>
           <td><p>Category attributes</p></td>
         </tr><tr>
@@ -687,9 +706,15 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="cube-methods.html">dimnames</a></code> <code><a href="cube-methods.html">dim</a></code> <code><a href="cube-methods.html">is.na</a></code> <code><a href="cube-methods.html">dimensions</a></code> <code><a href="cube-methods.html">variables</a></code> <code><a href="cube-methods.html">measures</a></code> <code><a href="cube-methods.html">names</a></code> <code><a href="cube-methods.html">aliases</a></code> <code><a href="cube-methods.html">descriptions</a></code> <code><a href="cube-methods.html">types</a></code> <code><a href="cube-methods.html">notes</a></code> </p>
+            <p><code><a href="cube-methods.html">cube-methods</a></code> </p>
           </td>
           <td><p>Methods on Cube objects</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="cube-residuals.html">rstandard</a></code> </p>
+          </td>
+          <td><p>Calculate standardized residuals from a CrunchCube</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -750,6 +775,50 @@
             <p><code><a href="variable-to-R.html">as.vector</a></code> </p>
           </td>
           <td><p>Convert Variables to local R objects</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-data-presentation" class="hasAnchor"><a href="#section-data-presentation" class="anchor"></a>Data presentation</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="SubtotalsHeadings.html">Subtotal</a></code> <code><a href="SubtotalsHeadings.html">Heading</a></code> <code><a href="SubtotalsHeadings.html">is.Subtotal</a></code> <code><a href="SubtotalsHeadings.html">is.Heading</a></code> <code><a href="SubtotalsHeadings.html">are.Subtotals</a></code> <code><a href="SubtotalsHeadings.html">are.Headings</a></code> <code><a href="SubtotalsHeadings.html">subtotals</a></code> <code><a href="SubtotalsHeadings.html">subtotals<-</a></code> </p>
+          </td>
+          <td><p>Subtotals and headings</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="applyTransforms.html">subtotalArray</a></code> <code><a href="applyTransforms.html">applyTransforms</a></code> </p>
+          </td>
+          <td><p>Calculate the transforms from a CrunchCube</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="noTransforms.html">noTransforms</a></code> </p>
+          </td>
+          <td><p>Remove transformations from a CrunchCube</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="showTransforms.html">showTransforms</a></code> </p>
+          </td>
+          <td><p>Show transformations on a Crunch object</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="Insertions.html">Insertions</a></code> <code><a href="Insertions.html">Insertion</a></code> <code><a href="Insertions.html">.Insertion</a></code> <code><a href="Insertions.html">anchor<-</a></code> <code><a href="Insertions.html">subtotals<-</a></code> <code><a href="Insertions.html">arguments<-</a></code> <code><a href="Insertions.html">arguments</a></code> <code><a href="Insertions.html">anchor</a></code> <code><a href="Insertions.html">func</a></code> <code><a href="Insertions.html">anchors</a></code> <code><a href="Insertions.html">funcs</a></code> </p>
+          </td>
+          <td><p>Insert categories in transformations</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="Transforms.html">Transforms</a></code> <code><a href="Transforms.html">transforms</a></code> <code><a href="Transforms.html">transforms<-</a></code> </p>
+          </td>
+          <td><p>Transformations of variable and cube views</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -977,9 +1046,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="catalogToDataFrame.html">catalogToDataFrame</a></code> </p>
+            <p><code><a href="catalog-dataframes.html">as.data.frame</a></code> </p>
           </td>
-          <td><p>A utility to return a data.frame from a ShojiCatalog.</p></td>
+          <td><p>as.data.frame method for catalog objects</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -1129,13 +1198,13 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="catalog-extract.html">[,CubeDims,ANY,ANY-method</a></code> </p>
+            <p><code><a href="catalog-extract.html">catalog-extract</a></code> </p>
           </td>
           <td><p>Extract and modify subsets of Catalog-type objects</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="category-extract.html">category-extract</a></code> </p>
+            <p><code><a href="category-extract.html">$,AbstractCategory-method</a></code> </p>
           </td>
           <td><p>Access Category fields directly</p></td>
         </tr><tr>
@@ -1254,6 +1323,7 @@
       <li><a href="#section-array-variables">Array variables</a></li>
       <li><a href="#section-ordering">Ordering</a></li>
       <li><a href="#section-analysis">Analysis</a></li>
+      <li><a href="#section-data-presentation">Data presentation</a></li>
       <li><a href="#section-export">Export</a></li>
       <li><a href="#section-geodata">Geodata</a></li>
       <li><a href="#section-admin">Admin</a></li>
@@ -1273,7 +1343,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

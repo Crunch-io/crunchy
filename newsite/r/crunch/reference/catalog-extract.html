@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract and modify subsets of Catalog-type objects — [,CubeDims,ANY,ANY-method • Crunch</title>
+<title>Extract and modify subsets of Catalog-type objects — catalog-extract • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,11 +25,12 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Extract and modify subsets of Catalog-type objects — [,CubeDims,ANY,ANY-method" />
+<meta property="og:title" content="Extract and modify subsets of Catalog-type objects — catalog-extract" />
 
 <meta property="og:description" content="Extract and modify subsets of Catalog-type objects" />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -106,7 +107,13 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -140,10 +147,7 @@
     <p>Extract and modify subsets of Catalog-type objects</p>
     
 
-    <pre class="usage"># S4 method for CubeDims,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for DatasetCatalog,numeric
+    <pre class="usage"># S4 method for DatasetCatalog,numeric
 [[(x, i, j, ...)
 
 # S4 method for DatasetCatalog,character,missing,DatasetTuple
@@ -294,13 +298,13 @@ $(x, name) <- value
 against like <code><a href='describe-catalog.html'>emails(x)</a></code> or <code><a href='owners.html'>owners(x)</a></code> by default this is <code>names(x)</code>)</p></td>
     </tr>
     <tr>
-      <th>drop</th>
-      <td><p>Invalid</p></td>
-    </tr>
-    <tr>
       <th>value</th>
       <td><p>For updating, an object of the appropriate class and size to
 insert</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>Invalid</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -331,7 +335,7 @@ insert</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

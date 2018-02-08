@@ -36,7 +36,8 @@ jsonprep is defined as an S4 generic, and it is exported, so you can define
 methods for it if you have other
 objects that you want to successfully serialize to JSON." />
 
-
+<meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -113,7 +114,13 @@ objects that you want to successfully serialize to JSON." />
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/subtotals.html">Subtotals and Headings</a>
+    </li>
+    <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
+    </li>
+    <li>
+      <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
   </ul>
 </li>
@@ -147,7 +154,7 @@ objects that you want to successfully serialize to JSON." />
     <p><code>crunch</code> uses the <code>jsonlite</code> package for JSON serialization and
 deserialization. Unfortunately, <code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON()</a></code>
 does not allow for defining S4 methods for other object types. So,
-<code><a href='http://www.rdocumentation.org/packages/crunch/topics/tojson-crunch'>crunch::toJSON</a></code> wraps <code>jsonprep</code>, which exists to translate
+<code>crunch::toJSON</code> wraps <code>jsonprep</code>, which exists to translate
 objects to base R objects, which <code><a href='http://www.rdocumentation.org/packages/jsonlite/topics/fromJSON'>jsonlite::toJSON</a></code> can handle.
 <code>jsonprep</code> is defined as an S4 generic, and it is exported, so you can define
 methods for it if you have other
@@ -156,7 +163,7 @@ objects that you want to successfully serialize to JSON.</p>
 
     <pre class="usage"><span class='fu'>jsonprep</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for Categories</span>
+<span class='co'># S4 method for AbstractCategories</span>
 <span class='fu'>jsonprep</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for ANY</span>
@@ -213,7 +220,7 @@ can handle. <code>toJSON</code> returns the JSON-serialized character object.</p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
