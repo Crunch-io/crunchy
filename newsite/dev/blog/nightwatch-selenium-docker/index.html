@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="https://crunch-io.github.io/crunchy/newsite/">
+    <title>Using Selenium with Docker for Consistent Testing</title>
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+
+  <body>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="index.html"><img class="d-inline-block align-top" src="images/crunch_logo.svg" alt="" width="140"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jobs">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dev/features">New Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dev/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://support.crunch.io/crunch/home.html">Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://app.crunch.io/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="https://app.crunch.io/signup/">Try now</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-12 text-center">
+                                <h1 class="display-5">Using Selenium with Docker for Consistent Testing</h1>
+                            </div>
+                        </div> 
+
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn&rsquo;t be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
+
+<p>For our end-to-end testing we use <a href="http://nightwatchjs.org">Nightwatch.js</a>, a JavaScript
+testing tool that uses <a href="http://www.seleniumhq.org">Selenium</a> to drive a browser to perform tests. Our goal is to be
+able to test our Python backend, our REST APIs, and the
+behavior of our JavaScript single-page application, using a real browser,
+running real code.</p>
+
+<p>Anyone that has set up Selenium knows that it can be very picky about
+the versions of the different tools you should have. Selenium 3.4.0 might need
+<a href="https://sites.google.com/a/chromium.org/chromedriver/">ChromeDriver</a> 2.31 which requires <a href="https://www.google.com/chrome/">Chrome</a> 56.3920.234034249324234329 (okay, so
+those version numbers may be made up), and unless you have
+the exact same versions every single time, it can easily result in tests
+that work on one developer&rsquo;s machine but not on another.</p>
+
+<p>Compounding the version mismatch problem, we build and test our entire stack on a <a href="https://jenkins.io">Jenkins</a> cluster. Many of our developers would code and test on <a href="https://www.apple.com/macos/">Apple MacOS</a>, but our Jenkins pipeline
+was running on <a href="http://ubuntu.com">Ubuntu</a> or <a href="https://www.centos.org">CentOS</a>. This led to messages like these being posted to our Slack channel:</p>
+
+<blockquote>
+<p>new variable tests pass locally so I&rsquo;m sending them to jenkins for failure</p>
+</blockquote>
+
+<p>and</p>
+
+<blockquote>
+<p>once again it passes locally (I’m tired of saying that). we’ll see if it
+passes the Jenkins Arbitron 5000</p>
+</blockquote>
+
+<p>As a result, developers were less likely to run all tests locally before pushing because Jenkins was the final arbiter
+of truth, and well, it would pass locally anyway (right?). Moreover, trying to debug this kind of &ldquo;works on my machine&rdquo; problem was really, really painful.</p>
+
+<p>In addition to the cost to developers, operations spent an awful
+lot of time testing Selenium/ChromeDriver/Chrome versions to verify that
+everything continued to work. Linux package management makes installing the
+latest version of a package incredibly simple, but rolling back is less so. Unless you manually keep
+around the old versions of packages, you end up scouring the net for just the
+right <code>.deb</code> or <code>.rpm</code> that would make everything function again. In the mean
+time, developers are unhappy because you&rsquo;ve just taken down their testing
+platform.</p>
+
+<p>This is where <a href="https://www.docker.com">Docker</a> containers presented a perfect solution for us.
+Selenium makes Docker containers available in a variety of configurations on
+the <a href="https://hub.docker.com/u/selenium/">Selenium Dockerhub</a>. Using the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">standalone-chrome</a> container, we
+can easily spawn a Selenium server that allows us to connect and spawn Chrome
+browsers for testing. The docker container is easy to start up, easy to
+tear down, and because it is self contained and doesn&rsquo;t require installation of
+packages or software, easy to upgrade.</p>
+
+<p>Hence the birth of <a href="https://github.com/crunch-io/nightwatchrun/">nightwatchrun</a>, which we have just made public under the MIT license. Given our existing test suite of Nightwatch
+tests, we wanted to be able to quickly spin up a new container, run our tests,
+and after the tests were completed, tear down the container. This approach solved our two big problems.
+Because Jenkins is running the exact same software/container as developers, &ldquo;Passes locally, but not on Jenkins&rdquo;
+is a thing of the past. Our developers can now easily run their Nightwatch
+tests against the exact same software stack used by Jenkins with <a href="https://www.docker.com/docker-mac">Docker for Mac</a>.
+Moreover, operations is no longer in the business of testing all kinds of different
+  versions against each other to find the right combination of dependencies.</p>
+
+<p><code>nightwatchrun.sh</code> is a simple shell script that, given a Nightwatch.js
+configuration file, will run a Docker container, get its IP address/port
+number, set some environment variables, and start Nightwatch. The environment
+variables are used to set the Selenium host/port number.</p>
+
+<p>You can try it out yourself:</p>
+
+<pre><code>git clone git@github.com:Crunch-io/nightwatchrun.git
+yarn install
+./nightwatchrun.sh -c nightwatch.conf.js
+</code></pre>
+
+<p>This will output something similar to:</p>
+
+<pre><code>Riley:nightwatchrun laurenipsum$ ./nightwatchrun.sh -c nightwatch.conf.js
+Starting selenium testing against environment: stable with version latest
+Using config file: nightwatch.conf.js
+Unable to find image 'selenium/standalone-chrome:latest' locally
+latest: Pulling from selenium/standalone-chrome
+9fb6c798fa41: Pull complete
+3b61febd4aef: Pull complete
+9d99b9777eb0: Pull complete
+d010c8cf75d7: Pull complete
+7fac07fb303e: Pull complete
+64b080cf80c2: Pull complete
+4eb86df147d6: Pull complete
+4dd0b38ce61c: Pull complete
+2b0fc7beb522: Pull complete
+8682d4afe8ba: Pull complete
+8ad935df4db2: Pull complete
+e3890abf9672: Pull complete
+96df5dc43939: Pull complete
+18b664097abd: Pull complete
+984e25c49459: Pull complete
+4369356a8c66: Pull complete
+bb31d692f888: Pull complete
+c11c4dfb44fe: Pull complete
+Digest: sha256:35f9029adb074c6a23c367e0c4a5986bd7fa0fb14cdac7f8cdcc42a4613de392
+Status: Downloaded newer image for selenium/standalone-chrome:latest
+513369b2e07b93794b8ddd5837131475c58405e7ea6d60fcf8447edec7c1c227
+Today's test are run against:
+Google Chrome 61.0.3163.100 unknown
+Selenium is running at 0.0.0.0 port 32785
+Selenium is not yet alive. Sleeping 1 second.
+yarn run v1.1.0
+warning From Yarn 1.0 onwards, scripts don't require &quot;--&quot; for options to be forwarded. In a future version, any explicit &quot;--&quot; will be forwarded as-is to the scripts.
+$ &quot;/Users/xistence/Projects/Crunch/nightwatchrun/node_modules/.bin/nightwatch&quot; &quot;-c&quot; &quot;nightwatch.conf.js&quot;
+Running in parallel with auto workers.
+Started child process for: crunchDemo
+ crunchDemo   Running in parallel with auto workers.
+ crunchDemo   \n
+ crunchDemo   [Crunch Demo] Test Suite
+============================
+ crunchDemo   Results for:  Demo test Crunch
+ crunchDemo   ✔ Element &lt;body&gt; was visible after 46 milliseconds.
+ crunchDemo   ✔ Testing if the page title equals &quot;Crunch&quot;.
+ crunchDemo   ✔ Testing if element &lt;div.intro-message h3&gt; contains text: &quot;A modern platform&quot;.
+ crunchDemo   ✔ Testing if element &lt;div.intro-message h3 + h3&gt; contains text: &quot;for analytics&quot;.
+ crunchDemo   OK. 4 assertions passed. (4.503s)
+
+  &gt;&gt; crunchDemo finished.  
+
+
+✨  Done in 5.04s.
+Executed tests 1 times successfully
+Removing the docker container: nightwatchrun.nightwatch.conf.js
+nightwatchrun.nightwatch.conf.js
+</code></pre>
+
+<p>Already have a Nightwatch.js setup? Take a look at
+<a href="https://github.com/Crunch-io/nightwatchrun/blob/master/nightwatch.conf.js">nightwatch.conf.js</a>, and copy over the changes necessary.</p>
+
+<p>Testing with Docker has made a world of difference. Less hassle, no need to
+locally install the right combination of the JRE/Selenium/ChromeDriver/Chrome,
+and tests now run self-contained in a headless container, so no flash of a
+browser opening or focus stealing.</p>
+
+<p>If you have suggestions or improvements for nightwatchrun, please add an issue on the <a href="https://github.com/Crunch-io/nightwatchrun/issues">Github
+issue tracker</a>, or provide a pull request with your suggested changes.</p>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-green">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://support.crunch.io/crunch/home.html">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/login">Login</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/login/">Try now</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+

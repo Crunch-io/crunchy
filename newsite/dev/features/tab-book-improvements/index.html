@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="https://crunch-io.github.io/crunchy/newsite/">
+    <title>Tab Book Improvements</title>
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+
+  <body>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="index.html"><img class="d-inline-block align-top" src="images/crunch_logo.svg" alt="" width="140"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jobs">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dev/features">New Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dev/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://support.crunch.io/crunch/home.html">Support</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://app.crunch.io/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="https://app.crunch.io/signup/">Try now</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-12 text-center">
+                                <h1 class="display-5">Tab Book Improvements</h1>
+                            </div>
+                        </div> 
+
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          
+
+<p>We first released the <a href="http://support.crunch.io/crunch/crunch_tabbooks.html">tab book feature</a> a while back, and since then, we’ve collected a number of great suggestions for how to enrich the feature. Tab books produce a static set of tables out of many variables and put results in an Excel sheet, for offline use when you don’t need interactive features like new filters or different weights. Our recent release includes several of those enhancements, most of which are new options available to you in the “export tab book” panel.</p>
+
+<h2 id="export-all-on-a-single-page">Export all on a single page</h2>
+
+
+<figure class="float-right">
+    
+        <img src="dev/features/images/TabBookLayout.png" />
+    
+    
+</figure>
+
+
+<p>The first new option is page layout. A common request we received was to be able to export all tables in a tab book to a single sheet in the Excel workbook, rather than exporting each table to its own worksheet. While having each table in its own sheet might be more readable when you’re looking at just one, it is difficult in Excel to click through the tabs in a workbook to scan through the whole tab book. For browsing lots of results in Excel, scrolling down a single worksheet is often less tedious.</p>
+
+<p>The default of one-table-per-sheet is unchanged, but to export a tab book with all tables stacked on a single Excel worksheet, toggle the “layout” setting in the export panel.</p>
+
+<h2 id="include-a-table-of-contents">Include a table of contents</h2>
+
+
+<figure class="float-left">
+    
+        <img src="dev/features/images/TabBookToC.png" />
+    
+    
+</figure>
+
+
+<p>A table of contents can also be useful when it comes to navigating a large tab book. If you choose to add a table of contents to your tab book, the first sheet will show a list of all tables in the tab book. You can click an item to navigate directly to it — to the relevant sheet if exporting to multiple sheets or to the appropriate place in the single large table if exporting to a single page. This provides another easy way to navigate through a large tab book.</p>
+
+<h2 id="hypothesis-testing">Hypothesis testing</h2>
+
+<p>Hypothesis testing provides a visual heuristic, highlighting values in crosstabs that are above or below the marginal, or average in the direction of comparison (opposite of the direction of percentaging). Because it takes into account the unweighted N of respondents in each cell, it can tell you whether differences are statistically significant or not. If you have hypothesis testing enabled in the app, when you export a tab book to Excel the cell shading and p-value key will appear in the Excel spreadsheet just as it does in the app.</p>
+
+
+<figure class="mx-auto d-block">
+    
+        <img src="dev/features/images/ExcelSigTest.png" />
+    
+    
+</figure>
+
+
+<h2 id="unweighted-counts">Unweighted counts</h2>
+
+<p>Previously, if you requested a tab book with a weight applied to the dataset, the “N” or “base” row of counts beneath the tables were also weighted. These are now unweighted, as they are throughout the Crunch.io app. This change allows you to see how many rows or observations in the dataset are used to compute each cell in the tables.</p>
+
+<h2 id="let-us-know-what-you-think">Let us know what you think</h2>
+
+<p>If you haven’t downloaded a tab book recently, check them out. If you have suggestions for how we can improve them further, let us know!</p>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-green">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://support.crunch.io/crunch/home.html">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/login">Login</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/login/">Try now</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
