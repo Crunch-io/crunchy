@@ -33,10 +33,10 @@ $(document).ready(function() {
 
     //Homepage img animation
     $(window).scroll(function(){
-        if($(window).scrollTop() <= 1000){
+        if($(window).scrollTop() >= 400){
           $('.crunch-interface').addClass('animated fadeInUp');
           $('.crunch-interface').removeClass('hidden');
-        } 
+        }
     });
 
 });
