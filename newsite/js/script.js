@@ -39,4 +39,60 @@ $(document).ready(function() {
         }
     });
 
+
+    //Dot nav
+    var pagescrollPosition = [];
+    $('.page-scroll').each(function() {
+        pagescrollPosition.push($(this).offset().top);
+    });
+
+    $('#dot-nav ul li a').click(function(){
+        $('html, body').animate({
+            scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+        return false;
+    });
+
+    $('#dot-nav ul li').click(function () {
+        $('#dot-nav ul li').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $(document).scroll(function(){
+       var position = $(document).scrollTop(), index;
+        for (var i=0; i<pagescrollPosition.length; i++) {
+            if (position <= pagescrollPosition[i]) {
+                index = i;
+                break;
+            }
+        }
+        $('#dot-nav ul li').removeClass('active');
+        $('#dot-nav ul li:eq('+index+')').addClass('active');
+    });
+
+        $('#dot-nav ul li').click(function () {
+        $('#dot-nav ul li').removeClass('active');
+            $(this).addClass('active');
+    });
+
+    // Change title color when scrolled
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if(scroll > 250 && scroll < 2600){
+            $('.learn-more-title').addClass('text-white');
+        } else {
+            $('.learn-more-title').removeClass('text-white');
+        }
+
+        if(scroll > 2200) {
+            $('.collaborate-securely-parallax .img-fluid').addClass('img-parallax-none');
+        } else {
+            $('.collaborate-securely-parallax .img-fluid').removeClass('img-parallax-none');
+        }
+
+    });
+
+
+
+// End
 });
