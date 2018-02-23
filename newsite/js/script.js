@@ -78,7 +78,7 @@ $(document).ready(function() {
     // Change title color when scrolled
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        if(scroll > 250 && scroll < 2600){
+        if(scroll > 180 && scroll < 2600){
             $('.learn-more-title').addClass('text-white');
         } else {
             $('.learn-more-title').removeClass('text-white');
