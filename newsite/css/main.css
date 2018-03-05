@@ -4944,6 +4944,9 @@ a, a:hover, a:active {
 .container-fluid {
   padding: 0; }
 
+.down-arrow {
+  margin-left: -15px; }
+
 /* MODULES  - Individual site components */
 h1 {
   font-family: 'Libre Baskerville', serif; }
@@ -4986,29 +4989,29 @@ h4 {
 .btn-primary {
   background-color: #0064a4;
   border-color: #0064a4;
-  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4);
-  box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4); }
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 100, 164, 0.4);
+  box-shadow: 2px 2px 15px 1px rgba(0, 100, 164, 0.4); }
   .btn-primary:hover {
-    background-color: #00263e;
-    border-color: #00263e; }
+    background-color: #004571;
+    border-color: #004571; }
 
 .btn-secondary {
   background-color: #722580;
   border-color: #722580;
-  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4);
-  box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4); }
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(114, 37, 128, 0.4);
+  box-shadow: 2px 2px 15px 1px rgba(114, 37, 128, 0.4); }
   .btn-secondary:hover {
-    background-color: #2c0e31;
-    border-color: #2c0e31; }
+    background-color: #4f1a58;
+    border-color: #4f1a58; }
 
 .btn-success {
   background-color: #107f65;
   border-color: #107f65;
-  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4);
-  box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4); }
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(16, 127, 101, 0.4);
+  box-shadow: 2px 2px 15px 1px rgba(16, 127, 101, 0.4); }
   .btn-success:hover {
-    background-color: #05241d;
-    border-color: #05241d; }
+    background-color: #0a5241;
+    border-color: #0a5241; }
 
 #page-content-wrapper {
   width: 100%;
@@ -5023,16 +5026,21 @@ h4 {
     position: relative;
     margin-left: 0; } }
 
-.crunch-interface.hidden {
-  opacity: 0; }
-
 .crunch-interface img {
   margin: auto;
-  margin-top: -400px; }
+  margin-top: -500px; }
 
 @media (max-width: 575.98px) {
   .crunch-interface img {
     margin-top: -200px; } }
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .crunch-interface img {
+    margin-top: -300px; } }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .crunch-interface img {
+    margin-top: -300px; } }
 
 .secondary-content .row {
   margin: 0; }
@@ -5044,10 +5052,14 @@ h4 {
 #secondary-pages-wrapper .about-content {
   color: #ffffff; }
   #secondary-pages-wrapper .about-content .jumbotron {
-    background: url(../images/hip-square.jpg) repeat; }
+    background: url(../images/textures/concrete_seamless.png) repeat;
+    background-color: #107f65;
+    background-blend-mode: multiply; }
   @media (max-width: 767.98px) {
     #secondary-pages-wrapper .about-content .jumbotron {
-      background: #107f65; } }
+      background: url(../images/textures/concrete_seamless.png) repeat;
+      background-color: #107f65;
+      background-blend-mode: multiply; } }
 
 #secondary-pages-wrapper .secondary-about-content h2 {
   font-size: 2em;
@@ -5110,7 +5122,9 @@ h4 {
 #secondary-pages-wrapper .team-content {
   color: #ffffff; }
   #secondary-pages-wrapper .team-content .jumbotron {
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.2)), url(../images/hip-square.jpg) repeat;
+    background: url(../images/textures/paper_fibers_@2X.png) repeat;
+    background-color: #107f65;
+    background-blend-mode: multiply;
     height: 485px; }
   #secondary-pages-wrapper .team-content .team-leads {
     margin-top: -250px;
@@ -5127,18 +5141,26 @@ h4 {
 #secondary-pages-wrapper .jobs-content {
   color: #ffffff; }
   #secondary-pages-wrapper .jobs-content .jumbotron {
-    background: url(../images/hip-square-blue.jpg) repeat; }
+    background: url(../images/textures/cork-wallet.png) repeat;
+    background-color: #0064a4;
+    background-blend-mode: multiply; }
 
 #secondary-pages-wrapper .blog-content {
   color: #0064a4; }
   #secondary-pages-wrapper .blog-content .jumbotron {
     color: #ffffff;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.2)), url(../images/hip-square-blue.jpg) repeat; }
+    background: url(../images/textures/dust_scratches.png) repeat;
+    background-color: #0064a4;
+    background-blend-mode: multiply; }
     #secondary-pages-wrapper .blog-content .jumbotron a {
       color: #ffffff; }
     #secondary-pages-wrapper .blog-content .jumbotron .lead {
       color: #ffffff;
       font-weight: 400; }
+  #secondary-pages-wrapper .blog-content h2 {
+    font-family: 'ProximaNova', sans-serif;
+    font-weight: 700;
+    font-size: 2em; }
 
 #secondary-pages-wrapper .blog-content-mg {
   margin-top: 30px;
@@ -5308,11 +5330,15 @@ h4 {
   .collaborate-securely-content .content-one .jumbotron {
     height: 800px;
     color: #ffffff;
-    background: url(../images/hip-square.jpg) repeat; }
+    background: url(../images/textures/cream_dust_@2X.png) repeat;
+    background-color: #107f65;
+    background-blend-mode: multiply; }
 
 @media (max-width: 575.98px) {
   .collaborate-securely-content .content-one {
-    background: url(../images/hip-square.jpg) repeat; }
+    background: url(../images/textures/cream_dust_@2X.png) repeat;
+    background-color: #107f65;
+    background-blend-mode: multiply; }
     .collaborate-securely-content .content-one h1 {
       margin-top: -220px; } }
 
@@ -5348,7 +5374,9 @@ h4 {
 .collaborate-securely-content .content-three .jumbotron {
   height: 800px;
   color: #ffffff;
-  background: url(../images/hip-square.jpg) repeat; }
+  background: url(../images/textures/cream_dust_@2X.png) repeat;
+  background-color: #107f65;
+  background-blend-mode: multiply; }
   .collaborate-securely-content .content-three .jumbotron p {
     margin-top: 200px; }
   @media (max-width: 767.98px) {
@@ -5419,11 +5447,15 @@ h4 {
   .speaks-research-content .content-one .jumbotron {
     height: 800px;
     color: #ffffff;
-    background: url(../images/hip-square-blue.jpg) repeat; }
+    background: url(../images/textures/paper_fibers_@2X.png) repeat;
+    background-color: #0064a4;
+    background-blend-mode: multiply; }
 
 @media (max-width: 575.98px) {
   .speaks-research-content .content-one {
-    background: url(../images/hip-square-blue.jpg) repeat; }
+    background: url(../images/textures/paper_fibers_@2X.png) repeat;
+    background-color: #0064a4;
+    background-blend-mode: multiply; }
     .speaks-research-content .content-one h1 {
       margin-top: -220px; } }
 
@@ -5458,7 +5490,9 @@ h4 {
 .speaks-research-content .content-three .jumbotron {
   height: 800px;
   color: #ffffff;
-  background: url(../images/hip-square-blue.jpg) repeat; }
+  background: url(../images/textures/paper_fibers_@2X.png) repeat;
+  background-color: #0064a4;
+  background-blend-mode: multiply; }
   .speaks-research-content .content-three .jumbotron p {
     margin-top: 200px; }
   .speaks-research-content .content-three .jumbotron a {
@@ -5495,9 +5529,9 @@ h4 {
 #page-content-wrapper .intro-content {
   color: #ffffff; }
   #page-content-wrapper .intro-content .jumbotron {
-    padding-top: 200px;
+    padding-top: 100px;
     width: 100%;
-    height: 1200px;
+    height: 900px;
     background: url(../images/crunch_lavender.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     background-size: cover; }
@@ -5591,7 +5625,8 @@ h4 {
     box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
     top: -5px; }
   .post-card .posts .post-title {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'ProximaNova', sans-serif;
+    font-weight: 400;
     color: #0064a4; }
   .post-card .posts span {
     font-size: .8em; }
@@ -5666,6 +5701,8 @@ figure.img-fluid img {
   background-color: #ffffff; }
   .navbar .navbar-nav .nav-item {
     margin-left: 30px; }
+    .navbar .navbar-nav .nav-item .btn-primary {
+      padding: 8px 45px; }
     .navbar .navbar-nav .nav-item a:not(.btn-primary) {
       color: #444444; }
       .navbar .navbar-nav .nav-item a:not(.btn-primary):hover {
@@ -5687,7 +5724,7 @@ figure.img-fluid img {
   margin: 0;
   padding: 0; }
   #dot-nav ul li {
-    background-color: #bbbbbb;
+    background-color: #b1b1c4;
     border-radius: 15px;
     cursor: pointer;
     width: 12px;
@@ -5698,7 +5735,7 @@ figure.img-fluid img {
       text-indent: -9999px; }
 
 #dot-nav li.active, #dot-nav li:hover {
-  background-color: #efefef; }
+  background-color: #1D1D26; }
 
 .footer {
   padding: 20px 0; }
