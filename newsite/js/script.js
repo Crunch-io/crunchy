@@ -95,24 +95,15 @@ $(document).ready(function() {
       });
 
 
-    // Change title color when scrolled
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        if(scroll > 180 && scroll < 2600){
-            $('.learn-more-title').addClass('text-white');
-        } else {
-            $('.learn-more-title').removeClass('text-white');
-        }
-
-        if(scroll > 2200) {
-            $('.collaborate-securely-parallax .img-fluid').addClass('img-parallax-none');
-        } else {
-            $('.collaborate-securely-parallax .img-fluid').removeClass('img-parallax-none');
-        }
-
-    });
-
-
+    // Wow animations
+    wow = new WOW({
+     boxClass:     'wow',
+     animateClass: 'animated',
+     offset:       0,
+     mobile:       false,
+     live:         true
+   })
+   wow.init();
 
 // End
 });
