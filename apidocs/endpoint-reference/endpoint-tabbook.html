@@ -176,10 +176,10 @@ will be generated regardless of the status of any other pending exports.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#15168d34ca20_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#151cccb850f0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="15168d34ca20_HTTP">
+<div class="tab-pane active section" id="151cccb850f0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">a598c7</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span><span class="mi">7</span><span class="n">ab1e</span><span class="o">/</span><span class="n">tabbook</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -189,17 +189,17 @@ will be generated regardless of the status of any other pending exports.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#15168c582908_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#15168c582908_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#151cccd931d0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#151cccd931d0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="15168c582908_HTTP">
+<div class="tab-pane active section" id="151cccd931d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">202</span> <span class="n">Accepted</span>
 <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">s3</span><span class="o">-</span><span class="n">url</span><span class="o">/</span><span class="n">filename</span><span class="o">.</span><span class="n">xlsx</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="15168c582908_JSON">
+<div class="tab-pane section" id="151cccd931d0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/a598c7/multitables/</span><span class="si">{id}</span><span class="s2">/tabbook/&quot;</span><span class="p">,</span>
@@ -214,17 +214,17 @@ an Accept request header.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#15168d3a2d68_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#15168d3a2d68_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#151ccdaa3048_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#151ccdaa3048_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="15168d3a2d68_HTTP">
+<div class="tab-pane active section" id="151ccdaa3048_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">a598c7</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span><span class="mi">7</span><span class="n">ab1e</span><span class="o">/</span><span class="n">tabbook</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Accept</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="15168d3a2d68_JSON">
+<div class="tab-pane section" id="151ccdaa3048_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -813,11 +813,11 @@ an Accept request header.</p>
 limiting parameters.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="4%" />
+<col width="6%" />
 <col width="4%" />
 <col width="5%" />
 <col width="18%" />
-<col width="69%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -857,14 +857,34 @@ which variables to use</td>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td>options</td>
+<tr class="row-even"><td>variables</td>
+<td>array</td>
+<td>null</td>
+<td>List of variables or folder
+urls to include.
+Use this as a simpler way
+to select the variables to
+include instead of building
+a <cite>where</cite> expression.
+The folders included in this
+list will include all the
+variables in its subfolders</td>
+<td><div class="code json first last highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
+   <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/folders/abcdef/&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>options</td>
 <td>object</td>
 <td>{}</td>
 <td>further options defining
 the tabbook output.</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>weight</td>
+<tr class="row-even"><td>weight</td>
 <td>url</td>
 <td>null</td>
 <td>Provide a weight for the
@@ -999,7 +1019,7 @@ sheet.</td>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Mar 10, 2018.<br/>
+      Last updated on Mar 27, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

@@ -919,19 +919,26 @@ and a "where" attribute to specify variables to include.
 ============= ================================= ================================================================================
 Attribute     Description                       Example
 ============= ================================= ================================================================================
-filter        A Crunch filter expression        ``{"function": "==", "args": [{"variable": "000000"}, {"value": 1}]}``
+filter        A Crunch filter expression        .. code:: json
               defining a filter for the given
-              export
+              export                             {"function": "==", "args": [{"variable": "000000"}, {"value": 1}]}
 ------------- --------------------------------- --------------------------------------------------------------------------------
-where         A Crunch expression defining      ``{"function": "select", "args": [{"map": {"000000": {"variable": 000000"}}}]}``
+where         A Crunch expression defining      .. code:: json
               which variables to export.
               Refer to `Frame functions
-              <#frame-functions>`__ for the
+              <#frame-functions>`__ for the      {"function": "select", "args": [{"map": {"000000": {"variable": 000000"}}}]}
               available functions here.
 ------------- --------------------------------- --------------------------------------------------------------------------------
-options       An object of extra settings,      ``{"use_category_ids": true}``
+variables     A list of variable or folder URLs .. code:: json
+              that indicate the variables to
+              include. The subfolders mentioned  [
+              will include all the subvariables    "https://app.crunch.io/api/datasets/45fc/variables/000004/",
+              under its subfolders as well.        "https://app.crunch.io/api/datasets/45fc/folders/abcdef/"
+                                                 ]
+------------- --------------------------------- --------------------------------------------------------------------------------
+options       An object of extra settings,      .. code:: json
               which may be format specific.
-              See below.
+              See below.                         {"use_category_ids": true}
 ============= ================================= ================================================================================
 
 See `"Expressions" <#expressions>`__ for more on Crunch expressions.
@@ -978,7 +985,7 @@ Some format-specific properties and options:
 +--------+----------------------+--------------------------------------------+---------------+
 
 SPSS
-    
+
 
 Categorical-array and multiple-response variables will be exported as
 "mrsets", as supported by SPSS. If the ``prefix_subvariables`` option is
@@ -990,7 +997,7 @@ variables, use the ``var_label_field`` in the ``options`` attribute in
 the POST body. The only valid fields are ``description`` and ``name``.
 
 CSV
-   
+
 
 By default, categorical variable values will be exported using the
 category name and missing values will use their corresponding reason
@@ -1133,7 +1140,7 @@ Summary
 ``/datasets/{id}/summary/{?filter}``
 
 Query Parameters
-                
+
 
 +-------------+------------------------------+
 | Parameter   | Description                  |
@@ -1203,7 +1210,7 @@ Stream
 ''''''
 
 Stream lock
-           
+
 
 When a dataset is configured to receive streaming data, the /stream/
 endpoint will accept POST requests to append new rows to the streaming
@@ -1247,7 +1254,7 @@ Note that only the **dataset maintainer** is allowed to modify the
 ``streaming`` attribute.
 
 Sending rows
-            
+
 
 ``/datasets/{id}/stream/``
 
@@ -1381,7 +1388,7 @@ Preferences are unordered; clients should not assume that they are
 ordered.
 
 Weight
-      
+
 
 If the dataset has ``viewers_can_change_weight`` setting set to false,
 then all users' preferences ``weight`` will be set to the dataset wide
@@ -1394,7 +1401,7 @@ Primary key
 ``/datasets/{dataset_id}/pk/``
 
 URL Parameters
-              
+
 
 +---------------+-------------------------+
 | Parameter     | Description             |
@@ -1409,7 +1416,7 @@ being inserted. A primary key can only be set on a variable that is type
 can only be set after that variable has been added to the dataset.
 
 GET
-   
+
 
 .. language_specific::
    --HTTP
@@ -1445,7 +1452,7 @@ variables in the dataset which comprise the primary key. If there is no
 primary key for this dataset, the ``pk`` value will be ``[]``.
 
 POST
-    
+
 
 .. language_specific::
    --HTTP
@@ -1492,7 +1499,7 @@ numeric type and must have no duplicate or missing values. Setting pk to
    </aside>
 
 DELETE
-      
+
 
 .. language_specific::
    --HTTP

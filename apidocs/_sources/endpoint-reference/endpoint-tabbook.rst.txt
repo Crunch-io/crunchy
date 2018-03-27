@@ -652,37 +652,47 @@ POST body parameters
 At the top level, the tab book endpoint can take filtering and variable
 limiting parameters.
 
-======= ====== ======== ============================= ================================================================================================================
-Name    Type   Default  Description                   Example
-======= ====== ======== ============================= ================================================================================================================
-filter  object null     Filter by Crunch Expression.  .. code:: json
-                        Variables used in the filter
-                        should be fully-expressed
-                        urls.                          [{"filter":
-                                                       "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/filters/5f14133582f34b8b85b408830f4b4a9b/"
-                                                       }]
-------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
-where   object null     Crunch Expression signifying  .. code:: json
-                        which variables to use
-                                                       {"function": "select",
-                                                        "args": [{"map": {
-                                                         "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/": {
-                                                          "variable": "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/"},
-                                                         "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/": {
-                                                          "variable": "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/"}}}]}
-------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
-options object {}       further options defining
-                        the tabbook output.
-------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
-weight  url    null     Provide a weight for the
-                        tabbook generation, if the
-                        weight is omitted from the
-                        request, the currently
-                        selected weight is used. If
-                        "null" is provided, then the
-                        tabbook generation will be
-                        unweighted.
-======= ====== ======== ============================= ================================================================================================================
+========== ====== ======== ============================= ================================================================================================================
+Name       Type   Default  Description                   Example
+========== ====== ======== ============================= ================================================================================================================
+filter     object null     Filter by Crunch Expression.  .. code:: json
+                           Variables used in the filter
+                           should be fully-expressed
+                           urls.                          [{"filter":
+                                                          "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/filters/5f14133582f34b8b85b408830f4b4a9b/"
+                                                          }]
+---------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
+where      object null     Crunch Expression signifying  .. code:: json
+                           which variables to use
+                                                          {"function": "select",
+                                                           "args": [{"map": {
+                                                            "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/": {
+                                                             "variable": "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/"},
+                                                            "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/": {
+                                                             "variable": "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000003/"}}}]}
+---------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
+variables  array  null     List of variables or folder   .. code:: json
+                           urls to include.
+                           Use this as a simpler way      [
+                           to select the variables to        "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/variables/000004/",
+                           include instead of building       "https://app.crunch.io/api/datasets/45fc0d5ca0a945dab7d05444efa3310a/folders/abcdef/"
+                           a `where` expression.          ]
+                           The folders included in this
+                           list will include all the
+                           variables in its subfolders
+---------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
+options    object {}       further options defining
+                           the tabbook output.
+---------- ------ -------- ----------------------------- ----------------------------------------------------------------------------------------------------------------
+weight     url    null     Provide a weight for the
+                           tabbook generation, if the
+                           weight is omitted from the
+                           request, the currently
+                           selected weight is used. If
+                           "null" is provided, then the
+                           tabbook generation will be
+                           unweighted.
+========== ====== ======== ============================= ================================================================================================================
 
 Options
 '''''''
@@ -704,7 +714,7 @@ layout              string  many_sheets "many_sheets" indicates each        sing
 =================== ======= =========== =================================== ================
 
 Display Settings
-                
+
 
 Further tab book viewing options.
 

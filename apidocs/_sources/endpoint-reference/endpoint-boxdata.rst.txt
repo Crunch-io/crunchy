@@ -44,6 +44,14 @@ where           object  A Crunch expression indicating which variables
                         is equavilent to specifying all dataset
                         variables.
 --------------- ------- ------------------------------------------------
+variables       array   A list of variable or folder URLs to indicate
+                        the variables to include. Use this as a simpler
+                        way to select the variables.
+                        The folders mentioned will include all the
+                        subvariables under its subfolders as well.
+                        Usage of `where` and `variables` at the same time
+                        isn't allowed.
+--------------- ------- ------------------------------------------------
 creation_time   string  A timestamp of the date when this CrunchBox was
                         created
 =============== ======= ================================================
