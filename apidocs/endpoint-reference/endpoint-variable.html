@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -181,8 +181,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#missing-values">Missing values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subvariables">Subvariables</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id9">GET</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id10">PATCH</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">GET</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id11">PATCH</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#values">Values</a></li>
@@ -207,7 +207,7 @@
   <div class="section" id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"> 🔗</a></h1>
 <div class="section" id="catalog">
-<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<span id="variables-catalog"></span><h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{?relative}</span></code></p>
 <p>A Shoji Catalog of variables.</p>
 <div class="section" id="get-catalog">
@@ -332,10 +332,10 @@ like this:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a7f2ba8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0a98630_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a7f2ba8_JSON">
+<div class="tab-pane active section" id="14eda0a98630_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -423,10 +423,10 @@ entity.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765aa8cba8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0a60860_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765aa8cba8_JSON">
+<div class="tab-pane active section" id="14eda0a60860_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -445,10 +445,10 @@ change in line 24.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a689550_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0ec4780_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a689550_JSON">
+<div class="tab-pane active section" id="14eda0ec4780_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -534,20 +534,20 @@ the datetime data.</li>
 <li><strong>folder</strong>: optional, a URL of a variable folder in the dataset into which the new variable should be placed. If omitted,
 the variable will be created on the root folder. Personal variables (with <code class="docutils literal"><span class="pre">&quot;private&quot;:</span> <span class="pre">true</span></code>) cannot be placed in a folder; attempting to do so returns 400 status.</li>
 </ul>
-<p>See <a class="reference external" href="#variable-definitions">Variable Definitions</a> for more details
+<p>See <a class="reference internal" href="../object-reference/object-reference.html#variable-definitions"><span class="std std-ref">Variable Definitions</span></a> for more details
 and examples of valid attributes, and <a class="reference external" href="#array-variables">Feature Guide:
 Arrays</a> for more information on the various cases
 for creating array variables.</p>
 <p>It is encouraged, but not required, to include an “alias” in the body.
 If omitted, one will be generated from the required “name”.</p>
 <p>You may also include “values”, which will create the column of data
-corresponding to this variable definition. See <a class="reference external" href="#column-by-column">Importing Data:
-Column-by-column</a> for details and examples.</p>
+corresponding to this variable definition. See <a class="reference internal" href="../feature-guide/feature-importing.html#import-column-by-column"><span class="std std-ref">Importing Data:
+Column-by-column</span></a> for details and examples.</p>
 <p>You may instead also include an “derivation” to derive a variable as a
 function of other variables. In this case, “type” is not required
 because it depends on the output of the specified derivation function.
-For details and examples, see <a class="reference external" href="#deriving-variables">Deriving
-Variables</a>.</p>
+For details and examples, see <a class="reference internal" href="../feature-guide/feature-deriving.html#deriving-variables"><span class="std std-ref">Deriving
+Variables</span></a>.</p>
 <p>A 201 indicates success and includes the URL of the newly-created
 variable in the Location header.</p>
 </div>
@@ -641,10 +641,10 @@ return a 409 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765ad0a978_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14ed9ffea828_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765ad0a978_JSON">
+<div class="tab-pane active section" id="14ed9ffea828_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/42d0a3/variables/42229f&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -935,7 +935,7 @@ subvariables cannot be added via PATCH here.</li>
 <li>changing variable names, aliases, and descriptions, which is best
 accomplished by PATCHing the variable catalog, as described above;</li>
 <li>changing a variable’s type, which can only be done by POSTing to the
-variable’s “cast” resource (see <a class="reference external" href="#convert-type">Convert type</a>
+variable’s “cast” resource (see <a class="reference internal" href="#convert-type"><span class="std std-ref">Convert type</span></a>
 below);</li>
 <li>editing names, aliases, and descriptions of subvariables in an array,
 which is done by PATCHing the array’s subvariable catalog;</li>
@@ -946,10 +946,10 @@ which is done by PATCHing the array’s subvariable catalog;</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a69d630_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0dcafd0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a69d630_JSON">
+<div class="tab-pane active section" id="14eda0dcafd0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0008/&quot;</span><span class="p">,</span>
@@ -1010,10 +1010,10 @@ filters, or weights returns:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a18f208_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0d84b70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a18f208_JSON">
+<div class="tab-pane active section" id="14eda0d84b70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
     <span class="s2">&quot;valid_count&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -1145,7 +1145,7 @@ their counts.</li>
 <div class="section" id="transforming">
 <h2>Transforming<a class="headerlink" href="#transforming" title="Permalink to this headline"> 🔗</a></h2>
 <div class="section" id="convert-type">
-<h3>Convert type<a class="headerlink" href="#convert-type" title="Permalink to this headline"> 🔗</a></h3>
+<span id="id9"></span><h3>Convert type<a class="headerlink" href="#convert-type" title="Permalink to this headline"> 🔗</a></h3>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/cast/</span></code></p>
 <p>A POST to this resource, with a JSON request body of {“cast_as”: type},
 will alter the variable to the given type. If the variable cannot be
@@ -1219,10 +1219,10 @@ is typically a tree of simple rules logical-OR’d together.</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765b00c780_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda006e6d8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765b00c780_JSON">
+<div class="tab-pane active section" id="14eda006e6d8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;Invalid&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
@@ -1243,16 +1243,16 @@ based on the contents of another column is not supported.</p>
 <div class="section" id="subvariables">
 <h3>Subvariables<a class="headerlink" href="#subvariables" title="Permalink to this headline"> 🔗</a></h3>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/variables/{id}/subvariables/</span></code></p>
-<div class="section" id="id9">
-<h4>GET<a class="headerlink" href="#id9" title="Permalink to this headline"> 🔗</a></h4>
+<div class="section" id="id10">
+<h4>GET<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h4>
 <p>This endpoint will return 404 for any variable that is not an array
 variable (Multiple response and Categorical variable).</p>
 <p>For array variables, this endpoint will return a Shoji Catalog
 containing a tuples for the subvariables. The tuples will have the same
 shape as the main variables catalog.</p>
 </div>
-<div class="section" id="id10">
-<h4>PATCH<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h4>
+<div class="section" id="id11">
+<h4>PATCH<a class="headerlink" href="#id11" title="Permalink to this headline"> 🔗</a></h4>
 <p>On PATCH, this endpoint allows modification to the variables attributes
 exposed on the tuples (name, description, alias, discarded).</p>
 <p>It is possible to add new subvariables to the array variable in
@@ -1308,7 +1308,7 @@ described above for public variables.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Mar 27, 2018.<br/>
+      Last updated on Mar 28, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

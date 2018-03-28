@@ -1,3 +1,5 @@
+.. _versions-main:
+
 Versions
 --------
 

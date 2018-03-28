@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -125,13 +125,13 @@
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a11ba58_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765a11ba58_R">R</a></li>
-<li><a data-toggle="tab" href="#14765a11ba58_Python">Python</a></li>
-<li><a data-toggle="tab" href="#14765a11ba58_Shell">Shell</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0a23978_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14eda0a23978_R">R</a></li>
+<li><a data-toggle="tab" href="#14eda0a23978_Python">Python</a></li>
+<li><a data-toggle="tab" href="#14eda0a23978_Shell">Shell</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a11ba58_HTTP">
+<div class="tab-pane active section" id="14eda0a23978_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">login</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -148,7 +148,7 @@
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a11ba58_R">
+<div class="tab-pane section" id="14eda0a23978_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
 <span class="n">login</span><span class="p">(</span><span class="s2">&quot;fake.user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
 <span class="c1"># See ?login for options, including how to store your credentials</span>
@@ -156,12 +156,12 @@
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a11ba58_Python">
+<div class="tab-pane section" id="14eda0a23978_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycrunch</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a11ba58_Shell">
+<div class="tab-pane section" id="14eda0a23978_Shell">
 <div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">c</span> <span class="n">cookie</span><span class="o">-</span><span class="n">jar</span>
     <span class="o">-</span><span class="n">X</span> <span class="n">POST</span>
     <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;email&quot;: &quot;fake.user@example.com&quot;, &quot;password&quot;: &quot;password&quot;}&#39;</span>
@@ -169,7 +169,7 @@
     <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">login</span><span class="o">/</span>
 
 <span class="c1"># The above command will perform a login and save the login cookie to a file called &#39;cookie-jar&#39;.</span>
-<span class="c1"># After this, you can access the endpoint via `curl&#39; commands (POST, GET, PATCH), as long as the &#39;-b cookie-jar&#39; flag is present.  Note, -b not -c.  -c saves cookies, -b submits cookies from the existing file. It is good practice to delete this file when you are done.</span>
+<span class="c1"># After this, you can access the endpoint via &#39;curl&#39; commands (POST, GET, PATCH), as long as the &#39;-b cookie-jar&#39; flag is present.  Note, -b not -c.  -c saves cookies, -b submits cookies from the existing file. It is good practice to delete this file when you are done.</span>
 </pre></div>
 </div>
 </div>
@@ -185,8 +185,8 @@ subsequent request.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Replace “<a class="reference external" href="mailto:fake&#46;user&#37;&#52;&#48;example&#46;com">fake<span>&#46;</span>user<span>&#64;</span>example<span>&#46;</span>com</a>” and “password” with your email and password, respectively. Refer to the password policy below for more information.</p>
 </div>
-<p>Crunch also supports OAuth 2.0/OpenID Connect. See <a class="reference external" href="#public">the public endpoint
-reference</a> for more on how to authenticate with OAuth.</p>
+<p>Crunch also supports OAuth 2.0/OpenID Connect. See <a class="reference internal" href="../endpoint-reference/endpoint-public.html#public-endpoint"><span class="std std-ref">the public endpoint
+reference</span></a> for more on how to authenticate with OAuth.</p>
 <p>If you’d like to add your auth provider to the set of supported
 providers, contact <a class="reference external" href="mailto:support&#37;&#52;&#48;crunch&#46;io">support<span>&#64;</span>crunch<span>&#46;</span>io</a></p>
 </div>
@@ -204,7 +204,7 @@ providers, contact <a class="reference external" href="mailto:support&#37;&#52;&
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Mar 27, 2018.<br/>
+      Last updated on Mar 28, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

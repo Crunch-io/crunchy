@@ -1,5 +1,9 @@
+.. _multitables-main:
+
 Multitables
 -----------
+
+.. _multitables-catalog:
 
 Catalog
 ~~~~~~~
@@ -45,7 +49,7 @@ POST
 
 POST a Shoji Entity to this catalog to create a new multitable
 definition. Entities must include a ``name`` and ``template``; the
-`template <#template-query>`__ must contain a series of objects with a
+:ref:`template <template-query>` must contain a series of objects with a
 ``query`` and optionally
 ```transform`` <#transforming-analyses-for-presentation>`__. If omitted,
 ``is_public`` defaults to ``false``. In similar fashion, ``team`` will

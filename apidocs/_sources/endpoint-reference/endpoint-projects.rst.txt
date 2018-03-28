@@ -1,3 +1,5 @@
+.. _projects-main:
+
 Projects
 --------
 
@@ -443,8 +445,8 @@ a ``project_url`` key that should be formatted as a URL containing a
 ``${project_id}`` part that the server will replace with the project's
 ID.
 
-This behavior is the same as described for `inviting new users when
-sharing a dataset <#inviting-new-users>`__
+This behavior is the same as described for :ref:`inviting new users when
+sharing a dataset <inviting-new-users>`.
 
 Datasets
 ~~~~~~~~

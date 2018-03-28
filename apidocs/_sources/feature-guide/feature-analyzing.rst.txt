@@ -1,3 +1,5 @@
+.. _multidimensional-analysis:
+
 Multidimensional analysis
 -------------------------
 
@@ -341,8 +343,10 @@ clients can use to construct a valid query with the variable(s) of
 interest.
 
 Crunch provides a separate catalog where you can define and manage these
-common sets of variables. Like most catalogs, you can `GET
-it <#multitables162>`__ to see which multitables are defined.
+common sets of variables. Like most catalogs, you can :ref:`GET
+it <multitables-catalog>` to see which multitables are defined.
+
+.. _template-query:
 
 Template query
 ^^^^^^^^^^^^^^

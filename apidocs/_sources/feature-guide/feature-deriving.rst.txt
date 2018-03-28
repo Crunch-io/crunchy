@@ -1,3 +1,5 @@
+.. _deriving-variables:
+
 Deriving Variables
 ------------------
 
@@ -11,6 +13,8 @@ to the dataset, available for all viewers.
 .. note::
 
     In this section, sample variable documents have been trimmed to the attributes essential to the derivation examples. Actual variable documents in the wild will have more attributes than those shown here.
+
+.. _combining-categories:
 
 Combining categories
 ~~~~~~~~~~~~~~~~~~~~
@@ -171,6 +175,8 @@ categorical variables. The resulting variable is also of type
 the subvariables contained in it are derived "combine\_categories"
 categorical variables.
 
+.. _combining-responses:
+
 Combining responses
 ~~~~~~~~~~~~~~~~~~~
 
@@ -289,6 +295,8 @@ function like:
 results in a multiple response variable with three responses. The
 "selected" state of the responses in the derived variable is an "OR" of
 the combined subvariables.
+
+.. _case-statements:
 
 Case statements
 ~~~~~~~~~~~~~~~
@@ -752,14 +760,14 @@ case
 ^^^^
 
 Returns a categorical variable with its categories following the
-specified conditions from different variables on the dataset. `View Case
-Statements <#Case-statements>`__
+specified conditions from different variables on the dataset. :ref:`View Case
+Statements <case-statements>`.
 
 cast
 ^^^^
 
 Returns a new variable with its type and values casted. Not applicable
-on arrays or date variable; use `Date Functions <#Date-Functions>`__ to
+on arrays or date variable; use :ref:`Date Functions <date-Functions>` to
 work with date variables.
 
 .. language_specific::
@@ -810,7 +818,7 @@ a name string (``numeric``, ``text``) but a type definition indicating a
 
 
 To change the type of a variable a client should POST to the
-``/variable/:id/cast/`` endpoint. See `Convert type <#Convert-type>`__
+``/variable/:id/cast/`` endpoint. See :ref:`Convert type <convert-type>`
 for API examples.
 
 char\_length
@@ -856,14 +864,14 @@ combine\_categories
 ^^^^^^^^^^^^^^^^^^^
 
 Returns a categorical variable with values combined following the
-specified combination rules. See `Combining
-categories <#Combining-categories>`__
+specified combination rules. See :ref:`Combining
+categories <combining-categories>`.
 
 combine\_responses
 ^^^^^^^^^^^^^^^^^^
 
 Given a list of categorical variables, return the selected value out of
-them. See `Combining responses <#Combining-responses>`__
+them. See :ref:`Combining responses <combining-responses>`.
 
 row
 ^^^

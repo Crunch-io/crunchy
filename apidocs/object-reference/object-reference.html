@@ -37,7 +37,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -138,7 +138,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#numeric">Numeric</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#categorical">Categorical</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#datetime">Datetime</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id1">Arrays</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">Arrays</a></li>
 </ul>
 </li>
 </ul>
@@ -168,7 +168,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#shoji">Shoji</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#entity">Entity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#catalog">Catalog</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">View</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#order">Order</a></li>
 </ul>
 </li>
@@ -235,7 +235,7 @@ may provide an <code class="docutils literal"><span class="pre">orders</span></c
 contain any arbitrary JSON object.</p>
 </div>
 <div class="section" id="shoji-order">
-<h3>Shoji order<a class="headerlink" href="#shoji-order" title="Permalink to this headline"> 🔗</a></h3>
+<span id="id1"></span><h3>Shoji order<a class="headerlink" href="#shoji-order" title="Permalink to this headline"> 🔗</a></h3>
 <p>Shoji orders are identified by the <code class="docutils literal"><span class="pre">element</span></code> key having a value
 <code class="docutils literal"><span class="pre">shoji:order</span></code>. Their principal attribute is the <code class="docutils literal"><span class="pre">graph</span></code> key which is
 an array containing the order of present resources.</p>
@@ -334,7 +334,7 @@ complete elaboration of the entire column.</li>
 </div>
 </div>
 <div class="section" id="variable-definitions">
-<h3>Variable Definitions<a class="headerlink" href="#variable-definitions" title="Permalink to this headline"> 🔗</a></h3>
+<span id="id2"></span><h3>Variable Definitions<a class="headerlink" href="#variable-definitions" title="Permalink to this headline"> 🔗</a></h3>
 <p>Crunch employs a structural type system rather than a nominative one.
 The variable definition includes more knowledge than just the type name
 (numeric, text, categorical, etc); we also learn details about range,
@@ -342,10 +342,10 @@ precision, missing values and reasons, order, etc. For example:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a28c908_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0e06400_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a28c908_Json">
+<div class="tab-pane active section" id="14eda0e06400_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Party ID&quot;</span><span class="p">,</span>
@@ -505,10 +505,10 @@ The order of the subvariables is read from the “subvariables” attribute.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a7d02b0_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14ed9ff59c18_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a7d02b0_Json">
+<div class="tab-pane active section" id="14ed9ff59c18_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example array&quot;</span><span class="p">,</span>
@@ -618,10 +618,10 @@ reasons map such as:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765adab828_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda00b9ac8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765adab828_Json">
+<div class="tab-pane active section" id="14eda00b9ac8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;missing reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;no data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
@@ -671,8 +671,8 @@ values.</p>
 <h5>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline"> 🔗</a></h5>
 <p>Datetime input and output are in ISO-8601 formatted strings.</p>
 </div>
-<div class="section" id="id1">
-<h5>Arrays<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h5>
+<div class="section" id="id3">
+<h5>Arrays<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h5>
 <p>Crunch supports array type variables, which contain an array of
 subvariables. “Multiple response” and “Categorical array” are both
 arrays of categorical subvariables. Subvariables do not exist as
@@ -693,7 +693,7 @@ in the array).</p>
 array.</p>
 </div>
 <div class="section" id="expressions">
-<h3>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline"> 🔗</a></h3>
+<span id="expressions-obj-ref"></span><h3>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline"> 🔗</a></h3>
 <p>Crunch expressions are used to compute on a dataset, to do nuanced
 selects, updates, and deletes, and to accomplish many other routine
 operations. Expressions are JSON objects in which each term is wrapped
@@ -858,7 +858,7 @@ are missing</li>
 </ul>
 </div>
 <div class="section" id="date-functions">
-<h5>Date Functions<a class="headerlink" href="#date-functions" title="Permalink to this headline"> 🔗</a></h5>
+<span id="id4"></span><h5>Date Functions<a class="headerlink" href="#date-functions" title="Permalink to this headline"> 🔗</a></h5>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">default_rollup_resolution</span></code> default_rollup_resolution</li>
 <li><code class="docutils literal"><span class="pre">datetime_to_numeric</span></code> Convert the given datetime column to numeric.</li>
@@ -873,7 +873,7 @@ calendrical bins.</li>
 </ul>
 </div>
 <div class="section" id="frame-functions">
-<h5>Frame Functions<a class="headerlink" href="#frame-functions" title="Permalink to this headline"> 🔗</a></h5>
+<span id="id5"></span><h5>Frame Functions<a class="headerlink" href="#frame-functions" title="Permalink to this headline"> 🔗</a></h5>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">page</span></code> Return the given frame, limited/offset by the given values.</li>
 <li><code class="docutils literal"><span class="pre">select</span></code> Return a Frame of results from the given map of variables.</li>
@@ -893,10 +893,10 @@ subvariables at dotted ids.</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765ad51ba8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0ce7240_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765ad51ba8_Json">
+<div class="tab-pane active section" id="14eda0ce7240_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
   <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -922,10 +922,10 @@ from the frame where this function is applied on.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a9326d8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda06f2710_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a9326d8_Json">
+<div class="tab-pane active section" id="14eda06f2710_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;deselect&quot;</span><span class="p">,</span>
   <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -1014,10 +1014,10 @@ value. For example:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a03fbe0_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda07552b0_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a03fbe0_Json">
+<div class="tab-pane active section" id="14eda07552b0_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/1/&quot;</span><span class="p">,</span>
@@ -1051,10 +1051,10 @@ collection, and indeed possess an “index” member for this:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a190ac8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0729668_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a190ac8_Json">
+<div class="tab-pane active section" id="14eda0729668_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/&quot;</span><span class="p">,</span>
@@ -1101,8 +1101,8 @@ entities, entities are removed by PATCHing the catalog with a <code class="docut
 tuple. This removes the entity from the catalog but does not delete the
 entity (which is contained by a different catalog). T</p>
 </div>
-<div class="section" id="id2">
-<h4>View<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h4>
+<div class="section" id="id6">
+<h4>View<a class="headerlink" href="#id6" title="Permalink to this headline"> 🔗</a></h4>
 <p>Views cut across entities. They can publish nearly any arrangement of
 data, and are especially good for exposing arrays of arrays and the
 like. In general, a Shoji View is read-only, and only a GET will be
@@ -1119,10 +1119,10 @@ Order like:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a583198_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda01cff28_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a583198_Json">
+<div class="tab-pane active section" id="14eda01cff28_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/order/&quot;</span><span class="p">,</span>
@@ -1176,10 +1176,10 @@ two-dimensional relations.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a6ff2e8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0b402b0_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a6ff2e8_Json">
+<div class="tab-pane active section" id="14eda0b402b0_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/datasets/.../table/?limit=7&quot;</span><span class="p">,</span>
@@ -1221,10 +1221,10 @@ involves the same basic ingredients.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a8996a0_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14ed9ffed358_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a8996a0_Json">
+<div class="tab-pane active section" id="14ed9ffed358_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/3ffd45/&quot;</span><span class="p">},</span>
@@ -1271,10 +1271,10 @@ effectively overlaying each other. For example, a cube might contain a
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a3ddf98_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0726400_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a3ddf98_Json">
+<div class="tab-pane active section" id="14eda0726400_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:cube&quot;</span><span class="p">,</span>
     <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">210</span><span class="p">,</span>
@@ -1368,10 +1368,10 @@ cube of X, Y, and Z, the margins member might contain:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a534390_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#14ed9ffb83c8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a534390_Json">
+<div class="tab-pane active section" id="14ed9ffb83c8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="s2">&quot;margins&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4526</span><span class="p">],</span>
@@ -1429,7 +1429,7 @@ total. So margins[0][2] contains the margin where X (axis 0) and Z (axis
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Mar 27, 2018.<br/>
+      Last updated on Mar 28, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

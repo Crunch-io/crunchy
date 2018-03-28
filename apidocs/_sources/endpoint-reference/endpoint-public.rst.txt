@@ -1,3 +1,5 @@
+.. _public-endpoint:
+
 Public
 ------
 

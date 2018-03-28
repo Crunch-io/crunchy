@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -169,7 +169,7 @@
     <div class="col-md-9 content">
       
   <div class="section" id="teams">
-<h1>Teams<a class="headerlink" href="#teams" title="Permalink to this headline"> 🔗</a></h1>
+<span id="teams-main"></span><h1>Teams<a class="headerlink" href="#teams" title="Permalink to this headline"> 🔗</a></h1>
 <p>Teams contain references to users and datasets. By sharing a dataset
 with a team, you can grant access to a set of users at once, and by
 adding a user to a team, you can grant them access to a set of datasets.</p>
@@ -181,10 +181,10 @@ adding a user to a team, you can grant them access to a set of datasets.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a18e940_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0dd5048_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a18e940_HTTP">
+<div class="tab-pane active section" id="14eda0dd5048_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="o">--------</span>
@@ -200,11 +200,11 @@ adding a user to a team, you can grant them access to a set of datasets.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765acc05c0_JSON">JSON</a></li>
-<li><a data-toggle="tab" href="#14765acc05c0_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0a756d8_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#14eda0a756d8_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765acc05c0_JSON">
+<div class="tab-pane active section" id="14eda0a756d8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/teams/&quot;</span><span class="p">,</span>
@@ -227,7 +227,7 @@ adding a user to a team, you can grant them access to a set of datasets.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765acc05c0_R">
+<div class="tab-pane section" id="14eda0a756d8_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">teams</span> <span class="o">&lt;-</span> <span class="n">getTeams</span><span class="p">()</span>
 <span class="n">names</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span>
 <span class="c1">## [1] &quot;The A-Team&quot; &quot;Palo Alto Data Science&quot;</span>
@@ -244,11 +244,11 @@ assigned as a “team_admin”.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765ae1ce48_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765ae1ce48_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0c42b38_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14eda0c42b38_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765ae1ce48_HTTP">
+<div class="tab-pane active section" id="14eda0c42b38_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -265,7 +265,7 @@ assigned as a “team_admin”.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765ae1ce48_R">
+<div class="tab-pane section" id="14eda0c42b38_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Create a new team by assigning into the teams catalog</span>
 <span class="n">teams</span><span class="p">[[</span><span class="s2">&quot;My new team with ytpo&quot;</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">names</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span> <span class="c1"># Let&#39;s see that it was created</span>
@@ -289,10 +289,10 @@ assigned as a “team_admin”.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a20bb70_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0ea90f0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a20bb70_HTTP">
+<div class="tab-pane active section" id="14eda0ea90f0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="o">--------</span>
@@ -308,11 +308,11 @@ assigned as a “team_admin”.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a20b128_JSON">JSON</a></li>
-<li><a data-toggle="tab" href="#14765a20b128_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0c1f898_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#14eda0c1f898_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a20b128_JSON">
+<div class="tab-pane active section" id="14eda0c1f898_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/teams/d07edb/&quot;</span><span class="p">,</span>
@@ -330,7 +330,7 @@ assigned as a “team_admin”.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a20b128_R">
+<div class="tab-pane section" id="14eda0c1f898_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Access a team by name using $ or [[ from the team catalog</span>
 <span class="n">a</span><span class="o">.</span><span class="n">team</span> <span class="o">&lt;-</span> <span class="n">teams</span><span class="p">[[</span><span class="s2">&quot;The A-Team&quot;</span><span class="p">]]</span>
 <span class="n">name</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">team</span><span class="p">)</span>
@@ -355,11 +355,11 @@ team’s name; other team members will receive a 403 response on PATCH.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a219cf8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765a219cf8_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0c25e80_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14eda0c25e80_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a219cf8_HTTP">
+<div class="tab-pane active section" id="14eda0c25e80_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="mi">03</span><span class="n">df2a</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -374,7 +374,7 @@ team’s name; other team members will receive a 403 response on PATCH.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a219cf8_R">
+<div class="tab-pane section" id="14eda0c25e80_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">(</span><span class="n">teams</span><span class="p">[[</span><span class="s2">&quot;My new team with ytpo&quot;</span><span class="p">]])</span> <span class="o">&lt;-</span> <span class="s2">&quot;My new team without typo&quot;</span>
 <span class="n">names</span><span class="p">(</span><span class="n">teams</span><span class="p">)</span> <span class="c1"># Check that it was updated</span>
 <span class="c1">## [1] &quot;The A-Team&quot; &quot;Palo Alto Data Science&quot;</span>
@@ -389,7 +389,7 @@ team’s name; other team members will receive a 403 response on PATCH.</p>
 <h2>Team members catalog<a class="headerlink" href="#team-members-catalog" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/teams/{team_id}/members/</span></code></p>
 <p>The team members catalog is a Shoji Catalog similar in nature to the
-<a class="reference external" href="#permissions">dataset permissions catalog</a>. It collects references
+<a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">dataset permissions catalog</span></a>. It collects references
 to users and defines the authorizations they have with respect to the
 team. All information about the member relationships is contained in the
 catalog–there are no “member entities”–and all changes to team
@@ -400,12 +400,12 @@ PATCH.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a1d47f0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765a1d47f0_JSON">JSON</a></li>
-<li><a data-toggle="tab" href="#14765a1d47f0_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda083b198_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14eda083b198_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#14eda083b198_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a1d47f0_HTTP">
+<div class="tab-pane active section" id="14eda083b198_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="o">--------</span>
@@ -414,7 +414,7 @@ PATCH.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a1d47f0_JSON">
+<div class="tab-pane section" id="14eda083b198_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/teams/d07edb/members/&quot;</span><span class="p">,</span>
@@ -437,7 +437,7 @@ PATCH.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765a1d47f0_R">
+<div class="tab-pane section" id="14eda083b198_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">members</span><span class="p">(</span><span class="n">team</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -495,10 +495,10 @@ exist.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a39a748_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0078358_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a39a748_HTTP">
+<div class="tab-pane active section" id="14eda0078358_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -551,11 +551,11 @@ Crunch web application, this template is
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765aff28d0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765aff28d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda0a432b0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14eda0a432b0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765aff28d0_HTTP">
+<div class="tab-pane active section" id="14eda0a432b0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="o">--------</span>
@@ -564,7 +564,7 @@ Crunch web application, this template is
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14765aff28d0_JSON">
+<div class="tab-pane section" id="14eda0a432b0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/teams/d07edb/members/&quot;</span><span class="p">,</span>
@@ -605,28 +605,33 @@ Crunch web application, this template is
 <h4>Removing members<a class="headerlink" href="#removing-members" title="Permalink to this headline"> 🔗</a></h4>
 <p>To remove members from the team, PATCH the catalog with a <code class="docutils literal"><span class="pre">null</span></code>
 value:</p>
-<p><code class="docutils literal"><span class="pre">http</span> <span class="pre">PATCH</span> <span class="pre">/teams/d07edb/members/</span> <span class="pre">HTTP/1.1</span> <span class="pre">Host:</span> <span class="pre">app.crunch.io</span> <span class="pre">Content-Type:</span> <span class="pre">application/json</span></code>json
-{ “element”: “shoji:catalog”, “index”: {
-“https://app.crunch.io/api/users/e3211a/”: null } } ——– 204 No
-Content ```</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14765a28cc50_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14765a28cc50_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14eda05684e0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14765a28cc50_HTTP">
-<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<div class="tab-pane active section" id="14eda05684e0_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://app.crunch.io/api/users/e3211a/&quot;</span><span class="p">:</span> <span class="n">null</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------</span>
+<span class="mi">204</span> <span class="n">No</span> <span class="n">Content</span>
+
+<span class="n">GET</span> <span class="o">/</span><span class="n">teams</span><span class="o">/</span><span class="n">d07edb</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="o">--------</span>
 <span class="mi">200</span> <span class="n">OK</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-</pre></div>
-</div>
-</div>
-<div class="tab-pane section" id="14765a28cc50_JSON">
-<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+
+<span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/teams/d07edb/members/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Catalog of users that belong to this team&quot;</span><span class="p">,</span>
@@ -662,11 +667,11 @@ Content ```</p>
 <h2>Team datasets catalog<a class="headerlink" href="#team-datasets-catalog" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/teams/{team_id}/datasets/</span></code></p>
 <p>The team datasets catalog only supports the GET verb. To add a dataset
-to a team, you must PATCH its <a class="reference external" href="#permissions">permissions catalog</a>.</p>
+to a team, you must PATCH its <a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">permissions catalog</span></a>.</p>
 <div class="section" id="id4">
 <h3>GET<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
 <p>GET returns a Shoji Catalog of datasets that have been shared with this
-team. See <a class="reference external" href="#datasets">datasets</a> for details.</p>
+team. See <a class="reference internal" href="endpoint-dataset.html#datasets-main"><span class="std std-ref">datasets</span></a> for details.</p>
 </div>
 </div>
 </div>
@@ -684,7 +689,7 @@ team. See <a class="reference external" href="#datasets">datasets</a> for detail
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Mar 27, 2018.<br/>
+      Last updated on Mar 28, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
