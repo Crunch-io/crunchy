@@ -13,7 +13,13 @@ test_that("crunchFillPage has a token div", {
 })
 
 test_that("crunchNavbarPage has a token div", {
-    cfp <- crunchNavbarPage()
-    out <- format(cfp)
+    cnp <- crunchNavbarPage("title")
+    out <- format(cnp)
+    expect_true(grepl('input id="token"', out))
+})
+
+test_that("shiny::fillPage has a token div", {
+    fp <- fillPage()
+    out <- format(fp)
     expect_true(grepl('input id="token"', out))
 })
