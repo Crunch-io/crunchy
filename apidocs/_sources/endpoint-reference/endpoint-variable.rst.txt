@@ -313,6 +313,26 @@ etc. of the private variables. ``POST``, however, is not supported at
 this endpoint. To create new personal variables, ``POST`` to the main
 variables catalog with a ``"private": true`` body attribute.
 
+``PATCH`` to this catalog allows dataset editors to make variables private by
+sending a Shoji catalog payload containing the URLs of the variables they
+wish to make personal.
+
+The Shoji catalog should have empty objects as tuples.
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+
+      {
+          "element": "shoji:catalog",
+          "index": {
+            "http://app.crunch.io/api/datasets/abc/variables/xyz/": {}
+          }
+      }
+
+
+
 Hierarchical Order
 ~~~~~~~~~~~~~~~~~~
 
@@ -579,6 +599,26 @@ rollup_resolution      string  For datetime variables, a unit to which data
 
 Variable entities' ``catalog`` attributes contain the ``folder`` member that
 points to the variable's containing folder.
+
+Additionally, the variable entity will hold references to related resources
+
+
+====================== =========================================================
+Attribute              Description
+====================== =========================================================
+catalogs.parent        Points to the variables catalog where this
+                       variable is contained.
+---------------------- ---------------------------------------------------------
+catalogs.folder        Will indicate the URL of the folder where this variable
+                       is placed. If the variable is not on any folder (personal
+                       variables) then this attribute will not be present.
+---------------------- ---------------------------------------------------------
+fragments.dataset      Points to the dataset this variable belongs to.
+---------------------- ---------------------------------------------------------
+fragments.variable     In the case of subvariable entities, they will contain
+                       this reference pointing back to their parent variable
+                       URL.
+====================== =========================================================
 
 
 PATCH
