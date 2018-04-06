@@ -48,3 +48,50 @@ crunchFillPage <- function (...) fillPage(...)
 #' @rdname crunchPage
 #' @export
 crunchNavbarPage <- function (...) navbarPage(...)
+
+#' @importFrom shiny div includeCSS includeScript tags
+injectCrunchAssets <- function () {
+    suppressMessages(
+        trace(
+            "bootstrapPage",
+            where=shiny::fillPage,
+            tracer=crunchAssets,
+            print=FALSE
+        )
+    )
+}
+
+crunchAssets <- quote({
+    attachDependencies <- function (x, ...) {
+        # Prepend a bit of HTML before whatever the user supplied but after
+        # the global things--as if these were the first things in the user's
+        # list
+        x[[length(x)]] <- c(
+            list(
+                # Load Crunch assets
+                tags$head(
+                    tags$link(
+                        rel="stylesheet",
+                        type="text/css",
+                        href="https://app.crunch.io/styles.css"
+                    ),
+                    includeCSS(system.file("extra.css", package="crunchy")),
+                    includeScript(system.file("extra.js", package="crunchy"))
+                ),
+                # Add a placeholder for Crunch auth
+                div(
+                    class = "form-group shiny-input-container",
+                    style = "display: none;",
+                    tags$input(
+                        id = "token",
+                        type = "text",
+                        class = "form-control",
+                        value = ""
+                    )
+                )
+            ),
+            x[[length(x)]]
+        )
+        htmltools::attachDependencies(x, ...)
+    }
+})
