@@ -1,4 +1,4 @@
-library(crunch)
+library(crunchy)
 source(system.file("crunch-test.R", package = "crunch"))
 
 with_mock_crunch({
@@ -8,7 +8,6 @@ with_mock_crunch({
                 return(sys.frame(frame))
         return(NULL)
     }
-    print("mocked")
     ds <- crunch::loadDataset("test ds")
-    crunch:::.makeArrayGadget(env = getEnvOf("ds"))
+    crunchy:::.makeArrayGadget(env = getEnvOf("ds"))
 })
