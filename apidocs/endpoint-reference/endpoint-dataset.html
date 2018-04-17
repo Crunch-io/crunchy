@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default ">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -217,7 +217,7 @@
     <div class="col-md-9 content">
       
   <div class="section" id="datasets">
-<span id="datasets-main"></span><h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"> 🔗</a></h1>
+<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline"> 🔗</a></h1>
 <p>Datasets are the primary containers of statistical data in Crunch.
 Datasets contain a collection of <a class="reference external" href="#variables">variables</a>, with which
 analyses can be composed, saved, and exported. These analyses may
@@ -236,17 +236,17 @@ ordered.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da97be128_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da97be128_R">R</a></li>
-<li><a data-toggle="tab" href="#152da97be128_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5bea14a8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5bea14a8_R">R</a></li>
+<li><a data-toggle="tab" href="#146d5bea14a8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da97be128_HTTP">
+<div class="tab-pane active section" id="146d5bea14a8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da97be128_R">
+<div class="tab-pane section" id="146d5bea14a8_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
 <span class="n">login</span><span class="p">()</span>
 
@@ -259,7 +259,7 @@ ordered.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da97be128_JSON">
+<div class="tab-pane section" id="146d5bea14a8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/&quot;</span><span class="p">,</span>
@@ -375,7 +375,7 @@ contain the following attributes:</p>
 <td>object</td>
 <td><code class="docutils literal"><span class="pre">{&quot;edit&quot;:</span> <span class="pre">false}</span></code></td>
 <td>Authorizations on this dataset;
-see <a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">Permissions</span></a></td>
+see <a class="reference external" href="#permissions">Permissions</a></td>
 </tr>
 <tr class="row-odd"><td>owner_id</td>
 <td>URL</td>
@@ -464,11 +464,11 @@ the catalog or directly on the dataset entity.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9f2a208_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da9f2a208_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5ba11f28_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5ba11f28_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9f2a208_HTTP">
+<div class="tab-pane active section" id="146d5ba11f28_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -487,7 +487,7 @@ the catalog or directly on the dataset entity.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da9f2a208_R">
+<div class="tab-pane section" id="146d5ba11f28_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span>library(crunch)
 login()
 
@@ -560,15 +560,15 @@ both editors on such project.</p>
 </div>
 </div>
 <div class="section" id="post">
-<span id="datasets-post"></span><h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
+<h3>POST<a class="headerlink" href="#post" title="Permalink to this headline"> 🔗</a></h3>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9ade160_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da9ade160_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b668320_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5b668320_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9ade160_HTTP">
+<div class="tab-pane active section" id="146d5b668320_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -587,7 +587,7 @@ both editors on such project.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da9ade160_R">
+<div class="tab-pane section" id="146d5b668320_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
 <span class="n">login</span><span class="p">()</span>
 
@@ -721,14 +721,14 @@ datasets in the API:</p>
 <p><code class="docutils literal"><span class="pre">/teams/{team_id}/datasets/</span></code></p>
 <p>A Shoji Catalog of datasets that have been shared with this team. These
 datasets are not included in the primary dataset catalog. See
-<a class="reference internal" href="endpoint-team.html#teams-main"><span class="std std-ref">teams</span></a> for more.</p>
+<a class="reference external" href="#teams">teams</a> for more.</p>
 </div>
 <div class="section" id="project-datasets">
 <h3>Project datasets<a class="headerlink" href="#project-datasets" title="Permalink to this headline"> 🔗</a></h3>
 <p><code class="docutils literal"><span class="pre">/projects/{project_id}/datasets/</span></code></p>
 <p>A Shoji Catalog of datasets that belong to this project. These datasets
 are not included in the primary dataset catalog. See
-<a class="reference internal" href="endpoint-projects.html#projects-main"><span class="std std-ref">projects</span></a> for more.</p>
+<a class="reference external" href="#projects">projects</a> for more.</p>
 </div>
 <div class="section" id="filter-datasets-by-name">
 <h3>Filter datasets by name<a class="headerlink" href="#filter-datasets-by-name" title="Permalink to this headline"> 🔗</a></h3>
@@ -755,10 +755,10 @@ the bottom of the root list in arbitrary order.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9f429b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b60bda0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9f429b0_JSON">
+<div class="tab-pane active section" id="146d5b60bda0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;/datasets/</span><span class="si">{dataset_id}</span><span class="s2">/order/&quot;</span><span class="p">,</span>
@@ -858,7 +858,7 @@ dataset</td>
 <td>object</td>
 <td><code class="docutils literal"><span class="pre">{&quot;edit&quot;:</span> <span class="pre">false}</span></code></td>
 <td>Authorizations on this dataset;
-see <a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">Permissions</span></a></td>
+see <a class="reference external" href="#permissions">Permissions</a></td>
 </tr>
 <tr class="row-even"><td>owner_id</td>
 <td>URL</td>
@@ -937,10 +937,10 @@ collections of related objects. They are available under the
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9fab6a0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5bb1eb70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9fab6a0_JSON">
+<div class="tab-pane active section" id="146d5bb1eb70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;batches&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/batches/&quot;</span><span class="p">,</span>
   <span class="s2">&quot;joins&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/datasets/c5d751/joins/&quot;</span><span class="p">,</span>
@@ -1032,7 +1032,7 @@ versions
 for this
 dataset.
 See
-<a class="reference internal" href="endpoint-version.html#versions-main"><span class="std std-ref">Versions</span></a>.</td>
+<a class="reference external" href="#versions">Versions</a>.</td>
 </tr>
 <tr class="row-even"><td>filters</td>
 <td>Makes
@@ -1054,7 +1054,7 @@ all
 available
 multitables.
 See
-<a class="reference internal" href="endpoint-multitable.html#multitables-main"><span class="std std-ref">Multitables</span></a></td>
+<a class="reference external" href="#mulitables">Multitables</a></td>
 </tr>
 <tr class="row-even"><td>comparisons</td>
 <td>Contains
@@ -1094,7 +1094,7 @@ access to
 this
 dataset.
 See
-<a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">Permissions</span></a>.</td>
+<a class="reference external" href="#permissions">Permissions</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -1143,10 +1143,10 @@ use.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152daa0bb048_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b9b5128_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152daa0bb048_JSON">
+<div class="tab-pane active section" id="146d5b9b5128_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1177,10 +1177,10 @@ personal).</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9b19550_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5bdd4e80_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9b19550_JSON">
+<div class="tab-pane active section" id="146d5bdd4e80_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1220,10 +1220,10 @@ either a user URL or a user email:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da996e748_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5bc8d4a8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da996e748_JSON">
+<div class="tab-pane active section" id="146d5bc8d4a8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1251,17 +1251,17 @@ dataset from the Crunch system and responds with 204 status.</p>
 <div class="section" id="cube">
 <h4>Cube<a class="headerlink" href="#cube" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/cube/?q</span></code></p>
-<p>See <a class="reference internal" href="../feature-guide/feature-analyzing.html#multidimensional-analysis"><span class="std std-ref">Multidimensional Analysis</span></a>.</p>
+<p>See <a class="reference external" href="#multidimensional-analysis">Multidimensional Analysis</a>.</p>
 </div>
 <div class="section" id="export">
 <h4>Export<a class="headerlink" href="#export" title="Permalink to this headline"> 🔗</a></h4>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9a3f518_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b817cc0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9a3f518_HTTP">
+<div class="tab-pane active section" id="146d5b817cc0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span>GET `/datasets/{id}/export/` HTTP/1.1
 Host: app.crunch.io
 </pre></div>
@@ -1272,10 +1272,10 @@ Host: app.crunch.io
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9959940_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b477cf8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9959940_JSON">
+<div class="tab-pane active section" id="146d5b477cf8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/export/&quot;</span><span class="p">,</span>
@@ -1296,10 +1296,10 @@ Location URL from the original response to download the file.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9e2fc88_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b4db390_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9e2fc88_HTTP">
+<div class="tab-pane active section" id="146d5b4db390_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span>POST `/api/datasets/f2364cc66e604d63a3be3e8811fc902f/export/spss/` HTTP/1.1
 
 {
@@ -1387,7 +1387,7 @@ See below.</td>
 </tr>
 </tbody>
 </table>
-<p>See <a class="reference internal" href="../object-reference/object-reference.html#expressions-obj-ref"><span class="std std-ref">“Expressions”</span></a> for more on Crunch expressions.</p>
+<p>See <a class="reference external" href="#expressions">“Expressions”</a> for more on Crunch expressions.</p>
 <p>The following rules apply for all formats:</p>
 <ul class="simple">
 <li>The dataset’s exclusion filter will be applied; however, any of the
@@ -1517,16 +1517,16 @@ metadata chunked by groups of matches.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da97f22e8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da97f22e8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b55eb38_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5b55eb38_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da97f22e8_HTTP">
+<div class="tab-pane active section" id="146d5b55eb38_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">match</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da97f22e8_JSON">
+<div class="tab-pane section" id="146d5b55eb38_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span>  <span class="p">{</span>
@@ -1547,11 +1547,11 @@ metadata chunked by groups of matches.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9b54908_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da9b54908_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b2e22e8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5b2e22e8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9b54908_HTTP">
+<div class="tab-pane active section" id="146d5b2e22e8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="mi">201</span> <span class="n">Created</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Location</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">matches</span><span class="o">/</span><span class="mi">394</span><span class="n">d9e</span><span class="o">/</span>
@@ -1560,7 +1560,7 @@ metadata chunked by groups of matches.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da9b54908_JSON">
+<div class="tab-pane section" id="146d5b2e22e8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
 
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
@@ -1641,10 +1641,10 @@ to that expression. If omitted, your applied filters will be used.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9ea4710_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5bced898_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9ea4710_JSON">
+<div class="tab-pane active section" id="146d5bced898_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/summary/&quot;</span><span class="p">,</span>
@@ -1688,7 +1688,7 @@ object, like <code class="docutils literal"><span class="pre">{&quot;body&quot;:
 exclusion”, i.e. no rows are dropped.</p>
 </div>
 <div class="section" id="stream">
-<span id="dataset-stream"></span><h4>Stream<a class="headerlink" href="#stream" title="Permalink to this headline"> 🔗</a></h4>
+<h4>Stream<a class="headerlink" href="#stream" title="Permalink to this headline"> 🔗</a></h4>
 <p>Stream lock</p>
 <p>When a dataset is configured to receive streaming data, the /stream/
 endpoint will accept POST requests to append new rows to the streaming
@@ -1751,10 +1751,10 @@ body:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152daa0a4278_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5af92860_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152daa0a4278_JSON">
+<div class="tab-pane active section" id="146d5af92860_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/stream/&quot;</span><span class="p">,</span>
@@ -1811,10 +1811,10 @@ dataset can have.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da934d588_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5af859e8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da934d588_JSON">
+<div class="tab-pane active section" id="146d5af859e8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/settings/&quot;</span><span class="p">,</span>
@@ -1882,10 +1882,10 @@ additional attributes.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da90db748_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b0fcf28_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da90db748_JSON">
+<div class="tab-pane active section" id="146d5b0fcf28_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/223fd4/preferences/&quot;</span><span class="p">,</span>
@@ -1936,11 +1936,11 @@ can only be set after that variable has been added to the dataset.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9cb3128_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da9cb3128_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5b12b128_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5b12b128_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9cb3128_HTTP">
+<div class="tab-pane active section" id="146d5b12b128_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 
@@ -1957,7 +1957,7 @@ can only be set after that variable has been added to the dataset.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da9cb3128_Python">
+<div class="tab-pane section" id="146d5b12b128_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
 <span class="go">[&#39;https://app.crunch.io/api/datasets/{dataset_id}/variables/000001/&#39;]</span>
@@ -1974,11 +1974,11 @@ primary key for this dataset, the <code class="docutils literal"><span class="pr
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da9177748_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da9177748_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5aea7eb8_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5aea7eb8_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da9177748_HTTP">
+<div class="tab-pane active section" id="146d5aea7eb8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -1991,7 +1991,7 @@ primary key for this dataset, the <code class="docutils literal"><span class="pr
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da9177748_Python">
+<div class="tab-pane section" id="146d5aea7eb8_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">post</span><span class="p">({</span><span class="s1">&#39;pk&#39;</span><span class="p">:[</span><span class="s1">&#39;https://app.crunch.io/api/datasets/</span><span class="si">{dataset_id}</span><span class="s1">/variables/000001/&#39;</span><span class="p">]})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
@@ -2014,11 +2014,11 @@ numeric type and must have no duplicate or missing values. Setting pk to
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da915eb70_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#152da915eb70_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5aeec320_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#146d5aeec320_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da915eb70_HTTP">
+<div class="tab-pane active section" id="146d5aeec320_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">pk</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 
@@ -2027,7 +2027,7 @@ numeric type and must have no duplicate or missing values. Setting pk to
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="152da915eb70_Python">
+<div class="tab-pane section" id="146d5aeec320_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># &quot;ds&quot; is dataset via pycrunch</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">pk</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">pk</span>
@@ -2109,10 +2109,10 @@ all sources</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#152da91d8be0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#146d5afbc908_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="152da91d8be0_JSON">
+<div class="tab-pane active section" id="146d5afbc908_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;https://app.crunch.io/api/users/411aa32a075b4b57bf25a4ace1baf920/&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jean-Luc Picard&quot;</span><span class="p">,</span>
@@ -2170,8 +2170,8 @@ all sources</td>
 <div class="section" id="batches">
 <h4>Batches<a class="headerlink" href="#batches" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/batches/</span></code></p>
-<p>See <a class="reference internal" href="endpoint-batch.html#batches-main"><span class="std std-ref">Batches</span></a> and the feature guides for
-<a class="reference internal" href="../feature-guide/feature-importing.html#importing-data"><span class="std std-ref">importing</span></a> and <a class="reference internal" href="../feature-guide/feature-appending.html#appending-data"><span class="std std-ref">appending</span></a>.</p>
+<p>See <a class="reference external" href="#batches">Batches</a> and the feature guides for
+<a class="reference external" href="#importing-data">importing</a> and <a class="reference external" href="#appending-data">appending</a>.</p>
 </div>
 <div class="section" id="decks">
 <h4>Decks<a class="headerlink" href="#decks" title="Permalink to this headline"> 🔗</a></h4>
@@ -2184,7 +2184,7 @@ all sources</td>
 <div class="section" id="filters">
 <h4>Filters<a class="headerlink" href="#filters" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/filters/</span></code></p>
-<p>See <a class="reference internal" href="endpoint-filter.html#filters-main"><span class="std std-ref">Filters</span></a>.</p>
+<p>See <a class="reference external" href="#filters">Filters</a>.</p>
 </div>
 <div class="section" id="forks">
 <h4>Forks<a class="headerlink" href="#forks" title="Permalink to this headline"> 🔗</a></h4>
@@ -2198,17 +2198,17 @@ all sources</td>
 <div class="section" id="permissions">
 <h4>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/permissions/</span></code></p>
-<p>See <a class="reference internal" href="endpoint-permission.html#permissions-main"><span class="std std-ref">Permissions</span></a>.</p>
+<p>See <a class="reference external" href="#permissions">Permissions</a>.</p>
 </div>
 <div class="section" id="savepoints">
 <h4>Savepoints<a class="headerlink" href="#savepoints" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/savepoints/</span></code></p>
-<p>See <a class="reference internal" href="endpoint-version.html#versions-main"><span class="std std-ref">Versions</span></a>.</p>
+<p>See <a class="reference external" href="#versions">Versions</a>.</p>
 </div>
 <div class="section" id="variables">
 <h4>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"> 🔗</a></h4>
 <p><code class="docutils literal"><span class="pre">/datasets/{dataset_id}/variables/</span></code></p>
-<p>See <a class="reference internal" href="endpoint-variable.html#variables-catalog"><span class="std std-ref">Variables</span></a>.</p>
+<p>See <a class="reference external" href="#variables">Variables</a>.</p>
 </div>
 <div class="section" id="weight-variables">
 <h4>Weight variables<a class="headerlink" href="#weight-variables" title="Permalink to this headline"> 🔗</a></h4>

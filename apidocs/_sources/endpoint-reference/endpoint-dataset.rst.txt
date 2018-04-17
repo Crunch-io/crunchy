@@ -1,5 +1,3 @@
-.. _datasets-main:
-
 Datasets
 --------
 
@@ -133,7 +131,7 @@ id                          string                                              
 archived                    bool             false                                                 Whether the dataset is "archived" or active
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 permissions                 object           ``{"edit": false}``                                   Authorizations on this dataset;
-                                                                                                   see :ref:`Permissions <permissions-main>`
+                                                                                                   see `Permissions <#permissions>`__
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 owner_id                    URL                                                                    URL of the user entity of the dataset's owner
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
@@ -287,8 +285,6 @@ Other editors of the dataset can change the ownership of a dataset only
 to a Project as long as they andthe current owner of the dataset are
 both editors on such project.
 
-.. _datasets-post:
-
 POST
 ^^^^
 
@@ -414,7 +410,7 @@ Team datasets
 
 A Shoji Catalog of datasets that have been shared with this team. These
 datasets are not included in the primary dataset catalog. See
-:ref:`teams <teams-main>` for more.
+`teams <#teams>`__ for more.
 
 Project datasets
 ^^^^^^^^^^^^^^^^
@@ -423,7 +419,7 @@ Project datasets
 
 A Shoji Catalog of datasets that belong to this project. These datasets
 are not included in the primary dataset catalog. See
-:ref:`projects <projects-main>` for more.
+`projects <#projects>`__ for more.
 
 Filter datasets by name
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -522,7 +518,7 @@ id                     string                                                   
 archived               bool             false                                              Whether the dataset is "archived" or active
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
 permissions            object           ``{"edit": false}``                                Authorizations on this dataset;
-                                                                                           see :ref:`Permissions <permissions-main>`
+                                                                                           see `Permissions <#permissions>`__
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
 owner_id               URL                                                                 URL of the user entity of the dataset's owner
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
@@ -642,7 +638,7 @@ collections of related objects. They are available under the
 |               | for this                                |
 |               | dataset.                                |
 |               | See                                     |
-|               | :ref:`Versions <versions-main>`.        |
+|               | `Versions <#versions>`__.               |
 +---------------+-----------------------------------------+
 | filters       | Makes                                   |
 |               | available                               |
@@ -662,7 +658,7 @@ collections of related objects. They are available under the
 |               | available                               |
 |               | multitables.                            |
 |               | See                                     |
-|               | :ref:`Multitables <multitables-main>`   |
+|               | `Multitables <#mulitables>`__           |
 +---------------+-----------------------------------------+
 | comparisons   | Contains                                |
 |               | all                                     |
@@ -698,7 +694,7 @@ collections of related objects. They are available under the
 |               | this                                    |
 |               | dataset.                                |
 |               | See                                     |
-|               | :ref:`Permissions <permissions-main>`.  |
+|               | `Permissions <#permissions>`__.         |
 +---------------+-----------------------------------------+
 
 PATCH
@@ -852,7 +848,7 @@ Cube
 
 ``/datasets/{id}/cube/?q``
 
-See :ref:`Multidimensional Analysis <multidimensional-analysis>`.
+See `Multidimensional Analysis <#multidimensional-analysis>`__.
 
 Export
 ''''''
@@ -945,7 +941,7 @@ options       An object of extra settings,      .. code:: json
               See below.                         {"use_category_ids": true}
 ============= ================================= ================================================================================
 
-See :ref:`"Expressions" <expressions-obj-ref>` for more on Crunch expressions.
+See `"Expressions" <#expressions>`__ for more on Crunch expressions.
 
 The following rules apply for all formats:
 
@@ -1209,8 +1205,6 @@ excluded from all views of the data.
 PATCH the "expression" attribute to modify. An empty "expression"
 object, like ``{"body": {"expression": {}}}``, is equivalent to "no
 exclusion", i.e. no rows are dropped.
-
-.. _dataset-stream:
 
 Stream
 ''''''
@@ -1645,8 +1639,8 @@ Batches
 
 ``/datasets/{dataset_id}/batches/``
 
-See :ref:`Batches <batches-main>` and the feature guides for
-:ref:`importing <importing-data>` and :ref:`appending <appending-data>`.
+See `Batches <#batches>`__ and the feature guides for
+`importing <#importing-data>`__ and `appending <#appending-data>`__.
 
 Decks
 '''''
@@ -1663,7 +1657,7 @@ Filters
 
 ``/datasets/{dataset_id}/filters/``
 
-See :ref:`Filters <filters-main>`.
+See `Filters <#filters>`__.
 
 Forks
 '''''
@@ -1679,21 +1673,21 @@ Permissions
 
 ``/datasets/{dataset_id}/permissions/``
 
-See :ref:`Permissions <permissions-main>`.
+See `Permissions <#permissions>`__.
 
 Savepoints
 ''''''''''
 
 ``/datasets/{dataset_id}/savepoints/``
 
-See :ref:`Versions <versions-main>`.
+See `Versions <#versions>`__.
 
 Variables
 '''''''''
 
 ``/datasets/{dataset_id}/variables/``
 
-See :ref:`Variables <variables-catalog>`.
+See `Variables <#variables>`__.
 
 Weight variables
 ''''''''''''''''

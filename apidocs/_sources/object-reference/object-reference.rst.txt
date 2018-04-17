@@ -49,8 +49,6 @@ A Shoji view is identified by its ``element`` key having value
 ``shoji:view`` with its principal attribute being ``value``. This can
 contain any arbitrary JSON object.
 
-.. _shoji-order:
-
 Shoji order
 ~~~~~~~~~~~
 
@@ -156,8 +154,6 @@ almost any data transfer. Because of this, it is common to:
    is shipped along with the enumerated data, the transfer size and
    therefore time is much smaller. Many cases do not even call for a
    complete elaboration of the entire column.
-
-.. _variable-definitions:
 
 Variable Definitions
 ~~~~~~~~~~~~~~~~~~~~
@@ -296,14 +292,14 @@ which includes:
 -  **numeric\_value**: the numeric value bound to each name. If no
    numeric value should be bound, this should be null. numeric\_values
    need not be unique, and they may be ``null``.
--  **missing**: boolean indicating whether the data corresponding to
-   this category should be interpreted as missing.
+-  **missing**: (optional) boolean indicating whether the data
+   corresponding to this category should be interpreted as missing.
 -  **selected**: (optional) boolean indicating whether this category
-   corresponds to a selected value for a dichotomized variable, i.e.
-   part of a multiple response variable. Not required for regular
-   categorical variables, and defaults to ``false`` if omitted. There
-   also is no requirement for Categories in a multiple-response variable
-   that only one Category be marked "selected".
+   should be treated as a "true" value for logical operations. Defaults
+   to ``false`` if omitted. Multiple response variables are essentially
+   logical categorical arrays, and therefore must have at least one
+   "selected" category. More than one Category may be marked "selected".
+
 
 Categories are valid if:
 
@@ -540,8 +536,6 @@ Variables
 A complete Variable, then, is simply a Definition combined with its data
 array.
 
-.. _expressions-obj-ref:
-
 Expressions
 ~~~~~~~~~~~
 
@@ -554,7 +548,7 @@ about the operations we wish to do.
 
 Expressions generally contain references to **variables**, **values**,
 or **columns** of values, often composed in **functions**. The output of
-expressions can be other variables, values, boolean masks, or cube
+expressions can be other variables, values, or cube
 aggregations, depending on the context and expression content. Some
 endpoints have special semantics, but the general structure of the
 expressions follows the model described below.
@@ -621,8 +615,19 @@ Supported functions
 Here is a list of all functions available for crunch expressions. Note
 that these functions can be used in conjuction to compose an expression.
 
+Array functions
+'''''''''''''''
+
+- ``array`` Return the given Frame as an array. The type of each variable in the Frame must be close enough to form a supertype for the array.
+- ``get`` Return a subvariable from the given column.
+- ``subvariables`` Return a Frame containing subvariables of the given array.
+- ``tiered`` Return a variable formed by collapsing the given array's subvariables in the given category tiers.
+ 
+
 Binary functions
 ''''''''''''''''
+
+In general, these operate only on "numeric" types.
 
 -  ``+`` add
 -  ``-`` subtract
@@ -635,12 +640,62 @@ Binary functions
 -  ``|`` bitwise or
 -  ``~`` invert
 
-Builtin functions
-'''''''''''''''''
+Logic functions
+'''''''''''''''
 
--  ``array`` Return the given Frame materialized as an array.
+These all return a "logical" categorical column with just three categories: one is marked "selected", one is marked "missing", and the other is neither.
+
+User interfaces may use the presence of a "selected" category to decide to reduce analyses to only show the "selected" category.
+ 
+Any "logical" column can be used as a filter expression; rows which result in a "selected" value will match the filter, and those which are "missing" or "other" will not.
+
+-  ``==`` equals. Exact matches will return "selected". For non-matching values, if either input term is missing, the result is missing. Otherwise, the result is "other".
+-  ``!=`` not equals. Exact matches will return "other". For non-matching values, if either input term is missing, the result is missing. Otherwise, the result is "selected". This is the same result as ``not(==)``.
+-  ``=><=`` between
+-  ``between`` between
+-  ``<`` less than
+-  ``>`` greater than
+-  ``<=`` less than or equal
+-  ``>=`` greater than or equal
+-  ``in`` "selected" for each row where A is an element of array B, or a key of object B.
+-  ``all`` "selected" for each row where all subvariables in a
+   multiple\_response array are selected
+-  ``any`` "selected" for each row where any subvariable in a
+   multiple\_response array is selected
+-  ``is_none_of_the_above`` "selected" for each row where no subvariables in a
+   multiple\_response array are selected, unless all subvariables have
+   missing values
+-  ``contains`` "selected" for each row where text value A is a substring of text value B.
+-  ``icontains`` Case-insensitive version of 'contains'
+-  ``~=`` compare against regular expression (regex)
+-  ``and`` logical and. A "selected" value ``and`` "selected" results in "selected".
+   If either input term is missing, the result is missing. Otherwise, the result is "other".
+-  ``or`` logical or. If either input term is "selected", the result is "selected".
+   A "missing" value ``or`` "missing" results in "missing". Otherwise, the result is "other".
+-  ``not`` logical not; this is the "relative complement"--any missing values will remain missing.
+-  ``not_selected`` logical not; this is the "absolute complement"--any missing values will become "selected".
+-  ``selected`` returns "selected" only for "selected" categories; "other" and "missing" values will become "other".
+-  ``is_valid`` Logical array of rows which are valid for the given column
+-  ``is_missing`` Logical array of rows which are missing for the given column
+-  ``any_missing`` Logical array of rows where any of the subvariables are missing
+-  ``all_valid`` Logical array of rows where all of the subvariables are valid
+-  ``all_missing`` Logical array of rows where all of the subvariables are missing
+
+Selection functions
+'''''''''''''''''''
+
 -  ``as_selected`` Return the given variable reduced to the [1, 0, -1]
-   "selections" type.
+   "logical" categories.
+-  ``selected_array`` Return a bool Array from the given categorical,
+   plus None/``__none__``/``__any__`` .
+-  ``selected_depth`` Return a numeric column containing the number of
+   selected categories in each row of the given array.
+-  ``selections`` Return the given array, reduced to the [1, 0, -1]
+   "logical" categories, plus an ``__any__`` magic subvariable.
+
+Miscellaneous functions
+'''''''''''''''''''''''
+
 -  ``bin`` Return column's values broken into equidistant bins.
 -  ``case`` Evaluate the given conditions in order, selecting the
    corresponding choice.
@@ -654,65 +709,15 @@ Builtin functions
 -  ``combine_responses`` Combine the given categorical variables into a
    new one.
 -  ``current_batch`` Return the batch\_id of the current frame.
--  ``get`` Return a subvariable from the given column.
 -  ``lookup`` Map each row of source through its keys index to a
    corresponding value.
 -  ``missing`` Return the given column as missing for the given reason.
 -  ``normalize`` Return a Column with the given values normalized so
    sum(c) == len(c).
 -  ``row`` Return a Numeric column with row indices.
--  ``selected_array`` Return a bool Array from the given categorical,
-   plus None/\ **none**/**any** .
--  ``selected_depth`` Return a numeric column containing the number of
-   selected categories in each row of the given array.
--  ``selections`` Return the given array, reduced to the [1, 0, -1]
-   "selections" type, plus an ``__any__`` magic subvariable.
--  ``subvariables`` Return a Frame containing subvariables of the given
-   array.
--  ``tiered`` Return a variable formed by collapsing the given array's
-   subvariables in the given category tiers.
 -  ``typeof`` Return (a copy of) the Type of the given column.
 -  ``unmissing`` Return the given column with user missing replaced by
    valid values.
-
-Comparisons
-'''''''''''
-
--  ``==`` equals
--  ``!=`` not equals
--  ``=><=`` between
--  ``between`` between
--  ``<`` less than
--  ``>`` greater than
--  ``<=`` less than or equal
--  ``>=`` greater than or equal
--  ``in`` in
--  ``all`` True for each row where all subvariables in a
-   multiple\_response array are selected
--  ``any`` True for each row where any subvariable in a
-   multiple\_response array is selected
--  ``is_none_of_the_above`` True for each row where no subvariables in a
-   multiple\_response array are selected, unless all subvariables have
-   missing values
--  ``contains`` Return a mask where A is an element of array B, or a key
-   of object B.
--  ``icontains`` Case-insensitive version of 'contains'
--  ``~=`` compare against regular expression (regex)
--  ``and`` logical and
--  ``or`` logical or
--  ``not`` logical not
--  ``is_valid`` Boolean array of rows which are valid for the given
-   column
--  ``is_missing`` Boolean array of rows which are missing for the given
-   column
--  ``any_missing`` Boolean array of rows where any of the subvariables
-   are missing
--  ``all_valid`` Boolean array of rows where all of the subvariables are
-   valid
--  ``all_missing`` Boolean array of rows where all of the subvariables
-   are missing
-
-.. _date-functions:
 
 Date Functions
 ''''''''''''''
@@ -727,8 +732,6 @@ Date Functions
    string
 -  ``rollup`` Return column's values (which must be type datetime) into
    calendrical bins.
-
-.. _frame-functions:
 
 Frame Functions
 '''''''''''''''
@@ -746,9 +749,6 @@ Frame Functions
    criteria.
 -  ``flatten`` Return a frame including all variables, plus all
    subvariables at dotted ids.
-
-Examples
-        
 
 .. language_specific::
    --Json
@@ -832,12 +832,12 @@ Filter terms
 ^^^^^^^^^^^^
 
 Terms that refer to filters entities by URL are shorthand for the
-boolean expression stored in the entity. So,
+logical expression stored in the entity. So,
 ``{"filter": "../filters/59fc4d/"}`` yields the Crunch expression
 contained in the Filter entity's "expression" attribute. Filter terms
 can be combined together with other expressions as well. For example,
 ``{"function": "and", "args": [{"filter": "../filters/59fc4d/"}, {"function": "==", "args": [{"variable": "../variables/X/"}, {"value": 13}]}]}``
-would "and" together the boolean expression in filter 59fc4d with the
+would "and" together the logical expression in filter 59fc4d with the
 ``X == 13`` expression.
 
 Documents

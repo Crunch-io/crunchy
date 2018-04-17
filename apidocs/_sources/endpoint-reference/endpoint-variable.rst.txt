@@ -1,8 +1,6 @@
 Variables
 ---------
 
-.. _variables-catalog:
-
 Catalog
 ~~~~~~~
 
@@ -280,7 +278,7 @@ attributes:
 -  **folder**: optional, a URL of a variable folder in the dataset into which the new variable should be placed. If omitted,
    the variable will be created on the root folder. Personal variables (with ``"private": true``) cannot be placed in a folder; attempting to do so returns 400 status.
    
-See :ref:`Variable Definitions <variable-definitions>` for more details
+See `Variable Definitions <#variable-definitions>`__ for more details
 and examples of valid attributes, and `Feature Guide:
 Arrays <#array-variables>`__ for more information on the various cases
 for creating array variables.
@@ -289,14 +287,14 @@ It is encouraged, but not required, to include an "alias" in the body.
 If omitted, one will be generated from the required "name".
 
 You may also include "values", which will create the column of data
-corresponding to this variable definition. See :ref:`Importing Data:
-Column-by-column <import-column-by-column>` for details and examples.
+corresponding to this variable definition. See `Importing Data:
+Column-by-column <#column-by-column>`__ for details and examples.
 
 You may instead also include an "derivation" to derive a variable as a
 function of other variables. In this case, "type" is not required
 because it depends on the output of the specified derivation function.
-For details and examples, see :ref:`Deriving
-Variables <deriving-variables>`.
+For details and examples, see `Deriving
+Variables <#deriving-variables>`__.
 
 A 201 indicates success and includes the URL of the newly-created
 variable in the Location header.
@@ -545,15 +543,15 @@ numeric_value numeric A quantity assigned to this category for numeric
                       aggregation. May be ``null``.                            
 ------------- ------- ---------------------------------------------------------
 missing       boolean If true, the given category is marked as "missing", and  
-                      is omitted from most calculations.                       
+                      is omitted from most calculations. For logical operations,
+                      this makes the category "none/null/NA".
 ------------- ------- ---------------------------------------------------------
-selected      boolean For categories in multiple response variables, those with
-                      ``"selected" : true`` which values correspond to the     
-                      "response" being selected. If omitted, the category is   
-                      treated as not selected. Multiple response variables must
-                      have at least one category marked as selected and may    
-                      have more than one.                                      
+selected      boolean If true, the given category is marked as "selected". For 
+                      logical operations, this makes the category "true".      
+                      Multiple response variables must have at least one       
+                      category marked as selected and may have more than one   
 ============= ======= =========================================================
+ 
 
 .. note::
 
@@ -648,7 +646,7 @@ Actions that are best or only achieved elsewhere include:
 -  changing variable names, aliases, and descriptions, which is best
    accomplished by PATCHing the variable catalog, as described above;
 -  changing a variable's type, which can only be done by POSTing to the
-   variable's "cast" resource (see :ref:`Convert type <convert-type>`
+   variable's "cast" resource (see `Convert type <#convert-type>`__
    below);
 -  editing names, aliases, and descriptions of subvariables in an array,
    which is done by PATCHing the array's subvariable catalog;
@@ -855,8 +853,6 @@ members vary by type:
 
 Transforming
 ~~~~~~~~~~~~
-
-.. _convert-type:
 
 Convert type
 ^^^^^^^^^^^^

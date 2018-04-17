@@ -1,5 +1,3 @@
-.. _teams-main:
-
 Teams
 -----
 
@@ -198,7 +196,7 @@ Team members catalog
 ``/teams/{team_id}/members/``
 
 The team members catalog is a Shoji Catalog similar in nature to the
-:ref:`dataset permissions catalog <permissions-main>`. It collects references
+`dataset permissions catalog <#permissions>`__. It collects references
 to users and defines the authorizations they have with respect to the
 team. All information about the member relationships is contained in the
 catalog--there are no "member entities"--and all changes to team
@@ -393,28 +391,23 @@ Removing members
 To remove members from the team, PATCH the catalog with a ``null``
 value:
 
+``http PATCH /teams/d07edb/members/ HTTP/1.1 Host: app.crunch.io Content-Type: application/json``\ json
+{ "element": "shoji:catalog", "index": {
+"https://app.crunch.io/api/users/e3211a/": null } } -------- 204 No
+Content \`\`\`
+
 .. language_specific::
    --HTTP
    .. code:: http
-
-      PATCH /teams/d07edb/members/ HTTP/1.1
-      Host: app.crunch.io
-      Content-Type: application/json
-
-      {
-          "element": "shoji:catalog",
-          "index": {
-              "https://app.crunch.io/api/users/e3211a/": null
-          }
-      }
-      --------
-      204 No Content
 
       GET /teams/d07edb/members/ HTTP/1.1
       Host: app.crunch.io
       --------
       200 OK
       Content-Type: application/json
+
+   --JSON
+   .. code:: json
 
       {
           "element": "shoji:catalog",
@@ -449,10 +442,10 @@ Team datasets catalog
 ``/teams/{team_id}/datasets/``
 
 The team datasets catalog only supports the GET verb. To add a dataset
-to a team, you must PATCH its :ref:`permissions catalog <permissions-main>`.
+to a team, you must PATCH its `permissions catalog <#permissions>`__.
 
 GET
 ^^^
 
 GET returns a Shoji Catalog of datasets that have been shared with this
-team. See :ref:`datasets <datasets-main>` for details.
+team. See `datasets <#datasets>`__ for details.

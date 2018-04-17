@@ -1,7 +1,7 @@
 Decks
 -----
 
-Decks allow you to store :ref:`analyses <analyses>` for future reference
+Decks allow you to store `analyses <#analysis>`__ for future reference
 or for export. Decks correspond to a single dataset, and they are
 personal to each user unless they have been set as "public". Each deck
 contains a list of slides, and each slide contains analyses.
@@ -445,7 +445,7 @@ URLs.
 GET
 ^^^
 
-Returns a :ref:`Shoji Order <shoji-order>` response.
+Returns a `Shoji Order <#shoji-order>`__ response.
 
 .. language_specific::
    --JSON
@@ -564,7 +564,7 @@ necessary to include at least one analysis on the new slide.
 
 The body should contain an ``analyses`` attribute that contains an array
 with one or many analyses bodies as described in the
-:ref:`analyses` section, should be wrapped as a shoji:entity.
+`below <#analyses>`__ section, should be wrapped as a shoji:entity.
 
 On success, the server returns a 201 response with a Location header
 containing the URL of the newly created slide entity with its first
@@ -770,8 +770,6 @@ graph in arbitrary order.
 This is a flat order: grouping or nesting is not allowed. PATCHing with
 a nested order will generate a 400 response.
 
-.. _analyses:
-
 Analysis
 --------
 
@@ -878,8 +876,8 @@ settings*. To save an analysis, ``POST`` these to a deck as a new slide.
 
    <aside class="notice">
 
-Analysis queries are described in detail in the :ref:`feature
-guide <multidimensional-analysis>`. :ref:`Filters <filters-main>` may
+Analysis queries are described in detail in the `feature
+guide <#multidimensional-analysis>`__. `Filters <#filters>`__ may
 contain a mix of stored filters or expressions. Expressions may contain
 an optional ``name`` which may be used to label results.
 
