@@ -111,12 +111,14 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#root">Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#subfolder-endpoint">Subfolder endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#folder-payload">Folder payload</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#creating-folders">Creating folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#moving-folders-and-variables">Moving folders and variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#deleting-folders">Deleting folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#trash">Trash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html#hidden">Hidden</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
@@ -473,11 +475,11 @@ associated with the variable</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1477bd124438_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1477bd124438_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#14a7ed8e2358_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14a7ed8e2358_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1477bd124438_HTTP">
+<div class="tab-pane active section" id="14a7ed8e2358_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span>GET /search/?q={query}&amp;f={filter}&amp;limit={limit}&amp;offset={offset}&amp;projection={projection}&amp;grouping=datasets  HTTP/1.1
 
 {
@@ -542,7 +544,7 @@ associated with the variable</td>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1477bd124438_Python">
+<div class="tab-pane section" id="14a7ed8e2358_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycrunch</span>
 <span class="n">site</span> <span class="o">=</span> <span class="n">pycrunch</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;me@mycompany.com&quot;</span><span class="p">,</span> <span class="s2">&quot;yourpassword&quot;</span><span class="p">,</span> <span class="s2">&quot;https://app.crunch.io/api/&quot;</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="s1">&#39;search&#39;</span><span class="p">,</span> <span class="s1">&#39;q=findme&amp;embedded_variables=True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
@@ -559,10 +561,10 @@ associated with the variable</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1477bce01cf8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14a7ed317eb8_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1477bce01cf8_HTTP">
+<div class="tab-pane active section" id="14a7ed317eb8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span>GET /search/?q={query}&amp;f={filter}&amp;limit={limit}&amp;offset={offset}&amp;grouping=variables  HTTP/1.1
 </pre></div>
 </div>
