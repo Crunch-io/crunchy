@@ -145,7 +145,8 @@ makeArrayGadget <- function(env = globalenv()){
                 values$currently_selected,
                 input$mr_selection
             )
-            stopApp(returnValue = rstudioapi::insertText(text = code))
+            stopApp(returnValue = rstudioapi::insertText(text = code, 
+                id = rstudioapi::getActiveDocumentContext()$id))
         })
     }
     return(shinyApp(ui, server))
