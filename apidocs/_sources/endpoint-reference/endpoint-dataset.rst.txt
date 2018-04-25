@@ -1,5 +1,3 @@
-.. _datasets-main:
-
 Datasets
 --------
 
@@ -1192,8 +1190,34 @@ Fragments
 Table
 '''''
 
+``/datasets/{dataset_id}/table/``
+
+See :doc:`Table </endpoint-reference/endpoint-table>`.
+
 State
 '''''
+
+``/datasets/{dataset_id}/state/``
+
+GET returns a Shoji Entity with basic information about the current state of
+this dataset.
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+    {
+        "element": "shoji:entity",
+        "self": "https://app.crunch.io/api/datasets/2d376b90/state/",
+        "description": "Returns information about the current state of the dataset",
+        "body": {
+            "pending_messages": 0,
+            "current_editor_name": "John Doe",
+            "current_editor": "https://app.crunch.io/api/users/2a2997d/",
+            "revision": "00015F"
+       }
+    }
+
 
 Exclusion
 '''''''''

@@ -139,6 +139,8 @@ indicates the order. Private filters are not included in the order. Any
 filters that are missing are appended to the end of the order.
 Successful PATCH requests return 204 status.
 
+.. _filtering-endpoints:
+
 Filtering endpoints
 ~~~~~~~~~~~~~~~~~~~
 

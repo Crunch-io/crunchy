@@ -65,7 +65,7 @@ POST
 
 To create a new team, POST a Shoji Entity with a team "name" in the
 body. No other attributes are required, and you will be automatically
-assigned as a "team\_admin".
+assigned as a "team_admin".
 
 .. language_specific::
    --HTTP
@@ -453,4 +453,4 @@ GET
 ^^^
 
 GET returns a Shoji Catalog of datasets that have been shared with this
-team. See :ref:`datasets <datasets-main>` for details.
+team. See :doc:`datasets </endpoint-reference/endpoint-dataset>` for details.

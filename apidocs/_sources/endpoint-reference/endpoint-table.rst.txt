@@ -39,7 +39,7 @@ a 403 response.
    .. code:: json
 
       {
-        "self": "https:\/\/alpha.crunch.io\/api\/datasets\/:id\/table\/",
+        "self": "https://alpha.crunch.io/api/datasets/:id/table/",
         "element": "crunch:table",
         "data": {
           "000007": [ 1, 1, 2 ],
@@ -133,4 +133,4 @@ Filtering
 ^^^^^^^^^
 
 This endpoint accepts the same filter parameters described under
-Filtering Endpoints
+:ref:`Filtering endpoints <filtering-endpoints>`.
