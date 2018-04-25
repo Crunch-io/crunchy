@@ -1,7 +1,7 @@
 Decks
 -----
 
-Decks allow you to store `analyses <#analysis>`__ for future reference
+Decks allow you to store :ref:`analyses <analyses>` for future reference
 or for export. Decks correspond to a single dataset, and they are
 personal to each user unless they have been set as "public". Each deck
 contains a list of slides, and each slide contains analyses.
@@ -262,7 +262,8 @@ location to which the exporter will write this file when it is done computing
 (it may take some time for large datasets). The server will return a 202 response indicating that the export job started with
 a Location header indicating where the final exported file will be available. The response's body will contain the URL for the progress URL where to query
 the state of the export job. Clients should note the download URL,
-monitor progress, and when complete, GET the download location. See `Progress <endpoint-progress.html>`__ for details.
+monitor progress, and when complete, GET the download location. See
+:doc:`Progress </endpoint-reference/endpoint-progress>` for details.
 If no header is provided, this endpoint will produce an xlsx file.
 
 Requesting the same job, if still in progress, will return the same 202 response
@@ -445,7 +446,7 @@ URLs.
 GET
 ^^^
 
-Returns a `Shoji Order <#shoji-order>`__ response.
+Returns a :ref:`Shoji Order <shoji-order>` response.
 
 .. language_specific::
    --JSON
@@ -564,7 +565,7 @@ necessary to include at least one analysis on the new slide.
 
 The body should contain an ``analyses`` attribute that contains an array
 with one or many analyses bodies as described in the
-`below <#analyses>`__ section, should be wrapped as a shoji:entity.
+:ref:`analyses` section, should be wrapped as a shoji:entity.
 
 On success, the server returns a 201 response with a Location header
 containing the URL of the newly created slide entity with its first
@@ -770,6 +771,8 @@ graph in arbitrary order.
 This is a flat order: grouping or nesting is not allowed. PATCHing with
 a nested order will generate a 400 response.
 
+.. _analyses:
+
 Analysis
 --------
 
@@ -876,10 +879,11 @@ settings*. To save an analysis, ``POST`` these to a deck as a new slide.
 
    <aside class="notice">
 
-Analysis queries are described in detail in the `feature
-guide <#multidimensional-analysis>`__. `Filters <#filters>`__ may
-contain a mix of stored filters or expressions. Expressions may contain
-an optional ``name`` which may be used to label results.
+Analysis queries are described in detail in the :doc:`feature guide
+</feature-guide/feature-analyzing>`. :doc:`Filters
+</endpoint-reference/endpoint-filter>` may contain a mix of stored filters or
+expressions. Expressions may contain an optional ``name`` which may be used to
+label results.
 
 .. raw:: html
 

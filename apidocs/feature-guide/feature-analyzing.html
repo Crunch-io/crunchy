@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -152,7 +152,7 @@ metadata) for each. The request declares what variables to use and what
 to do with them, while the response includes and describes the results.
 See Object Reference:Cube for complete details.</p>
 <div class="section" id="dimensions">
-<h2>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline"> 🔗</a></h2>
+<span id="analyzing-dimensions"></span><h2>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline"> 🔗</a></h2>
 <p>Each dimension of an analysis can be simply one variable, a function
 over it, a traversal of its subvariables (for array variables), or even
 a combination of multiple variables (e.g. A + B). Any expression you can
@@ -167,10 +167,10 @@ expressions:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac448710_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101873cf8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac448710_JSON">
+<div class="tab-pane active section" id="14d101873cf8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/3ffd45/&quot;</span><span class="p">},</span>
@@ -264,10 +264,10 @@ request multiple functions over the same dimensions (such as
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1acf390f0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1010de668_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1acf390f0_JSON">
+<div class="tab-pane active section" id="14d1010de668_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_count&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[]}}}</span>
 </pre></div>
 </div>
@@ -277,10 +277,10 @@ request multiple functions over the same dimensions (such as
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac448e48_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101172eb8_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac448e48_JSON">
+<div class="tab-pane active section" id="14d101172eb8_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_mean&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/1/variables/3&quot;</span><span class="p">}]},</span>
     <span class="s2">&quot;stddev&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_stddev&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/1/variables/3/&quot;</span><span class="p">}]}</span>
@@ -340,10 +340,10 @@ argument:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad166e10_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1012297f0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad166e10_JSON">
+<div class="tab-pane active section" id="14d1012297f0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;measures&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;cube_mean&quot;</span><span class="p">,</span>
@@ -375,10 +375,10 @@ which defines the base analyses, and another which defines the overlay.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad285be0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d10118bfd0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad285be0_JSON">
+<div class="tab-pane active section" id="14d10118bfd0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;../variables/88dd88/&quot;</span><span class="p">},</span>
@@ -470,10 +470,10 @@ the above cube:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad13b978_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101179f28_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad13b978_JSON">
+<div class="tab-pane active section" id="14d101179f28_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My benchmark&quot;</span><span class="p">,</span>
     <span class="s2">&quot;bases&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -497,10 +497,10 @@ a function:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad020c50_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101b364e0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad020c50_JSON">
+<div class="tab-pane active section" id="14d101b364e0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;overlay&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;88dd88&quot;</span><span class="p">}],</span>
@@ -521,18 +521,19 @@ simply re-use variable “88dd88” as the dimension. This ensures that our
 target data is interpreted with the same category metadata as our base
 analysis.</p>
 <p>We POST the above to datasets/{id}/comparisons/ and can obtain the
-overlay output at datasets/{id}/comparisons/{comparison_id}/cube/. See
-the Endpoint Reference for details.</p>
+overlay output at datasets/{id}/comparisons/{comparison_id}/cube/. See the
+<a class="reference internal" href="../endpoint-reference/endpoint-comparison.html"><span class="doc">Comparisons endpoint reference</span></a>
+for details.</p>
 </div>
 <div class="section" id="multitables">
 <h2>Multitables<a class="headerlink" href="#multitables" title="Permalink to this headline"> 🔗</a></h2>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac2e1f60_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101f0dbe0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac2e1f60_HTTP">
+<div class="tab-pane active section" id="14d101f0dbe0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 
 <span class="mi">200</span> <span class="n">OK</span>
@@ -599,23 +600,23 @@ with those, in order to quickly discover common correlations.</p>
 clients can use to construct a valid query with the variable(s) of
 interest.</p>
 <p>Crunch provides a separate catalog where you can define and manage these
-common sets of variables. Like most catalogs, you can <a class="reference external" href="#multitables162">GET
-it</a> to see which multitables are defined.</p>
+common sets of variables. Like most catalogs, you can <a class="reference internal" href="../endpoint-reference/endpoint-multitable.html#multitables-catalog-get"><span class="std std-ref">GET
+it</span></a> to see which multitables are defined.</p>
 <div class="section" id="template-query">
-<h3>Template query<a class="headerlink" href="#template-query" title="Permalink to this headline"> 🔗</a></h3>
+<span id="id1"></span><h3>Template query<a class="headerlink" href="#template-query" title="Permalink to this headline"> 🔗</a></h3>
 <p>A multitable is a set of queries that form groups of ‘columns’ for
 different later chosen ‘row’ variables. It is defined by a <strong>name</strong> and
 a <strong>template</strong>. At minimum the template must contain a <code class="docutils literal"><span class="pre">query</span></code>
 fragment: this will be later inserted after some function of a row
-variable to form the <a class="reference external" href="#dimensions">dimension</a> of a result. Each
+variable to form the <cite>dimension &lt;analyzing-dimensions&gt;</cite> of a result. Each
 template dimension can currently only be a function of one variable.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac2df6d8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1011fb630_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac2df6d8_HTTP">
+<div class="tab-pane active section" id="14d1011fb630_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">multitable</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 
 <span class="p">{</span>
@@ -661,7 +662,7 @@ information used to construct the dimension and transform its output.</p>
 </div>
 </div>
 <div class="section" id="transforming-analyses-for-presentation">
-<h2>Transforming analyses for presentation<a class="headerlink" href="#transforming-analyses-for-presentation" title="Permalink to this headline"> 🔗</a></h2>
+<span id="id2"></span><h2>Transforming analyses for presentation<a class="headerlink" href="#transforming-analyses-for-presentation" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal"><span class="pre">transform</span></code> member of an analysis specification (or multitable
 definition) is a declarative definition of what the dimension should
 look like after computation. The cube result dimension itself will
@@ -770,10 +771,10 @@ represent the result as just <em>C, A, B</em>:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad293278_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101175c88_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad293278_JSON">
+<div class="tab-pane active section" id="14d101175c88_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;transform&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;categories&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;C&quot;</span><span class="p">},</span>
@@ -796,10 +797,10 @@ multiple response variable and re-orders the result.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad052a58_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101f14780_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad052a58_JSON">
+<div class="tab-pane active section" id="14d101f14780_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -845,10 +846,10 @@ object in the <code class="docutils literal"><span class="pre">template</span></
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ad1e16a0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1011a2518_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ad1e16a0_JSON">
+<div class="tab-pane active section" id="14d1011a2518_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -889,10 +890,10 @@ against another variable “449b421”:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac41dbe0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1018bbe80_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac41dbe0_JSON">
+<div class="tab-pane active section" id="14d1018bbe80_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;each&quot;</span><span class="p">,</span>
     <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -944,10 +945,10 @@ against another variable “449b421”:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1acba5908_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14d102030748_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1acba5908_JSON">
+<div class="tab-pane active section" id="14d102030748_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
     <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -1039,7 +1040,7 @@ against another variable “449b421”:</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Apr 24, 2018.<br/>
+      Last updated on Apr 25, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

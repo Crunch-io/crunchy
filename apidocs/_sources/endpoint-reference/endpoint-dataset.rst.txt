@@ -1,8 +1,11 @@
+.. _datasets-main:
+
 Datasets
 --------
 
 Datasets are the primary containers of statistical data in Crunch.
-Datasets contain a collection of `variables <#variables>`__, with which
+Datasets contain a collection of :doc:`variables
+</endpoint-reference/endpoint-variable>`, with which
 analyses can be composed, saved, and exported. These analyses may
 include filters, which users can define and persist. Users can also
 share datasets with each other.
@@ -131,7 +134,7 @@ id                          string                                              
 archived                    bool             false                                                 Whether the dataset is "archived" or active
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 permissions                 object           ``{"edit": false}``                                   Authorizations on this dataset;
-                                                                                                   see `Permissions <#permissions>`__
+                                                                                                   see :doc:`Permissions </endpoint-reference/endpoint-permission>`
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 owner_id                    URL                                                                    URL of the user entity of the dataset's owner
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
@@ -237,7 +240,7 @@ PATCH
 
 ``PATCH /datasets/``
 
-Use PATCH to edit the "name", "description", "start\_date", "end\_date",
+Use PATCH to edit the "name", "description", "start_date", "end_date",
 or "archived" state of one or more datasets. A successful request
 returns a 204 response. The attributes changed will be seen by all users
 with access to this dataset; i.e., names, descriptions, and archived
@@ -253,12 +256,12 @@ The tuple attributes other than "name", "description", and "archived"
 cannot be modified here by PATCH. Attempting to modify other attributes,
 or including new attributes, will return a 400 response. Changing
 permissions is accomplished by PATCH on the permissions catalog, and
-changing the owner is a PATCH on the dataset entity. The "owner\_name"
-and "current\_editor\_name" attributes are modifiable, assuming
+changing the owner is a PATCH on the dataset entity. The "owner_name"
+and "current_editor_name" attributes are modifiable, assuming
 authorization, by PATCH on the associated user entity. Dataset "size" is
 a cached property of the data, changing only if the number of rows or
-columns in the dataset change. Dataset "id", "modification\_time" and
-"creation\_time" are immutable/system generated.
+columns in the dataset change. Dataset "id", "modification_time" and
+"creation_time" are immutable/system generated.
 
 When PATCHing, you may include only the keys in each tuple that are
 being modified, or you may send the complete tuple. As long as the keys
@@ -284,6 +287,8 @@ new owner must have advanced permissions on Crunch.
 Other editors of the dataset can change the ownership of a dataset only
 to a Project as long as they andthe current owner of the dataset are
 both editors on such project.
+
+.. _datasets-post:
 
 POST
 ^^^^
@@ -332,8 +337,8 @@ POST a JSON object to create a new Dataset; a 201 indicates success, and
 the returned Location header refers to the new Dataset resource.
 
 The body must contain a "name". You can also include a Crunch Table in a
-"table" key, as discussed in the `Feature
-Guide <#metadata-document-csv>`__. The full set of possible attributes
+"table" key, as discussed in the :ref:`Feature
+Guide <metadata-document-csv>`. The full set of possible attributes
 to include when POSTing to create a new dataset entity are:
 
 ================== ======== ===============================================
@@ -376,14 +381,14 @@ maintainer         URL      User URL that will be the maintainer of this
                             if omitted, the authenticated user will be the
                             maintainer
 ------------------ -------- -----------------------------------------------
-settings           object   `Settings object <#settings>`__ containing
-                            ``weight``, ``viewers_can_export``,
+settings           object   :ref:`Settings object <dataset-settings>`
+                            containing ``weight``, ``viewers_can_export``,
                             ``viewers_can_change_weight``,
                             ``viewers_can_share``, ``dashboard_deck``,
                             ``population``, and/or ``min_base_size``
                             attributes. If a
                             "weight" is specified, it will be automatically
-                            added to "weight\_variables" if not already
+                            added to "weight_variables" if not already
                             specified there. ``population`` is an
                             object with keys size and magnitude, both
                             integers: the total population represented by
@@ -410,7 +415,7 @@ Team datasets
 
 A Shoji Catalog of datasets that have been shared with this team. These
 datasets are not included in the primary dataset catalog. See
-`teams <#teams>`__ for more.
+:doc:`teams </endpoint-reference/endpoint-team>` for more.
 
 Project datasets
 ^^^^^^^^^^^^^^^^
@@ -419,7 +424,7 @@ Project datasets
 
 A Shoji Catalog of datasets that belong to this project. These datasets
 are not included in the primary dataset catalog. See
-`projects <#projects>`__ for more.
+:doc:`projects </endpoint-reference/endpoint-projects>` for more.
 
 Filter datasets by name
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -428,7 +433,7 @@ Filter datasets by name
 
 The ``by_name`` catalog returns (on GET) a Shoji Catalog that is a
 subset of ``/datasets/`` where the dataset name matches the
-"dataset\_name" value. Matches are case sensitive.
+"dataset_name" value. Matches are case sensitive.
 
 Verbs other than GET are not supported on this subcatalog. PATCH and
 POST at the primary dataset catalog.
@@ -497,7 +502,7 @@ URL Parameters
 +---------------+-------------------------+
 | Parameter     | Description             |
 +===============+=========================+
-| dataset\_id   | The id of the dataset   |
+| dataset_id    | The id of the dataset   |
 +---------------+-------------------------+
 
 Dataset attributes
@@ -518,7 +523,7 @@ id                     string                                                   
 archived               bool             false                                              Whether the dataset is "archived" or active
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
 permissions            object           ``{"edit": false}``                                Authorizations on this dataset;
-                                                                                           see `Permissions <#permissions>`__
+                                                                                           see :doc:`Permissions </endpoint-reference/endpoint-permission>`
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
 owner_id               URL                                                                 URL of the user entity of the dataset's owner
 ---------------------- ---------------- -------------------------------------------------- ----------------------------------------------------------
@@ -579,123 +584,123 @@ collections of related objects. They are available under the
       }
 
 
-+---------------+-----------------------------------------+
-| Catalog name  | Resource                                |
-+===============+=========================================+
-| batches       | Returns                                 |
-|               | all the                                 |
-|               | batches                                 |
-|               | (successful                             |
-|               | and                                     |
-|               | failed)                                 |
-|               | used for                                |
-|               | this                                    |
-|               | dataset.                                |
-|               | See                                     |
-|               | `Batches <#batches>`__.                 |
-+---------------+-----------------------------------------+
-| joins         | Contains                                |
-|               | the list                                |
-|               | of all                                  |
-|               | datasets                                |
-|               | joined to                               |
-|               | the                                     |
-|               | current                                 |
-|               | dataset.                                |
-|               | See                                     |
-|               | `Joins <#joins>`__.                     |
-+---------------+-----------------------------------------+
-| parent        | Indicates                               |
-|               | the                                     |
-|               | catalog                                 |
-|               | where                                   |
-|               | this                                    |
-|               | dataset                                 |
-|               | is found                                |
-|               | (project                                |
-|               | or main                                 |
-|               | dataset                                 |
-|               | catalog)                                |
-+---------------+-----------------------------------------+
-| variables     | Catalog                                 |
-|               | of all                                  |
-|               | public                                  |
-|               | variables                               |
-|               | of this                                 |
-|               | dataset.                                |
-|               | See                                     |
-|               | `Variables <#variables>`__.             |
-+---------------+-----------------------------------------+
-| actions       | All                                     |
-|               | actions                                 |
-|               | executed                                |
-|               | on this                                 |
-|               | dataset                                 |
-+---------------+-----------------------------------------+
-| savepoints    | Lists the                               |
-|               | saved                                   |
-|               | versions                                |
-|               | for this                                |
-|               | dataset.                                |
-|               | See                                     |
-|               | `Versions <#versions>`__.               |
-+---------------+-----------------------------------------+
-| filters       | Makes                                   |
-|               | available                               |
-|               | the                                     |
-|               | public                                  |
-|               | and                                     |
-|               | user-created                            |
-|               | filters.                                |
-|               | See                                     |
-|               | `Filters <#filters>`__.                 |
-+---------------+-----------------------------------------+
-| multitables   | Similar                                 |
-|               | to                                      |
-|               | filters,                                |
-|               | displays                                |
-|               | all                                     |
-|               | available                               |
-|               | multitables.                            |
-|               | See                                     |
-|               | `Multitables <#mulitables>`__           |
-+---------------+-----------------------------------------+
-| comparisons   | Contains                                |
-|               | all                                     |
-|               | available                               |
-|               | comparisons.                            |
-|               | See                                     |
-|               | `Comparisons <#comparisons>`__.         |
-+---------------+-----------------------------------------+
-| forks         | Returns                                 |
-|               | all the                                 |
-|               | forks                                   |
-|               | created                                 |
-|               | from this                               |
-|               | dataset                                 |
-+---------------+-----------------------------------------+
-| decks         | The list                                |
-|               | of all                                  |
-|               | decks on                                |
-|               | this                                    |
-|               | dataset                                 |
-|               | for the                                 |
-|               | authentic                               |
-|               | ated                                    |
-|               | user                                    |
-+---------------+-----------------------------------------+
-| permissions   | Returns                                 |
-|               | the list                                |
-|               | of all                                  |
-|               | users and                               |
-|               | teams                                   |
-|               | with                                    |
-|               | access to                               |
-|               | this                                    |
-|               | dataset.                                |
-|               | See                                     |
-|               | `Permissions <#permissions>`__.         |
-+---------------+-----------------------------------------+
++---------------+----------------------------------------------------------------+
+| Catalog name  | Resource                                                       |
++===============+================================================================+
+| batches       | Returns                                                        |
+|               | all the                                                        |
+|               | batches                                                        |
+|               | (successful                                                    |
+|               | and                                                            |
+|               | failed)                                                        |
+|               | used for                                                       |
+|               | this                                                           |
+|               | dataset.                                                       |
+|               | See                                                            |
+|               | :doc:`Batches </endpoint-reference/endpoint-batch>`.           |
++---------------+----------------------------------------------------------------+
+| joins         | Contains                                                       |
+|               | the list                                                       |
+|               | of all                                                         |
+|               | datasets                                                       |
+|               | joined to                                                      |
+|               | the                                                            |
+|               | current                                                        |
+|               | dataset.                                                       |
+|               | See                                                            |
+|               | :doc:`Joins </endpoint-reference/endpoint-join>`.              |
++---------------+----------------------------------------------------------------+
+| parent        | Indicates                                                      |
+|               | the                                                            |
+|               | catalog                                                        |
+|               | where                                                          |
+|               | this                                                           |
+|               | dataset                                                        |
+|               | is found                                                       |
+|               | (project                                                       |
+|               | or main                                                        |
+|               | dataset                                                        |
+|               | catalog)                                                       |
++---------------+----------------------------------------------------------------+
+| variables     | Catalog                                                        |
+|               | of all                                                         |
+|               | public                                                         |
+|               | variables                                                      |
+|               | of this                                                        |
+|               | dataset.                                                       |
+|               | See                                                            |
+|               | :doc:`Variables </endpoint-reference/endpoint-variable>`.      |
++---------------+----------------------------------------------------------------+
+| actions       | All                                                            |
+|               | actions                                                        |
+|               | executed                                                       |
+|               | on this                                                        |
+|               | dataset                                                        |
++---------------+----------------------------------------------------------------+
+| savepoints    | Lists the                                                      |
+|               | saved                                                          |
+|               | versions                                                       |
+|               | for this                                                       |
+|               | dataset.                                                       |
+|               | See                                                            |
+|               | :doc:`Versions </endpoint-reference/endpoint-version>`.        |
++---------------+----------------------------------------------------------------+
+| filters       | Makes                                                          |
+|               | available                                                      |
+|               | the                                                            |
+|               | public                                                         |
+|               | and                                                            |
+|               | user-created                                                   |
+|               | filters.                                                       |
+|               | See                                                            |
+|               | doc:`Filters </endpoint-reference/endpoint-filter>`.           |
++---------------+----------------------------------------------------------------+
+| multitables   | Similar                                                        |
+|               | to                                                             |
+|               | filters,                                                       |
+|               | displays                                                       |
+|               | all                                                            |
+|               | available                                                      |
+|               | multitables.                                                   |
+|               | See                                                            |
+|               | :doc:`Multitables </endpoint-reference/endpoint-multitable>`.  |
++---------------+----------------------------------------------------------------+
+| comparisons   | Contains                                                       |
+|               | all                                                            |
+|               | available                                                      |
+|               | comparisons.                                                   |
+|               | See                                                            |
+|               | :doc:`Comparisons </endpoint-reference/endpoint-comparison>`.  |
++---------------+----------------------------------------------------------------+
+| forks         | Returns                                                        |
+|               | all the                                                        |
+|               | forks                                                          |
+|               | created                                                        |
+|               | from this                                                      |
+|               | dataset                                                        |
++---------------+----------------------------------------------------------------+
+| decks         | The list                                                       |
+|               | of all                                                         |
+|               | decks on                                                       |
+|               | this                                                           |
+|               | dataset                                                        |
+|               | for the                                                        |
+|               | authentic                                                      |
+|               | ated                                                           |
+|               | user                                                           |
++---------------+----------------------------------------------------------------+
+| permissions   | Returns                                                        |
+|               | the list                                                       |
+|               | of all                                                         |
+|               | users and                                                      |
+|               | teams                                                          |
+|               | with                                                           |
+|               | access to                                                      |
+|               | this                                                           |
+|               | dataset.                                                       |
+|               | See                                                            |
+|               | :doc:`Permissions </endpoint-reference/endpoint-permission>`.  |
++---------------+----------------------------------------------------------------+
 
 PATCH
 ^^^^^
@@ -717,7 +722,7 @@ Authorization is required: you must have "edit" privileges on this
 dataset. If you try to PATCH and are not authorized, you will receive a
 403 response and no changes will be made. If you have edit permissions
 but are not the current editor of this dataset, PATCH requests of
-anything other than "current\_editor" will respond with 409 status. You
+anything other than "current_editor" will respond with 409 status. You
 will need first to PATCH to make yourself the current editor and then
 proceed to make the desired changes.
 
@@ -848,7 +853,7 @@ Cube
 
 ``/datasets/{id}/cube/?q``
 
-See `Multidimensional Analysis <#multidimensional-analysis>`__.
+See :doc:`Multidimensional Analysis </feature-guide/feature-analyzing>`.
 
 Export
 ''''''
@@ -926,7 +931,7 @@ filter        A Crunch filter expression        .. code:: json
 where         A Crunch expression defining      .. code:: json
               which variables to export.
               Refer to `Frame functions
-              <#frame-functions>`__ for the      {"function": "select", "args": [{"map": {"000000": {"variable": 000000"}}}]}
+              <frame-functions>` for the         {"function": "select", "args": [{"map": {"000000": {"variable": 000000"}}}]}
               available functions here.
 ------------- --------------------------------- --------------------------------------------------------------------------------
 variables     A list of variable or folder URLs .. code:: json
@@ -941,7 +946,7 @@ options       An object of extra settings,      .. code:: json
               See below.                         {"use_category_ids": true}
 ============= ================================= ================================================================================
 
-See `"Expressions" <#expressions>`__ for more on Crunch expressions.
+See :ref:`"Expressions" <expressions-obj-ref>` for more on Crunch expressions.
 
 The following rules apply for all formats:
 
@@ -1026,9 +1031,9 @@ Match
 The match endpoint provides a list of matches indicating which variables
 match amongst the datasets provided. To use it, send a post request
 representing an ordered list of datasets you would like to match.
-Include the "minimum\_matches" parameter in your graph if you would like
+Include the "minimum_matches" parameter in your graph if you would like
 to limit the output of the matches based on the number of datasets
-matching. The default minim\_matches is 2. Currently, only alias is
+matching. The default minim_matches is 2. Currently, only alias is
 utilized to match the variables to one another.
 
 The result of a match endpoint request can be one of two things. If the
@@ -1206,6 +1211,8 @@ PATCH the "expression" attribute to modify. An empty "expression"
 object, like ``{"body": {"expression": {}}}``, is equivalent to "no
 exclusion", i.e. no rows are dropped.
 
+.. _dataset-stream:
+
 Stream
 ''''''
 
@@ -1300,6 +1307,9 @@ indicating the value for each variable keyed by **alias**.
     {"alias1": 1, "alias2": "value", "alias3": 0}
     {"alias1": 99, "alias2": "other", "alias3": 2}
     {"alias1": 10, "alias2": "empty", "alias3": 1}
+
+
+.. _dataset-settings:
 
 Settings
 ''''''''
@@ -1406,7 +1416,7 @@ URL Parameters
 +---------------+-------------------------+
 | Parameter     | Description             |
 +===============+=========================+
-| dataset\_id   | The id of the dataset   |
+| dataset_id    | The id of the dataset   |
 +---------------+-------------------------+
 
 Setting a primary key on a dataset causes updates (particularly streamed
@@ -1634,60 +1644,86 @@ and information about the type of access:
 Actions
 '''''''
 
+``/datasets/{dataset_id}/actions/``
+
+See :ref:`Actions <feature-versioning-actions>` in the feature guide.
+
 Batches
 '''''''
 
 ``/datasets/{dataset_id}/batches/``
 
-See `Batches <#batches>`__ and the feature guides for
-`importing <#importing-data>`__ and `appending <#appending-data>`__.
+See :doc:`Batches </endpoint-reference/endpoint-batch>` and the feature guides for
+:ref:`importing <importing-data>` and :ref:`appending <appending-data>`.
 
 Decks
 '''''
 
 ``/datasets/{dataset_id}/decks/``
 
-See `Decks <#decks>`__.
+See :doc:`Decks </endpoint-reference/endpoint-deck>`.
 
 Comparisons
 '''''''''''
+
+``/datasets/{id}/comparisons/``
+
+See :doc:`Comparisons </endpoint-reference/endpoint-comparison>`.
 
 Filters
 '''''''
 
 ``/datasets/{dataset_id}/filters/``
 
-See `Filters <#filters>`__.
+See :doc:`Filters </endpoint-reference/endpoint-filter>`.
 
 Forks
 '''''
 
+``/datasets/{dataset_id}/forks/``
+
+See :ref:`Forking and Merging <forking-and-merging>`.
+
 Joins
 '''''
 
+``/datasets/{dataset_id}/joins/``
+
+See :doc:`Joins </endpoint-reference/endpoint-join>`.
+
 Multitables
 '''''''''''
+
+``/datasets/{dataset_id}/multitables/``
+
+See :doc:`Multitables </endpoint-reference/endpoint-multitable>`.
 
 Permissions
 '''''''''''
 
 ``/datasets/{dataset_id}/permissions/``
 
-See `Permissions <#permissions>`__.
+See :doc:`Permissions </endpoint-reference/endpoint-variable>`.
 
 Savepoints
 ''''''''''
 
 ``/datasets/{dataset_id}/savepoints/``
 
-See `Versions <#versions>`__.
+See :doc:`Versions </endpoint-reference/endpoint-version>`.
 
 Variables
 '''''''''
 
 ``/datasets/{dataset_id}/variables/``
 
-See `Variables <#variables>`__.
+See :doc:`Variables </endpoint-reference/endpoint-variable>`.
 
 Weight variables
 ''''''''''''''''
+
+``/datasets/{dataset_id}/variables/weights/``
+
+See the :ref:`weight variables endpoint reference <endpoint-variables-weights>`
+and also the description of Weights in the :ref:`feature guide
+<feature-deriving-weights>`.

@@ -77,4 +77,5 @@ Joined variables catalog
 ``/datasets/{id}/joins/{id}/variables/``
 
 A variables catalog which describes variables in the subordinate
-dataset. See `Variables <#variables>`__ for more details.
+dataset. See :doc:`Variables </endpoint-reference/endpoint-variable>` for more
+details.

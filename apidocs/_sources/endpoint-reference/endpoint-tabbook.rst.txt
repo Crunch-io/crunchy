@@ -19,7 +19,8 @@ started with a Location header indicating where the final exported file
 will be available. The response's body will contain the URL for the
 progress URL where to query the state of the export job. Clients should
 note the download URL, monitor progress, and when complete, GET the
-download location. See `Progress <endpoint-progress.html>`__ for details.
+download location. See :doc:`Progress </endpoint-reference/endpoint-progress>`
+for details.
 
 Requesting the same job, if still in progress, will return the same 202
 response indicating the original progress to check. If the export is

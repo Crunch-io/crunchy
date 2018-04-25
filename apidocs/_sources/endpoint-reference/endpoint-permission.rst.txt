@@ -198,6 +198,8 @@ The server will insist, and clients should also validate, that
 -  The user that is PATCHing this catalog must have share: true for this
    dataset; if not, the PATCH request will return 403.
 
+.. _inviting-new-users:
+
 Inviting new users
 ^^^^^^^^^^^^^^^^^^
 

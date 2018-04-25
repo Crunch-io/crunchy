@@ -42,7 +42,8 @@ fast, or 202, if the task is large enough to require processing outside
 of the request cycle. In both cases, the newly created batch entity's
 URL is returned in the Location header. The 202 response contains a body
 with a Progress resource in it; poll that URL for updates on the
-completion of the append. See `Progress <endpoint-progress.html>`__.
+completion of the append. See :doc:`Progress
+</endpoint-reference/endpoint-progress>`.
 
 Batches are created in ``analyzing`` state and will be advanced through
 ``importing``, ``imported``, and ``appended`` states if there are no
@@ -81,8 +82,8 @@ the incoming dataset will append all public and hidden
 just include public variables that aren't hidden.
 
 To append only certain variables from the incoming dataset, include an
-``where`` attribute in the entity body. See `Frame
-functions <#frame-functions>`__ for how to compose the ``where``
+``where`` attribute in the entity body. See :ref:`Frame
+functions <frame-functions>` for how to compose the ``where``
 expression.
 
 .. language_specific::
@@ -356,7 +357,7 @@ parameter:
 
 The response will be a 202 with a Progress resource in it; poll that URL
 for updates on the completion and follow ``Location`` once it completed.
-See `Progress <endpoint-progress.html>`__.
+See :doc:`Progress </endpoint-reference/endpoint-progress>`.
 
 On completion the align response will be a ``shoji:view`` containing the
 ``where`` expression used for each dataset:
@@ -397,9 +398,6 @@ datasets to a new one without conflicts.
 
       POST /datasets/abd/batches/
 
-   --JSON
-   .. code:: json
-
       {
           "element": "shoji:entity",
           "body": {
@@ -411,13 +409,7 @@ datasets to a new one without conflicts.
           }
       }
 
-   --HTTP
-   .. code:: http
-
       POST /datasets/abd/batches/
-
-   --JSON
-   .. code:: json
 
       {
           "element": "shoji:entity",
@@ -430,13 +422,7 @@ datasets to a new one without conflicts.
           }
       }
 
-   --HTTP
-   .. code:: http
-
       POST /datasets/abd/batches/
-
-   --JSON
-   .. code:: json
 
       {
           "element": "shoji:entity",

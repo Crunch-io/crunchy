@@ -38,7 +38,7 @@
   </head>
   <body>
 
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-default ">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -117,7 +117,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#column-by-column">Column-by-column</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">1. Create a Dataset entity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. Create a Dataset entity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#add-variable-definitions-and-column-data">2. Add Variable definitions and column data</a></li>
 </ul>
 </li>
@@ -143,7 +143,7 @@
     <div class="col-md-9 content">
       
   <div class="section" id="importing-data">
-<h1>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline"> 🔗</a></h1>
+<span id="id1"></span><h1>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline"> 🔗</a></h1>
 <p>There are several ways to build a Crunch dataset. The most appropriate
 method for you to create a dataset depends primarily on the format in
 which the data is currently stored.</p>
@@ -158,11 +158,11 @@ then attach them to datasets by following these steps.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac1cd940_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14c1ac1cd940_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101099c88_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14d101099c88_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac1cd940_HTTP">
+<div class="tab-pane active section" id="14d101099c88_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
@@ -180,7 +180,7 @@ then attach them to datasets by following these steps.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14c1ac1cd940_R">
+<div class="tab-pane section" id="14d101099c88_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">newDatasetFromFile</span><span class="p">(</span><span class="s2">&quot;my.csv&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my survey&quot;</span><span class="p">)</span>
 <span class="c1"># All three steps are handled within newDatasetFromFile</span>
 </pre></div>
@@ -188,7 +188,7 @@ then attach them to datasets by following these steps.</p>
 </div>
 </div>
 </div><p>POST a Dataset Entity to the datasets catalog. See the documentation for
-<a class="reference external" href="#post">POST /datasets/</a> for details on valid attributes to include
+<a class="reference internal" href="../endpoint-reference/endpoint-dataset.html#datasets-post"><span class="std std-ref">POST /datasets/</span></a> for details on valid attributes to include
 in the POST.</p>
 </div>
 <div class="section" id="upload-the-file">
@@ -196,10 +196,10 @@ in the POST.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac2495f8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101077048_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac2495f8_HTTP">
+<div class="tab-pane active section" id="14d101077048_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">sources</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">8874357</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">multipart</span><span class="o">/</span><span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">boundary</span><span class="o">=</span><span class="n">df5b17ff463a4cb3aa61cf02224c7303</span>
@@ -227,10 +227,10 @@ uploading it to a file-sharing service, like Dropbox.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1acc90fd0_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101055c50_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1acc90fd0_HTTP">
+<div class="tab-pane active section" id="14d101055c50_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">sources</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">71</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -246,10 +246,10 @@ uploading it to a file-sharing service, like Dropbox.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac8a6e10_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101063860_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac8a6e10_HTTP">
+<div class="tab-pane active section" id="14d101063860_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 <span class="o">...</span>
@@ -276,13 +276,14 @@ response from the previous step) to the batches catalog of the dataset
 entity created in step 1.</p>
 <p>The POST to the batches catalog will return 202 Continue status, and the
 response body contains a progress URL. Poll that URL to monitor the
-completion of the batch addition. See <a class="reference external" href="../endpoint-reference/endpoint-progress.html">Progress</a> for
+completion of the batch addition. See
+<a class="reference internal" href="../endpoint-reference/endpoint-progress.html"><span class="doc">Progress</span></a> for
 more. The 202 response will also contain a Location header with the URL
 of the newly created batch.</p>
 </div>
 </div>
 <div class="section" id="metadata-document-csv">
-<h2>Metadata document + CSV<a class="headerlink" href="#metadata-document-csv" title="Permalink to this headline"> 🔗</a></h2>
+<span id="id2"></span><h2>Metadata document + CSV<a class="headerlink" href="#metadata-document-csv" title="Permalink to this headline"> 🔗</a></h2>
 <p>This approach may be most natural for importing data from databases that
 store data by rows. You can dump or export your database to Crunch’s
 JSON metadata format, plus a CSV of data, and upload those to Crunch,
@@ -292,10 +293,10 @@ without requiring much back-and-forth with the API.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac878ba8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d1016a3fd0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac878ba8_HTTP">
+<div class="tab-pane active section" id="14d1016a3fd0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
@@ -335,18 +336,18 @@ example below illustrates how this can be used. Shoji is JSON, which
 means the “metadata” object is explicitly unordered. If you wish the
 variables to have an order, you must supply an order object rather than
 relying on any order of the “metadata” object.</p>
-<p>It is possible to create derived variables using any of the <a class="reference external" href="#Deriving-Variables">derivation
-functions available</a> simulaneously in one
+<p>It is possible to create derived variables using any of the <a class="reference internal" href="feature-deriving.html"><span class="doc">derivation
+functions available</span></a> simultaneously in one
 request when creating the dataset along its metadata. The variable
 references inside the derivation expressions must point to declared
 aliases of variables or subvariables.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1aca18908_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101678c50_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1aca18908_HTTP">
+<div class="tab-pane active section" id="14d101678c50_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">3294</span>
@@ -571,10 +572,10 @@ passed in.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1aca29dd8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#14d10168a160_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1aca29dd8_HTTP">
+<div class="tab-pane active section" id="14d10168a160_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">batches</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">csv</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">8874357</span>
@@ -720,20 +721,20 @@ a group named “ungrouped”.</li>
 </div>
 </div>
 <div class="section" id="column-by-column">
-<h2>Column-by-column<a class="headerlink" href="#column-by-column" title="Permalink to this headline"> 🔗</a></h2>
+<span id="import-column-by-column"></span><h2>Column-by-column<a class="headerlink" href="#column-by-column" title="Permalink to this headline"> 🔗</a></h2>
 <p>Crunch stores data by column internally, so if your data are stored in a
 column-major format as well, importing by column may be the most
 efficient way to import data.</p>
-<div class="section" id="id1">
-<h3>1. Create a Dataset entity<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id3">
+<h3>1. Create a Dataset entity<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac3314a8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14c1ac3314a8_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101046fd0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14d101046fd0_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac3314a8_HTTP">
+<div class="tab-pane active section" id="14d101046fd0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">974</span>
@@ -751,7 +752,7 @@ efficient way to import data.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14c1ac3314a8_R">
+<div class="tab-pane section" id="14d101046fd0_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">&lt;-</span> <span class="n">createDataset</span><span class="p">(</span><span class="s2">&quot;my suryey&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -765,11 +766,11 @@ import method.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14c1ac353908_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14c1ac353908_R">R</a></li>
+<li class="active"><a data-toggle="tab" href="#14d101039828_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#14d101039828_R">R</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14c1ac353908_HTTP">
+<div class="tab-pane active section" id="14d101039828_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">shoji</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">38475</span>
@@ -809,7 +810,7 @@ import method.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14c1ac353908_R">
+<div class="tab-pane section" id="14d101039828_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span># Here&#39;s a similar example. R&#39;s factor type becomes &quot;categorical&quot;.
 gender.names &lt;- c(&quot;Male&quot;, &quot;Female&quot;, &quot;Skipped&quot;)
 gen &lt;- factor(gender.names[c(1, 3, 1, 2, 2, 1, 1, 1, 1, 2, 3, 1)],
@@ -853,7 +854,7 @@ a normal, rectangular data store, this should already be the case.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Apr 24, 2018.<br/>
+      Last updated on Apr 25, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

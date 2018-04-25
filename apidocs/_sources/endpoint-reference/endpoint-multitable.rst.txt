@@ -6,6 +6,8 @@ Catalog
 
 ``/datasets/{dataset_id}/multitables/``
 
+.. _multitables-catalog-get:
+
 GET
 ^^^
 
@@ -45,9 +47,9 @@ POST
 
 POST a Shoji Entity to this catalog to create a new multitable
 definition. Entities must include a ``name`` and ``template``; the
-`template <#template-query>`__ must contain a series of objects with a
-``query`` and optionally
-```transform`` <#transforming-analyses-for-presentation>`__. If omitted,
+:ref:`template <template-query>` must contain a series of objects with a
+``query`` and optionally ``transform`` (see :ref:`Transforming analyses for
+presentation <transforming-analyses-for-presentation>`). If omitted,
 ``is_public`` defaults to ``false``. In similar fashion, ``team`` will
 default to ``null`` unless a specific team URL is provided.
 
@@ -151,4 +153,5 @@ The ``template`` attribute must contain a valid multitable definition.
 Views
 ^^^^^
 
-Multitable entities have a "tabbook" view. See below.
+Multitable entities have a "tabbook" view. See the :doc:`tabbook endpoint
+reference </endpoint-reference/endpoint-tabbook>`.

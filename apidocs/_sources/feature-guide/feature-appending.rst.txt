@@ -1,3 +1,5 @@
+.. _appending-data:
+
 Appending Data
 --------------
 
@@ -95,8 +97,8 @@ the Batch resource would contain the above message. Only unresolvable
 conflicts will be shown; if a variable is not reported in the conflicts
 object, it appended cleanly.
 
-See `Batches <#batches>`__ for more details on batch entities and
-conflicts.
+See :doc:`Batches </endpoint-reference/endpoint-batch>` for more details on
+batch entities and conflicts.
 
 Streaming rows
 ~~~~~~~~~~~~~~
@@ -218,7 +220,7 @@ appear in the dataset for the next time a user loads it, but if a user
 is actively working with the dataset, the system won't update their view
 of the data and disrupt their session.
 
-See `Stream <#stream>`__ for more details on streams.
+See :ref:`Stream <dataset-stream>` for more details on streams.
 
 Combining datasets
 ------------------

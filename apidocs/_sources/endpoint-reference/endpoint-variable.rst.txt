@@ -278,23 +278,23 @@ attributes:
 -  **folder**: optional, a URL of a variable folder in the dataset into which the new variable should be placed. If omitted,
    the variable will be created on the root folder. Personal variables (with ``"private": true``) cannot be placed in a folder; attempting to do so returns 400 status.
    
-See `Variable Definitions <#variable-definitions>`__ for more details
-and examples of valid attributes, and `Feature Guide:
-Arrays <#array-variables>`__ for more information on the various cases
-for creating array variables.
+See :ref:`Variable Definitions <variable-definitions>` for more details
+and examples of valid attributes, and :doc:`Feature Guide:
+Array Variables </feature-guide/feature-arrays>` for more information on the
+various cases for creating array variables.
 
 It is encouraged, but not required, to include an "alias" in the body.
 If omitted, one will be generated from the required "name".
 
 You may also include "values", which will create the column of data
-corresponding to this variable definition. See `Importing Data:
-Column-by-column <#column-by-column>`__ for details and examples.
+corresponding to this variable definition. See :ref:`Importing Data:
+Column-by-column <import-column-by-column>` for details and examples.
 
-You may instead also include an "derivation" to derive a variable as a
+You may instead also include a "derivation" to derive a variable as a
 function of other variables. In this case, "type" is not required
 because it depends on the output of the specified derivation function.
-For details and examples, see `Deriving
-Variables <#deriving-variables>`__.
+For details and examples, see :doc:`Deriving
+Variables </feature-guide/feature-deriving>`.
 
 A 201 indicates success and includes the URL of the newly-created
 variable in the Location header.
@@ -398,6 +398,8 @@ PUT
 ^^^
 
 Behaves sames as PATCH.
+
+.. _endpoint-variables-weights:
 
 Weights
 ~~~~~~~
@@ -646,7 +648,7 @@ Actions that are best or only achieved elsewhere include:
 -  changing variable names, aliases, and descriptions, which is best
    accomplished by PATCHing the variable catalog, as described above;
 -  changing a variable's type, which can only be done by POSTing to the
-   variable's "cast" resource (see `Convert type <#convert-type>`__
+   variable's "cast" resource (see :ref:`Convert type <convert-type>`
    below);
 -  editing names, aliases, and descriptions of subvariables in an array,
    which is done by PATCHing the array's subvariable catalog;
@@ -853,6 +855,8 @@ members vary by type:
 
 Transforming
 ~~~~~~~~~~~~
+
+.. _convert-type:
 
 Convert type
 ^^^^^^^^^^^^

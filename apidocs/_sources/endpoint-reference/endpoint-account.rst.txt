@@ -22,8 +22,11 @@ If the account has a name, it will be available here, as well as the
 path to the account's users.
 
 If the authenticated user is an account manager, the response will
-include paths to these additional catalogs: \* Account projects \*
-Account teams \* Account datasets
+include paths to these additional catalogs:
+
+- Account projects
+- Account teams
+- Account datasets
 
 GET
 ^^^

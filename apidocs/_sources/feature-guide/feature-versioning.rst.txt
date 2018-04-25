@@ -18,6 +18,8 @@ when, revert to a previous version, "fork" a dataset to make a copy of
 it, make changes to the copy, and merge those changes back into the
 original dataset.
 
+.. _feature-versioning-actions:
+
 Actions
 ~~~~~~~
 
@@ -221,6 +223,8 @@ that time) with a POST to
 It will return a 202 response with a Shoji:view containing a progress
 URL on its value where the asynchronous job's status can be observed.
 
+.. _forking-and-merging:
+
 Forking and Merging
 ~~~~~~~~~~~~~~~~~~~
 
@@ -375,7 +379,8 @@ discover use cases.
 Merging actions may take a few seconds, in which case the POST to
 actions/ will return 204 when finished. Merging many or large actions,
 however, may take longer, in which case the POST will return 202 with a
-Location header containing the URL of a `Progress <../endpoint-reference/endpoint-progress.html>`__ resource.
+Location header containing the URL of a :doc:`Progress
+</endpoint-reference/endpoint-progress>` resource.
 
 Filtered Merges
 ^^^^^^^^^^^^^^^
