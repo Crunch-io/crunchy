@@ -110,16 +110,15 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Variable Folders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#root">Root</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#subfolder-endpoint">Subfolder endpoint</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#root">Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subfolder-endpoint">Subfolder endpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#folder-payload">Folder payload</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-folders">Creating folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#moving-folders-and-variables">Moving folders and variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deleting-folders">Deleting folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#trash">Trash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hidden">Hidden</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
@@ -148,33 +147,31 @@
       
   <div class="section" id="variable-folders">
 <h1>Variable Folders<a class="headerlink" href="#variable-folders" title="Permalink to this headline"> 🔗</a></h1>
-<p>In order to organize number of variables in datasets, Crunch provides a
-hierarchical structure to group variables called “Folders”.</p>
-<p>Much like the variable hierarchical order, folders allow to have nested groups
-containing more groups or dataset variables.</p>
-<p>Unlike the variables’ order, a variable can only exist in one folder at the time.</p>
+<p>In order to organize a large number of variables in a dataset, Crunch
+provides a hierarchical structure to group variables called “Folders”.</p>
+<p>Much like the variable hierarchical order, folders allow you to have
+nested folders containing dataset variables. Unlike the hierarchical
+order, a variable can only exist in one folder at the time.</p>
 </div>
 <div class="section" id="root">
 <h1>Root<a class="headerlink" href="#root" title="Permalink to this headline"> 🔗</a></h1>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/</span></code></p>
 <p>Returns a Shoji catalog containing the root folder of the hierarchy.</p>
-<p>When a dataset is created without any order specified, there will not be any
-folder associated to any of its variables so the variable folders’ root will
-only contain a flat list of all the existing dataset variables.</p>
-<p>As variables get grouped into folders the folders root will continue showing
-the ungrouped variables and existing folders.</p>
-<div class="section" id="subfolder-endpoint">
-<h2>Subfolder endpoint<a class="headerlink" href="#subfolder-endpoint" title="Permalink to this headline"> 🔗</a></h2>
-<p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/{folder_id}/</span></code></p>
-<p>All subfolders’ URLs follow straight from the folders’ root URL regardless
-of their nested location in the folders’ tree.</p>
-<p>All subfolders’ payload has the same shape as the root catalog.</p>
+<p>When a dataset is created without an order specified, there will not
+yet be any folders associated with it, so the root folder will only
+contain a flat list of all existing dataset variables.</p>
+<p>As variables get grouped into folders, the root folder will continue
+showing any ungrouped variables in addition to the top-level folders.</p>
 </div>
+<div class="section" id="subfolder-endpoint">
+<h1>Subfolder endpoint<a class="headerlink" href="#subfolder-endpoint" title="Permalink to this headline"> 🔗</a></h1>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/{folder_id}/</span></code></p>
+<p>All subfolder URLs follow straight from the root folder URL regardless
+of their nested location in the variable folders tree.</p>
 </div>
 <div class="section" id="folder-payload">
 <h1>Folder payload<a class="headerlink" href="#folder-payload" title="Permalink to this headline"> 🔗</a></h1>
-<p>All folders, trash and root return a similar Shoji catalog with the same shape
-which includes the following members:</p>
+<p>All folders types return a similar Shoji catalog with the following members:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="10%" />
@@ -218,10 +215,10 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1492fb9512b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#154f1d634128_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1492fb9512b0_JSON">
+<div class="tab-pane active section" id="154f1d634128_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
@@ -289,10 +286,10 @@ contains.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1492fb218cc0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#154f1d3d74e0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1492fb218cc0_JSON">
+<div class="tab-pane active section" id="154f1d3d74e0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -346,10 +343,25 @@ folder, including all variables &amp; related data contained in that folder.</p>
 <div class="section" id="trash">
 <h1>Trash<a class="headerlink" href="#trash" title="Permalink to this headline"> 🔗</a></h1>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/trash/</span></code></p>
-<p>A special folder, the folders’ trash exists to store folders after they get
-deleted.</p>
-<p>Performing a DELETE request to the trash endpoint will empty all items from
-the trash, hard-deleting all folders, variables, and related data.</p>
+<p>The trash folder is a special-purpose folder that lives outside the
+regular variable folders tree.</p>
+<p>You can use the trash folder to “soft-delete” variables and folders.</p>
+<p>Subfolders and variables inside the trash folder are only visible to
+dataset editors.</p>
+<p>Performing a DELETE request to the trash endpoint will empty all items
+from the trash, hard-deleting the folders, variables, and related data.</p>
+<p>Items in the trash folder may also be automatically hard-deleted after
+24-48 hours.</p>
+</div>
+<div class="section" id="hidden">
+<h1>Hidden<a class="headerlink" href="#hidden" title="Permalink to this headline"> 🔗</a></h1>
+<p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/hidden/</span></code></p>
+<p>The hidden folder is a special-purpose folder that lives outside the
+regular variable folders tree.</p>
+<p>Variables and subfolders that should only be visible to dataset editors
+should be placed in the hidden folder.</p>
+<p>Hidden folder membership will eventually replace the deprecated
+<code class="docutils literal"><span class="pre">discarded</span></code> attribute on a variable.</p>
 </div>
 
 
@@ -365,7 +377,7 @@ the trash, hard-deleting all folders, variables, and related data.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Apr 25, 2018.<br/>
+      Last updated on Apr 26, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

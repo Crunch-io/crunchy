@@ -1,13 +1,12 @@
 Variable Folders
 ----------------
 
-In order to organize number of variables in datasets, Crunch provides a
-hierarchical structure to group variables called "Folders".
+In order to organize a large number of variables in a dataset, Crunch
+provides a hierarchical structure to group variables called "Folders".
 
-Much like the variable hierarchical order, folders allow to have nested groups
-containing more groups or dataset variables.
-
-Unlike the variables' order, a variable can only exist in one folder at the time.
+Much like the variable hierarchical order, folders allow you to have
+nested folders containing dataset variables. Unlike the hierarchical
+order, a variable can only exist in one folder at the time.
 
 Root
 -----
@@ -16,29 +15,26 @@ Root
 
 Returns a Shoji catalog containing the root folder of the hierarchy.
 
-When a dataset is created without any order specified, there will not be any
-folder associated to any of its variables so the variable folders' root will
-only contain a flat list of all the existing dataset variables.
+When a dataset is created without an order specified, there will not
+yet be any folders associated with it, so the root folder will only
+contain a flat list of all existing dataset variables.
 
-As variables get grouped into folders the folders root will continue showing
-the ungrouped variables and existing folders.
+As variables get grouped into folders, the root folder will continue
+showing any ungrouped variables in addition to the top-level folders.
 
 
 Subfolder endpoint
-~~~~~~~~~~~~~~~~~~
+------------------
 
 ``/datasets/{id}/folders/{folder_id}/``
 
-All subfolders' URLs follow straight from the folders' root URL regardless
-of their nested location in the folders' tree.
-
-All subfolders' payload has the same shape as the root catalog.
+All subfolder URLs follow straight from the root folder URL regardless
+of their nested location in the variable folders tree.
 
 Folder payload
 --------------
 
-All folders, trash and root return a similar Shoji catalog with the same shape
-which includes the following members:
+All folders types return a similar Shoji catalog with the following members:
 
 ======== ======= ===============================================================
 Member   Type    Description
@@ -201,10 +197,30 @@ Trash
 
 ``/datasets/{id}/folders/trash/``
 
-A special folder, the folders' trash exists to store folders after they get
-deleted.
+The trash folder is a special-purpose folder that lives outside the
+regular variable folders tree.
 
-Performing a DELETE request to the trash endpoint will empty all items from
-the trash, hard-deleting all folders, variables, and related data.
+You can use the trash folder to "soft-delete" variables and folders.
 
+Subfolders and variables inside the trash folder are only visible to
+dataset editors.
 
+Performing a DELETE request to the trash endpoint will empty all items
+from the trash, hard-deleting the folders, variables, and related data.
+
+Items in the trash folder may also be automatically hard-deleted after
+24-48 hours.
+
+Hidden
+------
+
+``/datasets/{id}/folders/hidden/``
+
+The hidden folder is a special-purpose folder that lives outside the
+regular variable folders tree.
+
+Variables and subfolders that should only be visible to dataset editors
+should be placed in the hidden folder.
+
+Hidden folder membership will eventually replace the deprecated
+``discarded`` attribute on a variable.
