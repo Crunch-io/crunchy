@@ -651,7 +651,7 @@ collections of related objects. They are available under the
 |               | user-created                                                   |
 |               | filters.                                                       |
 |               | See                                                            |
-|               | doc:`Filters </endpoint-reference/endpoint-filter>`.           |
+|               | :doc:`Filters </endpoint-reference/endpoint-filter>`.          |
 +---------------+----------------------------------------------------------------+
 | multitables   | Similar                                                        |
 |               | to                                                             |
