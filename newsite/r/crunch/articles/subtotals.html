@@ -8,7 +8,7 @@
 <title>Subtotals and Headings • Crunch</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Subtotals and Headings">
 <meta property="og:description" content="Modify subtotals and headings from R">
@@ -26,10 +26,10 @@
   ga('create', 'UA-50332119-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,8 +38,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">crunch</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -68,7 +72,7 @@
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Reorder Variables</a>
+      <a href="../articles/variable-order.html">Organize Variables</a>
     </li>
     <li>
       <a href="../articles/derive.html">Derive Variables</a>
@@ -102,7 +106,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -111,25 +121,28 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Subtotals and Headings</h1>
             
-          </div>
+      
+      <small>Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/subtotals.Rmd"><code>vignettes/subtotals.Rmd</code></a></small>
+      <div class="hidden name"><code>subtotals.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p><a href="export.html">Previous: exporting data</a></p>
 <p>A common task in the market research world is to collapse two or more categories together to see how the collapsed categories compare to one another. For example, if you asked people to rate their preference on a scale of 1 to 10, you might want to see how the people who provide a rating between 1 and 5 compare to those who rated it between 6 and 10. This goes by a number of names, including “<em>Top Box</em>” or “<em>Nets</em>”, depending on the use case. In Crunch, we call this family of features <em>Subtotals</em>. This vignette shows how to define, manage, and analyze variables with subtotals.</p>
 <div id="getting-and-setting-subtotals" class="section level1">
 <h1 class="hasAnchor">
 <a href="#getting-and-setting-subtotals" class="anchor"></a>Getting and setting subtotals</h1>
 <p>Subtotals can be applied to any Categorical or Categorical Array variable. In R, we can view and set subtotal definitions with the <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code> function. If there are no subtotals, the function will return <code>NULL</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$obamaapp)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>obamaapp)</code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>To add subtotals, we can assign a list of <code>Subtotal</code> objects. Each <code>Subtotal</code> object has three things: a <code>name</code> to identify it; a set of <code>categories</code> to pool together, referenced either by category name or id; and a location to show it, either <code>after</code> a given category or with <code>position="top"</code> or <code>"bottom"</code> to pin it first or last in the list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$DiversityImportant) &lt;-<span class="st"> </span><span class="kw">list</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>DiversityImportant) &lt;-<span class="st"> </span><span class="kw">list</span>(
     <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Follows closely"</span>,
              <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Strongly closely"</span>, <span class="st">"Very closely"</span>),
              <span class="dt">after =</span> <span class="st">"Somewhat closely"</span>),
@@ -138,14 +151,14 @@
              <span class="dt">after =</span> <span class="st">"Not at all"</span>)
 )</code></pre></div>
 <p>Now, if we check <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code>, we can see that we have saved them. In this output we see a few different aspects of subtotals: the <code>anchor</code> is the id of the category to put the subtotal after (matching the <code>after</code> or <code>position</code> argument in <code>Subtotal()</code>), name, aggregation functions and <code>args</code>, which in the this case are the category ids to include in the subtotal.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$manningknowledge)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>manningknowledge)</code></pre></div>
 <pre><code>##   anchor                   name     func    args
 ## 1      2        Follows closely subtotal 2 and 1
 ## 2      4 Doesn't Follow Closely subtotal 3 and 4</code></pre>
 <p>This shows up in the Categorical variable card on the web app like this:</p>
-<p><img src="images/manning_knowledge_subtotals.png" alt=""><!-- --></p>
+<p><img src="images/manning_knowledge_subtotals.png"><!-- --></p>
 <p>We can also add <em>headings</em>, which are similar to subtotals in that they are additions to categorical variables that will be displayed in the app, but they don’t sum up any categories. For a variable with many categories, they can help group variables visually. Here we add some guides to Obama’s approval rating.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$obamaapp) &lt;-<span class="st"> </span><span class="kw">list</span>(
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>obamaapp) &lt;-<span class="st"> </span><span class="kw">list</span>(
     <span class="kw">Heading</span>(<span class="dt">name =</span> <span class="st">"Approves"</span>,
             <span class="dt">after =</span> <span class="dv">0</span>),
     <span class="kw">Heading</span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,
@@ -154,19 +167,19 @@
             <span class="dt">after =</span> <span class="st">"Strongly Disapprove"</span>)
 )
 
-<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$obamaapp)</code></pre></div>
+<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>obamaapp)</code></pre></div>
 <pre><code>##   anchor       name func args
 ## 1      0   Approves   NA   NA
 ## 2      2 Disapprove   NA   NA
 ## 3      4  No Answer   NA   NA</code></pre>
 <p>Again, this shows up in the Categorical variable card on the web app:</p>
-<p><img src="images/obama_headings.png" alt=""><!-- --></p>
+<p><img src="images/obama_headings.png"><!-- --></p>
 </div>
 <div id="removing-subtotals" class="section level1">
 <h1 class="hasAnchor">
 <a href="#removing-subtotals" class="anchor"></a>Removing subtotals</h1>
 <p>Subtotals and headings can be removed by assigning a <code>NULL</code> value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$YearsCodedJob) &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>YearsCodedJob) &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
 <div id="setting-many-subtotals" class="section level1">
@@ -180,11 +193,11 @@
     <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,
             <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Somewhat disapprove"</span>, <span class="st">"Strongly disapprove"</span>),
             <span class="dt">after =</span> <span class="st">"Strongly disapprove"</span>))</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$snowdenleakapp) &lt;-<span class="st"> </span>approve_subtotals
-<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$congapp) &lt;-<span class="st"> </span>approve_subtotals</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>snowdenleakapp) &lt;-<span class="st"> </span>approve_subtotals
+<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>congapp) &lt;-<span class="st"> </span>approve_subtotals</code></pre></div>
 <p>Notice here, because each of the categories for these variables has slightly different ids, the <code>args</code> in the output differs slightly. But, because we used category names when we were constructing our list of subtotals, when we store them on the variable itself, Crunch does the right thing and converts them over to the correct ids.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$snowdenleakapp)
-<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds$congapp)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>snowdenleakapp)
+<span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>congapp)</code></pre></div>
 <pre><code>##   anchor       name     func    args
 ## 1      2   Approves subtotal 2 and 1
 ## 2      4 Disapprove subtotal 3 and 4</code></pre>
@@ -196,7 +209,7 @@
 <h1 class="hasAnchor">
 <a href="#computing-with-subtotals" class="anchor"></a>Computing with subtotals</h1>
 <p>Now that we have defined subtotals on the congressional approval question, if we use it in a crosstab, we can see the subtotals.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(~congapp +<span class="st"> </span>gender, <span class="dt">data =</span> ds)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="op">~</span>congapp <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds)</code></pre></div>
 <pre><code>##                               gender          
 ## congapp                                    Male           Female
 ##               Strongly approve                0                0
@@ -208,13 +221,13 @@
 ##                     Disapprove 74.9668693447531 62.5998578541675
 ##                       Not sure 15.2265010614957 25.8714100226452</code></pre>
 <p>We can even get just the subtotals as an array from the result if we want to ignore the constituent groups:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/applyTransforms.html">subtotalArray</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(~congapp +<span class="st"> </span>gender, <span class="dt">data =</span> ds))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/applyTransforms.html">subtotalArray</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="op">~</span>congapp <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds))</code></pre></div>
 <pre><code>##             gender
 ## congapp          Male    Female
 ##   Approves    2.51013  5.462405
 ##   Disapprove 74.96687 62.599858</code></pre>
 <p>If you don’t want to see the subtotals as part of these summaries, you can suppress them from display with the <code><a href="../reference/noTransforms.html">noTransforms()</a></code> function around <code><a href="../reference/crtabs.html">crtabs()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/noTransforms.html">noTransforms</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(~congapp +<span class="st"> </span>gender, <span class="dt">data =</span> ds))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/noTransforms.html">noTransforms</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="op">~</span>congapp <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data =</span> ds))</code></pre></div>
 <pre><code>##                                 gender
 ## congapp                              Male    Female
 ##   Strongly approve                0.00000  0.000000
@@ -225,7 +238,6 @@
 ##   Not sure                       15.22650 25.871410</code></pre>
 <p>This does not modify the variable—the subtotals are still defined and visible in the web app—but they are removed from the current analysis.</p>
 <p><a href="crunch-internals.html">Next: Crunch internals</a></p>
-</div>
 </div>
   </div>
 
@@ -256,5 +268,15 @@
       </footer>
 </div>
 
-  </body>
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
+    indexName: 'crunch',
+    inputSelector: 'input#search-input.form-control',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+</body>
 </html>

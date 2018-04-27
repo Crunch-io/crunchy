@@ -8,7 +8,7 @@
 <title>Filtering Data • Crunch</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Filtering Data">
 <meta property="og:description" content="With the crunch package, you can both filter the views of data you work with in your R session and manage the filters that you and your collaborators see in the web application.">
@@ -26,10 +26,10 @@
   ga('create', 'UA-50332119-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,8 +38,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">crunch</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -68,7 +72,7 @@
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Reorder Variables</a>
+      <a href="../articles/variable-order.html">Organize Variables</a>
     </li>
     <li>
       <a href="../articles/derive.html">Derive Variables</a>
@@ -102,7 +106,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -111,19 +121,19 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Filtering Data</h1>
             
-          </div>
+      
+      <small>Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/filters.Rmd"><code>vignettes/filters.Rmd</code></a></small>
+      <div class="hidden name"><code>filters.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p><a href="analyze.html">Previous: analyzing data</a></p>
-<div id="working-with-filters" class="section level1">
-<h1 class="hasAnchor">
-<a href="#working-with-filters" class="anchor"></a>Working with Filters</h1>
 <p>Sometimes you only want to work with a subset of your data. With the <code>crunch</code> package, you can both filter the views of data you work with in your R session and manage the filters that you and your collaborators see in the web application.</p>
 <div id="filtering-and-subsetting-in-r" class="section level2">
 <h2 class="hasAnchor">
@@ -131,7 +141,7 @@
 <p>As we’ve seen in previous vignettes, making logical expressions with Crunch datasets and variables is natural. We showed how to <a href="derive.html">update a selection of values</a> on the server, as well as how to <a href="analyze.html">crosstab in a subset of a dataset</a>. Other applications work just as intuitively.</p>
 <!-- Add links with anchors to "Updating values" and to "Subsetting data" -->
 <p>Filtering like this works by creating a dataset or variable object that has the filter embedded in it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dems &lt;-<span class="st"> </span>ds[ds$pid3 ==<span class="st"> "Democrat"</span>,]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dems &lt;-<span class="st"> </span>ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>,]
 dems</code></pre></div>
 <pre><code>## Dataset “Economist/YouGov Weekly Survey”
 ## 
@@ -176,7 +186,7 @@ dems</code></pre></div>
 ## $votereg_old: votereg_old (numeric)
 ## $votereg: votereg (numeric)
 ## $age: age (numeric)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cube-computing.html">round</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="kw"><a href="../reference/crunch-uni.html">mean</a></span>(track) ~<span class="st"> </span>educ +<span class="st"> </span>gender, <span class="dt">data=</span>dems), <span class="dv">2</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/cube-computing.html">round</a></span>(<span class="kw"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="kw"><a href="../reference/crunch-uni.html">mean</a></span>(track) <span class="op">~</span><span class="st"> </span>educ <span class="op">+</span><span class="st"> </span>gender, <span class="dt">data=</span>dems), <span class="dv">2</span>)</code></pre></div>
 <pre><code>##                       gender
 ## educ                    Male Female
 ##   No HS                  NaN   1.00
@@ -186,21 +196,21 @@ dems</code></pre></div>
 ##   4-year               -0.12   0.40
 ##   Post-grad             0.33   0.12</code></pre>
 <p>When you extract a variable from a filtered dataset, it too is filtered. So</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table.html">table</a></span>(dems$educ)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table.html">table</a></span>(dems<span class="op">$</span>educ)</code></pre></div>
 <pre><code>## educ
 ##                No HS High school graduate         Some college               2-year               4-year 
 ##             5.990781            23.817206            19.000165             4.962549            18.238301 
 ##            Post-grad 
 ##             6.278870</code></pre>
 <p>is the same as</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table.html">table</a></span>(ds$educ[ds$pid3 ==<span class="st"> "Democrat"</span>,])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/table.html">table</a></span>(ds<span class="op">$</span>educ[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>,])</code></pre></div>
 <pre><code>## educ
 ##                No HS High school graduate         Some college               2-year               4-year 
 ##             5.990781            23.817206            19.000165             4.962549            18.238301 
 ##            Post-grad 
 ##             6.278870</code></pre>
 <p>As an aside, if you prefer using the <code>subset</code> function, that works just the same as the <code>[</code> extract method on datasets:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">identical</span>(<span class="kw">subset</span>(ds, ds$pid3 ==<span class="st"> "Democrat"</span>), dems)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">identical</span>(<span class="kw">subset</span>(ds, ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>), dems)</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="filter-entities" class="section level2">
@@ -211,7 +221,7 @@ dems</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)</code></pre></div>
 <pre><code>## data frame with 0 columns and 0 rows</code></pre>
 <p>Create a filter by assigning a Crunch logical expression to the catalog by the name we want to give it, using <code>$</code> or <code>[[</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]] &lt;-<span class="st"> </span>ds$gender ==<span class="st"> "Male"</span> &amp;<span class="st"> </span>ds$age &lt;<span class="st"> </span><span class="dv">30</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]] &lt;-<span class="st"> </span>ds<span class="op">$</span>gender <span class="op">==</span><span class="st"> "Male"</span> <span class="op">&amp;</span><span class="st"> </span>ds<span class="op">$</span>age <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>
 <span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]]</code></pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 30</code></pre>
@@ -220,14 +230,14 @@ dems</code></pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males fe5a713cbb2043a4ab88237da5ea6cb6     FALSE</code></pre>
 <p>You could also have made the filter with the <code>newFilter</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw"><a href="../reference/newFilter.html">newFilter</a></span>(<span class="st">"Young males"</span>, ds$gender ==<span class="st"> "Male"</span> &amp;<span class="st"> </span>ds$age &lt;<span class="st"> </span><span class="dv">30</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="kw"><a href="../reference/newFilter.html">newFilter</a></span>(<span class="st">"Young males"</span>, ds<span class="op">$</span>gender <span class="op">==</span><span class="st"> "Male"</span> <span class="op">&amp;</span><span class="st"> </span>ds<span class="op">$</span>age <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>)</code></pre></div>
 <p>This filter is now available for you to use in the web application. If you want to make the filter available to all viewers of the dataset, make it “public”:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/is-public.html">is.public</a></span>(<span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]]) &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 <span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)</code></pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males fe5a713cbb2043a4ab88237da5ea6cb6      TRUE</code></pre>
 <p>You can also edit the filter expressions by assigning a new one in, like:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]] &lt;-<span class="st"> </span>ds$gender ==<span class="st"> "Male"</span> &amp;<span class="st"> </span>ds$age &lt;<span class="st"> </span><span class="dv">35</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]] &lt;-<span class="st"> </span>ds<span class="op">$</span>gender <span class="op">==</span><span class="st"> "Male"</span> <span class="op">&amp;</span><span class="st"> </span>ds<span class="op">$</span>age <span class="op">&lt;</span><span class="st"> </span><span class="dv">35</span>
 <span class="kw"><a href="../reference/filter-catalog.html">filters</a></span>(ds)[[<span class="st">"Young males"</span>]]</code></pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 35</code></pre>
@@ -238,7 +248,7 @@ dems</code></pre></div>
 <p>One other application for filtering is the dataset exclusion filter. The exclusion allows you to suppress from view rows that match a certain condition. Exclusions are set on the dataset with a Crunch logical expression:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(ds)</code></pre></div>
 <pre><code>## [1] 250  38</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exclusion.html">exclusion</a></span>(ds) &lt;-<span class="st"> </span>ds$perc_skipped &gt;<span class="st"> </span><span class="dv">15</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/exclusion.html">exclusion</a></span>(ds) &lt;-<span class="st"> </span>ds<span class="op">$</span>perc_skipped <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>
 <span class="kw"><a href="../reference/exclusion.html">exclusion</a></span>(ds)</code></pre></div>
 <pre><code>## Crunch logical expression: perc_skipped &gt; 15</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(ds)</code></pre></div>
@@ -253,10 +263,8 @@ dems</code></pre></div>
 </h3>
 <p>If you do know that you never want to see those rows again, you can permanently delete them with <code>dropRows</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Not run
-ds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dropRows.html">dropRows</a></span>(ds, ds$perc_skipped &gt;<span class="st"> </span><span class="dv">15</span>)</code></pre></div>
+ds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dropRows.html">dropRows</a></span>(ds, ds<span class="op">$</span>perc_skipped <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>)</code></pre></div>
 <p><a href="export.html">Next: exporting data</a></p>
-</div>
-</div>
 </div>
 </div>
   </div>
@@ -266,13 +274,9 @@ ds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dropRows
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#working-with-filters">Working with Filters</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#filtering-and-subsetting-in-r">Filtering and subsetting in R</a></li>
       <li><a href="#filter-entities">Filter entities</a></li>
       <li><a href="#exclusion-filters">Exclusion filters</a></li>
-      </ul>
-</li>
       </ul>
 </div>
       </div>
@@ -291,5 +295,15 @@ ds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dropRows
       </footer>
 </div>
 
-  </body>
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
+    indexName: 'crunch',
+    inputSelector: 'input#search-input.form-control',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+</body>
 </html>

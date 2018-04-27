@@ -8,7 +8,7 @@
 <title>Adding Variables • Crunch</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Adding Variables">
 <meta property="og:description" content="The crunch package makes it easy for you to derive new variables in your dataset. These derived variables retain their functional connection on the server, such that changes to the input variables automatically propagate to the derived variable.">
@@ -26,10 +26,10 @@
   ga('create', 'UA-50332119-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,8 +38,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">crunch</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -68,7 +72,7 @@
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Reorder Variables</a>
+      <a href="../articles/variable-order.html">Organize Variables</a>
     </li>
     <li>
       <a href="../articles/derive.html">Derive Variables</a>
@@ -102,7 +106,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -111,34 +121,34 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Adding Variables</h1>
             
-          </div>
+      
+      <small>Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/derive.Rmd"><code>vignettes/derive.Rmd</code></a></small>
+      <div class="hidden name"><code>derive.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p><a href="variable-order.html">Previous: variable organization</a></p>
-<div id="transforming-and-deriving" class="section level1">
-<h1 class="hasAnchor">
-<a href="#transforming-and-deriving" class="anchor"></a>Transforming and deriving</h1>
 <p>One of the powerful features of working with Crunch is that you and all of your collaborators work off of the same data, whether you use the web client or use R. Circumstances may arise in which you are working in R and want to add or modify variables in a Crunch dataset, and the <code>crunch</code> package facilitates that. It provides an idiomatic R interface to manipulating a Dataset, doing so efficiently, without copying data off of the server to transform it. In addition, when you create variables that are derived from other variables, they retain their functional connection on the server, such that changes to the input variables automatically propagate to the derived variable.</p>
 <div id="creating-derived-variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#creating-derived-variables" class="anchor"></a>Creating derived variables</h2>
 <p>In our sample dataset, we don’t have an “Age” variable, but we do have “Birth Year” (<code>birthyr</code>). We can create an age variable simply by taking the current year and subtracting the “Birth Year” variable from it–just as you would do if you were working with a <code>data.frame</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$age &lt;-<span class="st"> </span><span class="dv">2015</span> -<span class="st"> </span>ds$birthyr</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>age &lt;-<span class="st"> </span><span class="dv">2015</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>birthyr</code></pre></div>
 <p>Now, we have an age variable, and it looks like we’d expect it would relative to <code>birthyr</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$age)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>age)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   49.62   59.75   90.00</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1925    1955    1966    1965    1977    1993</code></pre>
 <p>Age is now a derived variable, functionally linked to <code>birthyr</code> on the server. Note that in order to create <code>age</code>, we didn’t pull any values off of the server; we just supplied the derivation expression.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">2015</span> -<span class="st"> </span>ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">2015</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>## [1] "CrunchExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
@@ -147,24 +157,22 @@
 <h2 class="hasAnchor">
 <a href="#updating-values" class="anchor"></a>Updating values</h2>
 <p>We can also use these expressions to update values. Suppose, just for demonstration purposes, that we want to truncate the range of the <code>birthyr</code> variable and set it to 1945 everywhere where it is less than 1945. We can once again write the R code we’d write if we were working with a <code>data.frame</code>, even though we’re working with a Crunch dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$birthyr[ds$birthyr &lt;<span class="st"> </span><span class="dv">1945</span>] &lt;-<span class="st"> </span><span class="dv">1945</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>birthyr[ds<span class="op">$</span>birthyr <span class="op">&lt;</span><span class="st"> </span><span class="dv">1945</span>] &lt;-<span class="st"> </span><span class="dv">1945</span></code></pre></div>
 <p>If we look at the summary again, we’ll see that our data have been updated, and the minimum Birth Year is now 1945.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1945    1955    1966    1966    1977    1993</code></pre>
 <p>Not only that: since <code>age</code> is a function of <code>birthyr</code> on the server, its values also update now that we’ve modified <code>birthyr</code>. Max age is now 70, or 2015 - 1945.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$age)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>age)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   48.98   59.75   70.00</code></pre>
 <p>Once again, we’ve done this operation by turning idiomatic R expressions into Crunch expression syntax.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(ds$birthyr &lt;<span class="st"> </span><span class="dv">1945</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(ds<span class="op">$</span>birthyr <span class="op">&lt;</span><span class="st"> </span><span class="dv">1945</span>)</code></pre></div>
 <pre><code>## [1] "CrunchLogicalExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
 <p>The work gets done without having to pull data off of the server.</p>
 <p><a href="analyze.html">Next: analyzing data</a></p>
-</div>
-</div>
 </div>
   </div>
 
@@ -173,12 +181,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#transforming-and-deriving">Transforming and deriving</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#creating-derived-variables">Creating derived variables</a></li>
       <li><a href="#updating-values">Updating values</a></li>
-      </ul>
-</li>
       </ul>
 </div>
       </div>
@@ -197,5 +201,15 @@
       </footer>
 </div>
 
-  </body>
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
+    indexName: 'crunch',
+    inputSelector: 'input#search-input.form-control',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+</body>
 </html>

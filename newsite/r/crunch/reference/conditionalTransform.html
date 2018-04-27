@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,6 +38,8 @@ value, depending on the type of variable you're constructing." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -57,6 +61,11 @@ value, depending on the type of variable you're constructing." />
 
 </script>
 
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
   </head>
 
   <body>
@@ -70,8 +79,12 @@ value, depending on the type of variable you're constructing." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">crunch</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -100,7 +113,7 @@ value, depending on the type of variable you're constructing." />
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Reorder Variables</a>
+      <a href="../articles/variable-order.html">Organize Variables</a>
     </li>
     <li>
       <a href="../articles/derive.html">Derive Variables</a>
@@ -135,6 +148,13 @@ value, depending on the type of variable you're constructing." />
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -142,10 +162,12 @@ value, depending on the type of variable you're constructing." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Conditional transformation</h1>
+    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/conditional-transform.R'><code>R/conditional-transform.R</code></a></small>
+    <div class="hidden name"><code>conditionalTransform.Rd</code></div>
     </div>
 
     
@@ -160,7 +182,7 @@ value, depending on the type of variable you're constructing.</p>
     <pre class="usage"><span class='fu'>conditionalTransform</span>(<span class='no'>...</span>, <span class='no'>data</span>, <span class='kw'>else_condition</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>categories</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>formulas</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -210,8 +232,8 @@ variables are text, the new variable type will be text, if all of the
 source variables are categorical, the new variable will be categorical).
 If there are multiple types in the source variables, the result will be a
 text variable. The default behavior can be overridden by specifying
-<code>type = "categorical"</code>, <code>"text"</code>, or <code>"numeric"</code>.
-    <code>conditionalTransform</code> is similar to <code>makeCaseVariable</code>; however,
+<code>type = "categorical"</code>, <code>"text"</code>, or <code>"numeric"</code>.</p>
+<p><code>conditionalTransform</code> is similar to <code>makeCaseVariable</code>; however,
 <code>conditionalTransform</code> can use other Crunch variables as a source of a
 variable, whereas, <code>makeCaseVariable</code> can only use characters. This
 additional power comes at a cost: <code>makeCaseVariable</code> can be executed
@@ -256,5 +278,19 @@ download the data necessary to construct the new variable.</p>
       </footer>
    </div>
 
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
+    indexName: 'crunch',
+    inputSelector: 'input#search-input.form-control',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+
+
   </body>
 </html>
+

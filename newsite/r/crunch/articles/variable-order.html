@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reordering Variables • Crunch</title>
+<title>Variable Folders and Organization • Crunch</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Reordering Variables">
+<meta property="og:title" content="Variable Folders and Organization">
 <meta property="og:description" content="Variables within datasets are organized in folders. The crunch package provides tools for creating folders and moving variables among them.">
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png">
 <meta name="twitter:card" content="summary">
@@ -26,10 +26,10 @@
   ga('create', 'UA-50332119-2', 'auto');
   ga('send', 'pageview');
 
-</script>
+</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,8 +38,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">crunch</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -68,7 +72,7 @@
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Reorder Variables</a>
+      <a href="../articles/variable-order.html">Organize Variables</a>
     </li>
     <li>
       <a href="../articles/derive.html">Derive Variables</a>
@@ -102,7 +106,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -111,192 +121,154 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Reordering Variables</h1>
+      <h1>Variable Folders and Organization</h1>
             
-          </div>
+      
+      <small>Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/variable-order.Rmd"><code>vignettes/variable-order.Rmd</code></a></small>
+      <div class="hidden name"><code>variable-order.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p><a href="array-variables.html">Previous: array variables</a></p>
-<div id="variable-order-and-organization" class="section level1">
-<h1 class="hasAnchor">
-<a href="#variable-order-and-organization" class="anchor"></a>Variable Order and Organization</h1>
+<blockquote>
+<p>This is the new variable folder API, which replaces the old “ordering” API. It is currently in a beta testing phase. Feedback on your experience working with it is greatly appreciated. During this beta period, both old and new APIs are available. For details on the old methods, see <a href="variable-order-old.html">the old vignette</a>.</p>
+</blockquote>
 <p>In the web application, variables in a dataset are displayed in a list on the left side of the screen.</p>
 <!-- screenshot -->
-<p>Typically, when you import a dataset, the variable list is flat, but it can be organized into an accordion-like hierarchy. The variable organizer in the GUI allows you to perform this organization visually, but you can also manage this metadata from <code>crunch</code>.</p>
-<div id="viewing-the-order" class="section level2">
+<p>Typically, when you import a dataset, the variable list is flat, but it can be organized into an accordion-like hierarchy. The <a href="http://support.crunch.io/crunch/crunch_organizing-variables.html">variable organizer in the Crunch GUI</a> allows you to organize your variables visually, but you can also manage this metadata from R using the <code>crunch</code> package.</p>
+<div id="file-system-like" class="section level2">
 <h2 class="hasAnchor">
-<a href="#viewing-the-order" class="anchor"></a>Viewing the order</h2>
-<p>Picking up with the dataset we used in the <a href="array-variables.html">array variables vignette</a>, we can fetch the <code>ordering</code> property of the dataset to view the current organization:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
-<pre><code>## perc_skipped
-## newsint2
-## Direction of country
-## Favorability of Edward Snowden
-## Approval of Snowden's Leak
-## Support for Prosecution of Snowden
-## Penalty for Snowden
-## manningknowledge
-## manningfavorability
-## manningguilt
-## manningpenalty
-## Issue importance
-## imissf
-## obamaapp
-## Approval of Obama on issues
-## congapp
-## ideo5
-## ideoobama
-## saysobama
-## likeobama
-## birthyr
-## gender
-## pid3
-## pid7
-## pid7others
-## race
-## educ
-## marstat
-## phone
-## faminc
-## region
-## state
-## weight
-## votereg_new
-## is_voter
-## votereg_old
-## votereg</code></pre>
-<p>It’s flat. If you’re importing data from a <code>data.frame</code> or a file, like an SPSS file, this is where you’ll begin.</p>
+<a href="#file-system-like" class="anchor"></a>File-system like</h2>
+<p>This variable hierarchy can be thought of like a file system on your computer, with files (variables) organized into directories (folders). As such, the main functions you use to manage it are reminiscent of a file system.</p>
+<ul>
+<li>
+<code><a href="../reference/cd.html">cd()</a></code>, changes directories, i.e. selects a folder</li>
+<li>
+<code><a href="../reference/mv.html">mkdir()</a></code> makes a directory, i.e. creates a folder</li>
+<li>
+<code><a href="../reference/mv.html">mv()</a></code> moves variables and folders to a different folder</li>
+<li>
+<code><a href="../reference/rmdir.html">rmdir()</a></code> removes a directory, i.e. deletes a folder</li>
+</ul>
+<p>Like a file system, you can express the “path” to a folder as a string separated by a “/” delimiter, like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(ds, <span class="st">"Brands/Cars and Trucks/Domestic"</span>)</code></pre></div>
+<p>If your folder names should legitimately have a “/” in them, you can set a different character to be the path separator. See <code><a href="../reference/mv.html">?mkdir</a></code> or any of the other functions’ help files for details.</p>
+<p>Paths can be expressed relative to the current object—a folder, or in this case, the dataset, which translates to its top-level <code>"/"</code> root folder in path specification—and the file system’s special path segments <code>".."</code> (go up a level) and <code>"."</code> (this level) are also supported. We’ll use those in examples below.</p>
+<p>You can also specify paths as a vector of path segments, like</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(ds, <span class="kw">c</span>(<span class="st">"Brands"</span>, <span class="st">"Cars and Trucks"</span>, <span class="st">"Domestic"</span>))</code></pre></div>
+<p>which is equivalent to the previous example. One or the other way may be more convenient, depending on what you’re trying to accomplish.</p>
+<p>These four functions all take a dataset or a folder as the first argument, and they return the same object passed to it, except for <code>cd</code>, which returns the selected folder. As such, they are designed to work with <code>magrittr</code>-style piping (<code>%&gt;%</code>) for convenience in chaining together steps, though they don’t require that you do.</p>
 </div>
-<div id="creating-groups" class="section level2">
+<div id="viewing-the-folders" class="section level2">
 <h2 class="hasAnchor">
-<a href="#creating-groups" class="anchor"></a>Creating groups</h2>
-<p>Since I know how this dataset is organized, I’m going quickly toss the variables into one of a small number of groups, instantiated with <code>VariableGroup</code>, and collect them in a container object called <code>VariableOrder</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/VariableOrder.html">VariableOrder</a></span>(
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span>:<span class="dv">37</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>:<span class="dv">20</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span>:<span class="dv">11</span>])
-    )</code></pre></div>
-<p>Now, our variable tree has some structure:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
-<pre><code>## [+] Demos
-##     perc_skipped
-##     birthyr
-##     gender
-##     pid3
-##     pid7
-##     pid7others
-##     race
-##     educ
-##     marstat
-##     phone
-##     faminc
-##     region
-##     state
-##     weight
-##     votereg_new
-##     is_voter
-##     votereg_old
-##     votereg
-## [+] Tracking questions
-##     newsint2
-##     Direction of country
-##     manningpenalty
-##     Issue importance
-##     imissf
-##     obamaapp
-##     Approval of Obama on issues
-##     congapp
-##     ideo5
-##     ideoobama
-##     saysobama
-##     likeobama
-## [+] This week
-##     Favorability of Edward Snowden
-##     Approval of Snowden's Leak
-##     Support for Prosecution of Snowden
-##     Penalty for Snowden
-##     manningknowledge
-##     manningfavorability
-##     manningguilt</code></pre>
-<p>Groups can be created with several kinds of inputs. You can specify a vector or list of variable references (URLs), as returned from the <code>self</code> method of variables. That list of references may also contain <code>VariableGroup</code> objects as well, which will nest those Groups inside the Group you’re creating (see “Nested Groups” below). You can also provide a list of variable entities or, as in this example, a subset of a dataset entity (which can be thought of as a list of variables).</p>
+<a href="#viewing-the-folders" class="anchor"></a>Viewing the folders</h2>
+<p>To get started, let’s pick up the dataset we used in the <a href="array-variables.html">array variables vignette</a> and view its starting layout. We can do that by selecting the root folder (“/”) and printing it</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
+ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">print</span>()</code></pre></div>
+<p>(The <code>print()</code> isn’t strictly necessary here as <code>cd</code> will return the folder and thus it will print by default, but we’ll use different <code>print</code> arguments later, so it’s included here both for explicitness and illustration.)</p>
+<p>It’s flat—there are no folders here, only variables. If you’re importing data from a <code>data.frame</code> or a file, like an SPSS file, this is where you’ll begin.</p>
 </div>
-<div id="group-names" class="section level2">
+<div id="creating-folders" class="section level2">
 <h2 class="hasAnchor">
-<a href="#group-names" class="anchor"></a>Group names</h2>
-<p>We can use the <code>names</code> method to access and modify these group names:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
-<pre><code>## [1] "Demos"              "Tracking questions" "This week"</code></pre>
-<p>Let’s rename the first group. No need to abbreviate “Demographics”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))[<span class="dv">1</span>] &lt;-<span class="st"> "Demographics"</span>
-<span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
-<pre><code>## [1] "Demographics"       "Tracking questions" "This week"</code></pre>
+<a href="#creating-folders" class="anchor"></a>Creating folders</h2>
+<p>Let’s make some folders and move some variables into them. To start, I know that the demographic variables are at the back of the dataset, so let’s make a “Demos” folder and move variables 21 to 37 into it:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="dv">21</span><span class="op">:</span><span class="dv">37</span>, <span class="st">"Demos"</span>)</code></pre></div>
+<p>Now when I print the top-level directory again, I see a “Demos” folder and don’t see those demographic variables:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>)</code></pre></div>
+<p><code><a href="../reference/mv.html">mv()</a></code> can reference variables or folders within a level in several ways. Numeric indices like we just did probably won’t be the most common way you’ll do it: names work just as well and are more transparent. Let’s move the first variable, <code>perc_skipped</code>, into “Demos” as well</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="st">"perc_skipped"</span>, <span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"Demos"</span>) ## To print the folder contents</code></pre></div>
+<blockquote>
+<p>A side note: although the last step of that chain was <code><a href="../reference/cd.html">cd()</a></code>, we haven’t changed state in our R session. There is no “working folder” set globally. <code><a href="../reference/cd.html">cd()</a></code> is a function that returns a folder; if we had assigned the return from the function (pipeline) to some object, we could then pass that in to another function to “start” in that folder.</p>
+</blockquote>
+<p>Another way we can identify variables is by using the <code>dplyr</code>-like functions <code>starts_with</code>, <code>ends_with</code>, <code>matches</code>, and <code>contains</code>. Let’s use <code>matches</code> to move all of the questions about Edward Snowden or Bradley (Chelsea) Manning to a folder for the topical questions in this week’s survey:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"manning|snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"This week"</span>)</code></pre></div>
+<p>We can also select all variables in a folder using the <code>variables</code> function (or all folders within a folder using <code>folders</code>). Let’s move all remaining variables from the top level folder to a folder called “Tracking questions”. To do this, we do need to explicitly change to the top level folder.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>)
+    <span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Tracking questions"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(., <span class="kw"><a href="../reference/dataset-variables.html">variables</a></span>(.), <span class="st">"Tracking questions"</span>)</code></pre></div>
+<blockquote>
+<p>(Curious about the “dot” notation? See the <a href="http://magrittr.tidyverse.org/articles/magrittr.html">magrittr docs</a>.)</p>
+</blockquote>
+<p>The reason we change to the top level folder here is that there is a subtle difference between passing <code>ds</code> to <code><a href="../reference/mv.html">mv()</a></code> versus <code><a href="../reference/cd.html">cd(ds, "/")</a></code>. Whatever object, dataset or folder, that is passed into <code><a href="../reference/mv.html">mv()</a></code> determines the scope from which the objects to move are selected. If you pass the dataset in, you can select any variables in the dataset, regardless of what folder they’re in. If you pass in a folder, you’re selecting just from that folder’s contents. It can be convenient to find all variables that match some criteria across the whole dataset to move them, but sometimes we don’t want that. In this case, we wanted only the variables sitting in the top level folder, not nested in other folders, so we wanted <code><a href="../reference/dataset-variables.html">variables(cd(ds, "/"))</a></code> and not <code><a href="../reference/dataset-variables.html">variables(ds)</a></code>.</p>
+<p>Now, our variable tree has some structure. Let’s use <code>print(folder, depth = 1)</code> to see these folders and their contents one level deep:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">1</span>)</code></pre></div>
 </div>
-<div id="reordering-groups-and-entities" class="section level2">
+<div id="nested-folders" class="section level2">
 <h2 class="hasAnchor">
-<a href="#reordering-groups-and-entities" class="anchor"></a>Reordering groups and entities</h2>
-<p><code>VariableOrder</code> and <code>VariableGroup</code> support standard R forms of indexing for extracting and reordering.</p>
-<p>Let’s move “Demographics” to the end:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)]
-<span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
-<pre><code>## [1] "Tracking questions" "This week"          "Demographics"</code></pre>
+<a href="#nested-folders" class="anchor"></a>Nested folders</h2>
+<p>We can create folders within folders as well. In the “This week” folder, we have a set of questions about Edward Snowden. Let’s nest them inside their own subfolder inside “This week”:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"This week"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Snowden"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"Snowden"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">".."</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">2</span>)</code></pre></div>
+<p>Note how we used <code>".."</code> to change folders up a level, as you can in a file system . We did that just so we can print the folder structure at the top level (and to illustrate that you can specify relative paths :).</p>
+<p>You could also do this using the full path segments. <code>mkdir</code> will recursively make all path segments it needs in order to ensure that the target folder exists.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week/Snowden"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"This week/Snowden"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">2</span>)</code></pre></div>
 </div>
-<div id="nested-groups" class="section level2">
+<div id="renaming-folders-and-folder-contents" class="section level2">
 <h2 class="hasAnchor">
-<a href="#nested-groups" class="anchor"></a>Nested groups</h2>
-<p>We can create groups within groups as well. In the “This week” group, we have a set of questions about Edward Snowden: the first four variables in the group. Let’s nest them inside their own group inside “This week”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span>:<span class="dv">4</span>]
-<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
-<pre><code>## [+] Tracking questions
-##     newsint2
-##     Direction of country
-##     manningpenalty
-##     Issue importance
-##     imissf
-##     obamaapp
-##     Approval of Obama on issues
-##     congapp
-##     ideo5
-##     ideoobama
-##     saysobama
-##     likeobama
-## [+] This week
-##     manningknowledge
-##     manningfavorability
-##     manningguilt
-##     [+] Snowden
-##         Favorability of Edward Snowden
-##         Approval of Snowden's Leak
-##         Support for Prosecution of Snowden
-##         Penalty for Snowden
-## [+] Demographics
-##     perc_skipped
-##     birthyr
-##     gender
-##     pid3
-##     pid7
-##     pid7others
-##     race
-##     educ
-##     marstat
-##     phone
-##     faminc
-##     region
-##     state
-##     weight
-##     votereg_new
-##     is_voter
-##     votereg_old
-##     votereg</code></pre>
-<p>Note a few things there. First, groups can be extracted by list-like indexing by name. <code>ordering(ds)[["This week"]]</code> gives us the <code>VariableGroup</code> named “This week”.</p>
-<p>Second, we can create a new group, nested or otherwise, by assigning in to an Order/Group by a new name. This is similar to extending a named list object by name in base R. In this case, we created a group called “Snowden” inside “This week”, and we assigned into it the first four entries of the “This week” group.</p>
-<p>Third, the four variable references we put into “Snowden” were also removed from their positions in the “This week” group: they were “moved” rather than copied. This is what we might expect from a files-and-folders form of organization. If you wish to make copies, you can set <code>duplicates(ordering(ds)) &lt;- TRUE</code>. If we had done that in this example, we’d have the four Snowden variables appearing both in the “This week” group and in the nested “Snowden” group. (More accurately, and keeping with the file-system metaphor, setting duplicates to <code>TRUE</code> lets you create symbolic links rather than actually copying the variables. Only the references are copied; there is only one variable behind them.)</p>
+<a href="#renaming-folders-and-folder-contents" class="anchor"></a>Renaming folders and folder contents</h2>
+<p>Folders themselves have names, which we can set with <code>setName()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">setName</span>(<span class="st">"Demographics"</span>)</code></pre></div>
+<p>We can also set the names of the objects contained in a folder with <code>setNames()</code>.</p>
+</div>
+<div id="ordering-within-folders" class="section level2">
+<h2 class="hasAnchor">
+<a href="#ordering-within-folders" class="anchor"></a>Ordering within folders</h2>
+<p>Unlike files in a file system, variables within folders are ordered.</p>
+<p>Let’s move “Demographics” to the end. One way to do that is with the <code>setOrder</code> function. This lets you provide a specific order, but it requires you to specify all of the folder’s contents. Let’s use that function to put “Tracking questions” first:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/setOrder.html">setOrder</a></span>(<span class="kw">c</span>(<span class="st">"Tracking questions"</span>, <span class="st">"This week"</span>, <span class="st">"Demographics"</span>))</code></pre></div>
+<!--
+We can do that a couple of ways. One is using `mv()`, giving it the "after" argument
+
+```r
+ds %>%
+    cd("/") %>%
+    mv("Demographics", ".", after="Tracking questions")
+```
+
+This uses the `"."` folder "path" to indicate that you're "moving" the object to be in the current folder. Note that `"."` (the current folder) and `.` (the `magrittr` special value) aren't the same thing, though in this particular context, they would have similar implications.
+
+ Note that order of things to mv is preserved, so that does set order
+
+## Finding a variable's folder
+
+folder(ds$var); can also mv to wherever that var is -->
+</div>
+<div id="deleting-folders" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deleting-folders" class="anchor"></a>Deleting folders</h2>
+<p>The cleanest way to delete a folder is with <code><a href="../reference/rmdir.html">rmdir()</a></code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw"><a href="../reference/rmdir.html">rmdir</a></span>(<span class="st">"This week/Snowden"</span>)</code></pre></div>
+<p>This deletes the folder and all variables contained within it.</p>
 <p><a href="derive.html">Next: transforming and deriving</a></p>
-</div>
-</div>
 </div>
   </div>
 
@@ -305,15 +277,13 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li>
-<a href="#variable-order-and-organization">Variable Order and Organization</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#viewing-the-order">Viewing the order</a></li>
-      <li><a href="#creating-groups">Creating groups</a></li>
-      <li><a href="#group-names">Group names</a></li>
-      <li><a href="#reordering-groups-and-entities">Reordering groups and entities</a></li>
-      <li><a href="#nested-groups">Nested groups</a></li>
-      </ul>
-</li>
+<li><a href="#file-system-like">File-system like</a></li>
+      <li><a href="#viewing-the-folders">Viewing the folders</a></li>
+      <li><a href="#creating-folders">Creating folders</a></li>
+      <li><a href="#nested-folders">Nested folders</a></li>
+      <li><a href="#renaming-folders-and-folder-contents">Renaming folders and folder contents</a></li>
+      <li><a href="#ordering-within-folders">Ordering within folders</a></li>
+      <li><a href="#deleting-folders">Deleting folders</a></li>
       </ul>
 </div>
       </div>
@@ -332,5 +302,15 @@
       </footer>
 </div>
 
-  </body>
+  
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
+    indexName: 'crunch',
+    inputSelector: 'input#search-input.form-control',
+    debug: false // Set debug to true if you want to inspect the dropdown
+  });
+</script>
+</body>
 </html>
