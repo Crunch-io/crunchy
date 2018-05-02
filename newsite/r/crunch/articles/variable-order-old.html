@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reordering Variables • Crunch</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -189,9 +189,9 @@
 <a href="#creating-groups" class="anchor"></a>Creating groups</h2>
 <p>Since I know how this dataset is organized, I’m going quickly toss the variables into one of a small number of groups, instantiated with <code>VariableGroup</code>, and collect them in a container object called <code>VariableOrder</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/VariableOrder.html">VariableOrder</a></span>(
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">37</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>])
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span>:<span class="dv">37</span>)]),
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>:<span class="dv">20</span>)]),
+        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span>:<span class="dv">11</span>])
     )</code></pre></div>
 <p>Now, our variable tree has some structure:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
@@ -261,7 +261,7 @@
 <h2 class="hasAnchor">
 <a href="#nested-groups" class="anchor"></a>Nested groups</h2>
 <p>We can create groups within groups as well. In the “This week” group, we have a set of questions about Edward Snowden: the first four variables in the group. Let’s nest them inside their own group inside “This week”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span>:<span class="dv">4</span>]
 <span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
 <pre><code>## [+] Tracking questions
 ##     newsint2

@@ -11,7 +11,7 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -77,7 +77,7 @@ object." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -162,7 +162,7 @@ object." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Methods on Cube objects</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-dims.R'><code>R/cube-dims.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-variables.R'><code>R/cube-variables.R</code></a></small>
+    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-dims.R'><code>R/cube-dims.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R'><code>R/cube-subset.R</code></a>, and 2 more</small>
     <div class="hidden name"><code>cube-methods.Rd</code></div>
     </div>
 
@@ -194,6 +194,9 @@ dim(x)
 
 # S4 method for CrunchCube
 dimnames(x)
+
+# S4 method for CrunchCube,ANY,ANY
+[(x, i, j, ..., drop = TRUE)
 
 # S4 method for CubeDims
 variables(x)

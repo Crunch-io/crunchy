@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crunch.io Data Tools • Crunch</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -133,7 +133,13 @@
 
 <p><a href="http://crunch-io.github.io/rcrunch/">Cloud Collaboration with Crunch</a></p>
 <p><a href="http://crunch.io/">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface: because all connect to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
-<p><a href="mailto:rcrunch+subscribe@crunch.io">Subscribe to the mailing list</a> to receive notification of releases and to ask general support questions.</p>
+<p><script type="text/javascript">
+<!--
+h='&#x63;&#114;&#x75;&#110;&#x63;&#104;&#46;&#x69;&#x6f;';a='&#64;';n='&#114;&#x63;&#114;&#x75;&#110;&#x63;&#104;&#x2b;&#x73;&#x75;&#98;&#x73;&#x63;&#114;&#x69;&#98;&#x65;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'" clas'+'s="em' + 'ail">'+'&#x53;&#x75;&#98;&#x73;&#x63;&#114;&#x69;&#98;&#x65;&#32;&#116;&#x6f;&#32;&#116;&#104;&#x65;&#32;&#x6d;&#x61;&#x69;&#108;&#x69;&#110;&#x67;&#32;&#108;&#x69;&#x73;&#116;'+'<\/'+'a'+'>');
+// -->
+</script></p>
+<noscript>Subscribe to the mailing list (rcrunch+subscribe at crunch dot io)</noscript> to receive notification of releases and to ask general support questions.
 <div id="installing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing" class="anchor"></a>Installing</h2>
@@ -141,19 +147,19 @@
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"crunch"</span>)</code></pre></div>
 <p>The pre-release version of the package can be pulled from GitHub using the <a href="https://github.com/hadley/devtools">devtools</a> package:</p>
 <div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"Crunch-io/rcrunch"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
+devtools::<span class="kw">install_github</span>(<span class="st">"Crunch-io/rcrunch"</span>, <span class="dt">build_vignettes=</span><span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>Connecting to Crunch and working with datasets is simple:</p>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r"><span class="op">$</span><span class="st"> </span>R
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(crunch)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw"><a href="reference/login.html">login</a></span>(<span class="st">"jane.r_user@crunch.io"</span>)
-Crunch password <span class="cf">for</span> jane.r_user<span class="op">@</span>crunch.io<span class="op">:</span>
+<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">$<span class="st"> </span>R
+&gt;<span class="st"> </span><span class="kw">library</span>(crunch)
+&gt;<span class="st"> </span><span class="kw"><a href="reference/login.html">login</a></span>(<span class="st">"jane.r_user@crunch.io"</span>)
+Crunch password for jane.r_user@crunch.io:
 
-You are now logged into Crunch as jane.r_user<span class="op">@</span>crunch.io
-[crunch] <span class="op">&gt;</span>
+You are now logged into Crunch as jane.r_user@crunch.io
+[crunch] &gt;
 ...</code></pre></div>
 <p>Check out <code><a href="reference/listDatasets.html">listDatasets()</a></code> to see the names of your existing datasets, which you can load like <code>ds &lt;- loadDataset("The name of my dataset")</code>. New Crunch datasets can be made from a <code>data.frame</code>, a .csv or .sav file, or a URL to a file with <code><a href="reference/newDataset.html">newDataset()</a></code>. See the help for these functions or <a href="inst/doc/getting-started.html"><code><a href="articles/getting-started.html">vignette("getting-started", package="crunch")</a></code></a> for more information.</p>
 </div>

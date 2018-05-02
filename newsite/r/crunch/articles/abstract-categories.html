@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abstract Categories • Crunch</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -251,14 +251,14 @@ feeling_cats</code></pre></div>
         <span class="dt">categories =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>))
 )</code></pre></div>
 <p>Notice that the “Generally Happy” subtotal is made specifying category <code>name</code>s for <code>after</code> and <code>categories</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">2</span>]]<span class="op">$</span>after</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">2</span>]]$after</code></pre></div>
 <pre><code>## [1] "Somewhat Happy"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">2</span>]]<span class="op">$</span>categories</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">2</span>]]$categories</code></pre></div>
 <pre><code>## [1] "Very Happy"     "Somewhat Happy"</code></pre>
 <p>Where as the “Generally Unhappy” subtotal uses <code>id</code>s:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">3</span>]]<span class="op">$</span>after</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">3</span>]]$after</code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">3</span>]]<span class="op">$</span>categories</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_subtotals[[<span class="dv">3</span>]]$categories</code></pre></div>
 <pre><code>## [1] 4 5</code></pre>
 </div>
 </div>
@@ -272,16 +272,16 @@ feeling_cats</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(feeling_insertions, class)</code></pre></div>
 <pre><code>## [1] "Insertion" "Insertion" "Insertion"</code></pre>
 <p>This means that the <code>after</code> property has been translated into <code>anchor</code>, and the <code>function</code> and <code>args</code> properties have been filled in appropriately:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]<span class="op">$</span>anchor</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]$anchor</code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]<span class="op">$</span><span class="st">`</span><span class="dt">function</span><span class="st">`</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]$<span class="st">`</span><span class="dt">function</span><span class="st">`</span></code></pre></div>
 <pre><code>## [1] "subtotal"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]<span class="op">$</span>args</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">3</span>]]$args</code></pre></div>
 <pre><code>## [1] 4 5</code></pre>
 <p>Because <code>Insertion</code>s are required to use category <code>id</code>s only, the new all-<code>Insertion</code>s <code>feeling_insertions</code> has translated the “Generally Happy” subtotal’s category <code>name</code>s to <code>id</code>s:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">2</span>]]<span class="op">$</span>anchor</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">2</span>]]$anchor</code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">2</span>]]<span class="op">$</span>args</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">feeling_insertions[[<span class="dv">2</span>]]$args</code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
 </div>
 <div id="converting-from-insertion-to-subtotalheading" class="section level3">
@@ -301,47 +301,47 @@ feeling_cats</code></pre></div>
 <p>There are two sets of inheritance: one for containers and one for members: Classes inherit from those immediately to their left</p>
 <table class="table">
 <thead><tr class="header">
-<th></th>
-<th>top-level classes</th>
-<th>1st children</th>
-<th>2nd children</th>
+<th align="left"></th>
+<th align="left">top-level classes</th>
+<th align="left">1st children</th>
+<th align="left">2nd children</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>containers</td>
-<td><code>AnstractCategories</code></td>
-<td><code>Categories</code></td>
-<td></td>
+<td align="left">containers</td>
+<td align="left"><code>AnstractCategories</code></td>
+<td align="left"><code>Categories</code></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><code>AnstractCategories</code></td>
-<td><code>Insertions</code></td>
-<td></td>
+<td align="left"></td>
+<td align="left"><code>AnstractCategories</code></td>
+<td align="left"><code>Insertions</code></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td>members</td>
-<td><code>AbstractCategory</code></td>
-<td><code>Category</code></td>
-<td></td>
+<td align="left">members</td>
+<td align="left"><code>AbstractCategory</code></td>
+<td align="left"><code>Category</code></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td></td>
-<td><code>AbstractCategory</code></td>
-<td><code>Insertion</code></td>
-<td><code>Subtotal</code></td>
+<td align="left"></td>
+<td align="left"><code>AbstractCategory</code></td>
+<td align="left"><code>Insertion</code></td>
+<td align="left"><code>Subtotal</code></td>
 </tr>
 <tr class="even">
-<td></td>
-<td><code>AbstractCategory</code></td>
-<td><code>Insertion</code></td>
-<td><code>Heading</code></td>
+<td align="left"></td>
+<td align="left"><code>AbstractCategory</code></td>
+<td align="left"><code>Insertion</code></td>
+<td align="left"><code>Heading</code></td>
 </tr>
 </tbody>
 </table>
@@ -355,53 +355,53 @@ feeling_cats</code></pre></div>
 <a href="#containers" class="anchor"></a>Containers</h3>
 <table class="table">
 <thead><tr class="header">
-<th></th>
-<th>AbstractCategories</th>
-<th>Categories</th>
-<th>Insertions</th>
+<th align="left"></th>
+<th align="left">AbstractCategories</th>
+<th align="left">Categories</th>
+<th align="left">Insertions</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><code>names</code></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>names</code></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="even">
-<td><code>ids</code></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>ids</code></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="odd">
-<td><code>values</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
+<td align="left"><code>values</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td><code>is.na</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
+<td align="left"><code>is.na</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td><code>is.selected</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
+<td align="left"><code>is.selected</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td><code>anchors</code></td>
-<td></td>
-<td></td>
-<td>impl.</td>
+<td align="left"><code>anchors</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">impl.</td>
 </tr>
 <tr class="odd">
-<td><code>funcs</code></td>
-<td></td>
-<td></td>
-<td>impl.</td>
+<td align="left"><code>funcs</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">impl.</td>
 </tr>
 </tbody>
 </table>
@@ -409,79 +409,87 @@ feeling_cats</code></pre></div>
 <div id="members" class="section level3">
 <h3 class="hasAnchor">
 <a href="#members" class="anchor"></a>Members</h3>
-<table class="table">
+<table style="width:126%;" class="table">
+<colgroup>
+<col width="22%">
+<col width="26%">
+<col width="19%">
+<col width="19%">
+<col width="19%">
+<col width="19%">
+</colgroup>
 <thead><tr class="header">
-<th></th>
-<th>AbstractCategory</th>
-<th>Category</th>
-<th>Insertion</th>
-<th>Subtotal</th>
-<th>Heading</th>
+<th align="left"></th>
+<th align="left">AbstractCategory</th>
+<th align="left">Category</th>
+<th align="left">Insertion</th>
+<th align="left">Subtotal</th>
+<th align="left">Heading</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><code>name</code></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>name</code></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="even">
-<td><code>id</code></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>id</code></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="odd">
-<td><code>value</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
-<td></td>
-<td></td>
+<td align="left"><code>value</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td><code>is.na</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
-<td></td>
-<td></td>
+<td align="left"><code>is.na</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="odd">
-<td><code>is.selected</code></td>
-<td></td>
-<td>impl.</td>
-<td></td>
-<td></td>
-<td></td>
+<td align="left"><code>is.selected</code></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
 </tr>
 <tr class="even">
-<td><code>anchor</code></td>
-<td></td>
-<td></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>anchor</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="odd">
-<td><code>func</code></td>
-<td></td>
-<td></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>func</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 <tr class="even">
-<td><code>arguments</code></td>
-<td></td>
-<td></td>
-<td>impl.</td>
-<td>impl.</td>
-<td>impl.</td>
+<td align="left"><code>arguments</code></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
+<td align="left">impl.</td>
 </tr>
 </tbody>
 </table>

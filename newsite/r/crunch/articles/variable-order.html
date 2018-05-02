@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Variable Folders and Organization • Crunch</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -168,8 +168,8 @@
 <a href="#viewing-the-folders" class="anchor"></a>Viewing the folders</h2>
 <p>To get started, let’s pick up the dataset we used in the <a href="array-variables.html">array variables vignette</a> and view its starting layout. We can do that by selecting the root folder (“/”) and printing it</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
-ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) %&gt;%
 <span class="st">    </span><span class="kw">print</span>()</code></pre></div>
 <p>(The <code>print()</code> isn’t strictly necessary here as <code>cd</code> will return the folder and thus it will print by default, but we’ll use different <code>print</code> arguments later, so it’s included here both for explicitness and illustration.)</p>
 <p>It’s flat—there are no folders here, only variables. If you’re importing data from a <code>data.frame</code> or a file, like an SPSS file, this is where you’ll begin.</p>
@@ -178,61 +178,61 @@ ds <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#creating-folders" class="anchor"></a>Creating folders</h2>
 <p>Let’s make some folders and move some variables into them. To start, I know that the demographic variables are at the back of the dataset, so let’s make a “Demos” folder and move variables 21 to 37 into it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="dv">21</span><span class="op">:</span><span class="dv">37</span>, <span class="st">"Demos"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Demos"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="dv">21</span>:<span class="dv">37</span>, <span class="st">"Demos"</span>)</code></pre></div>
 <p>Now when I print the top-level directory again, I see a “Demos” folder and don’t see those demographic variables:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>)</code></pre></div>
 <p><code><a href="../reference/mv.html">mv()</a></code> can reference variables or folders within a level in several ways. Numeric indices like we just did probably won’t be the most common way you’ll do it: names work just as well and are more transparent. Let’s move the first variable, <code>perc_skipped</code>, into “Demos” as well</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="st">"perc_skipped"</span>, <span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="st">"perc_skipped"</span>, <span class="st">"Demos"</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"Demos"</span>) ## To print the folder contents</code></pre></div>
 <blockquote>
 <p>A side note: although the last step of that chain was <code><a href="../reference/cd.html">cd()</a></code>, we haven’t changed state in our R session. There is no “working folder” set globally. <code><a href="../reference/cd.html">cd()</a></code> is a function that returns a folder; if we had assigned the return from the function (pipeline) to some object, we could then pass that in to another function to “start” in that folder.</p>
 </blockquote>
 <p>Another way we can identify variables is by using the <code>dplyr</code>-like functions <code>starts_with</code>, <code>ends_with</code>, <code>matches</code>, and <code>contains</code>. Let’s use <code>matches</code> to move all of the questions about Edward Snowden or Bradley (Chelsea) Manning to a folder for the topical questions in this week’s survey:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week"</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"manning|snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"This week"</span>)</code></pre></div>
 <p>We can also select all variables in a folder using the <code>variables</code> function (or all folders within a folder using <code>folders</code>). Let’s move all remaining variables from the top level folder to a folder called “Tracking questions”. To do this, we do need to explicitly change to the top level folder.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>)
-    <span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Tracking questions"</span>) <span class="op">%&gt;%</span>
+    <span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Tracking questions"</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(., <span class="kw"><a href="../reference/dataset-variables.html">variables</a></span>(.), <span class="st">"Tracking questions"</span>)</code></pre></div>
 <blockquote>
 <p>(Curious about the “dot” notation? See the <a href="http://magrittr.tidyverse.org/articles/magrittr.html">magrittr docs</a>.)</p>
 </blockquote>
 <p>The reason we change to the top level folder here is that there is a subtle difference between passing <code>ds</code> to <code><a href="../reference/mv.html">mv()</a></code> versus <code><a href="../reference/cd.html">cd(ds, "/")</a></code>. Whatever object, dataset or folder, that is passed into <code><a href="../reference/mv.html">mv()</a></code> determines the scope from which the objects to move are selected. If you pass the dataset in, you can select any variables in the dataset, regardless of what folder they’re in. If you pass in a folder, you’re selecting just from that folder’s contents. It can be convenient to find all variables that match some criteria across the whole dataset to move them, but sometimes we don’t want that. In this case, we wanted only the variables sitting in the top level folder, not nested in other folders, so we wanted <code><a href="../reference/dataset-variables.html">variables(cd(ds, "/"))</a></code> and not <code><a href="../reference/dataset-variables.html">variables(ds)</a></code>.</p>
 <p>Now, our variable tree has some structure. Let’s use <code>print(folder, depth = 1)</code> to see these folders and their contents one level deep:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) %&gt;%
 <span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">1</span>)</code></pre></div>
 </div>
 <div id="nested-folders" class="section level2">
 <h2 class="hasAnchor">
 <a href="#nested-folders" class="anchor"></a>Nested folders</h2>
 <p>We can create folders within folders as well. In the “This week” folder, we have a set of questions about Edward Snowden. Let’s nest them inside their own subfolder inside “This week”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"This week"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Snowden"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"Snowden"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">".."</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"This week"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"Snowden"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"Snowden"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">".."</span>) %&gt;%
 <span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">2</span>)</code></pre></div>
 <p>Note how we used <code>".."</code> to change folders up a level, as you can in a file system . We did that just so we can print the folder structure at the top level (and to illustrate that you can specify relative paths :).</p>
 <p>You could also do this using the full path segments. <code>mkdir</code> will recursively make all path segments it needs in order to ensure that the target folder exists.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week/Snowden"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"This week/Snowden"</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mkdir</a></span>(<span class="st">"This week/Snowden"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/mv.html">mv</a></span>(<span class="kw">matches</span>(<span class="st">"snowden"</span>, <span class="dt">ignore.case =</span> <span class="ot">TRUE</span>), <span class="st">"This week/Snowden"</span>) %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) %&gt;%
 <span class="st">    </span><span class="kw">print</span>(<span class="dt">depth =</span> <span class="dv">2</span>)</code></pre></div>
 </div>
 <div id="renaming-folders-and-folder-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#renaming-folders-and-folder-contents" class="anchor"></a>Renaming folders and folder contents</h2>
 <p>Folders themselves have names, which we can set with <code>setName()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"Demos"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"Demos"</span>) %&gt;%
 <span class="st">    </span><span class="kw">setName</span>(<span class="st">"Demographics"</span>)</code></pre></div>
 <p>We can also set the names of the objects contained in a folder with <code>setNames()</code>.</p>
 </div>
@@ -241,8 +241,8 @@ ds <span class="op">%&gt;%</span>
 <a href="#ordering-within-folders" class="anchor"></a>Ordering within folders</h2>
 <p>Unlike files in a file system, variables within folders are ordered.</p>
 <p>Let’s move “Demographics” to the end. One way to do that is with the <code>setOrder</code> function. This lets you provide a specific order, but it requires you to specify all of the folder’s contents. Let’s use that function to put “Tracking questions” first:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
+<span class="st">    </span><span class="kw"><a href="../reference/cd.html">cd</a></span>(<span class="st">"/"</span>) %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/setOrder.html">setOrder</a></span>(<span class="kw">c</span>(<span class="st">"Tracking questions"</span>, <span class="st">"This week"</span>, <span class="st">"Demographics"</span>))</code></pre></div>
 <!--
 We can do that a couple of ways. One is using `mv()`, giving it the "after" argument
@@ -265,7 +265,7 @@ folder(ds$var); can also mv to wherever that var is -->
 <h2 class="hasAnchor">
 <a href="#deleting-folders" class="anchor"></a>Deleting folders</h2>
 <p>The cleanest way to delete a folder is with <code><a href="../reference/rmdir.html">rmdir()</a></code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds <span class="op">%&gt;%</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds %&gt;%
 <span class="st">    </span><span class="kw"><a href="../reference/rmdir.html">rmdir</a></span>(<span class="st">"This week/Snowden"</span>)</code></pre></div>
 <p>This deletes the folder and all variables contained within it.</p>
 <p><a href="derive.html">Next: transforming and deriving</a></p>

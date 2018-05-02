@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>See if there's a new version of the package on GitHub — checkForNewVersion • Crunch</title>
+<title>See if there's a new version of the package on GitHub — notifyIfNewVersion • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -27,9 +27,12 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="See if there's a new version of the package on GitHub — checkForNewVersion" />
+<meta property="og:title" content="See if there's a new version of the package on GitHub — notifyIfNewVersion" />
 
-<meta property="og:description" content="See if there's a new version of the package on GitHub" />
+<meta property="og:description" content="checkForNewVersion looks for a tagged version on GitHub and compares with
+the version number of the currently installed package. notifyIfNewVersion
+wraps it and displays a message if there is a new version. It is called in
+.onLoad()." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -76,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -162,22 +165,31 @@
     <div class="page-header">
     <h1>See if there's a new version of the package on GitHub</h1>
     <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/github.R'><code>R/github.R</code></a></small>
-    <div class="hidden name"><code>checkForNewVersion.Rd</code></div>
+    <div class="hidden name"><code>notifyIfNewVersion.Rd</code></div>
     </div>
 
     
-    <p>See if there's a new version of the package on GitHub</p>
+    <p><code>checkForNewVersion</code> looks for a tagged version on GitHub and compares with
+the version number of the currently installed package. <code>notifyIfNewVersion</code>
+wraps it and displays a message if there is a new version. It is called in
+<code>.onLoad()</code>.</p>
     
 
-    <pre class="usage"><span class='fu'>checkForNewVersion</span>(<span class='kw'>github.url</span> <span class='kw'>=</span> <span class='st'>"https://api.github.com/repos/Crunch-io/rcrunch/tags"</span>,
-  <span class='kw'>installed.version</span> <span class='kw'>=</span> <span class='fu'>as.character</span>(<span class='fu'>packageVersion</span>(<span class='st'>"crunch"</span>)))</pre>
+    <pre class="usage"><span class='fu'>notifyIfNewVersion</span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"crunch"</span>, <span class='kw'>github</span> <span class='kw'>=</span> <span class='st'>"Crunch-io/rcrunch"</span>,
+  <span class='kw'>installed.version</span> <span class='kw'>=</span> <span class='fu'>as.character</span>(<span class='fu'>packageVersion</span>(<span class='no'>package</span>)))
+
+<span class='fu'>checkForNewVersion</span>(<span class='no'>github</span>, <span class='no'>installed.version</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>github.url</th>
-      <td><p>character where to GET the tagged versions of the package</p></td>
+      <th>package</th>
+      <td><p>character package name</p></td>
+    </tr>
+    <tr>
+      <th>github</th>
+      <td><p>character "organization/repo" of your package on GitHub</p></td>
     </tr>
     <tr>
       <th>installed.version</th>
@@ -187,7 +199,9 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The version string if there is a new version, or NULL</p>
+    <p><code>checkForNewVersion</code> returns the version string if there is a new
+version, or NULL. <code>notifyIfNewVersion</code> returns nothing invisibly, called for
+its side effects.</p>
     
 
   </div>

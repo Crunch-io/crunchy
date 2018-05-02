@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stay authenticated. — session_store • Crunch</title>
+<title>Translate user facing cube subset to programmatic cube subset — translateCubeIndex • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -27,10 +27,15 @@
 <script src="../pkgdown.js"></script>
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Stay authenticated. — session_store" />
+<meta property="og:title" content="Translate user facing cube subset to programmatic cube subset — translateCubeIndex" />
 
-<meta property="og:description" content="The auth store keeps the session token after authentication so that all
-API calls can use it. We can also store other things in it." />
+<meta property="og:description" content="Cubes that include multiple response variables create a special kind of
+complexity. Multiple response variables are actually 2d arrays with the
+responses along one dimension (cat, dog, fish) and the selection
+status along the second dimension (selected, not_selected). When an MR
+variable is crossed with a categorical variable it creates a 3d array with
+the categorical variable's categories along one dimension and the MR
+dimensions on the other two." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -77,7 +82,7 @@ API calls can use it. We can also store other things in it." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
       </span>
     </div>
 
@@ -161,29 +166,66 @@ API calls can use it. We can also store other things in it." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Stay authenticated.</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/auth.R'><code>R/auth.R</code></a></small>
-    <div class="hidden name"><code>session_store.Rd</code></div>
+    <h1>Translate user facing cube subset to programmatic cube subset</h1>
+    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R'><code>R/cube-subset.R</code></a></small>
+    <div class="hidden name"><code>translateCubeIndex.Rd</code></div>
     </div>
 
     
-    <p>The auth store keeps the session token after authentication so that all
-API calls can use it. We can also store other things in it.</p>
+    <p>Cubes that include multiple response variables create a special kind of
+complexity. Multiple response variables are actually 2d arrays with the
+responses along one dimension (<code>cat</code>, <code>dog</code>, <code>fish</code>) and the selection
+status along the second dimension (<code>selected</code>, <code>not_selected</code>). When an MR
+variable is crossed with a categorical variable it creates a 3d array with
+the categorical variable's categories along one dimension and the MR
+dimensions on the other two.</p>
     
 
-    <pre class="usage"><span class='no'>session_store</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>translateCubeIndex</span>(<span class='no'>x</span>, <span class='no'>subset</span>, <span class='no'>drop</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a Crunch Cube</p></td>
+    </tr>
+    <tr>
+      <th>subset</th>
+      <td><p>a list of array extent indices (for the user-cube)</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>whether to drop unnecessary dimensions.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An environment.</p>
+    <p>a list of array extent indices (for the real-cube)</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The complexity is that while the real MR cube includes two dimensions per MR,
+we only show the user one dimension per MR which represents only the
+<code>selected</code> items. This means that every cube has two different
+representations, the low dimensional user cube, and the higher dimensional
+real cube. This function translates user cube subsets into the higher
+dimensional subset. In the case above, the user would see a 2d cube and
+subset it with <code>user_cube[1:2, 1:2]</code> in order to subset the programmatic cube
+we need to translate this to <code>prog_cube[1:2, 1:2, ]</code> in order to select the
+right variables of the high dimensional cube.</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>
