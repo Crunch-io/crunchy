@@ -28,4 +28,3 @@ Endpoint Reference
    endpoint-user
    endpoint-variable
    endpoint-version
-   endpoint-xlsx
