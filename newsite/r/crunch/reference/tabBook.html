@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Compute a Tab Book — tabBook" />
@@ -46,22 +54,15 @@ work with by subsetting the dataset you pass into the function." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -148,7 +149,7 @@ work with by subsetting the dataset you pass into the function." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -163,15 +164,17 @@ work with by subsetting the dataset you pass into the function." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compute a Tab Book</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/tab-book.R'><code>R/tab-book.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/tab-book.R'><code>R/tab-book.R</code></a></small>
     <div class="hidden name"><code>tabBook.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function allows you to generate a tab book from a multitable and data.
 As with other functions, you can select the rows and columns you want to
 work with by subsetting the <code>dataset</code> you pass into the function.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>tabBook</span>(<span class='no'>multitable</span>, <span class='no'>dataset</span>, <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/weight.html'>weight</a></span>(<span class='no'>dataset</span>),
   <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"json"</span>, <span class='st'>"xlsx"</span>), <span class='no'>file</span>, <span class='no'>...</span>)</pre>
@@ -268,10 +271,16 @@ results. You can then further format these and construct custom tab reports.</p>
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

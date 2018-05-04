@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Add summary statistics to a CrunchCube — addSummaryStat" />
@@ -47,22 +55,15 @@ you can use with SummaryStat() (e.g. position, categories, after)." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -149,7 +150,7 @@ you can use with SummaryStat() (e.g. position, categories, after)." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -164,16 +165,18 @@ you can use with SummaryStat() (e.g. position, categories, after)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add summary statistics to a CrunchCube</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/summary-insertions.R'><code>R/summary-insertions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/summary-insertions.R'><code>R/summary-insertions.R</code></a></small>
     <div class="hidden name"><code>addSummaryStat.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Use <code>addSummaryStat()</code> to add a summary statistic to a CrunchCube object. If
 not otherwise specified, the summary statistic will be <code>mean</code> and be placed
 at the bottom of the cube. You can change those defaults by passing any value
 you can use with <code>SummaryStat()</code> (e.g. <code>position</code>, <code>categories</code>, <code>after</code>).</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>addSummaryStat</span>(<span class='no'>cube</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mean"</span>, <span class='st'>"median"</span>), <span class='no'>var</span>, <span class='no'>...</span>)</pre>
     
@@ -323,10 +326,16 @@ transforms of the variable specified</p>
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

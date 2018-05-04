@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Compare two datasets to see how they will append — compareDatasets" />
@@ -48,22 +56,15 @@ the datasets will align before you do the append." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -150,7 +151,7 @@ the datasets will align before you do the append." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -165,10 +166,11 @@ the datasets will align before you do the append." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compare two datasets to see how they will append</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/compare-datasets.R'><code>R/compare-datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/compare-datasets.R'><code>R/compare-datasets.R</code></a></small>
     <div class="hidden name"><code>compareDatasets.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>When one dataset is appended to another, variables and subvariables are
 matched on their aliases, and then categories for variables that have them
@@ -176,6 +178,7 @@ are matched on category name. This function lines up the metadata between
 two datasets as the append operation will so that you can inspect how well
 the datasets will align before you do the append.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>compareDatasets</span>(<span class='no'>A</span>, <span class='no'>B</span>)</pre>
     
@@ -255,10 +258,16 @@ to result in better alignment.</p>
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

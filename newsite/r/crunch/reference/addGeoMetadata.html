@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Add geodata metadata to a crunch variable — addGeoMetadata" />
@@ -47,22 +55,15 @@ variable match the feature properties that are in each shapefile." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -149,7 +150,7 @@ variable match the feature properties that are in each shapefile." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -164,16 +165,18 @@ variable match the feature properties that are in each shapefile." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Add geodata metadata to a crunch variable</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/geo.R'><code>R/geo.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/geo.R'><code>R/geo.R</code></a></small>
     <div class="hidden name"><code>addGeoMetadata.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>If the variable matches a single geographic shapefile hosted by crunch,
 <code>addGeoMetadata</code> will make the appropriate <code>CrunchGeography</code> to add to a
 variable's <code><a href='geo.html'>geo()</a></code> metadata. It matches based on how well the contents of the
 variable match the feature properties that are in each shapefile.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>addGeoMetadata</span>(<span class='no'>variable</span>, <span class='no'>...</span>)</pre>
     
@@ -244,10 +247,16 @@ Information from this error can be used to setup an appropriate
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

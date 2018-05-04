@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove nesting of groups within an order/group — flattenOrder • Crunch</title>
+<title>See if there's a new version of the package on GitHub — checkForNewVersion • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -25,21 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
-
-
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Remove nesting of groups within an order/group — flattenOrder" />
+<meta property="og:title" content="See if there's a new version of the package on GitHub — checkForNewVersion" />
 
-<meta property="og:description" content="This function reduces a potentially nested order to its flattened
-representation, containing no nested groups. Entities are ordered in the
-result by their first appearance in the order object." />
+<meta property="og:description" content="See if there's a new version of the package on GitHub" />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -54,15 +44,22 @@ result by their first appearance in the order object." />
 <![endif]-->
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
+<!-- Google analytics -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  gtag('config', 'UA-50332119-2');
+  ga('create', 'UA-50332119-2', 'auto');
+  ga('send', 'pageview');
+
 </script>
+
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -79,7 +76,7 @@ result by their first appearance in the order object." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
       </span>
     </div>
 
@@ -149,7 +146,7 @@ result by their first appearance in the order object." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -163,34 +160,36 @@ result by their first appearance in the order object." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove nesting of groups within an order/group</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-order.R'><code>R/shoji-order.R</code></a></small>
-    <div class="hidden name"><code>flattenOrder.Rd</code></div>
+    <h1>See if there's a new version of the package on GitHub</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/github.R'><code>R/github.R</code></a></small>
+    <div class="hidden name"><code>checkForNewVersion.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function reduces a potentially nested order to its flattened
-representation, containing no nested groups. Entities are ordered in the
-result by their first appearance in the order object.</p>
+    <p>See if there's a new version of the package on GitHub</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>flattenOrder</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>checkForNewVersion</span>(<span class='kw'>github.url</span> <span class='kw'>=</span> <span class='st'>"https://api.github.com/repos/Crunch-io/rcrunch/tags"</span>,
+  <span class='kw'>installed.version</span> <span class='kw'>=</span> <span class='fu'>as.character</span>(<span class='fu'>packageVersion</span>(<span class='st'>"crunch"</span>)))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>VariableOrder, DatasetOrder, VariableGroup, or DatasetGroup; or a
-CrunchDataset or catalog that has an <code>ordering</code> property.</p></td>
+      <th>github.url</th>
+      <td><p>character where to GET the tagged versions of the package</p></td>
+    </tr>
+    <tr>
+      <th>installed.version</th>
+      <td><p>character the currently installed version string</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>x</code>, or its order resource, flattened.</p>
+    <p>The version string if there is a new version, or NULL</p>
     
 
   </div>
@@ -225,13 +224,7 @@ CrunchDataset or catalog that has an <code>ordering</code> property.</p></td>
     
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
-    inputSelector: 'input#search-input.form-control',
-    transformData: function(hits) {
-      return hits.map(function (hit) {
-        hit.url = updateHitURL(hit);
-        return hit;
-      });
-    }
+    inputSelector: 'input#search-input.form-control'
   });
 </script>
 

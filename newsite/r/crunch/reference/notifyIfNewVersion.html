@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="See if there's a new version of the package on GitHub — notifyIfNewVersion" />
@@ -47,22 +55,15 @@ wraps it and displays a message if there is a new version. It is called in
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -149,7 +150,7 @@ wraps it and displays a message if there is a new version. It is called in
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -164,16 +165,18 @@ wraps it and displays a message if there is a new version. It is called in
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>See if there's a new version of the package on GitHub</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/github.R'><code>R/github.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/github.R'><code>R/github.R</code></a></small>
     <div class="hidden name"><code>notifyIfNewVersion.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><code>checkForNewVersion</code> looks for a tagged version on GitHub and compares with
 the version number of the currently installed package. <code>notifyIfNewVersion</code>
 wraps it and displays a message if there is a new version. It is called in
 <code>.onLoad()</code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>notifyIfNewVersion</span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"crunch"</span>, <span class='kw'>github</span> <span class='kw'>=</span> <span class='st'>"Crunch-io/rcrunch"</span>,
   <span class='kw'>installed.version</span> <span class='kw'>=</span> <span class='fu'>as.character</span>(<span class='fu'>packageVersion</span>(<span class='no'>package</span>)))
@@ -233,10 +236,16 @@ its side effects.</p>
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

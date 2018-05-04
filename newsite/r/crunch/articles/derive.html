@@ -9,7 +9,9 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Adding Variables">
 <meta property="og:description" content="The crunch package makes it easy for you to derive new variables in your dataset. These derived variables retain their functional connection on the server, such that changes to the input variables automatically propagate to the derived variable.">
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png">
@@ -17,16 +19,13 @@
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Google analytics --><script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
-</script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+  gtag('config', 'UA-50332119-2');
+</script>
 </head>
 <body>
     <div class="container template-article">
@@ -108,7 +107,7 @@
       </ul>
 <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
       
@@ -126,7 +125,7 @@
       <h1>Adding Variables</h1>
             
       
-      <small>Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/derive.Rmd"><code>vignettes/derive.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/derive.Rmd"><code>vignettes/derive.Rmd</code></a></small>
       <div class="hidden name"><code>derive.Rmd</code></div>
 
     </div>
@@ -139,16 +138,16 @@
 <h2 class="hasAnchor">
 <a href="#creating-derived-variables" class="anchor"></a>Creating derived variables</h2>
 <p>In our sample dataset, we don’t have an “Age” variable, but we do have “Birth Year” (<code>birthyr</code>). We can create an age variable simply by taking the current year and subtracting the “Birth Year” variable from it–just as you would do if you were working with a <code>data.frame</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$age &lt;-<span class="st"> </span><span class="dv">2015</span> -<span class="st"> </span>ds$birthyr</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>age &lt;-<span class="st"> </span><span class="dv">2015</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>birthyr</code></pre></div>
 <p>Now, we have an age variable, and it looks like we’d expect it would relative to <code>birthyr</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$age)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>age)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   49.62   59.75   90.00</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1925    1955    1966    1965    1977    1993</code></pre>
 <p>Age is now a derived variable, functionally linked to <code>birthyr</code> on the server. Note that in order to create <code>age</code>, we didn’t pull any values off of the server; we just supplied the derivation expression.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">2015</span> -<span class="st"> </span>ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">2015</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>## [1] "CrunchExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
@@ -157,17 +156,17 @@
 <h2 class="hasAnchor">
 <a href="#updating-values" class="anchor"></a>Updating values</h2>
 <p>We can also use these expressions to update values. Suppose, just for demonstration purposes, that we want to truncate the range of the <code>birthyr</code> variable and set it to 1945 everywhere where it is less than 1945. We can once again write the R code we’d write if we were working with a <code>data.frame</code>, even though we’re working with a Crunch dataset:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds$birthyr[ds$birthyr &lt;<span class="st"> </span><span class="dv">1945</span>] &lt;-<span class="st"> </span><span class="dv">1945</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds<span class="op">$</span>birthyr[ds<span class="op">$</span>birthyr <span class="op">&lt;</span><span class="st"> </span><span class="dv">1945</span>] &lt;-<span class="st"> </span><span class="dv">1945</span></code></pre></div>
 <p>If we look at the summary again, we’ll see that our data have been updated, and the minimum Birth Year is now 1945.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$birthyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>birthyr)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1945    1955    1966    1966    1977    1993</code></pre>
 <p>Not only that: since <code>age</code> is a function of <code>birthyr</code> on the server, its values also update now that we’ve modified <code>birthyr</code>. Max age is now 70, or 2015 - 1945.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds$age)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ds<span class="op">$</span>age)</code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   48.98   59.75   70.00</code></pre>
 <p>Once again, we’ve done this operation by turning idiomatic R expressions into Crunch expression syntax.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(ds$birthyr &lt;<span class="st"> </span><span class="dv">1945</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(ds<span class="op">$</span>birthyr <span class="op">&lt;</span><span class="st"> </span><span class="dv">1945</span>)</code></pre></div>
 <pre><code>## [1] "CrunchLogicalExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
@@ -205,10 +204,16 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 </body>

@@ -25,6 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Create Multiple Response Variable from Delimited lists — makeMRFromText" />
@@ -48,22 +56,15 @@ them." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -150,7 +151,7 @@ them." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -165,10 +166,11 @@ them." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create Multiple Response Variable from Delimited lists</h1>
-    <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/make-array.R'><code>R/make-array.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/make-array.R'><code>R/make-array.R</code></a></small>
     <div class="hidden name"><code>makeMRFromText.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Surveys often record multiple response questions in delimited lists where
 each respondent's selections are separated by a delimiter like <code>;</code> or <code>|</code>.
@@ -176,6 +178,7 @@ This function breaks the delimited responses into subvariables, uploads those
 subvariables to Crunch, and finally creates a multiple response variable from
 them.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>makeMRFromText</span>(<span class='no'>var</span>, <span class='no'>delim</span>, <span class='no'>name</span>, <span class='kw'>selected</span> <span class='kw'>=</span> <span class='st'>"selected"</span>,
   <span class='kw'>not_selected</span> <span class='kw'>=</span> <span class='st'>"not_selected"</span>, <span class='kw'>unanswered</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
@@ -249,10 +252,16 @@ them.</p>
 <script>
   docsearch({
     
+    
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
-    debug: false // Set debug to true if you want to inspect the dropdown
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 
