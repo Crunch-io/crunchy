@@ -1,3 +1,5 @@
+.. _endpoint-folders:
+
 Variable Folders
 ----------------
 

@@ -43,27 +43,52 @@ Basic concepts
 There are a number of system folders that exist with every dataset created.
 These system folders cannot be renamed, moved or deleted.
 
-* **Root folder**: The root folder is the top level folder where all other
-subfolders will be created by dataset editors. All the variables and subfolders
-here will be public universal for all users with access to the dataset. It is
-only possible to place public varibles under this tree.
-
-* **Hidden variables folder**: This folder is a parallel top level folder
-separate from the root folder, which allows dataset editors to hide variables
-out of the public Root folder. This tree structure is only accessible for
-dataset editors.
-
-* **Variables can only be in one folder**: Variables can be in any of the top
-level system folders or in any subfolder of them at any given time, but they
-can never be in two folders at the same time.
+* **Root folder**: The root folder is the top level folder where all other subfolders will be created by dataset editors. All the variables and subfolders here will be public universal for all users with access to the dataset. It is only possible to place public varibles under this tree.
+* **Hidden variables folder**: This folder is a parallel top level folder separate from the root folder, which allows dataset editors to hide variables out of the public Root folder. This tree structure is only accessible for dataset editors.
+* **Variables can only be in one folder**: Variables can be in any of the top level system folders or in any subfolder of them at any given time, but they can never be in two folders at the same time.
 
 Migrating to folders
 ~~~~~~~~~~~~~~~~~~~~
 
+During the rolls out period, datasets will need to be activated to use folders
+individually by changing its `variable_folders` setting to `true`.
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      PATCH /datasets/id/settings/
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:entity",
+          "body": {"variable_folders": true"}
+      }
 
 
+On activation, the current structure under the hierarchical order will be
+converted to folders under the Root Folder replicating the existing
+organization.
+
+From then on, the existing /datasets/:id/variables/hier/ endpoint will now
+reflect the structure that gets set as Folders, the latter now being the source
+of truth.
+
+
+Enabled datasets will expose a `/folders/` path where that follows the
+folders documentation :ref:`endpoint-folders`.
 
 
 Compatibility with variables' order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The new folders feature holds a few differences from the previous hierarchical
+order capabilities. Most notable are:
+
+* Variables must always be under any folder, the Root folder by default
+* Variables must be under one folder only. The API allows moving between folders but there are no means to place a variable in two folders.
+* Subvariables are not allowed anywhere in the folder structure.
+* Hidden variables (variables with `discarded` attribute set to `true`) will always be under the Hidden variables folder. From now on the `discarded` attribute will be a reflection of whether or not a variable is present under the hidden folder.
+
+PATCH requests to the hierarchical order will enforce the above rules.
