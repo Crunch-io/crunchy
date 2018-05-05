@@ -1,7 +1,8 @@
 Variable folders
 ----------------
 
-Variable folders provide a new and faster way to organize
+Variable folders provide a new and more performant way to organize
+large number of variables.
 
 Rationale
 ~~~~~~~~~
