@@ -13,3 +13,4 @@ Feature Guide
    feature-arrays
    feature-analyzing
    feature-versioning
+   feature-folders
