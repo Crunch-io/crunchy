@@ -1,3 +1,6 @@
+# You may need to install and restart the package for this to work. Load_all
+# will not pick up the most recent changes, and so testing can fail if the installed
+# version of crunch differs from your working version. 
 library(crunchy)
 source(system.file("crunch-test.R", package = "crunch"))
 

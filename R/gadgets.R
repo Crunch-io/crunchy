@@ -15,7 +15,7 @@
 #' @export
 makeArrayGadget <- function(env = globalenv()){
     runGadget(app = .makeArrayGadget(env),
-        viewer = dialogViewer("MR Builder", width = 800)
+        viewer = dialogViewer("Array Builder", width = 800)
     )
 
 }
