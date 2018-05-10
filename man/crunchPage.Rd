@@ -13,12 +13,10 @@ crunchFluidPage(...)
 
 crunchFillPage(...)
 
-crunchNavbarPage(title = NULL, ...)
+crunchNavbarPage(...)
 }
 \arguments{
 \item{...}{arguments passed to `fluidPage`, `fillPage` or `navbarPage`}
-
-\item{title}{the title to be displayed in the navigation bar. Defaults to NULL.}
 }
 \value{
 The result of `fluidPage`, `fillPage` or `navbarPage`
@@ -29,6 +27,10 @@ functions wraps those and includes additional assets needed to match
 Crunch UI style and keep your users authenticated. When building shiny apps
 with Crunch datasets, use these instead of [shiny::fluidPage()],
 [shiny::fillPage()] or [shiny::navbarPage()].
+}
+\details{
+These are no longer necessary. Just use the `shiny` ones and it just works.
+These functions are left here for backwards compatibility.
 }
 \examples{
 \dontrun{
