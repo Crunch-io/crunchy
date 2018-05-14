@@ -428,10 +428,10 @@ An empty ``order`` for the dataset will be handled as if no order was
 passed in.
 
 An empty ``hidden`` for the dataset, will assume a flat order for all the
-variables that have `discarded: false` in their definitions.
+variables that have ``discarded: true`` in their definitions.
 
-No variables can be in both the ``order`` and ``hidden`` member implicitly or
-explicitely.
+All variables can only be part of one of the orders (``order`` or ``hidden``)
+
 
 2. Add row data
 ^^^^^^^^^^^^^^^
