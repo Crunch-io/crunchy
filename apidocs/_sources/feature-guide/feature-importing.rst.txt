@@ -161,8 +161,7 @@ without requiring much back-and-forth with the API.
                       "color": {"name": "Favorite color", "alias": "color", "type": "text", ...},
                       "state": {"name": "State", "alias": "state", "view": {"geodata": [{"geodatum": <uri>, "feature_key": "properties.postal-code"}]}}
                   },
-                  "order": ["educ", {'my group": "color"}],
-                  "hidden": [{"My system variables": ["state"]}]
+                  "order": ["educ", {'my group": "color"}]
               },
           }
       }
@@ -185,19 +184,6 @@ example below illustrates how this can be used. Shoji is JSON, which
 means the "metadata" object is explicitly unordered. If you wish the
 variables to have an order, you must supply an order object rather than
 relying on any order of the "metadata" object.
-
-Additionally, an optional "hidden" member is allowed, which receives a Shoji
-Order object just like the "order" member. This structure will be used to
-construct the Hidden folder subfolders and the variables present inside it
-will be considered hidden variables. Any variable that has been defined
-by having `discarded: true` will be automatically placed at the top level
-of the hidden order structure.
-
-Following the Variable Folders rules, a variable cannot be in two folders
-simultaneously, so the server will raise validation errors if any variable is
-present in both the public order and the hidden order (Note, that discarded
-variables cannot be in the public order because they will be automatically
-added on the hidden order)
 
 It is possible to create derived variables using any of the :doc:`derivation
 functions available </feature-guide/feature-deriving>` simultaneously in one
@@ -426,12 +412,6 @@ attribute's default value instead.
 
 An empty ``order`` for the dataset will be handled as if no order was
 passed in.
-
-An empty ``hidden`` for the dataset, will assume a flat order for all the
-variables that have ``discarded: true`` in their definitions.
-
-All variables can only be part of one of the orders (``order`` or ``hidden``)
-
 
 2. Add row data
 ^^^^^^^^^^^^^^^
