@@ -150,9 +150,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#column-terms">Column terms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#function-terms">Function terms</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#supported-functions">Supported functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#array-functions">Array functions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#binary-functions">Binary functions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#builtin-functions">Builtin functions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#comparisons">Comparisons</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#logic-functions">Logic functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#selection-functions">Selection functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#miscellaneous-functions">Miscellaneous functions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#date-functions">Date Functions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#frame-functions">Frame Functions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#measures-functions">Measures Functions</a></li>
@@ -342,10 +344,10 @@ precision, missing values and reasons, order, etc. For example:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd290710_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#15197817e9b0_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd290710_Json">
+<div class="tab-pane active section" id="15197817e9b0_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Party ID&quot;</span><span class="p">,</span>
@@ -459,14 +461,13 @@ the category.</li>
 <li><strong>numeric_value</strong>: the numeric value bound to each name. If no
 numeric value should be bound, this should be null. numeric_values
 need not be unique, and they may be <code class="docutils literal"><span class="pre">null</span></code>.</li>
-<li><strong>missing</strong>: boolean indicating whether the data corresponding to
-this category should be interpreted as missing.</li>
+<li><strong>missing</strong>: (optional) boolean indicating whether the data
+corresponding to this category should be interpreted as missing.</li>
 <li><strong>selected</strong>: (optional) boolean indicating whether this category
-corresponds to a selected value for a dichotomized variable, i.e.
-part of a multiple response variable. Not required for regular
-categorical variables, and defaults to <code class="docutils literal"><span class="pre">false</span></code> if omitted. There
-also is no requirement for Categories in a multiple-response variable
-that only one Category be marked “selected”.</li>
+should be treated as a “true” value for logical operations. Defaults
+to <code class="docutils literal"><span class="pre">false</span></code> if omitted. Multiple response variables are essentially
+logical categorical arrays, and therefore must have at least one
+“selected” category. More than one Category may be marked “selected”.</li>
 </ul>
 <p>Categories are valid if:</p>
 <ul class="simple">
@@ -505,10 +506,10 @@ The order of the subvariables is read from the “subvariables” attribute.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd0943c8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#1519784f3550_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd0943c8_Json">
+<div class="tab-pane active section" id="1519784f3550_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;categorical_array&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example array&quot;</span><span class="p">,</span>
@@ -618,10 +619,10 @@ reasons map such as:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdc681d68_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151978bde160_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdc681d68_Json">
+<div class="tab-pane active section" id="151978bde160_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;missing reasons&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;no data&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
@@ -702,7 +703,7 @@ a function, etc. While verbose, doing so allows us to be more explicit
 about the operations we wish to do.</p>
 <p>Expressions generally contain references to <strong>variables</strong>, <strong>values</strong>,
 or <strong>columns</strong> of values, often composed in <strong>functions</strong>. The output of
-expressions can be other variables, values, boolean masks, or cube
+expressions can be other variables, values, or cube
 aggregations, depending on the context and expression content. Some
 endpoints have special semantics, but the general structure of the
 expressions follows the model described below.</p>
@@ -763,8 +764,18 @@ description, etc to the output of the function.</p>
 <p>Here is a list of all functions available for crunch expressions. Note
 that these functions can be used in conjuction to compose an expression.</p>
 </div>
+<div class="section" id="array-functions">
+<h5>Array functions<a class="headerlink" href="#array-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">array</span></code> Return the given Frame as an array. The type of each variable in the Frame must be close enough to form a supertype for the array.</li>
+<li><code class="docutils literal"><span class="pre">get</span></code> Return a subvariable from the given column.</li>
+<li><code class="docutils literal"><span class="pre">subvariables</span></code> Return a Frame containing subvariables of the given array.</li>
+<li><code class="docutils literal"><span class="pre">tiered</span></code> Return a variable formed by collapsing the given array’s subvariables in the given category tiers.</li>
+</ul>
+</div>
 <div class="section" id="binary-functions">
 <h5>Binary functions<a class="headerlink" href="#binary-functions" title="Permalink to this headline"> 🔗</a></h5>
+<p>In general, these operate only on “numeric” types.</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">+</span></code> add</li>
 <li><code class="docutils literal"><span class="pre">-</span></code> subtract</li>
@@ -778,12 +789,61 @@ that these functions can be used in conjuction to compose an expression.</p>
 <li><code class="docutils literal"><span class="pre">~</span></code> invert</li>
 </ul>
 </div>
-<div class="section" id="builtin-functions">
-<h5>Builtin functions<a class="headerlink" href="#builtin-functions" title="Permalink to this headline"> 🔗</a></h5>
+<div class="section" id="logic-functions">
+<h5>Logic functions<a class="headerlink" href="#logic-functions" title="Permalink to this headline"> 🔗</a></h5>
+<p>These all return a “logical” categorical column with just three categories: one is marked “selected”, one is marked “missing”, and the other is neither.</p>
+<p>User interfaces may use the presence of a “selected” category to decide to reduce analyses to only show the “selected” category.</p>
+<p>Any “logical” column can be used as a filter expression; rows which result in a “selected” value will match the filter, and those which are “missing” or “other” will not.</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">array</span></code> Return the given Frame materialized as an array.</li>
+<li><code class="docutils literal"><span class="pre">==</span></code> equals. Exact matches will return “selected”. For non-matching values, if either input term is missing, the result is missing. Otherwise, the result is “other”.</li>
+<li><code class="docutils literal"><span class="pre">!=</span></code> not equals. Exact matches will return “other”. For non-matching values, if either input term is missing, the result is missing. Otherwise, the result is “selected”. This is the same result as <code class="docutils literal"><span class="pre">not(==)</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">=&gt;&lt;=</span></code> between</li>
+<li><code class="docutils literal"><span class="pre">between</span></code> between</li>
+<li><code class="docutils literal"><span class="pre">&lt;</span></code> less than</li>
+<li><code class="docutils literal"><span class="pre">&gt;</span></code> greater than</li>
+<li><code class="docutils literal"><span class="pre">&lt;=</span></code> less than or equal</li>
+<li><code class="docutils literal"><span class="pre">&gt;=</span></code> greater than or equal</li>
+<li><code class="docutils literal"><span class="pre">in</span></code> “selected” for each row where A is an element of array B, or a key of object B.</li>
+<li><code class="docutils literal"><span class="pre">all</span></code> “selected” for each row where all subvariables in a
+multiple_response array are selected</li>
+<li><code class="docutils literal"><span class="pre">any</span></code> “selected” for each row where any subvariable in a
+multiple_response array is selected</li>
+<li><code class="docutils literal"><span class="pre">is_none_of_the_above</span></code> “selected” for each row where no subvariables in a
+multiple_response array are selected, unless all subvariables have
+missing values</li>
+<li><code class="docutils literal"><span class="pre">contains</span></code> “selected” for each row where text value A is a substring of text value B.</li>
+<li><code class="docutils literal"><span class="pre">icontains</span></code> Case-insensitive version of ‘contains’</li>
+<li><code class="docutils literal"><span class="pre">~=</span></code> compare against regular expression (regex)</li>
+<li><code class="docutils literal"><span class="pre">and</span></code> logical and. A “selected” value <code class="docutils literal"><span class="pre">and</span></code> “selected” results in “selected”.
+If either input term is missing, the result is missing. Otherwise, the result is “other”.</li>
+<li><code class="docutils literal"><span class="pre">or</span></code> logical or. If either input term is “selected”, the result is “selected”.
+A “missing” value <code class="docutils literal"><span class="pre">or</span></code> “missing” results in “missing”. Otherwise, the result is “other”.</li>
+<li><code class="docutils literal"><span class="pre">not</span></code> logical not; this is the “relative complement”–any missing values will remain missing.</li>
+<li><code class="docutils literal"><span class="pre">not_selected</span></code> logical not; this is the “absolute complement”–any missing values will become “selected”.</li>
+<li><code class="docutils literal"><span class="pre">selected</span></code> returns “selected” only for “selected” categories; “other” and “missing” values will become “other”.</li>
+<li><code class="docutils literal"><span class="pre">is_valid</span></code> Logical array of rows which are valid for the given column</li>
+<li><code class="docutils literal"><span class="pre">is_missing</span></code> Logical array of rows which are missing for the given column</li>
+<li><code class="docutils literal"><span class="pre">any_missing</span></code> Logical array of rows where any of the subvariables are missing</li>
+<li><code class="docutils literal"><span class="pre">all_valid</span></code> Logical array of rows where all of the subvariables are valid</li>
+<li><code class="docutils literal"><span class="pre">all_missing</span></code> Logical array of rows where all of the subvariables are missing</li>
+</ul>
+</div>
+<div class="section" id="selection-functions">
+<h5>Selection functions<a class="headerlink" href="#selection-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">as_selected</span></code> Return the given variable reduced to the [1, 0, -1]
-“selections” type.</li>
+“logical” categories.</li>
+<li><code class="docutils literal"><span class="pre">selected_array</span></code> Return a bool Array from the given categorical,
+plus None/<code class="docutils literal"><span class="pre">__none__</span></code>/<code class="docutils literal"><span class="pre">__any__</span></code> .</li>
+<li><code class="docutils literal"><span class="pre">selected_depth</span></code> Return a numeric column containing the number of
+selected categories in each row of the given array.</li>
+<li><code class="docutils literal"><span class="pre">selections</span></code> Return the given array, reduced to the [1, 0, -1]
+“logical” categories, plus an <code class="docutils literal"><span class="pre">__any__</span></code> magic subvariable.</li>
+</ul>
+</div>
+<div class="section" id="miscellaneous-functions">
+<h5>Miscellaneous functions<a class="headerlink" href="#miscellaneous-functions" title="Permalink to this headline"> 🔗</a></h5>
+<ul class="simple">
 <li><code class="docutils literal"><span class="pre">bin</span></code> Return column’s values broken into equidistant bins.</li>
 <li><code class="docutils literal"><span class="pre">case</span></code> Evaluate the given conditions in order, selecting the
 corresponding choice.</li>
@@ -797,64 +857,15 @@ according to the category_info.</li>
 <li><code class="docutils literal"><span class="pre">combine_responses</span></code> Combine the given categorical variables into a
 new one.</li>
 <li><code class="docutils literal"><span class="pre">current_batch</span></code> Return the batch_id of the current frame.</li>
-<li><code class="docutils literal"><span class="pre">get</span></code> Return a subvariable from the given column.</li>
 <li><code class="docutils literal"><span class="pre">lookup</span></code> Map each row of source through its keys index to a
 corresponding value.</li>
 <li><code class="docutils literal"><span class="pre">missing</span></code> Return the given column as missing for the given reason.</li>
 <li><code class="docutils literal"><span class="pre">normalize</span></code> Return a Column with the given values normalized so
 sum(c) == len(c).</li>
 <li><code class="docutils literal"><span class="pre">row</span></code> Return a Numeric column with row indices.</li>
-<li><code class="docutils literal"><span class="pre">selected_array</span></code> Return a bool Array from the given categorical,
-plus None/<strong>none</strong>/<strong>any</strong> .</li>
-<li><code class="docutils literal"><span class="pre">selected_depth</span></code> Return a numeric column containing the number of
-selected categories in each row of the given array.</li>
-<li><code class="docutils literal"><span class="pre">selections</span></code> Return the given array, reduced to the [1, 0, -1]
-“selections” type, plus an <code class="docutils literal"><span class="pre">__any__</span></code> magic subvariable.</li>
-<li><code class="docutils literal"><span class="pre">subvariables</span></code> Return a Frame containing subvariables of the given
-array.</li>
-<li><code class="docutils literal"><span class="pre">tiered</span></code> Return a variable formed by collapsing the given array’s
-subvariables in the given category tiers.</li>
 <li><code class="docutils literal"><span class="pre">typeof</span></code> Return (a copy of) the Type of the given column.</li>
 <li><code class="docutils literal"><span class="pre">unmissing</span></code> Return the given column with user missing replaced by
 valid values.</li>
-</ul>
-</div>
-<div class="section" id="comparisons">
-<h5>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline"> 🔗</a></h5>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">==</span></code> equals</li>
-<li><code class="docutils literal"><span class="pre">!=</span></code> not equals</li>
-<li><code class="docutils literal"><span class="pre">=&gt;&lt;=</span></code> between</li>
-<li><code class="docutils literal"><span class="pre">between</span></code> between</li>
-<li><code class="docutils literal"><span class="pre">&lt;</span></code> less than</li>
-<li><code class="docutils literal"><span class="pre">&gt;</span></code> greater than</li>
-<li><code class="docutils literal"><span class="pre">&lt;=</span></code> less than or equal</li>
-<li><code class="docutils literal"><span class="pre">&gt;=</span></code> greater than or equal</li>
-<li><code class="docutils literal"><span class="pre">in</span></code> in</li>
-<li><code class="docutils literal"><span class="pre">all</span></code> True for each row where all subvariables in a
-multiple_response array are selected</li>
-<li><code class="docutils literal"><span class="pre">any</span></code> True for each row where any subvariable in a
-multiple_response array is selected</li>
-<li><code class="docutils literal"><span class="pre">is_none_of_the_above</span></code> True for each row where no subvariables in a
-multiple_response array are selected, unless all subvariables have
-missing values</li>
-<li><code class="docutils literal"><span class="pre">contains</span></code> Return a mask where A is an element of array B, or a key
-of object B.</li>
-<li><code class="docutils literal"><span class="pre">icontains</span></code> Case-insensitive version of ‘contains’</li>
-<li><code class="docutils literal"><span class="pre">~=</span></code> compare against regular expression (regex)</li>
-<li><code class="docutils literal"><span class="pre">and</span></code> logical and</li>
-<li><code class="docutils literal"><span class="pre">or</span></code> logical or</li>
-<li><code class="docutils literal"><span class="pre">not</span></code> logical not</li>
-<li><code class="docutils literal"><span class="pre">is_valid</span></code> Boolean array of rows which are valid for the given
-column</li>
-<li><code class="docutils literal"><span class="pre">is_missing</span></code> Boolean array of rows which are missing for the given
-column</li>
-<li><code class="docutils literal"><span class="pre">any_missing</span></code> Boolean array of rows where any of the subvariables
-are missing</li>
-<li><code class="docutils literal"><span class="pre">all_valid</span></code> Boolean array of rows where all of the subvariables are
-valid</li>
-<li><code class="docutils literal"><span class="pre">all_missing</span></code> Boolean array of rows where all of the subvariables
-are missing</li>
 </ul>
 </div>
 <div class="section" id="date-functions">
@@ -889,14 +900,13 @@ criteria.</li>
 <li><code class="docutils literal"><span class="pre">flatten</span></code> Return a frame including all variables, plus all
 subvariables at dotted ids.</li>
 </ul>
-<p>Examples</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd381e48_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151977b2e780_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd381e48_Json">
+<div class="tab-pane active section" id="151977b2e780_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
   <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -922,10 +932,10 @@ from the frame where this function is applied on.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd52fa90_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#15197856f470_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd52fa90_Json">
+<div class="tab-pane active section" id="15197856f470_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;deselect&quot;</span><span class="p">,</span>
   <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -986,12 +996,12 @@ given array.</li>
 <div class="section" id="filter-terms">
 <h4>Filter terms<a class="headerlink" href="#filter-terms" title="Permalink to this headline"> 🔗</a></h4>
 <p>Terms that refer to filters entities by URL are shorthand for the
-boolean expression stored in the entity. So,
+logical expression stored in the entity. So,
 <code class="docutils literal"><span class="pre">{&quot;filter&quot;:</span> <span class="pre">&quot;../filters/59fc4d/&quot;}</span></code> yields the Crunch expression
 contained in the Filter entity’s “expression” attribute. Filter terms
 can be combined together with other expressions as well. For example,
 <code class="docutils literal"><span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;and&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;filter&quot;:</span> <span class="pre">&quot;../filters/59fc4d/&quot;},</span> <span class="pre">{&quot;function&quot;:</span> <span class="pre">&quot;==&quot;,</span> <span class="pre">&quot;args&quot;:</span> <span class="pre">[{&quot;variable&quot;:</span> <span class="pre">&quot;../variables/X/&quot;},</span> <span class="pre">{&quot;value&quot;:</span> <span class="pre">13}]}]}</span></code>
-would “and” together the boolean expression in filter 59fc4d with the
+would “and” together the logical expression in filter 59fc4d with the
 <code class="docutils literal"><span class="pre">X</span> <span class="pre">==</span> <span class="pre">13</span></code> expression.</p>
 </div>
 </div>
@@ -1014,10 +1024,10 @@ value. For example:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdc6f5358_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151978685ac8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdc6f5358_Json">
+<div class="tab-pane active section" id="151978685ac8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/1/&quot;</span><span class="p">,</span>
@@ -1051,10 +1061,10 @@ collection, and indeed possess an “index” member for this:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd1ddc50_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151978179860_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd1ddc50_Json">
+<div class="tab-pane active section" id="151978179860_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/&quot;</span><span class="p">,</span>
@@ -1119,10 +1129,10 @@ Order like:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdc7b3c50_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#15197838e2e8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdc7b3c50_Json">
+<div class="tab-pane active section" id="15197838e2e8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/users/order/&quot;</span><span class="p">,</span>
@@ -1176,10 +1186,10 @@ two-dimensional relations.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd708dd8_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151977cf36d8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd708dd8_Json">
+<div class="tab-pane active section" id="151977cf36d8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:table&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://.../api/datasets/.../table/?limit=7&quot;</span><span class="p">,</span>
@@ -1221,10 +1231,10 @@ involves the same basic ingredients.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdce89588_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#1519789ae630_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdce89588_Json">
+<div class="tab-pane active section" id="1519789ae630_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;datasets/ab8832/variables/3ffd45/&quot;</span><span class="p">},</span>
@@ -1271,10 +1281,10 @@ effectively overlaying each other. For example, a cube might contain a
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd176c88_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151977c090b8_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd176c88_Json">
+<div class="tab-pane active section" id="151977c090b8_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;crunch:cube&quot;</span><span class="p">,</span>
     <span class="s2">&quot;n&quot;</span><span class="p">:</span> <span class="mi">210</span><span class="p">,</span>
@@ -1368,10 +1378,10 @@ cube of X, Y, and Z, the margins member might contain:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cfdd387278_Json">Json</a></li>
+<li class="active"><a data-toggle="tab" href="#151977cb91d0_Json">Json</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cfdd387278_Json">
+<div class="tab-pane active section" id="151977cb91d0_Json">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="s2">&quot;margins&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4526</span><span class="p">],</span>

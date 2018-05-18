@@ -545,15 +545,15 @@ numeric_value numeric A quantity assigned to this category for numeric
                       aggregation. May be ``null``.                            
 ------------- ------- ---------------------------------------------------------
 missing       boolean If true, the given category is marked as "missing", and  
-                      is omitted from most calculations.                       
+                      is omitted from most calculations. For logical operations,
+                      this makes the category "none/null/NA".
 ------------- ------- ---------------------------------------------------------
-selected      boolean For categories in multiple response variables, those with
-                      ``"selected" : true`` which values correspond to the     
-                      "response" being selected. If omitted, the category is   
-                      treated as not selected. Multiple response variables must
-                      have at least one category marked as selected and may    
-                      have more than one.                                      
+selected      boolean If true, the given category is marked as "selected". For 
+                      logical operations, this makes the category "true".      
+                      Multiple response variables must have at least one       
+                      category marked as selected and may have more than one   
 ============= ======= =========================================================
+ 
 
 .. note::
 

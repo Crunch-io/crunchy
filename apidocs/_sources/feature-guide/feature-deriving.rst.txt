@@ -40,60 +40,15 @@ Given a variable such as:
               "alias": "educ",
               "type": "categorical",
               "categories": [
-                  {
-                      "numeric_value": null,
-                      "missing": true,
-                      "id": -1,
-                      "name": "No Data"
-                  },
-                  {
-                      "numeric_value": 1,
-                      "missing": false,
-                      "id": 1,
-                      "name": "No HS"
-                  },
-                  {
-                      "numeric_value": 2,
-                      "missing": false,
-                      "id": 2,
-                      "name": "High school graduate"
-                  },
-                  {
-                      "numeric_value": 3,
-                      "missing": false,
-                      "id": 3,
-                      "name": "Some college"
-                  },
-                  {
-                      "numeric_value": 4,
-                      "missing": false,
-                      "id": 4,
-                      "name": "2-year"
-                  },
-                  {
-                      "numeric_value": 5,
-                      "missing": false,
-                      "id": 5,
-                      "name": "4-year"
-                  },
-                  {
-                      "numeric_value": 6,
-                      "missing": false,
-                      "id": 6,
-                      "name": "Post-grad"
-                  },
-                  {
-                      "numeric_value": 8,
-                      "missing": true,
-                      "id": 8,
-                      "name": "Skipped"
-                  },
-                  {
-                      "numeric_value": 9,
-                      "missing": true,
-                      "id": 9,
-                      "name": "Not Asked"
-                  }
+                  {"numeric_value": null, "missing": true, "id": -1, "name": "No Data"},
+                  {"numeric_value": 1, "missing": false, "id": 1, "name": "No HS"},
+                  {"numeric_value": 2, "missing": false, "id": 2, "name": "High school graduate"},
+                  {"numeric_value": 3, "missing": false, "id": 3, "name": "Some college"},
+                  {"numeric_value": 4, "missing": false, "id": 4, "name": "2-year"},
+                  {"numeric_value": 5, "missing": false, "id": 5, "name": "4-year"},
+                  {"numeric_value": 6, "missing": false, "id": 6, "name": "Post-grad"},
+                  {"numeric_value": 8, "missing": true, "id": 8, "name": "Skipped"},
+                  {"numeric_value": 9, "missing": true, "id": 9, "name": "Not Asked"}
               ],
               "description": "Education"
           }
@@ -121,41 +76,11 @@ ZCL function like:
                       },
                       {
                           "value": [
-                              {
-                                  "name": "High school or less",
-                                  "numeric_value": null,
-                                  "id": 1,
-                                  "missing": false,
-                                  "combined_ids": [1, 2]
-                              },
-                              {
-                                  "name": "Some college",
-                                  "numeric_value": null,
-                                  "id": 2,
-                                  "missing": false,
-                                  "combined_ids": [3, 4]
-                              },
-                              {
-                                  "name": "4-year college or more",
-                                  "numeric_value": null,
-                                  "id": 3,
-                                  "missing": false,
-                                  "combined_ids": [5, 6]
-                              },
-                              {
-                                  "name": "Missing",
-                                  "numeric_value": null,
-                                  "id": 4,
-                                  "missing": true,
-                                  "combined_ids": [8, 9]
-                              },
-                              {
-                                  "name": "No data",
-                                  "numeric_value": null,
-                                  "id": -1,
-                                  "missing": true,
-                                  "combined_ids": [-1]
-                              }
+                              {"name": "High school or less", "numeric_value": null, "id": 1, "missing": false, "combined_ids": [1, 2]},
+                              {"name": "Some college", "numeric_value": null, "id": 2, "missing": false, "combined_ids": [3, 4]},
+                              {"name": "4-year college or more", "numeric_value": null, "id": 3, "missing": false, "combined_ids": [5, 6]},
+                              {"name": "Missing", "numeric_value": null, "id": 4, "missing": true, "combined_ids": [8, 9]},
+                              {"name": "No data", "numeric_value": null, "id": -1, "missing": true, "combined_ids": [-1]}
                           ]
                       }
                   ]
@@ -164,7 +89,7 @@ ZCL function like:
       }
 
 
-results in a private categorical variable with three valid categories.
+...results in a private categorical variable with three valid categories.
 
 Combining the categories of a categorical array is the same as it is for
 categorical variables. The resulting variable is also of type
@@ -203,37 +128,11 @@ Given a variable such as:
               ],
               "type": "multiple_response",
               "categories": [
-                  {
-                      "numeric_value": 1,
-                      "selected": true,
-                      "id": 1,
-                      "name": "Selected",
-                      "missing": false
-                  },
-                  {
-                      "numeric_value": 2,
-                      "id": 2,
-                      "name": "Not selected",
-                      "missing": false
-                  },
-                  {
-                      "numeric_value": 8,
-                      "id": 3,
-                      "name": "Skipped",
-                      "missing": true
-                  },
-                  {
-                      "numeric_value": 9,
-                      "id": 4,
-                      "name": "Not asked",
-                      "missing": true
-                  },
-                  {
-                      "numeric_value": null,
-                      "id": -1,
-                      "name": "No data",
-                      "missing": true
-                  }
+                  {"numeric_value": 1, "selected": true, "id": 1, "name": "Selected", "missing": false},
+                  {"numeric_value": 2, "id": 2, "name": "Not selected", "missing": false},
+                  {"numeric_value": 8, "id": 3, "name": "Skipped", "missing": true},
+                  {"numeric_value": 9, "id": 4, "name": "Not asked", "missing": true},
+                  {"numeric_value": null, "id": -1, "name": "No data", "missing": true}
               ],
               "description": "Which of the following coffee brands do you recognize? Check all that apply."
           }
@@ -261,27 +160,9 @@ function like:
                       },
                       {
                           "value": [
-                              {
-                                  "name": "San Francisco",
-                                  "combined_ids": [
-                                      "../870a2d/",
-                                      "../a8b0eb/",
-                                      "../dc444f/"
-                                  ]
-                              },
-                              {
-                                  "name": "Portland",
-                                  "combined_ids": [
-                                      "../8e6279/",
-                                      "../f775ab/"
-                                  ]
-                              },
-                              {
-                                  "name": "Chicago",
-                                  "combined_ids": [
-                                      "../6405c2/"
-                                  ]
-                              }
+                              {"name": "San Francisco", "combined_ids": ["../870a2d/", "../a8b0eb/","../dc444f/"]},
+                              {"name": "Portland", "combined_ids": ["../8e6279/", "../f775ab/"]},
+                              {"name": "Chicago", "combined_ids": ["../6405c2/" ]}
                           ]
                       }
                   ]
@@ -290,7 +171,7 @@ function like:
       }
 
 
-results in a multiple response variable with three responses. The
+...results in a multiple response variable with three responses. The
 "selected" state of the responses in the derived variable is an "OR" of
 the combined subvariables.
 
@@ -396,26 +277,15 @@ ensure uniqueness.
                     "map": {
                       "var1": {
                         "variable": "ca2-subvar-2",
-                        "references": {
-                          "alias": "subvar2",
-                          "name": "Subvar 2"
-                        }
+                        "references": {"alias": "subvar2", "name": "Subvar 2"}
                       },
                       "var0": {
                         "variable": "ca1-subvar-1",
-                        "references": {
-                          "alias": "subvar1",
-                          "name": "Subvar 1"
-                        }
+                        "references": {"alias": "subvar1", "name": "Subvar 1"}
                       }
                     }
                   },
-                  {
-                    "value": [
-                      "var1",
-                      "var0"
-                    ]
-                  }
+                  {"value": ["var1", "var0"]}
                 ]
               }
             ]
@@ -423,74 +293,29 @@ ensure uniqueness.
         },
         "CA2": {
           "subvariables": [
-            {
-              "alias": "ca2-subvar-1",
-              "name": "ca2-subvar-1"
-            },
-            {
-              "alias": "ca2-subvar-2",
-              "name": "ca2-subvar-2"
-            }
+            {"alias": "ca2-subvar-1", "name": "ca2-subvar-1"},
+            {"alias": "ca2-subvar-2", "name": "ca2-subvar-2"}
           ],
           "type": "categorical_array",
           "name": "cat array 2",
           "categories": [
-            {
-              "numeric_value": null,
-              "missing": false,
-              "id": 1,
-              "name": "yes"
-            },
-            {
-              "numeric_value": null,
-              "missing": false,
-              "id": 2,
-              "name": "no"
-            },
-            {
-              "numeric_value": null,
-              "missing": true,
-              "id": -1,
-              "name": "No Data"
-            }
+            {"numeric_value": null, "missing": false, "id": 1, "name": "yes"},
+            {"numeric_value": null, "missing": false, "id": 2, "name": "no"},
+            {"numeric_value": null, "missing": true, "id": -1, "name": "No Data"}
           ]
         },
         "CA1": {
           "subvariables": [
-            {
-              "alias": "ca1-subvar-1",
-              "name": "ca1-subvar-1"
-            },
-            {
-              "alias": "ca1-subvar-2",
-              "name": "ca1-subvar-2"
-            },
-            {
-              "alias": "ca1-subvar-3",
-              "name": "ca1-subvar-3"
-            }
+            {"alias": "ca1-subvar-1", "name": "ca1-subvar-1"},
+            {"alias": "ca1-subvar-2", "name": "ca1-subvar-2"},
+            {"alias": "ca1-subvar-3", "name": "ca1-subvar-3"}
           ],
           "type": "categorical_array",
           "name": "cat array 1",
           "categories": [
-            {
-              "numeric_value": null,
-              "missing": false,
-              "id": 1,
-              "name": "yes"
-            },
-            {
-              "numeric_value": null,
-              "missing": false,
-              "id": 2,
-              "name": "no"
-            },
-            {
-              "numeric_value": null,
-              "missing": true,
-              "id": -1,
-              "name": "No Data"
-            }
+            {"numeric_value": null, "missing": false, "id": 1, "name": "yes"},
+            {"numeric_value": null, "missing": false, "id": 2, "name": "no"},
+            {"numeric_value": null, "missing": true, "id": -1, "name": "No Data"}
           ]
         }
       }
@@ -623,6 +448,159 @@ ZCL function like:
 
 ...results in a private multiple\_response variable where the
 "Frequently" and "Always" categories are selected.
+
+
+Categorical Logic
+~~~~~~~~~~~~~~~~~
+
+Crunch provides logical operations like most languages do, but with a
+few enhancements.
+
+First, Crunch logic is actually based on *three* values so you can
+properly handle missing data. Many programming languages do this,
+too: SQL implements ``NULL`` in addition to ``TRUE`` and ``FALSE``,
+and general languages often have a similar ``None`` or ``NA`` value.
+
+In Crunch, rather than having a "boolean" type with true/false/null
+values, we instead allow *any* categorical variable to participate
+in logic. Categories which have the ``selected: true`` flag are
+"selected". Categories which have the ``missing: true`` flag are
+"missing", and any categories that lack both are "other".
+Any categorical variable that has at least one of each can function
+as a "logical variable".
+
+How can you obtain a logical variable? A few ways:
+
+- You can define it yourself simply by setting the ``selected: true``
+  flag on one or more categories when your data is uploaded. You are
+  probably already doing this for ``missing: true``.
+- You can use the `select_categories function <#Multiple-Response-Views>`__
+  to derive new Multiple Response variables.
+- `Logic Functions <#Logic-Functions>`__ like ``==``, ``>``, ``in``,
+  ``or``, and ``not`` all return logical variables.
+- You can use the "filter builder" in the web UI to quickly create
+  derived variables using the logic functions.
+
+What can you do with logical variables? A few things:
+
+-  You can use them as filters. Any rows where the logical variable
+   is "selected" match the filter and are retained; any that are
+   "other" or "missing" do not match and are filtered out.
+-  You can reduce them to just three values with the ``as_selected``
+   function. This lets you:
+
+   +  Calculate proportions and other statistics accurately for
+      Multiple Response analyses by properly representing and
+      propagating missingness.
+   +  Present views where only the "selected" slice is shown.
+   +  Represent the variable in clients as if it were true/false/NA;
+      the "rcrunch" library for R does this, transforming three-valued
+      Crunch variables into R logicals and back.
+-  You can use ``and`` and ``or`` to combine them.
+
+Logical Negation
+^^^^^^^^^^^^^^^^
+
+In addition to the typical ``not`` operation, Crunch provides a
+separate ``not_selected`` function. The difference is in how missing
+values are handled. For ``not``, missing values are left missing:
+
++---+-------+
+| A | not A |
++===+=======+
+| S | O     |
++---+-------+
+| O | S     |
++---+-------+
+| M | M     |
++---+-------+
+
+This is called the "relative complement" and is usually what you want
+when you invert a set of selected categories. For example, if you have
+a variable telling you who likes Brad Pitt, it probably has some
+"missing" entries, where it's unknown whether the respondent likes
+Brad Pitt or not. You often want the inverse of "who does not like
+Brad Pitt" to not turn those "missing" entries into "selected" ones.
+It also means that ``A != B`` has the same output as ``not(A == B)``.
+
+When filtering, however, you often want the "absolute complement".
+If you define a filter of those who like Brad Pitt, but then want
+to *exclude* those folks, you'll want the "selected" entries to invert
+to "other" so they are excluded. But you don't want the "missing"
+entries to stay "missing" or they will *also* be excluded. In this
+case, you want to use ``not_selected`` instead:
+
++---+----------------+
+| A | not_selected A |
++===+================+
+| S | O              |
++---+----------------+
+| O | S              |
++---+----------------+
+| M | S              |
++---+----------------+
+
+
+Binary Logic
+^^^^^^^^^^^^
+
+The ``and`` function behaves like most languages. Any "missing" value
+makes the output "missing":
+
++-----+---+---+---+
+| and | S | O | M |
++=====+===+===+===+
+| S   | S | O | M |
++-----+---+---+---+
+| O   | O | O | M |
++-----+---+---+---+
+| M   | M | M | M |
++-----+---+---+---+
+
+The ``or`` function behaves like SQL and R: any "selected"
+value wins, but any row *not matched by another case* where any of the
+input variables are missing stays missing.
+
++-----+---+---+---+
+| or  | S | O | M |
++=====+===+===+===+
+| S   | S | S | S |
++-----+---+---+---+
+| O   | S | O | M |
++-----+---+---+---+
+| M   | S | M | M |
++-----+---+---+---+
+
+Contrary to lots of other languages (like SQL and R), ``eq``
+returns "selected" if the two values are the same code, even if missing.
+For example, when comparing whether variable A is equal to missing
+-8, we want a -8 value in A to evaluate to "selected", not "missing".
+But other missings should result in a missing result.
+
++-------------+---+---+----+----+
+| eq          | 1 | 2 | 99 | -1 |
++=============+===+===+====+====+
+| missing -1  | M | M | M  | S  |
++-------------+---+---+----+----+
+| missing 99  | M | M | S  |    |
++-------------+---+---+----+----+
+| valid 2     | O | S |         |
++-------------+---+---+----+----+
+| valid 1     | S |             |
++-------------+---+---+----+----+
+
++-------------+---+---+----+----+
+| ne          | 1 | 2 | 99 | -1 |
++=============+===+===+====+====+
+| missing -1  | M | M | M  | O  |
++-------------+---+---+----+----+
+| missing 99  | M | M | O  |    |
++-------------+---+---+----+----+
+| valid 2     | S | O |         |
++-------------+---+---+----+----+
+| valid 1     | O |             |
++-------------+---+---+----+----+
+
 
 Text Analysis
 ~~~~~~~~~~~~~
@@ -904,21 +882,9 @@ same type with its missing values mapped to new codes
         "args": [
           {"variable": "varid"},
           {"value": [
-              {
-                  "reason": "Combined 1 and 2",
-                  "code": 1,
-                  "mapped_codes": [1, 2]
-              },
-              {
-                  "reason": "Only 3",
-                  "code": 2,
-                  "mapped_codes": [3]
-              },
-              {
-                  "reason": "No Data",
-                  "code": -1,
-                  "mapped_codes": [-1]
-              }
+              {"reason": "Combined 1 and 2", "code": 1, "mapped_codes": [1, 2]},
+              {"reason": "Only 3", "code": 2, "mapped_codes": [3]},
+              {"reason": "No Data", "code": -1, "mapped_codes": [-1]}
           ]}
         ]
       }
