@@ -333,10 +333,10 @@ like this:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b04948e2160_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f4fee160_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b04948e2160_JSON">
+<div class="tab-pane active section" id="14c0f4fee160_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -424,10 +424,10 @@ entity.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b04949484a8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f4f70d68_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b04949484a8_JSON">
+<div class="tab-pane active section" id="14c0f4f70d68_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -446,10 +446,10 @@ change in line 24.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b0494745630_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f5479828_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b0494745630_JSON">
+<div class="tab-pane active section" id="14c0f5479828_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/variables/&quot;</span><span class="p">,</span>
@@ -568,10 +568,10 @@ wish to make personal.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b0494864198_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f59b3b70_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b0494864198_JSON">
+<div class="tab-pane active section" id="14c0f59b3b70_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -663,10 +663,10 @@ return a 409 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b0494550668_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f4f26278_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b0494550668_JSON">
+<div class="tab-pane active section" id="14c0f4f26278_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://app.crunch.io/api/datasets/42d0a3/variables/42229f&quot;</span><span class="p">]</span>
 <span class="p">}</span>
@@ -840,16 +840,15 @@ aggregation. May be <code class="docutils literal"><span class="pre">null</span>
 <tr class="row-odd"><td>missing</td>
 <td>boolean</td>
 <td>If true, the given category is marked as “missing”, and
-is omitted from most calculations.</td>
+is omitted from most calculations. For logical operations,
+this makes the category “none/null/NA”.</td>
 </tr>
 <tr class="row-even"><td>selected</td>
 <td>boolean</td>
-<td>For categories in multiple response variables, those with
-<code class="docutils literal"><span class="pre">&quot;selected&quot;</span> <span class="pre">:</span> <span class="pre">true</span></code> which values correspond to the
-“response” being selected. If omitted, the category is
-treated as not selected. Multiple response variables must
-have at least one category marked as selected and may
-have more than one.</td>
+<td>If true, the given category is marked as “selected”. For
+logical operations, this makes the category “true”.
+Multiple response variables must have at least one
+category marked as selected and may have more than one</td>
 </tr>
 </tbody>
 </table>
@@ -999,10 +998,10 @@ which is done by PATCHing the array’s subvariable catalog;</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b049436f2e8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f576ada0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b049436f2e8_JSON">
+<div class="tab-pane active section" id="14c0f576ada0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;subvariables&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;http://app.crunch.io/api/datasets/d4db9831e08a4922b054e49b47a0045c/variables/00000c/subvariables/0008/&quot;</span><span class="p">,</span>
@@ -1063,10 +1062,10 @@ filters, or weights returns:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b04947db048_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f54e91d0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b04947db048_JSON">
+<div class="tab-pane active section" id="14c0f54e91d0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
     <span class="s2">&quot;valid_count&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
@@ -1272,10 +1271,10 @@ is typically a tree of simple rules logical-OR’d together.</li>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#2b0494e20c88_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#14c0f4ec29b0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="2b0494e20c88_JSON">
+<div class="tab-pane active section" id="14c0f4ec29b0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
     <span class="s2">&quot;Invalid&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
@@ -1361,7 +1360,7 @@ described above for public variables.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on May 18, 2018.<br/>
+      Last updated on May 19, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
