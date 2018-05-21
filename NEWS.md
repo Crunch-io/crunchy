@@ -1,4 +1,5 @@
 ### crunchy 0.2.3 (under development)
+* Support for all `shiny::bootstrapPage()` types directly: no need for a `crunch-`prefixed version of them. Now you can use `navbarPage`, `fillPage`, etc. just as you would for any `shiny` app, and when the `crunchy` package is loaded, Crunch authentication and other enhancements will automatically be loaded.
 
 ### crunchy 0.2.2
 
