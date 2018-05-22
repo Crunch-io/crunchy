@@ -464,10 +464,10 @@ and general languages often have a similar ``None`` or ``NA`` value.
 In Crunch, rather than having a "boolean" type with true/false/null
 values, we instead allow *any* categorical variable to participate
 in logic. Categories which have the ``selected: true`` flag are
-"selected". Categories which have the ``missing: true`` flag are
-"missing", and any categories that lack both are "other".
-Any categorical variable that has at least one of each can function
-as a "logical variable".
+"selected"; categories which have the ``missing: true`` flag are
+"missing"; any categories that lack both are "other".
+Any categorical variable that has at least one "selected" category
+can function as a "logical variable".
 
 How can you obtain a logical variable? A few ways:
 
