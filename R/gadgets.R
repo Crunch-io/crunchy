@@ -20,10 +20,10 @@ makeArrayGadget <- function(env = globalenv()){
 
 }
 
-#' @importFrom crunch crGET variables is.Categorical
+#' @importFrom crunch aliases crGET variables is.Categorical
 #' @importFrom miniUI gadgetTitleBar miniPage miniContentPanel miniTabPanel 
 #' miniTabstripPanel 
-#' @importFrom shiny actionButton checkboxGroupInput column fluidRow h6 HTML
+#' @importFrom shiny actionButton br checkboxGroupInput column fluidRow h3 HTML
 #'   isolate observe observeEvent radioButtons reactive reactiveValues renderUI
 #'   req selectInput shinyApp stopApp tags textInput uiOutput uiOutput
 #'   updateCheckboxGroupInput
@@ -61,10 +61,12 @@ makeArrayGadget <- function(env = globalenv()){
                             textInput("search", "Search")
                         )
                     ),
-                    h6("Select Subvariables"),
-                    fluidRow(
+                    h3("Select Subvariables"),
+                    fluidRow(style = "margin-bottom: 25px; margin-top: 25px;",
                         column(width = 4,
-                            actionButton("select_all", "Select All"),
+                            actionButton("select_all", "Select All")
+                        ),
+                        column(width = 4,
                             actionButton("clear_all", "Clear")
                         )
                     ),
@@ -84,8 +86,10 @@ makeArrayGadget <- function(env = globalenv()){
                 miniContentPanel(
                     textInput("obj_name", "Object Name (Optional)"),
                     textInput("var_name", "Variable Name"),
+                    br(),
                     radioButtons("array_type", "Variable Type",
                         choices = c("Categorical Array", "Multiple Response")),
+                    br(),
                     uiOutput("select_categories")
                 )
             )
@@ -95,7 +99,7 @@ makeArrayGadget <- function(env = globalenv()){
     server <- function (input, output, session) {
         ds <- reactive(dataset_list[[req(input$dataset)]])
         vars <- reactive ({
-            names(variables(ds()))[vapply(ds(), is.Categorical, FUN.VALUE = logical(1))]
+            aliases(variables(ds()))[vapply(ds(), is.Categorical, FUN.VALUE = logical(1))]
         })
         var_subset <- reactive(
             vars()[grep(input$search, vars())]
