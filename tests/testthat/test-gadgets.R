@@ -31,6 +31,8 @@ test_that("buildArrayCall", {
 
 test_that("makeArrayGadget passes shiny tests", {
     skip_on_cran()
+    test_output <- shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE)
+    print(test_output)
     shinytest::expect_pass(
         shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE, quiet = TRUE))
 })
