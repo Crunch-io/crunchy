@@ -32,7 +32,7 @@ test_that("buildArrayCall", {
 test_that("makeArrayGadget passes shiny tests", {
     skip_on_cran()
     shinytest::expect_pass(
-        shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE))
+        shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE, quiet = TRUE))
 })
 
 with_mock_crunch({
