@@ -35,17 +35,3 @@ shinyDataset <- function (...) {
     return(expr)
 }
 
-#' @export
-.getUserRecord <- function() {
-    user <- httpcache::uncached(crunch::me())
-    return(user@body)
-}
-
-#' @export
-getUser <- function(...) {
-    env <- parent.frame()
-    call <- match.call(...)
-    expr <- .buildReactiveExpr(".getUserRecord", call)
-    e <- substitute(reactive(expr, env=env))
-    return(eval(e, envir=env))
-}
