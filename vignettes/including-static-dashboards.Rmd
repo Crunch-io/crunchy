@@ -1,0 +1,103 @@
+---
+title: "Including Static Dashboards in Crunch"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Crunch allows you to host Shiny apps on the Crunch Jupyter server. Shiny apps are great, but they can be difficult to program, and can be very slow if not designed properly. [Flexdashboards](https://rmarkdown.rstudio.com/flexdashboard/) provide an easy-to-use alternative to Shiny apps. Instead of re-rendering dynamically based on the user action action, Flexdashboards are effectively static websites which only include data which was live at the time of rendering. This can be desirable both because they are much easier to write, and because you can test and validate the dashboard's behavior before it goes to the client. Additionally, since you have finer control over when a dashboard is rendered, you can include more computationally expensive operations like fitting a machine learning model, or drawing a complicated graphic. 
+
+You can host Flexdashboards on Crunch's Shiny infrastructure using Shiny's `includeHTML` function. What `includeHTML` does is add an HTML file to the shiny UI. If all you include in the shiny UI is the Flexdashboard html file, then the Shiny app effectively becomes a static site. 
+
+### Basic workflow
+Follow these steps to include a Flexdashboard in your Shiny app: 
+1) First create a new Rmarkdown document with a Flexdashboard output option. 
+1) Render the Rmd file into an html file
+1) Uploaded the rendered html file to your app's Jupyter folder
+1) In your shiny UI code add `includeHTML(<filename>)` to the `ui` object. Your `app.R` file might look something like this:
+
+```
+library(shiny)
+library(crunchy)
+# Render the dashboard
+ui <- fluidPage(
+    includeHTML("dashboard")
+)
+
+server <- function(input, output, session) {}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+### Conditional dashboards
+
+Another great use of Flexdashboards is easily produce different dashboards for different users. To do this we'll make use of Shiny's `renderUI` function to conditionally create a different UI for different types of users.
+
+```
+ui <- fluidPage(
+    uiOutput("dashboard")
+)
+```
+
+This creates the ui object, but most of the work is created on the server side. We can then use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. You can use this object to conditionally display different dashboards for different users like so: 
+
+```
+server <- function(input, output, session) {
+    user <- getUser()
+    output$dashboard <- renderUI({
+        if (grepl("acme.com$", user()$email)) {
+            includeHTML("acme_dashboard.html")
+        } else {
+            includeHTML("globex_dashboard.html")
+        }
+    })
+    
+}
+```
+What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. If their email isn't a match, they get the Globex dashboard. You can see a full example app in the `/inst` directory. 
+
+
+### Managing Dashboard Renders
+
+The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app rerenders the dashboard whenever clicks an action button. Note that for this to work you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. 
+
+```
+ui <- sidebarLayout(
+         sidebarPanel(
+             actionButton('refresh', 'Refresh Dashboard'),
+             textOutput("last_render")
+         ),
+    mainPanel(
+             uiOutput("dashboard")
+    )
+)
+
+server <- function(input, output, session) {
+    file <- reactivePoll(1000, session,
+        checkFunc = function() {
+            file.info("acme_dashboard.html")$ctime
+            }, 
+        valueFunc = function() {
+            list(path = "acme_dashboard.html",
+                time = Sys.time())
+            })
+    observeEvent(input$refresh, rmarkdown::render("acme_dashboard.Rmd"))
+    output$last_render <- renderText(paste("Last Render:", file()$time))
+    output$dashboard <- renderUI({
+            includeHTML(file()$path)
+    })
+    
+    
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+### Conclusion
+
+Flexdashboards provide a simple way to communicate with your users. By using the Crunch Shiny infrastructure you can host and distribute static dashboards in the same way as Shiny apps. This allows you the power to customize the behaviour Crunch Dashboards without needing to worry about some of the complexity which comes along with Shiny apps. 
