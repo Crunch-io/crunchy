@@ -1,7 +1,6 @@
 
 library(shiny)
 library(crunchy)
-library(crunch)
 # Render the dashboard
 #rmarkdown::render("dashboard.Rmd")
 ui <- fluidPage(
