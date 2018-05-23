@@ -14,8 +14,6 @@
 #' - email: the user email
 #' - id: the user's crunch id
 #' @export
-#'
-#' @examples
 shinyUser <- function (...) .buildReactiveExpr(".getUserRecord", ...)
 
 #' @export
