@@ -16,7 +16,7 @@ Basic concepts
 There are a number of system folders that exist with every dataset created.
 These system folders cannot be renamed, moved or deleted.
 
-* **Root folder**: The root folder is the top level folder where all other subfolders will be created by dataset editors. All the variables and subfolders here will be public universal for all users with access to the dataset. It is only possible to place public varibles under this tree.
+* **Root folder**: The root folder is the top level folder where all other subfolders will be created by dataset editors. All the variables and subfolders here will be publicly accessible for all users with access to the dataset. It is only possible to place public variables under this tree.
 * **Hidden variables folder**: This folder is a parallel top level folder separate from the root folder, which allows dataset editors to hide variables out of the public Root folder. This tree structure is only accessible for dataset editors.
 * **Variables can only be in one folder**: Variables can be in any of the top level system folders or in any subfolder of them at any given time, but they can never be in two folders at the same time.
 
