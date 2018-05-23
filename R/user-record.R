@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-getUser <- function(...) {
+shinyUser <- function(...) {
     env <- parent.frame()
     call <- match.call(...)
     expr <- .buildReactiveExpr(".getUserRecord", call)
