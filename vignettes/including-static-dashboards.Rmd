@@ -63,7 +63,7 @@ What this does is check the user's email address to identify clients from one co
 
 ### Managing Dashboard Renders
 
-The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app rerenders the dashboard whenever clicks an action button. Note that for this to work you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. 
+The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app re-renders the dashboard whenever clicks an action button. Note that for this to work you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. 
 
 ```
 ui <- sidebarLayout(
@@ -100,4 +100,4 @@ shinyApp(ui = ui, server = server)
 
 ### Conclusion
 
-Flexdashboards provide a simple way to communicate with your users. By using the Crunch Shiny infrastructure you can host and distribute static dashboards in the same way as Shiny apps. This allows you the power to customize the behaviour Crunch Dashboards without needing to worry about some of the complexity which comes along with Shiny apps. 
+Flexdashboards provide a simple way to communicate with your users. By using the Crunch Shiny infrastructure you can host and distribute static dashboards in the same way as Shiny apps. This allows you the power to customize the behavior Crunch Dashboards without needing to worry about some of the complexity which comes along with Shiny apps. 

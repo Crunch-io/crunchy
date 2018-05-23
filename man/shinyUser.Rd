@@ -6,6 +6,9 @@
 \usage{
 shinyUser(...)
 }
+\arguments{
+\item{...}{Additional arguments passed to `.buildReactiveExpr`}
+}
 \value{
 A list with the following entries:
 - id_method: the method used to authenticate the user, for instance oauth
@@ -18,6 +21,6 @@ A list with the following entries:
 }
 \description{
 This function returns information about the current user of the shiny app. This
-is useful if you want to change the behaviour of the app dependeing on who is 
+is useful if you want to change the behaviour of the app dependeing on who is
 viewing the app.
 }
