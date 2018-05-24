@@ -4,23 +4,18 @@
 \alias{shinyUser}
 \title{Return Crunch User Information}
 \usage{
-shinyUser(...)
+shinyUser(text_error = TRUE)
 }
 \arguments{
-\item{...}{Additional arguments passed to `.buildReactiveExpr`}
+\item{text_error}{If TRUE the function will return a character vector instead of
+erroring. This is useful for handling the error in your shiny app.}
 }
 \value{
-A list with the following entries:
-- id_method: the method used to authenticate the user, for instance oauth
-- preferneces: various preferences used by the Crunch web app
-- name: the user's name
-- account_permissions: the users permissions, for instance whether they can create datasets
-- id_provider: If id_method = 'oauth', the authentication provider
-- email: the user email
-- id: the user's crunch id
+A user record if the user is logged in, otherwise a character vector or error
 }
 \description{
 This function returns information about the current user of the shiny app. This
-is useful if you want to change the behaviour of the app dependeing on who is
-viewing the app.
+is useful if you want to change the behavior of the app depending on who is
+viewing the app. You can access elements of this record with crunch functions
+like `name()` or `email().`
 }

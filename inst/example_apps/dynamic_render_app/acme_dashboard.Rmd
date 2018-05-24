@@ -15,7 +15,7 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-Sys.time()
+plot(mtcars$cyl, mtcars$wt)
 ```
 
 Column {data-width=350}
@@ -24,12 +24,13 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
-
+hist(mtcars$mpg)
 ```
 
 ### Chart C
 
 ```{r}
-
+Sys.time()
+lm(mpg ~ wt + cyl, data = mtcars)
 ```
 

@@ -1,8 +1,5 @@
-
-library(shiny)
 library(crunchy)
-# Render the dashboard
-#rmarkdown::render("dashboard.Rmd")
+
 ui <- sidebarLayout(
          sidebarPanel(
              actionButton('refresh', 'Refresh Dashboard'),
@@ -20,17 +17,16 @@ server <- function(input, output, session) {
             }, 
         valueFunc = function() {
             list(path = "acme_dashboard.html",
-                time = Sys.time())
+                time = Sys.time()
+                )
             })
     observeEvent(input$refresh, rmarkdown::render("acme_dashboard.Rmd"))
     output$last_render <- renderText(paste("Last Render:", file()$time))
     output$dashboard <- renderUI({
+        if (inherits(shinyUser(), "UserEntity")){
             includeHTML(file()$path)
+        }
     })
-    
-    
 }
 
-# Run the application 
 shinyApp(ui = ui, server = server)
-
