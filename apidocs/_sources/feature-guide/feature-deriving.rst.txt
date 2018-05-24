@@ -481,6 +481,49 @@ How can you obtain a logical variable? A few ways:
 - You can use the "filter builder" in the web UI to quickly create
   derived variables using the logic functions.
 
+Given a variable such as:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:entity",
+          "self": "https://app.crunch.io/api/datasets/3ad42c/variables/000301/",
+          "body": {
+              "name": "Height",
+              "alias": "height",
+              "type": "numeric",
+          }
+      }
+
+
+POST'ing to the private variables catalog a Shoji Entity containing a
+ZCL function like:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:entity",
+          "body": {
+              "name": "Tall people",
+              "description": "People who are taller than 200cm",
+              "alias": "tall",
+              "derivation": {
+                  "function": ">",
+                  "args": [
+                      {"variable": "https://app.crunch.io/api/datasets/3ad42c/variables/000301/"},
+                      {"value": 200}
+                  ]
+              }
+          }
+      }
+
+
+...results in a private logical variable with three categories: "Selected", "Other", and "No Data".
+
 What can you do with logical variables? A few things:
 
 -  You can use them as filters. Any rows where the logical variable
