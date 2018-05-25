@@ -189,15 +189,16 @@ relying on any order of the "metadata" object.
 Additionally, an optional "hidden" member is allowed, which receives a Shoji
 Order object just like the "order" member. This structure will be used to
 construct the Hidden folder subfolders and the variables present inside it
-will be considered hidden variables. Any variable that has been defined
-by having `discarded: true` will be automatically placed at the top level
-of the hidden order structure.
+will be considered hidden variables.
+
+Any variable that has been defined with ``"discarded": true`` will
+automatically be appended to the Hidden folder order structure generated
+from the "order" member. Defining a variable as ``"discarded": true`` is
+a legacy option that cannot be combined with the "hidden" member.
 
 Following the Variable Folders rules, a variable cannot be in two folders
 simultaneously, so the server will raise validation errors if any variable is
-present in both the public order and the hidden order (Note, that discarded
-variables cannot be in the public order because they will be automatically
-added on the hidden order)
+present in both the public order and the hidden order.
 
 It is possible to create derived variables using any of the :doc:`derivation
 functions available </feature-guide/feature-deriving>` simultaneously in one
@@ -427,11 +428,13 @@ attribute's default value instead.
 An empty ``order`` for the dataset will be handled as if no order was
 passed in.
 
-An empty ``hidden`` for the dataset, will assume a flat order for all the
-variables that have ``discarded: true`` in their definitions.
+An empty ``hidden`` for the dataset will assume that there are no
+hidden variables.
 
 All variables can only be part of one of the orders (``order`` or ``hidden``)
 
+Defining a variable as ``"discarded": true`` is a legacy option that
+cannot be combined with the ``hidden`` order for dataset.
 
 2. Add row data
 ^^^^^^^^^^^^^^^
@@ -572,7 +575,7 @@ Several things to note:
    there are no columns in the CSV that are not defined in the metadata.
 -  For internal variables, such as a case identifier in this example,
    that you don't want to be visible in the UI, you can add them as
-   "hidden" from the beginning by including ``"discarded": "true"`` in
+   "hidden" from the beginning by including ``"discarded": true`` in
    their definition, as in the example of "caseid".
 -  Missing values
 
