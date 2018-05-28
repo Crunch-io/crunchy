@@ -401,6 +401,53 @@ Behaves sames as PATCH.
 
 .. _endpoint-variables-weights:
 
+
+Personal Variable Order Catalog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``/datasets/{id}/variables/personal/variables/``
+
+The personal variable order comes accompanied with a catalog containing
+a variables present in the order's graph. This should provide access to
+metadata of those variables.
+
+This catalog is read-only, and has the same shape as the main variables
+catalog.
+
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:catalog",
+          "self": "https://app.crunch.io/api/datasets/5ee0a0/variables/personal/variables/",
+          "specification": "https://app.crunch.io/api/specifications/variables/",
+          "index": {
+              "a77d9f/": {
+                  "name": "Personal variable",
+                  "derived": false,
+                  "discarded": false,
+                  "alias": "personalvar",
+                  "type": "numeric",
+                  "id": "a77d9f",
+                  "notes": "",
+                  "description": ""
+              },
+              "aad4ad/": {
+                  "name": "Private variable",
+                  "derived": true,
+                  "discarded": false,
+                  "alias": "privvar",
+                  "notes": "",
+                  "type": "text",
+                  "id": "aad4ad",
+                  "description": ""
+              }
+          }
+      }
+
+
 Weights
 ~~~~~~~
 
