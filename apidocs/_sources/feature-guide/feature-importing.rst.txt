@@ -434,7 +434,7 @@ hidden variables.
 All variables can only be part of one of the orders (``order`` or ``hidden``)
 
 Defining a variable as ``"discarded": true`` is a legacy option that
-cannot be combined with the ``hidden`` order for dataset.
+cannot be combined with the ``hidden`` order for the dataset.
 
 2. Add row data
 ^^^^^^^^^^^^^^^
@@ -575,8 +575,8 @@ Several things to note:
    there are no columns in the CSV that are not defined in the metadata.
 -  For internal variables, such as a case identifier in this example,
    that you don't want to be visible in the UI, you can add them as
-   "hidden" from the beginning by including ``"discarded": true`` in
-   their definition, as in the example of "caseid".
+   "hidden" from the beginning by including them in the "hidden" order
+   for the dataset, (see "caseid" in this example).
 -  Missing values
 
    -  Variables with categories (categorical, multiple\_response,
