@@ -408,8 +408,8 @@ Personal Variable Order Catalog
 ``/datasets/{id}/variables/personal/variables/``
 
 The personal variable order comes accompanied with a catalog containing
-a variables present in the order's graph. This should provide access to
-metadata of those variables.
+the variables present in the order's graph. This provides access to the
+metadata for those variables.
 
 This catalog is read-only, and has the same shape as the main variables
 catalog.
