@@ -18,7 +18,7 @@
 #'     })
 #' })
 #' }
-shinyDataset <- function (...) .buildReactiveExpr('loadDataset', ...)
+shinyDataset <- function (...) .buildReactiveExpr("loadDataset", ...)
 
 .buildReactiveExpr <- function (FUN, ...) {
     cal <- match.call(expand.dots=TRUE)[-1]

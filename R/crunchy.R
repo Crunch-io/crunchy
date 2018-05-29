@@ -1,3 +1,5 @@
+#' @importFrom httpcache uncached
+#' @importFrom crunch crGET
 .onLoad <- function (lib, pkgname="crunchy") {
     injectCrunchAssets()
     ## Hack: make sure the request to the API root inside of me() is uncached
