@@ -2,20 +2,23 @@
 % Please edit documentation in R/user-record.R
 \name{shinyUser}
 \alias{shinyUser}
-\title{Return Crunch User Information}
+\alias{checkAuthentication}
+\title{Get Crunch user details and confirm authentication}
 \usage{
-shinyUser(text_error = TRUE)
-}
-\arguments{
-\item{text_error}{If TRUE the function will return a character vector instead of
-erroring. This is useful for handling the error in your shiny app.}
+shinyUser()
+
+checkAuthentication()
 }
 \value{
 A user record if the user is logged in, otherwise a character vector or error
 }
 \description{
-This function returns information about the current user of the shiny app. This
+`shinyUser()` returns information about the current user of the Shiny app. This
 is useful if you want to change the behavior of the app depending on who is
-viewing the app. You can access elements of this record with crunch functions
+viewing the app. You can access elements of this record with Crunch functions
 like `name()` or `email().`
+}
+\details{
+`checkAuthentication()` is an alias for `shinyUser()` for when you only care
+about ensuring that the current user is authenticated with Crunch.
 }

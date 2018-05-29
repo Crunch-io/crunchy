@@ -7,15 +7,17 @@ ui <- fluidPage(
 server <- function(input, output, session) {
     user <- shinyUser()
     output$dashboard <- renderUI({
-        if (is.character(user())) {
-            h1(user())
-        } else if (grepl("acme.com$", crunch:::email(user()))) {
+        ## TODO: email isn't exported? Let's fix that; ::: is no good.
+        current_user <- crunch:::email(user())
+        if (grepl("acme.com$", current_user)) {
             includeHTML("acme_dashboard.html")
-        } else if (grepl("globex.com$", crunch:::email(user()))) {
+        } else if (grepl("globex.com$", current_user)) {
             includeHTML("globex_dashboard.html")
-        } 
+        } else {
+            ## TODO: something else?
+        }
     })
 }
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)
