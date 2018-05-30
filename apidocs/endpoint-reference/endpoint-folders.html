@@ -111,17 +111,16 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Variable Folders</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basic-concepts">Basic concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#root">Root</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subfolder-endpoint">Subfolder endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-folders">Creating folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-folders-and-variables">Moving folders and variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-folders">Deleting folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trash">Trash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hidden">Hidden</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#root">Root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subfolder-endpoint">Subfolder endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#folder-payload">Folder payload</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-folders">Creating folders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#moving-folders-and-variables">Moving folders and variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#reordering-a-folder-s-contents">Reordering a folder’s contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deleting-folders">Deleting folders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#trash">Trash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hidden">Hidden</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
@@ -164,9 +163,8 @@ These system folders cannot be renamed, moved or deleted.</p>
 <li><strong>Variables can only be in one folder</strong>: Variables can be in any of the top level system folders or in any subfolder of them at any given time, but they can never be in two folders at the same time.</li>
 </ul>
 </div>
-</div>
 <div class="section" id="root">
-<h1>Root<a class="headerlink" href="#root" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Root<a class="headerlink" href="#root" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/</span></code></p>
 <p>Returns a Shoji catalog containing the root folder of the hierarchy.</p>
 <p>When a dataset is created without an order specified, there will not
@@ -176,13 +174,12 @@ contain a flat list of all existing dataset variables.</p>
 showing any ungrouped variables in addition to the top-level folders.</p>
 </div>
 <div class="section" id="subfolder-endpoint">
-<h1>Subfolder endpoint<a class="headerlink" href="#subfolder-endpoint" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Subfolder endpoint<a class="headerlink" href="#subfolder-endpoint" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/{folder_id}/</span></code></p>
 <p>All subfolder URLs follow straight from the root folder URL regardless
 of their nested location in the variable folders tree.</p>
-</div>
-<div class="section" id="folder-payload">
-<h1>Folder payload<a class="headerlink" href="#folder-payload" title="Permalink to this headline"> 🔗</a></h1>
+<p>Folder payload
+-~~~~~~~~~~~~~</p>
 <p>All folders types return a similar Shoji catalog with the following members:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -227,10 +224,10 @@ subfolders on the given folder.</td>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#153ec6814b38_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#152a5463c278_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="153ec6814b38_JSON">
+<div class="tab-pane active section" id="152a5463c278_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5ee0a0/folders/&quot;</span><span class="p">,</span>
@@ -281,7 +278,7 @@ subfolders on the given folder.</td>
 </div>
 </div></div>
 <div class="section" id="creating-folders">
-<h1>Creating folders<a class="headerlink" href="#creating-folders" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Creating folders<a class="headerlink" href="#creating-folders" title="Permalink to this headline"> 🔗</a></h2>
 <p>To create a subfolder, clients must POST to the target folder (which will be the
 parent of the new subfolder).</p>
 <p>The payload must contain a <cite>body</cite> member which indicates only the name of
@@ -298,10 +295,10 @@ contains.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#153ec5fa8dd8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#152a53c002b0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="153ec5fa8dd8_JSON">
+<div class="tab-pane active section" id="152a53c002b0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="s2">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
    <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -322,7 +319,7 @@ contains.</p>
 </div>
 </div></div>
 <div class="section" id="moving-folders-and-variables">
-<h1>Moving folders and variables<a class="headerlink" href="#moving-folders-and-variables" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Moving folders and variables<a class="headerlink" href="#moving-folders-and-variables" title="Permalink to this headline"> 🔗</a></h2>
 <p>In order to move folders or variables from one location to another, their URL
 must be included in the <cite>index</cite> catalog sent via a PATCH request to the
 destination folder.</p>
@@ -333,7 +330,7 @@ move a folder or a variable that conflicts with the existing children of it,
 will return a 409 response from the server.</p>
 </div>
 <div class="section" id="reordering-a-folder-s-contents">
-<h1>Reordering a folder’s contents<a class="headerlink" href="#reordering-a-folder-s-contents" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Reordering a folder’s contents<a class="headerlink" href="#reordering-a-folder-s-contents" title="Permalink to this headline"> 🔗</a></h2>
 <p>To reorder the elements inside a folder, it’s necessary to make a PATCH request
 to the folder’s endpoint containing the list with the elements from the index
 in the desired order.</p>
@@ -342,7 +339,7 @@ exist in the catalog’s index. New elements cannot be included just by adding
 them on the <cite>graph</cite>.</p>
 </div>
 <div class="section" id="deleting-folders">
-<h1>Deleting folders<a class="headerlink" href="#deleting-folders" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Deleting folders<a class="headerlink" href="#deleting-folders" title="Permalink to this headline"> 🔗</a></h2>
 <p>Subfolders can be deleted by performing a DELETE request on their endpoints.
 It will effectively move the folder to the trash folder.</p>
 <p>When deleting a folder, all the children will also be moved to the trash
@@ -353,7 +350,7 @@ but only makes them unavailable from the folder hierarchy.</p>
 folder, including all variables &amp; related data contained in that folder.</p>
 </div>
 <div class="section" id="trash">
-<h1>Trash<a class="headerlink" href="#trash" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Trash<a class="headerlink" href="#trash" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/trash/</span></code></p>
 <p>The trash folder is a special-purpose folder that lives outside the
 regular variable folders tree.</p>
@@ -366,7 +363,7 @@ from the trash, hard-deleting the folders, variables, and related data.</p>
 24-48 hours.</p>
 </div>
 <div class="section" id="hidden">
-<h1>Hidden<a class="headerlink" href="#hidden" title="Permalink to this headline"> 🔗</a></h1>
+<h2>Hidden<a class="headerlink" href="#hidden" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/folders/hidden/</span></code></p>
 <p>The hidden folder is a special-purpose folder that lives outside the
 regular variable folders tree.</p>
@@ -374,6 +371,7 @@ regular variable folders tree.</p>
 should be placed in the hidden folder.</p>
 <p>Hidden folder membership will eventually replace the deprecated
 <code class="docutils literal"><span class="pre">discarded</span></code> attribute on a variable.</p>
+</div>
 </div>
 
 
@@ -389,7 +387,7 @@ should be placed in the hidden folder.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on May 29, 2018.<br/>
+      Last updated on May 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>
