@@ -31,11 +31,11 @@ server <- function(input, output, session) {}
 # Run the application 
 shinyApp(ui = ui, server = server)
 ```
-Note that we haven't included any authentication in this app which means that users who do not have access to a dataset could theoretically access it. The next step is to check that the user has access to Crunch and to display dashboards to users based on which company they are from.  
+Note that we haven't included any authentication in this app which means that users who do not have access to a dataset could theoretically access it. The next step is to check that the user is logged into Crunch. 
 
-### Conditional dashboards and user identification
+### Check User Authentication
 
-Another great use of Flexdashboards is easily produce different dashboards for different users. To do this we'll make use of Shiny's `renderUI` function to conditionally create a different UI for different types of users.
+Crunchy includes a `shinyUser()` function which lets us display different content to the user depending on whether they are logged into Crunch of not. To do this we'll make use of Shiny's `renderUI` function to conditionally create a different UI for different types of users.
 
 ```
 ui <- fluidPage(
@@ -43,7 +43,26 @@ ui <- fluidPage(
 )
 ```
 
-This creates the ui object, but most of the work is going to be done on the server side. We can use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. By default `shinyUser()` will return a character string if the user is not logged in, which makes it easy to include a message in the app. You can use this object to conditionally display different dashboards for different users like so: 
+This creates the UI object, but most of the work is going to be done on the server side. We can use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. You can use this object to conditionally display different dashboards for different users like so: 
+
+```
+server <- function(input, output, session) {
+    user <- shinyUser()
+    output$dashboard <- renderUI({
+        if (is.character(email(user()))) {
+            includeHTML("acme_dashboard.html")
+        } else {
+        h1("You are not logged in, please visit app.crunch.io to login")
+        }
+    })
+}
+```
+
+This prevents unauthorized users from seeing the rendered dashboard, and directs them to the crunch website which will refresh their authentication cookie. 
+
+### Conditional dashboards and user identification
+
+We can take this pattern one step further to show different users different dashboards. We use the same UI object, but check the user's email and change the displayed HTML file based on that email. 
 
 ```
 server <- function(input, output, session) {
@@ -51,11 +70,13 @@ server <- function(input, output, session) {
     output$dashboard <- renderUI({
         if (is.character(user())) {
             h1(user())
-        } else if (grepl("acme.com$", crunch:::email(user()))) {
+        } else if (grepl("acme.com$", email(user()))) {
             includeHTML("acme_dashboard.html")
-        } else if (grepl("globex.com$", crunch:::email(user()))) {
+        } else if (grepl("globex.com$", email(user()))) {
             includeHTML("globex_dashboard.html")
-        } 
+        } else {
+            h1("You are not logged in, please visit app.crunch.io to login")
+        }
     })
 }
 ```
@@ -100,7 +121,7 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
-A full example can be found (on Github)[https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/dynamic_render_app]
+A full example can be found [on Github](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/dynamic_render_app)
 
 ### Conclusion
 
