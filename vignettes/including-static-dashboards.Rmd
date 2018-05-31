@@ -9,22 +9,22 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Crunch allows you to host Shiny apps on the Crunch Jupyter server. Shiny apps are great, but they can be difficult to program, and can be very slow if not designed properly. [Flexdashboards](https://rmarkdown.rstudio.com/flexdashboard/) provide an easy-to-use alternative to Shiny apps. Instead of re-rendering dynamically based on the user action, Flexdashboards are effectively static websites which only include data which is live at the time of rendering. This can be desirable both because they are much easier to write, and because you can test and validate the dashboard's behavior before it goes to the client. Additionally, since you have finer control over when a dashboard is rendered, you can include more computationally expensive operations like fitting a machine learning model without affecting user experience.
+Crunch allows you to host Shiny apps on the Crunch Jupyter server. Shiny apps are great, but they can be difficult to program, and can be very slow if not designed properly. [Flexdashboards](https://rmarkdown.rstudio.com/flexdashboard/) provide an easy-to-use alternative to Shiny apps. Instead of re-rendering dynamically based on the user action, Flexdashboards are effectively static websites that only include data which is live at the time of rendering. This can be desirable both because they are much easier to write, and because you can test and validate the dashboard's behavior before it goes to the client. Additionally, since you have more control over when the dashboard is rendered, you can include more computationally expensive operations like fitting a machine learning model without affecting user experience.
 
 You can host Flexdashboards on Crunch's Shiny infrastructure using Shiny's `includeHTML` function. What `includeHTML` does is add an HTML file to the shiny UI. If all you include in the shiny UI is the Flexdashboard html file, then the Shiny app effectively becomes a static site. 
 
 ### Basic workflow
 Follow these steps to include a Flexdashboard in your Shiny app: 
-1) First create a new Rmarkdown document with a Flexdashboard output option. 
+
+1) First create a new Rmarkdown document with a Flexdashboard output option
 1) Render the Rmd file into an html file
-1) Uploaded the rendered html file to your app's Jupyter folder
+1) Upload the rendered html file to your app's Jupyter folder
 1) In your shiny UI code add `includeHTML(<filename>)` to the `ui` object. Your `app.R` file might look something like this:
 
 ```
 library(crunchy)
 ui <- fluidPage(
-    includeHTML("dashboard")
-)
+    includeHTML("dashboard"))
 
 server <- function(input, output, session) {}
 
@@ -52,7 +52,7 @@ server <- function(input, output, session) {
         if (is.character(email(user()))) {
             includeHTML("acme_dashboard.html")
         } else {
-        h1("You are not logged in, please visit app.crunch.io to login")
+            h1("You are not logged in, please visit app.crunch.io to login")
         }
     })
 }
@@ -68,9 +68,7 @@ We can take this pattern one step further to show different users different dash
 server <- function(input, output, session) {
     user <- shinyUser()
     output$dashboard <- renderUI({
-        if (is.character(user())) {
-            h1(user())
-        } else if (grepl("acme.com$", email(user()))) {
+        if (grepl("acme.com$", email(user()))) {
             includeHTML("acme_dashboard.html")
         } else if (grepl("globex.com$", email(user()))) {
             includeHTML("globex_dashboard.html")
@@ -80,7 +78,7 @@ server <- function(input, output, session) {
     })
 }
 ```
-What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. If they are not logged into Crunch, they will get a message instructing them to log in. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R"), or by clicking the "Run App" button in RStudio. 
+What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. If they are not logged into Crunch, they will get a message instructing them to log in. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R")`, or by clicking the "Run App" button in RStudio. 
 
 ### Managing Dashboard Renders
 
@@ -121,7 +119,7 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
-A full example can be found [on Github](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/dynamic_render_app)
+A full example can be found [on Github.](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/dynamic_render_app)
 
 ### Conclusion
 
