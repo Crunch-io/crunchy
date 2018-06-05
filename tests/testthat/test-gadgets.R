@@ -30,6 +30,9 @@ test_that("buildArrayCall", {
 })
 
 test_that("makeArrayGadget passes shiny tests", {
+    # Shinytest is failing on Travis, which looks like a shinytest bug
+    # TODO Remove when https://github.com/rstudio/shinytest/issues/198 is resolved
+    skip_on_travis()
     skip_on_cran()
     test_output <- shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE)
     print(test_output)
