@@ -35,20 +35,25 @@ its variables catalog.
           "value": "https://app.crunch.io/api/progress/5be82a/"
       }
 
+Please note that in the ``args`` array above, the right key variable comes
+*before* the left key variable.
 
 A successful request returns 202 Continue status with a progress
 resource in the response body; poll that to track the status of the
 asynchronous job that adds the data to your dataset.
 
-Currently Crunch only supports left joins: all rows of the left
-(current) dataset will be kept, and only rows from the right (incoming)
-dataset that have a key value present in the left dataset will be
-brought in. Rows in the left dataset that do not have a corresponding
-row in the right dataset will be filled with missing values for the
-incoming variables.
+Currently Crunch only supports left joins: all rows of the left (current)
+dataset will be kept, and only rows from the right (incoming) dataset that have
+a key value present in the left dataset will be brought in. If the value of the
+join key in the left dataset matches multiple values in the right dataset, only
+the first row matched in the right dataset will be used in the join. Rows in the
+left dataset that do not have a corresponding row in the right dataset will be
+filled with missing values for the incoming variables. If there are duplicate
+join key values in the left dataset, then the same row from the right dataset
+will be used multiple times in the join.
 
-The join key must be of type "numeric" or "text", must be the same type
-in both datasets, and must have unique values within each dataset.
+The join key must be of type "numeric" or "text" and must be the same type in
+both datasets.
 
 Joining a subset of variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

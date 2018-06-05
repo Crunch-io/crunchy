@@ -133,10 +133,10 @@ its variables catalog.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cf0c7b56d8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#148202bd44e0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cf0c7b56d8_HTTP">
+<div class="tab-pane active section" id="148202bd44e0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -165,17 +165,22 @@ its variables catalog.</p>
 </div>
 </div>
 </div>
-</div><p>A successful request returns 202 Continue status with a progress
+</div><p>Please note that in the <code class="docutils literal"><span class="pre">args</span></code> array above, the right key variable comes
+<em>before</em> the left key variable.</p>
+<p>A successful request returns 202 Continue status with a progress
 resource in the response body; poll that to track the status of the
 asynchronous job that adds the data to your dataset.</p>
-<p>Currently Crunch only supports left joins: all rows of the left
-(current) dataset will be kept, and only rows from the right (incoming)
-dataset that have a key value present in the left dataset will be
-brought in. Rows in the left dataset that do not have a corresponding
-row in the right dataset will be filled with missing values for the
-incoming variables.</p>
-<p>The join key must be of type “numeric” or “text”, must be the same type
-in both datasets, and must have unique values within each dataset.</p>
+<p>Currently Crunch only supports left joins: all rows of the left (current)
+dataset will be kept, and only rows from the right (incoming) dataset that have
+a key value present in the left dataset will be brought in. If the value of the
+join key in the left dataset matches multiple values in the right dataset, only
+the first row matched in the right dataset will be used in the join. Rows in the
+left dataset that do not have a corresponding row in the right dataset will be
+filled with missing values for the incoming variables. If there are duplicate
+join key values in the left dataset, then the same row from the right dataset
+will be used multiple times in the join.</p>
+<p>The join key must be of type “numeric” or “text” and must be the same type in
+both datasets.</p>
 <div class="section" id="joining-a-subset-of-variables">
 <h2>Joining a subset of variables<a class="headerlink" href="#joining-a-subset-of-variables" title="Permalink to this headline"> 🔗</a></h2>
 <p>To select certain variables to bring over from the right dataset,
@@ -184,10 +189,10 @@ described above:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cf0be5fa58_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#148202498b70_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cf0be5fa58_HTTP">
+<div class="tab-pane active section" id="148202498b70_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -243,10 +248,10 @@ existing filter entity URL (from the right-side dataset), wrapped as
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14cf0c52b358_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#1482029e34a8_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14cf0c52b358_HTTP">
+<div class="tab-pane active section" id="1482029e34a8_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="n">dataset_id</span><span class="p">}</span><span class="o">/</span><span class="n">variables</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
