@@ -13,7 +13,7 @@ server <- function(input, output, session) {
         } else if (grepl("globex.com$", current_user)) {
             includeHTML("globex_dashboard.html")
         } else {
-            h1("You are not logged in, please visit app.crunch.io to login")
+            h1("You do not have access to this dashboard, please contact your dataset administrator.")
         }
     })
 }
