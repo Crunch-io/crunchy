@@ -21,7 +21,7 @@ Follow these steps to include a Flexdashboard in your Shiny app:
 1) Upload the rendered html file to your app's Jupyter folder
 1) In your shiny UI code add `includeHTML(<filename>)` to the `ui` object. Your `app.R` file might look something like this:
 
-```
+``` {r, eval = FALSE}
 library(crunchy)
 ui <- fluidPage(
     includeHTML("dashboard"))
@@ -37,7 +37,7 @@ Note that we haven't included any authentication in this app which means that us
 
 Crunchy includes a `shinyUser()` function which lets us display different content to the user depending on whether they are logged into Crunch of not. To do this we'll make use of Shiny's `renderUI` function to conditionally create a different UI for different types of users.
 
-```
+``` {r, eval = FALSE}
 ui <- fluidPage(
     uiOutput("dashboard")
 )
@@ -45,55 +45,58 @@ ui <- fluidPage(
 
 This creates the UI object, but most of the work is going to be done on the server side. We can use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. You can use this object to conditionally display different dashboards for different users like so: 
 
-```
+``` {r, eval = FALSE}
 server <- function(input, output, session) {
     user <- shinyUser()
     output$dashboard <- renderUI({
         if (is.character(email(user()))) {
             includeHTML("acme_dashboard.html")
         } else {
-            h1("You are not logged in, please visit app.crunch.io to login")
+            h1("You do not have access to this dashboard, please contact your dataset administrator.")
+
         }
     })
 }
 ```
 
-This prevents unauthorized users from seeing the rendered dashboard, and directs them to the crunch website which will refresh their authentication cookie. 
+This prevents unauthorized users from seeing the rendered dashboard. If the user isn't logged into 
+crunch, they will see a red error message, which you can handle using `shiny::validate()`. 
 
 ### Conditional dashboards and user identification
 
 We can take this pattern one step further to show different users different dashboards. We use the same UI object, but check the user's email and change the displayed HTML file based on that email. 
 
-```
+``` {r eval = FALSE}
 server <- function(input, output, session) {
     user <- shinyUser()
     output$dashboard <- renderUI({
-        if (grepl("acme.com$", email(user()))) {
+        current_user <- email(user())
+        if (grepl("acme.com$", current_user)) {
             includeHTML("acme_dashboard.html")
-        } else if (grepl("globex.com$", email(user()))) {
+        } else if (grepl("globex.com$", current_user)) {
             includeHTML("globex_dashboard.html")
         } else {
-            h1("You are not logged in, please visit app.crunch.io to login")
+            h1("You do not have access to this dashboard, please contact your dataset administrator.")
         }
     })
 }
 ```
-What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. If they are not logged into Crunch, they will get a message instructing them to log in. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R")`, or by clicking the "Run App" button in RStudio. 
+What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R")`, or by clicking the "Run App" button in RStudio. 
 
 ### Managing Dashboard Renders
 
-The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app re-renders the dashboard whenever the user clicks an action button. Note that for this to work smoothly you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. If you don't use `reactivePoll` you might end up in a situation where the UI refreshes before the RMarkdown file is finished rendering. 
+The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app re-renders the dashboard whenever the user clicks an action button. Note that for this to work smoothly you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. If you don't use `reactivePoll()` you might end up in a situation where the UI refreshes before the RMarkdown file is finished rendering. 
 
-```
+``` {r eval = FALSE}
 library(crunchy)
 
 ui <- sidebarLayout(
-         sidebarPanel(
-             actionButton('refresh', 'Refresh Dashboard'),
-             textOutput("last_render")
-         ),
+    sidebarPanel(
+        actionButton('refresh', 'Refresh Dashboard'),
+        textOutput("last_render")
+    ),
     mainPanel(
-             uiOutput("dashboard")
+        uiOutput("dashboard")
     )
 )
 
@@ -101,12 +104,12 @@ server <- function(input, output, session) {
     file <- reactivePoll(1000, session,
         checkFunc = function() {
             file.info("acme_dashboard.html")$ctime
-            }, 
+        }, 
         valueFunc = function() {
             list(path = "acme_dashboard.html",
                 time = Sys.time()
-                )
-            })
+            )
+        })
     observeEvent(input$refresh, rmarkdown::render("acme_dashboard.Rmd"))
     output$last_render <- renderText(paste("Last Render:", file()$time))
     output$dashboard <- renderUI({

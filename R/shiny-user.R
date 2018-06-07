@@ -16,6 +16,4 @@ shinyUser <- function () .buildReactiveExpr(".getUserRecord")
 #' @importFrom httpcache uncached
 #' @importFrom crunch me
 #' @keywords internal
-.getUserRecord <- function(text_error = TRUE) {
-        uncached(me())
-}
+.getUserRecord <- function() uncached(me())
