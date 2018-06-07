@@ -5,8 +5,6 @@
 #' viewing the app. You can access elements of this record with crunch functions
 #' like `name()` or `email().`
 #' 
-#' @param text_error If TRUE the function will return a character vector instead of
-#' erroring. This is useful for handling the error in your shiny app.  
 #' @return A user record if the user is logged in, otherwise a character vector or error
 #' @export
 shinyUser <- function () .buildReactiveExpr(".getUserRecord")

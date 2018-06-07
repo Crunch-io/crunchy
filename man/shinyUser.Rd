@@ -4,11 +4,7 @@
 \alias{shinyUser}
 \title{Return Crunch User Information}
 \usage{
-shinyUser(text_error = TRUE)
-}
-\arguments{
-\item{text_error}{If TRUE the function will return a character vector instead of
-erroring. This is useful for handling the error in your shiny app.}
+shinyUser()
 }
 \value{
 A user record if the user is logged in, otherwise a character vector or error

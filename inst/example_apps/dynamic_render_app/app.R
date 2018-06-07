@@ -1,13 +1,9 @@
 library(crunchy)
 
-ui <- sidebarLayout(
-    sidebarPanel(
-        actionButton('refresh', 'Refresh Dashboard'),
-        textOutput("last_render")
-    ),
-    mainPanel(
-        uiOutput("dashboard")
-    )
+ui <- fluidPage(
+    actionButton('refresh', 'Refresh Dashboard'),
+    textOutput("last_render"),
+    uiOutput("dashboard")
 )
 
 server <- function (input, output, session) {
@@ -22,10 +18,11 @@ server <- function (input, output, session) {
             )
         }
     )
+    user <- shinyUser()
     observeEvent(input$refresh, rmarkdown::render("acme_dashboard.Rmd"))
     output$last_render <- renderText(paste("Last Render:", file()$time))
     output$dashboard <- renderUI({
-        checkAuthentication()
+        user()
         includeHTML(file()$path)
     })
 }
