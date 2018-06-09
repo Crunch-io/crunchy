@@ -1,0 +1,13 @@
+app <- ShinyDriver$new("../")
+app$snapshotInit("mytest")
+
+app$setInputs(search = "g")
+app$setInputs(selected_vars = "gender")
+app$snapshot()
+app$setInputs(search = "")
+app$snapshot()
+app$setInputs(selected_vars = c("gender", "location"))
+app$snapshot()
+app$setInputs(clear_all = "click")
+app$setInputs(selected_vars = "gender")
+app$snapshot()
