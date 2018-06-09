@@ -11,10 +11,11 @@ vignette: >
 
 Crunch allows you to host Shiny apps on the Crunch Jupyter server. Shiny apps are great, but they can be difficult to program, and can be very slow if not designed properly. [Flexdashboards](https://rmarkdown.rstudio.com/flexdashboard/) provide an easy-to-use alternative to Shiny apps. Instead of re-rendering dynamically based on the user action, Flexdashboards are effectively static websites that only include data which is live at the time of rendering. This can be desirable both because they are much easier to write, and because you can test and validate the dashboard's behavior before it goes to the client. Additionally, since you have more control over when the dashboard is rendered, you can include more computationally expensive operations like fitting a machine learning model without affecting user experience.
 
-You can host Flexdashboards on Crunch's Shiny infrastructure using Shiny's `includeHTML` function. What `includeHTML` does is add an HTML file to the shiny UI. If all you include in the shiny UI is the Flexdashboard html file, then the Shiny app effectively becomes a static site. 
+You can host Flexdashboards on Crunch's Shiny infrastructure using Shiny's `includeHTML()` function. This function adds an HTML file to the Shiny UI. If all you include in the Shiny UI is the Flexdashboard html file, then the Shiny app effectively becomes a static site.
 
 ### Basic workflow
-Follow these steps to include a Flexdashboard in your Shiny app: 
+
+Follow these steps to include a Flexdashboard in your Shiny app:
 
 1) First create a new Rmarkdown document with a Flexdashboard output option
 1) Render the Rmd file into an html file
@@ -29,14 +30,14 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {}
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)
 ```
-Note that we haven't included any authentication in this app which means that users who do not have access to a dataset could theoretically access it. The next step is to check that the user is logged into Crunch. 
+Note that we haven't included any authentication in this app which means that users who do not have access to a dataset could theoretically access it. The next step is to check that the user is logged into Crunch.
 
 ### Check User Authentication
 
-Crunchy includes a `shinyUser()` function which lets us display different content to the user depending on whether they are logged into Crunch of not. To do this we'll make use of Shiny's `renderUI` function to conditionally create a different UI for different types of users.
+Crunchy includes a `shinyUser()` function, which lets us display different content to the user, including verifying whether they are logged into Crunch of not. To do this, we'll also make use of Shiny's `renderUI` function to conditionally create a different UI.
 
 ``` {r, eval = FALSE}
 ui <- fluidPage(
@@ -44,7 +45,9 @@ ui <- fluidPage(
 )
 ```
 
-This creates the UI object, but most of the work is going to be done on the server side. We can use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. You can use this object to conditionally display different dashboards for different users like so: 
+This creates the UI object, but most of the work is going to be done on the server side. We can use the `shinyUser()` function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user's name, their email address, and their Crunch preferences. If the user isn't logged into Crunch, they will see a red error message, and they won't see the dashboard.
+
+By checking the value of the `shinyUser` before calling `includeHTML()`, we can prevent unauthorized users from seeing the rendered dashboard:
 
 ``` {r, eval = FALSE}
 server <- function(input, output, session) {
@@ -56,12 +59,9 @@ server <- function(input, output, session) {
 }
 ```
 
-This prevents unauthorized users from seeing the rendered dashboard. If the user isn't logged into 
-crunch, they will see a red error message. 
-
 ### Conditional dashboards and user identification
 
-We can take this pattern one step further to show different users different dashboards. We use the same UI object, but check the user's email and change the displayed HTML file based on that email. 
+We can take this pattern one step further to show different users different dashboards. We use the same UI object, but check the user's email and change the displayed HTML file based on that email.
 
 ``` {r eval = FALSE}
 server <- function(input, output, session) {
@@ -78,11 +78,11 @@ server <- function(input, output, session) {
     })
 }
 ```
-What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R")`, or by clicking the "Run App" button in RStudio. 
+What this does is check the user's email address to identify clients from one company, and then displays a rendered dashboard for that company. An example app of this kind is  [here](https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app), to run it, copy the app folder, open `app.R` and run it with `shiny::runApp("app.R")`, or by clicking the "Run App" button in RStudio.
 
 ### Managing Dashboard Renders
 
-The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Jupyter server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app re-renders the dashboard whenever the user clicks an action button. Note that for this to work smoothly you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. If you don't use `reactivePoll()` you might end up in a situation where the UI refreshes before the RMarkdown file is finished rendering. 
+The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Crunch Shiny server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling `rmarkdown::render()` somewhere in your server function. For example the following app re-renders the dashboard whenever the user clicks an action button. Note that for this to work smoothly you should use the [reactivePoll](https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html) to ensure that the UI is refreshed after the file is regenerated. If you don't use `reactivePoll()`, you might end up in a situation where the UI refreshes before the RMarkdown file is finished rendering.
 
 ``` {r eval = FALSE}
 library(crunchy)
@@ -122,4 +122,4 @@ A full example can be found [on Github.](https://github.com/Crunch-io/crunchy/tr
 
 ### Conclusion
 
-Flexdashboards provide a simple way to communicate with your users. By using the Crunch Shiny infrastructure you can host and distribute static dashboards in the same way as Shiny apps. This allows you to customize the behavior Crunch Dashboards without needing to worry about some of the complexity which comes along with Shiny apps. 
+Flexdashboards provide a simple way to communicate with your users. By using the Crunch Shiny infrastructure you can host and distribute static dashboards in the same way as Shiny apps. This allows you to customize the behavior Crunch Dashboards without needing to worry about some of the complexity which comes along with Shiny apps.
