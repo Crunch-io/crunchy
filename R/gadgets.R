@@ -13,21 +13,20 @@
 #' @param env the environment to run the gadget
 #' @importFrom shiny runGadget dialogViewer
 #' @export
-makeArrayGadget <- function(env = globalenv()){
+makeArrayGadget <- function (env = globalenv()) {
     runGadget(app = .makeArrayGadget(env),
         viewer = dialogViewer("Array Builder", width = 800)
     )
-
 }
 
 #' @importFrom crunch aliases crGET variables is.Categorical
-#' @importFrom miniUI gadgetTitleBar miniPage miniContentPanel miniTabPanel 
-#' miniTabstripPanel 
+#' @importFrom miniUI gadgetTitleBar miniPage miniContentPanel miniTabPanel
+#' miniTabstripPanel
 #' @importFrom shiny actionButton br checkboxGroupInput column fluidRow h3 HTML
 #'   isolate observe observeEvent radioButtons reactive reactiveValues renderUI
 #'   req selectInput shinyApp stopApp tags textInput uiOutput uiOutput
 #'   updateCheckboxGroupInput
-.makeArrayGadget <- function(env) {
+.makeArrayGadget <- function (env) {
     crGET(getOption("crunch.api")) # check login status
     dataset_list <- getCrunchDatasets(env)
     ui <- miniPage(
@@ -149,7 +148,7 @@ makeArrayGadget <- function(env = globalenv()){
                 values$currently_selected,
                 input$mr_selection
             )
-            stopApp(returnValue = rstudioapi::insertText(text = code, 
+            stopApp(returnValue = rstudioapi::insertText(text = code,
                 id = rstudioapi::getActiveDocumentContext()$id))
         })
     }
@@ -180,12 +179,12 @@ generateCategoryCheckboxes <- function (ds, selected_vars, array_type) {
     }
 }
 
-buildArrayCall <- function(ds_name,
+buildArrayCall <- function (ds_name,
     array_type,
     object_name = "",
     array_var_name,
     vars_selected,
-    mr_selection){
+    mr_selection) {
     if (array_type == "Multiple Response") {
         f <- 'makeMR('
         sel <- paste0(", ", "selections = ", asCharVector(mr_selection))
@@ -204,18 +203,14 @@ buildArrayCall <- function(ds_name,
         assign,
         f,
         ds_name,
-        "[ ,",
-        asCharVector(vars_selected),
-        "], ",
-        "name = '",
-        array_var_name,
-        "'",
+        "[ ,", asCharVector(vars_selected), "], ",
+        "name = '", array_var_name, "'",
         sel,
         ")")
     return(call)
 }
 
-asCharVector <- function(v) {
+asCharVector <- function (v) {
     paste0("c(",
         paste0(paste0("'", v, "'"), collapse = ", "),
         ")")
@@ -223,7 +218,7 @@ asCharVector <- function(v) {
 
 #' @importFrom httpcache halt
 #' @importFrom crunch is.dataset
-getCrunchDatasets <- function(env) {
+getCrunchDatasets <- function (env) {
     l <- ls(envir = env)
     out <- lapply(l, function(x) get(x, envir = env))
     names(out) <- l
@@ -233,4 +228,3 @@ getCrunchDatasets <- function(env) {
     }
     return(out)
 }
- 
