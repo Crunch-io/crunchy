@@ -1,0 +1,32 @@
+---
+title: "ACME Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+### Chart A
+
+```{r}
+plot(mtcars$cyl, mtcars$wt)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+hist(mtcars$mpg)
+```
+
+### Chart C
+
+```{r}
+Sys.time()
+lm(mpg ~ wt + cyl, data = mtcars)
+```

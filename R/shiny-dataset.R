@@ -18,20 +18,17 @@
 #'     })
 #' })
 #' }
-shinyDataset <- function (...) {
-    env <- parent.frame()
-    expr <- .shinyDatasetExpr(...)
-    e <- substitute(reactive(expr, env=env))
-    return(eval(e, envir=env))
-}
+shinyDataset <- function (...) .buildReactiveExpr("loadDataset", ...)
 
-.shinyDatasetExpr <- function (...) {
-    ## Assembles the expression that goes into the `reactive` object
-    Call <- match.call(expand.dots=TRUE)
-    Call[[1]] <- as.name('loadDataset')
+.buildReactiveExpr <- function (FUN, ...) {
+    cal <- match.call(expand.dots=TRUE)[-1]
+    cal[[1]] <- as.name(cal[[1]])
     expr <- eval(substitute(quote({
         tokenAuth(input$token, "shiny.crunch.io")
-        Call
+        cal
     })))
-    return(expr)
+
+    env <- parent.frame(2)
+    e <- substitute(reactive(expr, env=env))
+    return(eval(e, envir=env))
 }

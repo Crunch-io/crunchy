@@ -1,5 +1,5 @@
 ---
-title: "Dashboard"
+title: "GLOBEX Dashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -15,7 +15,7 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
-
+hist(iris$Sepal.Length)
 ```
 
 Column {data-width=350}
@@ -25,11 +25,12 @@ Column {data-width=350}
 
 ```{r}
 
+plot(iris$Sepal.Length, iris$Petal.Width)
 ```
 
 ### Chart C
 
 ```{r}
-
+lm(Sepal.Width ~ Sepal.Length + Petal.Width, iris)
 ```
 
