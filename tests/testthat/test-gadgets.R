@@ -2,6 +2,26 @@ context("shiny gadgets")
 
 # Unit tests ----
 
+
+test_that("buildLoadDatasetCall", {
+    expect_identical(buildLoadDatasetCall("Personal Project", "data", "ds"),
+        "ds <- loadDataset('data')")
+    expect_identical(buildLoadDatasetCall("proj", "data", "ds"),
+        "ds <- loadDataset('data', project = 'proj')")
+    expect_identical(buildLoadDatasetCall("Personal Project", "data"),
+        "loadDataset('data')")
+    expect_identical(buildLoadDatasetCall("proj", "data"),
+        "loadDataset('data', project = 'proj')")
+    expect_identical(buildLoadDatasetCall("Personal Project", "weird's dataset", "ds"),
+        "ds <- loadDataset('weird\\'s dataset')")
+})
+
+test_that("escapeQuotes", {
+    expect_identical(escapeQuotes("test's tests"), "test\\'s tests")
+    str <- "no quotes"
+    expect_identical(escapeQuotes(str), str)
+})
+
 test_that("buildArrayCall", {
     expect_identical(
         buildArrayCall(ds_name = "mtcars",
@@ -35,17 +55,11 @@ test_that("makeArrayGadget passes shiny tests", {
     skip_on_travis()
     skip_on_cran()
     test_output <- shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE)
-    print(test_output)
     shinytest::expect_pass(
         shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE, quiet = TRUE))
 })
 
 with_mock_crunch({
-    test_that("listDatasets gets expected input from other Crunch functions", {
-        expect_is(names(projects()), "character")
-        expect_is(listDatasets(), "character")
-    })
-
     test_that("getCrunchDataset errors", {
         expect_error(getCrunchDatasets(parent.env(environment()),
             "No CrunchDatasets detected.")
