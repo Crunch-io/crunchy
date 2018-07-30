@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Stay authenticated. — session_store • Crunch</title>
+<title>Schema for the 2017 Stack Overflow developer survey — SO_schema • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -21,19 +21,31 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Stay authenticated. — session_store" />
+<meta property="og:title" content="Schema for the 2017 Stack Overflow developer survey — SO_schema" />
 
-<meta property="og:description" content="The auth store keeps the session token after authentication so that all
-API calls can use it. We can also store other things in it." />
+<meta property="og:description" content="Survey questions and variable names for the 2017 Stack Overflow Developers
+Survey #'" />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -45,22 +57,15 @@ API calls can use it. We can also store other things in it." />
 <![endif]-->
 
 
-<!-- Google analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50332119-2"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-50332119-2', 'auto');
-  ga('send', 'pageview');
-
+  gtag('config', 'UA-50332119-2');
 </script>
-
-
-
-<!-- docsearch -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
   </head>
 
@@ -76,15 +81,15 @@ API calls can use it. We can also store other things in it." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.21.0</span>
+        <a class="navbar-link" href="../index.html">Crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/getting-started.html">Intro</a>
+  <a href="../articles/crunch.html">Intro</a>
 </li>
 <li>
   <a href="../reference/">Reference</a>
@@ -97,7 +102,7 @@ API calls can use it. We can also store other things in it." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/getting-started.html">Getting Started</a>
+      <a href="../articles/crunch.html">Getting Started</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Datasets</a>
@@ -115,10 +120,16 @@ API calls can use it. We can also store other things in it." />
       <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
+      <a href="../articles/analyze.html">Analyze Data</a>
+    </li>
+    <li>
       <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
@@ -147,7 +158,7 @@ API calls can use it. We can also store other things in it." />
       
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
       </form>
       
@@ -161,23 +172,26 @@ API calls can use it. We can also store other things in it." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Stay authenticated.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/auth.R'><code>R/auth.R</code></a></small>
-    <div class="hidden name"><code>session_store.Rd</code></div>
+    <h1>Schema for the 2017 Stack Overflow developer survey</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/SO-survey.R'><code>R/SO-survey.R</code></a></small>
+    <div class="hidden name"><code>SO_schema.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The auth store keeps the session token after authentication so that all
-API calls can use it. We can also store other things in it.</p>
+    <p>Survey questions and variable names for the 2017 Stack Overflow Developers
+Survey #'</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>session_store</span></pre>
+    <pre class="usage"><span class='no'>SO_schema</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An environment.</p>
+    <p>A data frame with 23 rows and 2 variables.</p><dl class='dl-horizontal'>
+<dt>Column</dt><dd><p>The column name of the survey data frame</p></dd>
+<dt>Question</dt><dd><p>Question asked of respondents</p></dd>
+</dl>
     
 
   </div>
@@ -193,7 +207,7 @@ API calls can use it. We can also store other things in it.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
@@ -211,7 +225,13 @@ API calls can use it. We can also store other things in it.</p>
     
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
-    inputSelector: 'input#search-input.form-control'
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
   });
 </script>
 

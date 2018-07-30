@@ -8,8 +8,8 @@
 <title>Reordering Variables • Crunch</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Reordering Variables">
@@ -38,15 +38,15 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
+        <a class="navbar-link" href="../index.html">Crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../articles/getting-started.html">Intro</a>
+  <a href="../articles/crunch.html">Intro</a>
 </li>
 <li>
   <a href="../reference/">Reference</a>
@@ -59,7 +59,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/getting-started.html">Getting Started</a>
+      <a href="../articles/crunch.html">Getting Started</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Datasets</a>
@@ -77,10 +77,16 @@
       <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
+      <a href="../articles/analyze.html">Analyze Data</a>
+    </li>
+    <li>
       <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
@@ -143,7 +149,7 @@
 <h2 class="hasAnchor">
 <a href="#viewing-the-order" class="anchor"></a>Viewing the order</h2>
 <p>Picking up with the dataset we used in the <a href="array-variables.html">array variables vignette</a>, we can fetch the <code>ordering</code> property of the dataset to view the current organization:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</a></code></pre></div>
 <pre><code>## perc_skipped
 ## newsint2
 ## Direction of country
@@ -187,13 +193,13 @@
 <h2 class="hasAnchor">
 <a href="#creating-groups" class="anchor"></a>Creating groups</h2>
 <p>Since I know how this dataset is organized, I’m going quickly toss the variables into one of a small number of groups, instantiated with <code>VariableGroup</code>, and collect them in a container object called <code>VariableOrder</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/VariableOrder.html">VariableOrder</a></span>(
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">37</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)]),
-        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>])
-    )</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/VariableOrder.html">VariableOrder</a></span>(</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Demos"</span>, ds[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">21</span><span class="op">:</span><span class="dv">37</span>)]),</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"Tracking questions"</span>, ds[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span><span class="op">:</span><span class="dv">20</span>)]),</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="kw"><a href="../reference/VariableOrder.html">VariableGroup</a></span>(<span class="st">"This week"</span>, ds[<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>])</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    )</a></code></pre></div>
 <p>Now, our variable tree has some structure:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</a></code></pre></div>
 <pre><code>## [+] Demos
 ##     perc_skipped
 ##     birthyr
@@ -240,11 +246,11 @@
 <h2 class="hasAnchor">
 <a href="#group-names" class="anchor"></a>Group names</h2>
 <p>We can use the <code>names</code> method to access and modify these group names:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</a></code></pre></div>
 <pre><code>## [1] "Demos"              "Tracking questions" "This week"</code></pre>
 <p>Let’s rename the first group. No need to abbreviate “Demographics”.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))[<span class="dv">1</span>] &lt;-<span class="st"> "Demographics"</span>
-<span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))[<span class="dv">1</span>] &lt;-<span class="st"> "Demographics"</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</a></code></pre></div>
 <pre><code>## [1] "Demographics"       "Tracking questions" "This week"</code></pre>
 </div>
 <div id="reordering-groups-and-entities" class="section level2">
@@ -252,16 +258,16 @@
 <a href="#reordering-groups-and-entities" class="anchor"></a>Reordering groups and entities</h2>
 <p><code>VariableOrder</code> and <code>VariableGroup</code> support standard R forms of indexing for extracting and reordering.</p>
 <p>Let’s move “Demographics” to the end:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)]
-<span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds) &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)]</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">names</span>(<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds))</a></code></pre></div>
 <pre><code>## [1] "Tracking questions" "This week"          "Demographics"</code></pre>
 </div>
 <div id="nested-groups" class="section level2">
 <h2 class="hasAnchor">
 <a href="#nested-groups" class="anchor"></a>Nested groups</h2>
 <p>We can create groups within groups as well. In the “This week” group, we have a set of questions about Edward Snowden: the first four variables in the group. Let’s nest them inside their own group inside “This week”:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
-<span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][[<span class="st">"Snowden"</span>]] &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)[[<span class="st">"This week"</span>]][<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/ordering.html">ordering</a></span>(ds)</a></code></pre></div>
 <pre><code>## [+] Tracking questions
 ##     newsint2
 ##     Direction of country
@@ -328,7 +334,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Neal Richardson.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">

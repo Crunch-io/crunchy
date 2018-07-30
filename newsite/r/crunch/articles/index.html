@@ -21,13 +21,16 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
@@ -39,6 +42,7 @@
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -74,15 +78,15 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
+        <a class="navbar-link" href="../index.html">Crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/getting-started.html">Intro</a>
+  <a href="../articles/crunch.html">Intro</a>
 </li>
 <li>
   <a href="../reference/">Reference</a>
@@ -95,7 +99,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/getting-started.html">Getting Started</a>
+      <a href="../articles/crunch.html">Getting Started</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Datasets</a>
@@ -113,10 +117,16 @@
       <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
+      <a href="../articles/analyze.html">Analyze Data</a>
+    </li>
+    <li>
       <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
@@ -163,23 +173,36 @@
     </div>
 
     <div class="section ">
-      <h3>All vignettes</h3>
+      <h3>Getting started</h3>
+      <p class="section-desc"><p>How to find, import, and clean data in Crunch</p></p>
+
+      <ul>
+        <li><a href="crunch.html">Getting Started</a></li>
+        <li><a href="variables.html">Crunch Variables</a></li>
+        <li><a href="array-variables.html">Array Variables</a></li>
+        <li><a href="variable-order.html">Variable Folders and Organization</a></li>
+      </ul>
+    </div>
+    <div class="section ">
+      <h3>Exploring and analyzing</h3>
       <p class="section-desc"></p>
 
       <ul>
-        <li><a href="abstract-categories.html">Abstract Categories</a></li>
-        <li><a href="analyze.html">Analyzing Crunch Data</a></li>
-        <li><a href="array-variables.html">Array Variables</a></li>
-        <li><a href="crunch-internals.html">Crunch Internals</a></li>
-        <li><a href="datasets.html">Importing datasets</a></li>
         <li><a href="derive.html">Adding Variables</a></li>
-        <li><a href="export.html">Exporting Data</a></li>
+        <li><a href="analyze.html">Analyzing Crunch Data</a></li>
         <li><a href="filters.html">Filtering Data</a></li>
-        <li><a href="getting-started.html">Getting Started</a></li>
         <li><a href="subtotals.html">Subtotals and Headings</a></li>
-        <li><a href="variable-order-old.html">Reordering Variables</a></li>
-        <li><a href="variable-order.html">Variable Folders and Organization</a></li>
-        <li><a href="variables.html">Crunch Variables</a></li>
+        <li><a href="export.html">Exporting Data</a></li>
+        <li><a href="fork-and-merge.html">Fork and Merge a Dataset</a></li>
+      </ul>
+    </div>
+    <div class="section ">
+      <h3>Going deeper</h3>
+      <p class="section-desc"><p>Details on the Crunch API and objects</p></p>
+
+      <ul>
+        <li><a href="crunch-internals.html">Crunch Internals</a></li>
+        <li><a href="abstract-categories.html">Abstract Categories</a></li>
       </ul>
     </div>
   </div>
@@ -187,7 +210,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">

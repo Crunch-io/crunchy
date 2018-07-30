@@ -21,13 +21,16 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
@@ -37,10 +40,14 @@
   
 <meta property="og:title" content="Merge changes to a dataset from a fork — mergeFork" />
 
-<meta property="og:description" content="Merge changes to a dataset from a fork" />
+<meta property="og:description" content="Crunch datasets include information about the dataset's revision history.
+This function takes the changes made on a dataset fork and adds them to the
+revision history of the parent dataset, like a merge of branches in a
+version control system." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -76,15 +83,15 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
+        <a class="navbar-link" href="../index.html">Crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/getting-started.html">Intro</a>
+  <a href="../articles/crunch.html">Intro</a>
 </li>
 <li>
   <a href="../reference/">Reference</a>
@@ -97,7 +104,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/getting-started.html">Getting Started</a>
+      <a href="../articles/crunch.html">Getting Started</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Datasets</a>
@@ -115,10 +122,16 @@
       <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
+      <a href="../articles/analyze.html">Analyze Data</a>
+    </li>
+    <li>
       <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
@@ -168,7 +181,10 @@
 
     <div class="ref-description">
     
-    <p>Merge changes to a dataset from a fork</p>
+    <p>Crunch datasets include information about the dataset's revision history.
+This function takes the changes made on a dataset fork and adds them to the
+revision history of the parent dataset, like a merge of branches in a
+version control system.</p>
     
     </div>
 
@@ -183,22 +199,21 @@
     </tr>
     <tr>
       <th>fork</th>
-      <td><p>The <code>CrunchDataset</code>, perhaps forked from <code>dataset</code>,
-that is to be merged in.</p></td>
+      <td><p>The <code>CrunchDataset</code>, which must be a fork from <code>dataset</code>, that is
+to be merged in.</p></td>
     </tr>
     <tr>
       <th>autorollback</th>
-      <td><p>logical If the merge fails, should <code>dataset</code> be
-restored to its state prior to the merge, or should it be left in its
-partially merged state for debugging and manual fixing? Default is
-<code>TRUE</code>.</p></td>
+      <td><p>logical If the merge fails, should <code>dataset</code> be restored
+to its state prior to the merge, or should it be left in its partially
+merged state for debugging and manual fixing? Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>force</th>
-      <td><p>logical Attempt to push through merge conflicts by dropping
-all changes to <code>dataset</code> that occurred after <code>fork</code> diverged from and take only
-the changes from <code>fork</code>? Default is <code>FALSE</code>. You should only use force=TRUE after
-first attempting and failing to merge without forcing.</p></td>
+      <td><p>logical Attempt to push through merge conflicts by dropping all
+changes to <code>dataset</code> that occurred after <code>fork</code> diverged from and take only
+the changes from <code>fork</code>? Default is <code>FALSE</code>. You should only use <code>force=TRUE</code>
+after first attempting and failing to merge without forcing.</p></td>
     </tr>
     </table>
     
@@ -206,7 +221,30 @@ first attempting and failing to merge without forcing.</p></td>
 
     <p><code>dataset</code> with changes from <code>fork</code> merged to it.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>All modifications of a dataset record actions in its revision history. For
+example, if you add a variable to the dataset, that action is recorded. The
+sum of these records is a dataset's revision history, and it is possible
+to merge in the revision history of a dataset that has been forked.</p>
+<p>This function is most often used in conjunction with <code><a href='forkDataset.html'>forkDataset()</a></code> to
+create a copy of a dataset, make some changes to that copy, and then merge
+the changes back into the original dataset. For more on this workflow, see
+<code><a href='../articles/fork-and-merge.html'>vignette("fork-and-merge", package = "crunch")</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='forkDataset.html'>forkDataset()</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"My survey"</span>)
+<span class='no'>fork</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='forkDataset.html'>forkDataset</a></span>(<span class='no'>ds</span>)
+<span class='co'># Do stuff to fork</span>
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>mergeFork</span>(<span class='no'>ds</span>, <span class='no'>fork</span>)
+<span class='co'># Now the changes you did to fork are also on ds</span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -214,14 +252,20 @@ first attempting and failing to merge without forcing.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">

@@ -21,13 +21,16 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
@@ -39,6 +42,7 @@
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -74,15 +78,15 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.22.0</span>
+        <a class="navbar-link" href="../index.html">Crunch</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/getting-started.html">Intro</a>
+  <a href="../articles/crunch.html">Intro</a>
 </li>
 <li>
   <a href="../reference/">Reference</a>
@@ -95,7 +99,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/getting-started.html">Getting Started</a>
+      <a href="../articles/crunch.html">Getting Started</a>
     </li>
     <li>
       <a href="../articles/datasets.html">Datasets</a>
@@ -113,10 +117,16 @@
       <a href="../articles/derive.html">Derive Variables</a>
     </li>
     <li>
+      <a href="../articles/analyze.html">Analyze Data</a>
+    </li>
+    <li>
       <a href="../articles/filters.html">Filter Data</a>
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
@@ -165,6 +175,7 @@
     <table class="ref-index">
 
     <colgroup>
+      
       <col class="alias" />
       <col class="title" />
     </colgroup>
@@ -177,55 +188,55 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="newDataset.html">newDataset()</a></code> </p>
         </td>
         <td><p>Upload data to Crunch to make a new dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="toVariable.html">toVariable()</a></code> </p>
         </td>
         <td><p>Generic method for converting objects to Crunch representations</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="VariableDefinition.html">VariableDefinition()</a></code> <code><a href="VariableDefinition.html">VarDef()</a></code> </p>
         </td>
         <td><p>Construct a variable definition</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="addVariables.html">addVariables()</a></code> </p>
         </td>
         <td><p>Add multiple variables to a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="appendStream.html">appendStream()</a></code> </p>
         </td>
         <td><p>Manually trigger a pending append to a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="pendingStream.html">pendingStream()</a></code> </p>
         </td>
         <td><p>Get the pending streams for a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="pk.html">pk(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="pk.html">`pk<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="pk.html">pk</a></code> <code><a href="pk.html">`pk<-`</a></code> </p>
         </td>
         <td><p>Get and set the primary key for a Crunch dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="prepareDataForCrunch.html">prepareDataForCrunch()</a></code> </p>
         </td>
         <td><p>Translate a data.frame to Crunch format</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="createWithPreparedData.html">createWithPreparedData()</a></code> </p>
         </td>
@@ -239,19 +250,19 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="listDatasets.html">listDatasets()</a></code> </p>
         </td>
         <td><p>Show the names of all Crunch datasets associated with a catalog</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="loadDataset.html">loadDataset()</a></code> </p>
         </td>
         <td><p>Load a Crunch Dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="datasets.html">datasets()</a></code> <code><a href="datasets.html">`datasets<-`()</a></code> </p>
         </td>
@@ -265,109 +276,109 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="as.environment-CrunchDataset-method.html">as.environment(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="as.environment-CrunchDataset-method.html">as.environment</a></code> </p>
         </td>
         <td><p>as.environment method for CrunchDataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="batches.html">batches()</a></code> </p>
         </td>
         <td><p>See the appended batches of this dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="cleanseBatches.html">cleanseBatches()</a></code> </p>
         </td>
         <td><p>Remove batches from a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dataset-to-R.html">as.data.frame(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-to-R.html">as.data.frame(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> </p>
+          <p><code><a href="dataset-to-R.html">as.data.frame</a></code> </p>
         </td>
         <td><p>as.data.frame method for CrunchDataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="delete.html">delete(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;Multitable&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;CrunchProject&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;ShojiFolder&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;ShojiObject&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;ANY&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;CrunchTeam&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="delete.html">delete(<i>&lt;VariableTuple&gt;</i>)</a></code> </p>
+          <p><code><a href="delete.html">delete</a></code> </p>
         </td>
         <td><p>Delete a Crunch object from the server</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="deleteDataset.html">deleteDataset()</a></code> </p>
         </td>
         <td><p>Delete a dataset from the dataset list</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dim-dataset.html">dim(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dim-dataset.html">ncol(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="dim-dataset.html">dim</a></code> <code><a href="dim-dataset.html">ncol</a></code> </p>
         </td>
         <td><p>Dataset dimensions</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="dropRows.html">dropRows()</a></code> </p>
         </td>
         <td><p>Permanently delete rows from a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="exclusion.html">exclusion()</a></code> <code><a href="exclusion.html">`exclusion<-`()</a></code> </p>
         </td>
         <td><p>View and set exclusion filters</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="restoreVersion.html">restoreVersion()</a></code> </p>
         </td>
         <td><p>Restore a dataset to a previously saved version</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="saveVersion.html">saveVersion()</a></code> </p>
         </td>
         <td><p>Create a new saved version</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="versions.html">versions()</a></code> </p>
         </td>
         <td><p>Access the saved versions of a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="weight.html">weight()</a></code> <code><a href="weight.html">`weight<-`()</a></code> <code><a href="weight.html">is.weight()</a></code> <code><a href="weight.html">`is.weight<-`(<i>&lt;NumericVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="weight.html">weight()</a></code> <code><a href="weight.html">`weight<-`()</a></code> <code><a href="weight.html">is.weight()</a></code> <code><a href="weight.html">`is.weight<-`</a></code> </p>
         </td>
         <td><p>Dataset weights</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="weightVariables.html">weightVariables(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="weightVariables.html">weightVariables(<i>&lt;VariableCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="weightVariables.html">weightVariables</a></code> </p>
         </td>
         <td><p>Get a dataset's weightVariables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="modifyWeightVariables.html">modifyWeightVariables()</a></code> <code><a href="modifyWeightVariables.html">`weightVariables<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="modifyWeightVariables.html">is.weightVariable()</a></code> <code><a href="modifyWeightVariables.html">`is.weightVariable<-`(<i>&lt;NumericVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="modifyWeightVariables.html">modifyWeightVariables()</a></code> <code><a href="modifyWeightVariables.html">`weightVariables<-`</a></code> <code><a href="modifyWeightVariables.html">is.weightVariable()</a></code> <code><a href="modifyWeightVariables.html">`is.weightVariable<-`</a></code> </p>
         </td>
         <td><p>Change which variables can be set as a dataset's weight.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="settings.html">settings()</a></code> <code><a href="settings.html">`settings<-`()</a></code> </p>
         </td>
         <td><p>View and modify dataset-level settings</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="population.html">popSize(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="population.html">`popSize<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="population.html">popMagnitude(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="population.html">`popMagnitude<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="population.html">setPopulation(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="population.html">popSize</a></code> <code><a href="population.html">`popSize<-`</a></code> <code><a href="population.html">popMagnitude</a></code> <code><a href="population.html">`popMagnitude<-`</a></code> <code><a href="population.html">setPopulation</a></code> </p>
         </td>
         <td><p>Get and set the market size for Crunch datasets</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="lock.html">lock()</a></code> <code><a href="lock.html">unlock()</a></code> </p>
         </td>
@@ -381,37 +392,37 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="appendDataset.html">appendDataset()</a></code> </p>
         </td>
         <td><p>Append one Crunch dataset to another</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="compareDatasets.html">compareDatasets()</a></code> </p>
         </td>
         <td><p>Compare two datasets to see how they will append</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="joinDatasets.html">joinDatasets()</a></code> <code><a href="joinDatasets.html">extendDataset()</a></code> <code><a href="joinDatasets.html">merge(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="joinDatasets.html">joinDatasets()</a></code> <code><a href="joinDatasets.html">extendDataset()</a></code> <code><a href="joinDatasets.html">merge</a></code> </p>
         </td>
         <td><p>Add columns from one dataset to another, joining on a key</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="forkDataset.html">forkDataset()</a></code> </p>
         </td>
         <td><p>Create a fork of a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="mergeFork.html">mergeFork()</a></code> </p>
         </td>
         <td><p>Merge changes to a dataset from a fork</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="searchDatasets.html">searchDatasets()</a></code> </p>
         </td>
@@ -425,97 +436,97 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="c-categories.html">c(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="c-categories.html">c(<i>&lt;Category&gt;</i>)</a></code> </p>
+          <p><code><a href="c-categories.html">c</a></code> </p>
         </td>
         <td><p>S3 method to concatenate Categories and Category objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="categoriesFromLevels.html">categoriesFromLevels()</a></code> </p>
         </td>
         <td><p>Convert a factor's levels into Crunch categories.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="changeCategoryID.html">changeCategoryID()</a></code> </p>
         </td>
         <td><p>Change the id of a category for a categorical variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="collapseCategories.html">collapseCategories()</a></code> </p>
         </td>
         <td><p>Combine Categories in place</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dataset-variables.html">variables(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-variables.html">`variables<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="dataset-variables.html">allVariables(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-variables.html">`allVariables<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="dataset-variables.html">variables(<i>&lt;SearchResults&gt;</i>)</a></code> </p>
+          <p><code><a href="dataset-variables.html">variables</a></code> <code><a href="dataset-variables.html">`variables<-`</a></code> <code><a href="dataset-variables.html">allVariables</a></code> <code><a href="dataset-variables.html">`allVariables<-`</a></code> </p>
         </td>
         <td><p>Access a Dataset's Variables Catalog</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="deleteVariables.html">deleteVariables()</a></code> <code><a href="deleteVariables.html">deleteVariable()</a></code> </p>
         </td>
         <td><p>Delete Variables Within a Dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="derivations.html">derivation(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="derivations.html">`derivation<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="derivations.html">`derivation<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="derivations.html">is.derived(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="derivations.html">`is.derived<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> </p>
+          <p><code><a href="derivations.html">derivation</a></code> <code><a href="derivations.html">`derivation<-`</a></code> <code><a href="derivations.html">is.derived</a></code> <code><a href="derivations.html">`is.derived<-`</a></code> </p>
         </td>
         <td><p>Get or set a derived variable's expression</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="describe-category.html">name(<i>&lt;AbstractCategory&gt;</i>)</a></code> <code><a href="describe-category.html">`name<-`(<i>&lt;AbstractCategory&gt;</i>)</a></code> <code><a href="describe-category.html">`name<-`(<i>&lt;NULL&gt;</i>)</a></code> <code><a href="describe-category.html">id(<i>&lt;AbstractCategory&gt;</i>)</a></code> <code><a href="describe-category.html">value(<i>&lt;Category&gt;</i>)</a></code> <code><a href="describe-category.html">`value<-`(<i>&lt;Category&gt;</i>)</a></code> <code><a href="describe-category.html">is.selected(<i>&lt;Category&gt;</i>)</a></code> </p>
+          <p><code><a href="describe-category.html">name</a></code> <code><a href="describe-category.html">`name<-`</a></code> <code><a href="describe-category.html">id</a></code> <code><a href="describe-category.html">value</a></code> <code><a href="describe-category.html">`value<-`</a></code> <code><a href="describe-category.html">is.selected</a></code> </p>
         </td>
         <td><p>Category attributes</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dichotomize.html">is.dichotomized(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="dichotomize.html">dichotomize(<i>&lt;Categories&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="dichotomize.html">dichotomize(<i>&lt;Categories&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="dichotomize.html">dichotomize(<i>&lt;Categories&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="dichotomize.html">undichotomize(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="dichotomize.html">dichotomize(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dichotomize.html">dichotomize(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dichotomize.html">undichotomize(<i>&lt;CategoricalVariable&gt;</i>)</a></code> <code><a href="dichotomize.html">undichotomize(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="dichotomize.html">is.dichotomized</a></code> <code><a href="dichotomize.html">dichotomize</a></code> <code><a href="dichotomize.html">undichotomize</a></code> </p>
         </td>
         <td><p>Indicate how categories represent a dichotomized value</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="hiddenVariables.html">hiddenVariables()</a></code> </p>
         </td>
         <td><p>Show the names of a dataset's hidden variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="hide.html">hide(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="hide.html">hide(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="hide.html">unhide(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="hide.html">unhide(<i>&lt;VariableCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="hide.html">hide</a></code> <code><a href="hide.html">unhide</a></code> </p>
         </td>
         <td><p>Hide and Unhide Variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="hideVariables.html">hideVariables()</a></code> <code><a href="hideVariables.html">`hiddenVariables<-`()</a></code> <code><a href="hideVariables.html">unhideVariables()</a></code> </p>
         </td>
         <td><p>Hide and unhide variables within a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="na-omit-categories.html">na.omit(<i>&lt;Categories&gt;</i>)</a></code> </p>
+          <p><code><a href="na-omit-categories.html">na.omit</a></code> </p>
         </td>
         <td><p>Omit missing categories</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="type.html">type(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="type.html">type(<i>&lt;VariableEntity&gt;</i>)</a></code> <code><a href="type.html">`type<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="type.html">type</a></code> <code><a href="type.html">`type<-`</a></code> </p>
         </td>
         <td><p>Change Crunch variable types</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="var-categories.html">categories(<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="var-categories.html">categories(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="var-categories.html">categories(<i>&lt;CategoricalVariable&gt;</i>)</a></code> <code><a href="var-categories.html">categories(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> <code><a href="var-categories.html">categories(<i>&lt;VariableEntity&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;Categories&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;Categories&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="var-categories.html">`categories<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
+          <p><code><a href="var-categories.html">categories</a></code> <code><a href="var-categories.html">`categories<-`</a></code> </p>
         </td>
         <td><p>Get and set Categories on Variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="variableMetadata.html">variableMetadata()</a></code> </p>
         </td>
@@ -529,51 +540,51 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="combine.html">combine()</a></code> </p>
         </td>
         <td><p>Combine categories or responses</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="copyVariable.html">copyVariable()</a></code> <code><a href="copyVariable.html">copy()</a></code> </p>
         </td>
         <td><p>Copy a variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="makeCaseVariable.html">makeCaseVariable()</a></code> </p>
         </td>
         <td><p>Make a case variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="crunch-cut.html">cut(<i>&lt;NumericVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="crunch-cut.html">cut</a></code> </p>
         </td>
         <td><p>Cut a numeric Crunch variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="interactVariables.html">interactVariables()</a></code> </p>
         </td>
         <td><p>Create a variable by interacting categorical variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="conditionalTransform.html">conditionalTransform()</a></code> </p>
         </td>
         <td><p>Conditional transformation</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="makeWeight.html">makeWeight()</a></code> </p>
         </td>
         <td><p>Generate a weight variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="variable-as-methods.html">as.Numeric(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-as-methods.html">as.Text(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-as-methods.html">as.Categorical(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-as-methods.html">as.Datetime(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-as-methods.html">as.double(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-as-methods.html">as.character(<i>&lt;CrunchVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="variable-as-methods.html">as.Numeric</a></code> <code><a href="variable-as-methods.html">as.Text</a></code> <code><a href="variable-as-methods.html">as.Categorical</a></code> <code><a href="variable-as-methods.html">as.Datetime</a></code> <code><a href="variable-as-methods.html">as.double</a></code> <code><a href="variable-as-methods.html">as.character</a></code> </p>
         </td>
         <td><p>as.* methods for variables</p></td>
       </tr>
@@ -585,55 +596,61 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="Subvariables.html">subvariables(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> <code><a href="Subvariables.html">subvariables(<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="Subvariables.html">`subvariables<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Subvariables.html">`subvariables<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;Subvariables&gt;</i>)</a></code> </p>
+          <p><code><a href="Subvariables.html">subvariables</a></code> <code><a href="Subvariables.html">`subvariables<-`</a></code> </p>
         </td>
         <td><p>Subvariables in Array Variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="addSubvariable.html">addSubvariable()</a></code> <code><a href="addSubvariable.html">addSubvariables()</a></code> </p>
         </td>
         <td><p>Add subvariable to an array</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="deleteSubvariables.html">deleteSubvariables()</a></code> <code><a href="deleteSubvariables.html">deleteSubvariable()</a></code> </p>
         </td>
         <td><p>Delete subvariables from an array</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="flipArrays.html">flipArrays()</a></code> </p>
         </td>
         <td><p>Rearrange array subvariables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="importMultitable.html">importMultitable()</a></code> </p>
         </td>
         <td><p>Import a Multitable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="makeArray.html">makeArray()</a></code> <code><a href="makeArray.html">makeMR()</a></code> <code><a href="makeArray.html">deriveArray()</a></code> </p>
         </td>
         <td><p>Make a Categorical Array or Multiple Response variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="makeMRFromText.html">makeMRFromText()</a></code> </p>
         </td>
         <td><p>Create Multiple Response Variable from Delimited lists</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="is-selected-categories.html">is.selected(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="is-selected-categories.html">`is.selected<-`(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="is-selected-categories.html">`is.selected<-`(<i>&lt;Category&gt;</i>)</a></code> </p>
+          <p><code><a href="makeArrayGadget.html">makeArrayGadget()</a></code> </p>
+        </td>
+        <td><p>Array builder</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is-selected-categories.html">is.selected</a></code> <code><a href="is-selected-categories.html">`is.selected<-`</a></code> </p>
         </td>
         <td><p>is.selected for Categories</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="unbind.html">unbind()</a></code> </p>
         </td>
@@ -647,91 +664,91 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="ordering.html">ordering(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="ordering.html">`ordering<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="ordering.html">ordering(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="ordering.html">`ordering<-`(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="ordering.html">ordering(<i>&lt;DatasetCatalog&gt;</i>)</a></code> <code><a href="ordering.html">`ordering<-`(<i>&lt;DatasetCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="ordering.html">ordering</a></code> <code><a href="ordering.html">`ordering<-`</a></code> </p>
         </td>
         <td><p>Get and set VariableOrder</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="ShojiOrder-length.html">length(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-length.html">length(<i>&lt;OrderGroup&gt;</i>)</a></code> </p>
+          <p><code><a href="ShojiOrder-length.html">length</a></code> </p>
         </td>
         <td><p>Length of an Order</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="ShojiOrder-slots.html">entities(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">entities(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">entities(<i>&lt;list&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`entities<-`(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`entities<-`(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">name(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`name<-`(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">names(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">names(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`names<-`(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">duplicates(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">duplicates(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">duplicates(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`duplicates<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`duplicates<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="ShojiOrder-slots.html">`duplicates<-`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> </p>
+          <p><code><a href="ShojiOrder-slots.html">entities</a></code> <code><a href="ShojiOrder-slots.html">`entities<-`</a></code> <code><a href="ShojiOrder-slots.html">name</a></code> <code><a href="ShojiOrder-slots.html">`name<-`</a></code> <code><a href="ShojiOrder-slots.html">names</a></code> <code><a href="ShojiOrder-slots.html">`names<-`</a></code> <code><a href="ShojiOrder-slots.html">duplicates</a></code> <code><a href="ShojiOrder-slots.html">`duplicates<-`</a></code> </p>
         </td>
         <td><p>Manipulate VariableGroup and VariableOrder</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="copyOrder.html">copyOrder()</a></code> </p>
         </td>
         <td><p>Copy the variable order from one dataset to another.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="dedupeOrder.html">dedupeOrder()</a></code> </p>
         </td>
         <td><p>Remove duplicated entities from an order/group</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="flattenOrder.html">flattenOrder()</a></code> </p>
         </td>
         <td><p>Remove nesting of groups within an order/group</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="grouped.html">grouped()</a></code> <code><a href="grouped.html">ungrouped()</a></code> </p>
         </td>
         <td><p>Get grouped or ungrouped OrderGroups</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="locateEntity.html">locateEntity()</a></code> </p>
         </td>
         <td><p>Find an entity in an order object</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="moveToGroup.html">moveToGroup()</a></code> <code><a href="moveToGroup.html">`moveToGroup<-`()</a></code> </p>
         </td>
         <td><p>Move entities to a group</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="removeEmptyGroups.html">removeEmptyGroups()</a></code> </p>
         </td>
         <td><p>Remove OrderGroups with no entities</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="folder.html">folder()</a></code> <code><a href="folder.html">`folder<-`()</a></code> </p>
         </td>
         <td><p>Find and move variables to a new folder</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="mv.html">mv()</a></code> <code><a href="mv.html">mkdir()</a></code> </p>
         </td>
         <td><p>Functions to manipulate variables' folder structure</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="cd.html">cd()</a></code> </p>
         </td>
         <td><p>Change to different folder</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="rmdir.html">rmdir()</a></code> </p>
         </td>
         <td><p>Delete a folder</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="setOrder.html">setOrder()</a></code> </p>
         </td>
@@ -745,99 +762,105 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="crtabs.html">crtabs()</a></code> </p>
         </td>
         <td><p>Crunch xtabs: Crosstab and otherwise aggregate variables in a Crunch Dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="crunch-uni.html">mean(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">mean(<i>&lt;NumericVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">sd(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">sd(<i>&lt;NumericVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">min(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">min(<i>&lt;NumericVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">min(<i>&lt;DatetimeVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">max(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">max(<i>&lt;NumericVariable&gt;</i>)</a></code> <code><a href="crunch-uni.html">max(<i>&lt;DatetimeVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="crunch-uni.html">mean</a></code> <code><a href="crunch-uni.html">sd</a></code> <code><a href="crunch-uni.html">min</a></code> <code><a href="crunch-uni.html">max</a></code> </p>
         </td>
         <td><p>Univariate statistics on Crunch objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="cube-computing.html">margin.table(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-computing.html">prop.table(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-computing.html">round(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-computing.html">bases(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-computing.html">prop.table(<i>&lt;MultitableResult&gt;</i>)</a></code> <code><a href="cube-computing.html">prop.table(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="cube-computing.html">bases(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="cube-computing.html">bases(<i>&lt;MultitableResult&gt;</i>)</a></code> </p>
+          <p><code><a href="cube-computing.html">margin.table</a></code> <code><a href="cube-computing.html">prop.table</a></code> <code><a href="cube-computing.html">round</a></code> <code><a href="cube-computing.html">bases</a></code> </p>
         </td>
         <td><p>Work with CrunchCubes, MultitableResults, and TabBookResults</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="cube-methods.html">dimnames(<i>&lt;CubeDims&gt;</i>)</a></code> <code><a href="cube-methods.html">dim(<i>&lt;CubeDims&gt;</i>)</a></code> <code><a href="cube-methods.html">is.na(<i>&lt;CubeDims&gt;</i>)</a></code> <code><a href="cube-methods.html">dimensions(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">`dimensions<-`(<i>&lt;CrunchCube&gt;</i>,<i>&lt;CubeDims&gt;</i>)</a></code> <code><a href="cube-methods.html">`[`(<i>&lt;CubeDims&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="cube-methods.html">dim(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">dimnames(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">`[`(<i>&lt;CrunchCube&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="cube-methods.html">variables(<i>&lt;CubeDims&gt;</i>)</a></code> <code><a href="cube-methods.html">measures(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">variables(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">names(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">aliases(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">descriptions(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">types(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="cube-methods.html">notes(<i>&lt;CrunchCube&gt;</i>)</a></code> </p>
+          <p><code><a href="cube-methods.html">dimnames</a></code> <code><a href="cube-methods.html">dim</a></code> <code><a href="cube-methods.html">is.na</a></code> <code><a href="cube-methods.html">dimensions</a></code> <code><a href="cube-methods.html">`dimensions<-`</a></code> <code><a href="cube-methods.html">`[`</a></code> <code><a href="cube-methods.html">variables</a></code> <code><a href="cube-methods.html">measures</a></code> <code><a href="cube-methods.html">names</a></code> <code><a href="cube-methods.html">aliases</a></code> <code><a href="cube-methods.html">descriptions</a></code> <code><a href="cube-methods.html">types</a></code> <code><a href="cube-methods.html">notes</a></code> </p>
         </td>
         <td><p>Methods on Cube objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="cube-residuals.html">rstandard(<i>&lt;CrunchCube&gt;</i>)</a></code> </p>
+          <p><code><a href="cube-residuals.html">rstandard</a></code> </p>
         </td>
         <td><p>Calculate standardized residuals from a CrunchCube</p></td>
       </tr><tr>
-        <!--  -->
+        
+        <td>
+          <p><code><a href="cube-missingness.html">showMissing</a></code> <code><a href="cube-missingness.html">hideMissing</a></code> <code><a href="cube-missingness.html">showIfAny</a></code> </p>
+        </td>
+        <td><p>Modify cube missing behavior</p></td>
+      </tr><tr>
+        
         <td>
           <p><code><a href="index.table.html">index.table()</a></code> </p>
         </td>
         <td><p>Calculate an index table for a CrunchCube</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="dashboard.html">dashboard()</a></code> <code><a href="dashboard.html">setDashboardURL()</a></code> <code><a href="dashboard.html">`dashboard<-`()</a></code> </p>
         </td>
         <td><p>View or set a dashboard URL</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="duplicated.html">duplicated(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="duplicated.html">duplicated(<i>&lt;CrunchExpr&gt;</i>)</a></code> </p>
+          <p><code><a href="duplicated.html">duplicated</a></code> </p>
         </td>
         <td><p>"duplicated" method for Crunch objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="filter-catalog.html">filters(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="filter-catalog.html">`filters<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="filter-catalog.html">filters</a></code> <code><a href="filter-catalog.html">`filters<-`</a></code> </p>
         </td>
         <td><p>Get or set a dataset's filters</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="fortify.html">fortify.CrunchDataFrame()</a></code> <code><a href="fortify.html">fortify.CrunchDataset()</a></code> </p>
         </td>
         <td><p>Fortify crunch objects for use with ggplot</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="is-na-categories.html">is.na(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="is-na-categories.html">is.na(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="is-na-categories.html">`is.na<-`(<i>&lt;Categories&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="is-na-categories.html">`is.na<-`(<i>&lt;Categories&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="is-na-categories.html">is.na(<i>&lt;Category&gt;</i>)</a></code> <code><a href="is-na-categories.html">`is.na<-`(<i>&lt;Category&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> </p>
+          <p><code><a href="is-na-categories.html">is.na</a></code> <code><a href="is-na-categories.html">`is.na<-`</a></code> </p>
         </td>
         <td><p>is.na for Categories</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="multitable-catalog.html">multitables(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="multitable-catalog.html">`multitables<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="multitable-catalog.html">multitables</a></code> <code><a href="multitable-catalog.html">`multitables<-`</a></code> </p>
         </td>
         <td><p>Multitable entities for a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="newFilter.html">newFilter()</a></code> </p>
         </td>
         <td><p>Create a new filter</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="newMultitable.html">newMultitable()</a></code> </p>
         </td>
         <td><p>Create a new Multitable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="table.html">table()</a></code> </p>
         </td>
         <td><p>Table function for Crunch objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="variable-to-R.html">as.vector(<i>&lt;CrunchExpr&gt;</i>)</a></code> <code><a href="variable-to-R.html">as.vector(<i>&lt;CrunchVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="variable-to-R.html">as.vector</a></code> </p>
         </td>
         <td><p>Convert Variables to local R objects</p></td>
       </tr>
@@ -849,51 +872,51 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="SubtotalsHeadings.html">Subtotal()</a></code> <code><a href="SubtotalsHeadings.html">Heading()</a></code> <code><a href="SubtotalsHeadings.html">Subtotal()</a></code> <code><a href="SubtotalsHeadings.html">is.Subtotal()</a></code> <code><a href="SubtotalsHeadings.html">is.Heading()</a></code> <code><a href="SubtotalsHeadings.html">are.Subtotals()</a></code> <code><a href="SubtotalsHeadings.html">are.Headings()</a></code> <code><a href="SubtotalsHeadings.html">Heading()</a></code> <code><a href="SubtotalsHeadings.html">subtotals(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="SubtotalsHeadings.html">subtotals(<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="SubtotalsHeadings.html">`subtotals<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="SubtotalsHeadings.html">`subtotals<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> </p>
+          <p><code><a href="SubtotalsHeadings.html">Subtotal()</a></code> <code><a href="SubtotalsHeadings.html">Heading()</a></code> <code><a href="SubtotalsHeadings.html">is.Subtotal()</a></code> <code><a href="SubtotalsHeadings.html">is.Heading()</a></code> <code><a href="SubtotalsHeadings.html">are.Subtotals()</a></code> <code><a href="SubtotalsHeadings.html">are.Headings()</a></code> <code><a href="SubtotalsHeadings.html">subtotals</a></code> <code><a href="SubtotalsHeadings.html">`subtotals<-`</a></code> </p>
         </td>
         <td><p>Subtotals and headings</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="applyTransforms.html">subtotalArray(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="applyTransforms.html">applyTransforms()</a></code> </p>
+          <p><code><a href="applyTransforms.html">subtotalArray</a></code> <code><a href="applyTransforms.html">applyTransforms()</a></code> </p>
         </td>
         <td><p>Calculate the transforms from a CrunchCube</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="noTransforms.html">noTransforms()</a></code> </p>
         </td>
         <td><p>Remove transformations from a CrunchCube</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="showTransforms.html">showTransforms(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="showTransforms.html">showTransforms(<i>&lt;CategoricalVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="showTransforms.html">showTransforms</a></code> </p>
         </td>
         <td><p>Show transformations on a Crunch object</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="addSummaryStat.html">addSummaryStat()</a></code> </p>
         </td>
         <td><p>Add summary statistics to a CrunchCube</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="SummaryStat.html">SummaryStat()</a></code> <code><a href="SummaryStat.html">SummaryStat()</a></code> <code><a href="SummaryStat.html">is.SummaryStat()</a></code> <code><a href="SummaryStat.html">are.SummaryStats()</a></code> </p>
+          <p><code><a href="SummaryStat.html">SummaryStat()</a></code> <code><a href="SummaryStat.html">is.SummaryStat()</a></code> <code><a href="SummaryStat.html">are.SummaryStats()</a></code> </p>
         </td>
         <td><p>Summary insertions</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="Insertions.html">Insertions()</a></code> <code><a href="Insertions.html">Insertion()</a></code> <code><a href="Insertions.html">.Insertion()</a></code> <code><a href="Insertions.html">`anchor<-`(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="Insertions.html">`anchor<-`(<i>&lt;Subtotal&gt;</i>)</a></code> <code><a href="Insertions.html">`anchor<-`(<i>&lt;Heading&gt;</i>)</a></code> <code><a href="Insertions.html">`anchor<-`(<i>&lt;SummaryStat&gt;</i>)</a></code> <code><a href="Insertions.html">`subtotals<-`(<i>&lt;Insertion&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Insertions.html">`arguments<-`(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="Insertions.html">`arguments<-`(<i>&lt;Subtotal&gt;</i>)</a></code> <code><a href="Insertions.html">`arguments<-`(<i>&lt;Heading&gt;</i>)</a></code> <code><a href="Insertions.html">`arguments<-`(<i>&lt;SummaryStat&gt;</i>)</a></code> <code><a href="Insertions.html">arguments(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="Insertions.html">arguments(<i>&lt;Subtotal&gt;</i>)</a></code> <code><a href="Insertions.html">arguments(<i>&lt;Heading&gt;</i>)</a></code> <code><a href="Insertions.html">arguments(<i>&lt;SummaryStat&gt;</i>)</a></code> <code><a href="Insertions.html">anchor(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="Insertions.html">anchor(<i>&lt;Subtotal&gt;</i>)</a></code> <code><a href="Insertions.html">anchor(<i>&lt;Heading&gt;</i>)</a></code> <code><a href="Insertions.html">anchor(<i>&lt;SummaryStat&gt;</i>)</a></code> <code><a href="Insertions.html">func(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="Insertions.html">func(<i>&lt;Subtotal&gt;</i>)</a></code> <code><a href="Insertions.html">func(<i>&lt;Heading&gt;</i>)</a></code> <code><a href="Insertions.html">func(<i>&lt;SummaryStat&gt;</i>)</a></code> <code><a href="Insertions.html">anchors(<i>&lt;Insertions&gt;</i>)</a></code> <code><a href="Insertions.html">funcs(<i>&lt;Insertions&gt;</i>)</a></code> </p>
+          <p><code><a href="Insertions.html">Insertions()</a></code> <code><a href="Insertions.html">Insertion()</a></code> <code><a href="Insertions.html">.Insertion()</a></code> <code><a href="Insertions.html">`anchor<-`</a></code> <code><a href="Insertions.html">`subtotals<-`</a></code> <code><a href="Insertions.html">`arguments<-`</a></code> <code><a href="Insertions.html">arguments</a></code> <code><a href="Insertions.html">anchor</a></code> <code><a href="Insertions.html">func</a></code> <code><a href="Insertions.html">anchors</a></code> <code><a href="Insertions.html">funcs</a></code> </p>
         </td>
         <td><p>Insert categories in transformations</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="Transforms.html">Transforms()</a></code> <code><a href="Transforms.html">transforms(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="Transforms.html">transforms(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="Transforms.html">`transforms<-`(<i>&lt;CrunchCube&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="Transforms.html">`transforms<-`(<i>&lt;CrunchCube&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="Transforms.html">transforms(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="Transforms.html">transforms(<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="Transforms.html">`transforms<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;Transforms&gt;</i>)</a></code> <code><a href="Transforms.html">`transforms<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> </p>
+          <p><code><a href="Transforms.html">Transforms()</a></code> <code><a href="Transforms.html">transforms</a></code> <code><a href="Transforms.html">`transforms<-`</a></code> </p>
         </td>
         <td><p>Transformations of variable and cube views</p></td>
       </tr>
@@ -905,63 +928,63 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="crunchBox.html">crunchBox()</a></code> <code><a href="crunchBox.html">CrunchBox()</a></code> </p>
         </td>
         <td><p>Make a CrunchBox</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="embedCrunchBox.html">embedCrunchBox()</a></code> </p>
         </td>
         <td><p>Get HTML for embedding a CrunchBox</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="exportDataset.html">exportDataset()</a></code> <code><a href="exportDataset.html">write.csv(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="exportDataset.html">exportDataset()</a></code> <code><a href="exportDataset.html">write.csv</a></code> </p>
         </td>
         <td><p>Export a dataset to a file</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="preCrunchBoxCheck.html">preCrunchBoxCheck()</a></code> </p>
         </td>
         <td><p>Check if a dataset will make a good CrunchBox</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="tabBook.html">tabBook()</a></code> </p>
         </td>
         <td><p>Compute a Tab Book</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="write.csv.gz.html">write.csv.gz()</a></code> </p>
         </td>
         <td><p>Write CSV to a compressed file</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="writePreparedData.html">writePreparedData()</a></code> </p>
         </td>
         <td><p>Persist to disk a prepared data.frame and metadata</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="pollProgress.html">pollProgress()</a></code> </p>
         </td>
         <td><p>Check a Crunch progress URL until it finishes</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="CrunchDataFrame.html">dim(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">names(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`[`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`[<-`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`[[`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`[[<-`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`$`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> <code><a href="CrunchDataFrame.html">`$<-`(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> </p>
+          <p><code><a href="CrunchDataFrame.html">dim</a></code> <code><a href="CrunchDataFrame.html">names</a></code> <code><a href="CrunchDataFrame.html">`[`</a></code> <code><a href="CrunchDataFrame.html">`[<-`</a></code> <code><a href="CrunchDataFrame.html">`[[`</a></code> <code><a href="CrunchDataFrame.html">`[[<-`</a></code> <code><a href="CrunchDataFrame.html">`$`</a></code> <code><a href="CrunchDataFrame.html">`$<-`</a></code> </p>
         </td>
         <td><p>CrunchDataFrame</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="merge.html">merge(<i>&lt;CrunchDataFrame&gt;</i>)</a></code> </p>
+          <p><code><a href="merge.html">merge</a></code> </p>
         </td>
         <td><p>Merge a CrunchDataFrame</p></td>
       </tr>
@@ -973,31 +996,31 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="addGeoMetadata.html">addGeoMetadata()</a></code> </p>
         </td>
         <td><p>Add geodata metadata to a crunch variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="availableGeodataFeatures.html">availableGeodataFeatures()</a></code> </p>
         </td>
         <td><p>Get the property features for available geographies</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="geo.html">CrunchGeography()</a></code> <code><a href="geo.html">geo(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="geo.html">`geo<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;CrunchGeography&gt;</i>)</a></code> <code><a href="geo.html">`geo<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="geo.html">availableGeodata()</a></code> </p>
+          <p><code><a href="geo.html">CrunchGeography()</a></code> <code><a href="geo.html">geo</a></code> <code><a href="geo.html">`geo<-`</a></code> <code><a href="geo.html">availableGeodata()</a></code> </p>
         </td>
         <td><p>Geography properties for crunch variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="matchCatToFeat.html">matchCatToFeat()</a></code> </p>
         </td>
         <td><p>Match categories with features from geodata</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="scoreCatToFeat.html">scoreCatToFeat()</a></code> </p>
         </td>
@@ -1011,115 +1034,121 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="archive-and-publish.html">is.archived(<i>&lt;DatasetCatalog&gt;</i>)</a></code> <code><a href="archive-and-publish.html">is.draft(<i>&lt;DatasetCatalog&gt;</i>)</a></code> <code><a href="archive-and-publish.html">is.published(<i>&lt;DatasetCatalog&gt;</i>)</a></code> <code><a href="archive-and-publish.html">`is.archived<-`(<i>&lt;DatasetCatalog&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">`is.draft<-`(<i>&lt;DatasetCatalog&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">`is.published<-`(<i>&lt;DatasetCatalog&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">is.archived(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="archive-and-publish.html">is.draft(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="archive-and-publish.html">is.published(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="archive-and-publish.html">`is.archived<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">archive()</a></code> <code><a href="archive-and-publish.html">`is.draft<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">`is.published<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="archive-and-publish.html">publish()</a></code> </p>
+          <p><code><a href="archive-and-publish.html">is.archived</a></code> <code><a href="archive-and-publish.html">is.draft</a></code> <code><a href="archive-and-publish.html">is.published</a></code> <code><a href="archive-and-publish.html">`is.archived<-`</a></code> <code><a href="archive-and-publish.html">`is.draft<-`</a></code> <code><a href="archive-and-publish.html">`is.published<-`</a></code> <code><a href="archive-and-publish.html">archive()</a></code> <code><a href="archive-and-publish.html">publish()</a></code> </p>
         </td>
         <td><p>Get and set "archived" and "published" status of a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dataset-owner.html">owner(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-owner.html">`owner<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="dataset-owner.html">owner</a></code> <code><a href="dataset-owner.html">`owner<-`</a></code> </p>
         </td>
         <td><p>Get and set the owner of a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="getAccountUserCatalog.html">getAccountUserCatalog()</a></code> </p>
         </td>
         <td><p>Find all users on your account</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="getTeams.html">getTeams()</a></code> </p>
         </td>
         <td><p>Retrieve your teams</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="is-public.html">is.public(<i>&lt;CrunchFilter&gt;</i>)</a></code> <code><a href="is-public.html">`is.public<-`(<i>&lt;CrunchFilter&gt;</i>)</a></code> <code><a href="is-public.html">is.public(<i>&lt;MultitableCatalog&gt;</i>)</a></code> <code><a href="is-public.html">`is.public<-`(<i>&lt;MultitableCatalog&gt;</i>)</a></code> <code><a href="is-public.html">is.public(<i>&lt;Multitable&gt;</i>)</a></code> <code><a href="is-public.html">`is.public<-`(<i>&lt;Multitable&gt;</i>)</a></code> </p>
+          <p><code><a href="is-public.html">is.public</a></code> <code><a href="is-public.html">`is.public<-`</a></code> </p>
         </td>
         <td><p>View and modify "public" attribute</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="is.editor.html">is.editor(<i>&lt;MemberCatalog&gt;</i>)</a></code> <code><a href="is.editor.html">`is.editor<-`(<i>&lt;MemberCatalog&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="is.editor.html">is.editor(<i>&lt;PermissionCatalog&gt;</i>)</a></code> <code><a href="is.editor.html">is.editor(<i>&lt;PermissionTuple&gt;</i>)</a></code> </p>
+          <p><code><a href="is.editor.html">is.editor</a></code> <code><a href="is.editor.html">`is.editor<-`</a></code> </p>
         </td>
         <td><p>Read and set edit privileges</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="login.html">login()</a></code> </p>
         </td>
         <td><p>Authenticate with the Crunch API</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="logout.html">logout()</a></code> </p>
         </td>
         <td><p>Kill the active Crunch session</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="me.html">me()</a></code> </p>
         </td>
         <td><p>My user entity</p></td>
       </tr><tr>
-        <!--  -->
+        
+        <td>
+          <p><code><a href="user-email.html">email()</a></code> </p>
+        </td>
+        <td><p>Extract the email from a User Entity</p></td>
+      </tr><tr>
+        
         <td>
           <p><code><a href="newProject.html">newProject()</a></code> </p>
         </td>
         <td><p>Create a new project</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="owners.html">owners()</a></code> <code><a href="owners.html">ownerNames()</a></code> </p>
         </td>
         <td><p>See who owns these datasets</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="permissions.html">permissions(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="permissions.html">permissions</a></code> </p>
         </td>
         <td><p>See who has access to a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="project-icon.html">icon()</a></code> <code><a href="project-icon.html">`icon<-`()</a></code> </p>
         </td>
         <td><p>Get or set a project's icon</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="projects.html">projects()</a></code> </p>
         </td>
         <td><p>Get the project catalog</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="resetPassword.html">resetPassword()</a></code> </p>
         </td>
         <td><p>Reset your password</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="share.html">share()</a></code> </p>
         </td>
         <td><p>Share a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="teams.html">`members<-`(<i>&lt;CrunchTeam&gt;</i>,<i>&lt;MemberCatalog&gt;</i>)</a></code> <code><a href="teams.html">`members<-`(<i>&lt;CrunchTeam&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="teams.html">members(<i>&lt;CrunchProject&gt;</i>)</a></code> <code><a href="teams.html">`members<-`(<i>&lt;CrunchProject&gt;</i>,<i>&lt;MemberCatalog&gt;</i>)</a></code> <code><a href="teams.html">`members<-`(<i>&lt;CrunchProject&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="teams.html">members(<i>&lt;CrunchTeam&gt;</i>)</a></code> </p>
+          <p><code><a href="teams.html">`members<-`</a></code> <code><a href="teams.html">members</a></code> </p>
         </td>
         <td><p>Teams</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="unshare.html">unshare()</a></code> </p>
         </td>
         <td><p>Revoke a user's access to a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="expropriateUser.html">expropriateUser()</a></code> </p>
         </td>
@@ -1133,27 +1162,27 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="catalog-length.html">length(<i>&lt;ShojiCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="catalog-length.html">length</a></code> </p>
         </td>
         <td><p>Length of Catalog</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="catalog-dataframes.html">as.data.frame(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="catalog-dataframes.html">as.data.frame(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="catalog-dataframes.html">as.data.frame(<i>&lt;BatchCatalog&gt;</i>)</a></code> <code><a href="catalog-dataframes.html">as.data.frame(<i>&lt;FilterCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="catalog-dataframes.html">as.data.frame</a></code> </p>
         </td>
         <td><p>as.data.frame method for catalog objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="describe-catalog.html">names(<i>&lt;BatchCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">names(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe-catalog.html">`names<-`(<i>&lt;MultitableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">names(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">`names<-`(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">emails(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">types(<i>&lt;ShojiFolder&gt;</i>)</a></code> <code><a href="describe-catalog.html">names(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> <code><a href="describe-catalog.html">aliases(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">`aliases<-`(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">notes(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">`notes<-`(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">descriptions(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">`descriptions<-`(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">types(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">ids(<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">aliases(<i>&lt;VariableFolder&gt;</i>)</a></code> <code><a href="describe-catalog.html">names(<i>&lt;VersionCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">descriptions(<i>&lt;VersionCatalog&gt;</i>)</a></code> <code><a href="describe-catalog.html">timestamps(<i>&lt;VersionCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="describe-catalog.html">names</a></code> <code><a href="describe-catalog.html">`names<-`</a></code> <code><a href="describe-catalog.html">emails</a></code> <code><a href="describe-catalog.html">types</a></code> <code><a href="describe-catalog.html">aliases</a></code> <code><a href="describe-catalog.html">`aliases<-`</a></code> <code><a href="describe-catalog.html">notes</a></code> <code><a href="describe-catalog.html">`notes<-`</a></code> <code><a href="describe-catalog.html">descriptions</a></code> <code><a href="describe-catalog.html">`descriptions<-`</a></code> <code><a href="describe-catalog.html">ids</a></code> <code><a href="describe-catalog.html">timestamps</a></code> </p>
         </td>
         <td><p>Get and set names, aliases on Catalog-type objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="shoji-index.html">index(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="shoji-index.html">`index<-`(<i>&lt;ShojiCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="shoji-index.html">index</a></code> <code><a href="shoji-index.html">`index<-`</a></code> </p>
         </td>
         <td><p>Get the body of a Catalog</p></td>
       </tr>
@@ -1165,7 +1194,7 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="consent.html">consent()</a></code> <code><a href="consent.html">with_consent()</a></code> </p>
         </td>
@@ -1179,25 +1208,25 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="crunch-is.html">is.dataset()</a></code> <code><a href="crunch-is.html">is.CrunchExpr()</a></code> <code><a href="crunch-is.html">is.Expr()</a></code> <code><a href="crunch-is.html">is.Geodata()</a></code> <code><a href="crunch-is.html">is.shoji()</a></code> <code><a href="crunch-is.html">is.variable()</a></code> <code><a href="crunch-is.html">is.Numeric()</a></code> <code><a href="crunch-is.html">is.Categorical()</a></code> <code><a href="crunch-is.html">is.Text()</a></code> <code><a href="crunch-is.html">is.Datetime()</a></code> <code><a href="crunch-is.html">is.Multiple()</a></code> <code><a href="crunch-is.html">is.MR()</a></code> <code><a href="crunch-is.html">is.MultipleResponse()</a></code> <code><a href="crunch-is.html">is.CA()</a></code> <code><a href="crunch-is.html">is.Array()</a></code> <code><a href="crunch-is.html">is.CategoricalArray()</a></code> </p>
         </td>
         <td><p>Test whether a Crunch object belongs to a class</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="describe.html">name(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">`name<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">description(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">`description<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">startDate(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">`startDate<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">endDate(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">`endDate<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">id(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">notes(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">`notes<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="describe.html">description(<i>&lt;Geodata&gt;</i>)</a></code> <code><a href="describe.html">`name<-`(<i>&lt;Multitable&gt;</i>)</a></code> <code><a href="describe.html">`name<-`(<i>&lt;ShojiFolder&gt;</i>)</a></code> <code><a href="describe.html">name(<i>&lt;ShojiObject&gt;</i>)</a></code> <code><a href="describe.html">name(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">`name<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">id(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">description(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">`description<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">alias(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">`alias<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">notes(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">`notes<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">digits(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">`digits<-`(<i>&lt;NumericVariable&gt;</i>)</a></code> <code><a href="describe.html">`digits<-`(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="describe.html">uniformBasis(<i>&lt;MultipleResponseVariable&gt;</i>)</a></code> <code><a href="describe.html">`uniformBasis<-`(<i>&lt;MultipleResponseVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="describe.html">name</a></code> <code><a href="describe.html">`name<-`</a></code> <code><a href="describe.html">description</a></code> <code><a href="describe.html">`description<-`</a></code> <code><a href="describe.html">startDate</a></code> <code><a href="describe.html">`startDate<-`</a></code> <code><a href="describe.html">endDate</a></code> <code><a href="describe.html">`endDate<-`</a></code> <code><a href="describe.html">id</a></code> <code><a href="describe.html">notes</a></code> <code><a href="describe.html">`notes<-`</a></code> <code><a href="describe.html">alias</a></code> <code><a href="describe.html">`alias<-`</a></code> <code><a href="describe.html">digits</a></code> <code><a href="describe.html">`digits<-`</a></code> <code><a href="describe.html">uniformBasis</a></code> <code><a href="describe.html">`uniformBasis<-`</a></code> </p>
         </td>
         <td><p>Name, alias, and description for Crunch objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="refresh.html">refresh(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="refresh.html">refresh(<i>&lt;ShojiObject&gt;</i>)</a></code> <code><a href="refresh.html">refresh(<i>&lt;CrunchVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="refresh.html">refresh</a></code> </p>
         </td>
         <td><p>Get a fresh copy from the server</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="webApp.html">webApp()</a></code> </p>
         </td>
@@ -1211,25 +1240,25 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="http-methods.html">crGET()</a></code> <code><a href="http-methods.html">crPUT()</a></code> <code><a href="http-methods.html">crPATCH()</a></code> <code><a href="http-methods.html">crPOST()</a></code> <code><a href="http-methods.html">crDELETE()</a></code> </p>
         </td>
         <td><p>HTTP methods for communicating with the Crunch API</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="self.html">self(<i>&lt;ShojiObject&gt;</i>)</a></code> <code><a href="self.html">self(<i>&lt;CrunchVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="self.html">self</a></code> </p>
         </td>
         <td><p>Get the URL of this object</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="session.html">session()</a></code> </p>
         </td>
         <td><p>Get various catalogs for your Crunch session</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="tojson-crunch.html">jsonprep()</a></code> <code><a href="tojson-crunch.html">toJSON()</a></code> </p>
         </td>
@@ -1243,123 +1272,123 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="Categories.html">Categories()</a></code> <code><a href="Categories.html">Category()</a></code> <code><a href="Categories.html">`[`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">`[`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">`[`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">`[<-`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">`[[`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="Categories.html">`[[<-`(<i>&lt;AbstractCategories&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">names(<i>&lt;AbstractCategories&gt;</i>)</a></code> <code><a href="Categories.html">`names<-`(<i>&lt;AbstractCategories&gt;</i>)</a></code> <code><a href="Categories.html">ids(<i>&lt;AbstractCategories&gt;</i>)</a></code> <code><a href="Categories.html">`[<-`(<i>&lt;Categories&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="Categories.html">`ids<-`(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="Categories.html">values(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="Categories.html">`values<-`(<i>&lt;Categories&gt;</i>)</a></code> </p>
+          <p><code><a href="Categories.html">Categories()</a></code> <code><a href="Categories.html">Category()</a></code> <code><a href="Categories.html">`[`</a></code> <code><a href="Categories.html">`[<-`</a></code> <code><a href="Categories.html">`[[`</a></code> <code><a href="Categories.html">`[[<-`</a></code> <code><a href="Categories.html">names</a></code> <code><a href="Categories.html">`names<-`</a></code> <code><a href="Categories.html">ids</a></code> <code><a href="Categories.html">`ids<-`</a></code> <code><a href="Categories.html">values</a></code> <code><a href="Categories.html">`values<-`</a></code> </p>
         </td>
         <td><p>Categories in CategoricalVariables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="CrunchDataset.html">CrunchDataset-class</a></code> </p>
         </td>
         <td><p>Crunch Datasets</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="CrunchVariable.html">CrunchVariable-class</a></code> </p>
         </td>
         <td><p>Variables in Crunch</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="DatasetOrder.html">DatasetOrder-class</a></code> </p>
         </td>
         <td><p>Organize Datasets</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ShojiObject-class.html">ShojiObject-class</a></code> </p>
         </td>
         <td><p>Mix-in class for multiple inheritance of variables and datasets.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="ShojiOrder-extract.html">`[`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`$`(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;ShojiOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`$<-`(<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`$`(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ShojiOrder&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;OrderGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`$<-`(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;VariableOrder&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`(<i>&lt;VariableGroup&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="ShojiOrder-extract.html">`[`</a></code> <code><a href="ShojiOrder-extract.html">`[[`</a></code> <code><a href="ShojiOrder-extract.html">`$`</a></code> <code><a href="ShojiOrder-extract.html">`[<-`</a></code> <code><a href="ShojiOrder-extract.html">`[[<-`</a></code> <code><a href="ShojiOrder-extract.html">`$<-`</a></code> </p>
         </td>
         <td><p>Extract and update in VariableOrders and VariableGroups</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="VariableCatalog.html">VariableCatalog-class</a></code> </p>
         </td>
         <td><p>Collection of Variables within a Dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="VariableOrder.html">VariableOrder-class</a></code> </p>
         </td>
         <td><p>Organize Variables within a Dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="catalog-extract.html">`[[`(<i>&lt;DatasetCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;DatasetCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;DatasetTuple&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;FilterCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;FilterCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;FilterCatalog&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;FilterCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchFilter&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;FilterCatalog&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchFilter&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;MemberCatalog&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;MemberCatalog&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;MemberCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;MultitableCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;MultitableCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;formula&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;MultitableCatalog&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;formula&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;MultitableCatalog&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;PermissionCatalog&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;ProjectCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;ProjectCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;ProjectCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchProject&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="catalog-extract.html">`$`(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="catalog-extract.html">`$<-`(<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[<-`(<i>&lt;ShojiCatalog&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ShojiCatalog&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;ShojiFolder&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;ShojiFolder&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;TeamCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;TeamCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;TeamCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchTeam&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;UserCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;UserCatalog&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[[<-`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;VariableOrder&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;VariableGroup&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[<-`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;VariableOrder&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;VariableCatalog&gt;</i>)</a></code> <code><a href="catalog-extract.html">`[<-`(<i>&lt;VariableCatalog&gt;</i>,<i>&lt;VariableGroup&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;VariableCatalog&gt;</i>)</a></code> </p>
+          <p><code><a href="catalog-extract.html">`[[`</a></code> <code><a href="catalog-extract.html">`[[<-`</a></code> <code><a href="catalog-extract.html">`[`</a></code> <code><a href="catalog-extract.html">`$`</a></code> <code><a href="catalog-extract.html">`$<-`</a></code> <code><a href="catalog-extract.html">`[<-`</a></code> </p>
         </td>
         <td><p>Extract and modify subsets of Catalog-type objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="category-extract.html">`$`(<i>&lt;AbstractCategory&gt;</i>)</a></code> <code><a href="category-extract.html">`$<-`(<i>&lt;AbstractCategory&gt;</i>)</a></code> </p>
+          <p><code><a href="category-extract.html">`$`</a></code> <code><a href="category-extract.html">`$<-`</a></code> </p>
         </td>
         <td><p>Access Category fields directly</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="crunch.html">crunch</a></code> </p>
         </td>
         <td><p>Crunch.io: instant, visual, collaborative data analysis</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;VariableGroup&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;VariableOrder&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>,<i>&lt;missing&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">subset(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-extract.html">`[[`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="dataset-extract.html">`$`(<i>&lt;CrunchDataset&gt;</i>)</a></code> </p>
+          <p><code><a href="dataset-extract.html">`[`</a></code> <code><a href="dataset-extract.html">subset</a></code> <code><a href="dataset-extract.html">`[[`</a></code> <code><a href="dataset-extract.html">`$`</a></code> </p>
         </td>
         <td><p>Subset datasets and extract variables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="dataset-update.html">`$<-`(<i>&lt;CrunchDataset&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchGeography&gt;</i>)</a></code> <code><a href="dataset-update.html">`[[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchGeography&gt;</i>)</a></code> <code><a href="dataset-update.html">`[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;list&gt;</i>)</a></code> <code><a href="dataset-update.html">`[<-`(<i>&lt;CrunchDataset&gt;</i>,<i>&lt;CrunchExpr&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
+          <p><code><a href="dataset-update.html">`[[<-`</a></code> <code><a href="dataset-update.html">`$<-`</a></code> <code><a href="dataset-update.html">`[<-`</a></code> </p>
         </td>
         <td><p>Update a variable or variables in a dataset</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="expressions.html">`!`(<i>&lt;CrunchExpr&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;factor&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;TextVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;NumericVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;DatetimeVariable&gt;</i>,<i>&lt;Date&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;DatetimeVariable&gt;</i>,<i>&lt;POSIXt&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;DatetimeVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="expressions.html">`%in%`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="expressions.html">`==`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="expressions.html">`==`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="expressions.html">`==`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;factor&gt;</i>)</a></code> <code><a href="expressions.html">`!=`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="expressions.html">`!=`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="expressions.html">`!=`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;factor&gt;</i>)</a></code> <code><a href="expressions.html">is.na(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="expressions.html">bin()</a></code> <code><a href="expressions.html">rollup()</a></code> <code><a href="expressions.html">rollupResolution()</a></code> <code><a href="expressions.html">`rollupResolution<-`(<i>&lt;DatetimeVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="expressions.html">`!`</a></code> <code><a href="expressions.html">`%in%`</a></code> <code><a href="expressions.html">`==`</a></code> <code><a href="expressions.html">`!=`</a></code> <code><a href="expressions.html">is.na</a></code> <code><a href="expressions.html">bin()</a></code> <code><a href="expressions.html">rollup()</a></code> <code><a href="expressions.html">rollupResolution()</a></code> <code><a href="expressions.html">`rollupResolution<-`</a></code> </p>
         </td>
         <td><p>Construct Crunch Expressions</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="session-extract.html">`[[`(<i>&lt;Session&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="session-extract.html">`$`(<i>&lt;Session&gt;</i>)</a></code> <code><a href="session-extract.html">`[[<-`(<i>&lt;Session&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="session-extract.html">`$<-`(<i>&lt;Session&gt;</i>)</a></code> </p>
+          <p><code><a href="session-extract.html">`[[`</a></code> <code><a href="session-extract.html">`$`</a></code> <code><a href="session-extract.html">`[[<-`</a></code> <code><a href="session-extract.html">`$<-`</a></code> </p>
         </td>
         <td><p>Extract catalogs from a Session object</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="subvars-extract.html">`[[`(<i>&lt;Subvariables&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[`(<i>&lt;Subvariables&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[`(<i>&lt;Subvariables&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;Subvariables&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;Subvariables&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[<-`(<i>&lt;Subvariables&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="subvars-extract.html">`$`(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`[[<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;character&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="subvars-extract.html">`$<-`(<i>&lt;CategoricalArrayVariable&gt;</i>)</a></code> </p>
+          <p><code><a href="subvars-extract.html">`[[`</a></code> <code><a href="subvars-extract.html">`[`</a></code> <code><a href="subvars-extract.html">`[[<-`</a></code> <code><a href="subvars-extract.html">`[<-`</a></code> <code><a href="subvars-extract.html">`$`</a></code> <code><a href="subvars-extract.html">`$<-`</a></code> </p>
         </td>
         <td><p>Extract and modify subsets of subvariables</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="tabbook-methods.html">length(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">`[[`(<i>&lt;TabBookResult&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="tabbook-methods.html">`[[`(<i>&lt;TabBookResult&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="tabbook-methods.html">dim(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">names(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">aliases(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">descriptions(<i>&lt;TabBookResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">length(<i>&lt;MultitableResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">`[[`(<i>&lt;MultitableResult&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="tabbook-methods.html">names(<i>&lt;MultitableResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">aliases(<i>&lt;MultitableResult&gt;</i>)</a></code> <code><a href="tabbook-methods.html">descriptions(<i>&lt;MultitableResult&gt;</i>)</a></code> </p>
+          <p><code><a href="tabbook-methods.html">length</a></code> <code><a href="tabbook-methods.html">`[[`</a></code> <code><a href="tabbook-methods.html">dim</a></code> <code><a href="tabbook-methods.html">names</a></code> <code><a href="tabbook-methods.html">aliases</a></code> <code><a href="tabbook-methods.html">descriptions</a></code> </p>
         </td>
         <td><p>TabBookResult and MultitableResult methods</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="tuple-methods.html">entity(<i>&lt;CrunchProject&gt;</i>)</a></code> <code><a href="tuple-methods.html">`$`(<i>&lt;ShojiEntity&gt;</i>)</a></code> <code><a href="tuple-methods.html">`$<-`(<i>&lt;ShojiEntity&gt;</i>)</a></code> <code><a href="tuple-methods.html">`[[`(<i>&lt;ShojiEntity&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="tuple-methods.html">`[[<-`(<i>&lt;ShojiEntity&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="tuple-methods.html">refresh(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">`$`(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">`$<-`(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">`[[`(<i>&lt;ShojiTuple&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="tuple-methods.html">`[[<-`(<i>&lt;ShojiTuple&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="tuple-methods.html">self(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">entity(<i>&lt;VariableTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">entity(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="tuple-methods.html">entity(<i>&lt;DatasetTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">delete(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">delete(<i>&lt;DatasetTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">name(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">`name<-`(<i>&lt;ShojiTuple&gt;</i>)</a></code> <code><a href="tuple-methods.html">type(<i>&lt;ShojiTuple&gt;</i>)</a></code> </p>
+          <p><code><a href="tuple-methods.html">entity</a></code> <code><a href="tuple-methods.html">`$`</a></code> <code><a href="tuple-methods.html">`$<-`</a></code> <code><a href="tuple-methods.html">`[[`</a></code> <code><a href="tuple-methods.html">`[[<-`</a></code> <code><a href="tuple-methods.html">refresh</a></code> <code><a href="tuple-methods.html">self</a></code> <code><a href="tuple-methods.html">delete</a></code> <code><a href="tuple-methods.html">name</a></code> <code><a href="tuple-methods.html">`name<-`</a></code> <code><a href="tuple-methods.html">type</a></code> </p>
         </td>
         <td><p>Methods for ShojiTuples</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="variable-extract.html">`[`(<i>&lt;CrunchExpr&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-extract.html">`[`(<i>&lt;CrunchExpr&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-extract.html">`[`(<i>&lt;CrunchExpr&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-extract.html">`[`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;CrunchExpr&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-extract.html">`[`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;numeric&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-extract.html">`[`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;logical&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
+          <p><code><a href="variable-extract.html">`[`</a></code> </p>
         </td>
         <td><p>"Subset" a Variable</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;NULL&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;TextVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;NumericVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;DatetimeVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;Date&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;DatetimeVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;POSIXt&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchExpr&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;factor&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;numeric&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;character&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CategoricalArrayVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;factor&gt;</i>)</a></code> <code><a href="variable-update.html">`[<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>,<i>&lt;missing&gt;</i>,<i>&lt;logical&gt;</i>)</a></code> <code><a href="variable-update.html">`is.na<-`(<i>&lt;CrunchVariable&gt;</i>,<i>&lt;ANY&gt;</i>)</a></code> </p>
+          <p><code><a href="variable-update.html">`[<-`</a></code> <code><a href="variable-update.html">`is.na<-`</a></code> </p>
         </td>
         <td><p>Update variables with expressions or values</p></td>
       </tr>
@@ -1371,35 +1400,55 @@
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="ContextManager.html">ContextManager()</a></code> </p>
         </td>
         <td><p>Context managers</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="show-crunch.html">show(<i>&lt;ShojiFolder&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;ShojiObject&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;CrunchVariable&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;Category&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;Categories&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;Insertion&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;Insertions&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;CrunchExpr&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;CrunchCube&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;OrderGroup&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;CrunchGeography&gt;</i>)</a></code> <code><a href="show-crunch.html">show(<i>&lt;MultitableResult&gt;</i>)</a></code> </p>
+          <p><code><a href="show-crunch.html">show</a></code> </p>
         </td>
         <td><p>Show methods for Crunch objects</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="temp.options.html">temp.options()</a></code> <code><a href="temp.options.html">temp.option()</a></code> </p>
         </td>
         <td><p>Set some global options temporarily</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="which.html">which(<i>&lt;CrunchLogicalExpr&gt;</i>)</a></code> </p>
+          <p><code><a href="which.html">which</a></code> </p>
         </td>
         <td><p>"which" method for CrunchLogicalExpr</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="with-context-manager.html">with(<i>&lt;contextManager&gt;</i>)</a></code> </p>
+          <p><code><a href="with-context-manager.html">with</a></code> </p>
         </td>
         <td><p>Context manager's "with" method</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="SO_schema.html">SO_schema</a></code> </p>
+        </td>
+        <td><p>Schema for the 2017 Stack Overflow developer survey</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="SO_survey.html">SO_survey</a></code> </p>
+        </td>
+        <td><p>R users who responded to the 2017 Stack Overflow developer survey</p></td>
       </tr>
     </tbody>
     </table>
@@ -1427,13 +1476,14 @@
       <li><a href="#section-api">API</a></li>
       <li><a href="#section-other">Other</a></li>
       <li><a href="#section-internal">Internal</a></li>
+      <li><a href="#section-data">Data</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
