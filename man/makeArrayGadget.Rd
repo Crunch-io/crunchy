@@ -10,7 +10,7 @@ makeArrayGadget(env = globalenv())
 \item{env}{the environment to run the gadget}
 }
 \value{
-a valid call to `makeArray()` or `makeMR()`
+a valid call to \code{makeArray()} or \code{makeMR()}
 }
 \description{
 Categorical Array and Multiple Response variables can be difficult to

@@ -7,12 +7,12 @@
 setCrunchyAuthorization(expr)
 }
 \arguments{
-\item{expr}{A `function (input, output, session)` or expression to call
-inside [crunchyServer()]}
+\item{expr}{A \code{function (input, output, session)} or expression to call
+inside \code{\link[=crunchyServer]{crunchyServer()}}}
 }
 \value{
 Invisibly, the server function. If an expression is provided, it will
-be wrapped in `function (input, output, session)`. This function is called
+be wrapped in \code{function (input, output, session)}. This function is called
 for the side effect of setting the authorization function globally.
 }
 \description{

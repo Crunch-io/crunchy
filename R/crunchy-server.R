@@ -23,9 +23,10 @@
 #' [crunchyUnauthorizedBody()] for giving an alternate UI for users who are
 #' authenticated with Crunch but not authorized to view this app.
 #' @export
+#' @importFrom shiny shinyServer
 crunchyServer <- function (func, authz=getOption("crunchy.authorization")) {
     shinyServer(function (input, output, session) {
-        public_ui <- getOption("crunchy.body.public", crunchyDefaultPublicUI)
+        public_ui <- getOption("crunchy.body.public", crunchyDefaultPublicUI())
         output$crunch_body <- renderUI({
             # First, check whether this user is authenticated.
             #

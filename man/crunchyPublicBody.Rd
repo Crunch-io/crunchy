@@ -14,16 +14,16 @@ crunchyUnauthorizedBody(...)
 }
 \value{
 An empty string; these functions are called for their side effects of
-registering the UI elements so that `crunchyServer()` can render them as
+registering the UI elements so that \code{crunchyServer()} can render them as
 appropriate.
 }
 \description{
-[crunchyServer()] and [crunchyBody()] allow you to protect your app with
+\code{\link[=crunchyServer]{crunchyServer()}} and \code{\link[=crunchyBody]{crunchyBody()}} allow you to protect your app with
 Crunch authentication and authorization. Add these UI contents to your
-[shiny::shinyUI()] body to display different content for visitors who are
-not authenticated with Crunch (`crunchyPublicBody()`) or who are
+\code{\link[shiny:shinyUI]{shiny::shinyUI()}} body to display different content for visitors who are
+not authenticated with Crunch (\code{crunchyPublicBody()}) or who are
 authenticated but not authorized to access your app
-(`crunchyUnauthorizedBody`).
+(\code{crunchyUnauthorizedBody}).
 }
 \examples{
 \dontrun{
@@ -54,6 +54,6 @@ shinyUI(fluidPage(
 }
 }
 \seealso{
-[setCrunchyAuthorization()] for governing who is authorized to view
+\code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}} for governing who is authorized to view
 your app
 }

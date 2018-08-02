@@ -10,16 +10,16 @@ crunchyBody(...)
 \item{...}{UI elements for your app}
 }
 \value{
-A `uiOutput()` container into which `crunchyServer()` will
+A \code{uiOutput()} container into which \code{crunchyServer()} will
 conditionally render output.
 }
 \description{
-When using [crunchyServer()] to wrap your app in Crunch authentication and
-authorization, you need to wrap your UI body content inside `crunchyBody()`.
+When using \code{\link[=crunchyServer]{crunchyServer()}} to wrap your app in Crunch authentication and
+authorization, you need to wrap your UI body content inside \code{crunchyBody()}.
 }
 \details{
 This is the part that is conditionally rendered if the user is allowed.
-Any UI elements you want always to show, including `<head>` tags, should go
+Any UI elements you want always to show, including \code{<head>} tags, should go
 outside this function.
 }
 \examples{

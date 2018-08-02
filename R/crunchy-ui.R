@@ -129,11 +129,13 @@ lazyUIOutput <- function (...) {
     }
 }
 
-crunchyDefaultPublicUI <- lazyUIOutput(
-    h1("You are not authenticated"),
-    tags$div(
-        "Try logging in at ",
-        tags$a(href="https://app.crunch.io/login", "https://app.crunch.io/login"),
-        "."
+crunchyDefaultPublicUI <- function () {
+    lazyUIOutput(
+        tags$h1("You are not authenticated"),
+        tags$div(
+            "Try logging in at ",
+            tags$a(href="https://app.crunch.io/login", "https://app.crunch.io/login"),
+            "."
+        )
     )
-)
+}

@@ -7,33 +7,33 @@
 crunchyServer(func, authz = getOption("crunchy.authorization"))
 }
 \arguments{
-\item{func}{A `function (input, output, session)`, as you'd normally give to
-`shinyServer()`. If the user is not authenticated or authorized, this
+\item{func}{A \code{function (input, output, session)}, as you'd normally give to
+\code{shinyServer()}. If the user is not authenticated or authorized, this
 function will not be evaluated.}
 
-\item{authz}{A `function (input, output, session)` or expression to evaluate
+\item{authz}{A \code{function (input, output, session)} to evaluate
 to determine if the current user is authorized to enter the app. Ideally,
 this is cheap to execute because it will be called repeatedly.}
 }
 \value{
 Invisibly, a Shiny server function with the auth logic wrapped around
-`func`.
+\code{func}.
 }
 \description{
 To make sure that users who access your shiny.crunch.io app are allowed to
-access it, use `crunchyServer()` instead of [shiny::shinyServer()], and wrap
-your UI content inside [crunchyBody()]. This will prevent anyone who is not
+access it, use \code{crunchyServer()} instead of \code{\link[shiny:shinyServer]{shiny::shinyServer()}}, and wrap
+your UI content inside \code{\link[=crunchyBody]{crunchyBody()}}. This will prevent anyone who is not
 logged into Crunch in their browser from accessing your app.
 }
 \details{
 To restrict access further to only certain Crunch users, you can set an
-authorization method, either by passing a server function or expression to
-the `authz` argument of this function, or by calling
-[setCrunchyAuthorization()].
+authorization method, either by passing a server function to
+the \code{authz} argument of this function, or by calling
+\code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}}.
 }
 \seealso{
-[crunchyBody()] for wrapping the UI contents, [crunchyPublicBody()]
+\code{\link[=crunchyBody]{crunchyBody()}} for wrapping the UI contents, \code{\link[=crunchyPublicBody]{crunchyPublicBody()}}
 for specifying an alternate UI for when the user is not authenticated, and
-[crunchyUnauthorizedBody()] for giving an alternate UI for users who are
+\code{\link[=crunchyUnauthorizedBody]{crunchyUnauthorizedBody()}} for giving an alternate UI for users who are
 authenticated with Crunch but not authorized to view this app.
 }
