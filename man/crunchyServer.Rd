@@ -12,8 +12,8 @@ crunchyServer(func, authz = getOption("crunchy.authorization"))
 function will not be evaluated.}
 
 \item{authz}{A \code{function (input, output, session)} to evaluate
-to determine if the current user is authorized to enter the app. Ideally,
-this is cheap to execute because it will be called repeatedly.}
+to determine if the current user is authorized to enter the app.
+Since it will be called repeatedly, it should be cheap to execute.}
 }
 \value{
 Invisibly, a Shiny server function with the auth logic wrapped around

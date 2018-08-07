@@ -4,15 +4,14 @@
 \alias{setCrunchyAuthorization}
 \title{Register authorization logic for your Crunchy app}
 \usage{
-setCrunchyAuthorization(expr)
+setCrunchyAuthorization(func)
 }
 \arguments{
-\item{expr}{A \code{function (input, output, session)} or expression to call
+\item{func}{A \code{function (input, output, session)} to call
 inside \code{\link[=crunchyServer]{crunchyServer()}}}
 }
 \value{
-Invisibly, the server function. If an expression is provided, it will
-be wrapped in \code{function (input, output, session)}. This function is called
+Invisibly, the server function. This function is called
 for the side effect of setting the authorization function globally.
 }
 \description{
@@ -21,12 +20,8 @@ whether the current user is authorized to access your app. Ideally, this is
 cheap to execute because it will be called repeatedly.
 }
 \examples{
-\dontrun{
 setCrunchyAuthorization(function (input, output, session) {
     # Restrict to users who have crunch.io emails
     endsWith(email(shinyUser()()), "@crunch.io")
 })
-# This is equivalent; setCrunchyAuthorization will wrap this expression
-setCrunchyAuthorization(endsWith(email(shinyUser()()), "@crunch.io"))
-}
 }

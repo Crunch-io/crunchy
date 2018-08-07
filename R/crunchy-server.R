@@ -14,8 +14,8 @@
 #' `shinyServer()`. If the user is not authenticated or authorized, this
 #' function will not be evaluated.
 #' @param authz A `function (input, output, session)` to evaluate
-#' to determine if the current user is authorized to enter the app. Ideally,
-#' this is cheap to execute because it will be called repeatedly.
+#' to determine if the current user is authorized to enter the app.
+#' Since it will be called repeatedly, it should be cheap to execute.
 #' @return Invisibly, a Shiny server function with the auth logic wrapped around
 #' `func`.
 #' @seealso [crunchyBody()] for wrapping the UI contents, [crunchyPublicBody()]
@@ -61,41 +61,22 @@ crunchyServer <- function (func, authz=getOption("crunchy.authorization")) {
 #' Call this to set an expression or server function to evaluate to determine
 #' whether the current user is authorized to access your app. Ideally, this is
 #' cheap to execute because it will be called repeatedly.
-#' @param expr A `function (input, output, session)` or expression to call
+#' @param func A `function (input, output, session)` to call
 #' inside [crunchyServer()]
-#' @return Invisibly, the server function. If an expression is provided, it will
-#' be wrapped in `function (input, output, session)`. This function is called
+#' @return Invisibly, the server function. This function is called
 #' for the side effect of setting the authorization function globally.
 #' @export
 #' @examples
-#' \dontrun{
 #' setCrunchyAuthorization(function (input, output, session) {
 #'     # Restrict to users who have crunch.io emails
 #'     endsWith(email(shinyUser()()), "@crunch.io")
 #' })
-#' # This is equivalent; setCrunchyAuthorization will wrap this expression
-#' setCrunchyAuthorization(endsWith(email(shinyUser()()), "@crunch.io"))
-#' }
-setCrunchyAuthorization <- function (expr) {
-    fun <- as.server(expr)
-    options(crunchy.authz=fun)
-    return(invisible(fun))
+setCrunchyAuthorization <- function (func) {
+    options(crunchy.authorization=func)
+    invisible(func)
 }
 
 is.truthy <- function (expr) {
     # Evaluate code in a server-like function, and always return TRUE/FALSE
     tryCatch(isTRUE(expr), error=function (e) FALSE)
-}
-
-as.server <- function (expr) {
-    e <- substitute(expr)
-    # If expr already is function, return it
-    if (is.truthy(is.function(expr))) {
-        return(expr)
-    }
-    # Else, wrap the quoted expression
-    out <- function (input, output, session) {}
-    body(out) <- e
-    environment(out) <- parent.frame()
-    out
 }
