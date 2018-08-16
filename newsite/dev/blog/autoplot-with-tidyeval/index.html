@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prepare and analyze survey data quickly and easily.">
+    <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
+    <base href="//crunch.io/">
+    <title>Crunch | Making Graphs Look Easy with ggplot2 and Tidy Evaluation</title>
+
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-50332119-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <meta property="og:title" content="Making Graphs Look Easy with ggplot2 and Tidy Evaluation &middot; Data, Smarter.">
+<meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
+<meta property="og:type" content="website" >
+<meta property="og:url" content="//crunch.io/dev/blog/autoplot-with-tidyeval/">
+<meta property="og:locale" content="en">
+
+
+    
+        <meta property="og:image" content="https://crunch.io/img/logo-1200x630.png">
+    
+
+
+
+  <meta property="og:updated_time" content="2018-08-03T12:12:10-07:00">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
+
+<meta name="twitter:title" content="Making Graphs Look Easy with ggplot2 and Tidy Evaluation"/>
+<meta name="twitter:description" content="At Crunch, one of the ways we try to make data exploration simple is by providing sensible default views that take into account the properties of your data and metadata. We&rsquo;re in the process of releasing some plotting methods in our crplyr R package that define methods for ggplot2&rsquo;s autoplot() function. autoplot() was the ideal approach for us to encapsulate the logic of how to &ldquo;just do the right thing."/>
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+
+  <body>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img class="d-inline-block align-top" src="img/crunch_logo.svg" alt="" width="140"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capabilities
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
+                      <a class="dropdown-item" href="simple-delivery">Simple Delivery</a>
+                      <a class="dropdown-item" href="survey-data-expertise">Survey Data Expertise</a>
+                      <a class="dropdown-item" href="real-time-data">Real-Time Data</a>
+                      <a class="dropdown-item" href="crunchdb">CrunchDB</a>
+                      <a class="dropdown-item" href="api">API</a>
+                      <a class="dropdown-item" href="dev/features">New Features</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="about">About</a>
+                      <a class="dropdown-item" href="team">Team</a>
+                      <a class="dropdown-item" href="jobs">Careers</a>
+                      <a class="dropdown-item" href="dev/blog">Developer Blog</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Support
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="http://support.crunch.io/">Help Pages</a>
+                      <a class="dropdown-item" href="http://docs.crunch.io/">API Documentation</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"href="mailto:info@crunch.io">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="btn btn-primary" href="https://app.crunch.io/">Sign In</a>
+                </li>
+              </ul>
+            </div>
+        </div> 
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <h2>Making Graphs Look Easy with ggplot2 and Tidy Evaluation</h2>
+                                <hr>
+                                <p></p>
+                                <span>Aug 3, 2018 </span>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          
+
+<p>At Crunch, one of the ways we try to make data exploration simple is by
+providing sensible default views that take into account the properties
+of your data and metadata. We&rsquo;re in the process of releasing some
+plotting methods in our <code>crplyr</code> R package that define methods for
+<code>ggplot2</code>&rsquo;s
+<a href="https://ggplot2.tidyverse.org/reference/autoplot.html"><code>autoplot()</code></a>
+function. <code>autoplot()</code> was the ideal approach for us to encapsulate the
+logic of how to &ldquo;just do the right thing.&rdquo; You can do the analysis you
+want, and it will make smart choices about how to display it with no
+additional input&ndash;all of which you can control or override with
+additional <code>ggplot2</code> layers, if you want.</p>
+
+<p>This lets us plot Crunch variables and high dimensional survey
+cross-tabs easily, while making sure that the plot always fits the data.</p>
+
+<pre><code class="language-r">library(ggplot2)
+library(crplyr)
+
+crunch::login()
+ds &lt;- loadDataset(&quot;Not-so-simple dataset with all types&quot;)
+
+ds %&gt;%
+    group_by(pasta, food_groups) %&gt;%
+    summarize(count=n()) %&gt;%
+    autoplot()
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-1-1.png" alt="" /></p>
+
+<pre><code class="language-r">ds %&gt;%
+    group_by(abolitionists, food_groups) %&gt;%
+    summarize(count=n()) %&gt;%
+    autoplot(&quot;tile&quot;)
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-1-2.png" alt="" /></p>
+
+<pre><code class="language-r">autoplot(ds$ec, &quot;bar&quot;)
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-1-3.png" alt="" /></p>
+
+<p>Making it look easy, though, can be hard work. Our <code>autoplot</code> methods
+inspect the input objects to understand their dimensionality and data
+types and choose an appropriate visualization. Figuring out and passing
+the right arguments to the right places can be messy, so in order to
+make these functions work, we took advantage of
+<a href="https://dplyr.tidyverse.org/articles/programming.html">tidyeval</a>, a
+framework that systematizes non-standard evaluation in R, now
+also supported in the new <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">3.0.0 release of
+ggplot2</a>.</p>
+
+<p>To illustrate this pattern, this blog post goes through a simplified
+example using the &ldquo;diamonds&rdquo; example dataset and pure <code>dplyr</code> methods.
+We&rsquo;ll create a plotting function that adjusts to the number of grouping
+variables in a tibble. This lets you pipe data from a dplyr pipeline
+into a single function and get a meaningful, appropriate plot.</p>
+
+<p>The actual code for our Crunch <code>autoplot</code> methods is
+<a href="https://github.com/Crunch-io/crplyr/blob/ggplot-methods/R/plotting.R">here</a>.</p>
+
+<h2 id="non-standard-evaluation-great-power-great-pain">Non-Standard Evaluation: Great Power, Great Pain</h2>
+
+<p>A great feature the R language has is that it lets you access and
+manipulate the environment in which a function is called. This
+non-standard evaluation (NSE) gives package authors a flexible and
+powerful way to build programming interfaces.</p>
+
+<p>At Crunch, we use NSE a lot. One example is in reporting better error
+messages. If you send the wrong data to the API, you might get back a
+response like <code>400: Payload is malformed</code>. That&rsquo;s not very helpful even
+for users who know our API well. We use NSE to inspect the user&rsquo;s
+calling environment, figure out which variables or data structures are
+causing the problem, and <a href="https://github.com/Crunch-io/rcrunch/blob/1b8ab2f22f3b08d246cd50232c3322de963f0165/R/geo.R#L108">suggest a
+fix</a>:
+instead of a generic validation message, we error with the more helpful
+<code>ds$some_name must be a Crunch Variable</code>, pointing back to the input that the user typed.</p>
+
+<p>Despite working with NSE all the time, we&rsquo;re pretty sure that
+we&rsquo;ve never once gotten it right on the first try. The main reason is
+that whenever you are capturing an expression to evaluate later you need
+to also keep track of which environment you should evaluate that
+expression in. This makes it really difficult to pass unevaluated
+expressions between functions and have the evaluation occur without
+error. For instance, take this code which replaces a <code>missing</code> function
+argument with a logical value:</p>
+
+<pre><code>f1 &lt;- function(i, j, ...) {
+    args &lt;- eval(substitute(alist(i, j, ...)))
+    args &lt;- replace_missing(args)
+    return(as.character(args))
+}
+
+replace_missing &lt;- function(args){
+    out &lt;- lapply(args, function(x){
+        if (is.symbol(x)) {
+            x &lt;- tryCatch(eval(x), error = function(c){
+                msg &lt;- conditionMessage(c)
+                if (msg == &quot;argument is missing, with no default&quot;) {
+                    return(TRUE)
+                } else {
+                    stop(c)
+                }
+            })
+        }
+        return(eval(x))
+    })
+    return(out)
+}
+</code></pre>
+
+<p>This code captures an expression at the top level, and passes it down to
+a second function which returns <code>TRUE</code> if it can&rsquo;t find the argument,
+and evaluates expression if it can. We use code very similar to this
+for <a href="https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R#L116-L131">subsetting CrunchCube
+objects</a>.</p>
+
+<p>There&rsquo;s a tricky mistake here though: we aren&rsquo;t specifying in which
+environment we want that evaluation to take place. So if we happen to
+send a variable that is used somewhere in the call stack, we&rsquo;ll get the
+wrong result:</p>
+
+<pre><code>x &lt;- 1
+y &lt;- 1
+
+f1(1, , 3)
+
+## [1] &quot;1&quot;    &quot;TRUE&quot; &quot;3&quot;
+
+f1(y, , 3)
+
+## [1] &quot;1&quot;    &quot;TRUE&quot; &quot;3&quot;
+
+f1(x, , 3)
+
+## [1] &quot;x&quot;    &quot;TRUE&quot; &quot;3&quot;
+</code></pre>
+
+<p>What&rsquo;s happening here is that when the final <code>eval(x)</code> is happening, <code>x</code>
+is identified through lexical scoping, and so it ends up using the <code>x</code>
+that&rsquo;s in the <code>lapply</code> environment, rather than the one that&rsquo;s in the
+global environment. To fix this, we need to specify the environment
+where that evaluation should take place. This is an easy thing to
+forget, and presents its own problems if you move functions around, or
+later call them in a different order.</p>
+
+<h2 id="enter-the-quosure">Enter the Quosure</h2>
+
+<p>Tidyeval offers a solution to this problem: it bundles the expression
+and its environment in a single object called a &ldquo;quosure&rdquo;. What this
+means is that as a developer, you don&rsquo;t have to worry about matching
+expressions to environments and can pass unevaluated expressions between
+functions with confidence. Because the expression and the environment
+are bundled together, when you end up evaluating it you won&rsquo;t ever be
+surprised by the result.</p>
+
+<h2 id="autoplot">Autoplot</h2>
+
+<p>Back to our <code>autoplot()</code> project, our initial goal is to have a single function that will produce different
+plots based on the number of grouping variables in the tibble it
+receives. First, we create a general plotting function
+that figures out which plotting sub-function to use:</p>
+
+<pre><code class="language-r">library(ggplot2)
+library(dplyr)
+
+autoplot &lt;- function(df) {
+    # Add grouping variable which was stripped by summarize
+    df &lt;- df %&gt;%
+        group_by(!!!groups(df), !!sym(names(df)[length(groups(df)) + 1]))
+
+    if (length(groups(df)) == 1) {
+        plot_fun &lt;- plot_1d
+    } else {
+        plot_fun &lt;- plot_2d
+    }
+    vars &lt;- syms(names(df))
+    plot_fun(df, vars)
+}
+</code></pre>
+
+<p>The function inspects the data frame and then selects a plotting
+function based on the number of groups in it. It then
+captures the names of the dataset as a list of symbols and passes it
+down to the plotting function. The next step is to write the two
+plotting functions that actually do the work:</p>
+
+<pre><code class="language-r">plot_1d &lt;- function(df, vars){
+    groups &lt;- vars[vars %in% groups(df)]
+    measure &lt;- vars[length(vars)][[1]]
+    df %&gt;%
+        select(!!groups[[1]], !!measure) %&gt;%
+        arrange(desc(!!measure)) %&gt;%
+        ggplot(aes(x = !!measure, y = !!groups[[1]])) +
+        geom_point() +
+        theme_minimal()
+}
+
+diamonds %&gt;%
+    group_by(cut) %&gt;%
+    tally() %&gt;%
+    autoplot()
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-5-1.png" alt="" /></p>
+
+<p>The convenient thing about using tidy eval in this case is that we can
+confidently pass the unevaluated names into both the <code>dplyr</code> and
+<code>ggplot2</code> code without worrying that the evaluation will fail. This
+means we can arrange the dataset based on the measure name, and then
+plot that measure even though we don&rsquo;t know ahead of time what the
+measure will be called. We can do the same thing with the 2d plot:</p>
+
+<pre><code class="language-r">plot_2d &lt;- function(df, vars){
+    groups &lt;- vars[vars %in% groups(df)]
+    measure &lt;- vars[length(vars)][[1]]
+    df %&gt;%
+        select(!!!groups, !!measure) %&gt;%
+        arrange(desc(!!measure)) %&gt;%
+        ggplot(aes(x = !!measure, y = !!groups[[1]], , color = !!groups[[2]])) +
+        geom_point() +
+        theme_minimal()
+}
+
+diamonds %&gt;%
+    group_by(cut ,clarity) %&gt;%
+    tally() %&gt;%
+    autoplot()
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-6-1.png" alt="" /></p>
+
+<p>This is basically the same code as the 1D plot except that we used the
+splice operator (<code>!!!</code>) in the select call and added another grouping
+variable on the color dimension.</p>
+
+<p>What happens when you have more than three dimensions? The <code>ggplot2</code>
+package allows us to use tidyeval to dynamically add facets.</p>
+
+<pre><code class="language-r">autoplot &lt;- function(df) {
+    # Add grouping variable which was stripped by summarize
+    df &lt;- df %&gt;%
+        group_by(!!!groups(df), !!sym(names(df)[length(groups(df)) + 1]))
+
+    groups &lt;- groups(df)
+    if (length(groups) == 1) {
+        plot_fun &lt;- plot_1d
+    } else {
+        plot_fun &lt;- plot_2d
+    }
+    vars &lt;- syms(names(df))
+    out &lt;- plot_fun(df, vars)
+
+    if (length(groups) &gt; 2) {
+        groups &lt;- syms(groups)
+        out &lt;- out +
+            facet_wrap(vars(!!!groups[3:length(groups)]))
+    }
+    return(out)
+}
+
+diamonds %&gt;%
+    group_by(cut, color, clarity) %&gt;%
+    summarize(number_of_diamonds = n()) %&gt;%
+    autoplot()
+</code></pre>
+
+<p><img src="img/tidyeval/unnamed-chunk-7-1.png" alt="" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Tidyeval solves the main challenges of working with R&rsquo;s non-standard evaluation by
+bundling expressions and environments into quosures. The new release of
+<code>ggplot2</code> unlocks the power of using tidyeval for making powerful
+visualizations quickly. Though we could have made <code>autoplot</code> methods for
+Crunch objects before tidyeval support, it would have been much more
+complicated and error-prone. Using tidyeval and <code>ggplot2</code> 3.0.0 to pass
+quosures between functions unlocks powerful new
+mechanisms of building user-friendly functions. And that let&rsquo;s us do
+what we strive to do most: get out of the way and let our users explore
+their data quickly in a way that matches their intuitions for how R and
+tidy conventions work.</p>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://support.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="mailto:info@crunch.io">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
+
