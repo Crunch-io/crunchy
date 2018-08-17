@@ -5256,13 +5256,16 @@ h1 {
   font-size: 2em; }
   h1 span {
     font-style: italic; }
+  h1 .font-green {
+    color: #107f65; }
 
 h2 {
   font-size: 1.5em; }
   h2 .font-bold {
     font-weight: 700;
-    color: #107f65;
-    font-size: .9em; }
+    font-size: .6em;
+    text-transform: uppercase;
+    letter-spacing: .1em; }
 
 h4 {
   font-size: 1.2em; }
@@ -5859,7 +5862,10 @@ h4 {
   z-index: 10; }
   #page-content-wrapper .footer-content h2 {
     text-transform: uppercase;
-    font-size: 1em; }
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: .1em;
+    margin-bottom: 0; }
   #page-content-wrapper .footer-content .jumbotron {
     width: 100%;
     height: 450px;
@@ -5873,9 +5879,11 @@ h4 {
     #page-content-wrapper .footer-content .jumbotron .row {
       margin-top: 50px; }
     #page-content-wrapper .footer-content .jumbotron .carousel {
+      max-width: 800px;
       text-align: center;
       font-family: 'Libre Baskerville', serif;
-      font-size: 2em; }
+      font-size: 1.5em;
+      margin: auto; }
       #page-content-wrapper .footer-content .jumbotron .carousel .carousel-inner {
         min-height: 140px; }
       #page-content-wrapper .footer-content .jumbotron .carousel .carousel-indicators {
@@ -5984,6 +5992,11 @@ figure.img-fluid img {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1.5s; }
 
+.carousel .carousel-indicators li {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; }
+
 /* LAYOUTS - Page Layouts */
 #wrapper-homepage {
   padding-right: 0;
@@ -6046,8 +6059,11 @@ figure.img-fluid img {
     margin-left: 30px; }
     .navbar .navbar-nav .nav-item .btn-primary {
       padding: 8px 45px; }
-    .navbar .navbar-nav .nav-item a:not(.btn-primary) {
+    .navbar .navbar-nav .nav-item a {
       color: #444444; }
+    .navbar .navbar-nav .nav-item .btn-primary,
+    .navbar .navbar-nav .nav-item .btn-secondary {
+      color: #ffffff; }
   .navbar .navbar-nav .nav-link:focus {
     outline: none; }
   .navbar .navbar-toggler {
