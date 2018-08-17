@@ -105,7 +105,7 @@ if (!doNotTrack) {
                   <a class="nav-link" href="https://app.crunch.io/">Sign In</a>
                 </li>
                 <li class="nav-item">
-                  <a class="btn btn-secondary" href="#">Get a trial</a>
+                  <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#Modal" id="openForm">Get a trial</a>
                 </li>
               </ul>
             </div>
@@ -170,11 +170,33 @@ if (!doNotTrack) {
 </section>
     </ul>
 </div>
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://js.hsforms.net/forms/shell.js"></script>
 <script src="js/script.js"></script>
+
+
+<script>
+    $('#openForm').click(function() {
+        hbspt.forms.create({
+          portalId: "3869056",
+          formId: "80b5cee0-3806-47f6-aa71-bfdcd5f47f68",
+          target: '#Modal .modal-body'
+        });
+    });
+</script>
 
 </body>
 </html>
