@@ -16,20 +16,20 @@ crunchFillPage(...)
 crunchNavbarPage(...)
 }
 \arguments{
-\item{...}{arguments passed to `fluidPage`, `fillPage` or `navbarPage`}
+\item{...}{arguments passed to \code{fluidPage}, \code{fillPage} or \code{navbarPage}}
 }
 \value{
-The result of `fluidPage`, `fillPage` or `navbarPage`
+The result of \code{fluidPage}, \code{fillPage} or \code{navbarPage}
 }
 \description{
 Shiny provides page functions for defining UI layout. These
 functions wraps those and includes additional assets needed to match
 Crunch UI style and keep your users authenticated. When building shiny apps
-with Crunch datasets, use these instead of [shiny::fluidPage()],
-[shiny::fillPage()] or [shiny::navbarPage()].
+with Crunch datasets, use these instead of \code{\link[shiny:fluidPage]{shiny::fluidPage()}},
+\code{\link[shiny:fillPage]{shiny::fillPage()}} or \code{\link[shiny:navbarPage]{shiny::navbarPage()}}.
 }
 \details{
-These are no longer necessary. Just use the `shiny` ones and it just works.
+These are no longer necessary. Just use the \code{shiny} ones and it just works.
 These functions are left here for backwards compatibility.
 }
 \examples{
