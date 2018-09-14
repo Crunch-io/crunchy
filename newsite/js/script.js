@@ -13,17 +13,6 @@ $(document).ready(function() {
         }
     });
 
-    // Hide image intro on scroll down
-    $(document).scroll(function() {
-      var scrollIntro = $(this).scrollTop();
-
-      if (scrollIntro > 800) {
-        $('#intro-img').fadeOut();
-      } else {
-        $('#intro-img').fadeIn();
-      }
-    });
-
     //Footer
     var $window = $(window),
     $footer = $('.footer');
