@@ -7,10 +7,10 @@
 listDatasetGadget(...)
 }
 \arguments{
-\item{...}{Further arguments passed to `crunch::listDatasets()`}
+\item{...}{Further arguments passed to \code{crunch::listDatasets()}}
 }
 \value{
-A `loadDataset()` call is pasted into your RStudio session`
+A \code{loadDataset()} call is pasted into your RStudio session`
 }
 \description{
 Open dataset selector

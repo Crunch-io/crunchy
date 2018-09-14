@@ -1,7 +1,8 @@
 language: r
 cache: packages
-r: devel
-r_github_packages:
-  - Crunch-io/rcrunch
+r:
+- oldrel
+- release
+- devel
 after_success:
-  - Rscript -e 'library(covr);codecov()'
+  - test $TRAVIS_R_VERSION_STRING = "release" && Rscript -e 'covr::codecov()'
