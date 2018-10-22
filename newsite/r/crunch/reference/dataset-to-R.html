@@ -84,7 +84,7 @@ a true data.frame." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -129,6 +129,9 @@ a true data.frame." />
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -189,13 +192,13 @@ a true <code>data.frame</code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for CrunchDataset</span>
-<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>categorical.mode</span> <span class='kw'>=</span> <span class='st'>"factor"</span>, <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>row.order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>categorical.mode</span> <span class='kw'>=</span> <span class='st'>"factor"</span>,
+  <span class='kw'>row.order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for CrunchDataFrame</span>
 <span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fu'>attr</span>(<span class='no'>x</span>, <span class='st'>"include.hidden"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -223,14 +226,14 @@ leave the columns as unevaluated promises. Default is <code>FALSE</code>.</p></t
 factor, numeric, id (default: factor)</p></td>
     </tr>
     <tr>
-      <th>include.hidden</th>
-      <td><p>logical: should hidden variables be included? (default: <code>FALSE</code>)</p></td>
-    </tr>
-    <tr>
       <th>row.order</th>
       <td><p>vector of indices. Which, and their order, of the rows of
 the dataset should be presented as (default: <code>NULL</code>). If <code>NULL</code>, then the
 Crunch Dataset order will be used.</p></td>
+    </tr>
+    <tr>
+      <th>include.hidden</th>
+      <td><p>logical: should hidden variables be included? (default: <code>TRUE</code>)</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -254,7 +257,7 @@ you get an R vector, rather than a <code>CrunchVariable</code>. This allows mode
 that require select columns of a dataset to retrieve only those variables from
 the remote server, rather than pulling the entire dataset into local
 memory.</p>
-<p>If you call <code>as.data.frame</code> on a <code>CrunchDataset</code> with <code>force = TRUE</code>, you
+<p>If you call <code>as.data.frame()</code> on a <code>CrunchDataset</code> with <code>force = TRUE</code>, you
 will instead get a true <code>data.frame</code>. You can also get this <code>data.frame</code> by
 calling <code>as.data.frame</code> on a <code>CrunchDataFrame</code> (effectively calling
 <code>as.data.frame</code> on the dataset twice)</p>

@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -89,6 +89,9 @@
     </li>
     <li>
       <a href="articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="articles/fork-and-merge.html">Fork and Merge</a>
@@ -185,6 +188,11 @@
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># apt-get install libcurl4-openssl-dev</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># sudo apt-get install r-base r-base-dev</span></a></code></pre></div>
 <p>See <a href="https://cran.r-project.org/bin/linux/ubuntu/README" class="uri">https://cran.r-project.org/bin/linux/ubuntu/README</a> for more details.</p>
+<div id="git-hooks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#git-hooks" class="anchor"></a>Git hooks</h3>
+<p><code>crunch</code> uses a git pre-commit hook to ensure that the cube test fixtures in <code>inst/cubes.tgz</code> are always up to date. To enable this, you should either copy <code>hooks/pre-commit</code> to <code>.git/hooks/pre-commit</code> or sym-link the entire hooks directory with <code>ln -s ../hooks/ .git/hooks</code>.</p>
+</div>
 <div id="contributing" class="section level3">
 <h3 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h3>

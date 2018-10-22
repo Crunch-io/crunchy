@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -126,6 +126,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -182,11 +185,13 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>crunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/filter-catalog.html'>filters</a></span>(<span class='no'>dataset</span>), <span class='no'>brand_colors</span>,
-  <span class='no'>static_colors</span>, <span class='no'>category_color_lookup</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>crunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/filter-catalog.html'>filters</a></span>(<span class='no'>dataset</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/weight.html'>weight</a></span>(<span class='no'>dataset</span>), <span class='no'>brand_colors</span>, <span class='no'>static_colors</span>,
+  <span class='no'>category_color_lookup</span>, <span class='no'>...</span>)
 
-<span class='fu'>CrunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/filter-catalog.html'>filters</a></span>(<span class='no'>dataset</span>), <span class='no'>brand_colors</span>,
-  <span class='no'>static_colors</span>, <span class='no'>category_color_lookup</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>CrunchBox</span>(<span class='no'>dataset</span>, <span class='kw'>filters</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/filter-catalog.html'>filters</a></span>(<span class='no'>dataset</span>),
+  <span class='kw'>weight</span> <span class='kw'>=</span> <span class='kw pkg'>crunch</span><span class='kw ns'>::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/weight.html'>weight</a></span>(<span class='no'>dataset</span>), <span class='no'>brand_colors</span>, <span class='no'>static_colors</span>,
+  <span class='no'>category_color_lookup</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,6 +204,12 @@
       <th>filters</th>
       <td><p>FilterCatalog, or <code>NULL</code> for no filters. Default all
 filters in your catalog, <code><a href='filter-catalog.html'>filters(dataset)</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td><p>a CrunchVariable that has been designated as a potential
+weight variable for <code>dataset</code>, or <code>NULL</code> for unweighted results.
+Default is the currently applied <code><a href='weight.html'>weight()</a></code>.</p></td>
     </tr>
     <tr>
       <th>brand_colors</th>

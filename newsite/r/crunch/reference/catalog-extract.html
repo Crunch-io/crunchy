@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -126,6 +126,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -186,7 +189,8 @@
 [[(x, i, j, ...)
 
 # S4 method for DatasetCatalog,character,missing,DatasetTuple
-[[(x, i, j) <- value
+[[(x, i,
+  j) <- value
 
 # S4 method for FilterCatalog,numeric
 [[(x, i, j, ...)
@@ -200,10 +204,12 @@
   j) <- value
 
 # S4 method for FilterCatalog,character,missing,CrunchFilter
-[[(x, i, j) <- value
+[[(x, i,
+  j) <- value
 
 # S4 method for FilterCatalog,numeric,missing,CrunchFilter
-[[(x, i, j) <- value
+[[(x, i,
+  j) <- value
 
 # S4 method for MemberCatalog,character
 [[(x, i, j, ...)
@@ -218,10 +224,12 @@
 [[(x, i, j, ...)
 
 # S4 method for MultitableCatalog,character,missing,formula
-[[(x, i, j) <- value
+[[(x, i,
+  j) <- value
 
 # S4 method for MultitableCatalog,numeric,missing,formula
-[[(x, i, j) <- value
+[[(x, i,
+  j) <- value
 
 # S4 method for MultitableCatalog,ANY,missing,`NULL`
 [[(x, i, j) <- value
@@ -229,13 +237,10 @@
 # S4 method for PermissionCatalog,character
 [[(x, i, j, ...)
 
-# S4 method for ProjectCatalog,numeric
-[[(x, i, j, ...)
-
-# S4 method for ProjectCatalog,character,missing,list
+# S4 method for ProjectFolder,character,missing,list
 [[(x, i, j) <- value
 
-# S4 method for ProjectCatalog,character,missing,CrunchProject
+# S4 method for ProjectFolder,character,missing,ProjectFolder
 [[(x, i,
   j) <- value
 
@@ -299,10 +304,12 @@ $(x, name) <- value
   j) <- value
 
 # S4 method for VariableCatalog,VariableOrder,ANY
-[(x, i, j, ..., drop = TRUE)
+[(x, i, j, ...,
+  drop = TRUE)
 
 # S4 method for VariableCatalog,VariableGroup,ANY
-[(x, i, j, ..., drop = TRUE)
+[(x, i, j, ...,
+  drop = TRUE)
 
 # S4 method for VariableCatalog,VariableOrder,missing,VariableCatalog
 [(x, i,

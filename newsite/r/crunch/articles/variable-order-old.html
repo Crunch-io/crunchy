@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -84,6 +84,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -311,7 +314,7 @@
 ##     votereg</code></pre>
 <p>Note a few things there. First, groups can be extracted by list-like indexing by name. <code>ordering(ds)[["This week"]]</code> gives us the <code>VariableGroup</code> named “This week”.</p>
 <p>Second, we can create a new group, nested or otherwise, by assigning in to an Order/Group by a new name. This is similar to extending a named list object by name in base R. In this case, we created a group called “Snowden” inside “This week”, and we assigned into it the first four entries of the “This week” group.</p>
-<p>Third, the four variable references we put into “Snowden” were also removed from their positions in the “This week” group: they were “moved” rather than copied. This is what we might expect from a files-and-folders form of organization. If you wish to make copies, you can set <code>duplicates(ordering(ds)) &lt;- TRUE</code>. If we had done that in this example, we’d have the four Snowden variables appearing both in the “This week” group and in the nested “Snowden” group. (More accurately, and keeping with the file-system metaphor, setting duplicates to <code>TRUE</code> lets you create symbolic links rather than actually copying the variables. Only the references are copied; there is only one variable behind them.)</p>
+<p>Third, the four variable references we put into “Snowden” were also removed from their positions in the “This week” group: they were “moved” rather than copied. This is what we might expect from a files-and-folders form of organization.</p>
 <p><a href="derive.html">Next: transforming and deriving</a></p>
 </div>
   </div>

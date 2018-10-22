@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Refresh the local list of Crunch datasets — updateDatasetList • Crunch</title>
+<title>Get information about users who have access to a dataset — users • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -38,9 +38,12 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Refresh the local list of Crunch datasets — updateDatasetList" />
+<meta property="og:title" content="Get information about users who have access to a dataset — users" />
 
-<meta property="og:description" content="Refreshes the local environment list of Crunch datasets. This function is deprecated." />
+<meta property="og:description" content="Get user metadata about all of the users that have access to a particular
+Crunch object like a dataset or project. Returns a UserCatalog object which
+can be translated into a data.frame with catalogToDataFrame() if information
+needs to be extracted, queried, transformed, etc." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -81,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -128,6 +131,9 @@
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/projects.html">Projects</a>
+    </li>
+    <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
@@ -171,28 +177,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Refresh the local list of Crunch datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/get-datasets.R'><code>R/get-datasets.R</code></a></small>
-    <div class="hidden name"><code>updateDatasetList.Rd</code></div>
+    <h1>Get information about users who have access to a dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/user-info.R'><code>R/user-info.R</code></a></small>
+    <div class="hidden name"><code>users.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Refreshes the local environment list of Crunch datasets. This function is deprecated.</p>
+    <p>Get user metadata about all of the users that have access to a particular
+Crunch object like a dataset or project. Returns a <code>UserCatalog</code> object which
+can be translated into a data.frame with <code><a href='catalogToDataFrame.html'>catalogToDataFrame()</a></code> if information
+needs to be extracted, queried, transformed, etc.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>updateDatasetList</span>()</pre>
-        
+    <pre class="usage"><span class='co'># S4 method for CrunchDataset</span>
+<span class='fu'>users</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for DatasetTuple</span>
+<span class='fu'>users</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for ProjectFolder</span>
+<span class='fu'>users</span>(<span class='no'>x</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a <code>CrunchDataset</code>, <code>DatasetTuple</code>, or <code>ProjectFolder</code> object to get
+users from</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Nothing. Called for its side effects of resetting the cache.</p>
+    <p>a <code>UserCatalog</code> with information about users who have access to the
+dataset</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
           </ul>

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -84,6 +84,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -211,7 +214,7 @@
 ## $CompanySize: CompanySize (categorical)</code></pre>
 <p>The <strong>crunch</strong> package aims to bring the minimum amount of data down from the server. Most methods work by calculating values on the server, and then transmitting the results to you R session instead of transmitting all the data. In this case, the server calculates and transmits the variable summary instead of sending the data. If you ever want to actually access the data in the variable, you can call <code>as.vector(var)</code> to pull down its column.</p>
 <p>Crunch allows you to store additional metadata about the variables that R doesn’t support. For instance, we can add the survey question wording as the “description” for each variable. This question wording is available in the schema file that comes with the Stack Overflow dataset, in the “Question” column.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/describe-catalog.html">descriptions</a></span>(<span class="kw"><a href="../reference/dataset-variables.html">variables</a></span>(ds)) &lt;-<span class="st"> </span>SO_schema<span class="op">$</span>Question</a>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/describe-catalog.html">descriptions</a></span>(<span class="kw"><a href="../reference/variables.html">variables</a></span>(ds)) &lt;-<span class="st"> </span>SO_schema<span class="op">$</span>Question</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw"><a href="../reference/describe.html">description</a></span>(ds<span class="op">$</span>CompanySize)</a></code></pre></div>
 <pre><code>## [1] "In terms of the number of employees, how large is the company or organization you work for?"</code></pre>
 <p>Since the R package and the web app use the same API to interact with Crunch datasets, you can go back and forth between viewing data in R and on the web. For convenience, the package includes a <code><a href="../reference/webApp.html">webApp()</a></code> function, which opens a dataset or a variable within a dataset in your browser in the web application.</p>

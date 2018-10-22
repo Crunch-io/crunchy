@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Access a Dataset's Variables Catalog — dataset-variables • Crunch</title>
+<title>Change the name of the entities in a catalog — setNames • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -38,11 +38,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Access a Dataset's Variables Catalog — dataset-variables" />
+<meta property="og:title" content="Change the name of the entities in a catalog — setNames" />
 
-<meta property="og:description" content="Datasets contain collections of variables. For a few purposes, such as
-editing variables' metadata, it is helpful to access these variable catalogs
-more directly." />
+<meta property="og:description" content="This is an alternative to assigning names(catalog) &amp;lt;- something, suitable
+for inclusion in a pipeline." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -83,7 +82,7 @@ more directly." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -130,6 +129,9 @@ more directly." />
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/projects.html">Projects</a>
+    </li>
+    <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
@@ -173,58 +175,53 @@ more directly." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Access a Dataset's Variables Catalog</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/dataset.R'><code>R/dataset.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/search.R'><code>R/search.R</code></a></small>
-    <div class="hidden name"><code>dataset-variables.Rd</code></div>
+    <h1>Change the name of the entities in a catalog</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-catalog.R'><code>R/shoji-catalog.R</code></a></small>
+    <div class="hidden name"><code>setNames.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Datasets contain collections of variables. For a few purposes, such as
-editing variables' metadata, it is helpful to access these variable catalogs
-more directly.</p>
+    <p>This is an alternative to assigning <code>names(catalog) &lt;- something</code>, suitable
+for inclusion in a pipeline.</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>variables</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>setNames</span>(<span class='no'>object</span>, <span class='no'>nm</span>)
 
-<span class='co'># S4 method for CrunchDataset,VariableCatalog</span>
-<span class='fu'>variables</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>allVariables</span>(<span class='no'>x</span>)
-
-<span class='co'># S4 method for CrunchDataset,VariableCatalog</span>
-<span class='fu'>allVariables</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
-
-<span class='co'># S4 method for SearchResults</span>
-<span class='fu'>variables</span>(<span class='no'>x</span>)</pre>
+<span class='co'># S4 method for ShojiCatalog</span>
+<span class='fu'>setNames</span>(<span class='no'>object</span>, <span class='no'>nm</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a Dataset</p></td>
+      <th>object</th>
+      <td><p>A catalog object, such as <code>VariableFolder</code></p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>For the setters, a VariableCatalog to assign.</p></td>
+      <th>nm</th>
+      <td><p>A character vector of new names of the same length as the number
+of entities in the index</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Getters return VariableCatalog; setters return <code>x</code> duly
-modified.</p>
+    <p><code>object</code>, with the names of its children duly changed</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code>variables</code> gives just the active variables in the dataset, while
-<code>allVariables</code> returns all variables, including hidden variables.</p>
+    <div class='dont-index'><p><code><a href='cd.html'>cd()</a></code> and <code><a href='mv.html'>mv()</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='no'>ds</span> <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='cd.html'>cd</a></span>(<span class='st'>"Demographics"</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'>setNames</span>(<span class='fu'>c</span>(<span class='st'>"Gender (4 category)"</span>, <span class='st'>"Birth year"</span>, <span class='st'>"Race (5 category)"</span>))
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -233,8 +230,10 @@ modified.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
-          </ul>
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

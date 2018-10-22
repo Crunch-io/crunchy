@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Methods for ShojiTuples — entity,CrunchProject-method • Crunch</title>
+<title>Methods for ShojiTuples — $,ShojiEntity-method • Crunch</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -38,7 +38,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Methods for ShojiTuples — entity,CrunchProject-method" />
+<meta property="og:title" content="Methods for ShojiTuples — $,ShojiEntity-method" />
 
 <meta property="og:description" content="ShojiTuples are objects extracted from ShojiCatalogs. They are internally
 used." />
@@ -82,7 +82,7 @@ used." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -129,6 +129,9 @@ used." />
       <a href="../articles/export.html">Export Data</a>
     </li>
     <li>
+      <a href="../articles/projects.html">Projects</a>
+    </li>
+    <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
     </li>
     <li>
@@ -173,7 +176,7 @@ used." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Methods for ShojiTuples</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/projects.R'><code>R/projects.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-entity.R'><code>R/shoji-entity.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/tuple.R'><code>R/tuple.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-entity.R'><code>R/shoji-entity.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/tuple.R'><code>R/tuple.R</code></a></small>
     <div class="hidden name"><code>tuple-methods.Rd</code></div>
     </div>
 
@@ -184,10 +187,7 @@ used.</p>
     
     </div>
 
-    <pre class="usage"># S4 method for CrunchProject
-entity(x)
-
-# S4 method for ShojiEntity
+    <pre class="usage"># S4 method for ShojiEntity
 $(x, name)
 
 # S4 method for ShojiEntity
@@ -225,6 +225,9 @@ entity(x)
 
 # S4 method for DatasetTuple
 entity(x)
+
+# S4 method for DatasetTuple
+id(x)
 
 # S4 method for ShojiTuple
 delete(x, ...)

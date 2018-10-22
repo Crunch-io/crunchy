@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -84,6 +84,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -148,14 +151,14 @@
 <pre><code>## NULL</code></pre>
 <p>To add subtotals, we can assign a list of <code>Subtotal</code> objects. Each <code>Subtotal</code> object has three things: a <code>name</code> to identify it; a set of <code>categories</code> to pool together, referenced either by category name or id; and a location to show it, either <code>after</code> a given category or with <code>position="top"</code> or <code>"bottom"</code> to pin it first or last in the list.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>DiversityImportant) &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Follows closely"</span>,</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span>(<span class="dt">name =</span> <span class="st">"Follows closely"</span>,</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3">             <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Strongly closely"</span>, <span class="st">"Very closely"</span>),</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">             <span class="dt">after =</span> <span class="st">"Somewhat closely"</span>),</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Generally disagree"</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span>(<span class="dt">name =</span> <span class="st">"Generally disagree"</span>,</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6">             <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Not very closely"</span>, <span class="st">"Not at all"</span>),</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">             <span class="dt">after =</span> <span class="st">"Not at all"</span>)</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">)</a></code></pre></div>
-<p>Now, if we check <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code>, we can see that we have saved them. In this output we see a few different aspects of subtotals: the <code>anchor</code> is the id of the category to put the subtotal after (matching the <code>after</code> or <code>position</code> argument in <code>Subtotal()</code>), name, aggregation functions and <code>args</code>, which in the this case are the category ids to include in the subtotal.</p>
+<p>Now, if we check <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code>, we can see that we have saved them. In this output we see a few different aspects of subtotals: the <code>anchor</code> is the id of the category to put the subtotal after (matching the <code>after</code> or <code>position</code> argument in <code><a href="../reference/SubtotalsHeadings.html">Subtotal()</a></code>), name, aggregation functions and <code>args</code>, which in the this case are the category ids to include in the subtotal.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>manningknowledge)</a></code></pre></div>
 <pre><code>##   anchor                   name     func    args
 ## 1      2        Follows closely subtotal 2 and 1
@@ -164,11 +167,11 @@
 <p><img src="images/manning_knowledge_subtotals.png"><!-- --></p>
 <p>We can also add <em>headings</em>, which are similar to subtotals in that they are additions to categorical variables that will be displayed in the app, but they don’t sum up any categories. For a variable with many categories, they can help group variables visually. Here we add some guides to Obama’s approval rating.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>obamaapp) &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="kw">Heading</span>(<span class="dt">name =</span> <span class="st">"Approves"</span>,</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Heading</a></span>(<span class="dt">name =</span> <span class="st">"Approves"</span>,</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">            <span class="dt">after =</span> <span class="dv">0</span>),</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="kw">Heading</span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Heading</a></span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5">            <span class="dt">after =</span> <span class="st">"Somewhat Approve"</span>),</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="kw">Heading</span>(<span class="dt">name =</span> <span class="st">"No Answer"</span>,</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Heading</a></span>(<span class="dt">name =</span> <span class="st">"No Answer"</span>,</a>
 <a class="sourceLine" id="cb6-7" data-line-number="7">            <span class="dt">after =</span> <span class="st">"Strongly Disapprove"</span>)</a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">)</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"></a>
@@ -192,10 +195,10 @@
 <a href="#setting-many-subtotals" class="anchor"></a>Setting many subtotals</h1>
 <p>In the <em>Economist</em> survey, there are a number of questions that have the same response categories. If the category names (or ids, if we’re using those) are the same, we can use the same set of subtotals across multiple variables.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">approve_subtotals &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">    <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Approves"</span>,</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span>(<span class="dt">name =</span> <span class="st">"Approves"</span>,</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">            <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Somewhat approve"</span>, <span class="st">"Strongly approve"</span>),</a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">            <span class="dt">after =</span> <span class="st">"Somewhat approve"</span>),</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">    <span class="kw">Subtotal</span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">    <span class="kw"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span>(<span class="dt">name =</span> <span class="st">"Disapprove"</span>,</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6">            <span class="dt">categories =</span> <span class="kw">c</span>(<span class="st">"Somewhat disapprove"</span>, <span class="st">"Strongly disapprove"</span>),</a>
 <a class="sourceLine" id="cb10-7" data-line-number="7">            <span class="dt">after =</span> <span class="st">"Strongly disapprove"</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span>(ds<span class="op">$</span>snowdenleakapp) &lt;-<span class="st"> </span>approve_subtotals</a>

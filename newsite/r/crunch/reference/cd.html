@@ -82,7 +82,7 @@ given a relative path specification." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -127,6 +127,9 @@ given a relative path specification." />
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -191,7 +194,7 @@ given a relative path specification.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A <code>CrunchDataset</code> or <code>VariableFolder</code></p></td>
+      <td><p>A <code>CrunchDataset</code> or <code>Folder</code> (<code>VariableFolder</code> or <code>ProjectFolder</code>)</p></td>
     </tr>
     <tr>
       <th>path</th>
@@ -200,13 +203,13 @@ vector of nested folder names or a single string with nested folders
 separated by a delimiter ("/" default, configurable via
 <code>options(crunch.delimiter)</code>). The path is interpreted as
 relative to the location of the folder <code>x</code> (when <code>x</code> is a dataset, that
-means the root, top-level folder). <code>path</code> may also be a <code>VariableFolder</code> object.</p></td>
+means the root, top-level folder). <code>path</code> may also be a <code>Folder</code> object.</p></td>
     </tr>
     <tr>
       <th>create</th>
       <td><p>logical: if the folder indicated by <code>path</code> does not exist,
 should it be created? Default is <code>FALSE</code>. Argument mainly exists for the
-convenience of <code><a href='mv.html'>mv()</a></code>, which moves variables to a folder and ensures that
+convenience of <code><a href='mv.html'>mv()</a></code>, which moves entities to a folder and ensures that
 the folder exists. You can call <code>cd</code> directly with <code>create=TRUE</code>, though that
 seems unnatural.</p></td>
     </tr>
@@ -214,7 +217,7 @@ seems unnatural.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>VariableFolder</code></p>
+    <p>A <code>Folder</code> (<code>VariableFolder</code> or <code>ProjectFolder</code>)</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

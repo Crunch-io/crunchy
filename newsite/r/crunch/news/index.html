@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -124,6 +124,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -173,6 +176,58 @@
       <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="crunch-1-24-2-under-development" class="section level1">
+<h1 class="page-header">
+<a href="#crunch-1-24-2-under-development" class="anchor"></a>crunch 1.24.2 (under development)<small> Unreleased </small>
+</h1>
+<ul>
+<li>Minor internal fixes for dataset organization.</li>
+</ul>
+</div>
+    <div id="crunch-1-24-1" class="section level1">
+<h1 class="page-header">
+<a href="#crunch-1-24-1" class="anchor"></a>crunch 1.24.1<small> Unreleased </small>
+</h1>
+<ul>
+<li>The RStudio gadgets for <code><a href="../reference/listDatasets.html">listDatasets()</a></code> and <code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> have been moved to the <a href="https://github.com/Crunch-io/crunchy"><code>crunchy</code></a> package. Wiring for them, including RStudio add-in configuration, remains here, but you’ll have to install that package to use them.</li>
+<li>Minor fixes for backwards compatibility with the old projects API</li>
+<li>Remove code paths that modify the project dataset order, which was removed from the Crunch API.</li>
+<li>List as deprecated many functions that modify variable order, suggesting <code><a href="../reference/mv.html">mv()</a></code> and the other folder operations. These functions will be removed in December 2018.</li>
+</ul>
+</div>
+    <div id="crunch-1-24-0" class="section level1">
+<h1 class="page-header">
+<a href="#crunch-1-24-0" class="anchor"></a>crunch 1.24.0<small> 2018-09-12 </small>
+</h1>
+<div id="organization" class="section level2">
+<h2 class="hasAnchor">
+<a href="#organization" class="anchor"></a>Organization</h2>
+<ul>
+<li>New folder methods (<code><a href="../reference/cd.html">cd()</a></code>, <code><a href="../reference/mv.html">mv()</a></code>, <code><a href="../reference/mv.html">mkdir()</a></code>, <code><a href="../reference/rmdir.html">rmdir()</a></code>) for organizing datasets within projects, following the pattern of variable folders. See <code><a href="../articles/projects.html">vignette("projects", package = "crunch")</a></code>.</li>
+<li>Added <code><a href="../reference/setName.html">setName()</a></code> and <code><a href="../reference/setNames.html">setNames()</a></code> for renaming folders and folder contents, respectively.</li>
+</ul>
+</div>
+<div id="bugfixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<ul>
+<li>Requesting tab books for subsets of variables with weights no longer errors.</li>
+<li>
+<code><a href="../reference/makeWeight.html">makeWeight()</a></code> is now correct for categorical variables with non-sequential IDs.</li>
+<li>Hidden variables are now included in the output of <code>write.csv</code> or <code>as.data.frame(force = TRUE)</code> if requested.</li>
+<li>The print method for empty dataset/variable folders now prints something informative.</li>
+</ul>
+</div>
+<div id="other" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other" class="anchor"></a>Other</h2>
+<ul>
+<li>Adjusted the calculation of <code><a href="../reference/index.table.html">index.table()</a></code> to better reflect analysts’ intentions. Now, <code><a href="../reference/index.table.html">index.table()</a></code> calculates the index with respect to the marginal proportion of the <code>margin</code> given, so for <code><a href="../reference/index.table.html">index.table(cube, 2)</a></code> the column proportions of the table are indexed to the marginal row proportions. In other words: for each column how much larger or smaller is the proportion in that column when compared to the proportions for the row variable alone.</li>
+<li>Updated for compatibility with the upcoming release of the <code>haven</code> package and its new <code>haven_labelled</code> and <code>haven_labelled_spss</code> object classes.</li>
+<li>The package now warns when an API endpoint is deprecated.</li>
+</ul>
+</div>
+</div>
     <div id="crunch-1-23-0" class="section level1">
 <h1 class="page-header">
 <a href="#crunch-1-23-0" class="anchor"></a>crunch 1.23.0<small> 2018-06-22 </small>
@@ -182,16 +237,16 @@
 <a href="#improved-support-for-subtotals" class="anchor"></a>Improved support for subtotals</h2>
 <ul>
 <li>CrunchCubes can now be displayed with subtotals on any axis (not just rows).</li>
-<li>Subtotals in CrunchCubes have been improved and stabalised, and should work in many more places than they did before (e.g. <code>margin.table</code>, <code>prop.table</code>, etc.)</li>
+<li>Subtotals in CrunchCubes have been improved and stabilized, and should work in many more places than they did before (e.g. <code>margin.table</code>, <code>prop.table</code>, etc.)</li>
 </ul>
 </div>
-<div id="bugfixes" class="section level2">
+<div id="bugfixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bugfixes" class="anchor"></a>Bugfixes</h2>
+<a href="#bugfixes-1" class="anchor"></a>Bugfixes</h2>
 <ul>
 <li>Fix order of variables when using <code><a href="../reference/mv.html">mv()</a></code> to move them to a folder.</li>
 <li>
-<code><a href="../reference/deleteVariables.html">deleteVariables()</a></code> no longer tries to delete duplicate varaibles.</li>
+<code><a href="../reference/deleteVariables.html">deleteVariables()</a></code> no longer tries to delete duplicate variables.</li>
 <li>Resolved a but when using <code>as.data.frame(..., force = TRUE)</code> with numeric variables that have missing values.</li>
 <li>Resolve missing <code>Suggests</code> reference for test packages, following new <code>check</code> requirement.</li>
 </ul>
@@ -225,7 +280,7 @@
 <li>Internal: Added support for <code>alias</code>, <code>description</code>, and <code>notes</code> on <code>VariableTuples</code>
 </li>
 <li>
-<code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> launches a an RStudio to help you build valid categorical arrays and multiple response variables.</li>
+<code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> launches an RStudio gadget to help you build valid categorical arrays and multiple response variables.</li>
 </ul>
 </div>
     <div id="crunch-1-22-0" class="section level1">
@@ -388,7 +443,7 @@
 <li>Access members of user <code>UserCatalogs</code> by email (e.g. <code>catalog[["you<a href='http://github.com/example'>@example</a>.com"]]</code>) by default. All catalog extract methods (<code>[</code> and <code>[[</code>) now also accept a <code>secondary</code> argument for setting an index to match against to change that default.</li>
 <li>Crunch authentication email and password can be stored in and read from the environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</li>
 <li>Cube queries with <code>as_selected</code> multiple-response variables have margin and prop.table methods</li>
-<li>Cube <code><a href="../reference/dataset-variables.html">variables()</a></code> now contain additional metadata, including “type”</li>
+<li>Cube <code><a href="../reference/variables.html">variables()</a></code> now contain additional metadata, including “type”</li>
 <li>Fix <code><a href="../reference/cube-computing.html">bases()</a></code> when called on a univariate statistic (<a href='https://github.com/Crunch-io/rcrunch/issues/124'>#124</a>)</li>
 <li>Update some tests and code to anticipate changes in an upcoming release of <code>testthat</code>
 </li>
@@ -800,7 +855,7 @@
 <code>exportDataset</code> to download a CSV or SAV file of a dataset. <code>write.csv</code> convenience method for CSV export.</li>
 <li>Correctly parse datetimes that don’t include timezone information.</li>
 <li>Add <code>icon</code> and <code>icon&lt;-</code> methods for Projects to read the project’s current icon URL and to set a new icon by supplying a local file name to upload.</li>
-<li>Get and set “archived” and “published” status of a dataset with <code>is.archived</code>, <code>is.draft</code>, and <code>is.published</code> (the inverse of <code>is.draft</code>). See <code>?publish</code> for more.</li>
+<li>Get and set “archived” and “published” status of a dataset with <code>is.archived</code>, <code>is.draft</code>, and <code>is.published</code> (the inverse of <code>is.draft</code>). See <code><a href="../reference/archive-and-publish.html">?publish</a></code> for more.</li>
 <li>Add <code>draft</code> argument to <code>forkDataset</code>
 </li>
 <li>Support for future API to handle failed long-running jobs.</li>
@@ -1062,7 +1117,7 @@
 </h1>
 <ul>
 <li>Gradually slow the polling of <code>/batches/</code> while waiting for an append to complete. Improves the performance of the append operation.</li>
-<li>New <code>c</code> method for Categories, plus support for creating and adding new categories to variables. See <code>?Categories</code> and <code><a href="../reference/c-categories.html">?"c-categories"</a></code>
+<li>New <code>c</code> method for Categories, plus support for creating and adding new categories to variables. See <code><a href="../reference/Categories.html">?Categories</a></code> and <code><a href="../reference/c-categories.html">?"c-categories"</a></code>
 </li>
 <li>Get category ids or numeric values from <code>as.vector</code> by specifying a “mode” of “id” or “numeric”, respectively. See <code><a href="../reference/variable-to-R.html">?"variable-to-R"</a></code>
 </li>
@@ -1269,6 +1324,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#crunch-1-24-2-under-development">1.24.2</a></li>
+        <li><a href="#crunch-1-24-1">1.24.1</a></li>
+        <li><a href="#crunch-1-24-0">1.24.0</a></li>
         <li><a href="#crunch-1-23-0">1.23.0</a></li>
         <li><a href="#crunch-1-22-2">1.22.2</a></li>
         <li><a href="#crunch-1-22-0">1.22.0</a></li>

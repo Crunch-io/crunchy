@@ -81,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.23.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.24.2</span>
       </span>
     </div>
 
@@ -126,6 +126,9 @@
     </li>
     <li>
       <a href="../articles/export.html">Export Data</a>
+    </li>
+    <li>
+      <a href="../articles/projects.html">Projects</a>
     </li>
     <li>
       <a href="../articles/fork-and-merge.html">Fork and Merge</a>
@@ -182,7 +185,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>shojiURL</span>(<span class='no'>x</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"catalogs"</span>, <span class='st'>"views"</span>, <span class='st'>"fragments"</span>, <span class='st'>"orders"</span>), <span class='no'>key</span>)</pre>
+    <pre class="usage"><span class='fu'>shojiURL</span>(<span class='no'>x</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"catalogs"</span>, <span class='st'>"views"</span>, <span class='st'>"fragments"</span>, <span class='st'>"orders"</span>),
+  <span class='no'>key</span>, <span class='kw'>mustWork</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,11 +203,16 @@
       <th>key</th>
       <td><p>character name of the URL to get from <code>collection</code></p></td>
     </tr>
+    <tr>
+      <th>mustWork</th>
+      <td><p>logical: error if the URL is not found? Default is <code>TRUE</code></p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>character URL</p>
+    <p>The indicated URL, or if it does not exist and <code>mustWork</code> is not
+<code>TRUE</code>, <code>NULL</code>.</p>
     
 
   </div>
