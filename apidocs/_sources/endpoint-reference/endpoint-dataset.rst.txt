@@ -135,8 +135,9 @@ permissions                 object           ``{"edit": false}``                
                                                                                                    see :doc:`Permissions </endpoint-reference/endpoint-permission>`
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 owner_id                    URL                                                                    URL of the user entity of the dataset's owner
+                                                                                                   (Yourself or a project)
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
-owner_name                  string           ""                                                    That user's name, for display
+owner_name                  string           ""                                                    The owner's name, for display
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
 size                        object           ``{"rows": 0, "columns": 0, "unfiltered_rows": 0}``   Dimensions of the dataset
 --------------------------- ---------------- ----------------------------------------------------- ---------------------------------------------------
@@ -283,7 +284,7 @@ can be done by PATCH request with the new owners' email of API URL. The
 new owner must have advanced permissions on Crunch.
 
 Other editors of the dataset can change the ownership of a dataset only
-to a Project as long as they andthe current owner of the dataset are
+to a Project as long as they and the current owner of the dataset are
 both editors on such project.
 
 .. _datasets-post:
@@ -734,10 +735,9 @@ Changing dataset ownership
 If you are the current editor of a dataset you can change its owner by
 PATCHing the ``owner`` attribute witht he URL of the new owner.
 
-Only Users, Teams or Projects can be set as owners of a dataset.
+Only Users or Projects can be set as owners of a dataset.
 
 -  Users: New owner needs to be advanced users to be owner of a dataset.
--  Teams: Authenticated user needs to be a member of the team.
 -  Projects: Authenticated user needs to have edit permissions on the
    project.
 
@@ -849,9 +849,15 @@ Applied filters
 Cube
 ''''
 
-``/datasets/{id}/cube/?q``
+``/datasets/{id}/cube/``
 
-See :doc:`Multidimensional Analysis </feature-guide/feature-analyzing>`.
+Query parameters:
+
+* query: an expression containing "dimensions" and "measures"
+* filter: an expression that filters the rows considered in the cube. If omitted, all (non-excluded) rows in the dataset are considered
+* exclusion: boolean, which if false, will compute the cube with the dataset's exclusion filter removed. Only users with "edit" permissions on the dataset may query without the exclusion filter.
+
+See :doc:`Multidimensional Analysis </feature-guide/feature-analyzing>` for details.
 
 Export
 ''''''

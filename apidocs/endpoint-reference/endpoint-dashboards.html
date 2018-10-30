@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Progress &#8212; API Docs 0.4.1 documentation</title>
+    <title>Dashboards &#8212; API Docs 0.4.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Projects" href="endpoint-projects.html" />
-    <link rel="prev" title="Permissions" href="endpoint-permission.html" />
+    <link rel="next" title="Feature Flags" href="endpoint-feature-flag.html" />
+    <link rel="prev" title="Decks" href="endpoint-deck.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -66,11 +66,11 @@
               
                 
   <li>
-    <a href="endpoint-permission.html" title="Previous Chapter: Permissions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Permissions</span>
+    <a href="endpoint-deck.html" title="Previous Chapter: Decks"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Decks</span>
     </a>
   </li>
   <li>
-    <a href="endpoint-projects.html" title="Next Chapter: Projects"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Projects &raquo;</span>
+    <a href="endpoint-feature-flag.html" title="Next Chapter: Feature Flags"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Feature Flags &raquo;</span>
     </a>
   </li>
               
@@ -110,7 +110,13 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="endpoint-dashboards.html">Dashboards</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dashboards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-feature-flag.html">Feature Flags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
@@ -118,10 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Progress</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#get">GET</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
@@ -142,46 +145,77 @@
       </div>
     <div class="col-md-9 content">
       
-  <div class="section" id="progress">
-<span id="id1"></span><h1>Progress<a class="headerlink" href="#progress" title="Permalink to this headline"> 🔗</a></h1>
-<p>Progress resources provide information about the current state of a
-long-running server process in Crunch. Some requests at certain
-endpoints may return 202 status containing a progress URL in the body,
-at which one can monitor the progress of the request that was accepted
-and not yet completed.</p>
+  <div class="section" id="dashboards">
+<h1>Dashboards<a class="headerlink" href="#dashboards" title="Permalink to this headline"> 🔗</a></h1>
+<p>A dashboard is a deck that has been configured to be displayed in presentation
+mode by default. They can be accessed directly by a client URL where only
+the Deck ID is made available.</p>
+<p>This endpoint works as a helper to obtain a direct reference to the deck without
+necessarily knowing under which Dataset is located.</p>
+<div class="section" id="catalog">
+<h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">/dasboards/</span></code></p>
+<p>Returns an empty <code class="docutils literal"><span class="pre">shoji:catalog</span></code> by default. It should be used to discover
+available dashboards that have been shared with you directly.</p>
 <div class="section" id="get">
-<h2>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h2>
+<h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#7f718d1dd690_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cbb1e50_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="7f718d1dd690_HTTP">
-<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">progress</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-
-<span class="p">{</span>
-    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https:/app.crunch.io/api/progress/</span><span class="si">{id}</span><span class="s2">/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
-        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;exported 2 variables&quot;</span>
+<div class="tab-pane active section" id="7f718cbb1e50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/dashboards/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>To discover a specific dashboard, it must be searched by ID via a GET prameter</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c770290_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c770290_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c770290_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span>GET /dashboards/?id=abcdef
+</pre></div>
+</div>
+</div>
+<div class="tab-pane section" id="7f718c770290_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/dashboards/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;../datasets/123/decks/abcdef/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;dashboard&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dashboard name&quot;</span><span class="p">,</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Deck configured for client&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;1986-11-26T12:05:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;4fa25&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;is_public&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+          <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/abcd3/&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Real Person&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;team&quot;</span><span class="p">:</span> <span class="n">null</span>
+      <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div><p><code class="docutils literal"><span class="pre">GET</span></code> on a Progress view returns a Shoji View containing information
-about the status of the indicated process. The “progress” attribute
-contains a integer between -1 and 100. Positive progress values indicate
-that the job is being processed, while a negative value indicates that
-an error occurred in processing. Zero entails that the job has not been
-started, while 100 indicated completion. Additionally, if the <code class="docutils literal"><span class="pre">id</span></code>
-from the request URL does not exist, <code class="docutils literal"><span class="pre">GET</span></code> will nevertheless return
-200 status and indicate <code class="docutils literal"><span class="pre">&quot;progress&quot;:</span> <span class="pre">100</span></code>.</p>
-<p>Optionally, the View will provide a message regarding current status.</p>
-<p>You must be authenticated to <code class="docutils literal"><span class="pre">GET</span></code> this resource.</p>
+</div><p>The dashboards that are available for searching are any of those that the
+user has view access to. These are the decks that are either public or
+shared through a team on any on the datasets the authenticated user has at least
+view permissions on.</p>
+</div>
 </div>
 </div>
 

@@ -4,6 +4,7 @@ Feature Guide
 .. toctree::
    :maxdepth: 2
 
+   feature-http
    feature-authentication
    feature-password-policy
    feature-importing

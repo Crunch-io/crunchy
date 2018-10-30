@@ -11,7 +11,10 @@ Catalog
 ~~~~~~~
 
 The projects catalog will list all the projects the authenticated user
-is a member of. Here you can create new projects via POST
+is a member of. Here you can create new projects via POST.
+The catalog will include a ``body`` attribute to emulate the body provided
+by subprojects. The ``permissions`` key here indicates whether or not you are
+able to create projects.
 
 GET
 ^^^
@@ -23,23 +26,54 @@ GET
       GET /projects/ HTTP/1.1
 
       {
+        "catalogs": {
+            "personal": "https://app.crunch.io/api/datasets/"
+        },
         "element": "shoji:catalog",
-        "self": "http://app.crunch.io/api/projects/",
+        "body": {
+           "name": "Projects catalog",
+           "description": "Displays all the projects you have access to",
+           "user_icon": false,
+           "owner": "https://app.crunch.io/api/users/a274/",
+           "permissions": {
+             "edit": true,
+             "view": true
+           },
+           "icon": "",
+           "owner_id": "https://app.crunch.io/api/users/a274/"
+        },
         "index": {
-          "http://app.crunch.io/api/projects/4643/": {
-            "name": "Project 1",
-            "id": "4643",
-            "icon": "",
-            "permissions": {"view":true, "edit": "true"}
-          },
-          "http://app.crunch.io/api/projects/6c01/": {
-            "name": "Project 2",
-            "id": "6c01",
-            "icon": "",
-            "description": "Description of project 2",
-            "permissions": {"view":true, "edit": "true"}
-          }
-        }
+            "https://app.crunch.io/api/projects/c175/": {
+                "description": "Description of Project 2",
+                "icon": "",
+                "id": "c175",
+                "name": "Project 2",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            },
+            "https://app.crunch.io/api/projects/f5c4/": {
+                "description": "Description of Project 1",
+                "icon": "",
+                "id": "f5c4",
+                "name": "Project 1",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            }
+        },
+        "orders": {
+            "order": "https://app.crunch.io/api/projects/order/"
+        },
+        "self": "https://app.crunch.io/api/projects/"
       }
 
 
@@ -79,6 +113,7 @@ Payload example:
    .. code:: json
 
       {
+          "element": "shoji:entity",
           "body": {
               "name": "My new project",
               "icon_url": "http://cdn.sample.com/project-icon.png"
@@ -128,6 +163,102 @@ for the client to pick.
       }
 
 
+Personal Project
+~~~~~~~~~~~~~~~~
+
+All users have a personal project where the datasets they create will reside.
+
+Inside their personal project it is possible to create subprojects via POST
+using the same creation rules as in the main projects catalog.
+
+The contents (datasets and projects) of the personal project are only visible
+to their owner, but it is still possible to share the datasets or invite members
+to any subproject inside your personal project to collaborate with other users.
+
+Note that all the datasets that exist in the personal projects hierarchy will be
+displayed under the main dataset catalog to the users that have at least view
+permissions over them.
+
+GET
+^^^
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      GET /projects/personal/ HTTP/1.1
+
+      {
+        "element": "shoji:catalog",
+        "self": "https://app.crunch.io/api/projects/personal/",
+        "body": {
+           "name": "Personal projects",
+           "description": "Aggregates the contents of your personal projects",
+           "user_icon": false,
+           "owner": "https://app.crunch.io/api/users/b364/",
+           "permissions": {
+             "edit": true,
+             "view": true
+           },
+           "icon": "",
+           "owner_id": "https://app.crunch.io/api/users/b364/"
+        },
+        "index": {
+            "https://app.crunch.io/api/projects/c175/": {
+                "description": "Description of my nested project",
+                "icon": "",
+                "id": "c175",
+                "name": "My subproject",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            },
+            "https://app.crunch.io/api/projects/f5c4/": {
+                "description": "Description of my other nested project",
+                "icon": "",
+                "id": "f5c4",
+                "name": "My other subproject",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            }
+        }
+      }
+
+PATCH
+^^^^^
+
+
+PATCH support on this endpoint only allows moving projects up to the root. It
+does not allow mass renaming or moving datasets to the root.
+
+To move projects to the personal project it is necessary to PATCH a shoji
+catalog with the urls of the projects in the `index` with empty tuples.
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      PATCH /projects/personal/ HTTP/1.1
+
+      {
+        "element": "shoji:catalog",
+        "self": "https://app.crunch.io/api/projects/personal/",
+        "index": {
+            "https://app.crunch.io/api/projects/abc/": {},
+            "https://app.crunch.io/api/projects/def/": {}
+        }
+      }
+
+
 Entity
 ~~~~~~
 
@@ -144,21 +275,36 @@ GET
    .. code:: json
 
       {
-        "element": "shoji:entity",
-        "self": "http://app.crunch.io/api/projects/6c01/",
-        "catalogs": {
-          "datasets": "http://app.crunch.io/api/projects/6c01/datasets/",
-          "members": "http://app.crunch.io/api/projects/6c01/members/"
-        },
-        "views": {
-          "icon": "http://app.crunch.io/api/projects/6c01/icon/"
-        },
         "body": {
-          "name": "Project 2",
-          "description": "Long description text",
-          "icon": "",
-          "user_icon": false,
-          "id": ""
+            "description": "Description of Project 1",
+            "icon": "",
+            "id": "f5c4",
+            "name": "Project 1",
+            "owner": "https://app.crunch.io/api/users/00002/",
+            "owner_id": "https://app.crunch.io/api/users/00002/",
+            "permissions": {
+                "admin": true,
+                "change_permissions": true,
+                "edit": true,
+                "view": true
+            },
+            "user_icon": false
+        },
+        "catalogs": {
+            "datasets": "https://app.crunch.io/api/projects/f5c4/datasets/",
+            "members": "https://app.crunch.io/api/projects/f5c4/members/",
+            "project": "https://app.crunch.io/api/projects/",
+            "users": "https://app.crunch.io/api/projects/f5c4/users/"
+        },
+        "element": "shoji:entity",
+        "index": {},
+        "graph": [],
+        "orders": {
+            "order": "https://app.crunch.io/api/projects/f5c4/datasets/order/"
+        },
+        "self": "https://app.crunch.io/api/projects/f5c4/",
+        "views": {
+            "icon": "https://app.crunch.io/api/projects/f5c4/icon/"
         }
       }
 
@@ -186,16 +332,268 @@ where the configured icon is. This url does not point to the
 The ``views.icon`` Shoji view endpoint is used to PUT the icon as a file
 upload for this project.
 
+
+POST
+^^^^
+
+It is possible to create nested projects within a project using the
+POST method. The nested projects will be present in the ``index``
+attribute of the parent project identified by the ``type: project``.
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      POST /projects/f5c4/ HTTP/1.1
+
+
+Payload example:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {"element": "shoji:entity", "body": {"name": "Nested Project"}}
+
+
+Note that a GET on the parent project now contains the nested project
+in the ``index`` and ``graph`` attributes.
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+        "body": {
+            "description": "",
+            "icon": "",
+            "id": "f5c4",
+            "name": "Project 1",
+            "owner": "https://app.crunch.io/api/users/00002/",
+            "owner_id": "https://app.crunch.io/api/users/00002/",
+            "permissions": {
+                "admin": true,
+                "change_permissions": true,
+                "edit": true,
+                "view": true
+            },
+            "user_icon": false
+        },
+        "catalogs": {
+            "datasets": "https://app.crunch.io/api/projects/f5c4/datasets/",
+            "members": "https://app.crunch.io/api/projects/f5c4/members/",
+            "project": "https://app.crunch.io/api/projects/",
+            "users": "https://app.crunch.io/api/projects/f5c4/users/"
+        },
+        "element": "shoji:entity",
+        "graph": [
+            "https://app.crunch.io/api/projects/6ba6/"
+        ],
+        "index": {
+            "https://app.crunch.io/api/projects/6ba6/": {
+                "description": "",
+                "icon": "",
+                "id": "6ba6",
+                "name": "Nested Project",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            }
+        },
+        "orders": {
+            "order": "https://app.crunch.io/api/projects/f5c4/datasets/order/"
+        },
+        "self": "https://app.crunch.io/api/projects/f5c4/",
+        "views": {
+            "icon": "https://app.crunch.io/api/projects/f5c4/icon/"
+        }
+      }
+
+
 PATCH
 ^^^^^
 
-The attributes that are allowed to be edited for a projet are:
+The attributes that are allowed to be edited for a project are:
 
 -  name
 -  description
 -  icon\_url
+-  index
+-  graph
 
 Only project editors can make these changes.
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      PATCH /projects/f5c4/ HTTP/1.1
+
+Basic Changes
+'''''''''''''
+
+Payload example:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {"name": "Renamed Project"}
+
+
+Index Changes
+'''''''''''''
+
+You can move datasets and projects to a parent project via the
+``index`` attribute. Note that you cannot remove items via the ``index``.
+To remove a dataset or project from a parent project, move them to a new
+project.
+
+Payload example:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+        "index": {
+            "https://app.crunch.io/api/datasets/976d/": {},
+            "https://app.crunch.io/api/projects/c175/": {}
+        },
+        "element": "shoji:entity"
+      }
+
+Note that a GET on the parent project now contains the nested project
+and dataset in the ``index`` and ``graph`` attributes. Datasets in the
+project ``index`` can be distinguished from nested projects by their
+``type`` attribute. Datasets will have ``type: dataset``, and nested
+projects will have ``type: project``.
+
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+        "body": {
+            "description": "",
+            "icon": "",
+            "id": "f5c4",
+            "name": "Project 1",
+            "owner": "https://app.crunch.io/api/users/00002/",
+            "owner_id": "https://app.crunch.io/api/users/00002/",
+            "permissions": {
+                "admin": true,
+                "change_permissions": true,
+                "edit": true,
+                "view": true
+            },
+            "user_icon": false
+        },
+        "catalogs": {
+            "datasets": "https://app.crunch.io/api/projects/f5c4/datasets/",
+            "members": "https://app.crunch.io/api/projects/f5c4/members/",
+            "project": "https://app.crunch.io/api/projects/",
+            "users": "https://app.crunch.io/api/projects/f5c4/users/"
+        },
+        "element": "shoji:entity",
+        "graph": [
+            "https://app.crunch.io/api/projects/6ba6/",
+            "https://app.crunch.io/api/projects/c175/",
+            "https://app.crunch.io/api/datasets/976d/"
+        ],
+        "index": {
+            "https://app.crunch.io/api/datasets/976d/": {
+                "access_time": "2018-08-09T19:52:38.816000+00:00",
+                "archived": false,
+                "creation_time": "2018-08-09T19:52:38.901000+00:00",
+                "current_editor": "https://app.crunch.io/api/users/00002/",
+                "current_editor_name": "Jean-Luc Picard",
+                "description": "",
+                "end_date": null,
+                "id": "976d",
+                "is_published": true,
+                "modification_time": "2018-08-09T19:52:38.848000+00:00",
+                "name": "Dataset 1",
+                "owner_id": "https://app.crunch.io/api/projects/f5c4/",
+                "owner_name": "Project 1",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "size": {
+                    "columns": 0,
+                    "rows": 0,
+                    "unfiltered_rows": 0
+                },
+                "start_date": null,
+                "streaming": "no",
+                "type": "dataset"
+            },
+            "https://app.crunch.io/api/projects/6ba6/": {
+                "description": "",
+                "icon": "",
+                "id": "6ba6",
+                "name": "Nested Project",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            },
+            "https://app.crunch.io/api/projects/c175/": {
+                "description": "",
+                "icon": "",
+                "id": "c175",
+                "name": "Project 2",
+                "permissions": {
+                    "admin": true,
+                    "change_permissions": true,
+                    "edit": true,
+                    "view": true
+                },
+                "type": "project"
+            }
+        },
+        "orders": {
+            "order": "https://app.crunch.io/api/projects/f5c4/datasets/order/"
+        },
+        "self": "https://app.crunch.io/api/projects/f5c4/",
+        "views": {
+            "icon": "https://app.crunch.io/api/projects/f5c4/icon/"
+        }
+      }
+
+Graph Changes
+'''''''''''''
+
+You can reorder the datasets and nested projects by editing the
+``graph`` attribute. The graph attribute must contain all items found
+in the ``index``.
+
+Payload example:
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+        "graph": [
+            "https://app.crunch.io/api/datasets/976d/",
+            "https://app.crunch.io/api/projects/c175/",
+            "https://app.crunch.io/api/projects/6ba6/"
+        ],
+        "element": "shoji:entity"
+      }
+
 
 DELETE
 ^^^^^^

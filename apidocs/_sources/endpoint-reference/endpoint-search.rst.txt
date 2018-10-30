@@ -33,11 +33,6 @@ Here are the parameters that can be passed to the search endpoint.
 |                                      |            | start gathering results from         |
 |                                      |            | pre-filter                           |
 +--------------------------------------+------------+--------------------------------------+
-| max_variables_per_dataset            | Integer    | limit the number of variables that   |
-|                                      |            | match to this number (default: 100,  |
-|                                      |            | max: 100) (deprecated, use           |
-|                                      |            | variable\_limit)                     |
-+--------------------------------------+------------+--------------------------------------+
 | embedded_variables                   | Boolean    | embed the results within the dataset |
 |                                      |            | results (this will become the        |
 |                                      |            | default in the future)               |

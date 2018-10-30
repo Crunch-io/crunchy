@@ -1,0 +1,68 @@
+Dashboards
+----------
+
+A dashboard is a deck that has been configured to be displayed in presentation
+mode by default. They can be accessed directly by a client URL where only
+the Deck ID is made available.
+
+This endpoint works as a helper to obtain a direct reference to the deck without
+necessarily knowing under which Dataset is located.
+
+Catalog
+~~~~~~~
+
+
+``/dasboards/``
+
+Returns an empty ``shoji:catalog`` by default. It should be used to discover
+available dashboards that have been shared with you directly.
+
+GET
+^^^
+
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:catalog",
+          "self": "https://app.crunch.io/api/dashboards/",
+          "index": {}
+      }
+
+
+To discover a specific dashboard, it must be searched by ID via a GET prameter
+
+.. language_specific::
+   --HTTP
+   .. code:: http
+
+      GET /dashboards/?id=abcdef
+
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:catalog",
+          "self": "https://app.crunch.io/api/dashboards/",
+          "index": {
+            "../datasets/123/decks/abcdef/": {
+                "dashboard": {
+                    "name": "Dashboard name",
+                },
+                "name": "Deck configured for client",
+                "creation_time": "1986-11-26T12:05:00",
+                "id": "4fa25",
+                "is_public": false,
+                "owner_id": "https://app.crunch.io/api/users/abcd3/",
+                "owner_name": "Real Person",
+                "team": null
+            }
+          }
+      }
+
+The dashboards that are available for searching are any of those that the
+user has view access to. These are the decks that are either public or
+shared through a team on any on the datasets the authenticated user has at least
+view permissions on.

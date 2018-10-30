@@ -161,30 +161,6 @@ that matches the schema of the Dataset.
       }
 
 
-Appending a Crunch Table
-''''''''''''''''''''''''
-
-The variables IDs must match those of the target dataset since their
-types will be matched based on ID. The data is expected to match the
-target dataset's variable types. This action will create a new Source
-entity, its name and description will match those provided on the JSON
-response, if not provided they'll default to empty string.
-
-.. language_specific::
-   --JSON
-   .. code:: json
-
-      {
-        "element": "crunch:table",
-          "name": "<optional string>",
-          "description": "<optional string>",
-          "data": {
-            "var_url_1": [1, 2, 3, ...],
-            "var_url_2": ["a", "b", ...]
-          }
-      }
-
-
 Append Failures
 '''''''''''''''
 

@@ -45,7 +45,7 @@ All subfolder URLs follow straight from the root folder URL regardless
 of their nested location in the variable folders tree.
 
 Folder payload
--~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 All folders types return a similar Shoji catalog with the following members:
 
@@ -63,7 +63,9 @@ index    object  Behaves like a standard Shoji catalog containing the children
                  set of folder and variables URLs. Clients should differentiate
                  each of the objects by looking at the tuple's `type` attribute.
                  Folders will have type "folder" while variables will contain
-                 their variables type.
+                 their variables type. The `size` attribute for a folder type
+                 indicates the total number of variables stored under the folder
+                 and its subfolders.
 -------- ------- ---------------------------------------------------------------
 graph    list    A flat list containing the list of URLs of variables and
                  subfolders on the given folder.
@@ -95,7 +97,8 @@ JSON example:
               },
               "https://app.crunch.io/datasets/abcdef/folders/qwe/": {
                   "type": "folder",
-                  "name": "Subfolder name"
+                  "name": "Subfolder name",
+                  "size": 99,
               },
               "https://app.crunch.io/datasets/abcdef/variables/456/": {
                   "subvariables_catalog": "../variables/456/subvariables/",
@@ -237,3 +240,59 @@ should be placed in the hidden folder.
 
 Hidden folder membership will eventually replace the deprecated
 ``discarded`` attribute on a variable.
+
+
+Folders parents structure
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``/datasets/{id}/folders/parents/``
+
+
+Sometimes, clients need to build a folder hierarchy quickly given a specific
+folder URL. For that purpose we provide this endpoint so clients don't have to
+discover a folder's parents branch making multiple GET requests.
+
+This read-only endpoint returns a `shoji:catalog` listing all the public folders
+that live under the root tree where each tuple has its name and the URL of its
+parent folder. The `position` key indicates the position on its parent's graph.
+
+
+.. language_specific::
+   --JSON
+   .. code:: json
+
+      {
+          "element": "shoji:catalog",
+          "self": "https://app.crunch.io/api/datasets/5ee0a0/folders/parents/",
+          "index": {
+              "../top1/": {
+                  "parent": "../",
+                  "name": "Top level folder",
+                  "position": 0,
+              },
+              "../top2/": {
+                  "parent": "../",
+                  "name": "Top level folder as well",
+                  "position": 1,
+              },
+              "../child1/": {
+                  "parent": "../top1/",
+                  "name": "Son of top1",
+                  "position": 2,
+              },
+              "../gchild1/": {
+                  "parent": "../child1/",
+                  "name": "Son of child1",
+                  "position": 0,
+              },
+              "../childa/": {
+                  "parent": "../top2/",
+                  "name": "Son of top2",
+                  "position": 3,
+              },
+              "../child2/": {
+                  "parent": "../top1/",
+                  "name": "Son of top1",
+                  "position": 1,
+              },
+      }

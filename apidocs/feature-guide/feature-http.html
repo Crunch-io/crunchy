@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Password policy &#8212; API Docs 0.4.1 documentation</title>
+    <title>General API Conventions &#8212; API Docs 0.4.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Importing Data" href="feature-importing.html" />
-    <link rel="prev" title="Authentication" href="feature-authentication.html" />
+    <link rel="next" title="Authentication" href="feature-authentication.html" />
+    <link rel="prev" title="Feature Guide" href="index.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -66,11 +66,11 @@
               
                 
   <li>
-    <a href="feature-authentication.html" title="Previous Chapter: Authentication"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Authentication</span>
+    <a href="index.html" title="Previous Chapter: Feature Guide"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Feature Guide</span>
     </a>
   </li>
   <li>
-    <a href="feature-importing.html" title="Next Chapter: Importing Data"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Importing Data &raquo;</span>
+    <a href="feature-authentication.html" title="Next Chapter: Authentication"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Authentication &raquo;</span>
     </a>
   </li>
               
@@ -100,9 +100,14 @@
   <input type="hidden" name="area" value="default" />
 </form><ul class="sidebar-toc"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="feature-http.html">General API Conventions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General API Conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#successful-requests">Successful requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unsuccessful-requests">Unsuccessful requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecation">Deprecation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-appending.html">Appending Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-appending.html#combining-datasets">Combining datasets</a></li>
@@ -123,21 +128,34 @@
       </div>
     <div class="col-md-9 content">
       
-  <div class="section" id="password-policy">
-<h1>Password policy<a class="headerlink" href="#password-policy" title="Permalink to this headline"> 🔗</a></h1>
-<p>Crunch has a simple policy for acceptable passwords:</p>
+  <div class="section" id="general-api-conventions">
+<h1>General API Conventions<a class="headerlink" href="#general-api-conventions" title="Permalink to this headline"> 🔗</a></h1>
+<p>The Crunch REST API follows some common conventions across all endpoints. You can assume these to be the case except where explicitly documented otherwise.</p>
+<div class="section" id="successful-requests">
+<h2>Successful requests<a class="headerlink" href="#successful-requests" title="Permalink to this headline"> 🔗</a></h2>
 <ul class="simple">
-<li>It must be 8 characters or longer</li>
-<li>It must contain at least 4 unique characters</li>
+<li>Successful <code class="docutils literal"><span class="pre">GET</span></code> requests return 200 status with <code class="docutils literal"><span class="pre">Content-Type:</span> <span class="pre">application/json</span></code> response content.</li>
+<li><code class="docutils literal"><span class="pre">PATCH</span></code> is generally preferred for partial updating of resources, though some endpoints do support <code class="docutils literal"><span class="pre">PUT</span></code>. A successful request returns 204 No Content status.</li>
+<li><code class="docutils literal"><span class="pre">POST</span></code> is used to create entities on the server. The URL to the created entity is returned in the <code class="docutils literal"><span class="pre">Location</span></code> response header, and the response status is either 201 Created or 202 Continue.</li>
+<li>202 Continue is used for requests that continue to process outside of the request cycle; for example, import or export jobs that may be long running and benefit from reporting progress to clients. See <a class="reference internal" href="../endpoint-reference/endpoint-progress.html"><span class="doc">Progress</span></a> for how to handle the 202 response content. Requests that would otherwise return 201 Location will still include the <code class="docutils literal"><span class="pre">Location</span></code> header in the 202 response; requests that would otherwise return 204 No Content will have no additional response headers.</li>
 </ul>
-<p>Examples:</p>
+</div>
+<div class="section" id="unsuccessful-requests">
+<h2>Unsuccessful requests<a class="headerlink" href="#unsuccessful-requests" title="Permalink to this headline"> 🔗</a></h2>
 <ul class="simple">
-<li>Secure 8 character password: <code class="docutils literal"><span class="pre">4B3a8f4$</span></code></li>
-<li>Secure passphrase: <code class="docutils literal"><span class="pre">correct</span> <span class="pre">horse</span> <span class="pre">battery</span> <span class="pre">staple</span></code></li>
+<li>“Bad” requests returning with a <code class="docutils literal"><span class="pre">4xx</span></code> status may contain JSON response content with an error message.</li>
+<li>Unauthenticated requests to non-public resources return 401.</li>
+<li>Authenticated but unauthorized responses return 404 Not Found rather than 403 Not Authorized in cases where returning 403 would leak information about the existence of resources. 403 response is reserved for cases such as when a user is authorized to <code class="docutils literal"><span class="pre">GET</span></code> a resource but not <code class="docutils literal"><span class="pre">PATCH</span></code> it, for example.</li>
+<li>409 Conflict response is used when the request may be retried and may succeed if changes are first made at a different resource. Example: when a user who has edit privileges on a dataset but is not the “current editor” attempts to PATCH a dataset resource.</li>
 </ul>
-<p>We highly recommend that users use long pass phrases instead of
-passwords for security and for ease of remembering the credentials for
-accessing the service.</p>
+</div>
+<div class="section" id="deprecation">
+<h2>Deprecation<a class="headerlink" href="#deprecation" title="Permalink to this headline"> 🔗</a></h2>
+<ul class="simple">
+<li>When API resources are deprecated, responses will contain a <code class="docutils literal"><span class="pre">Warning</span></code> header with a message about the deprecation and a recommendation for upgrading. Our client libraries look for this response header and will alert you to upgrade your version of the library if you receive a response with this header.</li>
+<li>Endpoints that have been removed respond with a 410 Gone status, optionally with a message instructing you where to look instead.</li>
+</ul>
+</div>
 </div>
 
 

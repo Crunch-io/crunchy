@@ -57,7 +57,9 @@
             
             
 
-    <li><a href="http://status.crunch.io/">Status</a></li>
+    <li><a href="https://crunch.io/" target="_blank">Go to Crunch.io</a></li>
+    <li><a href="http://status.crunch.io/" target="_blank">Status</a></li>
+    <li><a href="https://app.crunch.io/" target="_blank">Sign In</a></li>
 
 
             
@@ -108,6 +110,8 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-feature-flag.html">Feature Flags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
@@ -125,21 +129,32 @@
 <li class="toctree-l4"><a class="reference internal" href="#default-icon">Default icon</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#personal-project">Personal Project</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">GET</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">POST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">PATCH</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#basic-changes">Basic Changes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#index-changes">Index Changes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#graph-changes">Graph Changes</a></li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#projects-order">Projects order</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">GET</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#put">PUT</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#members">Members</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#members-permissions">Members permissions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">GET</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">PATCH</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">PATCH</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#sending-notifications">Sending notifications</a></li>
 </ul>
 </li>
@@ -148,22 +163,22 @@
 <li class="toctree-l3"><a class="reference internal" href="#datasets">Datasets</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adding-datasets-to-projects">Adding datasets to projects</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#patch-to-dataset-entity">PATCH to dataset entity</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">GET</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#icon">Icon</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">GET</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">PUT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">PUT</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#file-upload">File upload</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#icon-url">Icon URL</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">POST</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">POST</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#datasets-order">Datasets order</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id9">GET</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">PUT</a></li>
 </ul>
 </li>
 </ul>
@@ -196,36 +211,70 @@ authenticated user is a member or owner of.</p>
 <div class="section" id="catalog">
 <h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
 <p>The projects catalog will list all the projects the authenticated user
-is a member of. Here you can create new projects via POST</p>
+is a member of. Here you can create new projects via POST.
+The catalog will include a <code class="docutils literal"><span class="pre">body</span></code> attribute to emulate the body provided
+by subprojects. The <code class="docutils literal"><span class="pre">permissions</span></code> key here indicates whether or not you are
+able to create projects.</p>
 <div class="section" id="get">
 <h3>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h3>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495314aa898_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718ca81850_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495314aa898_HTTP">
+<div class="tab-pane active section" id="7f718ca81850_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 
 <span class="p">{</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;personal&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/&quot;</span>
+  <span class="p">},</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Projects catalog&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Displays all the projects you have access to&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+     <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/a274/&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+     <span class="p">},</span>
+     <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/a274/&quot;</span>
+  <span class="p">},</span>
   <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;http://app.crunch.io/api/projects/4643/&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;4643&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;view&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6c01&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of project 2&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;view&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span> <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of Project 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c175&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of Project 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5c4&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/order/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -283,10 +332,10 @@ authenticated user its initial member and editor.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953188d0b8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8b3610_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953188d0b8_HTTP">
+<div class="tab-pane active section" id="7f718c8b3610_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -296,11 +345,12 @@ authenticated user its initial member and editor.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953188de10_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8b3050_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953188de10_JSON">
+<div class="tab-pane active section" id="7f718c8b3050_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My new project&quot;</span><span class="p">,</span>
         <span class="s2">&quot;icon_url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://cdn.sample.com/project-icon.png&quot;</span>
@@ -329,16 +379,16 @@ for the client to pick.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531508b00_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#149531508b00_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8d0910_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c8d0910_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531508b00_HTTP">
+<div class="tab-pane active section" id="7f718c8d0910_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">icons</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="149531508b00_JSON">
+<div class="tab-pane section" id="7f718c8d0910_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/icons/&quot;</span><span class="p">,</span>
@@ -355,39 +405,154 @@ for the client to pick.</p>
 </div>
 </div></div>
 </div>
-<div class="section" id="entity">
-<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="personal-project">
+<h2>Personal Project<a class="headerlink" href="#personal-project" title="Permalink to this headline"> 🔗</a></h2>
+<p>All users have a personal project where the datasets they create will reside.</p>
+<p>Inside their personal project it is possible to create subprojects via POST
+using the same creation rules as in the main projects catalog.</p>
+<p>The contents (datasets and projects) of the personal project are only visible
+to their owner, but it is still possible to share the datasets or invite members
+to any subproject inside your personal project to collaborate with other users.</p>
+<p>Note that all the datasets that exist in the personal projects hierarchy will be
+displayed under the main dataset catalog to the users that have at least view
+permissions over them.</p>
 <div class="section" id="id1">
 <h3>GET<a class="headerlink" href="#id1" title="Permalink to this headline"> 🔗</a></h3>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495315c38d0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495315c38d0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d1dd790_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495315c38d0_HTTP">
+<div class="tab-pane active section" id="7f718d1dd790_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">personal</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/personal/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Personal projects&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Aggregates the contents of your personal projects&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+     <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/b364/&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+       <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+     <span class="p">},</span>
+     <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/b364/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of my nested project&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c175&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My subproject&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of my other nested project&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5c4&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My other subproject&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<p>PATCH support on this endpoint only allows moving projects up to the root. It
+does not allow mass renaming or moving datasets to the root.</p>
+<p>To move projects to the personal project it is necessary to PATCH a shoji
+catalog with the urls of the projects in the <cite>index</cite> with empty tuples.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c0b8410_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c0b8410_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">personal</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/personal/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/abc/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/def/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="section" id="entity">
+<h2>Entity<a class="headerlink" href="#entity" title="Permalink to this headline"> 🔗</a></h2>
+<div class="section" id="id2">
+<h3>GET<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h3>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c0b8790_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c0b8790_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c0b8790_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495315c38d0_JSON">
+<div class="tab-pane section" id="7f718c0b8790_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/icon/&quot;</span>
-  <span class="p">},</span>
   <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Long description text&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Description of Project 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5c4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/members/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/users/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/order/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/icon/&quot;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -444,15 +609,299 @@ where the configured icon is. This url does not point to the
 <p>The <code class="docutils literal"><span class="pre">views.icon</span></code> Shoji view endpoint is used to PUT the icon as a file
 upload for this project.</p>
 </div>
-<div class="section" id="patch">
-<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
-<p>The attributes that are allowed to be edited for a projet are:</p>
+<div class="section" id="id3">
+<h3>POST<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
+<p>It is possible to create nested projects within a project using the
+POST method. The nested projects will be present in the <code class="docutils literal"><span class="pre">index</span></code>
+attribute of the parent project identified by the <code class="docutils literal"><span class="pre">type:</span> <span class="pre">project</span></code>.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c466910_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c466910_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">f5c4</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Payload example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c466c50_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c466c50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nested Project&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Note that a GET on the parent project now contains the nested project
+in the <code class="docutils literal"><span class="pre">index</span></code> and <code class="docutils literal"><span class="pre">graph</span></code> attributes.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c47c210_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c47c210_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5c4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/members/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/users/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/6ba6/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/6ba6/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6ba6&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nested Project&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/order/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/icon/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="id4">
+<h3>PATCH<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<p>The attributes that are allowed to be edited for a project are:</p>
 <ul class="simple">
 <li>name</li>
 <li>description</li>
 <li>icon_url</li>
+<li>index</li>
+<li>graph</li>
 </ul>
 <p>Only project editors can make these changes.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d502910_HTTP">HTTP</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718d502910_HTTP">
+<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">f5c4</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><div class="section" id="basic-changes">
+<h4>Basic Changes<a class="headerlink" href="#basic-changes" title="Permalink to this headline"> 🔗</a></h4>
+<p>Payload example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d502610_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718d502610_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Renamed Project&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="index-changes">
+<h4>Index Changes<a class="headerlink" href="#index-changes" title="Permalink to this headline"> 🔗</a></h4>
+<p>You can move datasets and projects to a parent project via the
+<code class="docutils literal"><span class="pre">index</span></code> attribute. Note that you cannot remove items via the <code class="docutils literal"><span class="pre">index</span></code>.
+To remove a dataset or project from a parent project, move them to a new
+project.</p>
+<p>Payload example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d334cd0_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718d334cd0_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://app.crunch.io/api/datasets/976d/&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">:</span> <span class="p">{}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div><p>Note that a GET on the parent project now contains the nested project
+and dataset in the <code class="docutils literal"><span class="pre">index</span></code> and <code class="docutils literal"><span class="pre">graph</span></code> attributes. Datasets in the
+project <code class="docutils literal"><span class="pre">index</span></code> can be distinguished from nested projects by their
+<code class="docutils literal"><span class="pre">type</span></code> attribute. Datasets will have <code class="docutils literal"><span class="pre">type:</span> <span class="pre">dataset</span></code>, and nested
+projects will have <code class="docutils literal"><span class="pre">type:</span> <span class="pre">project</span></code>.</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d334b50_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718d334b50_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;f5c4&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;user_icon&quot;</span><span class="p">:</span> <span class="n">false</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;catalogs&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;datasets&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;members&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/members/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/users/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/6ba6/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/datasets/976d/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://app.crunch.io/api/datasets/976d/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;access_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-09T19:52:38.816000+00:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;archived&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+          <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-09T19:52:38.901000+00:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;current_editor&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/users/00002/&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;current_editor_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jean-Luc Picard&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;end_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;976d&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;is_published&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+          <span class="s2">&quot;modification_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-09T19:52:38.848000+00:00&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner_id&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;owner_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;columns&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s2">&quot;unfiltered_rows&quot;</span><span class="p">:</span> <span class="mi">0</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;start_date&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+          <span class="s2">&quot;streaming&quot;</span><span class="p">:</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/6ba6/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;6ba6&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Nested Project&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;c175&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;admin&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;change_permissions&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;edit&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+              <span class="s2">&quot;view&quot;</span><span class="p">:</span> <span class="n">true</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;project&quot;</span>
+      <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;orders&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;order&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/datasets/order/&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;icon&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/projects/f5c4/icon/&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="graph-changes">
+<h4>Graph Changes<a class="headerlink" href="#graph-changes" title="Permalink to this headline"> 🔗</a></h4>
+<p>You can reorder the datasets and nested projects by editing the
+<code class="docutils literal"><span class="pre">graph</span></code> attribute. The graph attribute must contain all items found
+in the <code class="docutils literal"><span class="pre">index</span></code>.</p>
+<p>Payload example:</p>
+<div class="tabbable">
+<ul class="nav nav-tabs simple">
+<li class="disabled"><a class="disabled">Language-specific info:</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c4b1f10_JSON">JSON</a></li>
+</ul>
+<div class="tab-content section">
+<div class="tab-pane active section" id="7f718c4b1f10_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;https://app.crunch.io/api/datasets/976d/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/c175/&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;https://app.crunch.io/api/projects/6ba6/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
 </div>
 <div class="section" id="delete">
 <h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
@@ -462,10 +911,10 @@ delete a project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495310a0588_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c4a3590_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495310a0588_HTTP">
+<div class="tab-pane active section" id="7f718c4a3590_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -479,23 +928,23 @@ delete a project.</p>
 for the user. This entity is independent for each user.</p>
 <p>As the user is added to more projects, these will be added at the end of
 the <code class="docutils literal"><span class="pre">shoji:order</span></code>.</p>
-<div class="section" id="id2">
-<h3>GET<a class="headerlink" href="#id2" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id5">
+<h3>GET<a class="headerlink" href="#id5" title="Permalink to this headline"> 🔗</a></h3>
 <p>Will return a <code class="docutils literal"><span class="pre">shoji:order</span></code> containing a flat list of all the projects
 where the current user belongs to.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495310a02e8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495310a02e8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c4a3190_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c4a3190_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495310a02e8_HTTP">
+<div class="tab-pane active section" id="7f718c4a3190_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495310a02e8_JSON">
+<div class="tab-pane section" id="7f718c4a3190_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
@@ -520,16 +969,16 @@ response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495310af550_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495310af550_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c84bb90_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c84bb90_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495310af550_HTTP">
+<div class="tab-pane active section" id="7f718c84bb90_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495310af550_JSON">
+<div class="tab-pane section" id="7f718c84bb90_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/order/&quot;</span><span class="p">,</span>
@@ -565,23 +1014,23 @@ project editors.</p>
 permissions to make changes on the project itself such as changing its
 name, icon, members management or change members’ permissions.</p>
 </div>
-<div class="section" id="id3">
-<h3>GET<a class="headerlink" href="#id3" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id6">
+<h3>GET<a class="headerlink" href="#id6" title="Permalink to this headline"> 🔗</a></h3>
 <p>Returns a catalog with all users that have access to this project and
 their project permissions in the following format:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531099828_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#149531099828_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c4709d0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c4709d0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531099828_HTTP">
+<div class="tab-pane active section" id="7f718c4709d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="149531099828_JSON">
+<div class="tab-pane section" id="7f718c4709d0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
@@ -624,8 +1073,8 @@ each user has on the given project.</p>
 contains the maximum dataset permissions each user can have. Assigning
 anything more permissive will not have effect.</p>
 </div>
-<div class="section" id="id4">
-<h3>PATCH<a class="headerlink" href="#id4" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id7">
+<h3>PATCH<a class="headerlink" href="#id7" title="Permalink to this headline"> 🔗</a></h3>
 <p>Use this method to add or remove members from the project. Only project
 editors have this capabilities, else you will get a 403 response.</p>
 <p>To add a new user, PATCH a catalog keyed by the new user URL and an
@@ -648,16 +1097,16 @@ that the email does not exist, the server will return a 400 response.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149530bec358_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#149530bec358_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cb3f090_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718cb3f090_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149530bec358_HTTP">
+<div class="tab-pane active section" id="7f718cb3f090_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">abcd</span><span class="o">/</span><span class="n">members</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="149530bec358_JSON">
+<div class="tab-pane section" id="7f718cb3f090_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/members/&quot;</span><span class="p">,</span>
@@ -721,40 +1170,40 @@ the project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495310f5ac8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495310f5ac8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cf2a8d0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718cf2a8d0_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495310f5ac8_HTTP">
+<div class="tab-pane active section" id="7f718cf2a8d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PATCH</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">cc9161</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495310f5ac8_JSON">
+<div class="tab-pane section" id="7f718cf2a8d0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;owner&quot;</span><span class="p">:</span><span class="s2">&quot;https://app.crunch.io/api/projects/abcd/&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div></div>
-<div class="section" id="id5">
-<h3>GET<a class="headerlink" href="#id5" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id8">
+<h3>GET<a class="headerlink" href="#id8" title="Permalink to this headline"> 🔗</a></h3>
 <p>Will show the list of all datasets where this project is their owner,
 the shape of the dataset tuple will be the same as in other dataset
 catalogs.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495310f5978_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495310f5978_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cb2b650_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718cb2b650_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495310f5978_HTTP">
+<div class="tab-pane active section" id="7f718cb2b650_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495310f5978_JSON">
+<div class="tab-pane section" id="7f718cb2b650_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/&quot;</span><span class="p">,</span>
@@ -822,8 +1271,8 @@ catalogs.</p>
 <h2>Icon<a class="headerlink" href="#icon" title="Permalink to this headline"> 🔗</a></h2>
 <p>The icon endpoint for a project is a ShojiView that allows to change the
 project’s icon via file upload or URL.</p>
-<div class="section" id="id6">
-<h3>GET<a class="headerlink" href="#id6" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id9">
+<h3>GET<a class="headerlink" href="#id9" title="Permalink to this headline"> 🔗</a></h3>
 <p>On GET, it will return a <code class="docutils literal"><span class="pre">shoji:view</span></code> with its value containing a url
 to the icon file or empty string in case there isn’t an icon for this
 project yet.</p>
@@ -831,16 +1280,16 @@ project yet.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495318e40f0_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495318e40f0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cfcd850_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718cfcd850_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495318e40f0_HTTP">
+<div class="tab-pane active section" id="7f718cfcd850_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495318e40f0_JSON">
+<div class="tab-pane section" id="7f718cfcd850_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/icon/&quot;</span><span class="p">,</span>
@@ -851,8 +1300,8 @@ project yet.</p>
 </div>
 </div>
 </div></div>
-<div class="section" id="id7">
-<h3>PUT<a class="headerlink" href="#id7" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id10">
+<h3>PUT<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h3>
 <p>PUT to this endpoint to change a project’s icon.</p>
 <p>There are two ways to change the icon, either via file upload or via
 icon URL.</p>
@@ -867,10 +1316,10 @@ stored and made available under the project’s url. The API will return a
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531856ac8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c6db2d0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531856ac8_HTTP">
+<div class="tab-pane active section" id="7f718c6db2d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Disposition</span><span class="p">:</span> <span class="n">form</span><span class="o">-</span><span class="n">data</span><span class="p">;</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span><span class="p">;</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;newicon.jpg&quot;</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
@@ -890,17 +1339,17 @@ image will be copied to an API local location.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495311a6ac8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495311a6ac8_JSON">JSON</a></li>
-<li><a data-toggle="tab" href="#1495311a6ac8_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c6db0d0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c6db0d0_JSON">JSON</a></li>
+<li><a data-toggle="tab" href="#7f718c6db0d0_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495311a6ac8_HTTP">
+<div class="tab-pane active section" id="7f718c6db0d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">icon</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495311a6ac8_JSON">
+<div class="tab-pane section" id="7f718c6db0d0_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/icon/&quot;</span><span class="p">,</span>
@@ -909,7 +1358,7 @@ image will be copied to an API local location.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495311a6ac8_HTTP">
+<div class="tab-pane section" id="7f718c6db0d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="n">Created</span>
 <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">223</span><span class="n">fd4</span><span class="o">/</span>
 </pre></div>
@@ -918,8 +1367,8 @@ image will be copied to an API local location.</p>
 </div>
 </div></div>
 </div>
-<div class="section" id="id8">
-<h3>POST<a class="headerlink" href="#id8" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id11">
+<h3>POST<a class="headerlink" href="#id11" title="Permalink to this headline"> 🔗</a></h3>
 <p>Same as PUT</p>
 </div>
 </div>
@@ -929,23 +1378,23 @@ image will be copied to an API local location.</p>
 to be ordered.</p>
 <p>This is endpoint available for all project members but can only be
 updated by the project’s editors.</p>
-<div class="section" id="id9">
-<h3>GET<a class="headerlink" href="#id9" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id12">
+<h3>GET<a class="headerlink" href="#id12" title="Permalink to this headline"> 🔗</a></h3>
 <p>Will return the <code class="docutils literal"><span class="pre">shoji:order</span></code> response containing the datasets that
 belong to the project.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953177fe10_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14953177fe10_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cf15390_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718cf15390_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953177fe10_HTTP">
+<div class="tab-pane active section" id="7f718cf15390_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14953177fe10_JSON">
+<div class="tab-pane section" id="7f718cf15390_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:order&quot;</span><span class="p">,</span>
   <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;http://app.crunch.io/api/projects/6c01/datasets/order/&quot;</span><span class="p">,</span>
@@ -959,8 +1408,8 @@ belong to the project.</p>
 </div>
 </div>
 </div></div>
-<div class="section" id="id10">
-<h3>PUT<a class="headerlink" href="#id10" title="Permalink to this headline"> 🔗</a></h3>
+<div class="section" id="id13">
+<h3>PUT<a class="headerlink" href="#id13" title="Permalink to this headline"> 🔗</a></h3>
 <p>Allow to make modifications to the <code class="docutils literal"><span class="pre">shoji:order</span></code> for the contained
 datasets. Only the project’s editors can make these changes.</p>
 <p>Trying to include an invalid dataset or an incomplete list will return a
@@ -968,10 +1417,10 @@ datasets. Only the project’s editors can make these changes.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953122d668_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8b3750_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953122d668_HTTP">
+<div class="tab-pane active section" id="7f718c8b3750_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="mi">6</span><span class="n">c01</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">order</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 </pre></div>
 </div>
@@ -994,7 +1443,7 @@ datasets. Only the project’s editors can make these changes.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jun 13, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

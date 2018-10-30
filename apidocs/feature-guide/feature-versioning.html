@@ -57,7 +57,9 @@
             
             
 
-    <li><a href="http://status.crunch.io/">Status</a></li>
+    <li><a href="https://crunch.io/" target="_blank">Go to Crunch.io</a></li>
+    <li><a href="http://status.crunch.io/" target="_blank">Status</a></li>
+    <li><a href="https://app.crunch.io/" target="_blank">Sign In</a></li>
 
 
             
@@ -98,6 +100,7 @@
   <input type="hidden" name="area" value="default" />
 </form><ul class="sidebar-toc"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-http.html">General API Conventions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
@@ -165,11 +168,11 @@ performed on the fork since the two diverged.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531013668_Python">Python</a></li>
-<li><a data-toggle="tab" href="#149531013668_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c385d90_Python">Python</a></li>
+<li><a data-toggle="tab" href="#7f718c385d90_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531013668_Python">
+<div class="tab-pane active section" id="7f718c385d90_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">forkds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">since_forking</span>
 <span class="go">pycrunch.shoji.View(**{</span>
 <span class="go">    &quot;self&quot;: &quot;https://app.crunch.io/api/datasets/051ebb979db44523822ffe29236a6670/actions/since_forking/&quot;,</span>
@@ -226,7 +229,7 @@ performed on the fork since the two diverged.</p>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="149531013668_HTTP">
+<div class="tab-pane section" id="7f718c385d90_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">5</span><span class="n">de96a</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span><span class="n">since_forking</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -309,10 +312,10 @@ progress URL where you may query the progress.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149530aad278_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8713d0_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149530aad278_Python">
+<div class="tab-pane active section" id="7f718c8713d0_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">svp</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">savepoints</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;TestSVP&quot;</span><span class="p">}})</span>
 <span class="go">pycrunch.shoji.Entity(**{</span>
 <span class="go">    &quot;body&quot;: {</span>
@@ -361,10 +364,10 @@ catalog.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149530a1fef0_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d2c7150_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149530a1fef0_Python">
+<div class="tab-pane active section" id="7f718d2c7150_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">index</span>
 <span class="go">{}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">forked_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">forks</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My fork&quot;</span><span class="p">}})</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -384,10 +387,10 @@ forked from the current one.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149530a11390_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c49c710_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149530a11390_HTTP">
+<div class="tab-pane active section" id="7f718c49c710_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">forks</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -413,10 +416,10 @@ completion</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953189aa20_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c49c190_HTTP">HTTP</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953189aa20_HTTP">
+<div class="tab-pane active section" id="7f718c49c190_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span><span class="n">forks</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -446,12 +449,12 @@ back with a POST to <code class="docutils literal"><span class="pre">datasets/{i
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495318ba748_Python">Python</a></li>
-<li><a data-toggle="tab" href="#1495318ba748_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#1495318ba748_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718ccee590_Python">Python</a></li>
+<li><a data-toggle="tab" href="#7f718ccee590_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718ccee590_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495318ba748_Python">
+<div class="tab-pane active section" id="7f718ccee590_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span> <span class="s2">&quot;autorollback&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
@@ -459,7 +462,7 @@ back with a POST to <code class="docutils literal"><span class="pre">datasets/{i
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495318ba748_HTTP">
+<div class="tab-pane section" id="7f718ccee590_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="mi">5</span><span class="n">de96a</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -483,7 +486,7 @@ back with a POST to <code class="docutils literal"><span class="pre">datasets/{i
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="1495318ba748_JSON">
+<div class="tab-pane section" id="7f718ccee590_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
     <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io/api/datasets/5de96a/actions/&quot;</span><span class="p">,</span>
@@ -526,10 +529,10 @@ possible to filter them by <code class="docutils literal"><span class="pre">key<
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495318c7710_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cb2bbd0_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495318c7710_Python">
+<div class="tab-pane active section" id="7f718cb2bbd0_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
@@ -544,10 +547,10 @@ category will be merged:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495318c5240_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cb2bd10_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495318c5240_Python">
+<div class="tab-pane active section" id="7f718cb2bd10_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
@@ -570,10 +573,10 @@ explicitly filtered again.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531054ac8_Python">Python</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c8b3d90_Python">Python</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531054ac8_Python">
+<div class="tab-pane active section" id="7f718c8b3d90_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">post</span><span class="p">({</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="n">forked_ds</span><span class="o">.</span><span class="n">self</span><span class="p">,</span>
@@ -606,7 +609,7 @@ time.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jun 13, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

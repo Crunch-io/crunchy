@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Password policy" href="feature-password-policy.html" />
-    <link rel="prev" title="Feature Guide" href="index.html" />
+    <link rel="prev" title="General API Conventions" href="feature-http.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -57,14 +57,16 @@
             
             
 
-    <li><a href="http://status.crunch.io/">Status</a></li>
+    <li><a href="https://crunch.io/" target="_blank">Go to Crunch.io</a></li>
+    <li><a href="http://status.crunch.io/" target="_blank">Status</a></li>
+    <li><a href="https://app.crunch.io/" target="_blank">Sign In</a></li>
 
 
             
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: Feature Guide"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Feature Guide</span>
+    <a href="feature-http.html" title="Previous Chapter: General API Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; General API C...</span>
     </a>
   </li>
   <li>
@@ -98,6 +100,7 @@
   <input type="hidden" name="area" value="default" />
 </form><ul class="sidebar-toc"><ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="feature-http.html">General API Conventions</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-password-policy.html">Password policy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature-importing.html">Importing Data</a></li>
@@ -125,13 +128,13 @@
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953199e3c8_HTTP">HTTP</a></li>
-<li><a data-toggle="tab" href="#14953199e3c8_R">R</a></li>
-<li><a data-toggle="tab" href="#14953199e3c8_Python">Python</a></li>
-<li><a data-toggle="tab" href="#14953199e3c8_Shell">Shell</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c75a3d0_HTTP">HTTP</a></li>
+<li><a data-toggle="tab" href="#7f718c75a3d0_R">R</a></li>
+<li><a data-toggle="tab" href="#7f718c75a3d0_Python">Python</a></li>
+<li><a data-toggle="tab" href="#7f718c75a3d0_Shell">Shell</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953199e3c8_HTTP">
+<div class="tab-pane active section" id="7f718c75a3d0_HTTP">
 <div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">login</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">app</span><span class="o">.</span><span class="n">crunch</span><span class="o">.</span><span class="n">io</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
@@ -148,7 +151,7 @@
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14953199e3c8_R">
+<div class="tab-pane section" id="7f718c75a3d0_R">
 <div class="code r highlight-default"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">crunch</span><span class="p">)</span>
 <span class="n">login</span><span class="p">(</span><span class="s2">&quot;fake.user@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
 <span class="c1"># See ?login for options, including how to store your credentials</span>
@@ -156,12 +159,12 @@
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14953199e3c8_Python">
+<div class="tab-pane section" id="7f718c75a3d0_Python">
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pycrunch</span>
 </pre></div>
 </div>
 </div>
-<div class="tab-pane section" id="14953199e3c8_Shell">
+<div class="tab-pane section" id="7f718c75a3d0_Shell">
 <div class="code shell highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">c</span> <span class="n">cookie</span><span class="o">-</span><span class="n">jar</span>
     <span class="o">-</span><span class="n">X</span> <span class="n">POST</span>
     <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;email&quot;: &quot;fake.user@example.com&quot;, &quot;password&quot;: &quot;password&quot;}&#39;</span>
@@ -205,7 +208,7 @@ providers, contact <a class="reference external" href="mailto:support&#37;&#52;&
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jun 13, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

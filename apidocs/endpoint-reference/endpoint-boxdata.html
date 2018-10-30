@@ -57,7 +57,9 @@
             
             
 
-    <li><a href="http://status.crunch.io/">Status</a></li>
+    <li><a href="https://crunch.io/" target="_blank">Go to Crunch.io</a></li>
+    <li><a href="http://status.crunch.io/" target="_blank">Status</a></li>
+    <li><a href="https://app.crunch.io/" target="_blank">Sign In</a></li>
 
 
             
@@ -117,6 +119,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put">PUT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#patch">PATCH</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#delete">DELETE</a></li>
 </ul>
 </li>
@@ -127,6 +131,8 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html">Decks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-feature-flag.html">Feature Flags</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
@@ -156,11 +162,7 @@
       
   <div class="section" id="boxdata">
 <h1>Boxdata<a class="headerlink" href="#boxdata" title="Permalink to this headline"> 🔗</a></h1>
-<p>Boxdata is the data that Crunch provides to the CrunchBox for rendering
-web components that are made publicly available. This endpoint provides
-a catalog of data that has been precomputed to provide visualizations
-cubes of json data. Metadata associated with this raw computed data is
-accessed and manipulated through this endpoint.</p>
+<p>“Boxdata” are the records that correspond to published CrunchBoxes. These endpoints enable you to create new CrunchBoxes and view records for previously created boxes.</p>
 <div class="section" id="catalog">
 <h2>Catalog<a class="headerlink" href="#catalog" title="Permalink to this headline"> 🔗</a></h2>
 <p><code class="docutils literal"><span class="pre">/datasets/{id}/boxdata/</span></code></p>
@@ -169,7 +171,7 @@ accessed and manipulated through this endpoint.</p>
 <h3>GET catalog<a class="headerlink" href="#get-catalog" title="Permalink to this headline"> 🔗</a></h3>
 <p>When authenticated and authorized to view the given dataset, GET returns
 200 status with a Shoji Catalog of boxdata associated with the dataset.
-If authorization is lacking, response will instead be 404.</p>
+Otherwise, the response status is 404.</p>
 <p>Catalog tuples contain the following keys:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -190,7 +192,7 @@ If authorization is lacking, response will instead be 404.</p>
 </tr>
 <tr class="row-odd"><td>notes</td>
 <td>string</td>
-<td>Other information relevent for this CrunchBox</td>
+<td>Other information relevant for this CrunchBox</td>
 </tr>
 <tr class="row-even"><td>header</td>
 <td>string</td>
@@ -204,94 +206,89 @@ If authorization is lacking, response will instead be 404.</p>
 <td>string</td>
 <td>URL of the dataset associated with the CrunchBox</td>
 </tr>
-<tr class="row-odd"><td>filters</td>
+<tr class="row-odd"><td>revision</td>
+<td>string</td>
+<td>Dataset revision ID when the box was computed</td>
+</tr>
+<tr class="row-even"><td>filters</td>
 <td>object</td>
 <td>A Crunch expression indicating which filters to
 include in the CrunchBox</td>
 </tr>
-<tr class="row-even"><td>where</td>
+<tr class="row-odd"><td>where</td>
 <td>object</td>
 <td>A Crunch expression indicating which variables
 to include in the CrunchBox.  An undefined value
-is equavilent to specifying all dataset
+is equivalent to specifying all dataset
 variables.</td>
 </tr>
-<tr class="row-odd"><td>variables</td>
-<td>array</td>
-<td>A list of variable or folder URLs to indicate
-the variables to include. Use this as a simpler
-way to select the variables.
-The folders mentioned will include all the
-subvariables under its subfolders as well.
-Usage of <cite>where</cite> and <cite>variables</cite> at the same time
-isn’t allowed.</td>
+<tr class="row-even"><td>weight</td>
+<td>string</td>
+<td>URL of the weight to apply, or null for
+unweighted. If not specified, the server will
+use the user’s currently applied weight.</td>
 </tr>
-<tr class="row-even"><td>creation_time</td>
+<tr class="row-odd"><td>creation_time</td>
 <td>string</td>
 <td>A timestamp of the date when this CrunchBox was
 created</td>
 </tr>
 </tbody>
 </table>
+<p>The corresponding CrunchBoxes can be accessed at
+<code class="docutils literal"><span class="pre">https://s.crunch.io/widget/index.html#/ds/{boxdata_id}/</span></code>.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953199e2b0_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cd28c50_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953199e2b0_JSON">
+<div class="tab-pane active section" id="7f718cd28c50_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:catalog&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/boxdata/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/44a4d477d70c85da4b8298677e527ad8/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/boxdata/44a4d477d70c85da4b8298677e527ad8/&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
             <span class="s2">&quot;footer&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the footer&quot;</span><span class="p">,</span>
             <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;just a couple of variables&quot;</span><span class="p">,</span>
             <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/&quot;</span><span class="p">,</span>
             <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the header&quot;</span><span class="p">,</span>
             <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-03-14T00:13:42.024000+00:00&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span>
-                        <span class="p">]</span>
-                    <span class="p">}</span>
-                <span class="p">]</span>
-            <span class="p">},</span>
+            <span class="s2">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;77d70a&quot;</span><span class="p">,</span>
             <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">,</span>
-                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span>
-                        <span class="p">]</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000002/&quot;</span><span class="p">},</span>
+                      <span class="s2">&quot;000003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000003/&quot;</span><span class="p">}</span>
                     <span class="p">}</span>
-                <span class="p">]</span>
+                <span class="p">}]</span>
             <span class="p">},</span>
+            <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">},</span>
+              <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/80638457c8bd4731990eebdc3baee839/&quot;</span><span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000012/&quot;</span><span class="p">,</span>
             <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;44a4d477d70c85da4b8298677e527ad8&quot;</span>
         <span class="p">},</span>
-        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/boxdata/75ff1d67ed698e0986f1c1c3daebf9a2/&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/boxdata/75ff1d67ed698e0986f1c1c3daebf9a2/&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
             <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;xz&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;f43d21&quot;</span><span class="p">,</span>
             <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
             <span class="s2">&quot;creation_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-03-14T00:13:42.024000+00:00&quot;</span><span class="p">,</span>
             <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
-                            <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000000/&quot;</span>
-                        <span class="p">]</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+                      <span class="s2">&quot;000000&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000000/&quot;</span><span class="p">}</span>
                     <span class="p">}</span>
-                <span class="p">]</span>
+                <span class="p">}]</span>
             <span class="p">},</span>
+            <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
             <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;75ff1d67ed698e0986f1c1c3daebf9a2&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -303,12 +300,18 @@ created</td>
 </div></div>
 <div class="section" id="post-catalog">
 <h3>POST catalog<a class="headerlink" href="#post-catalog" title="Permalink to this headline"> 🔗</a></h3>
-<p>Use POST to create a new datasource for CrunchBox. Note that new boxdata
+<p>Use POST to create a new CrunchBox. Note that new boxdata
 is only created when there is a new combination of where and filter
-data. If the same variables and filteres are indicated by the POST data,
+data. If the same variables and filters are indicated by the POST data,
 the existing combination will result in a modification of metadata
 associated with the cube data. This is to keep avoid recomputing
 analysis needlessly.</p>
+<p>A successful POST returns with 202 Continue status, containing a Progress URL
+in the response body and the URL to the created boxdata entity in the Location
+header. See <span class="xref std std-doc">Progress</span> for how
+to handle the response body.</p>
+<p>Once the box has finished computing, the CrunchBox can be accessed at
+<code class="docutils literal"><span class="pre">https://s.crunch.io/widget/index.html#/ds/{boxdata_id}/</span></code>.</p>
 <p>A POST to this resource must be a Shoji Entity with the following “body”
 attributes:</p>
 <table border="1" class="docutils">
@@ -326,7 +329,7 @@ attributes:</p>
 <td>Human friendly identifier</td>
 </tr>
 <tr class="row-odd"><td>notes</td>
-<td>Other information relevent for this CrunchBox</td>
+<td>Other information relevant for this CrunchBox</td>
 </tr>
 <tr class="row-even"><td>header</td>
 <td>header information for the CrunchBox</td>
@@ -334,16 +337,29 @@ attributes:</p>
 <tr class="row-odd"><td>footer</td>
 <td>footer information for the CrunchBox</td>
 </tr>
-<tr class="row-even"><td>dataset</td>
-<td>URL of the dataset associated with the CrunchBox</td>
-</tr>
-<tr class="row-odd"><td>filters</td>
+<tr class="row-even"><td>filters</td>
 <td>A Crunch expression indicating which <strong>filters</strong> to include</td>
 </tr>
-<tr class="row-even"><td>where</td>
-<td>A Crunch expression indicating which <strong>variables</strong> to include</td>
+<tr class="row-odd"><td colspan="2" rowspan="2"><blockquote class="first">
+<div>where               | A Crunch expression indicating which <strong>variables</strong> to include</div></blockquote>
+<dl class="last docutils">
+<dt>——————– ——- ———————————————————-</dt>
+<dd><dl class="first last docutils">
+<dt>variables           | Array of URLs pointing to folders or variables to include</dt>
+<dd><div class="first last line-block">
+<div class="line">Note: <code class="docutils literal"><span class="pre">variables</span></code> and <code class="docutils literal"><span class="pre">where</span></code> cannot be used together</div>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
 </tr>
-<tr class="row-odd"><td>display_settings</td>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td>weight</td>
+<td>URL of a weight variable; cubes are unweighted if omitted</td>
+</tr>
+<tr class="row-even"><td>display_settings</td>
 <td>Options to customize how it looks and behaves</td>
 </tr>
 </tbody>
@@ -351,10 +367,10 @@ attributes:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#149531af8eb8_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cfcdb10_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="149531af8eb8_JSON">
+<div class="tab-pane active section" id="7f718cfcdb10_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:entity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -362,14 +378,14 @@ attributes:</p>
             <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
             <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
                 <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
-                  <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">},</span>
-                  <span class="s2">&quot;000003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span><span class="p">}</span>
+                  <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000002/&quot;</span><span class="p">},</span>
+                  <span class="s2">&quot;000003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000003/&quot;</span><span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}]</span>
         <span class="p">},</span>
         <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">},</span>
-          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span><span class="p">}</span>
+          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">},</span>
+          <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/80638457c8bd4731990eebdc3baee839/&quot;</span><span class="p">}</span>
         <span class="p">],</span>
         <span class="s2">&quot;force&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
         <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
@@ -396,10 +412,10 @@ customization available.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#1495315e3908_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718d15e990_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="1495315e3908_JSON">
+<div class="tab-pane active section" id="7f718d15e990_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;display_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="s2">&quot;minBaseSize&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">},</span>
     <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -471,39 +487,32 @@ catalog.</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#14953168e048_JSON">JSON</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718cb3f590_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="14953168e048_JSON">
+<div class="tab-pane active section" id="7f718cb3f590_JSON">
 <div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="s2">&quot;00002&quot;</span><span class="p">,</span>
     <span class="s2">&quot;footer&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the footer&quot;</span><span class="p">,</span>
     <span class="s2">&quot;notes&quot;</span><span class="p">:</span> <span class="s2">&quot;just a couple of variables&quot;</span><span class="p">,</span>
     <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;z and str&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;revision&quot;</span><span class="p">:</span> <span class="s2">&quot;77d70a&quot;</span><span class="p">,</span>
     <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="s2">&quot;This is for the header&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/filters/80638457c8bd4731990eebdc3baee839/&quot;</span>
-                <span class="p">]</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
     <span class="s2">&quot;where&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;identify&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000002/&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a8b5aa84c50bcb868fc3b44fd22/variables/000003/&quot;</span>
-                <span class="p">]</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[{</span>
+            <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;000002&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000002/&quot;</span><span class="p">},</span>
+              <span class="s2">&quot;000003&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000003/&quot;</span><span class="p">}</span>
             <span class="p">}</span>
-        <span class="p">]</span>
+        <span class="p">}]</span>
     <span class="p">},</span>
+    <span class="s2">&quot;filters&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/da9d86e43381443d9d708dc29c0c6308/&quot;</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/filters/80638457c8bd4731990eebdc3baee839/&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="s2">&quot;https://beta.crunch.io/api/datasets/e7834a/variables/000012/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;44a4d477d70c85da4b8298677e527ad8&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -511,9 +520,17 @@ catalog.</p>
 </div>
 </div>
 </div></div>
+<div class="section" id="put">
+<h3>PUT<a class="headerlink" href="#put" title="Permalink to this headline"> 🔗</a></h3>
+<p>PUT a complete entity body to update a CrunchBox. This will register any changes to the variables, filters, and other metadata, and will trigger a recomputation of the box data using the latest data from the dataset if either the variable/filter selection changes or if the dataset’s “revision” has changed since the previous computation. That is, if the dataset has changed since the time when the box was originally computed and you want to update the values in the CrunchBox, use a PUT.</p>
+</div>
+<div class="section" id="patch">
+<h3>PATCH<a class="headerlink" href="#patch" title="Permalink to this headline"> 🔗</a></h3>
+<p>PATCH selected body attributes to more selectively update a CrunchBox. Unlike PUT, if PATCHing only metadata attributes, such as title and display_settings, the box data will not be recomputed. If variable or filter selections are modified, then the box will recompute on PATCH.</p>
+</div>
 <div class="section" id="delete">
 <h3>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline"> 🔗</a></h3>
-<p>Deletes the boxdata entity. Returns 204.</p>
+<p>Deletes the entity and remove all published CrunchBox files for this box. Returns 204.</p>
 </div>
 </div>
 </div>
@@ -531,7 +548,7 @@ catalog.</p>
     </p>
     <p>
         &copy; Copyright 2017, Crunch.io.<br/>
-      Last updated on Jun 13, 2018.<br/>
+      Last updated on Oct 30, 2018.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
     </p>
   </div>

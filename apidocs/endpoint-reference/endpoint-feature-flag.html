@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Progress &#8212; API Docs 0.4.1 documentation</title>
+    <title>Feature Flags &#8212; API Docs 0.4.1 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/crunch.css" type="text/css" />
@@ -28,8 +28,8 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Projects" href="endpoint-projects.html" />
-    <link rel="prev" title="Permissions" href="endpoint-permission.html" />
+    <link rel="next" title="Filters" href="endpoint-filter.html" />
+    <link rel="prev" title="Dashboards" href="endpoint-dashboards.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -66,11 +66,11 @@
               
                 
   <li>
-    <a href="endpoint-permission.html" title="Previous Chapter: Permissions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Permissions</span>
+    <a href="endpoint-dashboards.html" title="Previous Chapter: Dashboards"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Dashboards</span>
     </a>
   </li>
   <li>
-    <a href="endpoint-projects.html" title="Next Chapter: Projects"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Projects &raquo;</span>
+    <a href="endpoint-filter.html" title="Next Chapter: Filters"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Filters &raquo;</span>
     </a>
   </li>
               
@@ -111,17 +111,17 @@
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#slides">Slides</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-deck.html#analysis">Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-dashboards.html">Dashboards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="endpoint-feature-flag.html">Feature Flags</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Flags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get">GET</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-filter.html">Filters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-folders.html">Variable Folders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-geodata.html">Geodata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-join.html">Joins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-multitable.html">Multitables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-permission.html">Permissions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Progress</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#get">GET</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint-progress.html">Progress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-search.html">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="endpoint-source.html">Sources</a></li>
@@ -142,47 +142,34 @@
       </div>
     <div class="col-md-9 content">
       
-  <div class="section" id="progress">
-<span id="id1"></span><h1>Progress<a class="headerlink" href="#progress" title="Permalink to this headline"> 🔗</a></h1>
-<p>Progress resources provide information about the current state of a
-long-running server process in Crunch. Some requests at certain
-endpoints may return 202 status containing a progress URL in the body,
-at which one can monitor the progress of the request that was accepted
-and not yet completed.</p>
+  <div class="section" id="feature-flags">
+<h1>Feature Flags<a class="headerlink" href="#feature-flags" title="Permalink to this headline"> 🔗</a></h1>
+<p>Crunch uses feature flags to enable and disable system-wide features
+under development.</p>
 <div class="section" id="get">
 <h2>GET<a class="headerlink" href="#get" title="Permalink to this headline"> 🔗</a></h2>
+<p><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/feature_flag/feature_flag_abc/</span></code></p>
+<p>Example response:</p>
 <div class="tabbable">
 <ul class="nav nav-tabs simple">
 <li class="disabled"><a class="disabled">Language-specific info:</a></li>
-<li class="active"><a data-toggle="tab" href="#7f718d1dd690_HTTP">HTTP</a></li>
+<li class="active"><a data-toggle="tab" href="#7f718c45c890_JSON">JSON</a></li>
 </ul>
 <div class="tab-content section">
-<div class="tab-pane active section" id="7f718d1dd690_HTTP">
-<div class="code http highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">progress</span><span class="o">/</span><span class="p">{</span><span class="nb">id</span><span class="p">}</span><span class="o">/</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
-
-<span class="p">{</span>
+<div class="tab-pane active section" id="7f718c45c890_JSON">
+<div class="code json highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Indicates the status of a given feature&quot;</span><span class="p">,</span>
     <span class="s2">&quot;element&quot;</span><span class="p">:</span> <span class="s2">&quot;shoji:view&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https:/app.crunch.io/api/progress/</span><span class="si">{id}</span><span class="s2">/&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;self&quot;</span><span class="p">:</span> <span class="s2">&quot;https://app.crunch.io//api/feature_flag/feature_flag_abc/&quot;</span><span class="p">,</span>
     <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;progress&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
-        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;exported 2 variables&quot;</span>
+        <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="n">false</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div><p><code class="docutils literal"><span class="pre">GET</span></code> on a Progress view returns a Shoji View containing information
-about the status of the indicated process. The “progress” attribute
-contains a integer between -1 and 100. Positive progress values indicate
-that the job is being processed, while a negative value indicates that
-an error occurred in processing. Zero entails that the job has not been
-started, while 100 indicated completion. Additionally, if the <code class="docutils literal"><span class="pre">id</span></code>
-from the request URL does not exist, <code class="docutils literal"><span class="pre">GET</span></code> will nevertheless return
-200 status and indicate <code class="docutils literal"><span class="pre">&quot;progress&quot;:</span> <span class="pre">100</span></code>.</p>
-<p>Optionally, the View will provide a message regarding current status.</p>
-<p>You must be authenticated to <code class="docutils literal"><span class="pre">GET</span></code> this resource.</p>
-</div>
+</div></div>
 </div>
 
 

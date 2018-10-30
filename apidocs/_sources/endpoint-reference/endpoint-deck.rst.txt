@@ -228,9 +228,8 @@ To edit a deck, PATCH it with a shoji:entity. The server will return a
           "catalogs": {
               "slides": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/slides/"
           },
-          "urls": {
-              "xlsx_export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export_xlsx/",
-              "export_url": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export/"
+          "views": {
+              "export": "https://app.crunch.io/api/datasets/223fd4/decks/223fd4/export/"
           }
       }
 
@@ -429,8 +428,6 @@ Note that you _must_ provide an ``Accept: application/json`` header for this end
         }
       }
 
-Note that the export_xlsx endpoint is deprecated, no longer supported in favor of /export and will be removed shortly.
-
 Order
 ~~~~~
 
@@ -525,7 +522,7 @@ Returns a ``shoji:catalog`` with the slides for this deck.
               "https://app.crunch.io/api/datasets/123/decks/123/slides/123/": {
                   "analysis_url": "https://app.crunch.io/api/datasets/123/decks/123/slides/123/analyses/123/",
                   "subtitle": "z",
-                  "display": {
+                  "display_settings": {
                       "value": "table"
                   },
                   "title": "slide 1"
@@ -533,7 +530,7 @@ Returns a ``shoji:catalog`` with the slides for this deck.
               "https://app.crunch.io/api/datasets/123/decks/123/slides/456/": {
                   "analysis_url": "https://app.crunch.io/api/datasets/123/decks/123/slides/456/",
                   "subtitle": "",
-                  "display": {
+                  "display_settings": {
                       "value": "table"
                   },
                   "title": "slide 2"
@@ -544,18 +541,18 @@ Returns a ``shoji:catalog`` with the slides for this deck.
 
 Each tuple on the slides catalog contains the following keys:
 
-=============== ======= =======================================================
-Name            Type    Description
-=============== ======= =======================================================
-analysis_url    url     Points to the first (and typically only) analysis
-                        contained on this slide
---------------- ------- -------------------------------------------------------
-title           string  Optional title for the slide
---------------- ------- -------------------------------------------------------
-subtitle        string  Optional subtitle for the slide
---------------- ------- -------------------------------------------------------
-display         object  Stores settings used to load the analysis
-=============== ======= =======================================================
+================ ======= =======================================================
+Name             Type    Description
+================ ======= =======================================================
+analysis_url     url     Points to the first (and typically only) analysis
+                         contained on this slide
+---------------- ------- -------------------------------------------------------
+title            string  Optional title for the slide
+---------------- ------- -------------------------------------------------------
+subtitle         string  Optional subtitle for the slide
+---------------- ------- -------------------------------------------------------
+display_settings object  Stores settings used to load the analysis
+================ ======= =======================================================
 
 POST
 ^^^^
@@ -621,6 +618,9 @@ display_settings    object  Contains a set of attributes to be interpreted
 query_environment   object  Contains the ``weight`` and ``filter`` applied
                             during the analysis, they will be applied upon
                             future evaluation/render/export
+------------------- ------- ---------------------------------------------------
+transform           object  Contains a transformation visualization object with
+                            rendering instructions for each analysis
 =================== ======= ===================================================
 
 Old format
@@ -639,7 +639,8 @@ a slide automatically with the new analysis on it:
         "subtitle": "Variable A and B",
         "query": {},
         "query_environment": {},
-        "display_settings": {}
+        "display_settings": {},
+        "transform": {}
       }
 
 
@@ -689,9 +690,10 @@ GET
               "subtitle": "z",
               "title": "slide 1",
               "analysis_url": "/api/datasets/123/decks/123/slides/123/analyses/123/",
-              "display": {
+              "display_settings": {
                   "value": "table"
               },
+              "transform": {},
               "id": "123"
           }
       }
@@ -828,7 +830,8 @@ the slide's analyses catalog.
               "uiView": {
                   "value": "expanded"
               }
-          }
+          },
+          "transform": {}
       }
 
 
@@ -927,7 +930,8 @@ attributes as they see fit. Display settings should be objects with a
               "uiView": {
                   "value": "expanded"
               }
-          }
+          },
+          "transform": {}
       }
 
 
@@ -941,6 +945,9 @@ query_environment   An object with a ``weight`` and ``filters`` to be used
 ------------------- -----------------------------------------------------------
 display_settings    An object containing client-specific instructions on how
                     to recreate the analysis
+------------------- -----------------------------------------------------------
+transform           An object containing client-specific instructions on how
+                    to manipulate the rendering of the analysis
 =================== ===========================================================
 
 PATCH
@@ -953,6 +960,7 @@ The editable attributes are:
 -  query
 -  query\_environment
 -  display\_settings
+-  transform
 
 Providing invalid values for those attributes or extra attributes will
 be rejected with a 400 response from the server.
