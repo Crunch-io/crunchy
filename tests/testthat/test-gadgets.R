@@ -54,6 +54,7 @@ test_that("makeArrayGadget passes shiny tests", {
     # TODO Remove when https://github.com/rstudio/shinytest/issues/198 is resolved
     skip_on_travis()
     skip_on_cran()
+    shinytest::installDependencies()
     test_output <- shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE)
     shinytest::expect_pass(
         shinytest::testApp("gadgets/makeArrayGadget", compareImages = FALSE, quiet = TRUE))
@@ -130,5 +131,3 @@ with_test_authentication({
         listDatasetGadget(autoclose = TRUE)
     })
 })
-
-

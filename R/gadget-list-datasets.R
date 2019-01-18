@@ -4,11 +4,13 @@
 #' @importFrom crunch listDatasets projects
 #' @importFrom shiny column observeEvent selectInput stopApp runGadget textInput uiOutput
 #' @importFrom miniUI gadgetTitleBar miniContentPanel
-#' @importFrom rstudioapi insertText getActiveDocumentContext
-#' @return A `loadDataset()` call is pasted into your RStudio session`
+#' @importFrom rstudioapi insertText getActiveDocumentContext verifyAvailable
+#' @return A `loadDataset()` call is pasted into your RStudio session
 #' @export
 #' @keywords internal
 listDatasetGadget <- function (...){
+    rstudioapi::verifyAvailable("0.99.878")
+
     projects <- c("Personal Project", names(projects()))
     personal_datasets <- listDatasets(...)
 
