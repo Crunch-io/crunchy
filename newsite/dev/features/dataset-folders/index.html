@@ -7,7 +7,7 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Improved organization and navigation of Crunch datasets</title>
+    <title>Crunch | Improved Organization of Crunch Datasets</title>
 
     <link rel="icon" href="img/favicon.ico">
 
@@ -26,10 +26,10 @@ if (!doNotTrack) {
 }
 </script>
 
-    <meta property="og:title" content="Improved organization and navigation of Crunch datasets &middot; Modern survey data analysis">
-<meta property="og:description" content="For our early access users: we&#39;re moving to a folder-based, nested organization scheme for datasets; this should make datasets easier to organize and easier to navigate.">
+    <meta property="og:title" content="Improved Organization of Crunch Datasets &middot; Modern survey data analysis">
+<meta property="og:description" content="We&#39;ve moved to a folder-based, nested organization for datasets in order to make it easier to navigate and manage permissions on datasets.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/dataset-folders-labs/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/dataset-folders/">
 <meta property="og:locale" content="en">
 
 
@@ -39,14 +39,14 @@ if (!doNotTrack) {
 
 
 
-  <meta property="og:updated_time" content="2018-12-05T23:20:47-04:00">
+  <meta property="og:updated_time" content="2019-02-10T23:20:47-04:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Improved organization and navigation of Crunch datasets"/>
-<meta name="twitter:description" content="For our early access users: we&#39;re moving to a folder-based, nested organization scheme for datasets; this should make datasets easier to organize and easier to navigate."/>
+<meta name="twitter:title" content="Improved Organization of Crunch Datasets"/>
+<meta name="twitter:description" content="We&#39;ve moved to a folder-based, nested organization for datasets in order to make it easier to navigate and manage permissions on datasets."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -121,10 +121,10 @@ if (!doNotTrack) {
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <h2>Improved organization and navigation of Crunch datasets</h2>
+                                <h2>Improved Organization of Crunch Datasets</h2>
                                 <hr>
-                                <p>For our early access users: we&#39;re moving to a folder-based, nested organization scheme for datasets; this should make datasets easier to organize and easier to navigate.</p>
-                                <span>Dec 7, 2018 </span>
+                                <p>We&#39;ve moved to a folder-based, nested organization for datasets in order to make it easier to navigate and manage permissions on datasets.</p>
+                                <span>Feb 21, 2019 </span>
                             </div>
                         </div> 
                 </div> 
@@ -137,48 +137,87 @@ if (!doNotTrack) {
                       <div class="col-md-10 offset-md-1">
                           
 
-<h2 id="what-are-dataset-folders">What are Dataset Folders?</h2>
+<p>Dataset folders allow you to organize your data hierarchically, similar to a file system as you might see in Windows Explorer or MacOS Finder. Folders make finding, organizing, and sharing data more intuitive.</p>
 
-<p>Dataset folders allow datasets to be organized into folders similar to what you would see in a file system like Windows Explorer or MacOS Finder. Folders make finding, organizing, and sharing data more intuitive. Here are some key differences from the old interface.</p>
+<ul>
+<li><p>Folders can be used to organize large collections of datasets into more manageable units. If your organization imports data from many sources or has a large archive of previously imported data, you can organize them by source, time of import/survey, subject, etc.</p></li>
 
-<h3 id="navigating">Navigating</h3>
+<li><p>Editors can grant access to different folders to different sets of users. Multiple clients, or multiple groups or teams within a client, can be granted access to just the data you want to show them. Furthermore, you can move a dataset into a folder to instantly make it available to all users who have access to that folder.</p></li>
+</ul>
 
-<h4 id="1-project-icons-have-been-replaced-by-folders">1. Project icons have been replaced by folders</h4>
+<p>These new features in turn bring some changes to our web application. Here are some key differences from the old interface.</p>
+
+<h2 id="navigating">Navigating</h2>
+
+<p>The first thing you&rsquo;ll notice is that the stripe of icons at the left have been replaced by folders. The flat list of project icons didn&rsquo;t work well with a model where folders could nest within each other, so we changed the display to more closely match the underlying model. (Note that while we have removed the custom icons from display for now, we will be reintroducing them with additional branding settings in the near future.)</p>
 
 <figure class="img-fluid">
     <img src="dev/features/images/folders-before-and-after.png"/> 
 </figure>
 
 
-<p>Folders can be sorted by clicking the column headers at the top of the list.</p>
+<p>Click on a folder&rsquo;s name to enter it. When you do, you&rsquo;ll see at the top of the screen the folder you are currently in and the path to that folder.</p>
 
-<p>Note that while we have removed the custom project icons from prominence in the interface for now, we will be reintroducing them along with additional branding settings next year.</p>
+<p>To jump back to a higher folder, just click on it in the header.</p>
 
-<h4 id="2-the-new-shared-with-me-folder">2. The new Shared With Me folder</h4>
-
-<p>Previously, any datasets that were shared with you, as well as any datasets that you had imported yourself, were stored together in the Personal Project project. Now you will see two folders, <strong>Personal</strong> and <strong>Shared with Me</strong>.</p>
-
-<p><strong>Personal</strong> will only appear to users who have permission to import data. It contains any datasets you have imported and not moved to another folder.</p>
-
-<p><strong>Shared with Me</strong> contains datasets that have been shared with you directly without access being granted to the folder that contains it. If no datasets have been shared with you, this folder will be hidden.</p>
-
-<p>If you have access to the folder that contains the dataset, it will appear in that location.</p>
-
-<p>As always, when you’re not sure where to find a dataset we highly recommend using the search bar at the top of screen. Our search allows you to filter e.g. just dataset names.</p>
-
-<h4 id="3-the-header-shows-your-current-folder-and-how-you-got-there">3. The header shows your current folder and how you got there</h4>
-
-<p><figure class="img-fluid">
+<figure class="img-fluid">
     <img src="dev/features/images/folders-breadcrumb.png"/> 
 </figure>
 
-At the top of the screen, the header now shows which folder you are currently in and the path to that folder. To jump back to a higher folder, just click on it.</p>
 
-<p>See <a href="http://support.crunch.io/articles/cEBBbgki/Navigating-Datasets-Early-Access">http://support.crunch.io/articles/cEBBbgki/Navigating-Datasets-Early-Access</a> for more information.</p>
+<p>Within a folder, you can sort the list of datasets and folders by clicking the column headers at the top of the list. Right-click on the header to select which sortable columns appear in the list.</p>
 
-<h3 id="organizing">Organizing</h3>
+<p>The other major change to navigation involves the <strong>Personal</strong> folder, previously called the <strong>Personal Project</strong>. This folder used to contain any datasets that were shared with you as well as any datasets that you had imported yourself, which for some users resulted in a long list of datasets with no clear logic grouping them together.</p>
 
-<p>If you are a data owner you now have new abilities to create folders and move datasets between folders. See <a href="http://support.crunch.io/articles/ceXXoAEi/Organizing-Datasets-Early-Access">http://support.crunch.io/articles/ceXXoAEi/Organizing-Datasets-Early-Access</a> for more information on these features.</p>
+<p>With this update, we&rsquo;ve simplified where you can find the data you have access to.</p>
+
+<ul>
+<li>If you have access to a folder, you&rsquo;ll see it listed under <strong>All Datasets</strong>, and everything contained inside that folder (including other folders) will be available inside that folder.</li>
+<li><strong>Personal</strong> now contains any datasets you have imported and not moved to another folder. Only users who have permission to import data will see the Personal folder.</li>
+<li>The other special folder, <strong>Shared with Me</strong>, contains datasets that have been shared with you without access being granted to the folder that contains it. If no datasets have been shared with you in this way, this folder won&rsquo;t appear.</li>
+</ul>
+
+<p>The <strong>Personal</strong> and <strong>Shared with Me</strong> folders will be pinned to the top of the <strong>All Datasets</strong> list to allow them to be easily found and accessed.</p>
+
+<p>As always, when you’re not sure where to find a dataset, use the search bar at the top of screen. If you&rsquo;re looking for a specific dataset by name, you can narrow your search criteria to match only on dataset names.</p>
+
+<p>For more details on navigating dataset folders, see <a href="http://support.crunch.io/articles/cEBBbgki/Navigating-Datasets-Early-Access">the support page</a> for more information.</p>
+
+<h2 id="organizing">Organizing</h2>
+
+<p>If you are a data owner, you can create folders, move datasets between folders, and grant other users access to a specific folder.</p>
+
+<p>To create a folder, click the dataset name and select <strong>New Folder</strong> from the dropdown.</p>
+
+<figure class="img-fluid">
+    <img src="dev/features/images/folders-add-folder.png"/> 
+</figure>
+
+
+<p>This opens the <strong>New Folder</strong> dialog, where you can name the new folder.</p>
+
+<figure class="img-fluid">
+    <img src="dev/features/images/folders-create-folder.png"/> 
+</figure>
+
+
+<p>To move a dataset or folder to a new folder, hover over it in the dataset list, click the down-arrow to open a dropdown, and select <strong>Move to&hellip;</strong>.</p>
+
+<figure class="img-fluid">
+    <img src="dev/features/images/folders-move-to-menu.png"/> 
+</figure>
+
+
+<p>This opens the <strong>Move to</strong> dialog that you can use to move the selected dataset or folder to any folder where you have write access (including your <strong>Personal</strong> folder).</p>
+
+<figure class="img-fluid">
+    <img src="dev/features/images/move-to-dialog.png"/> 
+</figure>
+
+
+<p>To give other users access to a folder you have created, open that folder and then click its name in the header and select <strong>Members</strong>. Add users or teams who should have access to this folder. Note that any users who have access to the parent folder will automatically have access to this one, but they will not appear in the list.</p>
+
+<p>See <a href="http://support.crunch.io/articles/ceXXoAEi/Organizing-Datasets-Early-Access">the help site</a> for more information on these features.</p>
 
                       </div>
                   </div>
