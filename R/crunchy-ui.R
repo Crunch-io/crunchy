@@ -1,4 +1,4 @@
-# Vignette outline:
+# TODO Vignette outline:
 # Simple version: use crunchyServer instead of shinyServer, and wrap your UI
 # body that you want protected by auth inside of crunchyBody
 #
@@ -25,6 +25,7 @@
 #' @return A `uiOutput()` container into which `crunchyServer()` will
 #' conditionally render output.
 #' @export
+#' @seealso [crunchyPublicBody()] [crunchyServer()]
 #' @examples
 #' \dontrun{
 #' shinyUI(fluidPage(
@@ -62,8 +63,8 @@ crunchyBody <- function (...) {
 #' registering the UI elements so that `crunchyServer()` can render them as
 #' appropriate.
 #' @export
-#' @seealso [setCrunchyAuthorization()] for governing who is authorized to view
-#' your app
+#' @seealso [crunchyBody()]; [setCrunchyAuthorization()] for governing who is
+#' authorized to view your app.
 #' @examples
 #' \dontrun{
 #' # This is the example from crunchyBody(), adding these alternate bodies:

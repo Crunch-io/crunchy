@@ -30,10 +30,16 @@ To restrict access further to only certain Crunch users, you can set an
 authorization method, either by passing a server function to
 the \code{authz} argument of this function, or by calling
 \code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}}.
+
+For a simple example app using \code{crunchyServer()}, copy
+\code{system.file("example_apps/crunchy_server/app.R", package="crunchy")},
+supply your dataset id on line 14, and run it.
 }
 \seealso{
 \code{\link[=crunchyBody]{crunchyBody()}} for wrapping the UI contents, \code{\link[=crunchyPublicBody]{crunchyPublicBody()}}
-for specifying an alternate UI for when the user is not authenticated, and
+for specifying an alternate UI for when the user is not authenticated,
 \code{\link[=crunchyUnauthorizedBody]{crunchyUnauthorizedBody()}} for giving an alternate UI for users who are
-authenticated with Crunch but not authorized to view this app.
+authenticated with Crunch but not authorized to view this app, and
+\code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}} for governing who is authorized to view
+your app.
 }

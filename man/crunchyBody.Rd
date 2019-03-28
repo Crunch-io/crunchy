@@ -39,3 +39,6 @@ shinyUI(fluidPage(
 ))
 }
 }
+\seealso{
+\code{\link[=crunchyPublicBody]{crunchyPublicBody()}} \code{\link[=crunchyServer]{crunchyServer()}}
+}

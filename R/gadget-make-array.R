@@ -1,5 +1,3 @@
-# Array builder ----
-
 #' Launch array builder gadget
 #'
 #' Categorical Array and Multiple Response variables can be difficult to

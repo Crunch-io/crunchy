@@ -25,7 +25,7 @@ withCrunchyProgress <- function(expr, ...) {
         }
         close <- function (...) NULL
     })
-    trace("pollProgress", tracer=tracer, where=newDataset)
-    on.exit(untrace("pollProgress", where=newDataset))
+    trace("pollProgress", tracer=tracer, where=crGET)
+    on.exit(untrace("pollProgress", where=crGET))
     withProgress(expr, min=0, max=100, value=0, ...)
 }

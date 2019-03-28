@@ -54,6 +54,6 @@ shinyUI(fluidPage(
 }
 }
 \seealso{
-\code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}} for governing who is authorized to view
-your app
+\code{\link[=crunchyBody]{crunchyBody()}}; \code{\link[=setCrunchyAuthorization]{setCrunchyAuthorization()}} for governing who is
+authorized to view your app.
 }

@@ -12,7 +12,8 @@ inside \code{\link[=crunchyServer]{crunchyServer()}}}
 }
 \value{
 Invisibly, the server function. This function is called
-for the side effect of setting the authorization function globally.
+for the side effect of setting the authorization function globally. The
+function should return \code{TRUE} if the current user is authorized.
 }
 \description{
 Call this to set an expression or server function to evaluate to determine

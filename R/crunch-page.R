@@ -1,11 +1,5 @@
 #' Build a Crunchy UI
 #'
-#' Shiny provides page functions for defining UI layout. These
-#' functions wraps those and includes additional assets needed to match
-#' Crunch UI style and keep your users authenticated. When building shiny apps
-#' with Crunch datasets, use these instead of [shiny::fluidPage()],
-#' [shiny::fillPage()] or [shiny::navbarPage()].
-#'
 #' These are no longer necessary. Just use the `shiny` ones and it just works.
 #' These functions are left here for backwards compatibility.
 #' @param ... arguments passed to `fluidPage`, `fillPage` or `navbarPage`

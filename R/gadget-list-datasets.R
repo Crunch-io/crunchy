@@ -7,7 +7,6 @@
 #' @importFrom rstudioapi insertText getActiveDocumentContext verifyAvailable
 #' @return A `loadDataset()` call is pasted into your RStudio session
 #' @export
-#' @keywords internal
 listDatasetGadget <- function (...){
     rstudioapi::verifyAvailable("0.99.878")
 

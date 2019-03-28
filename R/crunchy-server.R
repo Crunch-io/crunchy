@@ -10,6 +10,9 @@
 #' the `authz` argument of this function, or by calling
 #' [setCrunchyAuthorization()].
 #'
+#' For a simple example app using `crunchyServer()`, copy
+#' `system.file("example_apps/crunchy_server/app.R", package="crunchy")`,
+#' supply your dataset id on line 14, and run it.
 #' @param func A `function (input, output, session)`, as you'd normally give to
 #' `shinyServer()`. If the user is not authenticated or authorized, this
 #' function will not be evaluated.
@@ -19,9 +22,11 @@
 #' @return Invisibly, a Shiny server function with the auth logic wrapped around
 #' `func`.
 #' @seealso [crunchyBody()] for wrapping the UI contents, [crunchyPublicBody()]
-#' for specifying an alternate UI for when the user is not authenticated, and
+#' for specifying an alternate UI for when the user is not authenticated,
 #' [crunchyUnauthorizedBody()] for giving an alternate UI for users who are
-#' authenticated with Crunch but not authorized to view this app.
+#' authenticated with Crunch but not authorized to view this app, and
+#' [setCrunchyAuthorization()] for governing who is authorized to view
+#' your app.
 #' @export
 #' @importFrom shiny shinyServer
 crunchyServer <- function (func, authz=getOption("crunchy.authorization")) {
@@ -39,7 +44,9 @@ crunchyServer <- function (func, authz=getOption("crunchy.authorization")) {
                 # Next, if the user has supplied an authorization requirement,
                 # check that.
                 if (is.null(authz) || is.truthy(authz(input, output, session))) {
-                    # We're good, so call the "normal" server function
+                    # We're good, so set the token
+                    tokenAuth(input$token, "shiny.crunch.io")
+                    # and call the "normal" server function
                     func(input, output, session)
                     # Return the UI body. It is a "lazyUIOutput" that needs to
                     # be evaluated in the server context.
@@ -64,7 +71,8 @@ crunchyServer <- function (func, authz=getOption("crunchy.authorization")) {
 #' @param func A `function (input, output, session)` to call
 #' inside [crunchyServer()]
 #' @return Invisibly, the server function. This function is called
-#' for the side effect of setting the authorization function globally.
+#' for the side effect of setting the authorization function globally. The
+#' function should return `TRUE` if the current user is authorized.
 #' @export
 #' @examples
 #' setCrunchyAuthorization(function (input, output, session) {
