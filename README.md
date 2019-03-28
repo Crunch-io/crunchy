@@ -68,7 +68,7 @@ substituting the port of your choice, or omitting the `port` argument entirely i
 
 ## Deploying your app
 
-You can hose Crunchy apps at `shiny.crunch.io` and use them as dashboards within the Crunch web app. See the [wiki](https://github.com/Crunch-io/crunchy/wiki) for instructions on setting up and maintaining apps.
+You can host Crunchy apps at `shiny.crunch.io` and use them as dashboards within the Crunch web app. See the [wiki](https://github.com/Crunch-io/crunchy/wiki) for instructions on setting up and maintaining apps.
 
 ## For package contributors
 
