@@ -66,6 +66,10 @@ Serve your app as you would any other Shiny app. There are a number of ways to d
 
 substituting the port of your choice, or omitting the `port` argument entirely if you want Shiny to choose a free one for you. The host file mapping lets you access this app at `http://local.crunch.io:7765`, and because the domain matches the Crunch service at `app.crunch.io`, your authentication cookie from there works, and you will be able to load and query your datasets.
 
+## Deploying your app
+
+You can hose Crunchy apps at `shiny.crunch.io` and use them as dashboards within the Crunch web app. See the [wiki](https://github.com/Crunch-io/crunchy/wiki) for instructions on setting up and maintaining apps.
+
 ## For package contributors
 
 The repository includes a Makefile to facilitate some common tasks, if you're into that sort of thing.
