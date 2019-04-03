@@ -18,6 +18,10 @@ check: build
 	-export _R_CHECK_CRAN_INCOMING_REMOTE_=FALSE && R CMD CHECK --as-cran crunchy_$(VERSION).tar.gz
 	rm -rf crunchy.Rcheck/
 
+release: build
+	-unset INTEGRATION && R CMD CHECK --as-cran crunchy_$(VERSION).tar.gz
+	rm -rf crunchy.Rcheck/
+
 man: doc
 	R CMD Rd2pdf man/ --force
 
