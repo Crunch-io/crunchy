@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,7 +48,10 @@
   
 <meta property="og:title" content="Load a Crunch Dataset — loadDataset" />
 
-<meta property="og:description" content="Load a Crunch Dataset" />
+<meta property="og:description" content="This function gives you a Dataset object, which refers to a dataset hosted on
+the Crunch platform. With this Dataset, you can perform lots of data cleaning
+and analysis as if the dataset were fully resident on your computer, without
+having to pull data locally." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -90,7 +94,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -158,7 +162,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -187,7 +191,10 @@
 
     <div class="ref-description">
     
-    <p>Load a Crunch Dataset</p>
+    <p>This function gives you a Dataset object, which refers to a dataset hosted on
+the Crunch platform. With this Dataset, you can perform lots of data cleaning
+and analysis as if the dataset were fully resident on your computer, without
+having to pull data locally.</p>
     
     </div>
 
@@ -199,8 +206,12 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>character, the name of a Crunch dataset that you have access
-to, or a <code>DatasetTuple</code>.</p></td>
+      <td><p>character, the name or path to a Crunch dataset to load, or a
+dataset URL. If <code>dataset</code> is a path to a dataset in a project, the path will
+be be parsed and walked, relative to <code>project</code> if specified, and the
+function will look for the dataset inside that project. If no path is
+specified and no <code>project</code> provided, the function will call a search API to
+do an exact string match on dataset names.</p></td>
     </tr>
     <tr>
       <th>kind</th>
@@ -209,10 +220,10 @@ datasets. Default is "active", i.e. non-archived.</p></td>
     </tr>
     <tr>
       <th>project</th>
-      <td><p><code>ProjectFolder</code> entity, character name of a project, or
-<code>NULL</code>, the default. If a Project entity or reference is supplied, the
-function will display datasets from that Project's datasets. If <code>NULL</code>,
-the primary dataset catalog for the user will be used.</p></td>
+      <td><p><code>ProjectFolder</code> entity, character name (path) to a project, or
+<code>NULL</code>, the default. If a Project entity or reference is supplied, either
+here or as a path in <code>dataset</code>, the dataset lookup will be limited to that
+project only.</p></td>
     </tr>
     <tr>
       <th>refresh</th>
@@ -223,13 +234,29 @@ datasets? Default is <code>FALSE</code>.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>CrunchDataset</code></p>
+    <p>An object of class <code>CrunchDataset</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>You can specify a dataset to load by its human-friendly "name", possibly also
+by indicating a project (folder) to find it in. This makes code more
+readable, but it does mean that if the dataset is renamed or moved to a
+different folder, your code may no longer work. The fastest, most reliable
+way to use <code>loadDataset()</code> is to provide a URL to the dataset--the dataset's
+URL will never change.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>See <code><a href='cd.html'>cd()</a></code> for details of parsing and walking dataset folder/project
+paths.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>dsName</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='listDatasets.html'>listDatasets</a></span>()[<span class='fl'>1</span>]
-<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDatasets</span>(<span class='no'>dsName</span>)
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDatasets</span>(<span class='st'>"A special dataset"</span>)
+<span class='no'>ds2</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDatasets</span>(<span class='st'>"~/My dataset"</span>)
+<span class='no'>ds3</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDataset</span>(<span class='st'>"My dataset"</span>, <span class='kw'>project</span><span class='kw'>=</span><span class='st'>"~"</span>) <span class='co'># Same as ds2</span>
+<span class='no'>ds4</span> <span class='kw'>&lt;-</span> <span class='fu'>loadDataset</span>(<span class='st'>"https://app.crunch.io/api/datasets/bd3ad2/"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -238,6 +265,10 @@ datasets? Default is <code>FALSE</code>.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

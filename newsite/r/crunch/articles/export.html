@@ -13,7 +13,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
@@ -46,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -113,7 +114,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,62 +152,62 @@
 <h2 class="hasAnchor">
 <a href="#as-data-frame-and-as-vector" class="anchor"></a>as.data.frame and as.vector</h2>
 <p>To get the local R representation of a Crunch variable, use <code>as.vector</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">party_id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>(ds<span class="op">$</span>pid3)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">party_id &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as-vector.html">as.vector</a></span>(ds<span class="op">$</span>pid3)</a></code></pre></div>
 <p><code>as.vector</code> translates Crunch to R types in reverse of how they are mapped in translation from R to Crunch in <code>newDataset</code>: categoricals become factors, numerics are numeric, and so on. Array variables (categorical array and multiple response) return a <code>data.frame</code> of categoricals, despite the name of <code>as.vector</code>, because doing so allows natural indexing into the subvariables (like <code>ds$var$subvar</code>).</p>
 <p>While categorical variables by default are translated as factors, you can use the “mode” argument to <code>as.vector</code> to request either the category “id” or the “numeric” values of the categories.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">party_id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>(ds<span class="op">$</span>pid3, <span class="dt">mode=</span><span class="st">"id"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">party_id &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as-vector.html">as.vector</a></span>(ds<span class="op">$</span>pid3, <span class="dt">mode=</span><span class="st">"id"</span>)</a></code></pre></div>
 <p>Requesting <code>mode="id"</code> may be particularly useful when you want to work with data locally that most closely matches the representation of the data on the server; however, the category names are disconnected from the data, so proceed with caution.</p>
 <p>Similarly, <code>as.data.frame</code> on a <code>CrunchDataset</code> gives you access to the values in the dataset, yet there is an important distinction: <code>as.data.frame</code> doesn’t itself pull data off the server. Rather, <code>as.data.frame</code> returns a <code>data.frame</code>-like object that lazily fetches columns only when requested.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">v1 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>(ds<span class="op">$</span>var)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(v1, df<span class="op">$</span>var)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">## TRUE</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">v1 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as-vector.html">as.vector</a></span>(ds<span class="op">$</span>var)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(v1, df<span class="op">$</span>var)</a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="co">## TRUE</span></a></code></pre></div>
 <p>That way, you can call <code>as.data.frame</code> and get convenient access to the columns of data without having to download things you don’t need up front.</p>
 <p>Of course, you can download all of the data at once if you want–even though it’s discouraged!–by either calling <code>as.data.frame</code> a second time</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">## FALSE</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(df)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">## TRUE</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">## FALSE</span></a>
+<a class="sourceLine" id="cb4-4" title="4">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(df)</a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">## TRUE</span></a></code></pre></div>
 <p>or by calling <code>as.data.frame</code> the first time with <code>force=TRUE</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds, <span class="dt">force=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">## TRUE</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds, <span class="dt">force=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(df)</a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">## TRUE</span></a></code></pre></div>
 </div>
 <div id="filtering-and-subsetting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#filtering-and-subsetting" class="anchor"></a>Filtering and subsetting</h2>
 <p>Given the cost in network traffic to shipping data from the servers to your local computer, you should be mindful of what you extract. One way you can do this is by taking advantage of the lazy evaluation of the <code>as.data.frame</code> method, which only pulls variables you explicitly reference in your subsequent code. Another way is to filter the rows and columns of your data of interest.</p>
 <p>Suppose I wanted to look at the specific values on a couple of demographic variables just for self-identified Democrats. I can filter the rows and columns of my dataset just as if I was working with a <code>data.frame</code>, and only pull that subset to my computer.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">force=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">df &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">force=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p>This dataset filtering is much more efficient (and thus faster) than attempting to download the entire dataset and then subsetting the resulting <code>data.frame</code>.</p>
 <p>You can also use this subsetting for convenience when lazily accessing the data.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">dems &lt;-<span class="st"> </span>ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">dems &lt;-<span class="st"> </span>ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, ]</a></code></pre></div>
 <p>gives a view of the dataset that is filtered by party identification.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">dem_age &lt;-<span class="st"> </span>dems<span class="op">$</span>age</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">dem_age &lt;-<span class="st"> </span>dems<span class="op">$</span>age</a></code></pre></div>
 <p>thus gives you just the values of “age” for those rows where “pid3” is equal to “Democrat”. This is equivalent to calling <code>as.vector</code> directly on a subsetted variable:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>(ds<span class="op">$</span>age[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>]), dem_age)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">## TRUE</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/identical">identical</a></span>(<span class="kw"><a href="../reference/as-vector.html">as.vector</a></span>(ds<span class="op">$</span>age[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>]), dem_age)</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="co">## TRUE</span></a></code></pre></div>
 </div>
 <div id="expressions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expressions" class="anchor"></a>Expressions</h2>
 <p>You can also get values for an on-the-fly derivation with <code>as.vector</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">perc_completed &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/vector">as.vector</a></span>(<span class="dv">100</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>perc_skipped)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">perc_completed &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="dv">100</span> <span class="op">-</span><span class="st"> </span>ds<span class="op">$</span>perc_skipped)</a></code></pre></div>
 <p>Even though <code>perc_completed</code> doesn’t exist in the dataset, we can get values for it by expression.</p>
 </div>
 <div id="exporting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exporting" class="anchor"></a>Exporting</h2>
 <p>If you want to download a file of the dataset or of a subset, use <code>exportDataset</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/exportDataset.html">exportDataset</a></span>(ds, <span class="dt">file=</span><span class="st">"econ.sav"</span>, <span class="dt">format=</span><span class="st">"spss"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw"><a href="../reference/exportDataset.html">exportDataset</a></span>(ds, <span class="dt">file=</span><span class="st">"econ.sav"</span>, <span class="dt">format=</span><span class="st">"spss"</span>)</a></code></pre></div>
 <p><code>exportDataset</code> writes to SPSS (.sav) and CSV formats. Alternatively, to get a CSV, <code>write.csv</code> is short for <code><a href="../reference/exportDataset.html">exportDataset(..., format="csv")</a></code> and works similar to how it does for regular <code>data.frame</code>s.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds, <span class="dt">file=</span><span class="st">"econ.csv"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds, <span class="dt">file=</span><span class="st">"econ.csv"</span>)</a></code></pre></div>
 <p>CSV export does have a “categories” option that governs whether categorical variables are exported as category names or ids. The latter is more concise and pairs well with the Crunch metadata export, but category names can be useful when taking the file without additional metadata.</p>
 <p>As with the <code>as.data.frame</code> methods, you can subset what you export by indexing the rows and columns. Following the previous example, we can get a CSV of that demographic subset by:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">file=</span><span class="st">"demo-demos.csv"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="../reference/exportDataset.html">write.csv</a></span>(ds[ds<span class="op">$</span>pid3 <span class="op">==</span><span class="st"> "Democrat"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], <span class="dt">file=</span><span class="st">"demo-demos.csv"</span>)</a></code></pre></div>
 <p><a href="subtotals.html">Next: subtotals</a></p>
 </div>
   </div>

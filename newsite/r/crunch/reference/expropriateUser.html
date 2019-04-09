@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -48,10 +49,11 @@
 <meta property="og:title" content="Expropriate all Crunch objects from a user — expropriateUser" />
 
 <meta property="og:description" content="If you want to transfer all teams, projects, and datasets owned by one user
-to another you can with expropriateUser. To use expropriateUser you must
-be an account admin and be from the same account as the user who is being
-expropriated. This is useful if a user leaves your organization and you want
-to transfer all of the teams, projects, and datasets they own to someone else." />
+to another you can with expropriateUser. To have permission to use
+expropriateUser you must be an account admin and be from the same account
+as the user who is being expropriated. This is useful if a user leaves your
+organization and you want to transfer all of the teams, projects, and
+datasets they own to someone else." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -94,7 +96,7 @@ to transfer all of the teams, projects, and datasets they own to someone else." 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -162,7 +164,7 @@ to transfer all of the teams, projects, and datasets they own to someone else." 
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -192,10 +194,11 @@ to transfer all of the teams, projects, and datasets they own to someone else." 
     <div class="ref-description">
     
     <p>If you want to transfer all teams, projects, and datasets owned by one user
-to another you can with <code>expropriateUser</code>. To use <code>expropriateUser</code> you must
-be an account admin and be from the same account as the user who is being
-expropriated. This is useful if a user leaves your organization and you want
-to transfer all of the teams, projects, and datasets they own to someone else.</p>
+to another you can with <code>expropriateUser</code>. To have permission to use
+<code>expropriateUser</code> you must be an account admin and be from the same account
+as the user who is being expropriated. This is useful if a user leaves your
+organization and you want to transfer all of the teams, projects, and
+datasets they own to someone else.</p>
     
     </div>
 
@@ -217,11 +220,13 @@ owner</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>None</p>
+    <p><code>NULL</code> if successful</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Expropriating requires confirmation. In an interactive session, you will be
+    <p>The user given in <code>to</code> will become the owner of all of the teams, projects,
+and datasets that were previously owned by the user given in <code>from</code>.</p>
+<p>Expropriating requires confirmation. In an interactive session, you will be
 asked to confirm. To avoid that prompt, or to expropriate datasets from a
 non-interactive session, wrap the call in <code><a href='consent.html'>with_consent()</a></code> to give your
 permission to expropriate</p>

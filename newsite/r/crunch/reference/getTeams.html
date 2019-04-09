@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,7 +48,10 @@
   
 <meta property="og:title" content="Retrieve your teams — getTeams" />
 
-<meta property="og:description" content="Retrieve your teams" />
+<meta property="og:description" content="Teams contain a list of users. You can grant access to a group of
+users by inviting the team. You can also share a set of
+datasets with a user all at once by adding the user to a team that contains
+those datasets." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -90,7 +94,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -158,7 +162,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -187,7 +191,10 @@
 
     <div class="ref-description">
     
-    <p>Retrieve your teams</p>
+    <p>Teams contain a list of users. You can grant access to a group of
+users by inviting the team. You can also share a set of
+datasets with a user all at once by adding the user to a team that contains
+those datasets.</p>
     
     </div>
 
@@ -198,9 +205,19 @@
     <p>A <code>TeamCatalog</code>. Extract an individual team by name. Create
 a team by assigning in with a new name.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>getTeams()</code> returns your <code>TeamCatalog</code>. You can extract an individual team
+by name, or create a team by assigning into the function.
+To create a team by  assignment, assign a list to
+<code>teams("myteam") &lt;- value_list</code>. The <code>value_list</code> can either empty
+(to just create a team with that name), or can contain a "members" element
+with the emails or URLs of users to add to the team. Users can be also be
+added later with the <code>members&lt;-</code>  method.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='teams.html'>teams</a></code></p></div>
+    <div class='dont-index'><p><code><a href='members.html'>members</a></code></p></div>
     
 
   </div>
@@ -209,6 +226,8 @@ a team by assigning in with a new name.</p>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>

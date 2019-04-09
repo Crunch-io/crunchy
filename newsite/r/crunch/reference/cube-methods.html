@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -91,7 +92,7 @@ object." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -159,7 +160,7 @@ object." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -182,7 +183,7 @@ object." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Methods on Cube objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-dims.R'><code>R/cube-dims.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R'><code>R/cube-subset.R</code></a>, and 2 more</small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-dims.R'><code>R/cube-dims.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-variables.R'><code>R/cube-variables.R</code></a></small>
     <div class="hidden name"><code>cube-methods.Rd</code></div>
     </div>
 
@@ -193,50 +194,29 @@ object.</p>
     
     </div>
 
-    <pre class="usage"># S4 method for CubeDims
-dimnames(x)
+    <pre class="usage"><span class='co'># S4 method for CubeDims</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dimnames'>dimnames</a></span>(<span class='no'>x</span>)
 
-# S4 method for CubeDims
-dim(x)
+<span class='co'># S4 method for CubeDims</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a></span>(<span class='no'>x</span>)
 
-# S4 method for CubeDims
-is.na(x)
+<span class='co'># S4 method for CubeDims</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/NA'>is.na</a></span>(<span class='no'>x</span>)
 
-# S4 method for CrunchCube
-dimensions(x)
+<span class='co'># S4 method for CrunchCube</span>
+<span class='fu'>dimensions</span>(<span class='no'>x</span>)
 
-# S4 method for CrunchCube,CubeDims
-dimensions(x) <- value
+<span class='co'># S4 method for CrunchCube,CubeDims</span>
+<span class='fu'>dimensions</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-# S4 method for CubeDims,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
+<span class='co'># S4 method for CrunchCube</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a></span>(<span class='no'>x</span>)
 
-# S4 method for CrunchCube
-dim(x)
+<span class='co'># S4 method for CrunchCube</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dimnames'>dimnames</a></span>(<span class='no'>x</span>)
 
-# S4 method for CrunchCube
-dimnames(x)
-
-# S4 method for CrunchCube,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for CrunchCube
-measures(x)
-
-# S4 method for CrunchCube
-names(x)
-
-# S4 method for CrunchCube
-aliases(x)
-
-# S4 method for CrunchCube
-descriptions(x)
-
-# S4 method for CrunchCube
-types(x)
-
-# S4 method for CrunchCube
-notes(x)</pre>
+<span class='co'># S4 method for CrunchCube</span>
+<span class='fu'>measures</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -249,22 +229,6 @@ notes(x)</pre>
       <th>value</th>
       <td><p>for <code>dimensions&lt;-</code> a <code>CubeDims</code> object to overwrite a CrunchCube
 dimensions</p></td>
-    </tr>
-    <tr>
-      <th>i</th>
-      <td><p>used with <code>[</code> to extract a dimension</p></td>
-    </tr>
-    <tr>
-      <th>j</th>
-      <td><p>not used</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>not used</p></td>
-    </tr>
-    <tr>
-      <th>drop</th>
-      <td><p>not used</p></td>
     </tr>
     </table>
     

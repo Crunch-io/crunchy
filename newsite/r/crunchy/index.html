@@ -85,19 +85,19 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="crunch--shiny--crunchy" class="section level1">
+<div id="crunch-shiny-crunchy" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#crunch--shiny--crunchy" class="anchor"></a>crunch + shiny = crunchy</h1></div>
+<a href="#crunch-shiny-crunchy" class="anchor"></a>crunch + shiny = crunchy</h1></div>
 
 <p><code>crunchy</code> makes it easy to build Shiny apps with data stored in the <a href="https://crunch.io/">Crunch.io</a> cloud data service. You can run these apps locally, or you can host them on Crunch.</p>
 <div id="installing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing" class="anchor"></a>Installing</h2>
 <p>Install <code>crunchy</code> from CRAN with</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"crunchy"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"crunchy"</span>)</a></code></pre></div>
 <p>The pre-release version of the package can be pulled from GitHub using the <a href="https://remotes.r-lib.org/">remotes</a> package:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb2-2" title="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"Crunch-io/crplyr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"Crunch-io/crplyr"</span>)</a></code></pre></div>
 </div>
 <div id="using" class="section level2">
 <h2 class="hasAnchor">
@@ -117,15 +117,15 @@
 <code><a href="reference/shinyUser.html">shinyUser()</a></code> similarly returns the (reactive) Crunch entity of the current user</li>
 </ul>
 <p>Their reactivity responds to the current user of the Crunchy app, concerned with the use case of deploying Crunchy apps at <code>shiny.crunch.io</code> for users that may have different authorization. Note that, because <code>shinyDataset</code> returns a shiny <code>reactive</code> object, you need to always “call” it when you want to get the dataset in your server function scope. Your server function might look something like:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb3-2" title="2">    ds &lt;-<span class="st"> </span><span class="kw"><a href="reference/shinyDataset.html">shinyDataset</a></span>(<span class="st">"Your dataset name"</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3"></a>
-<a class="sourceLine" id="cb3-4" title="4">    freqs &lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
-<a class="sourceLine" id="cb3-5" title="5">        fmla &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/formula">as.formula</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"~"</span>, input<span class="op">$</span>varname))</a>
-<a class="sourceLine" id="cb3-6" title="6">        <span class="kw">crtabs</span>(fmla, <span class="dt">data=</span><span class="kw">ds</span>())</a>
-<a class="sourceLine" id="cb3-7" title="7">    })</a>
-<a class="sourceLine" id="cb3-8" title="8">    ...</a>
-<a class="sourceLine" id="cb3-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    ds &lt;-<span class="st"> </span><span class="kw"><a href="reference/shinyDataset.html">shinyDataset</a></span>(<span class="st">"Your dataset name"</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    freqs &lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        fmla &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/formula">as.formula</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"~"</span>, input<span class="op">$</span>varname))</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">        <span class="kw">crtabs</span>(fmla, <span class="dt">data=</span><span class="kw">ds</span>())</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    })</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    ...</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">}</a></code></pre></div>
 <p>Note <code>ds()</code> instead of just <code>ds</code> in the aggregation function.</p>
 <p>You are recommended to load datasets in your Crunchy app by their API URL, not by their name or path. This is the fastest, most reliable way to reference a dataset–the dataset’s URL will never change and is the same for everyone.</p>
 <p>For a simple example of a Crunchy app that shows interactive summary plots for variables, copy <code><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file("example_apps/crunchy_server/app.R", package="crunchy")</a></code>, supply your dataset id on line 14, and run it.</p>
@@ -136,8 +136,13 @@
 <p>If you have not done so already, go to <a href="https://app.crunch.io" class="uri">https://app.crunch.io</a> and log in to the Crunch web app. This will set an authentication cookie in your browser. You’ll need this to be able to access your datasets in your Crunchy app.</p>
 <p>In addition to installing the <code>crunchy</code> package and its dependencies (including a suitable version of R), you’ll need to add an entry to your <code>/etc/hosts</code> file that maps <code>localhost</code> to <code>local.crunch.io</code>. You probably already have a line in there like <code>127.0.0.1 localhost</code>, so you can add <code>local.crunch.io</code> as an alias after <code>localhost</code> on the same line. (This works slightly differently on different operating systems; consult Google if you aren’t sure how to do it on yours.) This host file mapping is needed to allow you to use your cookie from <code>app.crunch.io</code>.</p>
 <p>Serve your app as you would any other Shiny app. There are a number of ways to do this; one example, for a directory named “demo” containing server.R and ui.R files, you can run this from the command line:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="op">$</span><span class="st"> </span>R <span class="op">-</span>e <span class="st">'library(crunchy); runApp("demo", port=7765)'</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="op">$</span><span class="st"> </span>R <span class="op">-</span>e <span class="st">'library(crunchy); runApp("demo", port=7765)'</span></a></code></pre></div>
 <p>substituting the port of your choice, or omitting the <code>port</code> argument entirely if you want Shiny to choose a free one for you. The host file mapping lets you access this app at <code>http://local.crunch.io:7765</code>, and because the domain matches the Crunch service at <code>app.crunch.io</code>, your authentication cookie from there works, and you will be able to load and query your datasets.</p>
+</div>
+<div id="deploying-your-app" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deploying-your-app" class="anchor"></a>Deploying your app</h2>
+<p>You can host Crunchy apps at <code>shiny.crunch.io</code> and use them as dashboards within the Crunch web app. See the <a href="https://github.com/Crunch-io/crunchy/wiki">wiki</a> for instructions on setting up and maintaining apps.</p>
 </div>
 <div id="for-package-contributors" class="section level2">
 <h2 class="hasAnchor">

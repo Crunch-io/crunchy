@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -88,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -156,7 +157,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -182,16 +183,70 @@
       <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="crunch-1-25-0" class="section level1">
+    <div id="crunch-1261-under-development" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-25-0" class="anchor"></a>crunch 1.25.0<small> 2019-01-10 </small>
+<a href="#crunch-1261-under-development" class="anchor"></a>crunch 1.26.1 (under development)<small> Unreleased </small>
+</h1>
+</div>
+    <div id="crunch-1260" class="section level1">
+<h1 class="page-header">
+<a href="#crunch-1260" class="anchor"></a>crunch 1.26.0<small> 2019-04-02 </small>
+</h1>
+<div id="personal-folder" class="section level2">
+<h2 class="hasAnchor">
+<a href="#personal-folder" class="anchor"></a>Personal folder</h2>
+<ul>
+<li>You can now access your “personal folder” of datasets, which contains only those datasets you imported and that haven’t been moved into another project. This dataset folder is denoted in paths by <code>~</code>, as in a <code>*nix</code> file system. <code><a href="../reference/cd.html">cd(projects(), "~")</a></code> takes you there; <code><a href="../reference/mv.html">mv(projects(), ds, "~")</a></code> moves <code>ds</code> into your personal folder.</li>
+<li>
+<code><a href="../reference/listDatasets.html">listDatasets()</a></code> now by default only prints datasets in your personal folder, not a combination of your personal datasets and some of the datasets that have been shared with you.</li>
+<li>When you give a dataset name to <code><a href="../reference/loadDataset.html">loadDataset()</a></code>, it now searches to find datasets exactly matching that name unless you specify a project to load from. If you have multiple datasets with the same name in different locations, <code><a href="../reference/loadDataset.html">loadDataset("your dataset name")</a></code> may return a different one than it did previously. If you want to identify a dataset precisely in <code><a href="../reference/loadDataset.html">loadDataset()</a></code>, either specify the dataset URL (most effective but not as human friendly) or provide <code>project = "path/to/folder"</code>.</li>
+<li>Calling <code>loadDataset(&lt;integer&gt;)</code> no longer is supported.</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>Fix <code>is.public(multitables[[i]]) &lt;- TRUE</code> and several other similar assignments of attributes on an element of a catalog, which previously successfully updated the value on the server but errored when returning to R (<a href='https://github.com/Crunch-io/rcrunch/issues/303'>#303</a>, <a href='https://github.com/Crunch-io/rcrunch/issues/367'>#367</a>)</li>
+<li>
+<code><a href="../reference/Subvariables.html">subvariables()</a></code> on non-array variables returns <code>NULL</code> instead of an error (<a href='https://github.com/Crunch-io/rcrunch/issues/237'>#237</a>)</li>
+<li>Fixed a bug with the display of univariate cube <code>prop.table</code>s</li>
+</ul>
+</div>
+<div id="other-enhancements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-enhancements" class="anchor"></a>Other enhancements</h2>
+<ul>
+<li>
+<code><a href="../reference/newExampleDataset.html">newExampleDataset()</a></code> creates a sample dataset for you to explore</li>
+<li>
+<code><a href="../reference/exportDeck.html">exportDeck()</a></code> can now write to PowerPoint with <code>format = "pptx"</code>
+</li>
+<li>
+<code><a href="../reference/newDataset.html">newDataset()</a></code> now supports importing data in Triple-S format, providing a <code>schema</code> file in addition to the row data.</li>
+<li>
+<code><a href="../reference/resolution.html">resolution()</a></code> lets you see the data units of a datetime variable (“Y”, “M”, “D”, “ms”, etc.); <code>resolution&lt;-</code> lets you set it (<a href='https://github.com/Crunch-io/rcrunch/issues/234'>#234</a>)</li>
+<li>
+<code><a href="../reference/deleteDataset.html">deleteDataset()</a></code> accepts web app URLs, just as <code><a href="../reference/loadDataset.html">loadDataset()</a></code> already did (<a href='https://github.com/Crunch-io/rcrunch/issues/279'>#279</a>)</li>
+<li>Set <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(crunch.warn.hidden=FALSE)</a></code> to suppress the “Variable x is hidden” messages when accessing hidden variables (<a href='https://github.com/Crunch-io/rcrunch/issues/172'>#172</a>)</li>
+<li>Support sharing decks with a team via <code>team(deck) &lt;-</code>
+</li>
+<li>Added <code>upsert</code> argument to <code><a href="../reference/appendDataset.html">appendDataset()</a></code> to allow datasets to be updated based on the primary-key variable; see <code><a href="../reference/pk.html">pk()</a></code> for details on primary keys (<a href='https://github.com/Crunch-io/rcrunch/issues/49'>#49</a>)</li>
+<li>
+<code><a href="../reference/combine.html">combineCategories()</a></code> and <code><a href="../reference/combine.html">combineResponses()</a></code> are aliases for <code><a href="../reference/combine.html">combine()</a></code>, providing a way to avoid accidental clashes with <code><a href="https://dplyr.tidyverse.org/reference/bind.html">dplyr::combine()</a></code> (<a href='https://github.com/Crunch-io/rcrunch/issues/359'>#359</a>)</li>
+</ul>
+</div>
+</div>
+    <div id="crunch-1250" class="section level1">
+<h1 class="page-header">
+<a href="#crunch-1250" class="anchor"></a>crunch 1.25.0<small> 2019-01-10 </small>
 </h1>
 <div id="shared-crunch-assets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#shared-crunch-assets" class="anchor"></a>Shared Crunch assets</h2>
 <ul>
 <li>Initial support for deck creation and manipulation.</li>
-<li>Filters and multitables can now be shared with teams by assigning <code>teams()&lt;-</code> on them. View which teams can access them by calling <code><a href="../reference/teams.html">teams()</a></code> on them.</li>
+<li>Filters and multitables can now be shared with teams by assigning <code>teams()&lt;-</code> on them. View which teams can access them by calling <code>teams()</code> on them.</li>
 </ul>
 </div>
 <div id="folder-enhancements" class="section level2">
@@ -226,20 +281,20 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-24-2" class="section level1">
+    <div id="crunch-1242" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-24-2" class="anchor"></a>crunch 1.24.2<small> Unreleased </small>
+<a href="#crunch-1242" class="anchor"></a>crunch 1.24.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>The RStudio gadgets for <code><a href="../reference/listDatasets.html">listDatasets()</a></code> and <code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> have been moved to the <a href="https://github.com/Crunch-io/crunchy"><code>crunchy</code></a> package. Wiring for them, including RStudio add-in configuration, remains here, but you’ll have to install that package to use them.</li>
+<li>The RStudio gadgets for <code><a href="../reference/listDatasets.html">listDatasets()</a></code> and <code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> have been moved to the <a href="https://crunch.io/r/crunchy"><code>crunchy</code></a> package. Wiring for them, including RStudio add-in configuration, remains here, but you’ll have to install that package to use them.</li>
 <li>Minor fixes for backwards compatibility with the old projects API</li>
 <li>Remove code paths that modify the project dataset order, which was removed from the Crunch API.</li>
 <li>List as deprecated many functions that modify variable order, suggesting <code><a href="../reference/mv.html">mv()</a></code> and the other folder operations. These functions will be removed in December 2018.</li>
 </ul>
 </div>
-    <div id="crunch-1-24-0" class="section level1">
+    <div id="crunch-1240" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-24-0" class="anchor"></a>crunch 1.24.0<small> 2018-09-12 </small>
+<a href="#crunch-1240" class="anchor"></a>crunch 1.24.0<small> 2018-09-12 </small>
 </h1>
 <div id="organization" class="section level2">
 <h2 class="hasAnchor">
@@ -270,16 +325,16 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-23-0" class="section level1">
+    <div id="crunch-1230" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-23-0" class="anchor"></a>crunch 1.23.0<small> 2018-06-22 </small>
+<a href="#crunch-1230" class="anchor"></a>crunch 1.23.0<small> 2018-06-22 </small>
 </h1>
 <div id="improved-support-for-subtotals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#improved-support-for-subtotals" class="anchor"></a>Improved support for subtotals</h2>
 <ul>
 <li>CrunchCubes can now be displayed with subtotals on any axis (not just rows).</li>
-<li>Subtotals in CrunchCubes have been improved and stabilized, and should work in many more places than they did before (e.g. <code>margin.table</code>, <code>prop.table</code>, etc.)</li>
+<li>Subtotals in CrunchCubes have been improved and stabilized, and should work in many more places than they did before (e.g. <code>margin.table</code>, <code>prop.table</code>, etc.)</li>
 </ul>
 </div>
 <div id="bugfixes-1" class="section level2">
@@ -304,9 +359,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-22-2" class="section level1">
+    <div id="crunch-1222" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-22-2" class="anchor"></a>crunch 1.22.2<small> Unreleased </small>
+<a href="#crunch-1222" class="anchor"></a>crunch 1.22.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>New introductory vignette: <code><a href="../articles/crunch.html">vignette("crunch")</a></code>
@@ -325,9 +380,9 @@
 <code><a href="../reference/makeArrayGadget.html">makeArrayGadget()</a></code> launches an RStudio gadget to help you build valid categorical arrays and multiple response variables.</li>
 </ul>
 </div>
-    <div id="crunch-1-22-0" class="section level1">
+    <div id="crunch-1220" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-22-0" class="anchor"></a>crunch 1.22.0<small> 2018-05-02 </small>
+<a href="#crunch-1220" class="anchor"></a>crunch 1.22.0<small> 2018-05-02 </small>
 </h1>
 <div id="analysis-methods" class="section level2">
 <h2 class="hasAnchor">
@@ -355,9 +410,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-21-0" class="section level1">
+    <div id="crunch-1210" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-21-0" class="anchor"></a>crunch 1.21.0<small> Unreleased </small>
+<a href="#crunch-1210" class="anchor"></a>crunch 1.21.0<small> Unreleased </small>
 </h1>
 <div id="variable-organization" class="section level2">
 <h2 class="hasAnchor">
@@ -391,15 +446,15 @@
 <a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
 <ul>
 <li>Added support for setting population sizes on datasets with <code><a href="../reference/population.html">setPopulation(ds, size = 24.13e6, magnitude = 3)</a></code> and for getting population sizes (or magnitudes) with <code><a href="../reference/population.html">popSize(ds)</a></code> and <code><a href="../reference/population.html">popMagnitude(ds)</a></code> respectively.</li>
-<li>Added support for getting and setting rollup resolutions for displaying Datetime variables. Get resolution with <code><a href="../reference/expressions.html">rollupResolution(ds$datetime)</a></code> and set with <code>rollupResolution(ds$datetime) &lt;- "M"</code>.</li>
+<li>Added support for getting and setting rollup resolutions for displaying Datetime variables. Get resolution with <code><a href="../reference/resolution.html">rollupResolution(ds$datetime)</a></code> and set with <code>rollupResolution(ds$datetime) &lt;- "M"</code>.</li>
 <li>Add <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(crunch.show.progress)</a></code> to govern whether to report progress of long-running requests. Default is <code>TRUE</code>, but set it to <code>FALSE</code> to run quietly.</li>
 <li>Export <code><a href="../reference/pollProgress.html">pollProgress()</a></code> and recommend using that when a long-running request fails to complete within the local timeout.</li>
 </ul>
 </div>
 </div>
-    <div id="crunch-1-20-0" class="section level1">
+    <div id="crunch-1200" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-20-0" class="anchor"></a>crunch 1.20.0<small> 2018-02-02 </small>
+<a href="#crunch-1200" class="anchor"></a>crunch 1.20.0<small> 2018-02-02 </small>
 </h1>
 <div id="subtotals-and-headings" class="section level2">
 <h2 class="hasAnchor">
@@ -440,9 +495,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-19-0" class="section level1">
+    <div id="crunch-1190" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-19-0" class="anchor"></a>crunch 1.19.0<small> 2017-11-14 </small>
+<a href="#crunch-1190" class="anchor"></a>crunch 1.19.0<small> 2017-11-14 </small>
 </h1>
 <div id="new-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -464,7 +519,7 @@
 <li>
 <code>CrunchDataFrames</code> have been improved to act more <code>data.frame</code>-like. You can now access and overwrite values with standard <code>data.frame</code> methods like <code>crdf$variable1</code> or <code>crdf[,"variable1"]</code> and <code>crdf$variable1 &lt;- 1</code> or <code>crdf[,"variable1"] &lt;- 1</code>. <code>CrunchDataFrames</code> now also support adding arbitrary columns, although it should be noted that these columns are not stored on the Crunch server, so if you want to keep that data outside of your current R session, you should send it back to your Dataset as a new variable.</li>
 <li>
-<code><a href="../reference/describe-category.html">is.selected()</a></code> is now vectorized to work with Categories, as <code><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na()</a></code> has always been. You can also now assign into the function (<a href='https://github.com/Crunch-io/rcrunch/issues/123'>#123</a>)</li>
+<code><a href="../reference/dichotomize.html">is.selected()</a></code> is now vectorized to work with Categories, as <code><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na()</a></code> has always been. You can also now assign into the function (<a href='https://github.com/Crunch-io/rcrunch/issues/123'>#123</a>)</li>
 <li>
 <code><a href="../reference/addSubvariable.html">addSubvariable()</a></code> now accepts variable definitions directly (<a href='https://github.com/Crunch-io/rcrunch/issues/72'>#72</a>)</li>
 <li>
@@ -473,16 +528,16 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-18-4" class="section level1">
+    <div id="crunch-1184" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-18-4" class="anchor"></a>crunch 1.18.4<small> 2017-10-12 </small>
+<a href="#crunch-1184" class="anchor"></a>crunch 1.18.4<small> 2017-10-12 </small>
 </h1>
 <ul>
 <li>All catalog objects now have an <code><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">as.data.frame()</a></code> method.</li>
 <li>The list of dataset “weight variables” can now be set with <code><a href="../reference/modifyWeightVariables.html">modifyWeightVariables()</a></code>, <code>weightVariables(ds) &lt;- ds$newWeight</code> or <code>is.weightVariables(ds$var) &lt;- TRUE</code>
 </li>
 <li>Users with account admin privileges can now <code><a href="../reference/expropriateUser.html">expropriateUser()</a></code> to transfer datasets, projects, and other objects owned by one user to another, as when that user has left your organization.</li>
-<li>Access members of user <code>UserCatalogs</code> by email (e.g. <code>catalog[["you@example.com"]]</code>) by default. All catalog extract methods (<code>[</code> and <code>[[</code>) now also accept a <code>secondary</code> argument for setting an index to match against to change that default.</li>
+<li>Access members of user <code>UserCatalogs</code> by email (e.g. <code>catalog[["you@example.com"]]</code>) by default. All catalog extract methods (<code>[</code> and <code>[[</code>) now also accept a <code>secondary</code> argument for setting an index to match against to change that default.</li>
 <li>Crunch authentication email and password can be stored in and read from the environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</li>
 <li>Cube queries with <code>as_selected</code> multiple-response variables have margin and prop.table methods</li>
 <li>Cube <code><a href="../reference/variables.html">variables()</a></code> now contain additional metadata, including “type”</li>
@@ -491,9 +546,9 @@
 </li>
 </ul>
 </div>
-    <div id="crunch-1-18-2" class="section level1">
+    <div id="crunch-1182" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-18-2" class="anchor"></a>crunch 1.18.2<small> Unreleased </small>
+<a href="#crunch-1182" class="anchor"></a>crunch 1.18.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -511,9 +566,9 @@
 <li>Long-deprecated <code>newDatasetByCSV</code> was removed.</li>
 </ul>
 </div>
-    <div id="crunch-1-18-0" class="section level1">
+    <div id="crunch-1180" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-18-0" class="anchor"></a>crunch 1.18.0<small> 2017-08-23 </small>
+<a href="#crunch-1180" class="anchor"></a>crunch 1.18.0<small> 2017-08-23 </small>
 </h1>
 <div id="support-for-mapping" class="section level2">
 <h2 class="hasAnchor">
@@ -561,9 +616,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-17-8" class="section level1">
+    <div id="crunch-1178" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-17-8" class="anchor"></a>crunch 1.17.8<small> Unreleased </small>
+<a href="#crunch-1178" class="anchor"></a>crunch 1.17.8<small> Unreleased </small>
 </h1>
 <p>Two attempts to fix download issues introduced by 1.17.4:</p>
 <ul>
@@ -571,21 +626,21 @@
 <li>Add a <code>retry</code> for downloads to hopefully work around a delay in CDN population.</li>
 </ul>
 </div>
-    <div id="crunch-1-17-6" class="section level1">
+    <div id="crunch-1176" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-17-6" class="anchor"></a>crunch 1.17.6<small> Unreleased </small>
+<a href="#crunch-1176" class="anchor"></a>crunch 1.17.6<small> Unreleased </small>
 </h1>
 <ul>
 <li>
 <code><a href="../reference/searchDatasets.html">searchDatasets()</a></code> to use the Crunch search API.</li>
-<li>Added support for viewing and changing the number of digits after the decimal place to be printed with <code><a href="../reference/describe.html">digits()</a></code> (useful when exporting to SPSS files).</li>
+<li>Added support for viewing and changing the number of digits after the decimal place to be printed with <code><a href="../reference/describe-entity.html">digits()</a></code> (useful when exporting to SPSS files).</li>
 <li>
 <code>crtabs</code> and <code>table</code> where a dimension is a <code>CrunchLogicalExpr</code> now return a boolean dimension with names “FALSE” and “TRUE”, rather than the previous behavior of dropping the dimension and only returning the <code>TRUE</code> value.</li>
 </ul>
 </div>
-    <div id="crunch-1-17-4" class="section level1">
+    <div id="crunch-1174" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-17-4" class="anchor"></a>crunch 1.17.4<small> Unreleased </small>
+<a href="#crunch-1174" class="anchor"></a>crunch 1.17.4<small> Unreleased </small>
 </h1>
 <ul>
 <li>Added support for case variables (<a href='https://github.com/Crunch-io/rcrunch/issues/36'>#36</a>): <code><a href="../reference/makeCaseVariable.html">makeCaseVariable()</a></code> takes a sequence of case statements to derive a new variable based on the values from other variables.</li>
@@ -593,21 +648,21 @@
 <li>Fixed a bug where exports (data and tab book) might not work on Windows. If you’re using a version of R older than 3.3, and you <em>now</em> have problems downloading, and you’re not on Windows, try <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(download.file.method="curl")</a></code>.</li>
 </ul>
 </div>
-    <div id="crunch-1-17-2" class="section level1">
+    <div id="crunch-1172" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-17-2" class="anchor"></a>crunch 1.17.2<small> Unreleased </small>
+<a href="#crunch-1172" class="anchor"></a>crunch 1.17.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>Support for streaming data: check for received data with <code><a href="../reference/pendingStream.html">pendingStream()</a></code>; append that pending stream data to the dataset with <code><a href="../reference/appendStream.html">appendStream()</a></code> (<a href='https://github.com/Crunch-io/rcrunch/issues/40'>#40</a>)</li>
-<li>Multitables can now be updated with <code>multitables(ds)[["Multitable name"]] &lt;- ~ var1 + var2</code> syntax. Similarly, multitables can be deleted with <code>multitables(ds)[["Multitable name"]] &lt;- NULL</code>. Multitables also have new <code><a href="../reference/describe.html">name()</a></code> and <code><a href="../reference/delete.html">delete()</a></code> methods.</li>
+<li>Multitables can now be updated with <code>multitables(ds)[["Multitable name"]] &lt;- ~ var1 + var2</code> syntax. Similarly, multitables can be deleted with <code>multitables(ds)[["Multitable name"]] &lt;- NULL</code>. Multitables also have new <code><a href="../reference/describe-entity.html">name()</a></code> and <code><a href="../reference/delete.html">delete()</a></code> methods.</li>
 <li>
 <code><a href="../reference/toVariable.html">toVariable()</a></code> now accepts (and then strips) arguments of class <code>AsIs</code> (<a href='https://github.com/Crunch-io/rcrunch/issues/44'>#44</a>)</li>
 <li>Fixed a bug where <code><a href="../reference/changeCategoryID.html">changeCategoryID()</a></code> failed on multiple response variables.</li>
 </ul>
 </div>
-    <div id="crunch-1-17-0" class="section level1">
+    <div id="crunch-1170" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-17-0" class="anchor"></a>crunch 1.17.0<small> 2017-06-06 </small>
+<a href="#crunch-1170" class="anchor"></a>crunch 1.17.0<small> 2017-06-06 </small>
 </h1>
 <ul>
 <li>
@@ -624,9 +679,9 @@
 <li>Test setup code moved to <code>inst/</code> so that other packages that depend on <code>crunch</code> can use the same setup.</li>
 </ul>
 </div>
-    <div id="crunch-1-16-0" class="section level1">
+    <div id="crunch-1160" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-16-0" class="anchor"></a>crunch 1.16.0<small> 2017-04-17 </small>
+<a href="#crunch-1160" class="anchor"></a>crunch 1.16.0<small> 2017-04-17 </small>
 </h1>
 <div id="cube-and-tab-book-improvements" class="section level2">
 <h2 class="hasAnchor">
@@ -660,9 +715,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-15-2" class="section level1">
+    <div id="crunch-1152" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-15-2" class="anchor"></a>crunch 1.15.2<small> 2017-03-23 </small>
+<a href="#crunch-1152" class="anchor"></a>crunch 1.15.2<small> 2017-03-23 </small>
 </h1>
 <ul>
 <li>Support for additional dataset export arguments</li>
@@ -672,9 +727,9 @@
 <li>Fix handling of “total” column in <code>TabBookResult</code>s when the row variable is a categorical array</li>
 </ul>
 </div>
-    <div id="crunch-1-15-0" class="section level1">
+    <div id="crunch-1150" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-15-0" class="anchor"></a>crunch 1.15.0<small> 2017-02-23 </small>
+<a href="#crunch-1150" class="anchor"></a>crunch 1.15.0<small> 2017-02-23 </small>
 </h1>
 <ul>
 <li>
@@ -688,9 +743,9 @@
 </li>
 </ul>
 </div>
-    <div id="crunch-1-14-4" class="section level1">
+    <div id="crunch-1144" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-14-4" class="anchor"></a>crunch 1.14.4<small> 2017-01-20 </small>
+<a href="#crunch-1144" class="anchor"></a>crunch 1.14.4<small> 2017-01-20 </small>
 </h1>
 <ul>
 <li>
@@ -700,20 +755,20 @@
 </li>
 <li>Deprecate the “confirm” argument to destructive functions and methods such as <code>delete</code> in favor of the <code>consent</code> context manager.</li>
 <li>Add deprecation warning that destructive actions will soon also require consent when running in a non-interactive R session.</li>
-<li>Use <a href="https://github.com/nealrichardson/httptest"><code>httptest</code></a> for mocking HTTP and the Crunch API.</li>
+<li>Use <a href="https://enpiar.com/r/httptest"><code>httptest</code></a> for mocking HTTP and the Crunch API.</li>
 </ul>
 </div>
-    <div id="crunch-1-14-2" class="section level1">
+    <div id="crunch-1142" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-14-2" class="anchor"></a>crunch 1.14.2<small> 2016-11-23 </small>
+<a href="#crunch-1142" class="anchor"></a>crunch 1.14.2<small> 2016-11-23 </small>
 </h1>
 <ul>
 <li>Trivial change to DESCRIPTION to meet new, hidden CRAN requirement</li>
 </ul>
 </div>
-    <div id="crunch-1-14-0" class="section level1">
+    <div id="crunch-1140" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-14-0" class="anchor"></a>crunch 1.14.0<small> Unreleased </small>
+<a href="#crunch-1140" class="anchor"></a>crunch 1.14.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -730,9 +785,9 @@
 <li>Allow setting a variable entity to <code>settings(ds)$weight</code> and not just its <code>self</code> URL.</li>
 </ul>
 </div>
-    <div id="crunch-1-13-8" class="section level1">
+    <div id="crunch-1138" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-13-8" class="anchor"></a>crunch 1.13.8<small> Unreleased </small>
+<a href="#crunch-1138" class="anchor"></a>crunch 1.13.8<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -748,9 +803,9 @@
 <li>Improve error handling when attempting to <code>loadDataset</code> from a nonexistent project.</li>
 </ul>
 </div>
-    <div id="crunch-1-13-6" class="section level1">
+    <div id="crunch-1136" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-13-6" class="anchor"></a>crunch 1.13.6<small> Unreleased </small>
+<a href="#crunch-1136" class="anchor"></a>crunch 1.13.6<small> Unreleased </small>
 </h1>
 <ul>
 <li>More utility functions for working with order objects: <code>dedupeOrder</code>, <code>removeEmptyGroups</code>
@@ -761,9 +816,9 @@
 <li>Fix bug in assigning NA to an array subvariable that didn’t already have the “No Data” category</li>
 </ul>
 </div>
-    <div id="crunch-1-13-4" class="section level1">
+    <div id="crunch-1134" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-13-4" class="anchor"></a>crunch 1.13.4<small> Unreleased </small>
+<a href="#crunch-1134" class="anchor"></a>crunch 1.13.4<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -776,9 +831,9 @@
 <li>Fix bug in dataset export when attempting to export a single variable</li>
 </ul>
 </div>
-    <div id="crunch-1-13-2" class="section level1">
+    <div id="crunch-1132" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-13-2" class="anchor"></a>crunch 1.13.2<small> Unreleased </small>
+<a href="#crunch-1132" class="anchor"></a>crunch 1.13.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>Support deep copying of categorical array variables.</li>
@@ -792,9 +847,9 @@
 <li>Return a Session object from <code><a href="../reference/session.html">session()</a></code> that lazily fetches catalogs rather than when instantiated.</li>
 </ul>
 </div>
-    <div id="crunch-1-13-0" class="section level1">
+    <div id="crunch-1130" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-13-0" class="anchor"></a>crunch 1.13.0<small> Unreleased </small>
+<a href="#crunch-1130" class="anchor"></a>crunch 1.13.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -809,17 +864,17 @@
 <li>Preparation for upcoming API changes.</li>
 </ul>
 </div>
-    <div id="crunch-1-12-2" class="section level1">
+    <div id="crunch-1122" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-12-2" class="anchor"></a>crunch 1.12.2<small> 2016-08-10 </small>
+<a href="#crunch-1122" class="anchor"></a>crunch 1.12.2<small> 2016-08-10 </small>
 </h1>
 <ul>
 <li>Patch a test for handling duplicate factor levels, which is deprecated in current R releases but converted to an error in the upcoming release.</li>
 </ul>
 </div>
-    <div id="crunch-1-12-0" class="section level1">
+    <div id="crunch-1120" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-12-0" class="anchor"></a>crunch 1.12.0<small> Unreleased </small>
+<a href="#crunch-1120" class="anchor"></a>crunch 1.12.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -839,9 +894,9 @@
 </li>
 </ul>
 </div>
-    <div id="crunch-1-11-2" class="section level1">
+    <div id="crunch-1112" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-11-2" class="anchor"></a>crunch 1.11.2<small> Unreleased </small>
+<a href="#crunch-1112" class="anchor"></a>crunch 1.11.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>Fix issue with sharing datasets owned by a project.</li>
@@ -852,9 +907,9 @@
 <li>Validation to prevent attempting to set NA category names.</li>
 </ul>
 </div>
-    <div id="crunch-1-11-0" class="section level1">
+    <div id="crunch-1110" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-11-0" class="anchor"></a>crunch 1.11.0<small> Unreleased </small>
+<a href="#crunch-1110" class="anchor"></a>crunch 1.11.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Generic <code>datasets</code> and <code>projects</code> functions to get dataset and project catalogs. (<code>datasets</code> previously existed only as a method for Project entities.)</li>
@@ -865,9 +920,9 @@
 <li>Allow <code>NULL</code> assignment into Variable/DatasetGroups to remove elements</li>
 </ul>
 </div>
-    <div id="crunch-1-10-6" class="section level1">
+    <div id="crunch-1106" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-10-6" class="anchor"></a>crunch 1.10.6<small> Unreleased </small>
+<a href="#crunch-1106" class="anchor"></a>crunch 1.10.6<small> Unreleased </small>
 </h1>
 <ul>
 <li>Fix refresh method for Datasets that have been transferred to a Project.</li>
@@ -877,9 +932,9 @@
 <li>Export a <code>permissions</code> method for Datasets to work directly with sharing privileges.</li>
 </ul>
 </div>
-    <div id="crunch-1-10-4" class="section level1">
+    <div id="crunch-1104" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-10-4" class="anchor"></a>crunch 1.10.4<small> 2016-06-30 </small>
+<a href="#crunch-1104" class="anchor"></a>crunch 1.10.4<small> 2016-06-30 </small>
 </h1>
 <ul>
 <li>Fix <code>as.data.frame</code>/<code>as.environment</code> for <code>CrunchDataset</code> when a variable alias contained an apostrophe.</li>
@@ -888,9 +943,9 @@
 <li>Progress polling now returns the error message, if given, if a job fails.</li>
 </ul>
 </div>
-    <div id="crunch-1-10-2" class="section level1">
+    <div id="crunch-1102" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-10-2" class="anchor"></a>crunch 1.10.2<small> Unreleased </small>
+<a href="#crunch-1102" class="anchor"></a>crunch 1.10.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -904,9 +959,9 @@
 <li>Assorted updates to new API usage</li>
 </ul>
 </div>
-    <div id="crunch-1-10-0" class="section level1">
+    <div id="crunch-1100" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-10-0" class="anchor"></a>crunch 1.10.0<small> Unreleased </small>
+<a href="#crunch-1100" class="anchor"></a>crunch 1.10.0<small> Unreleased </small>
 </h1>
 <div id="new-support-for-working-with-users-and-their-permissions-on-datasets-and-projects" class="section level2">
 <h2 class="hasAnchor">
@@ -932,27 +987,27 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-9-12" class="section level1">
+    <div id="crunch-1912" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-12" class="anchor"></a>crunch 1.9.12<small> Unreleased </small>
+<a href="#crunch-1912" class="anchor"></a>crunch 1.9.12<small> Unreleased </small>
 </h1>
 <ul>
 <li>Generalize and update to new Progress API. Add a progress bar.</li>
 <li>Remove deprecated query parameter on variable catalog</li>
 </ul>
 </div>
-    <div id="crunch-1-9-10" class="section level1">
+    <div id="crunch-1910" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-10" class="anchor"></a>crunch 1.9.10<small> Unreleased </small>
+<a href="#crunch-1910" class="anchor"></a>crunch 1.9.10<small> Unreleased </small>
 </h1>
 <ul>
 <li>
 <code>variableMetadata</code> function to export all variable metadata associated with the dataset</li>
 </ul>
 </div>
-    <div id="crunch-1-9-8" class="section level1">
+    <div id="crunch-198" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-8" class="anchor"></a>crunch 1.9.8<small> Unreleased </small>
+<a href="#crunch-198" class="anchor"></a>crunch 1.9.8<small> Unreleased </small>
 </h1>
 <ul>
 <li>Better support for deleting hidden variables</li>
@@ -961,9 +1016,9 @@
 <li>Fix bug in print method for VariableOrder that manifested when fixing the variable catalog’s relative URL API</li>
 </ul>
 </div>
-    <div id="crunch-1-9-6" class="section level1">
+    <div id="crunch-196" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-6" class="anchor"></a>crunch 1.9.6<small> Unreleased </small>
+<a href="#crunch-196" class="anchor"></a>crunch 1.9.6<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add warning that the <code>pattern</code> argument for functions including <code>makeArray</code>, <code>makeMR</code>, <code>deleteVariables</code>, and <code>hideVariables</code> is being deprecated. The help pages for those functions advise you to grep for or otherwise identify your variables outside of these functions.</li>
@@ -975,9 +1030,9 @@
 <li>Finally fix bug that prevented sharing datasets with non-editors when the dataset had already been shared with a team.</li>
 </ul>
 </div>
-    <div id="crunch-1-9-4" class="section level1">
+    <div id="crunch-194" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-4" class="anchor"></a>crunch 1.9.4<small> 2016-04-07 </small>
+<a href="#crunch-194" class="anchor"></a>crunch 1.9.4<small> 2016-04-07 </small>
 </h1>
 <ul>
 <li>Add a “session” object, retrievable by either <code><a href="../reference/session.html">session()</a></code> or returned from <code><a href="../reference/login.html">login()</a></code>, containing the various catalog resources (Datasets, etc.).</li>
@@ -992,9 +1047,9 @@
 <li>Switch <code>as.vector</code> for <code>CrunchExpr</code> to GET rather than POST.</li>
 </ul>
 </div>
-    <div id="crunch-1-9-2" class="section level1">
+    <div id="crunch-192" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-2" class="anchor"></a>crunch 1.9.2<small> Unreleased </small>
+<a href="#crunch-192" class="anchor"></a>crunch 1.9.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -1003,9 +1058,9 @@
 <li>Update to new API to get a datetime variable’s rollup resolution and save a request</li>
 </ul>
 </div>
-    <div id="crunch-1-9-0" class="section level1">
+    <div id="crunch-190" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-9-0" class="anchor"></a>crunch 1.9.0<small> Unreleased </small>
+<a href="#crunch-190" class="anchor"></a>crunch 1.9.0<small> Unreleased </small>
 </h1>
 <div id="major-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -1034,9 +1089,9 @@
 </ul>
 </div>
 </div>
-    <div id="crunch-1-8-0" class="section level1">
+    <div id="crunch-180" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-8-0" class="anchor"></a>crunch 1.8.0<small> 2016-02-22 </small>
+<a href="#crunch-180" class="anchor"></a>crunch 1.8.0<small> 2016-02-22 </small>
 </h1>
 <ul>
 <li>More formal support for creating and managing UI filters</li>
@@ -1049,18 +1104,18 @@
 <li>Update API usage to always send full variable URLs in queries</li>
 </ul>
 </div>
-    <div id="crunch-1-7-12" class="section level1">
+    <div id="crunch-1712" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-12" class="anchor"></a>crunch 1.7.12<small> Unreleased </small>
+<a href="#crunch-1712" class="anchor"></a>crunch 1.7.12<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add method for R logical &amp;/| Crunch expression</li>
 <li>Upgrade for compatibility with httr 1.1</li>
 </ul>
 </div>
-    <div id="crunch-1-7-10" class="section level1">
+    <div id="crunch-1710" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-10" class="anchor"></a>crunch 1.7.10<small> Unreleased </small>
+<a href="#crunch-1710" class="anchor"></a>crunch 1.7.10<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -1068,17 +1123,17 @@
 <li>Make paginated requests to GET /values/ for greater reliability</li>
 </ul>
 </div>
-    <div id="crunch-1-7-8" class="section level1">
+    <div id="crunch-178" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-8" class="anchor"></a>crunch 1.7.8<small> Unreleased </small>
+<a href="#crunch-178" class="anchor"></a>crunch 1.7.8<small> Unreleased </small>
 </h1>
 <ul>
 <li>Update to match changes in filter API</li>
 </ul>
 </div>
-    <div id="crunch-1-7-6" class="section level1">
+    <div id="crunch-176" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-6" class="anchor"></a>crunch 1.7.6<small> Unreleased </small>
+<a href="#crunch-176" class="anchor"></a>crunch 1.7.6<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -1087,9 +1142,9 @@
 <li>Export a few more functions (<code>shojiURL</code>, <code>batches</code>)</li>
 </ul>
 </div>
-    <div id="crunch-1-7-4" class="section level1">
+    <div id="crunch-174" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-4" class="anchor"></a>crunch 1.7.4<small> Unreleased </small>
+<a href="#crunch-174" class="anchor"></a>crunch 1.7.4<small> Unreleased </small>
 </h1>
 <ul>
 <li>Catch <code>NULL</code> in cube dimension when referencing subvariable that does not exist (as when using alias instead of name) and return a useful message.</li>
@@ -1097,17 +1152,17 @@
 <li>Internal change to match user catalog API update</li>
 </ul>
 </div>
-    <div id="crunch-1-7-3" class="section level1">
+    <div id="crunch-173" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-3" class="anchor"></a>crunch 1.7.3<small> 2015-12-14 </small>
+<a href="#crunch-173" class="anchor"></a>crunch 1.7.3<small> 2015-12-14 </small>
 </h1>
 <ul>
 <li>Update docs to conform to R-devel changes to <code>as.vector</code>’s signature.</li>
 </ul>
 </div>
-    <div id="crunch-1-7-2" class="section level1">
+    <div id="crunch-172" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-2" class="anchor"></a>crunch 1.7.2<small> Unreleased </small>
+<a href="#crunch-172" class="anchor"></a>crunch 1.7.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>
@@ -1118,9 +1173,9 @@
 <li>Fix bug in creating VariableOrder with a named list.</li>
 </ul>
 </div>
-    <div id="crunch-1-7-0" class="section level1">
+    <div id="crunch-170" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-7-0" class="anchor"></a>crunch 1.7.0<small> Unreleased </small>
+<a href="#crunch-170" class="anchor"></a>crunch 1.7.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Improve performance of many operations by more lazily loading variable entities from the server. Changes to several internal package APIs to make that happen, but the public package interface should be unchanged.</li>
@@ -1128,9 +1183,9 @@
 <li>Fix bug in results from <code>crtabs</code> when requesting a crosstab of three or more dimensions.</li>
 </ul>
 </div>
-    <div id="crunch-1-6-1" class="section level1">
+    <div id="crunch-161" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-6-1" class="anchor"></a>crunch 1.6.1<small> 2015-11-19 </small>
+<a href="#crunch-161" class="anchor"></a>crunch 1.6.1<small> 2015-11-19 </small>
 </h1>
 <ul>
 <li>
@@ -1141,9 +1196,9 @@
 <li>Support deep copying of non-array variables.</li>
 </ul>
 </div>
-    <div id="crunch-1-6-0" class="section level1">
+    <div id="crunch-160" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-6-0" class="anchor"></a>crunch 1.6.0<small> Unreleased </small>
+<a href="#crunch-160" class="anchor"></a>crunch 1.6.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Check for new version of the package on GitHub when the package is loaded.</li>
@@ -1153,22 +1208,22 @@
 <li>More support for <code>NA</code> assignment into variables.</li>
 </ul>
 </div>
-    <div id="crunch-1-5-4" class="section level1">
+    <div id="crunch-154" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-5-4" class="anchor"></a>crunch 1.5.4<small> Unreleased </small>
+<a href="#crunch-154" class="anchor"></a>crunch 1.5.4<small> Unreleased </small>
 </h1>
 <ul>
 <li>Gradually slow the polling of <code>/batches/</code> while waiting for an append to complete. Improves the performance of the append operation.</li>
 <li>New <code>c</code> method for Categories, plus support for creating and adding new categories to variables. See <code><a href="../reference/Categories.html">?Categories</a></code> and <code><a href="../reference/c-categories.html">?"c-categories"</a></code>
 </li>
-<li>Get category ids or numeric values from <code>as.vector</code> by specifying a “mode” of “id” or “numeric”, respectively. See <code><a href="../reference/variable-to-R.html">?"variable-to-R"</a></code>
+<li>Get category ids or numeric values from <code>as.vector</code> by specifying a “mode” of “id” or “numeric”, respectively. See <code>?"variable-to-R"</code>
 </li>
 <li>Set values as missing by assigning <code>NA</code> into variables.</li>
 </ul>
 </div>
-    <div id="crunch-1-5-3" class="section level1">
+    <div id="crunch-153" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-5-3" class="anchor"></a>crunch 1.5.3<small> Unreleased </small>
+<a href="#crunch-153" class="anchor"></a>crunch 1.5.3<small> Unreleased </small>
 </h1>
 <ul>
 <li>Always send No Data category when creating Categorical Variables.</li>
@@ -1176,9 +1231,9 @@
 <li>Better validation of category subsetting.</li>
 </ul>
 </div>
-    <div id="crunch-1-5-2" class="section level1">
+    <div id="crunch-152" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-5-2" class="anchor"></a>crunch 1.5.2<small> Unreleased </small>
+<a href="#crunch-152" class="anchor"></a>crunch 1.5.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add Python-esque context manager for use in <code>with</code> statements. Use it to give <code><a href="../reference/consent.html">consent()</a></code> to delete things.</li>
@@ -1188,18 +1243,18 @@
 <li>Update to new exclusion API.</li>
 </ul>
 </div>
-    <div id="crunch-1-5-1" class="section level1">
+    <div id="crunch-151" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-5-1" class="anchor"></a>crunch 1.5.1<small> Unreleased </small>
+<a href="#crunch-151" class="anchor"></a>crunch 1.5.1<small> Unreleased </small>
 </h1>
 <ul>
 <li>Validate inputs on making filter expressions with categorical variables</li>
 <li>Very basic print methods for all Crunch objects</li>
 </ul>
 </div>
-    <div id="crunch-1-5-0" class="section level1">
+    <div id="crunch-150" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-5-0" class="anchor"></a>crunch 1.5.0<small> Unreleased </small>
+<a href="#crunch-150" class="anchor"></a>crunch 1.5.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Subset rows of datasets and variables for analysis, using either <code>[</code> or <code>subset</code>
@@ -1210,34 +1265,34 @@
 <code>(un)lock</code> datasets for editing when there are multiple editors</li>
 </ul>
 </div>
-    <div id="crunch-1-4-3" class="section level1">
+    <div id="crunch-143" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-4-3" class="anchor"></a>crunch 1.4.3<small> Unreleased </small>
+<a href="#crunch-143" class="anchor"></a>crunch 1.4.3<small> Unreleased </small>
 </h1>
 <ul>
 <li>Send better emails when sharing datasets</li>
 </ul>
 </div>
-    <div id="crunch-1-4-2" class="section level1">
+    <div id="crunch-142" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-4-2" class="anchor"></a>crunch 1.4.2<small> 2015-08-04 </small>
+<a href="#crunch-142" class="anchor"></a>crunch 1.4.2<small> 2015-08-04 </small>
 </h1>
 <ul>
 <li>Support for auto-login in Jupyter notebooks</li>
 <li>One more CRANdated import</li>
 </ul>
 </div>
-    <div id="crunch-1-4-1" class="section level1">
+    <div id="crunch-141" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-4-1" class="anchor"></a>crunch 1.4.1<small> Unreleased </small>
+<a href="#crunch-141" class="anchor"></a>crunch 1.4.1<small> Unreleased </small>
 </h1>
 <ul>
 <li>Import functions from methods, stats, and utils, per change in CRAN policy.</li>
 </ul>
 </div>
-    <div id="crunch-1-4-0" class="section level1">
+    <div id="crunch-140" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-4-0" class="anchor"></a>crunch 1.4.0<small> Unreleased </small>
+<a href="#crunch-140" class="anchor"></a>crunch 1.4.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Functions <code>saveVersion</code> and <code>restoreVersion</code> for dataset versioning</li>
@@ -1247,32 +1302,32 @@
 <li>Fix for some issues authenticating on Windows</li>
 <li>Fix bug in editing array variables with a single subvariable</li>
 </ul>
-<div id="crunch-1-3-3" class="section level2">
+<div id="crunch-133" class="section level2">
 <h2 class="hasAnchor">
-<a href="#crunch-1-3-3" class="anchor"></a>crunch 1.3.3</h2>
+<a href="#crunch-133" class="anchor"></a>crunch 1.3.3</h2>
 <ul>
 <li>More tools (not yet exported) for managing users</li>
 </ul>
 </div>
-<div id="crunch-1-3-2" class="section level2">
+<div id="crunch-132" class="section level2">
 <h2 class="hasAnchor">
-<a href="#crunch-1-3-2" class="anchor"></a>crunch 1.3.2</h2>
+<a href="#crunch-132" class="anchor"></a>crunch 1.3.2</h2>
 <ul>
 <li>Adapt to minor updates in append API: new intermediate “appended” state for append operations.</li>
 </ul>
 </div>
-<div id="crunch-1-3-1" class="section level2">
+<div id="crunch-131" class="section level2">
 <h2 class="hasAnchor">
-<a href="#crunch-1-3-1" class="anchor"></a>crunch 1.3.1</h2>
+<a href="#crunch-131" class="anchor"></a>crunch 1.3.1</h2>
 <ul>
 <li>More methods for managing teams</li>
 <li>Prepare for httr 1.0</li>
 </ul>
 </div>
 </div>
-    <div id="crunch-1-3-0" class="section level1">
+    <div id="crunch-130" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-3-0" class="anchor"></a>crunch 1.3.0<small> Unreleased </small>
+<a href="#crunch-130" class="anchor"></a>crunch 1.3.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Provisional interface for managing users and teams.</li>
@@ -1281,43 +1336,43 @@
 <li>Fix bug in updating an array with only one subvariable.</li>
 </ul>
 </div>
-    <div id="crunch-1-2-2" class="section level1">
+    <div id="crunch-122" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-2-2" class="anchor"></a>crunch 1.2.2<small> Unreleased </small>
+<a href="#crunch-122" class="anchor"></a>crunch 1.2.2<small> Unreleased </small>
 </h1>
 <ul>
 <li>Add <code>types</code> method to VariableCatalog.</li>
 </ul>
 </div>
-    <div id="crunch-1-2-1" class="section level1">
+    <div id="crunch-121" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-2-1" class="anchor"></a>crunch 1.2.1<small> 2015-05-26 </small>
+<a href="#crunch-121" class="anchor"></a>crunch 1.2.1<small> 2015-05-26 </small>
 </h1>
 <ul>
-<li>Additional methods for working with VariableOrder and VariableGroup. You can create new Groups by assigning into an Order or Group with a new name. And, with the new <code>duplicates</code> parameter, which is <code>FALSE</code> by default, adding new Groups to an Order “moves” the variable references to the new Group, rather than creating copies. See the <a href="inst/doc/variable-order.html">variable order vignette</a> for more details.</li>
+<li>Additional methods for working with VariableOrder and VariableGroup. You can create new Groups by assigning into an Order or Group with a new name. And, with the new <code>duplicates</code> parameter, which is <code>FALSE</code> by default, adding new Groups to an Order “moves” the variable references to the new Group, rather than creating copies. See the <a href="https://crunch.io/r/crunch/articles/variable-order.html">variable order vignette</a> for more details.</li>
 <li>Add <code>share</code> function for sharing a dataset with other users.</li>
 </ul>
 </div>
-    <div id="crunch-1-2-0" class="section level1">
+    <div id="crunch-120" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-2-0" class="anchor"></a>crunch 1.2.0<small> Unreleased </small>
+<a href="#crunch-120" class="anchor"></a>crunch 1.2.0<small> Unreleased </small>
 </h1>
 <ul>
-<li><p>New vignettes for <a href="inst/doc/derive.html">deriving variables</a> and <a href="inst/doc/analyze.html">analyzing datasets</a>.</p></li>
+<li><p>New vignettes for <a href="https://crunch.io/r/crunch/articles/derive.html">deriving variables</a> and <a href="https://crunch.io/r/crunch/articles/analyze.html">analyzing datasets</a>.</p></li>
 <li><p>Update appending workflow to support new API.</p></li>
 </ul>
 </div>
-    <div id="crunch-1-1-1" class="section level1">
+    <div id="crunch-111" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-1-1" class="anchor"></a>crunch 1.1.1<small> 2015-04-20 </small>
+<a href="#crunch-111" class="anchor"></a>crunch 1.1.1<small> 2015-04-20 </small>
 </h1>
 <ul>
 <li>Remove all non-ASCII from test files so that tests will run on Solaris.</li>
 </ul>
 </div>
-    <div id="crunch-1-1-0" class="section level1">
+    <div id="crunch-110" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-1-0" class="anchor"></a>crunch 1.1.0<small> 2015-04-17 </small>
+<a href="#crunch-110" class="anchor"></a>crunch 1.1.0<small> 2015-04-17 </small>
 </h1>
 <ul>
 <li><p>Add query cache, on by default.</p></li>
@@ -1325,35 +1380,35 @@
 <li><p>Remove <code>RJSONIO</code> dependency in favor of <code>jsonlite</code> for <code>toJSON</code>.</p></li>
 </ul>
 </div>
-    <div id="crunch-1-0-0" class="section level1">
+    <div id="crunch-100" class="section level1">
 <h1 class="page-header">
-<a href="#crunch-1-0-0" class="anchor"></a>crunch 1.0.0<small> Unreleased </small>
+<a href="#crunch-100" class="anchor"></a>crunch 1.0.0<small> Unreleased </small>
 </h1>
 <ul>
 <li>Rename package to <code>crunch</code>. Update all docs to reflect that. Make amendments to pass CRAN checks.</li>
 </ul>
 </div>
-    <div id="rcrunch-0-11-1" class="section level1">
+    <div id="rcrunch-0111" class="section level1">
 <h1 class="page-header">
-<a href="#rcrunch-0-11-1" class="anchor"></a>rcrunch 0.11.1<small> Unreleased </small>
+<a href="#rcrunch-0111" class="anchor"></a>rcrunch 0.11.1<small> Unreleased </small>
 </h1>
 <ul>
 <li><p><code>newDataset2</code> renamed to <code>newDatasetByCSV</code> and made to be the default strategy in <code>newDataset</code>. The old <code>newDataset</code> has been moved to <code>newDatasetByColumn</code>.</p></li>
 <li><p>Support for <code>NA</code> and <code>NaN</code> in <code>crtabs</code> response.</p></li>
 </ul>
 </div>
-    <div id="rcrunch-0-11-0" class="section level1">
+    <div id="rcrunch-0110" class="section level1">
 <h1 class="page-header">
-<a href="#rcrunch-0-11-0" class="anchor"></a>rcrunch 0.11.0<small> Unreleased </small>
+<a href="#rcrunch-0110" class="anchor"></a>rcrunch 0.11.0<small> Unreleased </small>
 </h1>
 <ul>
 <li><p><code>getCube</code> is now <code>crtabs</code>. Ready for more extensive beta testing. Has prop.table and margin.table methods. Vignette forthcoming.</p></li>
 <li><p><code>newDataset2</code> that uses the CSV+JSON import method, rather than the columm-by-column strategy that <code>newDataset</code> uses.</p></li>
 </ul>
 </div>
-    <div id="rcrunch-0-10-0" class="section level1">
+    <div id="rcrunch-0100" class="section level1">
 <h1 class="page-header">
-<a href="#rcrunch-0-10-0" class="anchor"></a>rcrunch 0.10.0<small> Unreleased </small>
+<a href="#rcrunch-0100" class="anchor"></a>rcrunch 0.10.0<small> Unreleased </small>
 </h1>
 <ul>
 <li><p>Support for shoji:order document for hierarchical variable order. HTTP API change.</p></li>
@@ -1366,79 +1421,81 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#crunch-1-25-0">1.25.0</a></li>
-        <li><a href="#crunch-1-24-2">1.24.2</a></li>
-        <li><a href="#crunch-1-24-0">1.24.0</a></li>
-        <li><a href="#crunch-1-23-0">1.23.0</a></li>
-        <li><a href="#crunch-1-22-2">1.22.2</a></li>
-        <li><a href="#crunch-1-22-0">1.22.0</a></li>
-        <li><a href="#crunch-1-21-0">1.21.0</a></li>
-        <li><a href="#crunch-1-20-0">1.20.0</a></li>
-        <li><a href="#crunch-1-19-0">1.19.0</a></li>
-        <li><a href="#crunch-1-18-4">1.18.4</a></li>
-        <li><a href="#crunch-1-18-2">1.18.2</a></li>
-        <li><a href="#crunch-1-18-0">1.18.0</a></li>
-        <li><a href="#crunch-1-17-8">1.17.8</a></li>
-        <li><a href="#crunch-1-17-6">1.17.6</a></li>
-        <li><a href="#crunch-1-17-4">1.17.4</a></li>
-        <li><a href="#crunch-1-17-2">1.17.2</a></li>
-        <li><a href="#crunch-1-17-0">1.17.0</a></li>
-        <li><a href="#crunch-1-16-0">1.16.0</a></li>
-        <li><a href="#crunch-1-15-2">1.15.2</a></li>
-        <li><a href="#crunch-1-15-0">1.15.0</a></li>
-        <li><a href="#crunch-1-14-4">1.14.4</a></li>
-        <li><a href="#crunch-1-14-2">1.14.2</a></li>
-        <li><a href="#crunch-1-14-0">1.14.0</a></li>
-        <li><a href="#crunch-1-13-8">1.13.8</a></li>
-        <li><a href="#crunch-1-13-6">1.13.6</a></li>
-        <li><a href="#crunch-1-13-4">1.13.4</a></li>
-        <li><a href="#crunch-1-13-2">1.13.2</a></li>
-        <li><a href="#crunch-1-13-0">1.13.0</a></li>
-        <li><a href="#crunch-1-12-2">1.12.2</a></li>
-        <li><a href="#crunch-1-12-0">1.12.0</a></li>
-        <li><a href="#crunch-1-11-2">1.11.2</a></li>
-        <li><a href="#crunch-1-11-0">1.11.0</a></li>
-        <li><a href="#crunch-1-10-6">1.10.6</a></li>
-        <li><a href="#crunch-1-10-4">1.10.4</a></li>
-        <li><a href="#crunch-1-10-2">1.10.2</a></li>
-        <li><a href="#crunch-1-10-0">1.10.0</a></li>
-        <li><a href="#crunch-1-9-12">1.9.12</a></li>
-        <li><a href="#crunch-1-9-10">1.9.10</a></li>
-        <li><a href="#crunch-1-9-8">1.9.8</a></li>
-        <li><a href="#crunch-1-9-6">1.9.6</a></li>
-        <li><a href="#crunch-1-9-4">1.9.4</a></li>
-        <li><a href="#crunch-1-9-2">1.9.2</a></li>
-        <li><a href="#crunch-1-9-0">1.9.0</a></li>
-        <li><a href="#crunch-1-8-0">1.8.0</a></li>
-        <li><a href="#crunch-1-7-12">1.7.12</a></li>
-        <li><a href="#crunch-1-7-10">1.7.10</a></li>
-        <li><a href="#crunch-1-7-8">1.7.8</a></li>
-        <li><a href="#crunch-1-7-6">1.7.6</a></li>
-        <li><a href="#crunch-1-7-4">1.7.4</a></li>
-        <li><a href="#crunch-1-7-3">1.7.3</a></li>
-        <li><a href="#crunch-1-7-2">1.7.2</a></li>
-        <li><a href="#crunch-1-7-0">1.7.0</a></li>
-        <li><a href="#crunch-1-6-1">1.6.1</a></li>
-        <li><a href="#crunch-1-6-0">1.6.0</a></li>
-        <li><a href="#crunch-1-5-4">1.5.4</a></li>
-        <li><a href="#crunch-1-5-3">1.5.3</a></li>
-        <li><a href="#crunch-1-5-2">1.5.2</a></li>
-        <li><a href="#crunch-1-5-1">1.5.1</a></li>
-        <li><a href="#crunch-1-5-0">1.5.0</a></li>
-        <li><a href="#crunch-1-4-3">1.4.3</a></li>
-        <li><a href="#crunch-1-4-2">1.4.2</a></li>
-        <li><a href="#crunch-1-4-1">1.4.1</a></li>
-        <li><a href="#crunch-1-4-0">1.4.0</a></li>
-        <li><a href="#crunch-1-3-0">1.3.0</a></li>
-        <li><a href="#crunch-1-2-2">1.2.2</a></li>
-        <li><a href="#crunch-1-2-1">1.2.1</a></li>
-        <li><a href="#crunch-1-2-0">1.2.0</a></li>
-        <li><a href="#crunch-1-1-1">1.1.1</a></li>
-        <li><a href="#crunch-1-1-0">1.1.0</a></li>
-        <li><a href="#crunch-1-0-0">1.0.0</a></li>
-        <li><a href="#rcrunch-0-11-1">0.11.1</a></li>
-        <li><a href="#rcrunch-0-11-0">0.11.0</a></li>
-        <li><a href="#rcrunch-0-10-0">0.10.0</a></li>
+        <li><a href="#crunch-1261-under-development">1.26.1</a></li>
+        <li><a href="#crunch-1260">1.26.0</a></li>
+        <li><a href="#crunch-1250">1.25.0</a></li>
+        <li><a href="#crunch-1242">1.24.2</a></li>
+        <li><a href="#crunch-1240">1.24.0</a></li>
+        <li><a href="#crunch-1230">1.23.0</a></li>
+        <li><a href="#crunch-1222">1.22.2</a></li>
+        <li><a href="#crunch-1220">1.22.0</a></li>
+        <li><a href="#crunch-1210">1.21.0</a></li>
+        <li><a href="#crunch-1200">1.20.0</a></li>
+        <li><a href="#crunch-1190">1.19.0</a></li>
+        <li><a href="#crunch-1184">1.18.4</a></li>
+        <li><a href="#crunch-1182">1.18.2</a></li>
+        <li><a href="#crunch-1180">1.18.0</a></li>
+        <li><a href="#crunch-1178">1.17.8</a></li>
+        <li><a href="#crunch-1176">1.17.6</a></li>
+        <li><a href="#crunch-1174">1.17.4</a></li>
+        <li><a href="#crunch-1172">1.17.2</a></li>
+        <li><a href="#crunch-1170">1.17.0</a></li>
+        <li><a href="#crunch-1160">1.16.0</a></li>
+        <li><a href="#crunch-1152">1.15.2</a></li>
+        <li><a href="#crunch-1150">1.15.0</a></li>
+        <li><a href="#crunch-1144">1.14.4</a></li>
+        <li><a href="#crunch-1142">1.14.2</a></li>
+        <li><a href="#crunch-1140">1.14.0</a></li>
+        <li><a href="#crunch-1138">1.13.8</a></li>
+        <li><a href="#crunch-1136">1.13.6</a></li>
+        <li><a href="#crunch-1134">1.13.4</a></li>
+        <li><a href="#crunch-1132">1.13.2</a></li>
+        <li><a href="#crunch-1130">1.13.0</a></li>
+        <li><a href="#crunch-1122">1.12.2</a></li>
+        <li><a href="#crunch-1120">1.12.0</a></li>
+        <li><a href="#crunch-1112">1.11.2</a></li>
+        <li><a href="#crunch-1110">1.11.0</a></li>
+        <li><a href="#crunch-1106">1.10.6</a></li>
+        <li><a href="#crunch-1104">1.10.4</a></li>
+        <li><a href="#crunch-1102">1.10.2</a></li>
+        <li><a href="#crunch-1100">1.10.0</a></li>
+        <li><a href="#crunch-1912">1.9.12</a></li>
+        <li><a href="#crunch-1910">1.9.10</a></li>
+        <li><a href="#crunch-198">1.9.8</a></li>
+        <li><a href="#crunch-196">1.9.6</a></li>
+        <li><a href="#crunch-194">1.9.4</a></li>
+        <li><a href="#crunch-192">1.9.2</a></li>
+        <li><a href="#crunch-190">1.9.0</a></li>
+        <li><a href="#crunch-180">1.8.0</a></li>
+        <li><a href="#crunch-1712">1.7.12</a></li>
+        <li><a href="#crunch-1710">1.7.10</a></li>
+        <li><a href="#crunch-178">1.7.8</a></li>
+        <li><a href="#crunch-176">1.7.6</a></li>
+        <li><a href="#crunch-174">1.7.4</a></li>
+        <li><a href="#crunch-173">1.7.3</a></li>
+        <li><a href="#crunch-172">1.7.2</a></li>
+        <li><a href="#crunch-170">1.7.0</a></li>
+        <li><a href="#crunch-161">1.6.1</a></li>
+        <li><a href="#crunch-160">1.6.0</a></li>
+        <li><a href="#crunch-154">1.5.4</a></li>
+        <li><a href="#crunch-153">1.5.3</a></li>
+        <li><a href="#crunch-152">1.5.2</a></li>
+        <li><a href="#crunch-151">1.5.1</a></li>
+        <li><a href="#crunch-150">1.5.0</a></li>
+        <li><a href="#crunch-143">1.4.3</a></li>
+        <li><a href="#crunch-142">1.4.2</a></li>
+        <li><a href="#crunch-141">1.4.1</a></li>
+        <li><a href="#crunch-140">1.4.0</a></li>
+        <li><a href="#crunch-130">1.3.0</a></li>
+        <li><a href="#crunch-122">1.2.2</a></li>
+        <li><a href="#crunch-121">1.2.1</a></li>
+        <li><a href="#crunch-120">1.2.0</a></li>
+        <li><a href="#crunch-111">1.1.1</a></li>
+        <li><a href="#crunch-110">1.1.0</a></li>
+        <li><a href="#crunch-100">1.0.0</a></li>
+        <li><a href="#rcrunch-0111">0.11.1</a></li>
+        <li><a href="#rcrunch-0110">0.11.0</a></li>
+        <li><a href="#rcrunch-0100">0.10.0</a></li>
       </ul>
     </div>
   </div>

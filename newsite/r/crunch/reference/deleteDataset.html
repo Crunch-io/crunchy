@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,9 +48,8 @@
   
 <meta property="og:title" content="Delete a dataset from the dataset list — deleteDataset" />
 
-<meta property="og:description" content="This function lets you delete a dataset without first loading it. If you
-have a dataset that somehow is corrupted and won't load, you can delete it
-this way." />
+<meta property="og:description" content="This function lets you delete a dataset without first loading it, which is
+faster." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -92,7 +92,7 @@ this way." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -160,7 +160,7 @@ this way." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -183,15 +183,14 @@ this way." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Delete a dataset from the dataset list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/get-datasets.R'><code>R/get-datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/delete.R'><code>R/delete.R</code></a></small>
     <div class="hidden name"><code>deleteDataset.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function lets you delete a dataset without first loading it. If you
-have a dataset that somehow is corrupted and won't load, you can delete it
-this way.</p>
+    <p>This function lets you delete a dataset without first loading it, which is
+faster.</p>
     
     </div>
 
@@ -202,14 +201,13 @@ this way.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>The name (character) of a dataset, its (numeric) position in the
-return of <code><a href='listDatasets.html'>listDatasets()</a></code>, or an object of class
-<code>CrunchDataset</code>. x can only be of length 1--this function is not
-vectorized (for your protection).</p></td>
+      <td><p>The name (character) of a dataset, a path to a dataset, or a
+<code>CrunchDataset</code>. Unless <code>x</code> is a parsed folder path, it can only be of
+length 1--for your protection, this function is not vectorized.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional parameters passed to <code>delete</code></p></td>
+      <td><p>additional parameters passed to <code><a href='delete.html'>delete()</a></code></p></td>
     </tr>
     </table>
     
@@ -219,13 +217,14 @@ vectorized (for your protection).</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function also works on CrunchDataset objects, just like
+    <p>The function also works on <code>CrunchDataset</code> objects, just like
 <code><a href='delete.html'>delete()</a></code>, which may be useful if you have loaded another
-package that masks the <code><a href='delete.html'>delete()</a></code> method.</p>
+package that masks the <code><a href='delete.html'>crunch::delete()</a></code> method.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='delete.html'>delete()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='delete.html'>delete()</a></code>; <code><a href='cd.html'>cd()</a></code> for details of parsing and walking dataset
+folder/project paths.</p></div>
     
 
   </div>

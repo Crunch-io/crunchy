@@ -83,7 +83,7 @@
     <div class="page-header toc-ignore">
       <h1>Including Static Dashboards in Crunch</h1>
             
-            <h4 class="date">2019-03-28</h4>
+            <h4 class="date">2019-04-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Crunch-io/crunchy/blob/master/vignettes/flexdashboards.Rmd"><code>vignettes/flexdashboards.Rmd</code></a></small>
       <div class="hidden name"><code>flexdashboards.Rmd</code></div>
@@ -104,87 +104,87 @@
 <li>Upload the rendered html file to your app’s Jupyter folder</li>
 <li>In your shiny UI code add <code>includeHTML(&lt;filename&gt;)</code> to the <code>ui</code> object. Your <code>app.R</code> file might look something like this:</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(crunchy)</a>
-<a class="sourceLine" id="cb1-2" title="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
-<a class="sourceLine" id="cb1-3" title="3">    <span class="kw">includeHTML</span>(<span class="st">"dashboard"</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4">)</a>
-<a class="sourceLine" id="cb1-5" title="5"></a>
-<a class="sourceLine" id="cb1-6" title="6">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {}</a>
-<a class="sourceLine" id="cb1-7" title="7"></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co"># Run the application</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(crunchy)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="kw">includeHTML</span>(<span class="st">"dashboard"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {}</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># Run the application</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
 <p>Note that we haven’t included any authentication in this app which means that users who do not have access to a dataset could theoretically access it. The next step is to check that the user is logged into Crunch.</p>
 </div>
 <div id="check-user-authentication" class="section level3">
 <h3 class="hasAnchor">
 <a href="#check-user-authentication" class="anchor"></a>Check User Authentication</h3>
 <p>Crunchy includes a <code><a href="../reference/shinyUser.html">shinyUser()</a></code> function, which lets us display different content to the user, including verifying whether they are logged into Crunch of not. To do this, we’ll also make use of Shiny’s <code>renderUI</code> function to conditionally create a different UI.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
-<a class="sourceLine" id="cb2-2" title="2">    <span class="kw">uiOutput</span>(<span class="st">"dashboard"</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3">)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="kw">uiOutput</span>(<span class="st">"dashboard"</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">)</a></code></pre></div>
 <p>This creates the UI object, but most of the work is going to be done on the server side. We can use the <code><a href="../reference/shinyUser.html">shinyUser()</a></code> function to get a user record for the current viewer of the app. This record includes some useful pieces of information, including the user’s name, their email address, and their Crunch preferences. If the user isn’t logged into Crunch, they will see a red error message, and they won’t see the dashboard.</p>
 <p>By checking the value of the <code>shinyUser</code> before calling <code>includeHTML()</code>, we can prevent unauthorized users from seeing the rendered dashboard:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb3-2" title="2">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
-<a class="sourceLine" id="cb3-3" title="3">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
-<a class="sourceLine" id="cb3-4" title="4">        <span class="kw">user</span>()</a>
-<a class="sourceLine" id="cb3-5" title="5">        <span class="kw">includeHTML</span>(<span class="st">"acme_dashboard.html"</span>)</a>
-<a class="sourceLine" id="cb3-6" title="6">    })</a>
-<a class="sourceLine" id="cb3-7" title="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">        <span class="kw">user</span>()</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">        <span class="kw">includeHTML</span>(<span class="st">"acme_dashboard.html"</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">    })</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">}</a></code></pre></div>
 </div>
 <div id="conditional-dashboards-and-user-identification" class="section level3">
 <h3 class="hasAnchor">
 <a href="#conditional-dashboards-and-user-identification" class="anchor"></a>Conditional dashboards and user identification</h3>
 <p>We can take this pattern one step further to show different users different dashboards. We use the same UI object, but check the user’s email and change the displayed HTML file based on that email.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb4-2" title="2">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
-<a class="sourceLine" id="cb4-3" title="3">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
-<a class="sourceLine" id="cb4-4" title="4">        current_user &lt;-<span class="st"> </span><span class="kw">email</span>(<span class="kw">user</span>())</a>
-<a class="sourceLine" id="cb4-5" title="5">        <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"acme.com$"</span>, current_user)) {</a>
-<a class="sourceLine" id="cb4-6" title="6">            <span class="kw">includeHTML</span>(<span class="st">"acme_dashboard.html"</span>)</a>
-<a class="sourceLine" id="cb4-7" title="7">        } <span class="cf">else</span> <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"globex.com$"</span>, current_user)) {</a>
-<a class="sourceLine" id="cb4-8" title="8">            <span class="kw">includeHTML</span>(<span class="st">"globex_dashboard.html"</span>)</a>
-<a class="sourceLine" id="cb4-9" title="9">        } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb4-10" title="10">            <span class="kw">h1</span>(<span class="st">"You do not have access to this dashboard, please contact your dataset administrator."</span>)</a>
-<a class="sourceLine" id="cb4-11" title="11">        }</a>
-<a class="sourceLine" id="cb4-12" title="12">    })</a>
-<a class="sourceLine" id="cb4-13" title="13">}</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">        current_user &lt;-<span class="st"> </span><span class="kw">email</span>(<span class="kw">user</span>())</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"acme.com$"</span>, current_user)) {</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">            <span class="kw">includeHTML</span>(<span class="st">"acme_dashboard.html"</span>)</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">        } <span class="cf">else</span> <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"globex.com$"</span>, current_user)) {</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">            <span class="kw">includeHTML</span>(<span class="st">"globex_dashboard.html"</span>)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">        } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">            <span class="kw">h1</span>(<span class="st">"You do not have access to this dashboard, please contact your dataset administrator."</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">        }</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">    })</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">}</a></code></pre></div>
 <p>What this does is check the user’s email address to identify clients from one company, and then displays a rendered dashboard for that company. An example app of this kind is <a href="https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/rmd_dashboard_app">here</a>, to run it, copy the app folder, open <code>app.R</code> and run it with <code><a href="https://www.rdocumentation.org/packages/shiny/topics/runApp">shiny::runApp("app.R")</a></code>, or by clicking the “Run App” button in RStudio.</p>
 </div>
 <div id="managing-dashboard-renders" class="section level3">
 <h3 class="hasAnchor">
 <a href="#managing-dashboard-renders" class="anchor"></a>Managing Dashboard Renders</h3>
 <p>The above code assumes that you are going to be re-rendering your Rmd files manually, and uploading the results to the Crunch Shiny server. You can also re-render the Rmd files dynamically as part of the Shiny app by calling <code><a href="https://www.rdocumentation.org/packages/rmarkdown/topics/render">rmarkdown::render()</a></code> somewhere in your server function. For example the following app re-renders the dashboard whenever the user clicks an action button. Note that for this to work smoothly you should use the <a href="https://shiny.rstudio.com/reference/shiny/1.0.2/reactivePoll.html">reactivePoll</a> to ensure that the UI is refreshed after the file is regenerated. If you don’t use <code>reactivePoll()</code>, you might end up in a situation where the UI refreshes before the RMarkdown file is finished rendering.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(crunchy)</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
-<a class="sourceLine" id="cb5-4" title="4">    <span class="kw">actionButton</span>(<span class="st">'refresh'</span>, <span class="st">'Refresh Dashboard'</span>),</a>
-<a class="sourceLine" id="cb5-5" title="5">    <span class="kw">textOutput</span>(<span class="st">"last_render"</span>),</a>
-<a class="sourceLine" id="cb5-6" title="6">    <span class="kw">uiOutput</span>(<span class="st">"dashboard"</span>)</a>
-<a class="sourceLine" id="cb5-7" title="7">)</a>
-<a class="sourceLine" id="cb5-8" title="8"></a>
-<a class="sourceLine" id="cb5-9" title="9">server &lt;-<span class="st"> </span><span class="cf">function</span> (input, output, session) {</a>
-<a class="sourceLine" id="cb5-10" title="10">    file &lt;-<span class="st"> </span><span class="kw">reactivePoll</span>(<span class="dv">1000</span>, session,</a>
-<a class="sourceLine" id="cb5-11" title="11">        <span class="dt">checkFunc =</span> <span class="cf">function</span> () {</a>
-<a class="sourceLine" id="cb5-12" title="12">            <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.info">file.info</a></span>(<span class="st">"acme_dashboard.html"</span>)<span class="op">$</span>ctime</a>
-<a class="sourceLine" id="cb5-13" title="13">        },</a>
-<a class="sourceLine" id="cb5-14" title="14">        <span class="dt">valueFunc =</span> <span class="cf">function</span> () {</a>
-<a class="sourceLine" id="cb5-15" title="15">            <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb5-16" title="16">                <span class="dt">path =</span> <span class="st">"acme_dashboard.html"</span>,</a>
-<a class="sourceLine" id="cb5-17" title="17">                <span class="dt">time =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()</a>
-<a class="sourceLine" id="cb5-18" title="18">            )</a>
-<a class="sourceLine" id="cb5-19" title="19">        }</a>
-<a class="sourceLine" id="cb5-20" title="20">    )</a>
-<a class="sourceLine" id="cb5-21" title="21">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
-<a class="sourceLine" id="cb5-22" title="22">    <span class="kw">observeEvent</span>(input<span class="op">$</span>refresh, rmarkdown<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rmarkdown/topics/render">render</a></span>(<span class="st">"acme_dashboard.Rmd"</span>))</a>
-<a class="sourceLine" id="cb5-23" title="23">    output<span class="op">$</span>last_render &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"Last Render:"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/connections">file</a></span>()<span class="op">$</span>time))</a>
-<a class="sourceLine" id="cb5-24" title="24">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
-<a class="sourceLine" id="cb5-25" title="25">        <span class="kw">user</span>()</a>
-<a class="sourceLine" id="cb5-26" title="26">        <span class="kw">includeHTML</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/connections">file</a></span>()<span class="op">$</span>path)</a>
-<a class="sourceLine" id="cb5-27" title="27">    })</a>
-<a class="sourceLine" id="cb5-28" title="28">}</a>
-<a class="sourceLine" id="cb5-29" title="29"></a>
-<a class="sourceLine" id="cb5-30" title="30"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(crunchy)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="kw">actionButton</span>(<span class="st">'refresh'</span>, <span class="st">'Refresh Dashboard'</span>),</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    <span class="kw">textOutput</span>(<span class="st">"last_render"</span>),</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="kw">uiOutput</span>(<span class="st">"dashboard"</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">server &lt;-<span class="st"> </span><span class="cf">function</span> (input, output, session) {</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">    file &lt;-<span class="st"> </span><span class="kw">reactivePoll</span>(<span class="dv">1000</span>, session,</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">        <span class="dt">checkFunc =</span> <span class="cf">function</span> () {</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">            <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/file.info">file.info</a></span>(<span class="st">"acme_dashboard.html"</span>)<span class="op">$</span>ctime</a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">        },</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">        <span class="dt">valueFunc =</span> <span class="cf">function</span> () {</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">            <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">                <span class="dt">path =</span> <span class="st">"acme_dashboard.html"</span>,</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">                <span class="dt">time =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Sys.time">Sys.time</a></span>()</a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">            )</a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">        }</a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">    )</a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">    user &lt;-<span class="st"> </span><span class="kw"><a href="../reference/shinyUser.html">shinyUser</a></span>()</a>
+<a class="sourceLine" id="cb5-22" data-line-number="22">    <span class="kw">observeEvent</span>(input<span class="op">$</span>refresh, rmarkdown<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/rmarkdown/topics/render">render</a></span>(<span class="st">"acme_dashboard.Rmd"</span>))</a>
+<a class="sourceLine" id="cb5-23" data-line-number="23">    output<span class="op">$</span>last_render &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(<span class="st">"Last Render:"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/connections">file</a></span>()<span class="op">$</span>time))</a>
+<a class="sourceLine" id="cb5-24" data-line-number="24">    output<span class="op">$</span>dashboard &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
+<a class="sourceLine" id="cb5-25" data-line-number="25">        <span class="kw">user</span>()</a>
+<a class="sourceLine" id="cb5-26" data-line-number="26">        <span class="kw">includeHTML</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/connections">file</a></span>()<span class="op">$</span>path)</a>
+<a class="sourceLine" id="cb5-27" data-line-number="27">    })</a>
+<a class="sourceLine" id="cb5-28" data-line-number="28">}</a>
+<a class="sourceLine" id="cb5-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="kw">shinyApp</span>(<span class="dt">ui =</span> ui, <span class="dt">server =</span> server)</a></code></pre></div>
 <p>A full example can be found <a href="https://github.com/Crunch-io/crunchy/tree/master/inst/example_apps/dynamic_render_app">on Github.</a></p>
 </div>
 <div id="conclusion" class="section level3">

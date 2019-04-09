@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -94,7 +95,7 @@ lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -162,7 +163,7 @@ lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -185,7 +186,7 @@ lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Categories in CategoricalVariables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/abstract-categories.R'><code>R/abstract-categories.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/categories.R'><code>R/categories.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a></small>
     <div class="hidden name"><code>Categories.Rd</code></div>
     </div>
 
@@ -199,56 +200,16 @@ lists and contain the following fields: "name", "id", "numeric_value",
     
     </div>
 
-    <pre class="usage">Categories(..., data = NULL)
+    <pre class="usage"><span class='fu'>Categories</span>(<span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-Category(..., data = NULL)
-
-# S4 method for AbstractCategories,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for AbstractCategories,character,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for AbstractCategories,numeric,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for AbstractCategories,character,ANY,ANY
-[(x, i, j, ...) <- value
-
-# S4 method for AbstractCategories,character
-[[(x, i, j, ...)
-
-# S4 method for AbstractCategories,character,ANY,ANY
-[[(x, i, j,
-  ...) <- value
-
-# S4 method for AbstractCategories
-names(x)
-
-# S4 method for AbstractCategories
-names(x) <- value
-
-# S4 method for AbstractCategories
-ids(x)
-
-# S4 method for Categories,ANY,ANY,ANY
-[(x, i, j, ...) <- value
-
-# S4 method for Categories
-ids(x) <- value
-
-# S4 method for Categories
-values(x)
-
-# S4 method for Categories
-values(x) <- value</pre>
+<span class='fu'>Category</span>(<span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>additional arguments to <code>[</code>, ignored</p></td>
+      <td><p>Category attributes</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -256,27 +217,6 @@ values(x) <- value</pre>
 <code>Categories</code>, you can either pass in attributes via <code>...</code> or you
 can create the objects with a fully defined <code>list</code> representation of
 the objects via the <code>data</code> argument. See the examples.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>For the attribute getters and setters, an object of class
-Category or Categories</p></td>
-    </tr>
-    <tr>
-      <th>i</th>
-      <td><p>For the <code>[</code> methods, just as with list extract methods</p></td>
-    </tr>
-    <tr>
-      <th>j</th>
-      <td><p>Invalid argument to <code>[</code>, but in the generic's signature</p></td>
-    </tr>
-    <tr>
-      <th>drop</th>
-      <td><p>Invalid argument to <code>[</code>, but in the generic's signature</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>For <code>[&lt;-</code>, the replacement Category to insert</p></td>
     </tr>
     </table>
     

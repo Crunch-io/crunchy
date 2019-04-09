@@ -23,7 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -91,7 +92,7 @@ without changing the underlying data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.25.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
       </span>
     </div>
 
@@ -159,7 +160,7 @@ without changing the underlying data." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -182,7 +183,7 @@ without changing the underlying data." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Transformations of variable and cube views</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-transforms.R'><code>R/cube-transforms.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/transform.R'><code>R/transform.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/transform.R'><code>R/transform.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-transforms.R'><code>R/cube-transforms.R</code></a></small>
     <div class="hidden name"><code>Transforms.Rd</code></div>
     </div>
 
@@ -193,39 +194,40 @@ without changing the underlying data.</p>
     
     </div>
 
-    <pre class="usage">Transforms(..., data = NULL)
+    <pre class="usage"><span class='fu'>Transforms</span>(<span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-TransformsList(..., data = NULL)
+<span class='fu'>TransformsList</span>(<span class='no'>...</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-# S4 method for CrunchCube
-transforms(x)
+<span class='fu'>transforms</span>(<span class='no'>x</span>)
 
-# S4 method for VariableCatalog
-transforms(x)
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-# S4 method for CrunchCube,ANY
-transforms(x) <- value
+<span class='co'># S4 method for CrunchVariable</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>)
 
-# S4 method for TransformsList,ANY,missing,`NULL`
-[[(x, i, j) <- value
+<span class='co'># S4 method for VariableTuple</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>)
 
-# S4 method for CrunchCube,TransformsList
-transforms(x) <- value
+<span class='co'># S4 method for CrunchVariable,Transforms</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-# S4 method for CrunchCube,`NULL`
-transforms(x) <- value
+<span class='co'># S4 method for CrunchVariable,`NULL`</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-# S4 method for CrunchVariable
-transforms(x)
+<span class='co'># S4 method for CrunchCube</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>)
 
-# S4 method for VariableTuple
-transforms(x)
+<span class='co'># S4 method for VariableCatalog</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>)
 
-# S4 method for CrunchVariable,Transforms
-transforms(x) <- value
+<span class='co'># S4 method for CrunchCube,ANY</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-# S4 method for CrunchVariable,`NULL`
-transforms(x) <- value</pre>
+<span class='co'># S4 method for CrunchCube,TransformsList</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for CrunchCube,`NULL`</span>
+<span class='fu'>transforms</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -248,15 +250,7 @@ Transforms</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>For <code>[&lt;-</code>, the replacement Transforms to insert</p></td>
-    </tr>
-    <tr>
-      <th>i</th>
-      <td><p>For <code>[</code>, the index of the Transforms to select (or insert for &lt;- methods)</p></td>
-    </tr>
-    <tr>
-      <th>j</th>
-      <td><p>Not used</p></td>
+      <td><p>For the setter, the replacement Transforms to insert</p></td>
     </tr>
     </table>
     
