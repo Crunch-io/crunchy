@@ -128,6 +128,9 @@ with_mock_crunch({
 # Integration tests ----
 with_test_authentication({
     test_that("gadget doesn't error", {
-        listDatasetGadget(autoclose = TRUE)
+        expect_error(
+            listDatasetGadget(autoclose = TRUE),
+            "RStudio not running"
+        )
     })
 })
