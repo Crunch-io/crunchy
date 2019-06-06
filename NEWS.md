@@ -1,3 +1,6 @@
+# crunchy 0.3.1
+* New maintainer
+
 # crunchy 0.3.0
 * Simpler and better auth enforcement. Wrap `crunchyServer()` around your usual `shiny::shinyServer()` function to enforce Crunch authentication and to be able to supply custom authorization rules, which you can set with `setCrunchyAuthorization()`. Wrap your UI body (inside `shiny::shinyUI()`, the part after any `tags$head()` or other headers) in `crunchyBody()` to conditionally show your app when the current user is authenticated. Add `crunchyPublicBody()` to specify what unauthenticated users will see, and `crunchyUnauthorizedBody()` for what authenticated but not authorized users will see.
 * Support for all `shiny::bootstrapPage()` types directly: no need for a `crunch-`prefixed version of them. Now you can use `navbarPage`, `fillPage`, etc. just as you would for any `shiny` app, and when the `crunchy` package is loaded, Crunch authentication and other enhancements will automatically be loaded.
