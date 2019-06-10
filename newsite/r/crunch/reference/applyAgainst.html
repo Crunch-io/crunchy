@@ -29,8 +29,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -95,7 +96,7 @@ to the end of each MARGIN." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2</span>
       </span>
     </div>
 
@@ -235,7 +236,7 @@ effectively expanding the array in the dimension given.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>array</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/array'>array</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>24</span>), <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>3</span>,<span class='fl'>2</span>))
+    <pre class="examples"><div class='input'><span class='no'>array</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>24</span>), <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>3</span>, <span class='fl'>2</span>))
 <span class='no'>array</span></div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;      [,1] [,2] [,3]
@@ -267,9 +268,9 @@ effectively expanding the array in the dimension given.</p>
 <span class='co'># [3,]   15   19   23</span>
 <span class='co'># [4,]   16   20   24</span>
 
-<span class='no'>add_one_hundred</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span> (<span class='no'>x</span>) <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>x</span>, <span class='fl'>100</span>)
+<span class='no'>add_one_hundred</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>x</span>, <span class='fl'>100</span>)
 
-<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>1</span>,  <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
+<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>1</span>, <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    1    5    9
@@ -304,7 +305,7 @@ effectively expanding the array in the dimension given.</p>
 <span class='co'># [4,]   16   20   24</span>
 <span class='co'># [5,]  100  100  100</span>
 
-<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>2</span>,  <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
+<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>2</span>, <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;      [,1] [,2] [,3] [,4]
 #&gt; [1,]    1    5    9  100
@@ -335,7 +336,7 @@ effectively expanding the array in the dimension given.</p>
 <span class='co'># [3,]   15   19   23  100</span>
 <span class='co'># [4,]   16   20   24  100</span>
 
-<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>3</span>,  <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
+<span class='kw pkg'>crunch</span><span class='kw ns'>:::</span><span class='fu'><a href='http://crunch.io/r/crunch//reference/applyAgainst.html'>applyAgainst</a></span>(<span class='no'>array</span>, <span class='fl'>3</span>, <span class='no'>add_one_hundred</span>)</div><div class='output co'>#&gt; , , 1
 #&gt; 
 #&gt;      [,1] [,2] [,3]
 #&gt; [1,]    1    5    9
@@ -400,11 +401,11 @@ effectively expanding the array in the dimension given.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

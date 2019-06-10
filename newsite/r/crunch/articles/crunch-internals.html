@@ -15,7 +15,7 @@
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><link href="../extra.css" rel="stylesheet">
@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2</span>
       </span>
     </div>
 
@@ -184,7 +184,7 @@ datasets(proj) &lt;- ds</code></pre>
 <div id="cube-subsetting-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#cube-subsetting-1" class="anchor"></a>Cube subsetting</h3>
-<p>This structure gets a little tricky when we subset the cube. For instance the cube we’ve been working with has 5 dimensions, but to the user appears to only have 3, so should they subset it as a 5 dimensional array like <code>cube[1, 1,  2:3, 1, 5]</code> or a 3 dimensional array <code>cube[1, 2:3, 5]</code>. Similarly, if a dimension is missing, should that be included in the subset. For example if a cube has three entries A, B, C, along one dimension, and B is hidden, should <code>cube[ , 1:2]</code> return A, A &amp; B, or A &amp;C? Similarly should <code><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim(cube)</a></code> show the dimensions of the real cube or the printed cube?</p>
+<p>This structure gets a little tricky when we subset the cube. For instance the cube we’ve been working with has 5 dimensions, but to the user appears to only have 3, so should they subset it as a 5 dimensional array like <code>cube[1, 1,  2:3, 1, 5]</code> or a 3 dimensional array <code>cube[1, 2:3, 5]</code>. Similarly, if a dimension is missing, should that be included in the subset. For example if a cube has three entries A, B, C, along one dimension, and B is hidden, should <code>cube[ , 1:2]</code> return A, A &amp; B, or A &amp;C? Similarly should <code><a href="https://rdrr.io/r/base/dim.html">dim(cube)</a></code> show the dimensions of the real cube or the printed cube?</p>
 <p>We resolve this problem by allowing the user to select whether they want the cube to represent the user cube or the printed cube, and make all of the behavior of those cubes consistent. The <code>cube@useNA</code> controls whether the user wanted to interact with the printed cube or the user cube and they can <code><a href="../reference/cube-missingness.html">showMissing()</a></code> and <code><a href="../reference/cube-missingness.html">hideMissing()</a></code> functions to control which cube they are interacting with</p>
 <pre><code>&gt; dim(cube)
 [1] 5 6 8
@@ -200,7 +200,7 @@ datasets(proj) &lt;- ds</code></pre>
 <p><em>Dropping MR variable</em></p>
 <p>MR dimensions are always dropped together. Consider a cube composed of a multiple response variable and a categorical variable. The real cube has three dimensions, and the printed cube has two, the first of which represents the multiple response variable. If the user asks for <code>cube[1, ]</code> both MR dimensions are dropped and a one dimensional cube is returned.</p>
 <p><em>Subsetting dimensions with missing values</em></p>
-<p>When the user is interacting with the the printed cube, they are relating to a cube without missing categories. As a result when they subset this cube, missing categories should not be carried forward. For instance if a cube has two categorical dimensions with one missing category each, <code><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim(cube)</a></code> will return <code><a href="https://www.rdocumentation.org/packages/base/topics/c">c(2, 2)</a></code> <code><a href="https://www.rdocumentation.org/packages/base/topics/dim">dim(showMissing(cube))</a></code>, will return <code><a href="https://www.rdocumentation.org/packages/base/topics/c">c(3, 3)</a></code>. If the user subsets either of these dimensions, for instance with cube[ , 2] the missing categories of the second dimension will be dropped (because the user is explicitly not selecting that category), and that dimension will be dropped. If the user wants to subset a cube to preserve missing categories, they need to subset the user cube with <code>showMissing(cube)[, c(2, 4)]</code></p>
+<p>When the user is interacting with the the printed cube, they are relating to a cube without missing categories. As a result when they subset this cube, missing categories should not be carried forward. For instance if a cube has two categorical dimensions with one missing category each, <code><a href="https://rdrr.io/r/base/dim.html">dim(cube)</a></code> will return <code><a href="https://rdrr.io/r/base/c.html">c(2, 2)</a></code> <code><a href="https://rdrr.io/r/base/dim.html">dim(showMissing(cube))</a></code>, will return <code><a href="https://rdrr.io/r/base/c.html">c(3, 3)</a></code>. If the user subsets either of these dimensions, for instance with cube[ , 2] the missing categories of the second dimension will be dropped (because the user is explicitly not selecting that category), and that dimension will be dropped. If the user wants to subset a cube to preserve missing categories, they need to subset the user cube with <code>showMissing(cube)[, c(2, 4)]</code></p>
 <p><a href="abstract-categories.html">Next: Category objects</a></p>
 </div>
 </div>
@@ -220,11 +220,11 @@ datasets(proj) &lt;- ds</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
 </div>

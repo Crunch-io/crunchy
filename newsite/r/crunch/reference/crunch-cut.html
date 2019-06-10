@@ -29,8 +29,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -99,7 +100,7 @@ whether the numeric vector falls between 1 and 5 or 5 and 10." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2</span>
       </span>
     </div>
 
@@ -196,7 +197,7 @@ whether the numeric vector falls between 1 and 5 or 5 and 10." />
 
     <div class="ref-description">
     
-    <p><code><a href='https://www.rdocumentation.org/packages/base/topics/cut'>crunch::cut()</a></code> is equivalent to <code><a href='https://www.rdocumentation.org/packages/base/topics/cut'>base::cut()</a></code> except that it operates on
+    <p><code><a href='https://rdrr.io/r/base/cut.html'>crunch::cut()</a></code> is equivalent to <code><a href='https://rdrr.io/r/base/cut.html'>base::cut()</a></code> except that it operates on
 Crunch variables instead of in-memory R objects. The function takes a numeric
 variable and derives a new categorical variable from it based on the <code>breaks</code>
 argument. You can either break the variable into evenly spaced categories by
@@ -209,7 +210,7 @@ whether the numeric vector falls between 1 and 5 or 5 and 10.</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for NumericVariable</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cut'>cut</a></span>(<span class='no'>x</span>, <span class='no'>breaks</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>name</span>,
+<span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='no'>x</span>, <span class='no'>breaks</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>name</span>,
   <span class='kw'>include.lowest</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>right</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>dig.lab</span> <span class='kw'>=</span> <span class='fl'>3</span>,
   <span class='kw'>ordered_result</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
@@ -278,12 +279,15 @@ it as a derived variable on the server.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"mtcars"</span>)
-<span class='no'>ds</span>$<span class='no'>cat_var</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cut'>cut</a></span>(<span class='no'>ds</span>$<span class='no'>mpg</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>20</span>),
-    <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"small"</span>, <span class='st'>"medium"</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Fuel efficiency"</span>)
-<span class='no'>ds</span>$<span class='no'>age</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>32</span>)
-<span class='no'>ds</span>$<span class='no'>age4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cut'>cut</a></span>(<span class='no'>df</span>$<span class='no'>age</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>30</span>, <span class='fl'>45</span>, <span class='fl'>65</span>, <span class='fl'>200</span>),
-           <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Youth"</span>, <span class='st'>"Adult"</span>, <span class='st'>"Middle-aged"</span>, <span class='st'>"Elderly"</span>),
-           <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Age (4 category)"</span>)
+<span class='no'>ds</span>$<span class='no'>cat_var</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='no'>ds</span>$<span class='no'>mpg</span>,
+    <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>10</span>, <span class='fl'>15</span>, <span class='fl'>20</span>),
+    <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"small"</span>, <span class='st'>"medium"</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Fuel efficiency"</span>
+)
+<span class='no'>ds</span>$<span class='no'>age</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>1</span>:<span class='fl'>100</span>, <span class='fl'>32</span>)
+<span class='no'>ds</span>$<span class='no'>age4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='no'>df</span>$<span class='no'>age</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>30</span>, <span class='fl'>45</span>, <span class='fl'>65</span>, <span class='fl'>200</span>),
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Youth"</span>, <span class='st'>"Adult"</span>, <span class='st'>"Middle-aged"</span>, <span class='st'>"Elderly"</span>),
+    <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Age (4 category)"</span>
+)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -301,11 +305,11 @@ it as a derived variable on the server.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>

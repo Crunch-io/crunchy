@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract and update in VariableOrders and VariableGroups — ShojiOrder-extract • Crunch</title>
+<title>Copy the folder structure from one dataset to another. — copyFolders • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -29,8 +29,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -46,9 +47,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Extract and update in VariableOrders and VariableGroups — ShojiOrder-extract" />
+<meta property="og:title" content="Copy the folder structure from one dataset to another. — copyFolders" />
 
-<meta property="og:description" content="Extract and update in VariableOrders and VariableGroups" />
+<meta property="og:description" content="Copy the folder structure from one dataset to another." />
 
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -91,7 +92,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2</span>
       </span>
     </div>
 
@@ -181,156 +182,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract and update in VariableOrders and VariableGroups</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-order.R'><code>R/shoji-order.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/variable-order.R'><code>R/variable-order.R</code></a></small>
-    <div class="hidden name"><code>ShojiOrder-extract.Rd</code></div>
+    <h1>Copy the folder structure from one dataset to another.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/folders.R'><code>R/folders.R</code></a></small>
+    <div class="hidden name"><code>copyFolders.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract and update in VariableOrders and VariableGroups</p>
+    <p>Copy the folder structure from one dataset to another.</p>
     
     </div>
 
-    <pre class="usage"># S4 method for ShojiOrder,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for ShojiOrder,character,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for ShojiOrder,ANY
-[[(x, i, j, ...)
-
-# S4 method for ShojiOrder,character
-[[(x, i, j, ...)
-
-# S4 method for ShojiOrder
-$(x, name)
-
-# S4 method for ShojiOrder,character,missing,ShojiOrder
-[(x, i, j) <- value
-
-# S4 method for ShojiOrder,ANY,missing,ShojiOrder
-[(x, i, j) <- value
-
-# S4 method for ShojiOrder,character,missing,list
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,character,missing,character
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,character,missing,OrderGroup
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,ANY,missing,OrderGroup
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,ANY,missing,ANY
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,ANY,missing,`NULL`
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,character,missing,`NULL`
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder,character,missing,ShojiOrder
-[[(x, i, j) <- value
-
-# S4 method for ShojiOrder
-$(x, name) <- value
-
-# S4 method for OrderGroup,ANY,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for OrderGroup,character,ANY
-[(x, i, j, ..., drop = TRUE)
-
-# S4 method for OrderGroup,character
-[[(x, i, j, ...)
-
-# S4 method for OrderGroup,ANY
-[[(x, i, j, ...)
-
-# S4 method for OrderGroup
-$(x, name)
-
-# S4 method for OrderGroup,character,missing,list
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,character,missing,character
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,character,missing,ShojiOrder
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,character,missing,OrderGroup
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,ANY,missing,OrderGroup
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,numeric,missing,`NULL`
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup,character,missing,`NULL`
-[[(x, i, j) <- value
-
-# S4 method for OrderGroup
-$(x, name) <- value
-
-# S4 method for VariableOrder,character,missing,CrunchDataset
-[[(x, i,
-  j) <- value
-
-# S4 method for VariableGroup,character,missing,CrunchDataset
-[[(x, i,
-  j) <- value</pre>
+    <pre class="usage"><span class='fu'>copyFolders</span>(<span class='no'>source</span>, <span class='no'>target</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a VariableOrder or VariableGroup</p></td>
+      <th>source</th>
+      <td><p>the dataset you want to copy the order from</p></td>
     </tr>
     <tr>
-      <th>i</th>
-      <td><p>an index. Numeric and logical indexing supported for both classes;
-character indexing supported for VariableOrder, matching on VariableGroup
-names</p></td>
-    </tr>
-    <tr>
-      <th>j</th>
-      <td><p>Invalid</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments</p></td>
-    </tr>
-    <tr>
-      <th>drop</th>
-      <td><p>Ignored</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>Same as i but for <code>$</code></p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>For update methods, an object equivalent in class to what is
-being updated</p></td>
+      <th>target</th>
+      <td><p>the dataset you want to copy the order to</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>[[</code> and <code>$</code> on a VariableOrder return the VariableGroup.
-<code>[[</code> on VariableGroup returns the entity within, either a character
-(URL) or nested VariableGroup. <code>[</code> and assignment methods return
-objects of the same class as <code>x</code></p>
+    <p>returns the target dataset with source's folder structure</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>copyFolders</span>(<span class='no'>ds1</span>, <span class='no'>ds</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -338,18 +224,20 @@ objects of the same class as <code>x</code></p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell.</p>
+  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>
