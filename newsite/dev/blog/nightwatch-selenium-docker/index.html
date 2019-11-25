@@ -71,6 +71,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
                       <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
                       <a class="dropdown-item" href="crunchbox">CrunchBox</a>
                       <a class="dropdown-item" href="survey-data-expertise">Survey Data Expertise</a>
                       <a class="dropdown-item" href="crunchdb">CrunchDB</a>
@@ -134,55 +135,45 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn&rsquo;t be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
-
+                          <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn't be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
 <p>For our end-to-end testing we use <a href="http://nightwatchjs.org">Nightwatch.js</a>, a JavaScript
 testing tool that uses <a href="http://www.seleniumhq.org">Selenium</a> to drive a browser to perform tests. Our goal is to be
 able to test our Python backend, our REST APIs, and the
 behavior of our JavaScript single-page application, using a real browser,
 running real code.</p>
-
 <p>Anyone that has set up Selenium knows that it can be very picky about
 the versions of the different tools you should have. Selenium 3.4.0 might need
 <a href="https://sites.google.com/a/chromium.org/chromedriver/">ChromeDriver</a> 2.31 which requires <a href="https://www.google.com/chrome/">Chrome</a> 56.3920.234034249324234329 (okay, so
 those version numbers may be made up), and unless you have
 the exact same versions every single time, it can easily result in tests
-that work on one developer&rsquo;s machine but not on another.</p>
-
+that work on one developer's machine but not on another.</p>
 <p>Compounding the version mismatch problem, we build and test our entire stack on a <a href="https://jenkins.io">Jenkins</a> cluster. Many of our developers would code and test on <a href="https://www.apple.com/macos/">Apple MacOS</a>, but our Jenkins pipeline
 was running on <a href="http://ubuntu.com">Ubuntu</a> or <a href="https://www.centos.org">CentOS</a>. This led to messages like these being posted to our Slack channel:</p>
-
 <blockquote>
-<p>new variable tests pass locally so I&rsquo;m sending them to jenkins for failure</p>
+<p>new variable tests pass locally so I'm sending them to jenkins for failure</p>
 </blockquote>
-
 <p>and</p>
-
 <blockquote>
 <p>once again it passes locally (I’m tired of saying that). we’ll see if it
 passes the Jenkins Arbitron 5000</p>
 </blockquote>
-
 <p>As a result, developers were less likely to run all tests locally before pushing because Jenkins was the final arbiter
 of truth, and well, it would pass locally anyway (right?). Moreover, trying to debug this kind of &ldquo;works on my machine&rdquo; problem was really, really painful.</p>
-
 <p>In addition to the cost to developers, operations spent an awful
 lot of time testing Selenium/ChromeDriver/Chrome versions to verify that
 everything continued to work. Linux package management makes installing the
 latest version of a package incredibly simple, but rolling back is less so. Unless you manually keep
 around the old versions of packages, you end up scouring the net for just the
 right <code>.deb</code> or <code>.rpm</code> that would make everything function again. In the mean
-time, developers are unhappy because you&rsquo;ve just taken down their testing
+time, developers are unhappy because you've just taken down their testing
 platform.</p>
-
 <p>This is where <a href="https://www.docker.com">Docker</a> containers presented a perfect solution for us.
 Selenium makes Docker containers available in a variety of configurations on
 the <a href="https://hub.docker.com/u/selenium/">Selenium Dockerhub</a>. Using the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">standalone-chrome</a> container, we
 can easily spawn a Selenium server that allows us to connect and spawn Chrome
 browsers for testing. The docker container is easy to start up, easy to
-tear down, and because it is self contained and doesn&rsquo;t require installation of
+tear down, and because it is self contained and doesn't require installation of
 packages or software, easy to upgrade.</p>
-
 <p>Hence the birth of <a href="https://github.com/crunch-io/nightwatchrun/">nightwatchrun</a>, which we have just made public under the MIT license. Given our existing test suite of Nightwatch
 tests, we wanted to be able to quickly spin up a new container, run our tests,
 and after the tests were completed, tear down the container. This approach solved our two big problems.
@@ -190,22 +181,16 @@ Because Jenkins is running the exact same software/container as developers, &ldq
 is a thing of the past. Our developers can now easily run their Nightwatch
 tests against the exact same software stack used by Jenkins with <a href="https://www.docker.com/docker-mac">Docker for Mac</a>.
 Moreover, operations is no longer in the business of testing all kinds of different
-  versions against each other to find the right combination of dependencies.</p>
-
+versions against each other to find the right combination of dependencies.</p>
 <p><code>nightwatchrun.sh</code> is a simple shell script that, given a Nightwatch.js
 configuration file, will run a Docker container, get its IP address/port
 number, set some environment variables, and start Nightwatch. The environment
 variables are used to set the Selenium host/port number.</p>
-
 <p>You can try it out yourself:</p>
-
 <pre><code>git clone git@github.com:Crunch-io/nightwatchrun.git
 yarn install
 ./nightwatchrun.sh -c nightwatch.conf.js
-</code></pre>
-
-<p>This will output something similar to:</p>
-
+</code></pre><p>This will output something similar to:</p>
 <pre><code>Riley:nightwatchrun laurenipsum$ ./nightwatchrun.sh -c nightwatch.conf.js
 Starting selenium testing against environment: stable with version latest
 Using config file: nightwatch.conf.js
@@ -260,15 +245,12 @@ Executed tests 1 times successfully
 Removing the docker container: nightwatchrun.nightwatch.conf.js
 nightwatchrun.nightwatch.conf.js
 </code></pre>
-
 <p>Already have a Nightwatch.js setup? Take a look at
 <a href="https://github.com/Crunch-io/nightwatchrun/blob/master/nightwatch.conf.js">nightwatch.conf.js</a>, and copy over the changes necessary.</p>
-
 <p>Testing with Docker has made a world of difference. Less hassle, no need to
 locally install the right combination of the JRE/Selenium/ChromeDriver/Chrome,
 and tests now run self-contained in a headless container, so no flash of a
 browser opening or focus stealing.</p>
-
 <p>If you have suggestions or improvements for nightwatchrun, please add an issue on the <a href="https://github.com/Crunch-io/nightwatchrun/issues">Github
 issue tracker</a>, or provide a pull request with your suggested changes.</p>
 

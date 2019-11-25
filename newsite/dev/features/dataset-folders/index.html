@@ -71,6 +71,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
                       <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
                       <a class="dropdown-item" href="crunchbox">CrunchBox</a>
                       <a class="dropdown-item" href="survey-data-expertise">Survey Data Expertise</a>
                       <a class="dropdown-item" href="crunchdb">CrunchDB</a>
@@ -134,92 +135,65 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          
-
-<p>Dataset folders allow you to organize your data hierarchically, similar to a file system as you might see in Windows Explorer or MacOS Finder. Folders make finding, organizing, and sharing data more intuitive.</p>
-
+                          <p>Dataset folders allow you to organize your data hierarchically, similar to a file system as you might see in Windows Explorer or MacOS Finder. Folders make finding, organizing, and sharing data more intuitive.</p>
 <ul>
-<li><p>Folders can be used to organize large collections of datasets into more manageable units. If your organization imports data from many sources or has a large archive of previously imported data, you can organize them by source, time of import/survey, subject, etc.</p></li>
-
-<li><p>Editors can grant access to different folders to different sets of users. Multiple clients, or multiple groups or teams within a client, can be granted access to just the data you want to show them. Furthermore, you can move a dataset into a folder to instantly make it available to all users who have access to that folder.</p></li>
+<li>
+<p>Folders can be used to organize large collections of datasets into more manageable units. If your organization imports data from many sources or has a large archive of previously imported data, you can organize them by source, time of import/survey, subject, etc.</p>
+</li>
+<li>
+<p>Editors can grant access to different folders to different sets of users. Multiple clients, or multiple groups or teams within a client, can be granted access to just the data you want to show them. Furthermore, you can move a dataset into a folder to instantly make it available to all users who have access to that folder.</p>
+</li>
 </ul>
-
 <p>These new features in turn bring some changes to our web application. Here are some key differences from the old interface.</p>
-
 <h2 id="navigating">Navigating</h2>
-
-<p>The first thing you&rsquo;ll notice is that the stripe of icons at the left have been replaced by folders. The flat list of project icons didn&rsquo;t work well with a model where folders could nest within each other, so we changed the display to more closely match the underlying model. (Note that while we have removed the custom icons from display for now, we will be reintroducing them with additional branding settings in the near future.)</p>
-
+<p>The first thing you'll notice is that the stripe of icons at the left have been replaced by folders. The flat list of project icons didn't work well with a model where folders could nest within each other, so we changed the display to more closely match the underlying model. (Note that while we have removed the custom icons from display for now, we will be reintroducing them with additional branding settings in the near future.)</p>
 <figure class="img-fluid bordered">
     <img src="dev/features/images/folders-before-and-after.png"/> <figcaption>
             <h4>A Crunch project before and after the updated folders feature</h4>
         </figcaption>
 </figure>
 
-
-<p>Click on a folder&rsquo;s name to enter it. When you do, you&rsquo;ll see at the top of the screen the folder you are currently in and the path to that folder.</p>
-
+<p>Click on a folder's name to enter it. When you do, you'll see at the top of the screen the folder you are currently in and the path to that folder.</p>
 <p>To jump back to a higher folder, just click on it in the header.</p>
-
 <figure class="img-fluid">
     <img src="dev/features/images/folders-breadcrumb.png"/> 
 </figure>
 
-
 <p>Within a folder, you can sort the list of datasets and folders by clicking the column headers at the top of the list. Right-click on the header to select which sortable columns appear in the list.</p>
-
 <p>The other major change to navigation involves the <strong>Personal</strong> folder, previously called the <strong>Personal Project</strong>. This folder used to contain any datasets that were shared with you as well as any datasets that you had imported yourself, which for some users resulted in a long list of datasets with no clear logic grouping them together.</p>
-
-<p>With this update, we&rsquo;ve simplified where you can find the data you have access to.</p>
-
+<p>With this update, we've simplified where you can find the data you have access to.</p>
 <ul>
-<li>If you have access to a folder, you&rsquo;ll see it listed under <strong>All Datasets</strong>, and everything contained inside that folder (including other folders) will be available inside that folder.</li>
+<li>If you have access to a folder, you'll see it listed under <strong>All Datasets</strong>, and everything contained inside that folder (including other folders) will be available inside that folder.</li>
 <li><strong>Personal</strong> now contains any datasets you have imported and not moved to another folder. Only users who have permission to import data will see the Personal folder.</li>
-<li>The other special folder, <strong>Shared with Me</strong>, contains datasets that have been shared with you without access being granted to the folder that contains it. If no datasets have been shared with you in this way, this folder won&rsquo;t appear.</li>
+<li>The other special folder, <strong>Shared with Me</strong>, contains datasets that have been shared with you without access being granted to the folder that contains it. If no datasets have been shared with you in this way, this folder won't appear.</li>
 </ul>
-
 <p>The <strong>Personal</strong> and <strong>Shared with Me</strong> folders will be pinned to the top of the <strong>All Datasets</strong> list to allow them to be easily found and accessed.</p>
-
-<p>As always, when you’re not sure where to find a dataset, use the search bar at the top of screen. If you&rsquo;re looking for a specific dataset by name, you can narrow your search criteria to match only on dataset names.</p>
-
+<p>As always, when you’re not sure where to find a dataset, use the search bar at the top of screen. If you're looking for a specific dataset by name, you can narrow your search criteria to match only on dataset names.</p>
 <p>For more details on navigating dataset folders, see <a href="http://support.crunch.io/articles/cEBBbgki/Navigating-Datasets-Early-Access">the support page</a> for more information.</p>
-
 <h2 id="organizing">Organizing</h2>
-
 <p>If you have permission to import data in a folder, you can create folders within that folder, move datasets between folders, and grant other users access to folders.</p>
-
 <p>Importing data is now accomplished by clicking the dataset name and selecting <strong>New dataset</strong>.</p>
-
 <p>To create a folder, click the dataset name and select <strong>New Folder</strong> from the dropdown.</p>
-
 <figure class="img-fluid bordered">
     <img src="dev/features/images/folders-add-folder.png"/> 
 </figure>
 
-
 <p>This opens the <strong>New Folder</strong> dialog, where you can name the new folder.</p>
-
 <figure class="img-fluid bordered">
     <img src="dev/features/images/folders-create-folder.png"/> 
 </figure>
 
-
 <p>To move a dataset or folder to a new folder, hover over it in the dataset list, click the down-arrow to open a dropdown, and select <strong>Move to&hellip;</strong>.</p>
-
 <figure class="img-fluid bordered">
     <img src="dev/features/images/folders-move-to-menu.png"/> 
 </figure>
 
-
 <p>This opens the <strong>Move to</strong> dialog that you can use to move the selected dataset or folder to any folder where you have write access (including your <strong>Personal</strong> folder).</p>
-
 <figure class="img-fluid bordered">
     <img src="dev/features/images/move-to-dialog.png"/> 
 </figure>
 
-
 <p>To give other users access to a folder you have created, open that folder and then click its name in the header and select <strong>Members</strong>. Add users or teams who should have access to this folder. Note that any users who have access to the parent folder will automatically have access to this one, but they will not appear in the list.</p>
-
 <p>See <a href="http://support.crunch.io/articles/ceXXoAEi/Organizing-Datasets-Early-Access">the help site</a> for more information on these features.</p>
 
                       </div>

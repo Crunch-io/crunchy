@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
 <meta name="twitter:title" content="Making Graphs Look Easy with ggplot2 and Tidy Evaluation"/>
-<meta name="twitter:description" content="At Crunch, one of the ways we try to make data exploration simple is by providing sensible default views that take into account the properties of your data and metadata. We&rsquo;re in the process of releasing some plotting methods in our crplyr R package that define methods for ggplot2&rsquo;s autoplot() function. autoplot() was the ideal approach for us to encapsulate the logic of how to &ldquo;just do the right thing."/>
+<meta name="twitter:description" content="At Crunch, one of the ways we try to make data exploration simple is by providing sensible default views that take into account the properties of your data and metadata. We&#39;re in the process of releasing some plotting methods in our crplyr R package that define methods for ggplot2&#39;s autoplot() function. autoplot() was the ideal approach for us to encapsulate the logic of how to &ldquo;just do the right thing.&rdquo; You can do the analysis you want, and it will make smart choices about how to display it with no additional input&ndash;all of which you can control or override with additional ggplot2 layers, if you want."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -71,6 +71,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
                       <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
                       <a class="dropdown-item" href="crunchbox">CrunchBox</a>
                       <a class="dropdown-item" href="survey-data-expertise">Survey Data Expertise</a>
                       <a class="dropdown-item" href="crunchdb">CrunchDB</a>
@@ -134,50 +135,37 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          
-
-<p>At Crunch, one of the ways we try to make data exploration simple is by
+                          <p>At Crunch, one of the ways we try to make data exploration simple is by
 providing sensible default views that take into account the properties
-of your data and metadata. We&rsquo;re in the process of releasing some
+of your data and metadata. We're in the process of releasing some
 plotting methods in our <code>crplyr</code> R package that define methods for
-<code>ggplot2</code>&rsquo;s
+<code>ggplot2</code>'s
 <a href="https://ggplot2.tidyverse.org/reference/autoplot.html"><code>autoplot()</code></a>
 function. <code>autoplot()</code> was the ideal approach for us to encapsulate the
 logic of how to &ldquo;just do the right thing.&rdquo; You can do the analysis you
 want, and it will make smart choices about how to display it with no
 additional input&ndash;all of which you can control or override with
 additional <code>ggplot2</code> layers, if you want.</p>
-
 <p>This lets us plot Crunch variables and high dimensional survey
 cross-tabs easily, while making sure that the plot always fits the data.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(ggplot2)
+<span style="color:#a6e22e">library</span>(crplyr)
 
-<pre><code class="language-r">library(ggplot2)
-library(crplyr)
+crunch<span style="color:#f92672">::</span><span style="color:#a6e22e">login</span>()
+ds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">loadDataset</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Not-so-simple dataset with all types&#34;</span>)
 
-crunch::login()
-ds &lt;- loadDataset(&quot;Not-so-simple dataset with all types&quot;)
-
-ds %&gt;%
-    group_by(pasta, food_groups) %&gt;%
-    summarize(count=n()) %&gt;%
-    autoplot()
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-1-1.png" alt="" /></p>
-
-<pre><code class="language-r">ds %&gt;%
-    group_by(abolitionists, food_groups) %&gt;%
-    summarize(count=n()) %&gt;%
-    autoplot(&quot;tile&quot;)
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-1-2.png" alt="" /></p>
-
-<pre><code class="language-r">autoplot(ds$ec, &quot;bar&quot;)
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-1-3.png" alt="" /></p>
-
+ds <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">group_by</span>(pasta, food_groups) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">summarize</span>(count<span style="color:#f92672">=</span><span style="color:#a6e22e">n</span>()) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">autoplot</span>()
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-1-1.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">ds <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">group_by</span>(abolitionists, food_groups) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">summarize</span>(count<span style="color:#f92672">=</span><span style="color:#a6e22e">n</span>()) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">autoplot</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">tile&#34;</span>)
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-1-2.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">autoplot</span>(ds<span style="color:#f92672">$</span>ec, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bar&#34;</span>)
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-1-3.png" alt=""></p>
 <p>Making it look easy, though, can be hard work. Our <code>autoplot</code> methods
 inspect the input objects to understand their dimensionality and data
 types and choose an appropriate visualization. Figuring out and passing
@@ -187,42 +175,35 @@ make these functions work, we took advantage of
 framework that systematizes non-standard evaluation in R, now
 also supported in the new <a href="https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/">3.0.0 release of
 ggplot2</a>.</p>
-
 <p>To illustrate this pattern, this blog post goes through a simplified
 example using the &ldquo;diamonds&rdquo; example dataset and pure <code>dplyr</code> methods.
-We&rsquo;ll create a plotting function that adjusts to the number of grouping
+We'll create a plotting function that adjusts to the number of grouping
 variables in a tibble. This lets you pipe data from a dplyr pipeline
 into a single function and get a meaningful, appropriate plot.</p>
-
 <p>The actual code for our Crunch <code>autoplot</code> methods is
 <a href="https://github.com/Crunch-io/crplyr/blob/ggplot-methods/R/plotting.R">here</a>.</p>
-
-<h2 id="non-standard-evaluation-great-power-great-pain">Non-Standard Evaluation: Great Power, Great Pain</h2>
-
+<h2 id="nonstandard-evaluation-great-power-great-pain">Non-Standard Evaluation: Great Power, Great Pain</h2>
 <p>A great feature the R language has is that it lets you access and
 manipulate the environment in which a function is called. This
 non-standard evaluation (NSE) gives package authors a flexible and
 powerful way to build programming interfaces.</p>
-
 <p>At Crunch, we use NSE a lot. One example is in reporting better error
 messages. If you send the wrong data to the API, you might get back a
-response like <code>400: Payload is malformed</code>. That&rsquo;s not very helpful even
-for users who know our API well. We use NSE to inspect the user&rsquo;s
+response like <code>400: Payload is malformed</code>. That's not very helpful even
+for users who know our API well. We use NSE to inspect the user's
 calling environment, figure out which variables or data structures are
 causing the problem, and <a href="https://github.com/Crunch-io/rcrunch/blob/1b8ab2f22f3b08d246cd50232c3322de963f0165/R/geo.R#L108">suggest a
 fix</a>:
 instead of a generic validation message, we error with the more helpful
 <code>ds$some_name must be a Crunch Variable</code>, pointing back to the input that the user typed.</p>
-
-<p>Despite working with NSE all the time, we&rsquo;re pretty sure that
-we&rsquo;ve never once gotten it right on the first try. The main reason is
+<p>Despite working with NSE all the time, we're pretty sure that
+we've never once gotten it right on the first try. The main reason is
 that whenever you are capturing an expression to evaluate later you need
 to also keep track of which environment you should evaluate that
 expression in. This makes it really difficult to pass unevaluated
 expressions between functions and have the evaluation occur without
 error. For instance, take this code which replaces a <code>missing</code> function
 argument with a logical value:</p>
-
 <pre><code>f1 &lt;- function(i, j, ...) {
     args &lt;- eval(substitute(alist(i, j, ...)))
     args &lt;- replace_missing(args)
@@ -246,18 +227,15 @@ replace_missing &lt;- function(args){
     return(out)
 }
 </code></pre>
-
 <p>This code captures an expression at the top level, and passes it down to
-a second function which returns <code>TRUE</code> if it can&rsquo;t find the argument,
+a second function which returns <code>TRUE</code> if it can't find the argument,
 and evaluates expression if it can. We use code very similar to this
 for <a href="https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R#L116-L131">subsetting CrunchCube
 objects</a>.</p>
-
-<p>There&rsquo;s a tricky mistake here though: we aren&rsquo;t specifying in which
+<p>There's a tricky mistake here though: we aren't specifying in which
 environment we want that evaluation to take place. So if we happen to
-send a variable that is used somewhere in the call stack, we&rsquo;ll get the
+send a variable that is used somewhere in the call stack, we'll get the
 wrong result:</p>
-
 <pre><code>x &lt;- 1
 y &lt;- 1
 
@@ -273,148 +251,126 @@ f1(x, , 3)
 
 ## [1] &quot;x&quot;    &quot;TRUE&quot; &quot;3&quot;
 </code></pre>
-
-<p>What&rsquo;s happening here is that when the final <code>eval(x)</code> is happening, <code>x</code>
+<p>What's happening here is that when the final <code>eval(x)</code> is happening, <code>x</code>
 is identified through lexical scoping, and so it ends up using the <code>x</code>
-that&rsquo;s in the <code>lapply</code> environment, rather than the one that&rsquo;s in the
+that's in the <code>lapply</code> environment, rather than the one that's in the
 global environment. To fix this, we need to specify the environment
 where that evaluation should take place. This is an easy thing to
 forget, and presents its own problems if you move functions around, or
 later call them in a different order.</p>
-
 <h2 id="enter-the-quosure">Enter the Quosure</h2>
-
 <p>Tidyeval offers a solution to this problem: it bundles the expression
 and its environment in a single object called a &ldquo;quosure&rdquo;. What this
-means is that as a developer, you don&rsquo;t have to worry about matching
+means is that as a developer, you don't have to worry about matching
 expressions to environments and can pass unevaluated expressions between
 functions with confidence. Because the expression and the environment
-are bundled together, when you end up evaluating it you won&rsquo;t ever be
+are bundled together, when you end up evaluating it you won't ever be
 surprised by the result.</p>
-
 <h2 id="autoplot">Autoplot</h2>
-
 <p>Back to our <code>autoplot()</code> project, our initial goal is to have a single function that will produce different
 plots based on the number of grouping variables in the tibble it
 receives. First, we create a general plotting function
 that figures out which plotting sub-function to use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(ggplot2)
+<span style="color:#a6e22e">library</span>(dplyr)
 
-<pre><code class="language-r">library(ggplot2)
-library(dplyr)
+autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df) {
+    <span style="color:#75715e"># Add grouping variable which was stripped by summarize</span>
+    df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">group_by</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#a6e22e">groups</span>(df), <span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#a6e22e">sym</span>(<span style="color:#a6e22e">names</span>(df)<span style="color:#a6e22e">[length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]))
 
-autoplot &lt;- function(df) {
-    # Add grouping variable which was stripped by summarize
-    df &lt;- df %&gt;%
-        group_by(!!!groups(df), !!sym(names(df)[length(groups(df)) + 1]))
-
-    if (length(groups(df)) == 1) {
-        plot_fun &lt;- plot_1d
+    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+        plot_fun <span style="color:#f92672">&lt;-</span> plot_1d
     } else {
-        plot_fun &lt;- plot_2d
+        plot_fun <span style="color:#f92672">&lt;-</span> plot_2d
     }
-    vars &lt;- syms(names(df))
-    plot_fun(df, vars)
+    vars <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(<span style="color:#a6e22e">names</span>(df))
+    <span style="color:#a6e22e">plot_fun</span>(df, vars)
 }
-</code></pre>
-
-<p>The function inspects the data frame and then selects a plotting
+</code></pre></div><p>The function inspects the data frame and then selects a plotting
 function based on the number of groups in it. It then
 captures the names of the dataset as a list of symbols and passes it
 down to the plotting function. The next step is to write the two
 plotting functions that actually do the work:</p>
-
-<pre><code class="language-r">plot_1d &lt;- function(df, vars){
-    groups &lt;- vars[vars %in% groups(df)]
-    measure &lt;- vars[length(vars)][[1]]
-    df %&gt;%
-        select(!!groups[[1]], !!measure) %&gt;%
-        arrange(desc(!!measure)) %&gt;%
-        ggplot(aes(x = !!measure, y = !!groups[[1]])) +
-        geom_point() +
-        theme_minimal()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">plot_1d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df, vars){
+    groups <span style="color:#f92672">&lt;-</span> vars[vars <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">groups</span>(df)]
+    measure <span style="color:#f92672">&lt;-</span> vars<span style="color:#a6e22e">[length</span>(vars)][[1]]
+    df <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">select</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups[[1]], <span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure) <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure)) <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure, y <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups[[1]])) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">geom_point</span>() <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">theme_minimal</span>()
 }
 
-diamonds %&gt;%
-    group_by(cut) %&gt;%
-    tally() %&gt;%
-    autoplot()
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-5-1.png" alt="" /></p>
-
+diamonds <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">group_by</span>(cut) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">tally</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">autoplot</span>()
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-5-1.png" alt=""></p>
 <p>The convenient thing about using tidy eval in this case is that we can
 confidently pass the unevaluated names into both the <code>dplyr</code> and
 <code>ggplot2</code> code without worrying that the evaluation will fail. This
 means we can arrange the dataset based on the measure name, and then
-plot that measure even though we don&rsquo;t know ahead of time what the
+plot that measure even though we don't know ahead of time what the
 measure will be called. We can do the same thing with the 2d plot:</p>
-
-<pre><code class="language-r">plot_2d &lt;- function(df, vars){
-    groups &lt;- vars[vars %in% groups(df)]
-    measure &lt;- vars[length(vars)][[1]]
-    df %&gt;%
-        select(!!!groups, !!measure) %&gt;%
-        arrange(desc(!!measure)) %&gt;%
-        ggplot(aes(x = !!measure, y = !!groups[[1]], , color = !!groups[[2]])) +
-        geom_point() +
-        theme_minimal()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">plot_2d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df, vars){
+    groups <span style="color:#f92672">&lt;-</span> vars[vars <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">groups</span>(df)]
+    measure <span style="color:#f92672">&lt;-</span> vars<span style="color:#a6e22e">[length</span>(vars)][[1]]
+    df <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">select</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups, <span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure) <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">arrange</span>(<span style="color:#a6e22e">desc</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure)) <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">ggplot</span>(<span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#f92672">!</span>measure, y <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups[[1]], , color <span style="color:#f92672">=</span> <span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups[[2]])) <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">geom_point</span>() <span style="color:#f92672">+</span>
+        <span style="color:#a6e22e">theme_minimal</span>()
 }
 
-diamonds %&gt;%
-    group_by(cut ,clarity) %&gt;%
-    tally() %&gt;%
-    autoplot()
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-6-1.png" alt="" /></p>
-
+diamonds <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">group_by</span>(cut ,clarity) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">tally</span>() <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">autoplot</span>()
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-6-1.png" alt=""></p>
 <p>This is basically the same code as the 1D plot except that we used the
 splice operator (<code>!!!</code>) in the select call and added another grouping
 variable on the color dimension.</p>
-
 <p>What happens when you have more than three dimensions? The <code>ggplot2</code>
 package allows us to use tidyeval to dynamically add facets.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df) {
+    <span style="color:#75715e"># Add grouping variable which was stripped by summarize</span>
+    df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
+        <span style="color:#a6e22e">group_by</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#a6e22e">groups</span>(df), <span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#a6e22e">sym</span>(<span style="color:#a6e22e">names</span>(df)<span style="color:#a6e22e">[length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]))
 
-<pre><code class="language-r">autoplot &lt;- function(df) {
-    # Add grouping variable which was stripped by summarize
-    df &lt;- df %&gt;%
-        group_by(!!!groups(df), !!sym(names(df)[length(groups(df)) + 1]))
-
-    groups &lt;- groups(df)
-    if (length(groups) == 1) {
-        plot_fun &lt;- plot_1d
+    groups <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">groups</span>(df)
+    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+        plot_fun <span style="color:#f92672">&lt;-</span> plot_1d
     } else {
-        plot_fun &lt;- plot_2d
+        plot_fun <span style="color:#f92672">&lt;-</span> plot_2d
     }
-    vars &lt;- syms(names(df))
-    out &lt;- plot_fun(df, vars)
+    vars <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(<span style="color:#a6e22e">names</span>(df))
+    out <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">plot_fun</span>(df, vars)
 
-    if (length(groups) &gt; 2) {
-        groups &lt;- syms(groups)
-        out &lt;- out +
-            facet_wrap(vars(!!!groups[3:length(groups)]))
+    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+        groups <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(groups)
+        out <span style="color:#f92672">&lt;-</span> out <span style="color:#f92672">+</span>
+            <span style="color:#a6e22e">facet_wrap</span>(<span style="color:#a6e22e">vars</span>(<span style="color:#f92672">!</span><span style="color:#f92672">!</span><span style="color:#f92672">!</span>groups[3<span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(groups)]))
     }
-    return(out)
+    <span style="color:#a6e22e">return</span>(out)
 }
 
-diamonds %&gt;%
-    group_by(cut, color, clarity) %&gt;%
-    summarize(number_of_diamonds = n()) %&gt;%
-    autoplot()
-</code></pre>
-
-<p><img src="img/tidyeval/unnamed-chunk-7-1.png" alt="" /></p>
-
+diamonds <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">group_by</span>(cut, color, clarity) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">summarize</span>(number_of_diamonds <span style="color:#f92672">=</span> <span style="color:#a6e22e">n</span>()) <span style="color:#f92672">%&gt;%</span>
+    <span style="color:#a6e22e">autoplot</span>()
+</code></pre></div><p><img src="img/tidyeval/unnamed-chunk-7-1.png" alt=""></p>
 <h2 id="conclusion">Conclusion</h2>
-
-<p>Tidyeval solves the main challenges of working with R&rsquo;s non-standard evaluation by
+<p>Tidyeval solves the main challenges of working with R's non-standard evaluation by
 bundling expressions and environments into quosures. The new release of
 <code>ggplot2</code> unlocks the power of using tidyeval for making powerful
 visualizations quickly. Though we could have made <code>autoplot</code> methods for
 Crunch objects before tidyeval support, it would have been much more
 complicated and error-prone. Using tidyeval and <code>ggplot2</code> 3.0.0 to pass
 quosures between functions unlocks powerful new
-mechanisms of building user-friendly functions. And that let&rsquo;s us do
+mechanisms of building user-friendly functions. And that let's us do
 what we strive to do most: get out of the way and let our users explore
 their data quickly in a way that matches their intuitions for how R and
 tidy conventions work.</p>
