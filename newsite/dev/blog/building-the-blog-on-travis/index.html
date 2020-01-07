@@ -182,7 +182,7 @@ travis encrypt GH_TOKEN=token --add
 <h1 id="final-observations">Final observations</h1>
 <h2 id="script-or-yaml">Script or YAML?</h2>
 <p>Some blogs proposed putting your build script into a .sh file that the .travis.yml file invokes. We didn't find that to help anything. Unless you're planning to run your build script outside of Travis too, there doesn't seem to be a reason to put your build steps outside of the YAML file itself. In fact, it just complicated things—one more file to look at to debug, not to mention that you had to deal with making the shell script executable. Either way works—one of our repos uses a script, the other is all in YAML—but all in the .travis.yml seemed simpler. It evaluates like a script.</p>
-<h2 id="before-script-install-after-success-">before_script, install, after_success, &hellip;</h2>
+<h2 id="before_script-install-after_success-">before_script, install, after_success, &hellip;</h2>
 <p>Travis's YAML file supports various blocks that get evaluated sequentially. Where should the code go?</p>
 <p>It doesn't really matter. Travis-CI is designed for running automated tests. In that context, it makes sense that you have different contexts for setup, running the tests, and things that you'd only do if the tests passed, and so on. Here, we're just running a script. Organize your script in a way that makes sense to you, but you could put everything in <code>install</code>, or <code>script</code>, or whatever, and it should run just the same.</p>
 <h2 id="just-automate-it">Just automate it.</h2>
