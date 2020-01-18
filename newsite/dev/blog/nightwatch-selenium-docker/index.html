@@ -137,7 +137,7 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn't be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
+                          <p>At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn&rsquo;t be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.</p>
 <p>For our end-to-end testing we use <a href="http://nightwatchjs.org">Nightwatch.js</a>, a JavaScript
 testing tool that uses <a href="http://www.seleniumhq.org">Selenium</a> to drive a browser to perform tests. Our goal is to be
 able to test our Python backend, our REST APIs, and the
@@ -148,11 +148,11 @@ the versions of the different tools you should have. Selenium 3.4.0 might need
 <a href="https://sites.google.com/a/chromium.org/chromedriver/">ChromeDriver</a> 2.31 which requires <a href="https://www.google.com/chrome/">Chrome</a> 56.3920.234034249324234329 (okay, so
 those version numbers may be made up), and unless you have
 the exact same versions every single time, it can easily result in tests
-that work on one developer's machine but not on another.</p>
+that work on one developer&rsquo;s machine but not on another.</p>
 <p>Compounding the version mismatch problem, we build and test our entire stack on a <a href="https://jenkins.io">Jenkins</a> cluster. Many of our developers would code and test on <a href="https://www.apple.com/macos/">Apple MacOS</a>, but our Jenkins pipeline
 was running on <a href="http://ubuntu.com">Ubuntu</a> or <a href="https://www.centos.org">CentOS</a>. This led to messages like these being posted to our Slack channel:</p>
 <blockquote>
-<p>new variable tests pass locally so I'm sending them to jenkins for failure</p>
+<p>new variable tests pass locally so I&rsquo;m sending them to jenkins for failure</p>
 </blockquote>
 <p>and</p>
 <blockquote>
@@ -167,14 +167,14 @@ everything continued to work. Linux package management makes installing the
 latest version of a package incredibly simple, but rolling back is less so. Unless you manually keep
 around the old versions of packages, you end up scouring the net for just the
 right <code>.deb</code> or <code>.rpm</code> that would make everything function again. In the mean
-time, developers are unhappy because you've just taken down their testing
+time, developers are unhappy because you&rsquo;ve just taken down their testing
 platform.</p>
 <p>This is where <a href="https://www.docker.com">Docker</a> containers presented a perfect solution for us.
 Selenium makes Docker containers available in a variety of configurations on
 the <a href="https://hub.docker.com/u/selenium/">Selenium Dockerhub</a>. Using the <a href="https://hub.docker.com/r/selenium/standalone-chrome/">standalone-chrome</a> container, we
 can easily spawn a Selenium server that allows us to connect and spawn Chrome
 browsers for testing. The docker container is easy to start up, easy to
-tear down, and because it is self contained and doesn't require installation of
+tear down, and because it is self contained and doesn&rsquo;t require installation of
 packages or software, easy to upgrade.</p>
 <p>Hence the birth of <a href="https://github.com/crunch-io/nightwatchrun/">nightwatchrun</a>, which we have just made public under the MIT license. Given our existing test suite of Nightwatch
 tests, we wanted to be able to quickly spin up a new container, run our tests,

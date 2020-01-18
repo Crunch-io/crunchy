@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
 <meta name="twitter:title" content="Making Graphs Look Easy with ggplot2 and Tidy Evaluation"/>
-<meta name="twitter:description" content="At Crunch, one of the ways we try to make data exploration simple is by providing sensible default views that take into account the properties of your data and metadata. We&#39;re in the process of releasing some plotting methods in our crplyr R package that define methods for ggplot2&#39;s autoplot() function. autoplot() was the ideal approach for us to encapsulate the logic of how to &ldquo;just do the right thing.&rdquo; You can do the analysis you want, and it will make smart choices about how to display it with no additional input&ndash;all of which you can control or override with additional ggplot2 layers, if you want."/>
+<meta name="twitter:description" content="At Crunch, one of the ways we try to make data exploration simple is by providing sensible default views that take into account the properties of your data and metadata. We&rsquo;re in the process of releasing some plotting methods in our crplyr R package that define methods for ggplot2&#39;s autoplot() function. autoplot() was the ideal approach for us to encapsulate the logic of how to &ldquo;just do the right thing.&rdquo; You can do the analysis you want, and it will make smart choices about how to display it with no additional input&ndash;all of which you can control or override with additional ggplot2 layers, if you want."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -139,7 +139,7 @@
                       <div class="col-md-10 offset-md-1">
                           <p>At Crunch, one of the ways we try to make data exploration simple is by
 providing sensible default views that take into account the properties
-of your data and metadata. We're in the process of releasing some
+of your data and metadata. We&rsquo;re in the process of releasing some
 plotting methods in our <code>crplyr</code> R package that define methods for
 <code>ggplot2</code>'s
 <a href="https://ggplot2.tidyverse.org/reference/autoplot.html"><code>autoplot()</code></a>
@@ -179,7 +179,7 @@ also supported in the new <a href="https://www.tidyverse.org/articles/2018/07/gg
 ggplot2</a>.</p>
 <p>To illustrate this pattern, this blog post goes through a simplified
 example using the &ldquo;diamonds&rdquo; example dataset and pure <code>dplyr</code> methods.
-We'll create a plotting function that adjusts to the number of grouping
+We&rsquo;ll create a plotting function that adjusts to the number of grouping
 variables in a tibble. This lets you pipe data from a dplyr pipeline
 into a single function and get a meaningful, appropriate plot.</p>
 <p>The actual code for our Crunch <code>autoplot</code> methods is
@@ -191,15 +191,15 @@ non-standard evaluation (NSE) gives package authors a flexible and
 powerful way to build programming interfaces.</p>
 <p>At Crunch, we use NSE a lot. One example is in reporting better error
 messages. If you send the wrong data to the API, you might get back a
-response like <code>400: Payload is malformed</code>. That's not very helpful even
-for users who know our API well. We use NSE to inspect the user's
+response like <code>400: Payload is malformed</code>. That&rsquo;s not very helpful even
+for users who know our API well. We use NSE to inspect the user&rsquo;s
 calling environment, figure out which variables or data structures are
 causing the problem, and <a href="https://github.com/Crunch-io/rcrunch/blob/1b8ab2f22f3b08d246cd50232c3322de963f0165/R/geo.R#L108">suggest a
 fix</a>:
 instead of a generic validation message, we error with the more helpful
 <code>ds$some_name must be a Crunch Variable</code>, pointing back to the input that the user typed.</p>
-<p>Despite working with NSE all the time, we're pretty sure that
-we've never once gotten it right on the first try. The main reason is
+<p>Despite working with NSE all the time, we&rsquo;re pretty sure that
+we&rsquo;ve never once gotten it right on the first try. The main reason is
 that whenever you are capturing an expression to evaluate later you need
 to also keep track of which environment you should evaluate that
 expression in. This makes it really difficult to pass unevaluated
@@ -230,13 +230,13 @@ replace_missing &lt;- function(args){
 }
 </code></pre>
 <p>This code captures an expression at the top level, and passes it down to
-a second function which returns <code>TRUE</code> if it can't find the argument,
+a second function which returns <code>TRUE</code> if it can&rsquo;t find the argument,
 and evaluates expression if it can. We use code very similar to this
 for <a href="https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R#L116-L131">subsetting CrunchCube
 objects</a>.</p>
-<p>There's a tricky mistake here though: we aren't specifying in which
+<p>There&rsquo;s a tricky mistake here though: we aren&rsquo;t specifying in which
 environment we want that evaluation to take place. So if we happen to
-send a variable that is used somewhere in the call stack, we'll get the
+send a variable that is used somewhere in the call stack, we&rsquo;ll get the
 wrong result:</p>
 <pre><code>x &lt;- 1
 y &lt;- 1
@@ -253,9 +253,9 @@ f1(x, , 3)
 
 ## [1] &quot;x&quot;    &quot;TRUE&quot; &quot;3&quot;
 </code></pre>
-<p>What's happening here is that when the final <code>eval(x)</code> is happening, <code>x</code>
+<p>What&rsquo;s happening here is that when the final <code>eval(x)</code> is happening, <code>x</code>
 is identified through lexical scoping, and so it ends up using the <code>x</code>
-that's in the <code>lapply</code> environment, rather than the one that's in the
+that&rsquo;s in the <code>lapply</code> environment, rather than the one that&rsquo;s in the
 global environment. To fix this, we need to specify the environment
 where that evaluation should take place. This is an easy thing to
 forget, and presents its own problems if you move functions around, or
@@ -263,10 +263,10 @@ later call them in a different order.</p>
 <h2 id="enter-the-quosure">Enter the Quosure</h2>
 <p>Tidyeval offers a solution to this problem: it bundles the expression
 and its environment in a single object called a &ldquo;quosure&rdquo;. What this
-means is that as a developer, you don't have to worry about matching
+means is that as a developer, you don&rsquo;t have to worry about matching
 expressions to environments and can pass unevaluated expressions between
 functions with confidence. Because the expression and the environment
-are bundled together, when you end up evaluating it you won't ever be
+are bundled together, when you end up evaluating it you won&rsquo;t ever be
 surprised by the result.</p>
 <h2 id="autoplot">Autoplot</h2>
 <p>Back to our <code>autoplot()</code> project, our initial goal is to have a single function that will produce different
@@ -314,7 +314,7 @@ diamonds <span style="color:#f92672">%&gt;%</span>
 confidently pass the unevaluated names into both the <code>dplyr</code> and
 <code>ggplot2</code> code without worrying that the evaluation will fail. This
 means we can arrange the dataset based on the measure name, and then
-plot that measure even though we don't know ahead of time what the
+plot that measure even though we don&rsquo;t know ahead of time what the
 measure will be called. We can do the same thing with the 2d plot:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">plot_2d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df, vars){
     groups <span style="color:#f92672">&lt;-</span> vars[vars <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">groups</span>(df)]
@@ -365,14 +365,14 @@ diamonds <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">autoplot</span>()
 </code></pre></div><p><img src="img/tidyeval/unnamed-chunk-7-1.png" alt=""></p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Tidyeval solves the main challenges of working with R's non-standard evaluation by
+<p>Tidyeval solves the main challenges of working with R&rsquo;s non-standard evaluation by
 bundling expressions and environments into quosures. The new release of
 <code>ggplot2</code> unlocks the power of using tidyeval for making powerful
 visualizations quickly. Though we could have made <code>autoplot</code> methods for
 Crunch objects before tidyeval support, it would have been much more
 complicated and error-prone. Using tidyeval and <code>ggplot2</code> 3.0.0 to pass
 quosures between functions unlocks powerful new
-mechanisms of building user-friendly functions. And that let's us do
+mechanisms of building user-friendly functions. And that let&rsquo;s us do
 what we strive to do most: get out of the way and let our users explore
 their data quickly in a way that matches their intuitions for how R and
 tidy conventions work.</p>
