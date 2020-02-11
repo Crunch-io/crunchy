@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,8 +49,8 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Methods for Datetime variable resolutions — resolution" />
 
+<meta property="og:title" content="Methods for Datetime variable resolutions — resolution" />
 <meta property="og:description" content="Datetime data has a &quot;resolution&quot;, the units of the values.
 resolution() exposes that property and resolution&amp;lt;- lets you set it.
 &quot;Rollups&quot; are a way of binning datetime data into meaningful units.
@@ -56,9 +58,9 @@ rollup() lets you create an expression that you can query with. Datetime
 variables also have a rollupResolution() attribute that is the default
 resolution they will roll-up to, if not specified in rollup();
 rollupResolution&amp;lt;- lets you set that." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -81,6 +83,7 @@ rollupResolution&amp;lt;- lets you set that." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -162,7 +165,6 @@ rollupResolution&amp;lt;- lets you set that." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -183,6 +185,7 @@ rollupResolution&amp;lt;- lets you set that." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -194,7 +197,6 @@ rollupResolution&amp;lt;- lets you set that." />
     </div>
 
     <div class="ref-description">
-    
     <p>Datetime data has a "resolution", the units of the values.
 <code>resolution()</code> exposes that property and <code>resolution&lt;-</code> lets you set it.
 "Rollups" are a way of binning datetime data into meaningful units.
@@ -202,7 +204,6 @@ rollupResolution&amp;lt;- lets you set that." />
 variables also have a <code>rollupResolution()</code> attribute that is the default
 resolution they will roll-up to, if not specified in <code>rollup()</code>;
 <code>rollupResolution&lt;-</code> lets you set that.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>resolution</span>(<span class='no'>x</span>)
@@ -214,7 +215,7 @@ resolution they will roll-up to, if not specified in <code>rollup()</code>;
 <span class='fu'>rollupResolution</span>(<span class='no'>x</span>)
 
 <span class='fu'>rollupResolution</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -235,24 +236,22 @@ which case the server will determine an appropriate resolution based on the
 range of the data.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>resolution()</code> and <code>rollupResolution()</code> return the resolution string
 for datetime variables, <code>NULL</code> otherwise. The setters return the variable
 entity after modifying the state on the server. <code>rollup()</code> returns a
 <code>CrunchExpr</code> expression.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Note that <code>resolution</code> is a property of the data while <code>rollupResolution</code> is
 metadata. Setting <code>resolution</code> alters the column data, and if setting a more
 coarse resolution (e.g. going from "s" to "m"), it cannot be reversed.
 Setting <code>rollupResolution</code> is non-destructive.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'>resolution</span>(<span class='no'>ds</span>$<span class='no'>starttime</span>)
 <span class='co'>## [1] "ms"</span>
 <span class='fu'>resolution</span>(<span class='no'>ds</span>$<span class='no'>starttime</span>) <span class='kw'>&lt;-</span> <span class='st'>"s"</span>
@@ -260,31 +259,30 @@ Setting <code>rollupResolution</code> is non-destructive.</p>
 <span class='fu'>rollup</span>(<span class='no'>ds</span>$<span class='no'>starttime</span>, <span class='st'>"D"</span>)
 <span class='fu'>rollupResolution</span>(<span class='no'>ds</span>$<span class='no'>starttime</span>) <span class='kw'>&lt;-</span> <span class='st'>"D"</span>
 <span class='fu'><a href='crtabs.html'>crtabs</a></span>(~ <span class='fu'>rollup</span>(<span class='no'>starttime</span>), <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>ds</span>)
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -307,6 +305,8 @@ Setting <code>rollupResolution</code> is non-destructive.</p>
 </script>
 
 
+
   </body>
 </html>
+
 

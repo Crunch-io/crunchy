@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,13 +49,13 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="as.data.frame method for catalog objects — catalog-dataframes" />
 
+<meta property="og:title" content="as.data.frame method for catalog objects — catalog-dataframes" />
 <meta property="og:description" content="This method gives you a view of a catalog, such as a VariableCatalog, as a
 data.frame in order to facilitate further exploration." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -76,6 +78,7 @@ data.frame in order to facilitate further exploration." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -157,7 +160,6 @@ data.frame in order to facilitate further exploration." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -178,6 +180,7 @@ data.frame in order to facilitate further exploration." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -189,33 +192,49 @@ data.frame in order to facilitate further exploration." />
     </div>
 
     <div class="ref-description">
-    
     <p>This method gives you a view of a catalog, such as a <code>VariableCatalog</code>, as a
 <code>data.frame</code> in order to facilitate further exploration.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for VariableCatalog</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"type"</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"type"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for ShojiCatalog</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for BatchCatalog</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"status"</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"status"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for FilterCatalog</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"id"</span>, <span class='st'>"is_public"</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"id"</span>, <span class='st'>"is_public"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for UserCatalog</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"email"</span>, <span class='st'>"teams"</span>, <span class='st'>"collaborator"</span>),
-  <span class='no'>...</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"name"</span>, <span class='st'>"email"</span>, <span class='st'>"teams"</span>, <span class='st'>"collaborator"</span>),
+  <span class='no'>...</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -248,53 +267,49 @@ a narrower default:</p><ul>
       <td><p>Additional arguments passed to <code>data.frame</code></p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>data.frame</code> including metadata about each entity contained in the
 catalog. The fields in the data.frame match the <code>keys</code> argument
 provided to the function, and each row represents a entity.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Modifying the <code>data.frame</code> produced by this function will not update the
 objects on the Crunch server. Other methods exist for updating the metadata
 in the variable catalog, for example. See <code>vingette("variables", package = "crunch")</code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"iris"</span>)
 <span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='variables.html'>variables</a></span>(<span class='no'>ds</span>)
 <span class='no'>var_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>vars</span>, <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='co'># With row names</span>
 <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>vars</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='urls.html'>urls</a></span>(<span class='no'>vars</span>))
-<span class='co'># }</span><div class='input'>
-</div></pre>
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -317,6 +332,8 @@ in the variable catalog, for example. See <code>vingette("variables", package = 
 </script>
 
 
+
   </body>
 </html>
+
 

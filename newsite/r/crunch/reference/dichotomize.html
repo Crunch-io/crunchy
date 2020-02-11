@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,14 +49,14 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Indicate how categories represent a dichotomized value — dichotomize" />
 
+<meta property="og:title" content="Indicate how categories represent a dichotomized value — dichotomize" />
 <meta property="og:description" content="Multiple Response variables are Categorical Arrays in which one
 or more categories are set as &quot;selected&quot;. These methods allow you to view
 and set that attribute." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -77,6 +79,7 @@ and set that attribute." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -158,7 +161,6 @@ and set that attribute." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -179,6 +181,7 @@ and set that attribute." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -190,11 +193,9 @@ and set that attribute." />
     </div>
 
     <div class="ref-description">
-    
     <p>Multiple Response variables are Categorical Arrays in which one
 or more categories are set as "selected". These methods allow you to view
 and set that attribute.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>is.dichotomized</span>(<span class='no'>x</span>)
@@ -245,7 +246,7 @@ and set that attribute.</p>
 
 <span class='co'># S4 method for Category</span>
 <span class='fu'>is.selected</span>(<span class='no'>x</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -269,11 +270,10 @@ selection status for a <code>Categories</code> object, supply a logical vector w
 same length as the number of categories.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Categories or the Variable, (un)dichotomized accordingly</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>dichotomize</code> lets you specify which categories are "selected", while
@@ -285,14 +285,12 @@ attributes of categories. The best illustration of this difference is that
 <code>is.selected(categories(var))</code> returns a logical vector, a value for each
 category, while <code>is.dichotomized(categories(var))</code> returns a single
 <code>TRUE/FALSE</code> value.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='describe-entity.html'>describe-entity</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='newExampleDataset.html'>newExampleDataset</a></span>()
 <span class='fu'><a href='crunch-is.html'>is.MR</a></span>(<span class='no'>ds</span>$<span class='no'>allpets</span>)
 <span class='fu'>is.dichotomized</span>(<span class='fu'><a href='var-categories.html'>categories</a></span>(<span class='no'>ds</span>$<span class='no'>allpets</span>))
@@ -301,33 +299,31 @@ category, while <code>is.dichotomized(categories(var))</code> returns a single
 <span class='fu'><a href='crunch-is.html'>is.CA</a></span>(<span class='no'>ds</span>$<span class='no'>allpets</span>)
 <span class='no'>ds</span>$<span class='no'>allpets</span> <span class='kw'>&lt;-</span> <span class='fu'>dichotomize</span>(<span class='no'>ds</span>$<span class='no'>allpets</span>, <span class='st'>"selected"</span>)
 <span class='fu'><a href='crunch-is.html'>is.MR</a></span>(<span class='no'>ds</span>$<span class='no'>allpets</span>)
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -350,6 +346,8 @@ category, while <code>is.dichotomized(categories(var))</code> returns a single
 </script>
 
 
+
   </body>
 </html>
+
 

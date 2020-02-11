@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,16 +49,16 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Functions to manipulate variables' or project's folder structure — mv" />
 
+<meta property="og:title" content="Functions to manipulate variables' or project's folder structure — mv" />
 <meta property="og:description" content="Variables in Crunch datasets are organized into folders, like in a file
 system. Datasets are similarly organized into hierarchical Projects.
 These functions allow you to create new folders and move objects into
 folders. Their names, mv and mkdir, suggest their Unix file utility
 inspiration." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -79,6 +81,7 @@ inspiration." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -160,7 +163,6 @@ inspiration." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -181,6 +183,7 @@ inspiration." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -192,19 +195,17 @@ inspiration." />
     </div>
 
     <div class="ref-description">
-    
     <p>Variables in Crunch datasets are organized into folders, like in a file
 system. Datasets are similarly organized into hierarchical Projects.
 These functions allow you to create new folders and move objects into
 folders. Their names, <code>mv</code> and <code>mkdir</code>, suggest their Unix file utility
 inspiration.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>mv</span>(<span class='no'>x</span>, <span class='no'>what</span>, <span class='no'>path</span>)
 
 <span class='fu'>mkdir</span>(<span class='no'>x</span>, <span class='no'>path</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -228,12 +229,11 @@ relative to the location of the folder <code>x</code> (when <code>x</code> is a 
 means the root, top-level folder). <code>path</code> may also be a <code>Folder</code> object.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>x</code>, with the folder at <code>path</code> guaranteed to be created, and for
 <code>mv</code>, containing <code>what</code> moved into it.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The functions have some differences from the strict behavior of their Unix
@@ -242,14 +242,15 @@ ancestors. For one, they work recursively, without additional arguments:
 even if all parent directories didn't already exist; and <code>mv</code> doesn't
 require that the directory to move to already exist---it will effectively
 call <code>mkdir</code> along the way.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='cd.html'>cd()</a></code> to select a folder by path; <code><a href='rmdir.html'>rmdir()</a></code> to delete a folder; <code><a href='folder.html'>folder()</a></code> to identify and set an object's parent folder; <code><a href='https://rdrr.io/r/base/files2.html'>base::dir.create()</a></code> if you literally want to create a directory in your local file system, which <code>mkdir()</code> does not do</p></div>
-    
+    <div class='dont-index'><p><code><a href='cd.html'>cd()</a></code> to select a folder by path; <code><a href='rmdir.html'>rmdir()</a></code> to delete a folder;
+<code><a href='folder.html'>folder()</a></code> to identify and set an object's parent folder; <code><a href='https://rdrr.io/r/base/files2.html'>base::dir.create()</a></code>
+if you literally want to create a directory in your local file system, which
+<code>mkdir()</code> does not do</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"Example survey"</span>)
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>mv</span>(<span class='no'>ds</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"gender"</span>, <span class='st'>"age"</span>, <span class='st'>"educ"</span>), <span class='st'>"Demographics"</span>)
 <span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'>mkdir</span>(<span class='no'>ds</span>, <span class='st'>"Key Performance Indicators/Brand X"</span>)
@@ -267,33 +268,31 @@ call <code>mkdir</code> along the way.</p>
 <span class='co'># Now let's put ds in a Project</span>
 <span class='fu'><a href='projects.html'>projects</a></span>() <span class='kw'>%&gt;%</span>
     <span class='fu'>mv</span>(<span class='no'>ds</span>, <span class='st'>"Brand Tracking Studies"</span>)
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -316,6 +315,8 @@ call <code>mkdir</code> along the way.</p>
 </script>
 
 
+
   </body>
 </html>
+
 

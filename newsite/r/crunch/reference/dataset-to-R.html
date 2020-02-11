@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,15 +49,15 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
 
+<meta property="og:title" content="as.data.frame method for CrunchDataset — dataset-to-R" />
 <meta property="og:description" content="This method is defined principally so that you can use a CrunchDataset as
 a data argument to other R functions (such as stats::lm()) without
 needing to download the whole dataset. You can, however, choose to download
 a true data.frame." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -78,6 +80,7 @@ a true data.frame." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -159,7 +162,6 @@ a true data.frame." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -180,6 +182,7 @@ a true data.frame." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -191,23 +194,33 @@ a true data.frame." />
     </div>
 
     <div class="ref-description">
-    
     <p>This method is defined principally so that you can use a <code>CrunchDataset</code> as
 a <code>data</code> argument to other R functions (such as <code><a href='https://rdrr.io/r/stats/lm.html'>stats::lm()</a></code>) without
 needing to download the whole dataset. You can, however, choose to download
 a true <code>data.frame</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for CrunchDataset</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>categorical.mode</span> <span class='kw'>=</span> <span class='st'>"factor"</span>,
-  <span class='kw'>row.order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>force</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>categorical.mode</span> <span class='kw'>=</span> <span class='st'>"factor"</span>,
+  <span class='kw'>row.order</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
 <span class='co'># S3 method for CrunchDataFrame</span>
-<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>x</span>, <span class='st'>"include.hidden"</span>), <span class='no'>...</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(
+  <span class='no'>x</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>include.hidden</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>x</span>, <span class='st'>"include.hidden"</span>),
+  <span class='no'>...</span>
+)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -248,13 +261,12 @@ Crunch Dataset order will be used.</p></td>
       <td><p>additional arguments passed to <code>as.data.frame</code> (default method).</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>When called on a <code>CrunchDataset</code>, the method returns an object of
 class <code>CrunchDataFrame</code> unless <code>force = TRUE</code>, in which case the return is a
 <code>data.frame</code>. For <code>CrunchDataFrame</code>, the method returns a <code>data.frame</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>By default, the <code>as.data.frame</code> method for <code>CrunchDataset</code> does not return a
@@ -282,37 +294,35 @@ category ids or numeric values, respectively</p></li>
 their constituent categorical subvariables. An array with three subvariables,
 for example, will result in three columns in the <code>data.frame</code>.</p></li>
 </ul>
-    <p>Column names in the <code>data.frame</code> are the variable/subvariable aliases.</p>
-    
+
+<p>Column names in the <code>data.frame</code> are the variable/subvariable aliases.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='as-vector.html'>as.vector()</a></code></p></div>
-    
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-          </ul>
+    </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -335,6 +345,8 @@ for example, will result in three columns in the <code>data.frame</code>.</p></l
 </script>
 
 
+
   </body>
 </html>
+
 

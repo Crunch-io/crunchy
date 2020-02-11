@@ -15,16 +15,18 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -47,15 +49,15 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Combine categories or responses — combine" />
 
+<meta property="og:title" content="Combine categories or responses — combine" />
 <meta property="og:description" content="Crunch allows you to create a new categorical variable by combining
 the categories of another variable. For instance, you might want to
 recode a categorical variable with three categories small, medium, and large
 to one that has just small and large." />
-
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -78,6 +80,7 @@ to one that has just small and large." />
 
   gtag('config', 'UA-50332119-2');
 </script>
+
 
   </head>
 
@@ -159,7 +162,6 @@ to one that has just small and large." />
   <a href="../news/">News</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/Crunch-io/rcrunch">
@@ -180,6 +182,7 @@ to one that has just small and large." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -191,12 +194,10 @@ to one that has just small and large." />
     </div>
 
     <div class="ref-description">
-    
     <p>Crunch allows you to create a new categorical variable by combining
 the categories of another variable. For instance, you might want to
 recode a categorical variable with three categories small, medium, and large
 to one that has just small and large.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>combine</span>(<span class='no'>variable</span>, <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
@@ -204,7 +205,7 @@ to one that has just small and large.</p>
 <span class='fu'>combineCategories</span>(<span class='no'>variable</span>, <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
 
 <span class='fu'>combineResponses</span>(<span class='no'>variable</span>, <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -219,8 +220,8 @@ variable</p></td>
 <li><p>"categories": category ids or names for categorical types, or for multiple response,
 "responses": subvariable names, aliases, or positional indices;</p></li>
 <li><p>a "name" for the new category or response; and</p></li>
-<li><p>optionally, other category ("missing", "numeric_value") or subvariable ("alias", "description")
-attributes. If <code>combinations</code> is omitted, the resulting variable will
+<li><p>optionally, other category ("missing", "numeric_value") or subvariable
+("alias", "description") attributes. If <code>combinations</code> is omitted, the resulting variable will
 essentially be a copy (but see <code><a href='copyVariable.html'>copy()</a></code> for a more natural way to copy variables.</p></li>
 </ol></td>
     </tr>
@@ -229,13 +230,12 @@ essentially be a copy (but see <code><a href='copyVariable.html'>copy()</a></cod
       <td><p>Additional variable metadata for the new derived variable</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code><a href='VariableDefinition.html'>VariableDefinition</a></code> that will create the new combined-category or
 -response derived variable. Categories/responses not referenced in <code>combinations</code> will be
 appended to the end of the combinations.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Categorical and categorical array variables can have their
@@ -248,10 +248,9 @@ specifying <code>responses</code>).</p>
 <code>dplyr:: combine()</code>. To avoid this, you can either explicitly use the
 <code>crunch::</code> prefix, or you can call <code>combineCategories()</code> and
 <code>combineResponses()</code>, provided for disambiguation.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='no'>ds</span>$<span class='no'>fav_pet2</span> <span class='kw'>&lt;-</span> <span class='fu'>combine</span>(<span class='no'>ds</span>$<span class='no'>fav_pet</span>,
     <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Pets (combined)"</span>,
     <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
@@ -263,31 +262,30 @@ specifying <code>responses</code>).</p>
     <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Pets owned (collapsed)"</span>,
     <span class='kw'>combinations</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Mammals"</span>, <span class='kw'>responses</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Cat"</span>, <span class='st'>"Dog"</span>)))
 )
-<span class='co'># }</span></pre>
+}</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
-  <p>Developed by Neal Richardson, Jonathan Keane, Gordon Shotwell, Mike Malecki.</p>
+  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
 </div>
+
       </footer>
    </div>
 
@@ -310,6 +308,8 @@ specifying <code>responses</code>).</p>
 </script>
 
 
+
   </body>
 </html>
+
 
