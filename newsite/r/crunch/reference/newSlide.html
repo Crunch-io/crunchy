@@ -95,7 +95,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.2.9000</span>
       </span>
     </div>
 
@@ -217,7 +217,12 @@ similar to CrunchCube query</p></td>
     </tr>
     <tr>
       <th>display_settings</th>
-      <td><p>(optional) A list of display settings, if om</p></td>
+      <td><p>(optional) A list of display settings. If omitted,
+slide will be a table of column percentages with hypothesis test highlighting
+enabled. These plot types that can be set here as <code>vizType</code>:
+<code>table</code>, <code>groupedBarPlot</code>, <code>stackedBarPlot</code>, <code>horizontalGroupedBarPlot</code>,
+<code>horizontalStackedBarPlot</code>, <code>donut</code>, and (if the second variable in the
+query formula is a wave variable) <code>timeplot</code>.</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -243,6 +248,39 @@ similar to CrunchCube query</p></td>
     <span class='no'>main_deck</span>,
     ~ <span class='no'>cyl</span> + <span class='no'>wt</span>,
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Cyl and Weight"</span>,
+    <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
+)
+
+<span class='co'># Grouped bar plot</span>
+<span class='fu'>newSlide</span>(
+    <span class='no'>main_deck</span>,
+    ~ <span class='no'>approval</span> + <span class='no'>age4</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Approval by age group"</span>,
+    <span class='kw'>display_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"groupedBarPlot"</span>
+    ),
+    <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
+)
+
+<span class='co'># Horizontal stacked bars</span>
+<span class='fu'>newSlide</span>(
+    <span class='no'>main_deck</span>,
+    ~ <span class='no'>approval</span> + <span class='no'>age4</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Approval by age group"</span>,
+    <span class='kw'>display_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"horizontalStackedBarPlot"</span>
+    ),
+    <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
+)
+
+<span class='co'># A donut is only suitable for a single variable</span>
+<span class='fu'>newSlide</span>(
+    <span class='no'>main_deck</span>,
+    ~ <span class='no'>approval</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Approval of new feature"</span>,
+    <span class='kw'>display_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"donut"</span>
+    ),
     <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
 )
 }</div></pre>
