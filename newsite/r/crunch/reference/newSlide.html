@@ -219,10 +219,12 @@ similar to CrunchCube query</p></td>
       <th>display_settings</th>
       <td><p>(optional) A list of display settings. If omitted,
 slide will be a table of column percentages with hypothesis test highlighting
-enabled. These plot types that can be set here as <code>vizType</code>:
+enabled. The most common setting used is <code>vizType</code>, which can be:
 <code>table</code>, <code>groupedBarPlot</code>, <code>stackedBarPlot</code>, <code>horizontalGroupedBarPlot</code>,
 <code>horizontalStackedBarPlot</code>, <code>donut</code>, and (if the second variable in the
-query formula is a wave variable) <code>timeplot</code>.</p></td>
+query formula is a wave variable) <code>timeplot</code>.
+In addition, <code>showValueLabels</code> (logical) controls whether the web app and
+exports show labels on bars or arcs of donuts.</p></td>
     </tr>
     <tr>
       <th>title</th>
@@ -257,7 +259,8 @@ query formula is a wave variable) <code>timeplot</code>.</p></td>
     ~ <span class='no'>approval</span> + <span class='no'>age4</span>,
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Approval by age group"</span>,
     <span class='kw'>display_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"groupedBarPlot"</span>
+        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"groupedBarPlot"</span>,
+        <span class='kw'>showValueLabels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
     ),
     <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
 )
@@ -279,7 +282,8 @@ query formula is a wave variable) <code>timeplot</code>.</p></td>
     ~ <span class='no'>approval</span>,
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Approval of new feature"</span>,
     <span class='kw'>display_settings</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"donut"</span>
+        <span class='kw'>vizType</span> <span class='kw'>=</span> <span class='st'>"donut"</span>,
+        <span class='kw'>showValueLabels</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
     ),
     <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"2017 Data"</span>
 )
