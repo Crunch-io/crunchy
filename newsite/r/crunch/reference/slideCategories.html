@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A utility to return a data.frame from a ShojiCatalog. — catalogToDataFrame • Crunch</title>
+<title>Create sliding subvariable definitions — slideCategories • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -50,9 +50,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="A utility to return a data.frame from a ShojiCatalog. — catalogToDataFrame" />
-<meta property="og:description" content="This is an internal function called by the various as.data.frame methods.
-Use as.data.frame instead of calling this directly." />
+<meta property="og:title" content="Create sliding subvariable definitions — slideCategories" />
+<meta property="og:description" content="Create a multiple response array variable by sliding through category levels
+and selecting potentially overlapping sets of categories." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -185,72 +185,91 @@ Use as.data.frame instead of calling this directly." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A utility to return a data.frame from a ShojiCatalog.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji-catalog.R'><code>R/shoji-catalog.R</code></a></small>
-    <div class="hidden name"><code>catalogToDataFrame.Rd</code></div>
+    <h1>Create sliding subvariable definitions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/sliding-categories.R'><code>R/sliding-categories.R</code></a></small>
+    <div class="hidden name"><code>slideCategories.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is an internal function called by the various <code>as.data.frame</code> methods.
-Use <code>as.data.frame</code> instead of calling this directly.</p>
+    <p>Create a multiple response array variable by sliding through category levels
+and selecting potentially overlapping sets of categories.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catalogToDataFrame</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>keys</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>list_columns</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"subvariables"</span>, <span class='st'>"subvariables_catalog"</span>),
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>slideCategories</span>(<span class='no'>variable</span>, <span class='no'>step</span>, <span class='no'>width</span>, <span class='no'>...</span>, <span class='kw'>complete</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>useNA</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p><code>ShojiCatalog</code> or subclass</p></td>
+      <th>variable</th>
+      <td><p>A categorical crunch variable</p></td>
     </tr>
     <tr>
-      <th>keys</th>
-      <td><p>character vector of attribute names from each catalog tuple to
-include in the result. Default is TRUE, which means all.</p></td>
+      <th>step</th>
+      <td><p>number of categories between starting points of groups</p></td>
     </tr>
     <tr>
-      <th>rownames</th>
-      <td><p>See <code><a href='https://rdrr.io/r/base/data.frame.html'>base::data.frame()</a></code> for the <code>row.names</code>
-argument. The difference here is that if <code>rownames</code> is explicitly set as
-<code>NULL</code>, the resulting object will not have row names set. By default, row
-names will be the URLs of the catalog tuples.</p></td>
-    </tr>
-    <tr>
-      <th>list_columns</th>
-      <td><p>A character vector of the names of the attributes that
-should be stored in a list-column. Currently ignored.</p></td>
+      <th>width</th>
+      <td><p>number of categories wide the grouping should be</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>additional arguments passed to <code>data.frame</code></p></td>
+      <td><p>additional attributes to be included in the <code>VariableDefinition</code>,
+can be either functions that take the category names to be included in the
+sliding group and returns a single string, or a character vector the same length
+as the number of subvariables that will be created.</p></td>
+    </tr>
+    <tr>
+      <th>complete</th>
+      <td><p>whether to only include category groupings that are as wide as width
+(defaults to <code>TRUE</code>)</p></td>
+    </tr>
+    <tr>
+      <th>useNA</th>
+      <td><p>whether to use missing categories from the original variable (defaults
+to <code>FALSE</code>)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code>data.frame</code> view of the catalog</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>A list of <code>VariableDefinition</code>s appropriate for use in <code><a href='makeArray.html'>deriveArray()</a></code></p>
 
-    <p>Some of the attributes of a <code>ShojiCatalog</code> will not naturally fit in
-a conventional data.frame. For example, an array variable contains a list of
-subvariables, and these subvariables will not easily fit in a single row of a
-data.frame. In this case, the list of subvariables are stored in a
-list-column in the resulting data.frame.</p>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='login.html'>login</a></span>()
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+    <span class='kw'>wave</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>))
+)
 
+<span class='no'>ds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='newDataset.html'>newDataset</a></span>(<span class='no'>data</span>, <span class='st'>"Sliding Categories"</span>)
+
+<span class='co'># Make an MR variable where subvariable is 1 step apart, and with 3 categories wide</span>
+<span class='co'># and name subvariables with vector</span>
+<span class='no'>ds</span>$<span class='no'>wave_step1_wide3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeArray.html'>deriveArray</a></span>(
+   <span class='fu'>slideCategories</span>(<span class='no'>ds</span>$<span class='no'>wave</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a - c"</span>, <span class='st'>"b - d"</span>, <span class='st'>"c - e"</span>)),
+   <span class='st'>"Sliding example 1"</span>
+)
+
+<span class='co'># You can also make names (and other subvariable metadata like alias or description)</span>
+<span class='co'># with a function:</span>
+<span class='no'>ds</span>$<span class='no'>wave_step2_wide2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='makeArray.html'>deriveArray</a></span>(
+   <span class='fu'>slideCategories</span>(
+     <span class='no'>ds</span>$<span class='no'>wave</span>,
+     <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+     <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+     <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>x</span>[<span class='fl'>1</span>], <span class='st'>"-"</span>, <span class='no'>x</span>[<span class='fu'><a href='length.html'>length</a></span>(<span class='no'>x</span>)])
+   ),
+   <span class='st'>"Sliding example 2"</span>
+)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
