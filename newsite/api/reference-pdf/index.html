@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Gojek</title>
+    <title>Crunch | Crunch API Reference</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Gojek &middot; Modern survey data analysis">
+    <meta property="og:title" content="Crunch API Reference &middot; Modern survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/case-studies/gojek/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/api/reference-pdf/">
 <meta property="og:locale" content="en">
 
 
@@ -25,15 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2019-12-26T19:36:20-04:00">
+  <meta property="og:updated_time" content="2018-04-25T14:59:57-04:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Gojek"/>
-<meta name="twitter:description" content="Gojek is the leading on-demand multi-service app platform and digital payment technology group in Southeast Asia. The company uses a call center to connect consumers to courier delivery and ride-hailing services. As of mid-2019, Gojek was a “Decacorn” valued at over $10 billion dollars with over 3,000 employees.
-Gojek uses Crunch as a centralized single-source-of-truth repository for data collected from multiple market research companies as well as from DIY surveys conducted in-house."/>
+<meta name="twitter:title" content="Crunch API Reference"/>
+<meta name="twitter:description" content=""/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -46,9 +45,32 @@ Gojek uses Crunch as a centralized single-source-of-truth repository for data co
     })(window,document,'script','dataLayer','GTM-5GB59T2');</script>
     
 
+
+
+
+<script type="module" src="/js/rapipdf-min.js"></script>
+
+<style>
+    nav {
+        border-bottom: solid #004571 1px;
+    }
+    a.menuLink {
+        color: yellow;
+        text-decoration: none;
+    }
+    rapi-doc {
+        width: 100%;
+    }
+
+
+
+</style>
+
+
   </head>
 
   <body>
+
 
     
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GB59T2"
@@ -96,8 +118,10 @@ Gojek uses Crunch as a centralized single-source-of-truth repository for data co
                     Support
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="http://help.crunch.io/" target="_blank">Help Pages</a>
-                      <a class="dropdown-item" href="http://docs.crunch.io/" target="_blank">API Documentation</a>
+                      <a class="dropdown-item" href="http://help.crunch.io/">Help Pages</a>
+                      <a class="dropdown-item" href="http://docs.crunch.io/" target="_blank">API Reference</a>
+                      <a class="dropdown-item" href="https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides">Developer Guides</a>
+
                   </div>
                 </li>
                 <li class="nav-item">
@@ -115,44 +139,31 @@ Gojek uses Crunch as a centralized single-source-of-truth repository for data co
     </nav>
 
 
-<div class="container">
-<div id="hero" class="row">
-    <div class="intro-post col">
-        <h1 itemprop="headline">  Gojek</h1>
-        
-        <time class="post-time">
-  Published <span datetime="2019-12-26T19:36:20-04:00">26 Dec 2019</span>
-
-</time>
-    </div>
-</div>
-<div id="post-box" class="row">
-    <div class="col">
-        <div id="post" itemprop="articleBody">
-            <p>Gojek is the leading on-demand multi-service app platform and digital payment technology group in Southeast Asia. The company uses a call center to connect consumers to courier delivery and ride-hailing services. As of mid-2019, Gojek was a “Decacorn” valued at over $10 billion dollars with over 3,000 employees.</p>
-<p><span class="highlight">Gojek uses Crunch as a centralized <span class="font-italic">single-source-of-truth</span> repository for <span class="font-italic">data</span> collected from multiple market research companies</span> as well as from DIY surveys conducted in-house. The company values Crunch.io’s ease of use for large scale surveys. Gojek uses Crunch.io to analyze multiple tracker waves of data across a dozen countries.</p>
-<p>Gojek has used Crunch.io to analyze fielded survey data to verify its completeness and accuracy, quickly identifying data that needs to be cleaned, to ensure more accurate insights.</p>
-
-        </div><br/>
-        <div>
-            <p class="post-footer">
-  Published
-  
-  <time datetime="2019-12-26T19:36:20-04:00">
-    26 Dec 2019
-  </time>
-  
-  
-</p>
-
-            
-
-
-
+<div id="wrapper">
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+            <div class="jobs-content">
+                <div class="jumbotron m-0 pb-3">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Crunch API Reference</h1>
+                                <p class="mt-5 mb-0"><a class="menuLink" href=''></a></p>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
         </div>
     </div>
 </div>
-</div>
+
+<rapi-pdf
+        style = "width:700px; height:40px; font-size:18px;"
+        spec-url = "/oas/crunch-api.json"
+        button-bg = "#b44646"
+> </rapi-pdf>
+
 
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
