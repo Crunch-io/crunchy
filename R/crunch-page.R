@@ -64,11 +64,11 @@ crunchAssets <- quote({
             list(
                 # Load Crunch assets
                 tags$head(
-                    tags$link(
-                        rel="stylesheet",
-                        type="text/css",
-                        href="https://app.crunch.io/styles.css"
-                    ),
+                    # tags$link(
+                    #     rel="stylesheet",
+                    #     type="text/css",
+                    #     href="https://app.crunch.io/styles.css"
+                    # ),
                     includeCSS(system.file("extra.css", package="crunchy")),
                     includeScript(system.file("extra.js", package="crunchy"))
                 ),
