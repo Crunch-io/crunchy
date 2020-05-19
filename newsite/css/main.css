@@ -6742,7 +6742,6 @@ h4 {
   cursor: pointer;
   border-radius: 2px; }
   .post-card:hover {
-    border-bottom: 2px solid #0064a4;
     box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.1);
     top: -5px; }
   .post-card .posts .post-title {
@@ -7004,5 +7003,22 @@ figure figcaption h4 {
     .bg-black .nav-link:hover {
       color: #cccccc; }
 
-.modal .modal-body {
-  padding: 2rem; }
+.modal-dialog {
+  max-width: 800px;
+  margin: 30px auto; }
+  .modal-dialog .modal-body {
+    position: relative;
+    padding: 0px; }
+    .modal-dialog .modal-body .close {
+      position: absolute;
+      right: -30px;
+      top: -20px;
+      z-index: 999;
+      font-size: 2rem;
+      font-weight: normal;
+      color: #fff;
+      background: transparent;
+      border: 0; }
+      .modal-dialog .modal-body .close:focus {
+        outline: none;
+        box-shadow: none; }
