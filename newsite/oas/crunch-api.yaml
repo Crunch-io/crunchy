@@ -3,122 +3,57 @@ info:
     email: support@crunch.io
     name: Crunch Support
     url: 'https://help.crunch.io'
-  description: >
+  description: |
     Developer API for Crunch.io
 
-
     # Viewing options
-
     * View this documentation [with navigation](https://crunch.io/api/reference)
-
-    * View this documentation [without
-    navigation](https://crunch.io/api/reference-nonav)
-
-    * Download the [Crunch API OpenApi 3.0
-    Specification](https://crunch.io/oas/crunch-api.yaml)
-
+    * View this documentation [without navigation](https://crunch.io/api/reference-nonav)
+    * Download the [Crunch API OpenApi 3.0 Specification](https://crunch.io/oas/crunch-api.yaml)
 
     # API conventions
 
-
-    The Crunch REST API follows some common conventions across all endpoints.
-    You can assume these to be the case except where explicitly documented
-    otherwise.
-
+    The Crunch REST API follows some common conventions across all endpoints. You can assume these to be the case except where explicitly documented otherwise.
 
     ## Successful requests
+    Successful GET requests return 200 (OK) status with Content-Type: application/json response content.
 
-    Successful GET requests return 200 (OK) status with Content-Type:
-    application/json response content.
+    PATCH is generally preferred for partial updating of resources, though some endpoints do support PUT. A successful request returns 204 (No Content) status.
 
+    POST is used to create entities on the server. The URL to the created entity is returned in the Location response header, and the response status is either 201 (Created) or 202 (Accepted).
 
-    PATCH is generally preferred for partial updating of resources, though some
-    endpoints do support PUT. A successful request returns 204 (No Content)
-    status.
-
-
-    POST is used to create entities on the server. The URL to the created entity
-    is returned in the Location response header, and the response status is
-    either 201 (Created) or 202 (Accepted).
-
-
-    202 (Accepted) is used for requests that continue to process outside of the
-    request cycle; for example, import or export jobs that may be long running
-    and benefit from reporting progress to clients. See Progress for how to
-    handle the 202 response content. Requests that would otherwise return 201
-    (Location) will still include the Location header in the 202 response;
-    requests that would otherwise return 204 (No Content) will have no
-    additional response headers.
-
+    202 (Accepted) is used for requests that continue to process outside of the request cycle; for example, import or export jobs that may be long running and benefit from reporting progress to clients. See Progress for how to handle the 202 response content. Requests that would otherwise return 201 (Location) will still include the Location header in the 202 response; requests that would otherwise return 204 (No Content) will have no additional response headers.
 
     ## Unsuccessful requests
-
-    “Bad” requests returning with a 4xx status may contain JSON response content
-    with an error message.
-
+    “Bad” requests returning with a 4xx status may contain JSON response content with an error message.
 
     Unauthenticated requests to non-public resources return 401 (Unauthorized).
 
+    Authenticated but unauthorized responses return 404 (Not Found) rather than 403 (Forbidden) in cases where returning 403 would leak information about the existence of resources. The 403 response is reserved for cases when, for example, a user is authorized to GET a resource but not PATCH it.
 
-    Authenticated but unauthorized responses return 404 (Not Found) rather than
-    403 (Forbidden) in cases where returning 403 would leak information about
-    the existence of resources. The 403 response is reserved for cases when, for
-    example, a user is authorized to GET a resource but not PATCH it.
-
-
-    The 409 (Conflict) response is used when the request may be retried and may
-    succeed if changes are first made at a different resource. Example: when a
-    user who has edit privileges on a dataset but is not the “current editor”
-    attempts to PATCH a dataset resource.
-
+    The 409 (Conflict) response is used when the request may be retried and may succeed if changes are first made at a different resource. Example: when a user who has edit privileges on a dataset but is not the “current editor” attempts to PATCH a dataset resource.
 
     ## Error responses
-
-    To avoid duplicating error responses on every endpoint description, the most
-    common responses are listed here and only any additional, endpoint-specific
-    responses will be documented with each api endpoint.
-
+    To avoid duplicating error responses on every endpoint description, the most common responses are listed here and only any additional, endpoint-specific responses will be documented with each api endpoint.
 
     ### HTTP status codes
-
     | Status Code | Description |
-
     | :-: | :-- |
-
     | 400 | Bad request, invalid input |
-
     | 401 | Invalid access token |
-
     | 403 | Account locked - please contact Crunch support |
 
-
     ## Deprecated endpoints
+    When API resources are deprecated, responses will contain a Warning header with a message about the deprecation and a recommendation for upgrading. Our client libraries look for this response header and will alert you to upgrade your version of the library if you receive a response with this header.
 
-    When API resources are deprecated, responses will contain a Warning header
-    with a message about the deprecation and a recommendation for upgrading. Our
-    client libraries look for this response header and will alert you to upgrade
-    your version of the library if you receive a response with this header.
-
-
-    Endpoints that have been removed respond with a 410 (Gone) status,
-    optionally with a message instructing you where to look instead.
-
+    Endpoints that have been removed respond with a 410 (Gone) status, optionally with a message instructing you where to look instead.
 
     # API response envelopes
-
-    Crunch API endpoints do not return plain old javascript objects (POJOs)
-    directly but instead deliver POJOs inside a property of machine-readable
-    custom envelopes that facilitate endpoint exploration and traversal. Click
-    here to read the [envelope
-    spec](https://bitbucket.org/fumanchu/shoji/src/default/spec.txt).
-
+    Crunch API endpoints do not return plain old javascript objects (POJOs) directly but instead deliver POJOs inside a property of machine-readable custom envelopes that facilitate endpoint exploration and traversal. Click here to read the [envelope spec](https://bitbucket.org/fumanchu/shoji/src/default/spec.txt).
 
     Using crunch api envelopes can be summarized like this:
-
     ```javascript
-
     let data = {}
-
     switch (response.element) {
       case 'shoji:entity':
         data = response.body
@@ -130,50 +65,25 @@ info:
         data = response.value
         break
     }
-
     ```
 
-
     ## ENTITY envelope
-
-    A Shoji entity is identified by `element: "shoji:entity"`. Its principal
-    attribute is the `body` key, which is an object containing the attributes
-    that describe the entity.
-
+    A Shoji entity is identified by `element: "shoji:entity"`. Its principal attribute is the `body` key, which is an object containing the attributes that describe the entity.
 
     ## CATALOG envelope
+    A catalog is identified by `element: "shoji:catalog"` with its principal attribute being `index` that contains an object keyed by the URLs of the entities it contains and for each key an object (tuple) with attributes from the referenced entity.
 
-    A catalog is identified by `element: "shoji:catalog"` with its principal
-    attribute being `index` that contains an object keyed by the URLs of the
-    entities it contains and for each key an object (tuple) with attributes from
-    the referenced entity.
-
-
-    Shoji catalogs are **not** ordered. For its ordered representations they may
-    provide an `orders` set of Shoji order resources.
-
+    Shoji catalogs are **not** ordered. For its ordered representations they may provide an `orders` set of Shoji order resources.
 
     ## VIEW envelope
-
-    A Shoji view is identified by `element: "shoji:view"` with its principal
-    attribute being `value`. This can contain any arbitrary JSON object.
-
+    A Shoji view is identified by `element: "shoji:view"` with its principal attribute being `value`. This can contain any arbitrary JSON object.
 
     ## ORDER envelope
+    Shoji orders are identified by `element: "shoji:order"`. The principal attribute is the `graph` key which is an array containing the order of present resources.
 
-    Shoji orders are identified by `element: "shoji:order"`. The principal
-    attribute is the `graph` key which is an array containing the order of
-    present resources.
+    A shoji order may be associated with a catalog. In such case it will contain a subset or totality of the entities present in the catalog. The catalog remains as the authoritative source of available entities.
 
-
-    A shoji order may be associated with a catalog. In such case it will contain
-    a subset or totality of the entities present in the catalog. The catalog
-    remains as the authoritative source of available entities.
-
-
-    Any entity not present on the order but present in the catalog may be
-    considered to belong at the bottom of the root of the graph in an arbitrary
-    order, or may be excluded from view.
+    Any entity not present on the order but present in the catalog may be considered to belong at the bottom of the root of the graph in an arbitrary order, or may be excluded from view.
   title: Crunch API
   version: '1.1'
 openapi: 3.0.3
@@ -186,9 +96,7 @@ servers:
     url: 'https://stable.crunch.io/api'
   - description: Crunch API (testing sandbox 3)
     url: 'https://unstable.crunch.io/api'
-  - description: >-
-      Crunch API (production). EXERCISE EXTREME CAUTION as all non-GET requests
-      to this server can be destructive to real data.
+  - description: Crunch API (production). EXERCISE EXTREME CAUTION as all non-GET requests to this server can be destructive to real data.
     url: 'https://app.crunch.io/api'
 x-api-id: crunch-api
 components:
@@ -269,8 +177,7 @@ components:
                     palette:
                       - '#ff5900'
             templates:
-              powerpoint: >-
-                https://t.crunch.io/act_templates/account-crunch-jcfojm-powerpoint.pptx
+              powerpoint: 'https://t.crunch.io/act_templates/account-crunch-jcfojm-powerpoint.pptx'
           catalogs:
             applications: 'https://app.crunch.io/api/account/applications/'
             users: 'https://app.crunch.io/api/account/users/'
@@ -390,10 +297,10 @@ components:
           description: Dataset name
           type: string
         owner_id:
-          description: Url to this dataset's parent project
+          description: "Url to this dataset's parent project"
           type: string
         owner_name:
-          description: Name of this dataset's parent project
+          description: "Name of this dataset's parent project"
           type: string
         permissions:
           properties:
@@ -422,7 +329,7 @@ components:
           description: Is data being streamed into this dataset
           type: boolean
         type:
-          description: Always &apos;dataset&apos; for this object type
+          description: 'Always &apos;dataset&apos; for this object type'
           example: dataset
           type: string
         view_of:
@@ -473,8 +380,7 @@ components:
       description: ''
       properties:
         authorize_url:
-          example: >-
-            https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=71778389871-ev84c1qhkfsg2fpqd7tv0hhkrsdtqdr5.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapp.crunch.io%2Fapi%2Fpublic%2Foauth2redirect%2F&scope=openid+profile+email&state=YRR6SCtvzwbsG9gWmssOqD0VVq3QFA&nonce=6974180560616078291587000412&login_hint=fakeuser%40crunch.io&access_type=online
+          example: 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=71778389871-ev84c1qhkfsg2fpqd7tv0hhkrsdtqdr5.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapp.crunch.io%2Fapi%2Fpublic%2Foauth2redirect%2F&scope=openid+profile+email&state=YRR6SCtvzwbsG9gWmssOqD0VVq3QFA&nonce=6974180560616078291587000412&login_hint=fakeuser%40crunch.io&access_type=online'
           format: uri
           type: string
         email:
@@ -536,10 +442,10 @@ components:
           description: Catalog name
           type: string
         owner:
-          description: Url to catalog owner's user details
+          description: "Url to catalog owner's user details"
           type: string
         owner_id:
-          description: Url to catalog owner's user details
+          description: "Url to catalog owner's user details"
           format: uri
           type: string
         permissions:
@@ -574,9 +480,7 @@ components:
     Shoji-entity:
       properties:
         body:
-          description: >-
-            A plain-old javascript object (POJO) containing the contents of this
-            entity
+          description: A plain-old javascript object (POJO) containing the contents of this entity
           type: object
         element:
           default: shoji-entity
@@ -659,7 +563,7 @@ components:
           description: Datetime user was created
           type: string
         email:
-          description: User's email address
+          description: "User's email address"
           format: email
           type: string
         id:
@@ -672,7 +576,7 @@ components:
           description: 'If user has oauth authentication, which oauth provider to use'
           type: string
         name:
-          description: User's full name
+          description: "User's full name"
           type: string
         preferences:
           description: User preferences
@@ -747,29 +651,18 @@ components:
             notificationsReadDate: '2020-04-16T20:04:05.281Z'
             notificationsSnoozeDate: null
             openedDecks:
-              018ca6872e0e4b5b9cdc0745f4b11ef8: >-
-                https://app.crunch.io/api/datasets/018ca6872e0e4b5b9cdc0745f4b11ef8/decks/d333732f3aed4f95ac3e8a27cdcf03af/
-              0700211987ee4599a9fa0924a58c9af0: >-
-                https://app.crunch.io/api/datasets/0700211987ee4599a9fa0924a58c9af0/decks/2b5ec4e80fcb42358d3e4e764b1319cb/
-              0be895b02a054e0e9e742b95ebdcfca0: >-
-                https://app.crunch.io/api/datasets/0be895b02a054e0e9e742b95ebdcfca0/decks/c3a7ca0a71904afeb9624fb713dad354/
-              2ff0e33046984f838a4cb330291d2edb: >-
-                https://app.crunch.io/api/datasets/2ff0e33046984f838a4cb330291d2edb/decks/26887165af584599a98ba51cb12a6811/
-              4c44283be4b24942ad11e8363e054cc3: >-
-                https://app.crunch.io/api/datasets/4c44283be4b24942ad11e8363e054cc3/decks/27572276d8d848bbaaeef361fe6fc123/
-              6284ae2013ae4f6bbb0fc8eaa606d7e3: >-
-                https://app.crunch.io/api/datasets/6284ae2013ae4f6bbb0fc8eaa606d7e3/decks/7bccfa13b3ff42a29a1be7032f7f4d2c/
-              68f6997042ed4f19b536fa7b6daf1e2f: >-
-                https://app.crunch.io/api/datasets/68f6997042ed4f19b536fa7b6daf1e2f/decks/c658efaf87c945d892b68ee950881a4f/
-              a2223646a2854fbf98495f6dc3e264b4: >-
-                https://app.crunch.io/api/datasets/a2223646a2854fbf98495f6dc3e264b4/decks/f42eac179f6d47ecb698f758e49895c5/
-              d682f3f648c6473ea0b79fb2b23d4acb: >-
-                https://app.crunch.io/api/datasets/d682f3f648c6473ea0b79fb2b23d4acb/decks/59e851c6a5e84da0b473ef95695795a7/
-              eb4ea0e51e5e45caabebdb75c5147db4: >-
-                https://app.crunch.io/api/datasets/eb4ea0e51e5e45caabebdb75c5147db4/decks/c3a7ca0a71904afeb9624fb713dad354/
+              018ca6872e0e4b5b9cdc0745f4b11ef8: 'https://app.crunch.io/api/datasets/018ca6872e0e4b5b9cdc0745f4b11ef8/decks/d333732f3aed4f95ac3e8a27cdcf03af/'
+              0700211987ee4599a9fa0924a58c9af0: 'https://app.crunch.io/api/datasets/0700211987ee4599a9fa0924a58c9af0/decks/2b5ec4e80fcb42358d3e4e764b1319cb/'
+              0be895b02a054e0e9e742b95ebdcfca0: 'https://app.crunch.io/api/datasets/0be895b02a054e0e9e742b95ebdcfca0/decks/c3a7ca0a71904afeb9624fb713dad354/'
+              2ff0e33046984f838a4cb330291d2edb: 'https://app.crunch.io/api/datasets/2ff0e33046984f838a4cb330291d2edb/decks/26887165af584599a98ba51cb12a6811/'
+              4c44283be4b24942ad11e8363e054cc3: 'https://app.crunch.io/api/datasets/4c44283be4b24942ad11e8363e054cc3/decks/27572276d8d848bbaaeef361fe6fc123/'
+              6284ae2013ae4f6bbb0fc8eaa606d7e3: 'https://app.crunch.io/api/datasets/6284ae2013ae4f6bbb0fc8eaa606d7e3/decks/7bccfa13b3ff42a29a1be7032f7f4d2c/'
+              68f6997042ed4f19b536fa7b6daf1e2f: 'https://app.crunch.io/api/datasets/68f6997042ed4f19b536fa7b6daf1e2f/decks/c658efaf87c945d892b68ee950881a4f/'
+              a2223646a2854fbf98495f6dc3e264b4: 'https://app.crunch.io/api/datasets/a2223646a2854fbf98495f6dc3e264b4/decks/f42eac179f6d47ecb698f758e49895c5/'
+              d682f3f648c6473ea0b79fb2b23d4acb: 'https://app.crunch.io/api/datasets/d682f3f648c6473ea0b79fb2b23d4acb/decks/59e851c6a5e84da0b473ef95695795a7/'
+              eb4ea0e51e5e45caabebdb75c5147db4: 'https://app.crunch.io/api/datasets/eb4ea0e51e5e45caabebdb75c5147db4/decks/c3a7ca0a71904afeb9624fb713dad354/'
             projectBrowser: {}
-            projectId: >-
-              https://app.crunch.io/api/projects/d22b37e0258a4986b29598fc79ccc24f/
+            projectId: 'https://app.crunch.io/api/projects/d22b37e0258a4986b29598fc79ccc24f/'
             search_settings:
               grouping: datasets
               matchMode: any-terms
@@ -848,9 +741,7 @@ paths:
                       sources: 'https://app.crunch.io/api/sources/'
                       teams: 'https://app.crunch.io/api/teams/'
                       users: 'https://app.crunch.io/api/users/'
-                    description: >-
-                      The API root. GET user_url to access your Crunch
-                      resources. GET logout_url to sign out.
+                    description: The API root. GET user_url to access your Crunch resources. GET logout_url to sign out.
                     element: 'shoji:catalog'
                     self: 'https://app.crunch.io/api/'
                     urls:
@@ -858,16 +749,14 @@ paths:
                       account_url: 'https://app.crunch.io/api/account/'
                       logout_url: 'https://app.crunch.io/api/logout/'
                       notebook_url: 'https://jupyter.crunch.io/'
-                      user_url: >-
-                        https://app.crunch.io/api/users/1db4a48a481f420caf72c966f9a2b948/
+                      user_url: 'https://app.crunch.io/api/users/1db4a48a481f420caf72c966f9a2b948/'
                     views:
                       account: 'https://app.crunch.io/api/account/'
                       feature_flag: 'https://app.crunch.io/api/feature_flag/'
                       migration: 'https://app.crunch.io/api/migration/'
                       progress: 'https://app.crunch.io/api/progress/'
                       search: 'https://app.crunch.io/api/search/'
-                      user: >-
-                        https://app.crunch.io/api/users/1db4a48a481f420caf72c966f9a2b948/
+                      user: 'https://app.crunch.io/api/users/1db4a48a481f420caf72c966f9a2b948/'
               schema:
                 description: ''
                 type: object
@@ -1000,9 +889,7 @@ paths:
                 example-1:
                   value:
                     exception:
-                      - >-
-                        You must be authenticated to access this resource.
-                        Please login at /public/login/
+                      - You must be authenticated to access this resource. Please login at /public/login/
                     status: 401 Unauthorized
                     urls:
                       collect_inquires: 'https://app.crunch.io/api/public/inquire/'
@@ -1061,9 +948,7 @@ paths:
         - Catalogs
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1079,17 +964,10 @@ paths:
     parameters: []
   /account/:
     get:
-      description: >-
-        All users belong to one and only one account. Accounts provide an
-        organization-level scope for Crunch.io customers. This endpoint returns
-        information for the authenticated user's account including branding
-        configuration.
-
+      description: |-
+        All users belong to one and only one account. Accounts provide an organization-level scope for Crunch.io customers. This endpoint returns information for the authenticated user's account including branding configuration.
         ## What are account managers?
-
-        Account managers can administer their various users and entities and
-        have visibility on them. A user is an account manager if their
-        `account_permissions.admin_account=true`.
+        Account managers can administer their various users and entities and have visibility on them. A user is an account manager if their `account_permissions.admin_account=true`.
       operationId: get-account
       responses:
         '200':
@@ -1140,9 +1018,7 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/account/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/account/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1157,9 +1033,7 @@ paths:
              .then(jsonResponse => jsonResponse.body);
           syntaxLang: javascript
     patch:
-      description: >-
-        Update the brand color palette for the user's account. Only account
-        admins are authorized to do this.
+      description: "Update the brand color palette for the user's account. Only account admins are authorized to do this."
       operationId: patch-account
       requestBody:
         content:
@@ -1246,24 +1120,7 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X PATCH https://app.crunch.io/api/account/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: application/json&apos; -d &apos;
-            {
-              "element": "shoji:entity",
-              "body": {
-                "palette": {
-                  "analysis": [],
-                  "brand": {
-                    "primary": "#0064a4",
-                    "secondary": "#107f64",
-                    "message": "#722580"
-                  }
-                }
-              }
-            }
-            &apos;
+          source: "curl -X PATCH https://app.crunch.io/api/account/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: application/json&apos; -d &apos;\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n    \"palette\": {\n      \"analysis\": [],\n      \"brand\": {\n        \"primary\": \"#0064a4\",\n        \"secondary\": \"#107f64\",\n        \"message\": \"#722580\"\n      }\n    }\n  }\n}\n&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1291,7 +1148,7 @@ paths:
           syntaxLang: javascript
   /account/applications/:
     get:
-      description: List subdomains configured for user's account.
+      description: "List subdomains configured for user's account."
       operationId: get-account-applications
       responses:
         '200':
@@ -1343,9 +1200,7 @@ paths:
         - Account subdomains
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/account/applications/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/account/applications/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1361,30 +1216,19 @@ paths:
           syntaxLang: javascript
     parameters: []
     post:
-      description: >-
+      description: |-
         Create a new subdomain for the user's account.
-
 
         The subdomain:
 
-
         * must be unique system-wide, case insensitive
-
         * can only contain letters, numbers, and - (dash)
-
         * must be between 3 and 32 characters in length
-
         * cannot start with - or a number
 
+        If the requested subdomain is unavailable or invalid, the server will return a 400 response.
 
-        If the requested subdomain is unavailable or invalid, the server will
-        return a 400 response.
-
-
-        Attributes `name` and `subdomain` are required; `palette` and `manifest`
-        are optional. Note that you cannot specify logos in the this request.
-        Use the created entity’s logo/ endpoint to upload the image files to the
-        subdomain.
+        Attributes `name` and `subdomain` are required; `palette` and `manifest` are optional. Note that you cannot specify logos in the this request. Use the created entity’s logo/ endpoint to upload the image files to the subdomain.
       operationId: post-account-applications
       requestBody:
         content:
@@ -1400,9 +1244,9 @@ paths:
               properties:
                 element:
                   type: string
-                  default: shoji:entity
+                  default: 'shoji:entity'
                   examples:
-                    - shoji:entity
+                    - 'shoji:entity'
                 body:
                   type: object
                   default: {}
@@ -1432,18 +1276,7 @@ paths:
         - Account subdomains
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X POST https://app.crunch.io/api/account/applications/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: application/json&apos; -d &apos;
-            {
-              "element": "shoji:entity",
-              "body": {
-                "name": "fakeuser subdomain",
-                "subdomain": "joe1"
-              }
-            }
-            &apos;
+          source: "curl -X POST https://app.crunch.io/api/account/applications/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: application/json&apos; -d &apos;\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n    \"name\": \"fakeuser subdomain\",\n    \"subdomain\": \"joe1\"\n  }\n}\n&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1463,12 +1296,336 @@ paths:
                })
              })
           syntaxLang: javascript
+  '/account/applications/{applicationId}/logo/':
+    get:
+      description: ''
+      operationId: get-account-applications-applicationId-logo
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    element: 'shoji:view'
+                    self: 'https://app.crunch.io/api/account/applications/testsetuplogos/logo/'
+                    value:
+                      favicon: ''
+                      large: ''
+                      small: ''
+              schema:
+                description: ''
+                type: object
+                properties:
+                  element:
+                    type: string
+                    minLength: 1
+                  self:
+                    type: string
+                    minLength: 1
+                  value:
+                    type: object
+                    properties:
+                      favicon:
+                        type: string
+                      large:
+                        type: string
+                      small:
+                        type: string
+                    required:
+                      - favicon
+                      - large
+                      - small
+                required:
+                  - element
+                  - self
+                  - value
+          description: Success
+      summary: List subdomain logos
+      x-code-samples:
+        - lang: SHELL
+          source: "curl -X GET https://app.crunch.io/api/account/applications/testsetuplogos/logo/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
+          syntaxLang: bash
+        - lang: JAVASCRIPT
+          source: |-
+            const getAccountApplicationsApplicationIdLogo = await fetch(
+              &apos;https://app.crunch.io/api/account/applications/testsetuplogos/logo/&apos;, {
+               method: &apos;GET&apos;,
+               headers: {
+                &apos;Authorization&apos;: &apos;Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+               }
+             })
+             .then(response => response.json())
+             .then(jsonResponse => jsonResponse.value)
+          syntaxLang: javascript
+      tags:
+        - Account subdomains
+    parameters:
+      - description: Unique ID of the application you are working with
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          type: string
+    post:
+      description: |-
+        To set/change an application’s logo, you can make a multipart/form-data request containing either or all of the large, small and favicon fields with the desired image files to use. GIF, JPEG, PNG and ICO image files are supported.
+
+        Only account admins are authorized to change subdomain logos.
+      operationId: post-account-applications-applicationId-logo
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                favicon:
+                  description: 16x16 pixel logo image
+                  format: binary
+                  type: string
+                large:
+                  description: Large logo image
+                  format: binary
+                  type: string
+                small:
+                  description: Small logo image
+                  format: binary
+                  type: string
+              type: object
+      parameters: []
+      responses:
+        '202':
+          description: Item created
+        '400':
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    exception:
+                      - Invalid image file
+                    message: Invalid image file
+                    status: 400 Bad Request
+              schema:
+                description: ''
+                type: object
+                properties:
+                  exception:
+                    type: array
+                    items:
+                      required: []
+                      properties: {}
+                  message:
+                    type: string
+                    minLength: 1
+                  status:
+                    type: string
+                    minLength: 1
+                required:
+                  - exception
+                  - message
+                  - status
+          description: Bad request
+      summary: Change subdomain logo
+      x-code-samples:
+        - lang: SHELL
+          source: "curl -X POST https://app.crunch.io/api/account/applications/testsetuplogos/logo/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
+          syntaxLang: bash
+        - lang: JAVASCRIPT
+          source: |-
+            const postAccountApplicationsApplicationIdLogo = await fetch(
+              &apos;https://app.crunch.io/api/account/applications/testsetuplogos/logo/&apos;, {
+               method: &apos;POST&apos;,
+               headers: {
+                &apos;Authorization&apos;: &apos;Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+               }
+             })
+          syntaxLang: javascript
+      tags:
+        - Account subdomains
+    patch:
+      summary: Remove subdomain logo
+      operationId: patch-account-applications-applicationId-logo
+      responses:
+        '200':
+          description: OK
+      description: 'It is possible to remove the logos that have been set up. To do so, PATCH back the contents of the logo/ resource with the specific logos that need to be removed set to the null value.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                element:
+                  type: string
+                value:
+                  type: object
+                  properties:
+                    large:
+                      type: string
+                    small:
+                      type: string
+                    favicon:
+                      type: string
+            examples:
+              example-1:
+                value:
+                  element: 'shoji:view'
+                  value:
+                    large: null
+                    small: null
+                    favicon: null
+      tags:
+        - Account subdomains
+  /account/datasets/:
+    get:
+      description: |-
+        Only account managers have access to this catalog. It is a read only shoji catalog containing all the datasets that users of this account have created (potentially very large catalog).
+
+        Account managers have implicit editor access to all the account datasets.
+      operationId: get-account-datasets
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    element: 'shoji:catalog'
+                    index:
+                      'https://app.crunch.io/api/datasets/12da1cd3659a4b4c9bb4b33a73fb7f8e/':
+                        access_time: '1970-01-01T00:00:00+00:00'
+                        account: 'https://app.crunch.io/api/accounts/5b960e63aabf40f5bb1a92240fd16fb3/'
+                        archived: false
+                        creation_time: '2020-05-20T19:06:26.003000+00:00'
+                        current_editor: null
+                        current_editor_name: Missing user
+                        description: ''
+                        end_date: null
+                        id: 12da1cd3659a4b4c9bb4b33a73fb7f8e
+                        is_published: true
+                        modification_time: '2020-05-20T19:06:25.303000+00:00'
+                        name: Dataset
+                        owner_id: 'https://app.crunch.io/api/users/29d2c9dee6964f6f89e99b791af8e913/'
+                        owner_name: a272d8541574d7b16fec2f5216e3ad3a76b5b5118082c02a115b93ab50e872df@example.com
+                        size:
+                          columns: null
+                          rows: null
+                          unfiltered_rows: null
+                        start_date: null
+                        streaming: 'no'
+                        view_of: null
+                    self: 'https://app.crunch.io/api/account/datasets/'
+              schema:
+                description: ''
+                type: object
+                properties:
+                  element:
+                    type: string
+                    minLength: 1
+                  index:
+                    type: object
+                    properties:
+                      'https://app.crunch.io/api/datasets/12da1cd3659a4b4c9bb4b33a73fb7f8e/':
+                        type: object
+                        properties:
+                          access_time:
+                            type: string
+                            minLength: 1
+                          account:
+                            type: string
+                            minLength: 1
+                          archived:
+                            type: boolean
+                          creation_time:
+                            type: string
+                            minLength: 1
+                          current_editor: {}
+                          current_editor_name:
+                            type: string
+                            minLength: 1
+                          description:
+                            type: string
+                          end_date: {}
+                          id:
+                            type: string
+                            minLength: 1
+                          is_published:
+                            type: boolean
+                          modification_time:
+                            type: string
+                            minLength: 1
+                          name:
+                            type: string
+                            minLength: 1
+                          owner_id:
+                            type: string
+                            minLength: 1
+                          owner_name:
+                            type: string
+                            minLength: 1
+                          size:
+                            type: object
+                            properties:
+                              columns: {}
+                              rows: {}
+                              unfiltered_rows: {}
+                            required: []
+                          start_date: {}
+                          streaming:
+                            type: string
+                            minLength: 1
+                          view_of: {}
+                        required:
+                          - access_time
+                          - account
+                          - archived
+                          - creation_time
+                          - current_editor_name
+                          - description
+                          - id
+                          - is_published
+                          - modification_time
+                          - name
+                          - owner_id
+                          - owner_name
+                          - size
+                          - streaming
+                    required:
+                      - 'https://app.crunch.io/api/datasets/12da1cd3659a4b4c9bb4b33a73fb7f8e/'
+                  self:
+                    type: string
+                    minLength: 1
+                required:
+                  - element
+                  - index
+                  - self
+          description: Success
+      summary: List all account datasets
+      tags:
+        - Accounts
+      x-code-samples:
+        - lang: SHELL
+          source: "curl -X GET https://app.crunch.io/api/account/datasets/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
+          syntaxLang: bash
+        - lang: JAVASCRIPT
+          source: |-
+            const getAccountDatasets = await fetch(
+              &apos;https://app.crunch.io/api/account/datasets/&apos;, {
+               method: &apos;GET&apos;,
+               headers: {
+                &apos;Authorization&apos;: &apos;Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+               }
+             })
+             .then(response => response.json())
+             .then(jsonResponse => jsonResponse.index)
+          syntaxLang: javascript
+    parameters: []
   /account/logo/:
     parameters: []
     patch:
-      description: >-
-        To remove any logos that have been set up, submit one more more image
-        names with a null value.
+      description: 'To remove any logos that have been set up, submit one more more image names with a null value.'
       operationId: patch-account-logo
       requestBody:
         content:
@@ -1506,19 +1663,7 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X PATCH https://app.crunch.io/api/account/logo/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: application/json&apos; -d &apos;
-            {
-              "element": "shoji:view",
-              "value": {
-                "large": null,
-                "small": null,
-                "favicon": null
-              }
-            }
-            &apos;
+          source: "curl -X PATCH https://app.crunch.io/api/account/logo/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: application/json&apos; -d &apos;\n{\n  \"element\": \"shoji:view\",\n  \"value\": {\n    \"large\": null,\n    \"small\": null,\n    \"favicon\": null\n  }\n}\n&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1540,10 +1685,7 @@ paths:
              })
           syntaxLang: javascript
     post:
-      description: >-
-        Update the logos for the user's account. Only account admins are
-        authorized to do this. Valid file extensions are GIF, JPEG, PNG and ICO
-        image files.
+      description: "Update the logos for the user's account. Only account admins are authorized to do this. Valid file extensions are GIF, JPEG, PNG and ICO image files."
       operationId: post-account-logo
       requestBody:
         content:
@@ -1571,20 +1713,106 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X POST https://app.crunch.io/api/account/logo/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: multipart/form-data&apos; \
-              -F &apos;large=@6r7bkQxR5u6X5KEv4DsJ.png&apos; \
-              -F &apos;favicon=@favicon.ico&apos; \
-              -F &apos;small=@6r7bkQxR5u6X5KEv4DsJ.png&apos;
+          source: "curl -X POST https://app.crunch.io/api/account/logo/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: multipart/form-data&apos; \\\n  -F &apos;large=@6r7bkQxR5u6X5KEv4DsJ.png&apos; \\\n  -F &apos;favicon=@favicon.ico&apos; \\\n  -F &apos;small=@6r7bkQxR5u6X5KEv4DsJ.png&apos;"
           syntaxLang: bash
+  /account/projects/:
+    get:
+      description: This catalog is available for account managers and lists all the projects that the users have created. Account managers have implicit edit access on all projects.
+      operationId: get-account-projects
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                example-1:
+                  value:
+                    element: 'shoji:catalog'
+                    index:
+                      'https://app.crunch.io/api/projects/8ebf23a3d45144ce810f900bb52abf11/':
+                        description: ''
+                        id: 8ebf23a3d45144ce810f900bb52abf11
+                        name: __users__
+                      'https://app.crunch.io/api/projects/b63cafbbf4f94b34935eb4858f394102/':
+                        description: ''
+                        id: b63cafbbf4f94b34935eb4858f394102
+                        name: Project
+                    self: 'https://app.crunch.io/api/account/projects/'
+              schema:
+                description: ''
+                type: object
+                properties:
+                  element:
+                    type: string
+                    minLength: 1
+                  index:
+                    type: object
+                    properties:
+                      'https://app.crunch.io/api/projects/8ebf23a3d45144ce810f900bb52abf11/':
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                          id:
+                            type: string
+                            minLength: 1
+                          name:
+                            type: string
+                            minLength: 1
+                        required:
+                          - description
+                          - id
+                          - name
+                      'https://app.crunch.io/api/projects/b63cafbbf4f94b34935eb4858f394102/':
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                          id:
+                            type: string
+                            minLength: 1
+                          name:
+                            type: string
+                            minLength: 1
+                        required:
+                          - description
+                          - id
+                          - name
+                    required:
+                      - 'https://app.crunch.io/api/projects/8ebf23a3d45144ce810f900bb52abf11/'
+                      - 'https://app.crunch.io/api/projects/b63cafbbf4f94b34935eb4858f394102/'
+                  self:
+                    type: string
+                    minLength: 1
+                required:
+                  - element
+                  - index
+                  - self
+          description: Success
+      summary: List all account projects
+      tags:
+        - Accounts
+      x-code-samples:
+        - lang: SHELL
+          source: "curl -X GET https://app.crunch.io/api/account/projects/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
+          syntaxLang: bash
+        - lang: JAVASCRIPT
+          source: |-
+            const getAccountProjects = await fetch(
+              &apos;https://app.crunch.io/api/account/projects/&apos;, {
+               method: &apos;GET&apos;,
+               headers: {
+                &apos;Authorization&apos;: &apos;Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+               }
+             })
+             .then(response => response.json())
+             .then(jsonResponse => jsonResponse.index)
+          syntaxLang: javascript
+    parameters: []
   /account/templates/:
     parameters: []
     patch:
-      description: >-
-        To remove a Powerpoint template that has been set up, submit this with a
-        null value.
+      description: 'To remove a Powerpoint template that has been set up, submit this with a null value.'
       operationId: patch-account-templates
       requestBody:
         content:
@@ -1614,17 +1842,7 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X PATCH https://app.crunch.io/api/account/templates/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: application/json&apos; -d &apos;
-            {
-              "element": "shoji:view",
-              "value": {
-                "powerpoint": null
-              }
-            }
-            &apos;
+          source: "curl -X PATCH https://app.crunch.io/api/account/templates/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: application/json&apos; -d &apos;\n{\n  \"element\": \"shoji:view\",\n  \"value\": {\n    \"powerpoint\": null\n  }\n}\n&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1644,10 +1862,7 @@ paths:
              })
           syntaxLang: javascript
     post:
-      description: >-
-        Update the PowerPoint template for the user's account. Only account
-        admins are authorized to do this. Must be a valid Microsoft PowerPoint
-        file.
+      description: "Update the PowerPoint template for the user's account. Only account admins are authorized to do this. Must be a valid Microsoft PowerPoint file."
       operationId: post-account-templates
       requestBody:
         content:
@@ -1667,18 +1882,11 @@ paths:
         - Account
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X POST https://app.crunch.io/api/account/templates/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \
-              -H &apos;Content-Type: multipart/form-data&apos; \
-              -F &apos;powerpoint=@PowerpointTemplate.pptx&apos;
+          source: "curl -X POST https://app.crunch.io/api/account/templates/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos; \\\n  -H &apos;Content-Type: multipart/form-data&apos; \\\n  -F &apos;powerpoint=@PowerpointTemplate.pptx&apos;"
           syntaxLang: bash
   /feature_flag/:
     get:
-      description: >-
-        Crunch uses feature flags to enable and disable system-wide features
-        under development. This api endpoint returns the application features
-        the authenticated user has access to.
+      description: Crunch uses feature flags to enable and disable system-wide features under development. This api endpoint returns the application features the authenticated user has access to.
       operationId: get-feature_flag
       responses:
         '200':
@@ -1760,9 +1968,7 @@ paths:
         - Users
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/feature_flag/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/feature_flag/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1788,9 +1994,7 @@ paths:
         - Authentication
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/logout/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/logout/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1804,9 +2008,7 @@ paths:
           syntaxLang: javascript
   /projects/shared/:
     get:
-      description: >-
-        Returns a list of datasets other users have shared with the
-        authenticated user.
+      description: Returns a list of datasets other users have shared with the authenticated user.
       operationId: get-projects-shared
       responses:
         '200':
@@ -1820,10 +2022,8 @@ paths:
                       description: Items that other users have shared with you
                       modification_time: '2020-04-07T21:50:10.029000'
                       name: Shared
-                      owner: >-
-                        https://app.crunch.io/api/users/1168fb80e331419e9e0b2695714b32b3/
-                      owner_id: >-
-                        https://app.crunch.io/api/users/1168fb80e331419e9e0b2695714b32b3/
+                      owner: 'https://app.crunch.io/api/users/1168fb80e331419e9e0b2695714b32b3/'
+                      owner_id: 'https://app.crunch.io/api/users/1168fb80e331419e9e0b2695714b32b3/'
                       permissions:
                         edit: false
                         view: true
@@ -1831,12 +2031,10 @@ paths:
                     index:
                       'https://app.crunch.io/api/datasets/69ec37de2efe483fb81e910ec360b97c/':
                         access_time: '2020-03-27T23:39:30.536000+00:00'
-                        account: >-
-                          https://app.crunch.io/api/accounts/8f04c13804e94ca8b3cf568f8da36cf0/
+                        account: 'https://app.crunch.io/api/accounts/8f04c13804e94ca8b3cf568f8da36cf0/'
                         archived: false
                         creation_time: '2020-03-25T20:36:10.238000+00:00'
-                        current_editor: >-
-                          https://app.crunch.io/api/users/df3e3c5f7ce74365960d1305373564f0/
+                        current_editor: 'https://app.crunch.io/api/users/df3e3c5f7ce74365960d1305373564f0/'
                         current_editor_name: Crunch Support
                         description: ''
                         end_date: null
@@ -1844,8 +2042,7 @@ paths:
                         is_published: true
                         modification_time: '2020-04-02T14:18:20.032000+00:00'
                         name: Just Eat BX data
-                        owner_id: >-
-                          https://app.crunch.io/api/projects/70bc37797d734a868fb9bb641cbbcd80/
+                        owner_id: 'https://app.crunch.io/api/projects/70bc37797d734a868fb9bb641cbbcd80/'
                         owner_name: Just Eat
                         permissions:
                           edit: false
@@ -1863,17 +2060,15 @@ paths:
                         account: 'https://app.crunch.io/api/accounts/00001/'
                         archived: false
                         creation_time: '2019-04-19T16:49:56.831000+00:00'
-                        current_editor: >-
-                          https://app.crunch.io/api/users/5187f95407a7d83fe485396c/
+                        current_editor: 'https://app.crunch.io/api/users/5187f95407a7d83fe485396c/'
                         current_editor_name: Mike Malecki
                         description: ''
                         end_date: '2019-04-16T00:00:00+00:00'
                         id: 9f1f51ac5b70492c9e573288e9e6bed6
                         is_published: true
                         modification_time: '2020-03-12T20:24:34.770000+00:00'
-                        name: Political Attitudes | Week of 2019-04-15
-                        owner_id: >-
-                          https://app.crunch.io/api/projects/f28cb95815894f6fbdffbd4598c82fc9/
+                        name: 'Political Attitudes | Week of 2019-04-15'
+                        owner_id: 'https://app.crunch.io/api/projects/f28cb95815894f6fbdffbd4598c82fc9/'
                         owner_name: Example datasets
                         permissions:
                           edit: false
@@ -1904,9 +2099,7 @@ paths:
         - Projects
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X GET https://app.crunch.io/api/projects/shared/ \
-              -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;
+          source: "curl -X GET https://app.crunch.io/api/projects/shared/ \\\n  -H &apos;Authorization: Bearer 598d9e1105ad96dac7ab528f0928996e&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -1931,9 +2124,7 @@ paths:
                 example-1:
                   value:
                     config: 'https://app.crunch.io/api/public/config/'
-                    description: >-
-                      Lists all the options available to non authenticated
-                      requests
+                    description: Lists all the options available to non authenticated requests
                     element: 'shoji:catalog'
                     self: 'https://app.crunch.io/api/public/'
                     urls:
@@ -1970,20 +2161,14 @@ paths:
           syntaxLang: javascript
   /public/config/:
     get:
-      description: >-
-        Returns a subdomain's configuration, if configured. If none exists, the
-        body will be empty.
+      description: |-
+        Returns a subdomain's configuration, if configured. If none exists, the body will be empty.
 
-
-        **NOTE**: This api request is designed to run against a **company
-        subdomain** not against `app.crunch.io`.
-
+        **NOTE**: This api request is designed to run against a **company subdomain** not against `app.crunch.io`.
 
         `https://yougov.crunch.io/api/public/config/`
 
-
-        API response.body contains the subdomain’s current configuration. if no
-        configuration exists, response.body will be an empty object.
+        API response.body contains the subdomain’s current configuration. if no configuration exists, response.body will be an empty object.
       operationId: get-public-config
       responses:
         '200':
@@ -1996,12 +2181,9 @@ paths:
                     self: 'https://app.crunch.io/api/public/config/'
                     body:
                       logo:
-                        favicon: >-
-                          https://s.crunch.io/act_app_icons/mycompany-kyzdnb-favicon.ico
-                        large: >-
-                          https://s.crunch.io/act_app_icons/mycompany-wcaran-large.png
-                        small: >-
-                          https://s.crunch.io/act_app_icons/mycompany-nchvcz-small.png
+                        favicon: 'https://s.crunch.io/act_app_icons/mycompany-kyzdnb-favicon.ico'
+                        large: 'https://s.crunch.io/act_app_icons/mycompany-wcaran-large.png'
+                        small: 'https://s.crunch.io/act_app_icons/mycompany-nchvcz-small.png'
                       manifest: {}
                       name: My Company
                       oauth_redirect: true
@@ -2099,14 +2281,8 @@ paths:
   /public/crunchbox/preview/:
     parameters: []
     post:
-      description: >-
-        The preview endpoint is used to preemptively initiate rendering a given
-        CrunchBox configuration to a raster image. This image will be requested
-        by social network platform crawlers during construction of the post
-        share preview. The preview-rendering process can be time-consuming.
-        Therefore, it is preferable to initiate it as soon as is reasonable
-        before a request for the image data.
-
+      description: |-
+        The preview endpoint is used to preemptively initiate rendering a given CrunchBox configuration to a raster image. This image will be requested by social network platform crawlers during construction of the post share preview. The preview-rendering process can be time-consuming. Therefore, it is preferable to initiate it as soon as is reasonable before a request for the image data.
 
         This endpoint returns no data.
       operationId: post-crunchbox-preview
@@ -2115,8 +2291,7 @@ paths:
           in: query
           name: data
           schema:
-            default: >-
-              https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000
+            default: 'https://s.crunch.io/widget/index.html#/ds/a1b2c3d4e5f6g7h8/row/000001/column/000000'
             example: ''
             format: uri
             type: string
@@ -2132,11 +2307,7 @@ paths:
         - Crunchbox
       x-code-samples:
         - lang: SHELL
-          source: >-
-            curl -X POST
-            https://app.crunch.io/api/public/crunchbox/preview/?data=https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000
-            \
-              -d &apos;&apos;
+          source: "curl -X POST https://app.crunch.io/api/public/crunchbox/preview/?data=https%3A%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fa1b2c3d4e5f6g7h8%2Frow%2F000001%2Fcolumn%2F000000 \\\n  -d &apos;&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -2151,38 +2322,24 @@ paths:
           syntaxLang: javascript
   /public/crunchbox/share/:
     get:
-      description: >-
-        Generates the HTML markup for the crunchbox sharing page containing all
-        of the metadata necessary to satisfy the requirements of social platform
-        crawlers to result in a rich sharing content preview. This preview is
-        necessarily constructed as part of the request as to avoid javascript
-        processing which will be ignored by these crawlers.
-
+      description: |-
+        Generates the HTML markup for the crunchbox sharing page containing all of the metadata necessary to satisfy the requirements of social platform crawlers to result in a rich sharing content preview. This preview is necessarily constructed as part of the request as to avoid javascript processing which will be ignored by these crawlers.
 
         See: https://developers.facebook.com/docs/sharing/webmasters/crawler.
 
-
         # Endpoint usage in HTML file
-
         ```html
-
         <html>
-
         <head>
             <title>Link to CrunchBox</title>
         </head>
-
         <body>
-
         Click here to
-
         <a target=&apos;_blank&apos;
            href=&apos;https://app.crunch.io/api/public/crunchbox/share/?data=%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2F72c27f64a12028b887d7cae248143b6b%2Frow%2F000886%2Fcolumn%2F000480%3Fviz%3DstackedBarPlot%26amp%3Bcp%3Dpercent%26amp%3Bdp%3D0%26amp%3Bgrp%3Dstack&ref=https%3A%2F%2Fwww.whitehouse.gov/&apos;>view
             CrunchBox</a>.
         </body>
-
         </html>
-
         ```
       operationId: get-crunchbox-share
       parameters:
@@ -2191,12 +2348,9 @@ paths:
           name: data
           required: true
           schema:
-            default: >-
-              //s.crunch.io/widget/index.html#/ds/d4b2945f727f4eccbc31544ddabf9fa4?viz=groupedBarPlot&cp=percent&dp=0&grp=stack
+            default: '//s.crunch.io/widget/index.html#/ds/d4b2945f727f4eccbc31544ddabf9fa4?viz=groupedBarPlot&cp=percent&dp=0&grp=stack'
             type: string
-        - description: >-
-            Url to use inside the CrunchBox to link user back to referring
-            webpage
+        - description: Url to use inside the CrunchBox to link user back to referring webpage
           in: query
           name: ref
           schema:
@@ -2208,7 +2362,7 @@ paths:
             text/html:
               examples:
                 example-1:
-                  value: <html><head>...</head><body>...</body></html>
+                  value: '<html><head>...</head><body>...</body></html>'
               schema:
                 type: string
           description: OK
@@ -2219,20 +2373,15 @@ paths:
         - Crunchbox
       x-code-samples:
         - lang: SHELL
-          source: >-
-            curl -X GET
-            https://app.crunch.io/api/public/crunchbox/share/?data=%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fd4b2945f727f4eccbc31544ddabf9fa4%3Fviz%3DgroupedBarPlot%26cp%3Dpercent%26dp%3D0%26grp%3Dstack&ref=https%3A%2F%2Fgoogle.com
+          source: 'curl -X GET https://app.crunch.io/api/public/crunchbox/share/?data=%2F%2Fs.crunch.io%2Fwidget%2Findex.html%23%2Fds%2Fd4b2945f727f4eccbc31544ddabf9fa4%3Fviz%3DgroupedBarPlot%26cp%3Dpercent%26dp%3D0%26grp%3Dstack&ref=https%3A%2F%2Fgoogle.com'
           syntaxLang: bash
         - lang: JAVASCRIPT
-          source: >-
-            const getCrunchboxUrl = new
-            URL(&apos;https://app.crunch.io/api/public/crunchbox/share/&apos;)
-
+          source: |-
+            const getCrunchboxUrl = new URL(&apos;https://app.crunch.io/api/public/crunchbox/share/&apos;)
             getCrunchboxUrl.search = new URLSearchParams({
               data: &apos;//s.crunch.io/widget/index.html#/ds/d4b2945f727f4eccbc31544ddabf9fa4?viz=groupedBarPlot&cp=percent&dp=0&grp=stack&apos;,
               ref: &apos;https://google.com&apos;
             })
-
             const getCrunchboxShare = await fetch(
               getCrunchboxUrl, {
                method: &apos;GET&apos;,
@@ -2245,13 +2394,9 @@ paths:
     parameters: []
   /public/login/:
     get:
-      description: >+
-        Every crunch user account authenticates with the crunch api via a
-        username/password combination or via one of many customer single-signon oauth providers
-        that Crunch integrates with.
-
-        This endpoint receives a crunch account username/email and returns which
-        authentication method is required for that user account.
+      description: |-
+        Every crunch user account authenticates with the crunch api via a username/password combination or via one of many customer single-signon oauth providers that Crunch integrates with.
+        This endpoint receives a crunch account username/email and returns which authentication method is required for that user account.
       operationId: get-public-login
       parameters:
         - description: Crunch username
@@ -2283,9 +2428,7 @@ paths:
         - Users
       x-code-samples:
         - lang: SHELL
-          source: >-
-            curl -X GET
-            https://app.crunch.io/api/public/login/?email=fakeuser%40crunch.io&redirect_uri=https%3A%2F%2Fapp.crunch.io%2Fshared
+          source: 'curl -X GET https://app.crunch.io/api/public/login/?email=fakeuser%40crunch.io&redirect_uri=https%3A%2F%2Fapp.crunch.io%2Fshared'
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
@@ -2301,22 +2444,12 @@ paths:
              .then(jsonResponse => jsonResponse.value)
           syntaxLang: javascript
     post:
-      description: >-
-        Log user in and receive an access token to be used on subsequent api
-        requests. Nearly all interactions with the Crunch API need to be
-        authenticated. The authentication method involves POSTing login
-        credentials and receiving an access token. The api client should then
-        store the access token returned and pass it in on each subsequent
-        request in the Authorization HTTP header like this.
+      description: |-
+        Log user in and receive an access token to be used on subsequent api requests. Nearly all interactions with the Crunch API need to be authenticated. The authentication method involves POSTing login credentials and receiving an access token. The api client should then store the access token returned and pass it in on each subsequent request in the Authorization HTTP header like this.
 
+        Example header variable: `Authorization: Bearer 796f025f019ad8299337ba7b0924afbf`
 
-        Example header variable: `Authorization: Bearer
-        796f025f019ad8299337ba7b0924afbf`
-
-
-        **TODO** the python code on
-        https://docs.crunch.io/feature-guide/feature-authentication.html is
-        wrong. What is the right code?
+        **TODO** the python code on https://docs.crunch.io/feature-guide/feature-authentication.html is wrong. What is the right code?
       operationId: post-public-login
       parameters: []
       requestBody:
@@ -2327,7 +2460,7 @@ paths:
                 summary: Login example
                 value:
                   email: fakeuser@gmail.com
-                  password: ^IsR49LC5!%
+                  password: '^IsR49LC5!%'
                   token: true
             schema:
               properties:
@@ -2338,15 +2471,12 @@ paths:
                   type: string
                 password:
                   description: Crunch password
-                  example: ^IsR49LC5!%
+                  example: '^IsR49LC5!%'
                   format: password
                   type: string
                 token:
                   default: 'false'
-                  description: >-
-                    True results in the access token coming back in the response
-                    body for api use. False results in api server setting access
-                    token inside httpOnly cookie for browser use.
+                  description: True results in the access token coming back in the response body for api use. False results in api server setting access token inside httpOnly cookie for browser use.
                   example: 'true'
                   type: boolean
               required:
@@ -2379,15 +2509,7 @@ paths:
         - Authentication
       x-code-samples:
         - lang: SHELL
-          source: |-
-            curl -X POST https://app.crunch.io/api/public/login/ \
-              -H &apos;Content-type: application/json&apos; -d &apos;
-            {
-              "email": "fake.user@example.com",
-              "password": "password",
-              "token": true
-            }
-            &apos;
+          source: "curl -X POST https://app.crunch.io/api/public/login/ \\\n  -H &apos;Content-type: application/json&apos; -d &apos;\n{\n  \"email\": \"fake.user@example.com\",\n  \"password\": \"password\",\n  \"token\": true\n}\n&apos;"
           syntaxLang: bash
         - lang: JAVASCRIPT
           source: |-
