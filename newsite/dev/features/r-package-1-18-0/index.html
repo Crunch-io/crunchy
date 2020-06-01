@@ -176,7 +176,7 @@
 <p>We&rsquo;ve added some methods to help you work with derived variables more generally. First, you can check if a variable is derived with <code>is.derived(ds$variable)</code>. If it is derived, you can see its derivation expression with <code>derivation(ds$derived_variable)</code>. You can change that derivation expression by assigning a new one: <code>derivation(ds$derived_variable) &lt;- ds$var1 + ds$var2</code>. Finally, if you want to sever the link to the variable&rsquo;s sources, you can &ldquo;integrate&rdquo; (integration is the opposite of derivation, right?) the variable by assigning a <code>NULL</code> derivation, like <code>derivation(ds$derived_variable) &lt;- NULL</code> or you can set <code>is.derived(ds$derived_variable) &lt;- FALSE</code>. The resulting variable will no longer update when its (former) source variables are altered.</p>
 <p>See <a href="/r/crunch/reference/derivations.html">derivations</a> for more detailed documentation and information.</p>
 <h2 id="multitables">Multitables</h2>
-<p>Similar to the new tools for working with derived variables, there are also new methods for working with &ldquo;<a href="/r/crunch/reference/multitable-catalog.html">multitables</a>&quot;, the table header definitions composed of multiple variables that can be used interactively in the web app and to generate tab books of the dataset. Multitables can now be updated with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- ~ var1 + var2</code> formula syntax. In addition, multitables can be deleted with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- NULL</code>. Multitables also have new <code>name()</code> and <code>delete()</code> methods.</p>
+<p>Similar to the new tools for working with derived variables, there are also new methods for working with &ldquo;<a href="/r/crunch/reference/multitable-catalog.html">multitables</a>&rdquo;, the table header definitions composed of multiple variables that can be used interactively in the web app and to generate tab books of the dataset. Multitables can now be updated with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- ~ var1 + var2</code> formula syntax. In addition, multitables can be deleted with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- NULL</code>. Multitables also have new <code>name()</code> and <code>delete()</code> methods.</p>
 <h2 id="assorted-enhancements-and-fixes">Assorted enhancements and fixes</h2>
 <p>There are many more changes in the release; see the <a href="/r/crunch/news/#crunch-1-18-0">full release notes</a> for more details. A few other new functions are worth mentioning.</p>
 <ul>
@@ -214,6 +214,21 @@
 </div> 
 
 
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+  <div class="cookiealert-container container">
+      <div class="row">
+          <div class="col-sm-8 col-md-9 text-left">
+              Crunch.io uses cookies to ensure you get the best experience on our site. By using this site, you agree to the use of cookies in accordance with our <a href="about/privacy">Cookie Policy</a>.
+          </div>
+
+          <div class="col-sm-4 col-md-3">
+              <button type="button" class="btn btn-primary acceptcookies" aria-label="Close"> Accept </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -229,6 +244,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 <script src="https://js.hsforms.net/forms/shell.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+<script src="js/cookiealert.js"></script>
 <script src="js/script.js"></script>
 
 

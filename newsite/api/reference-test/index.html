@@ -7,32 +7,32 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | tidyeval</title>
+    <title>Crunch | Crunch API Reference</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="tidyeval &middot; Modern survey data analysis">
+    <meta property="og:title" content="Crunch API Reference &middot; Modern survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/tags/tidyeval/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/api/reference-test/">
 <meta property="og:locale" content="en">
 
+
     
-        
-            <meta property="og:image" content="//crunch-io.github.io/crunchy/newsite/img/logo-1200x630.png">
-        
+        <meta property="og:image" content="https://crunch.io/img/logo-1200x630.png">
     
 
 
-  <meta property="og:updated_time" content="2018-08-03T12:12:10-07:00">
+
+  <meta property="og:updated_time" content="2018-04-25T14:59:57-04:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="//crunch-io.github.io/crunchy/newsite/img/logo-1200x630.png"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="tidyeval"/>
-<meta name="twitter:description" content="Prepare and analyze survey data quickly and easily."/>
+<meta name="twitter:title" content="Crunch API Reference"/>
+<meta name="twitter:description" content=""/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -47,11 +47,28 @@
 
 
 
+<script type="module" src="/js/rapidoc-min.js"></script>
+
+<style>
+    nav {
+        border-bottom: solid #004571 1px;
+    }
+    a.menuLink {
+        color: yellow;
+        text-decoration: none;
+    }
+    rapi-doc {
+        width: 100%;
+    }
+
+
+
+</style>
+
 
   </head>
 
   <body>
-
 
 
     
@@ -121,27 +138,138 @@
     </nav>
 
 
-
-
-<div id="post-box">
-    <div class="intro-post">
-        <h1>tidyeval</h1>
-        <p><br></p>
+<div id="wrapper">
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+            <div class="jobs-content">
+                <div class="jumbotron m-0 pb-3">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Crunch API Reference</h1>
+                                <p class="mt-5 mb-0"><a class="menuLink" href=''></a></p>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div>
     </div>
+</div>
 
-    <ul id="posts">
-      <div class="list-item" itemscope itemtype="http://schema.org/CreativeWork">
-    <h2 class="title">
-        <a href="//crunch-io.github.io/crunchy/newsite/dev/blog/autoplot-with-tidyeval/" itemprop="headline">Making Graphs Look Easy with ggplot2 and Tidy Evaluation</a>
-    </h2>
+
+
+<rapi-doc
+        id="thedoc"
+        allow-spec-file-load="true"
+        allow-spec-url-load="true"
+        default-schema-tab="example"
+        info-description-headings-in-navbar="true"
+        layout="row"
+        nav-accent-color="#0064a4"
+        nav-bg-color="#ffffff"
+        nav-hover-bg-color="#4c8cb8"
+        nav-hover-text-color="#000000"
+        nav-text-color="#1d1d26"
+        primary-color="#0064a4"
+        nav-item-spacing="compact"
+        regular-font="ProximaNova"
+        render-style='read'
+        response-area-height="900px"
+        schema-description-expanded="true"
+        schema-style="tree"
+        show-components="false"
+        show-header='true'
+        show-info="true"
+        sort-endpoints-by="method"
+        sort-tags="true"
+        spec-url='https://local.crunch.io:28443/api/public/openapi/'
+        theme="light"
+>
+</rapi-doc>
+
+<script>
     
-</div>
- 
-      <section>
+    document.querySelector('rapi-doc').addEventListener('spec-loaded', e => {
+        setTimeout(() => {
+            const rapidoc = document.querySelector('rapi-doc').shadowRoot
+            const style = document.createElement( 'style' )
+            style.innerHTML = `
+                :host {
+                  --green: #107f65;
+                  --fg: #0064A4;
+                  --fg3: #1d1d26;
+                  --blue: #0064A4;
+                  --light-grey: #fefefe;
+                  --purple: #722580;
+                  --code-bg: var(--light-grey);
+                  --grey: #e1e9e9;
+                }
+                .token.tag, .token.function, .token.punctuation, .token.keyword { color: var(--purple); }
+                .token.entity, .token.string { color: var(--green); }
+                .token.constant { color: var(--blue) }
+                .m-markdown pre { background-color: var(--light-grey); border: 1px solid}
+                .m-markdown pre code { background-color: var(--light-grey); color: var(--blue); }
+                h1, .sub-title { background-color: var(--grey); padding: 10px; font-size: 18px; font-weight: 600; }
+                h2 { font-size: 16px; font-weight: 800; }
+                h3 { font-size: 14px; font-weight: 800; }
+                a { text-decoration: none; font-weight: 800; }
+                .title.tag { color: var(--blue); font-size: 32px; font-weight: 600;}
+                .nav-bar { border-right: 1px solid #e5e5e5; }
+                .nav-bar-tag, .nav-bar-info { font-size: 12px; font-weight: 800; background-color: var(--grey); padding: 10px; }
+                .nav-bar-section, .nav-scroll hr { display: none; }
+                #link-authentication { background-color: var(--nav-bg-color); font-size: 12px; font-weight: 400; }
+                #nav-bar-search { width:100%; padding-right:20px; border-color:var(--nav-accent-color); background-color:var(--nav-bg-color) }
+                .nav-bar-h2 { margin: 0px; padding-left: 22px; }
+                .nav-bar-tag:not(:first-of-type){
+                  border-top: 0px solid var(--nav-hover-bg-color);
+                }
+                `
+            rapidoc.appendChild(style)
 
-</section>
-    </ul>
-</div>
+
+            rapidoc.querySelectorAll('tab-panel').forEach(item => {
+                const style = document.createElement( 'style' )
+                style.innerHTML = `
+                .token.function, .token.punctuation, .token.keyword { color: var(--purple); }
+                .token.string { color: var(--green); }
+                .token.constant { color: var(--blue) }
+                .m-markdown pre { background-color: var(--light-grey); border: 1px solid}
+                .m-markdown pre code { background-color: var(--light-grey); color: var(--blue); }
+                `
+                item.shadowRoot.appendChild(style)
+            })
+
+            rapidoc.querySelectorAll('api-request').forEach(item => {
+                const style = document.createElement( 'style' )
+                style.innerHTML = `
+                .textarea { background-color: var(--light-grey); }
+                `
+                item.shadowRoot.appendChild(style)
+            })
+
+            rapidoc.querySelectorAll('api-response').forEach(item => {
+                const style = document.createElement( 'style' )
+                style.innerHTML = `
+                json-tree { background-color: var(--light-grey);}
+                `
+                item.shadowRoot.appendChild(style)
+            })
+
+            const apiTitle = rapidoc.querySelector('#overview').querySelectorAll('div')[0];
+            apiTitle.style = ""
+            apiTitle.className = "title tag"
+            const version = apiTitle.querySelectorAll('span')[0]
+            version.style = ""
+            version.className = "title tag"
+
+            rapidoc.querySelector('#nav-bar-search').style = ""
+
+        }, 0)
+    });
+</script>
+
+
 <div class="alert alert-dismissible text-center cookiealert" role="alert">
   <div class="cookiealert-container container">
       <div class="row">
