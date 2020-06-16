@@ -6148,28 +6148,44 @@ h4 {
 
 .cookiealert {
   position: fixed;
-  bottom: 26px;
-  left: 26px;
-  right: 26px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
   border-radius: 0;
   color: #1D1D26;
-  padding: 20px;
-  background-color: #f9f9f9; }
+  padding: 10px;
+  background-color: #ffffff;
+  font-size: 14px;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: all 500ms ease-out;
+  -webkit-box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 15px 1px rgba(0, 0, 0, 0.4); }
   .cookiealert a {
-    color: #722580;
-    text-decoration: underline; }
+    color: #107f65; }
+    .cookiealert a:hover {
+      color: #0a5241;
+      text-decoration: none; }
+  .cookiealert .cookiealert-container {
+    padding: 10px 30px; }
   .cookiealert .row div {
     padding: 0; }
+  .cookiealert .row div:first-child {
+    margin-top: 6px; }
   @media (min-width: 576px) {
     .cookiealert .acceptcookies {
       float: right;
       margin: 0; } }
   .cookiealert .btn {
-    margin-top: 4px; }
+    padding: 5px 20px;
+    font-size: 14px; }
 
 .cookiealert.show {
-  visibility: visible; }
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0%);
+  transition-delay: 500ms; }
 
 .btn {
   padding: 10px 50px;
