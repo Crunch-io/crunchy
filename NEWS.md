@@ -1,3 +1,6 @@
+# crunch 0.3.2
+* Fixes to tests for upcoming crunch package update.
+
 # crunchy 0.3.1
 * New maintainer
 
