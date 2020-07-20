@@ -4,8 +4,7 @@
 # In particular if your tests pass locally, but fail on check or Travis, then
 # likely you need to install and restart.
 library(crunchy)
-source(system.file("crunch-test.R", package = "crunch"), local = TRUE)
-decompress_fixtures()
+source(system.file("crunch-test.R", package = "crunch"))
 
 with_mock_crunch({
     getEnvOf <- function(what, which=rev(sys.parents())) {
