@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,7 +46,7 @@
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -79,7 +83,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -93,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.26.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
       </span>
     </div>
 
@@ -159,7 +163,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/Crunch-io/rcrunch">
+  <a href="https://github.com/Crunch-io/rcrunch/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -183,12 +187,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="crunch-1-27-0" class="section level1">
+<h1 class="page-header" data-toc-text="1.27.0">
+<a href="#crunch-1-27-0" class="anchor"></a>crunch 1.27.0<small> Unreleased </small>
+</h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
+<ul>
+<li>You can now mark variables private (and remove their private status)</li>
+<li>
+<code><a href="../reference/tabBook.html">tabBook()</a></code> by default uses a new endpoint, which allows for more options. The old endpoint is deprecated, but while the server supports it, you can still use it. See <a href="https://crunch.io/r/crunch/reference/tabBook.html"><code>?tabBook</code></a> for more details.</li>
+<li>You can now view and modify the weight on a slide using <code><a href="../reference/weight.html">weight()</a></code> and <code>weight()&lt;-</code> (<a href='https://github.com/Crunch-io/rcrunch/issues/440'>#440</a>)</li>
+<li>You can now use a named <code>filter</code> or <code>filter</code> object when using <code>tabbook()</code>. Filtering by expression in the dataset argument is also supported again.</li>
+<li>You can now cast crunch expressions to other variable types without saving as a variable first.</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>
+<code>newMultiTable()</code> now correctly passes <code>...</code>, so arguments like <code>is_public</code> work (<a href='https://github.com/Crunch-io/rcrunch/issues/424'>#424</a>)</li>
+<li>
+<code><a href="../reference/hide.html">hiddenVariables()</a></code> works when the hidden variables folder has subdirectories (<a href='https://github.com/Crunch-io/rcrunch/issues/372'>#372</a>).</li>
+</ul>
+</div>
+<div id="internal-changes-deprecations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal-changes-deprecations" class="anchor"></a>Internal Changes &amp; Deprecations</h2>
+<ul>
+<li>
+<code>importMultitable()</code> has been removed because it was deprecated on the server.</li>
+<li>crunch now uses folders for hidden</li>
+<li>https verification can be disabled during testing by setting environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>
+</li>
+<li>All mock test files are compressed</li>
+</ul>
+</div>
+</div>
     <div id="crunch-1-26-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.26.3">
 <a href="#crunch-1-26-3" class="anchor"></a>crunch 1.26.3<small> 2020-03-12 </small>
 </h1>
 <ul>
@@ -200,7 +243,7 @@
 </ul>
 </div>
     <div id="crunch-1-26-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.26.2">
 <a href="#crunch-1-26-2" class="anchor"></a>crunch 1.26.2<small> 2020-02-10 </small>
 </h1>
 <ul>
@@ -211,7 +254,7 @@
 </ul>
 </div>
     <div id="crunch-1-26-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.26.1">
 <a href="#crunch-1-26-1" class="anchor"></a>crunch 1.26.1<small> 2019-06-07 </small>
 </h1>
 <ul>
@@ -219,27 +262,27 @@
 </ul>
 </div>
     <div id="crunch-1-26-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.26.0">
 <a href="#crunch-1-26-0" class="anchor"></a>crunch 1.26.0<small> 2019-04-02 </small>
 </h1>
 <div id="personal-folder" class="section level2">
 <h2 class="hasAnchor">
 <a href="#personal-folder" class="anchor"></a>Personal folder</h2>
 <ul>
-<li>You can now access your “personal folder” of datasets, which contains only those datasets you imported and that haven’t been moved into another project. This dataset folder is denoted in paths by <code>~</code>, as in a <code>*nix</code> file system. <code><a href="../reference/cd.html">cd(projects(), "~")</a></code> takes you there; <code><a href="../reference/mv.html">mv(projects(), ds, "~")</a></code> moves <code>ds</code> into your personal folder.</li>
+<li>You can now access your “personal folder” of datasets, which contains only those datasets you imported and that haven’t been moved into another project. This dataset folder is denoted in paths by <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>, as in a <code>*nix</code> file system. <code><a href="../reference/cd.html">cd(projects(), "~")</a></code> takes you there; <code><a href="../reference/mv.html">mv(projects(), ds, "~")</a></code> moves <code>ds</code> into your personal folder.</li>
 <li>
 <code><a href="../reference/listDatasets.html">listDatasets()</a></code> now by default only prints datasets in your personal folder, not a combination of your personal datasets and some of the datasets that have been shared with you.</li>
 <li>When you give a dataset name to <code><a href="../reference/loadDataset.html">loadDataset()</a></code>, it now searches to find datasets exactly matching that name unless you specify a project to load from. If you have multiple datasets with the same name in different locations, <code><a href="../reference/loadDataset.html">loadDataset("your dataset name")</a></code> may return a different one than it did previously. If you want to identify a dataset precisely in <code><a href="../reference/loadDataset.html">loadDataset()</a></code>, either specify the dataset URL (most effective but not as human friendly) or provide <code>project = "path/to/folder"</code>.</li>
 <li>Calling <code>loadDataset(&lt;integer&gt;)</code> no longer is supported.</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix <code>is.public(multitables[[i]]) &lt;- TRUE</code> and several other similar assignments of attributes on an element of a catalog, which previously successfully updated the value on the server but errored when returning to R (<a href='https://github.com/Crunch-io/rcrunch/issues/303'>#303</a>, <a href='https://github.com/Crunch-io/rcrunch/issues/367'>#367</a>)</li>
 <li>
-<code><a href="../reference/Subvariables.html">subvariables()</a></code> on non-array variables returns <code>NULL</code> instead of an error (<a href='https://github.com/Crunch-io/rcrunch/issues/237'>#237</a>)</li>
+<code><a href="../reference/Subvariables-class.html">subvariables()</a></code> on non-array variables returns <code>NULL</code> instead of an error (<a href='https://github.com/Crunch-io/rcrunch/issues/237'>#237</a>)</li>
 <li>Fixed a bug with the display of univariate cube <code>prop.table</code>s</li>
 </ul>
 </div>
@@ -268,7 +311,7 @@
 </div>
 </div>
     <div id="crunch-1-25-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.25.0">
 <a href="#crunch-1-25-0" class="anchor"></a>crunch 1.25.0<small> 2019-01-10 </small>
 </h1>
 <div id="shared-crunch-assets" class="section level2">
@@ -305,14 +348,14 @@
 <li>404 Not Found HTTP responses now print the request URL to aid in debugging.</li>
 <li>Fix a duplicated vignette title.</li>
 <li>Suppress check for new GitHub release of the package in non-interactive sessions.</li>
-<li>Fixed a bug that wouldn’t allow vignette mocks to use <code><a href="../reference/dataset-reference.html">datasetReference()</a></code>
+<li>Fixed a bug that wouldn’t allow vignette mocks to use <code><a href="../reference/datasetReference.html">datasetReference()</a></code>
 </li>
 <li>Removed excess metadata in some cube fixtures in anticipation of Crunch not sending that information any more (no code changes were necessary).</li>
 </ul>
 </div>
 </div>
     <div id="crunch-1-24-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.24.2">
 <a href="#crunch-1-24-2" class="anchor"></a>crunch 1.24.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -323,7 +366,7 @@
 </ul>
 </div>
     <div id="crunch-1-24-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.24.0">
 <a href="#crunch-1-24-0" class="anchor"></a>crunch 1.24.0<small> 2018-09-12 </small>
 </h1>
 <div id="organization" class="section level2">
@@ -356,7 +399,7 @@
 </div>
 </div>
     <div id="crunch-1-23-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.23.0">
 <a href="#crunch-1-23-0" class="anchor"></a>crunch 1.23.0<small> 2018-06-22 </small>
 </h1>
 <div id="improved-support-for-subtotals" class="section level2">
@@ -390,7 +433,7 @@
 </div>
 </div>
     <div id="crunch-1-22-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.22.2">
 <a href="#crunch-1-22-2" class="anchor"></a>crunch 1.22.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -411,7 +454,7 @@
 </ul>
 </div>
     <div id="crunch-1-22-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.22.0">
 <a href="#crunch-1-22-0" class="anchor"></a>crunch 1.22.0<small> 2018-05-02 </small>
 </h1>
 <div id="analysis-methods" class="section level2">
@@ -441,7 +484,7 @@
 </div>
 </div>
     <div id="crunch-1-21-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.21.0">
 <a href="#crunch-1-21-0" class="anchor"></a>crunch 1.21.0<small> Unreleased </small>
 </h1>
 <div id="variable-organization" class="section level2">
@@ -483,17 +526,17 @@
 </div>
 </div>
     <div id="crunch-1-20-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.20.0">
 <a href="#crunch-1-20-0" class="anchor"></a>crunch 1.20.0<small> 2018-02-02 </small>
 </h1>
 <div id="subtotals-and-headings" class="section level2">
 <h2 class="hasAnchor">
 <a href="#subtotals-and-headings" class="anchor"></a>Subtotals and Headings</h2>
 <ul>
-<li>Added support for subtotals and headings on categorical variables and CrunchCubes. Subtotals can be set with <code>subtotals(variable) &lt;- Subtotal(name = 'subtotal', categories = c(1, 2), after = 2)</code>. Use <code><a href="../reference/SubtotalsHeadings.html">subtotals(variable)</a></code> to see what subtotals are set for a variable.</li>
+<li>Added support for subtotals and headings on categorical variables and CrunchCubes. Subtotals can be set with <code>subtotals(variable) &lt;- Subtotal(name = 'subtotal', categories = c(1, 2), after = 2)</code>. Use <code><a href="../reference/Subtotal-class.html">subtotals(variable)</a></code> to see what subtotals are set for a variable.</li>
 <li>By default, subtotals will be displayed on CrunchCube results. Arrays consisting of only subtotals can be created using <code>subtotalArray([cube])</code>
 </li>
-<li>See <code><a href="../reference/SubtotalsHeadings.html">?subtotals</a></code> or <code><a href="../articles/subtotals.html">vignette("subtotals", package="crunch")</a></code> for more information.</li>
+<li>See <code><a href="../reference/Subtotal-class.html">?subtotals</a></code> or <code><a href="../articles/subtotals.html">vignette("subtotals", package="crunch")</a></code> for more information.</li>
 </ul>
 </div>
 <div id="multiple-response-in-crunchcubes" class="section level2">
@@ -526,7 +569,7 @@
 </div>
 </div>
     <div id="crunch-1-19-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.19.0">
 <a href="#crunch-1-19-0" class="anchor"></a>crunch 1.19.0<small> 2017-11-14 </small>
 </h1>
 <div id="new-functions" class="section level2">
@@ -559,7 +602,7 @@
 </div>
 </div>
     <div id="crunch-1-18-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.18.4">
 <a href="#crunch-1-18-4" class="anchor"></a>crunch 1.18.4<small> 2017-10-12 </small>
 </h1>
 <ul>
@@ -577,7 +620,7 @@
 </ul>
 </div>
     <div id="crunch-1-18-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.18.2">
 <a href="#crunch-1-18-2" class="anchor"></a>crunch 1.18.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -597,14 +640,14 @@
 </ul>
 </div>
     <div id="crunch-1-18-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.18.0">
 <a href="#crunch-1-18-0" class="anchor"></a>crunch 1.18.0<small> 2017-08-23 </small>
 </h1>
 <div id="support-for-mapping" class="section level2">
 <h2 class="hasAnchor">
 <a href="#support-for-mapping" class="anchor"></a>Support for mapping</h2>
 <ul>
-<li>Crunch-hosted geographic data can now be set and updated. Use <code><a href="../reference/geo.html">geo()</a></code> on a variable to see if there is already associated geographic data.</li>
+<li>Crunch-hosted geographic data can now be set and updated. Use <code><a href="../reference/CrunchGeography-class.html">geo()</a></code> on a variable to see if there is already associated geographic data.</li>
 <li>
 <code><a href="../reference/addGeoMetadata.html">addGeoMetadata()</a></code> function to match a text or categorical variable with available geodata based on the contents of the variable and metadata associated with Crunch-hosted geographic data.</li>
 </ul>
@@ -647,7 +690,7 @@
 </div>
 </div>
     <div id="crunch-1-17-8" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.17.8">
 <a href="#crunch-1-17-8" class="anchor"></a>crunch 1.17.8<small> Unreleased </small>
 </h1>
 <p>Two attempts to fix download issues introduced by 1.17.4:</p>
@@ -657,7 +700,7 @@
 </ul>
 </div>
     <div id="crunch-1-17-6" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.17.6">
 <a href="#crunch-1-17-6" class="anchor"></a>crunch 1.17.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -669,7 +712,7 @@
 </ul>
 </div>
     <div id="crunch-1-17-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.17.4">
 <a href="#crunch-1-17-4" class="anchor"></a>crunch 1.17.4<small> Unreleased </small>
 </h1>
 <ul>
@@ -679,7 +722,7 @@
 </ul>
 </div>
     <div id="crunch-1-17-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.17.2">
 <a href="#crunch-1-17-2" class="anchor"></a>crunch 1.17.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -691,7 +734,7 @@
 </ul>
 </div>
     <div id="crunch-1-17-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.17.0">
 <a href="#crunch-1-17-0" class="anchor"></a>crunch 1.17.0<small> 2017-06-06 </small>
 </h1>
 <ul>
@@ -699,7 +742,7 @@
 <code>dashboard</code> and <code>dashboard&lt;-</code> methods to view and set a dashboard URL on a dataset</li>
 <li>
 <code>changeCategoryID</code> function to map categorical data to a new “id” and value in the data (<a href='https://github.com/Crunch-io/rcrunch/issues/38'>#38</a>, <a href='https://github.com/Crunch-io/rcrunch/issues/47'>#47</a>)</li>
-<li>Added <code><a href="../reference/importMultitable.html">importMultitable()</a></code> to copy a multitable form one dataset to another. Additionally, <code>Multitable</code>s now have a show method showing its name and column variables.</li>
+<li>Added <code>importMultitable()</code> to copy a multitable form one dataset to another. Additionally, <code>Multitable</code>s now have a show method showing its name and column variables.</li>
 <li>Can now extract variables from a dataset by the variable URL</li>
 <li>
 <code><a href="../reference/appendDataset.html">appendDataset()</a></code> now truly appends a dataset and no longer upserts if there is a primary key set. This is accomplished by removing the primary key before appending. (<a href='https://github.com/Crunch-io/rcrunch/issues/35'>#35</a>)</li>
@@ -710,7 +753,7 @@
 </ul>
 </div>
     <div id="crunch-1-16-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.16.0">
 <a href="#crunch-1-16-0" class="anchor"></a>crunch 1.16.0<small> 2017-04-17 </small>
 </h1>
 <div id="cube-and-tab-book-improvements" class="section level2">
@@ -746,7 +789,7 @@
 </div>
 </div>
     <div id="crunch-1-15-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.15.2">
 <a href="#crunch-1-15-2" class="anchor"></a>crunch 1.15.2<small> 2017-03-23 </small>
 </h1>
 <ul>
@@ -758,7 +801,7 @@
 </ul>
 </div>
     <div id="crunch-1-15-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.15.0">
 <a href="#crunch-1-15-0" class="anchor"></a>crunch 1.15.0<small> 2017-02-23 </small>
 </h1>
 <ul>
@@ -774,7 +817,7 @@
 </ul>
 </div>
     <div id="crunch-1-14-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.14.4">
 <a href="#crunch-1-14-4" class="anchor"></a>crunch 1.14.4<small> 2017-01-20 </small>
 </h1>
 <ul>
@@ -789,7 +832,7 @@
 </ul>
 </div>
     <div id="crunch-1-14-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.14.2">
 <a href="#crunch-1-14-2" class="anchor"></a>crunch 1.14.2<small> 2016-11-23 </small>
 </h1>
 <ul>
@@ -797,7 +840,7 @@
 </ul>
 </div>
     <div id="crunch-1-14-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.14.0">
 <a href="#crunch-1-14-0" class="anchor"></a>crunch 1.14.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -816,7 +859,7 @@
 </ul>
 </div>
     <div id="crunch-1-13-8" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.13.8">
 <a href="#crunch-1-13-8" class="anchor"></a>crunch 1.13.8<small> Unreleased </small>
 </h1>
 <ul>
@@ -834,7 +877,7 @@
 </ul>
 </div>
     <div id="crunch-1-13-6" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.13.6">
 <a href="#crunch-1-13-6" class="anchor"></a>crunch 1.13.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -847,7 +890,7 @@
 </ul>
 </div>
     <div id="crunch-1-13-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.13.4">
 <a href="#crunch-1-13-4" class="anchor"></a>crunch 1.13.4<small> Unreleased </small>
 </h1>
 <ul>
@@ -862,7 +905,7 @@
 </ul>
 </div>
     <div id="crunch-1-13-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.13.2">
 <a href="#crunch-1-13-2" class="anchor"></a>crunch 1.13.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -878,7 +921,7 @@
 </ul>
 </div>
     <div id="crunch-1-13-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.13.0">
 <a href="#crunch-1-13-0" class="anchor"></a>crunch 1.13.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -895,7 +938,7 @@
 </ul>
 </div>
     <div id="crunch-1-12-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.12.2">
 <a href="#crunch-1-12-2" class="anchor"></a>crunch 1.12.2<small> 2016-08-10 </small>
 </h1>
 <ul>
@@ -903,7 +946,7 @@
 </ul>
 </div>
     <div id="crunch-1-12-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.12.0">
 <a href="#crunch-1-12-0" class="anchor"></a>crunch 1.12.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -925,7 +968,7 @@
 </ul>
 </div>
     <div id="crunch-1-11-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.11.2">
 <a href="#crunch-1-11-2" class="anchor"></a>crunch 1.11.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -938,7 +981,7 @@
 </ul>
 </div>
     <div id="crunch-1-11-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.11.0">
 <a href="#crunch-1-11-0" class="anchor"></a>crunch 1.11.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -951,7 +994,7 @@
 </ul>
 </div>
     <div id="crunch-1-10-6" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.10.6">
 <a href="#crunch-1-10-6" class="anchor"></a>crunch 1.10.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -963,7 +1006,7 @@
 </ul>
 </div>
     <div id="crunch-1-10-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.10.4">
 <a href="#crunch-1-10-4" class="anchor"></a>crunch 1.10.4<small> 2016-06-30 </small>
 </h1>
 <ul>
@@ -974,7 +1017,7 @@
 </ul>
 </div>
     <div id="crunch-1-10-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.10.2">
 <a href="#crunch-1-10-2" class="anchor"></a>crunch 1.10.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -990,7 +1033,7 @@
 </ul>
 </div>
     <div id="crunch-1-10-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.10.0">
 <a href="#crunch-1-10-0" class="anchor"></a>crunch 1.10.0<small> Unreleased </small>
 </h1>
 <div id="new-support-for-working-with-users-and-their-permissions-on-datasets-and-projects" class="section level2">
@@ -1018,7 +1061,7 @@
 </div>
 </div>
     <div id="crunch-1-9-12" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.12">
 <a href="#crunch-1-9-12" class="anchor"></a>crunch 1.9.12<small> Unreleased </small>
 </h1>
 <ul>
@@ -1027,7 +1070,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-10" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.10">
 <a href="#crunch-1-9-10" class="anchor"></a>crunch 1.9.10<small> Unreleased </small>
 </h1>
 <ul>
@@ -1036,7 +1079,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-8" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.8">
 <a href="#crunch-1-9-8" class="anchor"></a>crunch 1.9.8<small> Unreleased </small>
 </h1>
 <ul>
@@ -1047,7 +1090,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-6" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.6">
 <a href="#crunch-1-9-6" class="anchor"></a>crunch 1.9.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -1061,7 +1104,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.4">
 <a href="#crunch-1-9-4" class="anchor"></a>crunch 1.9.4<small> 2016-04-07 </small>
 </h1>
 <ul>
@@ -1078,7 +1121,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.2">
 <a href="#crunch-1-9-2" class="anchor"></a>crunch 1.9.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -1089,7 +1132,7 @@
 </ul>
 </div>
     <div id="crunch-1-9-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.0">
 <a href="#crunch-1-9-0" class="anchor"></a>crunch 1.9.0<small> Unreleased </small>
 </h1>
 <div id="major-changes" class="section level2">
@@ -1120,7 +1163,7 @@
 </div>
 </div>
     <div id="crunch-1-8-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.0">
 <a href="#crunch-1-8-0" class="anchor"></a>crunch 1.8.0<small> 2016-02-22 </small>
 </h1>
 <ul>
@@ -1135,7 +1178,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-12" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.12">
 <a href="#crunch-1-7-12" class="anchor"></a>crunch 1.7.12<small> Unreleased </small>
 </h1>
 <ul>
@@ -1144,7 +1187,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-10" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.10">
 <a href="#crunch-1-7-10" class="anchor"></a>crunch 1.7.10<small> Unreleased </small>
 </h1>
 <ul>
@@ -1154,7 +1197,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-8" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.8">
 <a href="#crunch-1-7-8" class="anchor"></a>crunch 1.7.8<small> Unreleased </small>
 </h1>
 <ul>
@@ -1162,7 +1205,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-6" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.6">
 <a href="#crunch-1-7-6" class="anchor"></a>crunch 1.7.6<small> Unreleased </small>
 </h1>
 <ul>
@@ -1173,7 +1216,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.4">
 <a href="#crunch-1-7-4" class="anchor"></a>crunch 1.7.4<small> Unreleased </small>
 </h1>
 <ul>
@@ -1183,7 +1226,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.3">
 <a href="#crunch-1-7-3" class="anchor"></a>crunch 1.7.3<small> 2015-12-14 </small>
 </h1>
 <ul>
@@ -1191,7 +1234,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.2">
 <a href="#crunch-1-7-2" class="anchor"></a>crunch 1.7.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -1204,7 +1247,7 @@
 </ul>
 </div>
     <div id="crunch-1-7-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.0">
 <a href="#crunch-1-7-0" class="anchor"></a>crunch 1.7.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1214,7 +1257,7 @@
 </ul>
 </div>
     <div id="crunch-1-6-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.1">
 <a href="#crunch-1-6-1" class="anchor"></a>crunch 1.6.1<small> 2015-11-19 </small>
 </h1>
 <ul>
@@ -1227,7 +1270,7 @@
 </ul>
 </div>
     <div id="crunch-1-6-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.0">
 <a href="#crunch-1-6-0" class="anchor"></a>crunch 1.6.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1239,12 +1282,12 @@
 </ul>
 </div>
     <div id="crunch-1-5-4" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.4">
 <a href="#crunch-1-5-4" class="anchor"></a>crunch 1.5.4<small> Unreleased </small>
 </h1>
 <ul>
 <li>Gradually slow the polling of <code>/batches/</code> while waiting for an append to complete. Improves the performance of the append operation.</li>
-<li>New <code>c</code> method for Categories, plus support for creating and adding new categories to variables. See <code><a href="../reference/Categories.html">?Categories</a></code> and <code><a href="../reference/c-categories.html">?"c-categories"</a></code>
+<li>New <code>c</code> method for Categories, plus support for creating and adding new categories to variables. See <code><a href="../reference/Categories-class.html">?Categories</a></code> and <code><a href="../reference/c-categories.html">?"c-categories"</a></code>
 </li>
 <li>Get category ids or numeric values from <code>as.vector</code> by specifying a “mode” of “id” or “numeric”, respectively. See <code>?"variable-to-R"</code>
 </li>
@@ -1252,7 +1295,7 @@
 </ul>
 </div>
     <div id="crunch-1-5-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.3">
 <a href="#crunch-1-5-3" class="anchor"></a>crunch 1.5.3<small> Unreleased </small>
 </h1>
 <ul>
@@ -1262,7 +1305,7 @@
 </ul>
 </div>
     <div id="crunch-1-5-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.2">
 <a href="#crunch-1-5-2" class="anchor"></a>crunch 1.5.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -1274,7 +1317,7 @@
 </ul>
 </div>
     <div id="crunch-1-5-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.1">
 <a href="#crunch-1-5-1" class="anchor"></a>crunch 1.5.1<small> Unreleased </small>
 </h1>
 <ul>
@@ -1283,7 +1326,7 @@
 </ul>
 </div>
     <div id="crunch-1-5-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.0">
 <a href="#crunch-1-5-0" class="anchor"></a>crunch 1.5.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1296,7 +1339,7 @@
 </ul>
 </div>
     <div id="crunch-1-4-3" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.3">
 <a href="#crunch-1-4-3" class="anchor"></a>crunch 1.4.3<small> Unreleased </small>
 </h1>
 <ul>
@@ -1304,7 +1347,7 @@
 </ul>
 </div>
     <div id="crunch-1-4-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.2">
 <a href="#crunch-1-4-2" class="anchor"></a>crunch 1.4.2<small> 2015-08-04 </small>
 </h1>
 <ul>
@@ -1313,7 +1356,7 @@
 </ul>
 </div>
     <div id="crunch-1-4-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.1">
 <a href="#crunch-1-4-1" class="anchor"></a>crunch 1.4.1<small> Unreleased </small>
 </h1>
 <ul>
@@ -1321,7 +1364,7 @@
 </ul>
 </div>
     <div id="crunch-1-4-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4.0">
 <a href="#crunch-1-4-0" class="anchor"></a>crunch 1.4.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1356,7 +1399,7 @@
 </div>
 </div>
     <div id="crunch-1-3-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.3.0">
 <a href="#crunch-1-3-0" class="anchor"></a>crunch 1.3.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1367,7 +1410,7 @@
 </ul>
 </div>
     <div id="crunch-1-2-2" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.2">
 <a href="#crunch-1-2-2" class="anchor"></a>crunch 1.2.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -1375,7 +1418,7 @@
 </ul>
 </div>
     <div id="crunch-1-2-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.1">
 <a href="#crunch-1-2-1" class="anchor"></a>crunch 1.2.1<small> 2015-05-26 </small>
 </h1>
 <ul>
@@ -1384,7 +1427,7 @@
 </ul>
 </div>
     <div id="crunch-1-2-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2.0">
 <a href="#crunch-1-2-0" class="anchor"></a>crunch 1.2.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1393,7 +1436,7 @@
 </ul>
 </div>
     <div id="crunch-1-1-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.1">
 <a href="#crunch-1-1-1" class="anchor"></a>crunch 1.1.1<small> 2015-04-20 </small>
 </h1>
 <ul>
@@ -1401,7 +1444,7 @@
 </ul>
 </div>
     <div id="crunch-1-1-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1.0">
 <a href="#crunch-1-1-0" class="anchor"></a>crunch 1.1.0<small> 2015-04-17 </small>
 </h1>
 <ul>
@@ -1411,7 +1454,7 @@
 </ul>
 </div>
     <div id="crunch-1-0-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0.0">
 <a href="#crunch-1-0-0" class="anchor"></a>crunch 1.0.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1419,7 +1462,7 @@
 </ul>
 </div>
     <div id="rcrunch-0-11-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.11.1">
 <a href="#rcrunch-0-11-1" class="anchor"></a>rcrunch 0.11.1<small> Unreleased </small>
 </h1>
 <ul>
@@ -1428,7 +1471,7 @@
 </ul>
 </div>
     <div id="rcrunch-0-11-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.11.0">
 <a href="#rcrunch-0-11-0" class="anchor"></a>rcrunch 0.11.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1437,7 +1480,7 @@
 </ul>
 </div>
     <div id="rcrunch-0-10-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.10.0">
 <a href="#rcrunch-0-10-0" class="anchor"></a>rcrunch 0.10.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -1448,88 +1491,9 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#crunch-1-26-3">1.26.3</a></li>
-        <li><a href="#crunch-1-26-2">1.26.2</a></li>
-        <li><a href="#crunch-1-26-1">1.26.1</a></li>
-        <li><a href="#crunch-1-26-0">1.26.0</a></li>
-        <li><a href="#crunch-1-25-0">1.25.0</a></li>
-        <li><a href="#crunch-1-24-2">1.24.2</a></li>
-        <li><a href="#crunch-1-24-0">1.24.0</a></li>
-        <li><a href="#crunch-1-23-0">1.23.0</a></li>
-        <li><a href="#crunch-1-22-2">1.22.2</a></li>
-        <li><a href="#crunch-1-22-0">1.22.0</a></li>
-        <li><a href="#crunch-1-21-0">1.21.0</a></li>
-        <li><a href="#crunch-1-20-0">1.20.0</a></li>
-        <li><a href="#crunch-1-19-0">1.19.0</a></li>
-        <li><a href="#crunch-1-18-4">1.18.4</a></li>
-        <li><a href="#crunch-1-18-2">1.18.2</a></li>
-        <li><a href="#crunch-1-18-0">1.18.0</a></li>
-        <li><a href="#crunch-1-17-8">1.17.8</a></li>
-        <li><a href="#crunch-1-17-6">1.17.6</a></li>
-        <li><a href="#crunch-1-17-4">1.17.4</a></li>
-        <li><a href="#crunch-1-17-2">1.17.2</a></li>
-        <li><a href="#crunch-1-17-0">1.17.0</a></li>
-        <li><a href="#crunch-1-16-0">1.16.0</a></li>
-        <li><a href="#crunch-1-15-2">1.15.2</a></li>
-        <li><a href="#crunch-1-15-0">1.15.0</a></li>
-        <li><a href="#crunch-1-14-4">1.14.4</a></li>
-        <li><a href="#crunch-1-14-2">1.14.2</a></li>
-        <li><a href="#crunch-1-14-0">1.14.0</a></li>
-        <li><a href="#crunch-1-13-8">1.13.8</a></li>
-        <li><a href="#crunch-1-13-6">1.13.6</a></li>
-        <li><a href="#crunch-1-13-4">1.13.4</a></li>
-        <li><a href="#crunch-1-13-2">1.13.2</a></li>
-        <li><a href="#crunch-1-13-0">1.13.0</a></li>
-        <li><a href="#crunch-1-12-2">1.12.2</a></li>
-        <li><a href="#crunch-1-12-0">1.12.0</a></li>
-        <li><a href="#crunch-1-11-2">1.11.2</a></li>
-        <li><a href="#crunch-1-11-0">1.11.0</a></li>
-        <li><a href="#crunch-1-10-6">1.10.6</a></li>
-        <li><a href="#crunch-1-10-4">1.10.4</a></li>
-        <li><a href="#crunch-1-10-2">1.10.2</a></li>
-        <li><a href="#crunch-1-10-0">1.10.0</a></li>
-        <li><a href="#crunch-1-9-12">1.9.12</a></li>
-        <li><a href="#crunch-1-9-10">1.9.10</a></li>
-        <li><a href="#crunch-1-9-8">1.9.8</a></li>
-        <li><a href="#crunch-1-9-6">1.9.6</a></li>
-        <li><a href="#crunch-1-9-4">1.9.4</a></li>
-        <li><a href="#crunch-1-9-2">1.9.2</a></li>
-        <li><a href="#crunch-1-9-0">1.9.0</a></li>
-        <li><a href="#crunch-1-8-0">1.8.0</a></li>
-        <li><a href="#crunch-1-7-12">1.7.12</a></li>
-        <li><a href="#crunch-1-7-10">1.7.10</a></li>
-        <li><a href="#crunch-1-7-8">1.7.8</a></li>
-        <li><a href="#crunch-1-7-6">1.7.6</a></li>
-        <li><a href="#crunch-1-7-4">1.7.4</a></li>
-        <li><a href="#crunch-1-7-3">1.7.3</a></li>
-        <li><a href="#crunch-1-7-2">1.7.2</a></li>
-        <li><a href="#crunch-1-7-0">1.7.0</a></li>
-        <li><a href="#crunch-1-6-1">1.6.1</a></li>
-        <li><a href="#crunch-1-6-0">1.6.0</a></li>
-        <li><a href="#crunch-1-5-4">1.5.4</a></li>
-        <li><a href="#crunch-1-5-3">1.5.3</a></li>
-        <li><a href="#crunch-1-5-2">1.5.2</a></li>
-        <li><a href="#crunch-1-5-1">1.5.1</a></li>
-        <li><a href="#crunch-1-5-0">1.5.0</a></li>
-        <li><a href="#crunch-1-4-3">1.4.3</a></li>
-        <li><a href="#crunch-1-4-2">1.4.2</a></li>
-        <li><a href="#crunch-1-4-1">1.4.1</a></li>
-        <li><a href="#crunch-1-4-0">1.4.0</a></li>
-        <li><a href="#crunch-1-3-0">1.3.0</a></li>
-        <li><a href="#crunch-1-2-2">1.2.2</a></li>
-        <li><a href="#crunch-1-2-1">1.2.1</a></li>
-        <li><a href="#crunch-1-2-0">1.2.0</a></li>
-        <li><a href="#crunch-1-1-1">1.1.1</a></li>
-        <li><a href="#crunch-1-1-0">1.1.0</a></li>
-        <li><a href="#crunch-1-0-0">1.0.0</a></li>
-        <li><a href="#rcrunch-0-11-1">0.11.1</a></li>
-        <li><a href="#rcrunch-0-11-0">0.11.0</a></li>
-        <li><a href="#rcrunch-0-10-0">0.10.0</a></li>
-      </ul>
-    </div>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -1541,7 +1505,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
