@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify cube missing behavior — cube-missingness • Crunch</title>
+<title>Modify cube missing behavior — showMissing • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Modify cube missing behavior — cube-missingness" />
+<meta property="og:title" content="Modify cube missing behavior — showMissing" />
 <meta property="og:description" content="By default, CrunchCubes do not show entries for missing categories. You can
 include missing values in a cube with showMissing(cube) and hide them
 again with hideMissing(cube)." />
@@ -100,7 +100,7 @@ again with hideMissing(cube)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -191,7 +191,7 @@ again with hideMissing(cube)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Modify cube missing behavior</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-result.R'><code>R/cube-result.R</code></a></small>
     <div class="hidden name"><code>cube-missingness.Rd</code></div>
     </div>
 
@@ -201,7 +201,13 @@ include missing values in a <code>cube</code> with <code>showMissing(cube)</code
 again with <code>hideMissing(cube)</code>.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchCube</span>
+    <pre class="usage"><span class='fu'>showMissing</span>(<span class='kw'>cube</span>)
+
+<span class='fu'>hideMissing</span>(<span class='kw'>cube</span>)
+
+<span class='fu'>showIfAny</span>(<span class='kw'>cube</span>)
+
+<span class='co'># S4 method for CrunchCube</span>
 <span class='fu'>showMissing</span>(<span class='kw'>cube</span>)
 
 <span class='co'># S4 method for CrunchCube</span>

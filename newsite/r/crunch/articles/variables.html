@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -329,20 +329,20 @@
 <p>As when working with a <code>data.frame</code>, you typically assign the return of a dataset-level function back to the variable representing the dataset in your R script or session.</p>
 <p>In our example dataset, we have two copies of a voter-registration variable, “votereg_new” and “votereg_old”. Let’s hide the old version:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit">
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hide.html">hideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"votereg_old"</span>)
-<span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
+<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">hideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"votereg_old"</span>)
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>## [1] "votereg_old"</code></pre>
 <p>As with the <code>is.na</code> function, you can update a variable by assigning it to the hidden variables list.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit">
-<span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="st">"pid7others"</span>
-<span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="st">"pid7others"</span>
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>## [1] "votereg_old"  "pid7others"</code></pre>
 <p>These variables are now hidden, both locally in your R session and remotely on the server, which you can see in the web application. And, just as you could restore them there, you can also restore them from R:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit">
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hide.html">unhideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"pid7others"</span>)
-<span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
+<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">unhideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"pid7others"</span>)
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>## [1] "votereg_old"</code></pre>
 </div>

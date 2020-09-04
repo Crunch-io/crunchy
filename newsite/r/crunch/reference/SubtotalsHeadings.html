@@ -101,7 +101,7 @@ top 2 box)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -192,7 +192,7 @@ top 2 box)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Subtotals and headings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/subtotals-and-headings.R'><code>R/subtotals-and-headings.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllClasses.R'><code>R/AllClasses.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/subtotals-and-headings.R'><code>R/subtotals-and-headings.R</code></a></small>
     <div class="hidden name"><code>SubtotalsHeadings.Rd</code></div>
     </div>
 
@@ -211,6 +211,10 @@ multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, o
 )
 
 <span class='fu'>Heading</span>(<span class='kw'>name</span>, position = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span>), after = <span class='kw'>NULL</span>)
+
+<span class='fu'>subtotals</span>(<span class='kw'>x</span>)
+
+<span class='fu'>subtotals</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='fu'>Subtotal</span>(
   <span class='kw'>name</span>,
@@ -292,7 +296,7 @@ that are already set on the variable are not removed when new subtotals or
 headings are added. To remove all subtotals and headings, set
 <code>subtotals(variable)</code> to <code>NULL</code>.</p>
 <p>To get an array of just the subtotal rows from a CrunchCube, use the function
-<code><a href='subtotalArray,CrunchCube-method.html'>subtotalArray(CrunchCube)</a></code>.</p>
+<code><a href='subtotalArray.html'>subtotalArray(CrunchCube)</a></code>.</p>
     <h2 class="hasAnchor" id="working-with-subtotals-and-headings"><a class="anchor" href="#working-with-subtotals-and-headings"></a>Working with Subtotals and headings</h2>
 
     
@@ -356,7 +360,7 @@ that generated the CrunchCube.</p>
 
 
 <span class='co'># to get just the subtotals,</span>
-<span class='fu'><a href='subtotalArray,CrunchCube-method.html'>subtotalArray</a></span>(<span class='kw'>opinion_cube</span>)
+<span class='fu'><a href='subtotalArray.html'>subtotalArray</a></span>(<span class='kw'>opinion_cube</span>)
 <span class='co'>#    Agree Disagree</span>
 <span class='co'>#       47       35</span>
 
@@ -376,6 +380,7 @@ that generated the CrunchCube.</p>
 <span class='co'>#          Somewhat Disagree          Strongly Disagree</span>
 <span class='co'>#                         16                         19</span>
 }
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

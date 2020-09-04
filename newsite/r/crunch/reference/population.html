@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get and set the market size for Crunch datasets — population • Crunch</title>
+<title>Get and set the market size for Crunch datasets — popSize • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get and set the market size for Crunch datasets — population" />
+<meta property="og:title" content="Get and set the market size for Crunch datasets — popSize" />
 <meta property="og:description" content="Crunch Datasets allow you to set a target population size in order to extrapolate
 population estimates from survey percentages. These functions let you work with
 the population size and magnitude." />
@@ -100,7 +100,7 @@ the population size and magnitude." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -191,7 +191,7 @@ the population size and magnitude." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get and set the market size for Crunch datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/dataset.R'><code>R/dataset.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/dataset.R'><code>R/dataset.R</code></a></small>
     <div class="hidden name"><code>population.Rd</code></div>
     </div>
 
@@ -201,7 +201,17 @@ population estimates from survey percentages. These functions let you work with
 the population size and magnitude.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchDataset</span>
+    <pre class="usage"><span class='fu'>popSize</span>(<span class='kw'>x</span>)
+
+<span class='fu'>popMagnitude</span>(<span class='kw'>x</span>)
+
+<span class='fu'>popSize</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>popMagnitude</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>setPopulation</span>(<span class='kw'>x</span>, <span class='kw'>size</span>, <span class='kw'>magnitude</span>)
+
+<span class='co'># S4 method for CrunchDataset</span>
 <span class='fu'>popSize</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for CrunchDataset</span>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>as.* methods for variables — variable-as-methods • Crunch</title>
+<title>as.* methods for variables — as.Text • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="as.* methods for variables — variable-as-methods" />
+<meta property="og:title" content="as.* methods for variables — as.Text" />
 <meta property="og:description" content="Use the as.* family of functions to make a derived copy of a variable that
 has been converted into a new type." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
@@ -99,7 +99,7 @@ has been converted into a new type." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -190,7 +190,7 @@ has been converted into a new type." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>as.* methods for variables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/variable-as-methods.R'><code>R/variable-as-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/variable-as-methods.R'><code>R/variable-as-methods.R</code></a></small>
     <div class="hidden name"><code>variable-as-methods.Rd</code></div>
     </div>
 
@@ -199,7 +199,15 @@ has been converted into a new type." />
 has been converted into a new type.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchVariable</span>
+    <pre class="usage"><span class='fu'>as.Text</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+
+<span class='fu'>as.Numeric</span>(<span class='kw'>x</span>)
+
+<span class='fu'>as.Categorical</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+
+<span class='fu'>as.Datetime</span>(<span class='kw'>x</span>, format = <span class='st'>"%Y-%m-%d %H:%M:%S"</span>, <span class='kw'>resolution</span>, <span class='kw'>offset</span>)
+
+<span class='co'># S4 method for CrunchVariable</span>
 <span class='fu'>as.Numeric</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for CrunchVariable</span>
@@ -243,6 +251,11 @@ has been converted into a new type.</p>
       <td><p>a Crunch variable to derive and convert to a new type</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>additional arguments for <code>as.character</code> and <code>as.numeric</code>, ignored when used with
+Crunch variables</p></td>
+    </tr>
+    <tr>
       <th>format</th>
       <td><p>for <code>as.Datetime</code>, when the variable in <code>x</code> is a text or
 categorical variable, <code>format</code> is the typographical format that the datetime
@@ -264,11 +277,6 @@ for seconds, etc. see <a href='expressions.html'>expressions</a> for more inform
       <td><p>for <code>as.Datetime</code>, when the variable in <code>x</code> is a numeric the, a
 character of the offset to count from in the shape "2018-01-08 12:39:57". If
 not supplied, Crunch's default of 1970-01-01 00:00:00 will be used.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments for <code>as.character</code> and <code>as.numeric</code>, ignored when used with
-Crunch variables</p></td>
     </tr>
     </table>
 
@@ -305,9 +313,10 @@ the type specified. See below for detailed examples.</p>
 
 <span class='co'># this new variable is derived, so if new data is appended or streamed, the</span>
 <span class='co'># new rows of data will be updated.</span>
-<span class='fu'><a href='derivations.html'>is.derived</a></span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>v1_numeric</span>)
+<span class='fu'><a href='derivation.html'>is.derived</a></span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>v1_numeric</span>)
 <span class='co'># [1] TRUE</span>
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

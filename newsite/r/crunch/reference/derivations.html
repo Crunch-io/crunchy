@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get or set a derived variable's expression — derivations • Crunch</title>
+<title>Get or set a derived variable's expression — derivation • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get or set a derived variable's expression — derivations" />
+<meta property="og:title" content="Get or set a derived variable's expression — derivation" />
 <meta property="og:description" content="Get a derived variable's derivation formula as a CrunchExpr with
 derivation(variable). Set (change) a derived variable's derivation with
 derivation(variable) &amp;lt;- expression." />
@@ -100,7 +100,7 @@ derivation(variable) &amp;lt;- expression." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -191,7 +191,7 @@ derivation(variable) &amp;lt;- expression." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get or set a derived variable's expression</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/variable-derivation.R'><code>R/variable-derivation.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/variable-derivation.R'><code>R/variable-derivation.R</code></a></small>
     <div class="hidden name"><code>derivations.Rd</code></div>
     </div>
 
@@ -201,7 +201,15 @@ derivation(variable) &amp;lt;- expression." />
 <code>derivation(variable) &lt;- expression</code>.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchVariable</span>
+    <pre class="usage"><span class='fu'>derivation</span>(<span class='kw'>x</span>)
+
+<span class='fu'>derivation</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>is.derived</span>(<span class='kw'>x</span>)
+
+<span class='fu'>is.derived</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='co'># S4 method for CrunchVariable</span>
 <span class='fu'>derivation</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for CrunchVariable,ANY</span>
@@ -265,7 +273,8 @@ two variables.</p>
 <span class='co'># after integrating, the derived variable is no longer derived.</span>
 <span class='fu'>is.derived</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>derived_v1</span>)
 <span class='co'># FALSE</span>
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

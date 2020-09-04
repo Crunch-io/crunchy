@@ -102,7 +102,7 @@ same type, it will return Selected, but will missing if any other number of valu
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -193,7 +193,7 @@ same type, it will return Selected, but will missing if any other number of valu
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create variables useful for determining whether a row's values are suspicious</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/row-distinct.R'><code>R/row-distinct.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/rowwise.R'><code>R/rowwise.R</code></a></small>
     <div class="hidden name"><code>rowDistinct.Rd</code></div>
     </div>
 
@@ -205,9 +205,9 @@ same type, it will return <code>Selected</code>, but will missing if any other n
 (or there are multiple types of missing).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rowDistinct</span>(<span class='kw'>x</span>, <span class='kw'>...</span>, na.rm = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>rowDistinct</span>(<span class='kw'>x</span>, <span class='kw'>name</span>, <span class='kw'>...</span>, na.rm = <span class='fl'>TRUE</span>)
 
-<span class='fu'>straightlineResponse</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>straightlineResponse</span>(<span class='kw'>x</span>, <span class='kw'>name</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,19 +217,27 @@ same type, it will return <code>Selected</code>, but will missing if any other n
       <td><p>A <code>CrunchVariable</code>that is an an array, that unique values should be counted across.</p></td>
     </tr>
     <tr>
+      <th>name</th>
+      <td><p>a character to use as the name of the case variable to create</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Optional attributes, like <code>name</code>, to set on the new variable (passed to <code><a href='VariableDefinition.html'>VarDef()</a></code>)</p></td>
+      <td><p>Optional attributes, like <code>description</code>, to set on the new variable (passed to
+<code><a href='VariableDefinition.html'>VarDef()</a></code>)</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
-      <td><p>Whether to count missing data as a separate category (all missing categories will be
-lumped together)</p></td>
+      <td><p>Whether to count missing data as a separate category (all missing categories will
+be lumped together)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A Variable Definition, which can be used to create a new <code>CrunchVariable</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='rowCount.html'>rowCount()</a></code> for other row-wise functions</p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

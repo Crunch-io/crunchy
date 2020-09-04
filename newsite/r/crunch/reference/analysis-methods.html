@@ -100,7 +100,7 @@ analyses method, and access an individual analysis with analysis." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -213,7 +213,7 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 
 <span class='fu'>cubes</span>(<span class='kw'>x</span>)
 
-<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>value</span>)
+<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
@@ -230,7 +230,7 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='fu'>analysis</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for CrunchSlide</span>
-<span class='fu'>filter</span>(<span class='kw'>x</span>)
+<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for CrunchSlide,ANY</span>
 <span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
@@ -254,7 +254,10 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='fu'>cube</span>(<span class='kw'>x</span>)
 
 <span class='co'># S4 method for Analysis</span>
-<span class='fu'>filter</span>(<span class='kw'>x</span>)
+<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+
+<span class='co'># S4 method for ANY</span>
+<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for CrunchSlide,ANY</span>
 <span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
@@ -279,6 +282,10 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
       <th>value</th>
       <td><p>for the setter, a query</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>ignored</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -298,8 +305,9 @@ into the <code>query</code> function.</p>
 <span class='fu'>query</span>(<span class='kw'>slide</span>) <span class='op'>&lt;-</span> <span class='op'>~</span> <span class='kw'>cyl</span> <span class='op'>+</span> <span class='kw'>wt</span>
 <span class='fu'>filter</span>(<span class='kw'>slide</span>)
 <span class='fu'>filter</span>(<span class='kw'>slide</span>) <span class='op'>&lt;-</span> <span class='kw'>NULL</span> <span class='co'># to remove a filter</span>
-<span class='fu'>filter</span>(<span class='kw'>slide</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='filter-catalog.html'>filters</a></span>(<span class='kw'>ds</span>)[[<span class='st'>"My filter"</span>]]
-}</div></pre>
+<span class='fu'>filter</span>(<span class='kw'>slide</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span>(<span class='kw'>ds</span>)[[<span class='st'>"My filter"</span>]]
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

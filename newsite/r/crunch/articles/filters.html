@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -243,19 +243,19 @@
 <p>In the web application, you can save filter definitions with names for easy reuse. You can also share these filter definitions with other viewers of the dataset.</p>
 <p>To do so, we work with the dataset’s filter catalog. To start, our filter catalog will be empty:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>## data frame with 0 columns and 0 rows</code></pre>
 <p>Create a filter by assigning a Crunch logical expression to the catalog by the name we want to give it, using <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> or <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code>:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">30</span>
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">30</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
 </pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 30</code></pre>
 <p>This new filter now appears in our filter catalog.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males 257567b10b4d46e19c703cf2de0b7cd4     FALSE</code></pre>
@@ -265,15 +265,15 @@
 </pre></div>
 <p>This filter is now available for you to use in the web application. If you want to make the filter available to all viewers of the dataset, make it “public”:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="fu"><a href="../reference/is-public.html">is.public</a></span>(<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]) <span class="op">&lt;-</span> <span class="fl">TRUE</span>
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)
+<span class="fu"><a href="../reference/is-public.html">is.public</a></span>(<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]) <span class="op">&lt;-</span> <span class="fl">TRUE</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males 257567b10b4d46e19c703cf2de0b7cd4      TRUE</code></pre>
 <p>You can also edit the filter expressions by assigning a new one in, like:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">35</span>
-<span class="fu"><a href="../reference/filter-catalog.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">35</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
 </pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 35</code></pre>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expropriate all Crunch objects from a user — expropriateUser • Crunch</title>
+<title>Undo behavior of a Crunch Automation Script — automation-undo • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,13 +54,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Expropriate all Crunch objects from a user — expropriateUser" />
-<meta property="og:description" content="If you want to transfer all teams, projects, and datasets owned by one user
-to another you can with expropriateUser. To have permission to use
-expropriateUser you must be an account admin and be from the same account
-as the user who is being expropriated. This is useful if a user leaves your
-organization and you want to transfer all of the teams, projects, and
-datasets they own to someone else." />
+<meta property="og:title" content="Undo behavior of a Crunch Automation Script — automation-undo" />
+<meta property="og:description" content="There are two ways to revert the output of a script:
+undoScript() - A &quot;softer&quot; delete of a script's created artifacts and variables, or
+revertScript() - A &quot;harder&quot; revert that returns the dataset to the state it was before
+running such script.
+
+" />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -103,7 +103,7 @@ datasets they own to someone else." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -193,47 +193,68 @@ datasets they own to someone else." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expropriate all Crunch objects from a user</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/user.R'><code>R/user.R</code></a></small>
-    <div class="hidden name"><code>expropriateUser.Rd</code></div>
+    <h1>Undo behavior of a Crunch Automation Script</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/automation.R'><code>R/automation.R</code></a></small>
+    <div class="hidden name"><code>automation-undo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If you want to transfer all teams, projects, and datasets owned by one user
-to another you can with <code>expropriateUser</code>. To have permission to use
-<code>expropriateUser</code> you must be an account admin and be from the same account
-as the user who is being expropriated. This is useful if a user leaves your
-organization and you want to transfer all of the teams, projects, and
-datasets they own to someone else.</p>
+    <p>There are two ways to revert the output of a script:</p><ul>
+<li><p><code>undoScript()</code> - A "softer" delete of a script's created artifacts and variables, or</p></li>
+<li><p><code>revertScript()</code> - A "harder" revert that returns the dataset to the state it was before
+running such script.</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>expropriateUser</span>(<span class='kw'>from</span>, <span class='kw'>to</span>)</pre>
+    <pre class="usage"><span class='fu'>undoScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='fu'>revertScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='fu'>scriptSavepoint</span>(<span class='kw'>x</span>)
+
+<span class='co'># S4 method for CrunchDataset,Script</span>
+<span class='fu'>undoScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='co'># S4 method for CrunchDataset,ANY</span>
+<span class='fu'>undoScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='co'># S4 method for CrunchDataset,Script</span>
+<span class='fu'>revertScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='co'># S4 method for CrunchDataset,ANY</span>
+<span class='fu'>revertScript</span>(<span class='kw'>dataset</span>, <span class='kw'>x</span>)
+
+<span class='co'># S4 method for Script</span>
+<span class='fu'>scriptSavepoint</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>from</th>
-      <td><p>a character of the email address of the user to expropriate from</p></td>
+      <th>dataset</th>
+      <td><p>A <code>CrunchDataset</code></p></td>
     </tr>
     <tr>
-      <th>to</th>
-      <td><p>a character of the email address of the user who should be the new
-owner</p></td>
+      <th>x</th>
+      <td><p>A <code>Script</code> or index for a <code>ScriptCatalog</code> (generally a number)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>NULL</code> if successful</p>
+    <p>For <code>undoScript()</code> and <code>revertSctipt()</code>, invisibly return the updated dataset.
+For <code>scriptSavePoint()</code> a version list object that can be used in <code><a href='restoreVersion.html'>restoreVersion()</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The user given in <code>to</code> will become the owner of all of the teams, projects,
-and datasets that were previously owned by the user given in <code>from</code>.</p>
-<p>Expropriating requires confirmation. In an interactive session, you will be
-asked to confirm. To avoid that prompt, or to expropriate datasets from a
-non-interactive session, wrap the call in <code><a href='consent.html'>with_consent()</a></code> to give your
-permission to expropriate</p>
+    <p>The difference between both is that a hard revert restores the dataset, as it drops all
+ensuing scripts and their output (artifacts and variables), while an undo only deletes the
+artifacts and variables created by this script, but changes made by other scripts and this
+script's record will remain in place.</p>
+<p>The function <code>scriptSavepoint()</code> gets the version object</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='runCrunchAutomation.html'>runCrunchAutomation()</a></code> &amp; <code><a href='scripts.html'>script-catalog</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

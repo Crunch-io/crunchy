@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Change which variables can be set as a dataset's weight. — modifyWeightVariables • Crunch</title>
+<title>Change which variables can be set as a dataset's weight. — weightVariables&lt;- • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Change which variables can be set as a dataset's weight. — modifyWeightVariables" />
+<meta property="og:title" content="Change which variables can be set as a dataset's weight. — weightVariables&lt;-" />
 <meta property="og:description" content="modifyWeightVariables allows you to change the variables which are eligible
 to be used as a dataset's weight. You can also add variables to the weight variables
 catalog by assignment with weightVariables(ds) &amp;lt;- &quot;weight&quot; or
@@ -101,7 +101,7 @@ is.weightVariable(ds$weight) &amp;lt;- TRUE." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -192,7 +192,7 @@ is.weightVariable(ds$weight) &amp;lt;- TRUE." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Change which variables can be set as a dataset's weight.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/weight.R'><code>R/weight.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/weight.R'><code>R/weight.R</code></a></small>
     <div class="hidden name"><code>modifyWeightVariables.Rd</code></div>
     </div>
 
@@ -203,7 +203,11 @@ catalog by assignment with <code>weightVariables(ds) &lt;- "weight"</code> or
 <code>is.weightVariable(ds$weight) &lt;- TRUE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>modifyWeightVariables</span>(<span class='kw'>x</span>, <span class='kw'>vars</span>, type = <span class='st'>"append"</span>)
+    <pre class="usage"><span class='fu'><a href='weightVariables.html'>weightVariables</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>is.weightVariable</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>modifyWeightVariables</span>(<span class='kw'>x</span>, <span class='kw'>vars</span>, type = <span class='st'>"append"</span>)
 
 <span class='co'># S4 method for CrunchDataset</span>
 <span class='fu'><a href='weightVariables.html'>weightVariables</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
@@ -221,6 +225,11 @@ catalog by assignment with <code>weightVariables(ds) &lt;- "weight"</code> or
       <td><p>a CrunchDataset</p></td>
     </tr>
     <tr>
+      <th>value</th>
+      <td><p>For the <code><a href='weightVariables.html'>weightVariables()</a></code> and <code>is.weightVariable</code> setters the
+variables to append to a dataset's weightVariables.</p></td>
+    </tr>
+    <tr>
       <th>vars</th>
       <td><p>Variables to add or remove  this can be a numeric Crunch variable,
 list of numeric Crunch variables or a character vector with the aliases of
@@ -234,11 +243,6 @@ will be modified:</p><ul>
 <li><p><code>"remove"</code> : remove <code>vars</code> from the current list of weight variables</p></li>
 <li><p><code>"replace"</code>: replace the current weight variables with <code>vars</code></p></li>
 </ul></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>For the <code><a href='weightVariables.html'>weightVariables()</a></code> and <code>is.weightVariable</code> setters the
-variables to append to a dataset's weightVariables.</p></td>
     </tr>
     </table>
 
@@ -260,7 +264,8 @@ to change the <code>weightVariables</code> of a dataset.</p>
 <span class='fu'><a href='weightVariables.html'>weightVariables</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='kw'>NULL</span>
 <span class='fu'><a href='weightVariables.html'>weightVariables</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"weight"</span>, <span class='st'>"weight2"</span>)
 <span class='fu'>is.weightVariables</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>weight</span>) <span class='op'>&lt;-</span> <span class='fl'>TRUE</span>
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -97,7 +97,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -191,9 +191,45 @@
       <small>Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="crunch-1-27-4" class="section level1">
+<h1 class="page-header" data-toc-text="1.27.4">
+<a href="#crunch-1-27-4" class="anchor"></a>crunch 1.27.4<small> Unreleased </small>
+</h1>
+<ul>
+<li>Fixes to pkgdown documentation website</li>
+</ul>
+</div>
+    <div id="crunch-1-27-3" class="section level1">
+<h1 class="page-header" data-toc-text="1.27.3">
+<a href="#crunch-1-27-3" class="anchor"></a>crunch 1.27.3<small> Unreleased </small>
+</h1>
+<ul>
+<li>Added support for crunch automation, see <code><a href="../reference/runCrunchAutomation.html">?runCrunchAutomation</a></code> for more information</li>
+<li>Previously defined <code>expropriateUser()</code> function is now accessed through the function call <code><a href="../reference/reassignUser.html">reassignUser()</a></code>. Functionality of the call has not changed.</li>
+</ul>
+</div>
+    <div id="crunch-1-27-2" class="section level1">
+<h1 class="page-header" data-toc-text="1.27.2">
+<a href="#crunch-1-27-2" class="anchor"></a>crunch 1.27.2<small> Unreleased </small>
+</h1>
+<ul>
+<li>Added <code><a href="../reference/makeCaseWhenVariable.html">makeCaseWhenVariable()</a></code> that helps with many common recoding needs.</li>
+<li>Added <code><a href="../reference/expressions-internal.html">alterArrayExpr()</a></code> which allows adding, removing, reordering and renaming subvariables in a derived Array.</li>
+<li>You can now use the <code>keyring</code> package to store your credentials. See <code>?login()</code> for details (thanks <a href='https://github.com/mainwaringb'>@mainwaringb</a>!)</li>
+</ul>
+</div>
+    <div id="crunch-1-27-1" class="section level1">
+<h1 class="page-header" data-toc-text="1.27.1">
+<a href="#crunch-1-27-1" class="anchor"></a>crunch 1.27.1<small> Unreleased </small>
+</h1>
+<ul>
+<li><p>Add several new <code>expressions</code> that let you create derived variables in more flexible ways than was previously possible.</p></li>
+<li><p><code><a href="../reference/analyses.html">crunch::filter()</a></code> now falls back to the next <code>filter</code> on your searchpath when no method is defined.</p></li>
+</ul>
+</div>
     <div id="crunch-1-27-0" class="section level1">
 <h1 class="page-header" data-toc-text="1.27.0">
-<a href="#crunch-1-27-0" class="anchor"></a>crunch 1.27.0<small> Unreleased </small>
+<a href="#crunch-1-27-0" class="anchor"></a>crunch 1.27.0<small> 2020-07-22 </small>
 </h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
@@ -202,7 +238,7 @@
 <li>You can now mark variables private (and remove their private status)</li>
 <li>
 <code><a href="../reference/tabBook.html">tabBook()</a></code> by default uses a new endpoint, which allows for more options. The old endpoint is deprecated, but while the server supports it, you can still use it. See <a href="https://crunch.io/r/crunch/reference/tabBook.html"><code>?tabBook</code></a> for more details.</li>
-<li>You can now view and modify the weight on a slide using <code><a href="../reference/weight.html">weight()</a></code> and <code>weight()&lt;-</code> (<a href='https://github.com/Crunch-io/rcrunch/issues/440'>#440</a>)</li>
+<li>You can now view and modify the weight on a slide using <code><a href="../reference/is.weight&lt;-.html">weight()</a></code> and <code>weight()&lt;-</code> (<a href='https://github.com/Crunch-io/rcrunch/issues/440'>#440</a>)</li>
 <li>You can now use a named <code>filter</code> or <code>filter</code> object when using <code>tabbook()</code>. Filtering by expression in the dataset argument is also supported again.</li>
 <li>You can now cast crunch expressions to other variable types without saving as a variable first.</li>
 </ul>
@@ -214,7 +250,7 @@
 <li>
 <code>newMultiTable()</code> now correctly passes <code>...</code>, so arguments like <code>is_public</code> work (<a href='https://github.com/Crunch-io/rcrunch/issues/424'>#424</a>)</li>
 <li>
-<code><a href="../reference/hide.html">hiddenVariables()</a></code> works when the hidden variables folder has subdirectories (<a href='https://github.com/Crunch-io/rcrunch/issues/372'>#372</a>).</li>
+<code><a href="../reference/hiddenFolder.html">hiddenVariables()</a></code> works when the hidden variables folder has subdirectories (<a href='https://github.com/Crunch-io/rcrunch/issues/372'>#372</a>).</li>
 </ul>
 </div>
 <div id="internal-changes-deprecations" class="section level2">
@@ -478,7 +514,7 @@
 <li>Clarified the error message when using <code><a href="../reference/makeMRFromText.html">makeMRFromText()</a></code> with a categorical variable.</li>
 <li>Export GitHub package version checking function so that other <code>crunch*</code> packages can use it.</li>
 <li>
-<code><a href="../reference/expressions.html">%in%</a></code> and <code><a href="../reference/expressions.html">==</a></code> on Crunch objects now follow R semantics more closely with regards to missing data.</li>
+<code><a href="../reference/expressions-internal.html">%in%</a></code> and <code><a href="../reference/expressions-internal.html">==</a></code> on Crunch objects now follow R semantics more closely with regards to missing data.</li>
 <li>Add some forward-compatible code to prepare for API changes to logical variables. This led to a couple of trivial changes to internals around boolean types that should not affect package users.</li>
 </ul>
 </div>
@@ -518,7 +554,7 @@
 <h2 class="hasAnchor">
 <a href="#miscellaneous" class="anchor"></a>Miscellaneous</h2>
 <ul>
-<li>Added support for setting population sizes on datasets with <code><a href="../reference/population.html">setPopulation(ds, size = 24.13e6, magnitude = 3)</a></code> and for getting population sizes (or magnitudes) with <code><a href="../reference/population.html">popSize(ds)</a></code> and <code><a href="../reference/population.html">popMagnitude(ds)</a></code> respectively.</li>
+<li>Added support for setting population sizes on datasets with <code><a href="../reference/popSize.html">setPopulation(ds, size = 24.13e6, magnitude = 3)</a></code> and for getting population sizes (or magnitudes) with <code><a href="../reference/popSize.html">popSize(ds)</a></code> and <code><a href="../reference/popSize.html">popMagnitude(ds)</a></code> respectively.</li>
 <li>Added support for getting and setting rollup resolutions for displaying Datetime variables. Get resolution with <code><a href="../reference/resolution.html">rollupResolution(ds$datetime)</a></code> and set with <code>rollupResolution(ds$datetime) &lt;- "M"</code>.</li>
 <li>Add <code><a href="https://rdrr.io/r/base/options.html">options(crunch.show.progress)</a></code> to govern whether to report progress of long-running requests. Default is <code>TRUE</code>, but set it to <code>FALSE</code> to run quietly.</li>
 <li>Export <code><a href="../reference/pollProgress.html">pollProgress()</a></code> and recommend using that when a long-running request fails to complete within the local timeout.</li>
@@ -607,9 +643,9 @@
 </h1>
 <ul>
 <li>All catalog objects now have an <code><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame()</a></code> method.</li>
-<li>The list of dataset “weight variables” can now be set with <code><a href="../reference/modifyWeightVariables.html">modifyWeightVariables()</a></code>, <code>weightVariables(ds) &lt;- ds$newWeight</code> or <code>is.weightVariables(ds$var) &lt;- TRUE</code>
+<li>The list of dataset “weight variables” can now be set with <code><a href="../reference/weightVariables&lt;-.html">modifyWeightVariables()</a></code>, <code>weightVariables(ds) &lt;- ds$newWeight</code> or <code>is.weightVariables(ds$var) &lt;- TRUE</code>
 </li>
-<li>Users with account admin privileges can now <code><a href="../reference/expropriateUser.html">expropriateUser()</a></code> to transfer datasets, projects, and other objects owned by one user to another, as when that user has left your organization.</li>
+<li>Users with account admin privileges can now <code>expropriateUser()</code> to transfer datasets, projects, and other objects owned by one user to another, as when that user has left your organization.</li>
 <li>Access members of user <code>UserCatalogs</code> by email (e.g. <code>catalog[["you@example.com"]]</code>) by default. All catalog extract methods (<code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> and <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code>) now also accept a <code>secondary</code> argument for setting an index to match against to change that default.</li>
 <li>Crunch authentication email and password can be stored in and read from the environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</li>
 <li>Cube queries with <code>as_selected</code> multiple-response variables have margin and prop.table methods</li>
@@ -656,7 +692,7 @@
 <h2 class="hasAnchor">
 <a href="#better-derived-variable-support" class="anchor"></a>Better derived variable support</h2>
 <ul>
-<li>Derivation expressions can now be retrieved from derived variables with <code><a href="../reference/derivations.html">derivation()</a></code>
+<li>Derivation expressions can now be retrieved from derived variables with <code><a href="../reference/derivation.html">derivation()</a></code>
 </li>
 <li>Derived variables can be integrated or instantiated by setting <code>derivation() &lt;- NULL</code>
 </li>
@@ -806,7 +842,7 @@
 </h1>
 <ul>
 <li>
-<code>multitables</code> method to access catalog from a Dataset. <code>newMultitable</code> to create one. See <code><a href="../reference/multitable-catalog.html">?multitables</a></code> and <code><a href="../reference/newMultitable.html">?newMultitable</a></code> for docs and examples.</li>
+<code>multitables</code> method to access catalog from a Dataset. <code>newMultitable</code> to create one. See <code><a href="../reference/multitables.html">?multitables</a></code> and <code><a href="../reference/newMultitable.html">?newMultitable</a></code> for docs and examples.</li>
 <li>
 <code>tabBook</code> to compute a tab book with a multitable. If <code>format="json"</code> (the default), returns a <code>TabBookResult</code> containing <code>CrunchCube</code> objects with which further analysis or formatting can be done.</li>
 <li>
@@ -1154,7 +1190,7 @@
 <a href="#other-changes-1" class="anchor"></a>Other changes</h2>
 <ul>
 <li>Improved validation for “name” setting, especially for categories</li>
-<li>Speed up <code><a href="https://rdrr.io/r/base/nrow.html">ncol(ds)</a></code> by removing a server request</li>
+<li>Speed up <code><a href="../reference/ncol.html">ncol(ds)</a></code> by removing a server request</li>
 <li>Speed up variable catalog editing by avoiding unnecessary updates to the variable order</li>
 <li>Fix cache invalidation when reordering subvariables</li>
 <li>Improve error message for subscript out of bounds in catalog objects</li>
@@ -1221,7 +1257,7 @@
 </h1>
 <ul>
 <li>Catch <code>NULL</code> in cube dimension when referencing subvariable that does not exist (as when using alias instead of name) and return a useful message.</li>
-<li>Fix for unintended substring matching in <code><a href="../reference/expressions.html">%in%</a></code> expression translation.</li>
+<li>Fix for unintended substring matching in <code><a href="../reference/expressions-internal.html">%in%</a></code> expression translation.</li>
 <li>Internal change to match user catalog API update</li>
 </ul>
 </div>

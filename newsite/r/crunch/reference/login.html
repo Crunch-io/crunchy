@@ -55,13 +55,10 @@
   
 
 <meta property="og:title" content="Authenticate with the Crunch API — login" />
-<meta property="og:description" content="Note that you can store your Crunch account info in your .Rprofile under
-crunch.email and crunch.pw for convenience. If you do so, you can simply
-login() to authenticate. For running batch jobs, this could be
-particularly useful. However, be warned that storing your
-password in a plain text file such as .Rprofile is a security risk (though
-perhaps less so than in every .R script you write), and we
-cannot officially recommend that you do so." />
+<meta property="og:description" content="Note that you can store your Crunch account info in encrypted format via
+the keyring package, with key_set(service = &quot;crunch&quot;, &quot;&amp;lt;USERNAME&amp;gt;&quot;, ...)
+If you do so, you can simply login() to authenticate. For running batch jobs,
+this could be particularly useful." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -104,7 +101,7 @@ cannot officially recommend that you do so." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -200,20 +197,13 @@ cannot officially recommend that you do so." />
     </div>
 
     <div class="ref-description">
-    <p>Note that you can store your Crunch account info in your .Rprofile under
-<code>crunch.email</code> and <code>crunch.pw</code> for convenience. If you do so, you can simply
-<code>login()</code> to authenticate. For running batch jobs, this could be
-particularly useful. However, be warned that storing your
-password in a plain text file such as .Rprofile is a security risk (though
-perhaps less so than in every .R script you write), and we
-cannot officially recommend that you do so.</p>
+    <p>Note that you can store your Crunch account info in encrypted format via
+the keyring package, with <code>key_set(service = "crunch", "&lt;USERNAME&gt;", ...)</code>
+If you do so, you can simply <code>login()</code> to authenticate. For running batch jobs,
+this could be particularly useful.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>login</span>(
-  email = <span class='fu'><a href='envOrOption.html'>envOrOption</a></span>(<span class='st'>"crunch.email"</span>),
-  password = <span class='fu'><a href='envOrOption.html'>envOrOption</a></span>(<span class='st'>"crunch.pw"</span>),
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>login</span>(email = <span class='kw'>NULL</span>, password = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -235,13 +225,16 @@ currently supported by the Crunch API.</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Additionally, your email and password can be stored in and read from the
-environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code> respectively.</p>
-<p>If a password is not supplied (or, if no arguments are supplied and only
-the <code>crunch.email</code> is specified in .Rprofile), and you are in an
-interactive session, you will be prompted to enter your password. At
-present, this is the most secure practice as your password is not stored
-locally.</p>
+    <p>Your email and password can also be stored in and read from the
+environmental variables <code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code>,
+or from your .Rprofile under <code>crunch.email</code> and <code>crunch.pw</code>.
+However, environmental variables and <code>.RProfile</code> files are not encrypted, so
+this practice is no longer recommended. If an email or password is found in
+multiple locations, priority is given to 1) environmental variables, 2)
+<code>.RProfile</code>, and 3) keyring. This order of priority is for backwards compatibility,
+and methods 1) and 2) are no longer recommended.</p>
+<p>If a password is not stored in any of these locations, and you are in an
+interactive session, you will be prompted to enter your password.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

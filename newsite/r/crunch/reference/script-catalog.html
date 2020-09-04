@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate Labels for the cut function — generateCutLabels • Crunch</title>
+<title>Crunch Automation scripts entities for a dataset — scripts • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Generate Labels for the cut function — generateCutLabels" />
-<meta property="og:description" content="A convenience function to generate labels for the cut function. This
-function is extracted from base::cut() and is broken out to make it easier
-to test. It is not meant to be called on its own." />
+<meta property="og:title" content="Crunch Automation scripts entities for a dataset — scripts" />
+<meta property="og:description" content="Crunch Automation scripts entities for a dataset" />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -100,7 +98,7 @@ to test. It is not meant to be called on its own." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -190,47 +188,36 @@ to test. It is not meant to be called on its own." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate Labels for the cut function</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cut.R'><code>R/cut.R</code></a></small>
-    <div class="hidden name"><code>generateCutLabels.Rd</code></div>
+    <h1>Crunch Automation scripts entities for a dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/automation.R'><code>R/automation.R</code></a></small>
+    <div class="hidden name"><code>script-catalog.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A convenience function to generate labels for the cut function. This
-function is extracted from <code><a href='https://rdrr.io/r/base/cut.html'>base::cut()</a></code> and is broken out to make it easier
-to test. It is not meant to be called on its own.</p>
+    <p>Crunch Automation scripts entities for a dataset</p>
     </div>
 
-    <pre class="usage"><span class='fu'>generateCutLabels</span>(<span class='kw'>dig.lab</span>, <span class='kw'>breaks</span>, <span class='kw'>nb</span>, <span class='kw'>right</span>, <span class='kw'>include.lowest</span>)</pre>
+    <pre class="usage"><span class='fu'>scripts</span>(<span class='kw'>x</span>)
+
+<span class='co'># S4 method for CrunchDataset</span>
+<span class='fu'>scripts</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dig.lab</th>
-      <td><p>see <code><a href='https://rdrr.io/r/base/cut.html'>cut()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>breaks</th>
-      <td><p>see <code><a href='https://rdrr.io/r/base/cut.html'>cut()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>nb</th>
-      <td><p>The number of breaks, equal to the small of 2 or the number of breaks</p></td>
-    </tr>
-    <tr>
-      <th>right</th>
-      <td><p>see <code><a href='https://rdrr.io/r/base/cut.html'>cut()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>include.lowest</th>
-      <td><p>see<code><a href='https://rdrr.io/r/base/cut.html'>cut()</a></code></p></td>
+      <th>x</th>
+      <td><p>a CrunchDataset</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector of labels</p>
+    <p>an object of class "ScriptCatalog" containing references to
+Script entities.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='runCrunchAutomation.html'>runCrunchAutomation()</a></code> &amp; <code><a href='automation-undo.html'>automation-undo</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

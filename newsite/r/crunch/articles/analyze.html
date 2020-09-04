@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -186,12 +186,12 @@
 <a href="#weighting" class="anchor"></a>Weighting</h3>
 <p><code>crtabs</code> takes advantage of several Crunch features that <code>xtabs</code> does not support. First, it respects weight variables that have been set on the server. This dataset is not currently weighted</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/weight.html">weight</a></span>(<span class="kw">ds</span>)
+<span class="fu"><a href="../reference/is.weight&lt;-.html">weight</a></span>(<span class="kw">ds</span>)
 </pre></div>
 <pre><code>## NULL</code></pre>
 <p>but we can very easily change that. Let’s use the “weight” variable that already exists in the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/weight.html">weight</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">weight</span>
+<span class="fu"><a href="../reference/is.weight&lt;-.html">weight</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">weight</span>
 </pre></div>
 <p>Now, if we request the same two-way table as before, we’ll get weighted results:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">

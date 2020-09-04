@@ -98,7 +98,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -199,7 +199,7 @@
 
     <pre class="usage"><span class='fu'>toVariable</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
-<span class='co'># S4 method for CrunchExpr</span>
+<span class='co'># S4 method for CrunchVarOrExpr</span>
 <span class='fu'>toVariable</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S4 method for character</span>
@@ -281,7 +281,8 @@ you can declare methods for <code>toVariable</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>var1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>)
-<span class='fu'>toVariable</span>(<span class='kw'>var1</span>)</div><div class='output co'>#&gt; $values
+<span class='fu'>toVariable</span>(<span class='kw'>var1</span>)
+</div><div class='output co'>#&gt; $values
 #&gt;  [1]  1.1484116 -1.8218177 -0.2473253 -0.2441996 -0.2827054 -0.5536994
 #&gt;  [7]  0.6289820  2.0650249 -1.6309894  0.5124269
 #&gt; 
@@ -289,7 +290,8 @@ you can declare methods for <code>toVariable</code>.</p>
 #&gt; [1] "numeric"
 #&gt; 
 #&gt; attr(,"class")
-#&gt; [1] "VariableDefinition"</div><div class='input'><span class='fu'>toVariable</span>(<span class='kw'>var1</span>, name = <span class='st'>"Random"</span>, description = <span class='st'>"Generated in R"</span>)</div><div class='output co'>#&gt; $values
+#&gt; [1] "VariableDefinition"</div><div class='input'><span class='fu'>toVariable</span>(<span class='kw'>var1</span>, name = <span class='st'>"Random"</span>, description = <span class='st'>"Generated in R"</span>)
+</div><div class='output co'>#&gt; $values
 #&gt;  [1]  1.1484116 -1.8218177 -0.2473253 -0.2441996 -0.2827054 -0.5536994
 #&gt;  [7]  0.6289820  2.0650249 -1.6309894  0.5124269
 #&gt; 
@@ -307,7 +309,8 @@ you can declare methods for <code>toVariable</code>.</p>
 <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>random</span> <span class='op'>&lt;-</span> <span class='fu'>toVariable</span>(<span class='kw'>var1</span>, name = <span class='st'>"Random"</span>)
 <span class='co'># Or, this way:</span>
 <span class='kw'>ds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='addVariables.html'>addVariables</a></span>(<span class='kw'>ds</span>, <span class='fu'>toVariable</span>(<span class='kw'>var1</span>, name = <span class='st'>"Random"</span>))
-}</div></pre>
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

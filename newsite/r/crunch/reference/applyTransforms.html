@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate the transforms from a CrunchCube — subtotalArray,CrunchCube-method • Crunch</title>
+<title>Calculate the transforms from a CrunchCube — subtotalArray • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Calculate the transforms from a CrunchCube — subtotalArray,CrunchCube-method" />
+<meta property="og:title" content="Calculate the transforms from a CrunchCube — subtotalArray" />
 <meta property="og:description" content="applyTransforms calculates transforms (e.g. Subtotals) on a CrunchCube.
 Currently only the row transforms are supported. This is useful if you want
 to use the values from the subtotals of the CrunchCube in an analysis." />
@@ -100,7 +100,7 @@ to use the values from the subtotals of the CrunchCube in an analysis." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -191,7 +191,7 @@ to use the values from the subtotals of the CrunchCube in an analysis." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Calculate the transforms from a CrunchCube</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-transforms.R'><code>R/cube-transforms.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/cube-transforms.R'><code>R/cube-transforms.R</code></a></small>
     <div class="hidden name"><code>applyTransforms.Rd</code></div>
     </div>
 
@@ -201,14 +201,16 @@ Currently only the row transforms are supported. This is useful if you want
 to use the values from the subtotals of the CrunchCube in an analysis.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for CrunchCube</span>
+    <pre class="usage"><span class='fu'>subtotalArray</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+
+<span class='co'># S4 method for CrunchCube</span>
 <span class='fu'>subtotalArray</span>(<span class='kw'>x</span>, headings = <span class='fl'>FALSE</span>)
 
 <span class='fu'>applyTransforms</span>(
   <span class='kw'>x</span>,
   array = <span class='fu'>cubeToArray</span>(<span class='kw'>x</span>),
   transforms_list = <span class='fu'><a href='Transforms-class.html'>transforms</a></span>(<span class='kw'>x</span>),
-  dims_list = <span class='fu'><a href='cube-methods.html'>dimensions</a></span>(<span class='kw'>x</span>),
+  dims_list = <span class='fu'><a href='dimensions.html'>dimensions</a></span>(<span class='kw'>x</span>),
   useNA = <span class='kw'>x</span><span class='op'>@</span>useNA,
   <span class='kw'>...</span>
 )</pre>
@@ -219,6 +221,10 @@ to use the values from the subtotals of the CrunchCube in an analysis.</p>
     <tr>
       <th>x</th>
       <td><p>a CrunchCube</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>arguments to pass to <code>calcTransforms</code>, for example <code>include</code></p></td>
     </tr>
     <tr>
       <th>headings</th>
@@ -238,16 +244,12 @@ itself. (Default: not used, pulls an array from the cube directly)</p></td>
     <tr>
       <th>dims_list</th>
       <td><p>list of dimensions that correspond to <code>array</code> (default:
-<code><a href='cube-methods.html'>dimensions(x)</a></code>)</p></td>
+<code><a href='dimensions.html'>dimensions(x)</a></code>)</p></td>
     </tr>
     <tr>
       <th>useNA</th>
       <td><p><code>useNA</code> parameter from the CrunchCube to use (default:
 <code>x@useNA</code>)</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>arguments to pass to <code>calcTransforms</code>, for example <code>include</code></p></td>
     </tr>
     </table>
 
@@ -286,6 +288,7 @@ combination of these can be given, by default all will be given.</p>
 <span class='co'># Neither Agree nor Disagree          Strongly Disagree          Somewhat Disagree</span>
 <span class='co'>#                         18                         19                         16</span>
 }
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -186,7 +186,7 @@ datasets(proj) &lt;- ds</code></pre>
 <h3 class="hasAnchor">
 <a href="#cube-subsetting-1" class="anchor"></a>Cube subsetting</h3>
 <p>This structure gets a little tricky when we subset the cube. For instance the cube we’ve been working with has 5 dimensions, but to the user appears to only have 3, so should they subset it as a 5 dimensional array like <code>cube[1, 1,  2:3, 1, 5]</code> or a 3 dimensional array <code>cube[1, 2:3, 5]</code>. Similarly, if a dimension is missing, should that be included in the subset. For example if a cube has three entries A, B, C, along one dimension, and B is hidden, should <code>cube[ , 1:2]</code> return A, A &amp; B, or A &amp;C? Similarly should <code><a href="https://rdrr.io/r/base/dim.html">dim(cube)</a></code> show the dimensions of the real cube or the printed cube?</p>
-<p>We resolve this problem by allowing the user to select whether they want the cube to represent the user cube or the printed cube, and make all of the behavior of those cubes consistent. The <code>cube@useNA</code> controls whether the user wanted to interact with the printed cube or the user cube and they can <code><a href="../reference/cube-missingness.html">showMissing()</a></code> and <code><a href="../reference/cube-missingness.html">hideMissing()</a></code> functions to control which cube they are interacting with</p>
+<p>We resolve this problem by allowing the user to select whether they want the cube to represent the user cube or the printed cube, and make all of the behavior of those cubes consistent. The <code>cube@useNA</code> controls whether the user wanted to interact with the printed cube or the user cube and they can <code><a href="../reference/showMissing.html">showMissing()</a></code> and <code><a href="../reference/showMissing.html">hideMissing()</a></code> functions to control which cube they are interacting with</p>
 <pre><code>&gt; dim(cube)
 [1] 5 6 8
 &gt; dim(showMissing(cube))

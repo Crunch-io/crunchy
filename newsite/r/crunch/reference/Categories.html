@@ -58,8 +58,23 @@
 <meta property="og:description" content="CategoricalVariables, as well as the array types composed from
 Categoricals, contain Categories. Categories are a subclass of list that
 contains only Category objects. Category objects are themselves subclasses of
-lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;numeric_value&quot;,
-&quot;missing&quot;, and optionally &quot;selected&quot;." />
+lists and contain the following fields:
+&quot;name&quot;: The name of the category, must be unique within a set of categories
+&quot;id&quot;: An integer that uniquely identifies the category
+&quot;numeric_value&quot;: A numeric value associated with the category (defaults to NA
+meaning that no value is associated, not that the category is missing)
+&quot;missing&quot;: Logical indicating whether the category should be considered missing
+(defaults to FALSE)
+&quot;selected&quot;: Logical indicating whether the category is selected or not (defaults
+to FALSE)
+&quot;date&quot;: A string indicating a day or range of days that should be associated with the
+category. Accepted formats are &quot;YYYY-MM-DD&quot; (&quot;2020-01-01&quot;) for a day,
+&quot;YYYY-WXX&quot; (&quot;2020-W01&quot;) for an ISO week (a week that starts on a Monday,
+with the first week of the year being the first week with more than 4 days in it),
+&quot;YYYY-MM&quot; (&quot;2020-01&quot;) for a month, &quot;YYYY&quot; (&quot;2020&quot;) for a year, or
+&quot;YYYY-MM-DD,YYYY-MM-DD&quot; (&quot;2020-01-01,2020-01-10&quot;) for a range of days.
+
+" />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -102,7 +117,7 @@ lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -201,8 +216,23 @@ lists and contain the following fields: &quot;name&quot;, &quot;id&quot;, &quot;
     <p>CategoricalVariables, as well as the array types composed from
 Categoricals, contain Categories. Categories are a subclass of list that
 contains only Category objects. Category objects are themselves subclasses of
-lists and contain the following fields: "name", "id", "numeric_value",
-"missing", and optionally "selected".</p>
+lists and contain the following fields:</p><ul>
+<li><p>"name": The name of the category, must be unique within a set of categories</p></li>
+<li><p>"id": An integer that uniquely identifies the category</p></li>
+<li><p>"numeric_value": A numeric value associated with the category (defaults to NA
+meaning that no value is associated, <em>not</em> that the category is missing)</p></li>
+<li><p>"missing": Logical indicating whether the category should be considered missing
+(defaults to <code>FALSE</code>)</p></li>
+<li><p>"selected": Logical indicating whether the category is selected or not (defaults
+to <code>FALSE</code>)</p></li>
+<li><p>"date": A string indicating a day or range of days that should be associated with the
+category. Accepted formats are "YYYY-MM-DD" ("2020-01-01") for a day,
+"YYYY-WXX" ("2020-W01") for an ISO week (a week that starts on a Monday,
+with the first week of the year being the first week with more than 4 days in it),
+"YYYY-MM" ("2020-01") for a month, "YYYY" ("2020") for a year, or
+"YYYY-MM-DD,YYYY-MM-DD" ("2020-01-01,2020-01-10") for a range of days.</p></li>
+</ul>
+
     </div>
 
     <pre class="usage"><span class='fu'>Categories</span>(<span class='kw'>...</span>, data = <span class='kw'>NULL</span>)
@@ -229,10 +259,12 @@ the objects via the <code>data</code> argument. See the examples.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>cat.a</span> <span class='op'>&lt;-</span> <span class='fu'>Category</span>(name = <span class='st'>"First"</span>, id = <span class='fl'>1</span>, numeric_value = <span class='fl'>1</span>, missing = <span class='fl'>FALSE</span>)
 <span class='kw'>cat.b</span> <span class='op'>&lt;-</span> <span class='fu'>Category</span>(data = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(name = <span class='st'>"First"</span>, id = <span class='fl'>1</span>, numeric_value = <span class='fl'>1</span>, missing = <span class='fl'>FALSE</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.b</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='kw'>cat.c</span> <span class='op'>&lt;-</span> <span class='fu'>Category</span>(name = <span class='st'>"Second"</span>, id = <span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.b</span>)
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='kw'>cat.c</span> <span class='op'>&lt;-</span> <span class='fu'>Category</span>(name = <span class='st'>"Second"</span>, id = <span class='fl'>2</span>)
 <span class='kw'>cats.1</span> <span class='op'>&lt;-</span> <span class='fu'>Categories</span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.c</span>)
 <span class='kw'>cats.2</span> <span class='op'>&lt;-</span> <span class='fu'>Categories</span>(data = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.c</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='kw'>cats.1</span>, <span class='kw'>cats.2</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='kw'>cats.1</span>, <span class='kw'>cats.2</span>)
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

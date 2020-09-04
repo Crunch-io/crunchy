@@ -101,7 +101,7 @@ to the provided marginal targets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
       </span>
     </div>
 
@@ -234,12 +234,12 @@ you would call <code>ds$weight1 &lt;- makeWeight(ds$var ~ c(25, 25, 25, 25), nam
 Note that <code>makeWeight</code> returns a <code>VariableDefinition</code>, an expression that
 when assigned into your Dataset becomes a derived variable. This does not on
 its own set the new variable as "the weight" for your dataset. To set that
-attribute, use <code><a href='weight.html'>weight()</a></code>. Alternatively, you can also create the variable
+attribute, use <code><a href='is.weight<-.html'>weight()</a></code>. Alternatively, you can also create the variable
 and set the weight attribute in one step with
 <code>weight(ds) &lt;- makeWeight(ds$var ~ c(25, 25, 25, 25), name = "weight1")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='weight.html'>weight&lt;-()</a></code>; <code><a href='settings.html'>settings()</a></code> for the "default weight" for other
+    <div class='dont-index'><p><code><a href='is.weight<-.html'>weight&lt;-()</a></code>; <code><a href='settings.html'>settings()</a></code> for the "default weight" for other
 dataset viewers.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -254,10 +254,11 @@ dataset viewers.</p></div>
 )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>weight</span>)
 <span class='co'># ds$weight is not "the weight" for the dataset unless you set it:</span>
-<span class='fu'><a href='weight.html'>weight</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>weight</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>weight</span>
 <span class='co'># Or, you can create the variable and set as weight in one step:</span>
-<span class='fu'><a href='weight.html'>weight</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='fu'>makeWeight</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>var</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>), name = <span class='st'>"weight2"</span>)
-}</div></pre>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span>(<span class='kw'>ds</span>) <span class='op'>&lt;-</span> <span class='fu'>makeWeight</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>var</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>, <span class='fl'>25</span>), name = <span class='st'>"weight2"</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
