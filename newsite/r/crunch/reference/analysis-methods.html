@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get and set slide analyses — analyses • Crunch</title>
+<title>Get and set slide analyses — filter • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get and set slide analyses — analyses" />
+<meta property="og:title" content="Get and set slide analyses — filter" />
 <meta property="og:description" content="Slides are composed of analyses, which are effectively CrunchCubes with some
 additional metadata. You can get and set a slide's Analysis Catalog with the
 analyses method, and access an individual analysis with analysis." />
@@ -100,7 +100,7 @@ analyses method, and access an individual analysis with analysis." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
       </span>
     </div>
 
@@ -191,7 +191,7 @@ analyses method, and access an individual analysis with analysis." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get and set slide analyses</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/decks.R'><code>R/decks.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a></small>
     <div class="hidden name"><code>analysis-methods.Rd</code></div>
     </div>
 
@@ -201,7 +201,14 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <code>analyses</code> method, and access an individual analysis with <code>analysis</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>analyses</span>(<span class='kw'>x</span>)
+    <pre class="usage"><span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+
+<span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='co'># S4 method for CrunchDeck,ANY</span>
+<span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+
+<span class='fu'>analyses</span>(<span class='kw'>x</span>)
 
 <span class='fu'>analysis</span>(<span class='kw'>x</span>)
 
@@ -212,10 +219,6 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='fu'>cube</span>(<span class='kw'>x</span>)
 
 <span class='fu'>cubes</span>(<span class='kw'>x</span>)
-
-<span class='fu'>filter</span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
-
-<span class='fu'>filter</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
 
 <span class='co'># S4 method for CrunchSlide</span>
 <span class='fu'>analyses</span>(<span class='kw'>x</span>)
@@ -279,12 +282,12 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
       <td><p>a <code>CrunchSlide</code>, <code>AnalysisCatalog</code>, or <code>Analysis</code></p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>for the setter, a query</p></td>
-    </tr>
-    <tr>
       <th>...</th>
       <td><p>ignored</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>for the setter, a query</p></td>
     </tr>
     </table>
 
@@ -323,7 +326,7 @@ into the <code>query</code> function.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

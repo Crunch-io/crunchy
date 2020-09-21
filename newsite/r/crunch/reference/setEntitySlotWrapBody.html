@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>is.na for Categories — is-na-categories • Crunch</title>
+<title>Setter for Crunch objects that wraps in a "body" — setEntitySlotWrapBody • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,12 +54,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="is.na for Categories — is-na-categories" />
-<meta property="og:description" content="Crunch categorical variables allow you to set multiple categories as missing.
-For instance, you might have &quot;not answered&quot; and &quot;doesn't know&quot; both coded as
-missing. This function returns a logical vector of all dataset entries that
-fall into any of the missing categories. It also allows you to append
-additional categories to the list of missing categories using the setter." />
+<meta property="og:title" content="Setter for Crunch objects that wraps in a "body" — setEntitySlotWrapBody" />
+<meta property="og:description" content="Variable Folders require an extra list(body = ...)
+compared to other places where we use setEntitySlot()
+is used. This may be a bug, see pivotal url in comments." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -192,57 +190,39 @@ additional categories to the list of missing categories using the setter." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>is.na for Categories</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/categories.R'><code>R/categories.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/category.R'><code>R/category.R</code></a></small>
-    <div class="hidden name"><code>is-na-categories.Rd</code></div>
+    <h1>Setter for Crunch objects that wraps in a "body"</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/shoji.R'><code>R/shoji.R</code></a></small>
+    <div class="hidden name"><code>setEntitySlotWrapBody.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Crunch categorical variables allow you to set multiple categories as missing.
-For instance, you might have "not answered" and "doesn't know" both coded as
-missing. This function returns a logical vector of all dataset entries that
-fall into any of the missing categories. It also allows you to append
-additional categories to the list of missing categories using the setter.</p>
+    <p>Variable Folders require an extra list(body = ...)
+compared to other places where we use <code><a href='setEntitySlot.html'>setEntitySlot()</a></code>
+is used. This may be a bug, see pivotal url in comments.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for Categories</span>
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>x</span>)
-
-<span class='co'># S4 method for Categories,character</span>
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
-
-<span class='co'># S4 method for Categories,logical</span>
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
-
-<span class='co'># S4 method for Category</span>
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>x</span>)
-
-<span class='co'># S4 method for Category,logical</span>
-<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
+    <pre class="usage"><span class='fu'>setEntitySlotWrapBody</span>(<span class='kw'>x</span>, <span class='kw'>i</span>, <span class='kw'>value</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Categories or a single Category</p></td>
+      <td><p>a ShojiObject or subclass thereof</p></td>
+    </tr>
+    <tr>
+      <th>i</th>
+      <td><p>character the slot name to update</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>To change the missingness of categories, supply either:</p><ol>
-<li><p>a logical vector of equal length of the categories (or length 1 for the
-Category method); or</p></li>
-<li><p>the names of the categories to mark as missing.
-If supplying the latter, any categories already indicated as missing will
-remain missing.</p></li>
-</ol></td>
+      <td><p>whatever the new value of that slot should be</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Getters return logical, a named vector in the case of the Categories
-method; setters return <code>x</code> duly modified.</p>
+    <p>x modified accordingly.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

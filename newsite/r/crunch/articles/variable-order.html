@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
       </span>
     </div>
 
@@ -228,7 +228,7 @@
     <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">.</span>, <span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">.</span>), <span class="st">"Tracking questions"</span>)
 </pre></div>
 <blockquote>
-<p>(Curious about the “dot” notation? See the <a href="http://magrittr.tidyverse.org/articles/magrittr.html">magrittr docs</a>.)</p>
+<p>(Curious about the “dot” notation? See the <a href="https://magrittr.tidyverse.org/articles/magrittr.html">magrittr docs</a>.)</p>
 </blockquote>
 <p>The reason we change to the top level folder here is that there is a subtle difference between passing <code>ds</code> to <code><a href="../reference/mv.html">mv()</a></code> versus <code><a href="../reference/cd.html">cd(ds, "/")</a></code>. Whatever object, dataset or folder, that is passed into <code><a href="../reference/mv.html">mv()</a></code> determines the scope from which the objects to move are selected. If you pass the dataset in, you can select any variables in the dataset, regardless of what folder they’re in. If you pass in a folder, you’re selecting just from that folder’s contents. It can be convenient to find all variables that match some criteria across the whole dataset to move them, but sometimes we don’t want that. In this case, we wanted only the variables sitting in the top level folder, not nested in other folders, so we wanted <code><a href="../reference/variables.html">variables(cd(ds, "/"))</a></code> and not <code><a href="../reference/variables.html">variables(ds)</a></code>.</p>
 <p>Now, our variable tree has some structure. Let’s use <code><a href="https://rdrr.io/r/base/print.html">print(folder, depth = 1)</a></code> to see these folders and their contents one level deep:</p>
@@ -335,7 +335,7 @@ folder(ds$var); can also mv to wherever that var is -->
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

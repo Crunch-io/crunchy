@@ -100,7 +100,7 @@ syntax is described in the crunch API documentation" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
       </span>
     </div>
 
@@ -203,7 +203,7 @@ syntax is described <a href='https://docs.crunch.io/feature-guide/feature-automa
 
     <pre class="usage"><span class='fu'>runCrunchAutomation</span>(<span class='kw'>dataset</span>, <span class='kw'>script</span>, is_file = <span class='fu'>string_is_file_like</span>(<span class='kw'>script</span>))
 
-<span class='fu'>crunchAutomationFailure</span>()</pre>
+<span class='fu'>showScriptErrors</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,7 +228,7 @@ by specifying <code>TRUE</code> for a file, and <code>FALSE</code> for a string.
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>For <code>runCrunchAutomation()</code>: an updated dataset (invisibly),
-For <code>crunchAutomationFailure()</code>, when run after a failure, a list with two items:
+For <code>showScriptErrors()</code>, when run after a failure, a list with two items:
 <code>script</code>: that contains the script string sent to the server and <code>errors</code> which is a
 <code>data.frame</code> with details about the errors sent from the server.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -246,7 +246,7 @@ For <code>crunchAutomationFailure()</code>, when run after a failure, a list wit
 
 <span class='co'># After a failed run, some error information prints to console,</span>
 <span class='co'># But more details are available with function:</span>
-<span class='fu'>crunchAutomationFailure</span>()
+<span class='fu'>showScriptErrors</span>()
 
 <span class='co'># After a successful run, can look at scripts</span>
 <span class='fu'><a href='scripts.html'>scripts</a></span>(<span class='kw'>ds</span>)
@@ -268,7 +268,7 @@ For <code>crunchAutomationFailure()</code>, when run after a failure, a list wit
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
