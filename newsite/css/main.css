@@ -267,7 +267,8 @@ caption {
   caption-side: bottom; }
 
 th {
-  text-align: inherit; }
+  text-align: inherit;
+  text-align: -webkit-match-parent; }
 
 label {
   display: inline-block;
@@ -5908,7 +5909,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .text-break {
   word-break: break-word !important;
-  overflow-wrap: break-word !important; }
+  word-wrap: break-word !important; }
 
 .text-reset {
   color: inherit !important; }
@@ -6087,6 +6088,9 @@ h4 {
   font-style: italic;
   font-family: 'Libre Baskerville', serif;
   margin-bottom: 40px; }
+
+.p-sm {
+  font-size: 12px; }
 
 .spacer {
   padding: 100px 0; }
@@ -6365,6 +6369,12 @@ table td:nth-child(2)cr- {
 .img-overlap {
   z-index: 100; }
 
+.resources-filter {
+  display: none; }
+
+.show-filter {
+  display: block; }
+
 .btn {
   padding: 10px 50px;
   border-radius: 2px; }
@@ -6445,6 +6455,9 @@ table td:nth-child(2)cr- {
       width: 18px;
       margin-top: -5px;
       margin-left: 5px; }
+
+.btn-filter {
+  text-align: center; }
 
 #page-content-wrapper {
   width: 100%; }
@@ -6638,7 +6651,11 @@ table td:nth-child(2)cr- {
   color: #ffffff; }
   #secondary-pages-wrapper .resources-content .jumbotron {
     background-color: #0064a4;
-    background-image: linear-gradient(#0064a4, #004571); }
+    background-image: linear-gradient(#0064a4, #004571);
+    height: 285px; }
+  #secondary-pages-wrapper .resources-content .resources-main {
+    margin-top: -80px;
+    margin-bottom: 50px; }
 
 @media (min-width: 768px) {
   #secondary-pages-wrapper .header-content-container {
@@ -7088,11 +7105,9 @@ table td:nth-child(2)cr- {
   .post-card .posts .post-card-links {
     position: absolute;
     bottom: 50px;
-    display: flex;
     font-size: 14px;
-    width: 75%; }
+    width: 80%; }
     .post-card .posts .post-card-links .post-label {
-      flex: 1;
       text-transform: uppercase;
       font-size: 12px;
       margin-top: 2px;
@@ -7106,16 +7121,14 @@ table td:nth-child(2)cr- {
         .post-card .posts .post-card-links .post-label a:hover {
           color: #0064a4;
           text-decoration: none; }
-    .post-card .posts .post-card-links .post-url {
-      text-align: right; }
-      .post-card .posts .post-card-links .post-url a {
-        display: block;
-        font-family: 'Libre Baskerville', serif;
-        font-style: italic;
-        color: #1D1D26; }
-        .post-card .posts .post-card-links .post-url a:hover {
-          color: #0064a4;
-          text-decoration: none; }
+    .post-card .posts .post-card-links .post-url a {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      color: #1D1D26; }
+      .post-card .posts .post-card-links .post-url a:hover {
+        color: #0064a4;
+        text-decoration: none; }
   .post-card.contact-card {
     margin-top: 20px;
     margin-bottom: 0;
@@ -7396,6 +7409,40 @@ figure figcaption h4 {
       border: 1px solid #e5e5e5;
       margin-left: 50px;
       margin-bottom: 25px; }
+
+.resources-filter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  text-align: center; }
+  .resources-filter-container button {
+    flex: auto;
+    border-radius: 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    border-right: 0;
+    background: #f9f9f9 !important;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600; }
+    .resources-filter-container button span img {
+      width: 18px;
+      margin-right: 10px; }
+    .resources-filter-container button.active-filter {
+      background: #ffffff !important;
+      outline: none;
+      border-radius: 0; }
+    .resources-filter-container button:hover {
+      background: #f1f1f1 !important; }
+    .resources-filter-container button:focus {
+      outline: none; }
+  .resources-filter-container button:last-child {
+    border-right: 1px solid #e5e5e5; }
+
+.resources-filter .post-card {
+  border: 1px solid #e5e5e5; }
 
 /* LAYOUTS - Page Layouts */
 #wrapper-homepage {

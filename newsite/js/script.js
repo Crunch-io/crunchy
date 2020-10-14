@@ -1,5 +1,54 @@
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("resources-filter");
+  if (c == "all-filter") c = "";
+  for (i = 0; i < x.length; i++) {
+    filterRemoveClass(x[i], "show-filter");
+    if (x[i].className.indexOf(c) > -1) filterAddClass(x[i], "show-filter");
+  }
+}
+
+// Show filtered elements
+function filterAddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function filterRemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
 $(document).ready(function() {
 
+    // Resources filter
+    filterSelection("all-filter")
+
+    var btnContainer = document.getElementById("resources-filter-container");
+    var btns = btnContainer.getElementsByClassName("btn-filter");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active-filter");
+        current[0].className = current[0].className.replace(" active-filter", "");
+        this.className += " active-filter";
+      });
+    }
+
+    //Popover
     $('[data-toggle="popover"]').popover({
         container: 'body',
         html: true,
@@ -94,18 +143,17 @@ $(document).ready(function() {
               $(this).addClass('active');
       });
 
-
     // Wow animations
     wow = new WOW({
-     boxClass:     'wow',
-     animateClass: 'animated',
-     offset:       0,
-     mobile:       false,
-     live:         true
-   })
-   wow.init();
+        boxClass:     'wow',
+        animateClass: 'animated',
+        offset:       0,
+        mobile:       false,
+        live:         true
+        })
+    wow.init();
 
-   // Gets the video src from the data-src on each button
+    // Gets the video src from the data-src on each button
     var $videoSrc;
     $('.video-btn').click(function() {
         $videoSrc = $(this).data( "src" );
