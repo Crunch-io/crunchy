@@ -39,13 +39,15 @@ $(document).ready(function() {
     filterSelection("all-filter")
 
     var btnContainer = document.getElementById("resources-filter-container");
-    var btns = btnContainer.getElementsByClassName("btn-filter");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active-filter");
-        current[0].className = current[0].className.replace(" active-filter", "");
-        this.className += " active-filter";
-      });
+    if (btnContainer) {
+        var btns = btnContainer.getElementsByClassName("btn-filter");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active-filter");
+            current[0].className = current[0].className.replace(" active-filter", "");
+            this.className += " active-filter";
+          });
+        }
     }
 
     //Popover
