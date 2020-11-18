@@ -104,7 +104,7 @@ in native R functions, and are described in the details section below." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -209,7 +209,7 @@ and can be called directly via <code>crunchdbFunc()</code>m but many have also b
 in native R functions, and are described in the details section below.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>crunchdbFunc</span>(<span class='kw'>fun</span>, <span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>crunchdbFunc</span><span class='op'>(</span><span class='va'>fun</span>, <span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -282,20 +282,20 @@ by <code>id</code>.</p></li>
 
 <p>Array expressions</p><ul>
 <li><p><code><a href='expressions-internal.html'>makeFrame(x)</a></code> an expression that creates an array from existing variables or expressions,
-see <code><a href='makeArray.html'>deriveArray()</a></code> for more details</p></li>
+see <code><a href='deriveArray.html'>deriveArray()</a></code> for more details</p></li>
 <li><p><code><a href='expressions-internal.html'>arraySubsetExpr(x, subvars, subvar_id = c("alias", "name", "id"))</a></code> Take a subset of an
 existing array variable, identifying the subvariables by alias, name, or id (if <code>x</code> is
 an expression, you must use id).</p></li>
-<li><p></p><pre> <span class='fu'><a href='expressions-internal.html'>alterArrayExpr</a></span>(
-   <span class='kw'>x</span>,
-   add = <span class='kw'>NULL</span>,
-   order = <span class='kw'>NULL</span>,
-   order_id = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span>),
-   remove = <span class='kw'>NULL</span>,
-   remove_id = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span>),
-   subreferences = <span class='kw'>NULL</span>,
-   subreferences_id = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span>)
-)
+<li><p></p><pre> <span class='fu'><a href='expressions-internal.html'>alterArrayExpr</a></span><span class='op'>(</span>
+   <span class='va'>x</span>,
+   add <span class='op'>=</span> <span class='cn'>NULL</span>,
+   order <span class='op'>=</span> <span class='cn'>NULL</span>,
+   order_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span><span class='op'>)</span>,
+   remove <span class='op'>=</span> <span class='cn'>NULL</span>,
+   remove_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span><span class='op'>)</span>,
+   subreferences <span class='op'>=</span> <span class='cn'>NULL</span>,
+   subreferences_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alias"</span>, <span class='st'>"name"</span>, <span class='st'>"id"</span><span class='op'>)</span>
+<span class='op'>)</span>
 </pre>
 
 <p>Add, reorder, remove or rename subvariables on an an array variable <code>x</code>. The <code>add</code> argument is
@@ -343,7 +343,7 @@ from numeric variables or expressions (<code>year</code>, <code>month</code>, an
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -104,7 +104,7 @@ rollupResolution&amp;lt;- lets you set that." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -209,15 +209,15 @@ resolution they will roll-up to, if not specified in <code>rollup()</code>;
 <code>rollupResolution&lt;-</code> lets you set that.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>resolution</span>(<span class='kw'>x</span>)
+    <pre class="usage"><span class='fu'>resolution</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>resolution</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span>
+<span class='fu'>resolution</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>rollup</span>(<span class='kw'>x</span>, resolution = <span class='fu'>rollupResolution</span>(<span class='kw'>x</span>))
+<span class='fu'>rollup</span><span class='op'>(</span><span class='va'>x</span>, resolution <span class='op'>=</span> <span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>rollupResolution</span>(<span class='kw'>x</span>)
+<span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>rollupResolution</span>(<span class='kw'>x</span>) <span class='op'>&lt;-</span> <span class='kw'>value</span></pre>
+<span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -254,15 +254,15 @@ coarse resolution (e.g. going from "s" to "m"), it cannot be reversed.
 Setting <code>rollupResolution</code> is non-destructive.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>resolution</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>starttime</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span>
 <span class='co'>## [1] "ms"</span>
-<span class='fu'>resolution</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>starttime</span>) <span class='op'>&lt;-</span> <span class='st'>"s"</span>
-<span class='fu'>rollup</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>starttime</span>)
-<span class='fu'>rollup</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>starttime</span>, <span class='st'>"D"</span>)
-<span class='fu'>rollupResolution</span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>starttime</span>) <span class='op'>&lt;-</span> <span class='st'>"D"</span>
-<span class='fu'><a href='crtabs.html'>crtabs</a></span>(<span class='op'>~</span> <span class='fu'>rollup</span>(<span class='kw'>starttime</span>), data = <span class='kw'>ds</span>)
-}
+<span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"s"</span>
+<span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span>
+<span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span>, <span class='st'>"D"</span><span class='op'>)</span>
+<span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"D"</span>
+<span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>rollup</span><span class='op'>(</span><span class='va'>starttime</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>ds</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -279,7 +279,7 @@ Setting <code>rollupResolution</code> is non-destructive.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

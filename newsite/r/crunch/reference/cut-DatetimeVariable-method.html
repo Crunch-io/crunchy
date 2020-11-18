@@ -107,7 +107,7 @@ whether the numeric vector falls between January 1 and 14 or January 15 and 31" 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -216,7 +216,7 @@ whether the numeric vector falls between January 1 and 14 or January 15 and 31</
     </div>
 
     <pre class="usage"><span class='co'># S4 method for DatetimeVariable</span>
-<span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='kw'>x</span>, <span class='kw'>breaks</span>, labels = <span class='kw'>NULL</span>, dates = <span class='kw'>NULL</span>, <span class='kw'>name</span>, right = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>breaks</span>, labels <span class='op'>=</span> <span class='cn'>NULL</span>, dates <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>name</span>, right <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -271,18 +271,18 @@ vector of break points.</p></td>
 it as a derived variable on the server.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>ds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span>(<span class='st'>"example"</span>)
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>month_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>date</span>, breaks = <span class='st'>"month"</span>, name = <span class='st'>"monthly"</span>)
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>four_weeks_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>date</span>, breaks = <span class='st'>"4 weeks"</span>, name = <span class='st'>"four week categorical date"</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>month_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"month"</span>, name <span class='op'>=</span> <span class='st'>"monthly"</span><span class='op'>)</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>four_weeks_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"4 weeks"</span>, name <span class='op'>=</span> <span class='st'>"four week categorical date"</span><span class='op'>)</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>wave_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span>(
-    <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>date</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-01-01"</span>, <span class='st'>"2020-02-15"</span>, <span class='st'>"2020-04-01"</span>, <span class='st'>"2020-05-15"</span>)),
-    labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"wave1"</span>, <span class='st'>"wave2"</span>, <span class='st'>"wave3"</span>),
-    name = <span class='st'>"wave var"</span>
-  )
-}
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>wave_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span>
+    <span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>,
+    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2020-01-01"</span>, <span class='st'>"2020-02-15"</span>, <span class='st'>"2020-04-01"</span>, <span class='st'>"2020-05-15"</span><span class='op'>)</span><span class='op'>)</span>,
+    labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"wave1"</span>, <span class='st'>"wave2"</span>, <span class='st'>"wave3"</span><span class='op'>)</span>,
+    name <span class='op'>=</span> <span class='st'>"wave var"</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -299,7 +299,7 @@ it as a derived variable on the server.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

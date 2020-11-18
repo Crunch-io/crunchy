@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="export_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="export_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="export_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Exporting Data</h1>
@@ -153,88 +154,75 @@
 <h2 class="hasAnchor">
 <a href="#as-data-frame-and-as-vector" class="anchor"></a>as.data.frame and as.vector</h2>
 <p>To get the local R representation of a Crunch variable, use <code>as.vector</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">party_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span>)
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">party_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span><span class="op">)</span></code></pre></div>
 <p><code>as.vector</code> translates Crunch to R types in reverse of how they are mapped in translation from R to Crunch in <code>newDataset</code>: categoricals become factors, numerics are numeric, and so on. Array variables (categorical array and multiple response) return a <code>data.frame</code> of categoricals, despite the name of <code>as.vector</code>, because doing so allows natural indexing into the subvariables (like <code>ds$var$subvar</code>).</p>
 <p>While categorical variables by default are translated as factors, you can use the “mode” argument to <code>as.vector</code> to request either the category “id” or the “numeric” values of the categories.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">party_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span>, mode=<span class="st">"id"</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">party_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span>, mode<span class="op">=</span><span class="st">"id"</span><span class="op">)</span></code></pre></div>
 <p>Requesting <code>mode="id"</code> may be particularly useful when you want to work with data locally that most closely matches the representation of the data on the server; however, the category names are disconnected from the data, so proceed with caution.</p>
 <p>Similarly, <code>as.data.frame</code> on a <code>CrunchDataset</code> gives you access to the values in the dataset, yet there is an important distinction: <code>as.data.frame</code> doesn’t itself pull data off the server. Rather, <code>as.data.frame</code> returns a <code>data.frame</code>-like object that lazily fetches columns only when requested.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">var</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">var</span><span class="op">)</span>
 
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw">ds</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="kw">v1</span>, <span class="kw">df</span><span class="op">$</span><span class="kw">var</span>)
-<span class="co">## TRUE</span>
-</pre></div>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">v1</span>, <span class="va">df</span><span class="op">$</span><span class="va">var</span><span class="op">)</span>
+<span class="co">## TRUE</span></code></pre></div>
 <p>That way, you can call <code>as.data.frame</code> and get convenient access to the columns of data without having to download things you don’t need up front.</p>
 <p>Of course, you can download all of the data at once if you want–even though it’s discouraged!–by either calling <code>as.data.frame</code> a second time</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw">ds</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span>(<span class="kw">df</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
 <span class="co">## FALSE</span>
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw">df</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span>(<span class="kw">df</span>)
-<span class="co">## TRUE</span>
-</pre></div>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="co">## TRUE</span></code></pre></div>
 <p>or by calling <code>as.data.frame</code> the first time with <code>force=TRUE</code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw">ds</span>, force=<span class="fl">TRUE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span>(<span class="kw">df</span>)
-<span class="co">## TRUE</span>
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ds</span>, force<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">is.data.frame</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="co">## TRUE</span></code></pre></div>
 </div>
 <div id="filtering-and-subsetting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#filtering-and-subsetting" class="anchor"></a>Filtering and subsetting</h2>
 <p>Given the cost in network traffic to shipping data from the servers to your local computer, you should be mindful of what you extract. One way you can do this is by taking advantage of the lazy evaluation of the <code>as.data.frame</code> method, which only pulls variables you explicitly reference in your subsequent code. Another way is to filter the rows and columns of your data of interest.</p>
 <p>Suppose I wanted to look at the specific values on a couple of demographic variables just for self-identified Democrats. I can filter the rows and columns of my dataset just as if I was working with a <code>data.frame</code>, and only pull that subset to my computer.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="kw">ds</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], force=<span class="fl">TRUE</span>)
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span><span class="op">)</span><span class="op">]</span>, force<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>This dataset filtering is much more efficient (and thus faster) than attempting to download the entire dataset and then subsetting the resulting <code>data.frame</code>.</p>
 <p>You can also use this subsetting for convenience when lazily accessing the data.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">dems</span> <span class="op">&lt;-</span> <span class="kw">ds</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, ]
-</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dems</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, <span class="op">]</span></code></pre></div>
 <p>gives a view of the dataset that is filtered by party identification.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">dem_age</span> <span class="op">&lt;-</span> <span class="kw">dems</span><span class="op">$</span><span class="kw">age</span>
-</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dem_age</span> <span class="op">&lt;-</span> <span class="va">dems</span><span class="op">$</span><span class="va">age</span></code></pre></div>
 <p>thus gives you just the values of “age” for those rows where “pid3” is equal to “Democrat”. This is equivalent to calling <code>as.vector</code> directly on a subsetted variable:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">age</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>]), <span class="kw">dem_age</span>)
-<span class="co">## TRUE</span>
-</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/as-vector.html">as.vector</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span><span class="op">]</span><span class="op">)</span>, <span class="va">dem_age</span><span class="op">)</span>
+<span class="co">## TRUE</span></code></pre></div>
 </div>
 <div id="expressions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#expressions" class="anchor"></a>Expressions</h2>
 <p>You can also get values for an on-the-fly derivation with <code>as.vector</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">perc_completed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span>(<span class="fl">100</span> <span class="op">-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">perc_skipped</span>)
-</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">perc_completed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as-vector.html">as.vector</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">perc_skipped</span><span class="op">)</span></code></pre></div>
 <p>Even though <code>perc_completed</code> doesn’t exist in the dataset, we can get values for it by expression.</p>
 </div>
 <div id="exporting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#exporting" class="anchor"></a>Exporting</h2>
 <p>If you want to download a file of the dataset or of a subset, use <code>exportDataset</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/exportDataset.html">exportDataset</a></span>(<span class="kw">ds</span>, file=<span class="st">"econ.sav"</span>, format=<span class="st">"spss"</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exportDataset.html">exportDataset</a></span><span class="op">(</span><span class="va">ds</span>, file<span class="op">=</span><span class="st">"econ.sav"</span>, format<span class="op">=</span><span class="st">"spss"</span><span class="op">)</span></code></pre></div>
 <p><code>exportDataset</code> writes to SPSS (.sav) and CSV formats. Alternatively, to get a CSV, <code>write.csv</code> is short for <code><a href="../reference/exportDataset.html">exportDataset(..., format="csv")</a></code> and works similar to how it does for regular <code>data.frame</code>s.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="../reference/exportDataset.html">write.csv</a></span>(<span class="kw">ds</span>, file=<span class="st">"econ.csv"</span>)
-</pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exportDataset.html">write.csv</a></span><span class="op">(</span><span class="va">ds</span>, file<span class="op">=</span><span class="st">"econ.csv"</span><span class="op">)</span></code></pre></div>
 <p>CSV export does have a “categories” option that governs whether categorical variables are exported as category names or ids. The latter is more concise and pairs well with the Crunch metadata export, but category names can be useful when taking the file without additional metadata.</p>
 <p>As with the <code>as.data.frame</code> methods, you can subset what you export by indexing the rows and columns. Following the previous example, we can get a CSV of that demographic subset by:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/exportDataset.html">write.csv</a></span>(<span class="kw">ds</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span>)], file=<span class="st">"demo-demos.csv"</span>)
-</pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exportDataset.html">write.csv</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>, <span class="st">"educ"</span>, <span class="st">"gender"</span><span class="op">)</span><span class="op">]</span>, file<span class="op">=</span><span class="st">"demo-demos.csv"</span><span class="op">)</span></code></pre></div>
 <p><a href="subtotals.html">Next: subtotals</a></p>
 </div>
   </div>
@@ -254,7 +242,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

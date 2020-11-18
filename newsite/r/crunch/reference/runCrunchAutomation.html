@@ -100,7 +100,7 @@ syntax is described in the crunch API documentation" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -201,9 +201,9 @@ concisely describe the metadata of your data when importing. The
 syntax is described <a href='https://docs.crunch.io/feature-guide/feature-automation.html'>in the crunch API documentation</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>runCrunchAutomation</span>(<span class='kw'>dataset</span>, <span class='kw'>script</span>, is_file = <span class='fu'>string_is_file_like</span>(<span class='kw'>script</span>))
+    <pre class="usage"><span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>dataset</span>, <span class='va'>script</span>, is_file <span class='op'>=</span> <span class='fu'>string_is_file_like</span><span class='op'>(</span><span class='va'>script</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>showScriptErrors</span>()</pre>
+<span class='fu'>showScriptErrors</span><span class='op'>(</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -236,22 +236,22 @@ For <code>showScriptErrors()</code>, when run after a failure, a list with two i
     <div class='dont-index'><p><code><a href='automation-undo.html'>automation-undo</a></code> &amp; <code><a href='scripts.html'>script-catalog</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># Can use a path to a file:</span>
-<span class='kw'>script_file</span> <span class='op'>&lt;-</span> <span class='st'>"crunch_automation.txt"</span>
-<span class='kw'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span>(<span class='kw'>ds</span>, <span class='kw'>script_file</span>)
+<span class='va'>script_file</span> <span class='op'>&lt;-</span> <span class='st'>"crunch_automation.txt"</span>
+<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='va'>script_file</span><span class='op'>)</span>
 
 <span class='co'># Or a string directly:</span>
-<span class='kw'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span>(<span class='kw'>ds</span>, <span class='st'>"RENAME v1 TO age;"</span>)
+<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME v1 TO age;"</span><span class='op'>)</span>
 
 <span class='co'># After a failed run, some error information prints to console,</span>
 <span class='co'># But more details are available with function:</span>
-<span class='fu'>showScriptErrors</span>()
+<span class='fu'>showScriptErrors</span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='co'># After a successful run, can look at scripts</span>
-<span class='fu'><a href='scripts.html'>scripts</a></span>(<span class='kw'>ds</span>)
+<span class='fu'><a href='scripts.html'>scripts</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>
 
-}
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -268,7 +268,7 @@ For <code>showScriptErrors()</code>, when run after a failure, a list with two i
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

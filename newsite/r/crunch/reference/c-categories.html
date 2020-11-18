@@ -98,7 +98,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -198,10 +198,10 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for Categories</span>
-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for Category</span>
-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,12 +217,12 @@
     <p>An object of class <code><a href='Categories-class.html'>Categories</a></code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>cat.a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"First"</span>, id = <span class='fl'>1</span>, numeric_value = <span class='fl'>1</span>, missing = <span class='fl'>FALSE</span>)
-<span class='kw'>cat.b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"Second"</span>, id = <span class='fl'>2</span>)
-<span class='kw'>cat.c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"Third"</span>, id = <span class='fl'>3</span>, missing = <span class='fl'>TRUE</span>)
-<span class='kw'>cats.1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Categories</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.b</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='kw'>cats.1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.b</span>))
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>cats.1</span>, <span class='kw'>cat.c</span>), <span class='fu'><a href='Categories-class.html'>Categories</a></span>(<span class='kw'>cat.a</span>, <span class='kw'>cat.b</span>, <span class='kw'>cat.c</span>))
+    <pre class="examples"><div class='input'><span class='va'>cat.a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"First"</span>, id <span class='op'>=</span> <span class='fl'>1</span>, numeric_value <span class='op'>=</span> <span class='fl'>1</span>, missing <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='va'>cat.b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Second"</span>, id <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>cat.c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Third"</span>, id <span class='op'>=</span> <span class='fl'>3</span>, missing <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>cats.1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Categories-class.html'>Categories</a></span><span class='op'>(</span><span class='va'>cat.a</span>, <span class='va'>cat.b</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>cats.1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>cat.a</span>, <span class='va'>cat.b</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>cats.1</span>, <span class='va'>cat.c</span><span class='op'>)</span>, <span class='fu'><a href='Categories-class.html'>Categories</a></span><span class='op'>(</span><span class='va'>cat.a</span>, <span class='va'>cat.b</span>, <span class='va'>cat.c</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -239,7 +239,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

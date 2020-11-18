@@ -100,7 +100,7 @@ the other." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -201,42 +201,42 @@ matches rows based on a specified key variable, and adds columns from one to
 the other.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>joinDatasets</span>(
-  <span class='kw'>x</span>,
-  <span class='kw'>y</span>,
-  by = <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>x</span>), <span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>y</span>)),
-  by.x = <span class='kw'>by</span>,
-  by.y = <span class='kw'>by</span>,
-  all = <span class='fl'>FALSE</span>,
-  all.x = <span class='fl'>TRUE</span>,
-  all.y = <span class='fl'>FALSE</span>,
-  copy = <span class='fl'>TRUE</span>
-)
+    <pre class="usage"><span class='fu'>joinDatasets</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>,
+  by.x <span class='op'>=</span> <span class='va'>by</span>,
+  by.y <span class='op'>=</span> <span class='va'>by</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  all.x <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.y <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  copy <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
 
-<span class='fu'>extendDataset</span>(
-  <span class='kw'>x</span>,
-  <span class='kw'>y</span>,
-  by = <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>x</span>), <span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>y</span>)),
-  by.x = <span class='kw'>by</span>,
-  by.y = <span class='kw'>by</span>,
-  all = <span class='fl'>FALSE</span>,
-  all.x = <span class='fl'>TRUE</span>,
-  all.y = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>
-)
+<span class='fu'>extendDataset</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>,
+  by.x <span class='op'>=</span> <span class='va'>by</span>,
+  by.y <span class='op'>=</span> <span class='va'>by</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  all.x <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.y <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for CrunchDataset</span>
-<span class='fu'><a href='merge.html'>merge</a></span>(
-  <span class='kw'>x</span>,
-  <span class='kw'>y</span>,
-  by = <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span>(<span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>x</span>), <span class='fu'><a href='aliases.html'>names</a></span>(<span class='kw'>y</span>)),
-  by.x = <span class='kw'>by</span>,
-  by.y = <span class='kw'>by</span>,
-  all = <span class='fl'>FALSE</span>,
-  all.x = <span class='fl'>TRUE</span>,
-  all.y = <span class='fl'>FALSE</span>,
-  <span class='kw'>...</span>
-)</pre>
+<span class='fu'><a href='merge.html'>merge</a></span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>intersect</a></span><span class='op'>(</span><span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='fu'><a href='aliases.html'>names</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>,
+  by.x <span class='op'>=</span> <span class='va'>by</span>,
+  by.y <span class='op'>=</span> <span class='va'>by</span>,
+  all <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  all.x <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.y <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -323,7 +323,7 @@ with <code><a href='mergeFork.html'>mergeFork()</a></code>. For more, see
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

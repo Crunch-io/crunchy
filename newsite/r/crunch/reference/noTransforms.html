@@ -98,7 +98,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -197,7 +197,7 @@
     <p>Remove transformations from a CrunchCube</p>
     </div>
 
-    <pre class="usage"><span class='fu'>noTransforms</span>(<span class='kw'>cube</span>)</pre>
+    <pre class="usage"><span class='fu'>noTransforms</span><span class='op'>(</span><span class='va'>cube</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -221,9 +221,9 @@ R: it doesn't actually change the variables on Crunch servers or the query
 that generated the CrunchCube.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># A CrunchCube with a heading and subtotals</span>
-<span class='fu'><a href='crtabs.html'>crtabs</a></span>(<span class='op'>~</span><span class='kw'>opinion</span>, <span class='kw'>ds</span>)
+<span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span>
 <span class='co'>#               All opinions</span>
 <span class='co'>#             Strongly Agree 23</span>
 <span class='co'>#             Somewhat Agree 24</span>
@@ -233,12 +233,12 @@ that generated the CrunchCube.</p>
 <span class='co'>#          Strongly Disagree 19</span>
 <span class='co'>#                   Disagree 35</span>
 
-<span class='fu'>noTransforms</span>(<span class='fu'><a href='crtabs.html'>crtabs</a></span>(<span class='op'>~</span><span class='kw'>opinion</span>, <span class='kw'>ds</span>))
+<span class='fu'>noTransforms</span><span class='op'>(</span><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'>#             Strongly Agree             Somewhat Agree Neither Agree nor Disagree</span>
 <span class='co'>#                         23                         24                         18</span>
 <span class='co'>#          Somewhat Disagree          Strongly Disagree</span>
 <span class='co'>#                         16                         19</span>
-}
+<span class='op'>}</span>
 
 </div></pre>
   </div>
@@ -256,7 +256,7 @@ that generated the CrunchCube.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

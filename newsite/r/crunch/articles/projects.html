@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="projects_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="projects_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="projects_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Organizing Datasets in Projects</h1>
@@ -154,30 +155,27 @@
 <h2 class="hasAnchor">
 <a href="#projects" class="anchor"></a>Projects</h2>
 <p>Projects are used to organize datasets into groups and manage access to those bundles of datasets. View your top-level projects with <code><a href="../reference/projects.html">projects()</a></code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/projects.html">projects</a></span>()
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co">##                             name                               id description</span>
 <span class="co">## 1                  Daily Surveys 1093171cd5a746b283adf8b7444bebe7            </span>
 <span class="co">## 2                  Test Datasets 84f740d53da14a5b8001ac97c8925813            </span>
-<span class="co">## 3                 Crunch.io Devs 80c51523fc31446396f6c915a02c77de            </span>
-</pre></div>
+<span class="co">## 3                 Crunch.io Devs 80c51523fc31446396f6c915a02c77de            </span></code></pre></div>
 <p>To select a project, use standard R list extraction methods.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span>()[[<span class="st">"Crunch.io Devs"</span>]]
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"Crunch.io Devs"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <p><code><a href="../reference/newProject.html">newProject()</a></code> creates a new top-level project.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newProject.html">newProject</a></span>(name=<span class="st">"A new start"</span>)
-<span class="fu"><a href="../reference/projects.html">projects</a></span>()
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newProject.html">newProject</a></span><span class="op">(</span>name<span class="op">=</span><span class="st">"A new start"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span>
 
 
 <span class="co">##                             name                               id description</span>
 <span class="co">## 1                  Daily Surveys 1093171cd5a746b283adf8b7444bebe7            </span>
 <span class="co">## 2                  Test Datasets 84f740d53da14a5b8001ac97c8925813            </span>
 <span class="co">## 3                 Crunch.io Devs 80c51523fc31446396f6c915a02c77de   </span>
-<span class="co">## 4                    A new start 23deb438a9dde2340091dec23abbbb43</span>
-</pre></div>
+<span class="co">## 4                    A new start 23deb438a9dde2340091dec23abbbb43</span></code></pre></div>
 <p>Once you have a project in hand, you can put datasets in it and organize them into groups.</p>
 </div>
 <div id="file-system-like" class="section level2">
@@ -193,14 +191,12 @@
 <code><a href="../reference/rmdir.html">rmdir()</a></code> removes a directory, i.e. deletes a group</li>
 </ul>
 <p>Like a file system, you can express the “path” to a folder as a string separated by a “/” delimiter, like this:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/mv.html">mkdir</a></span>(<span class="kw">proj</span>, <span class="st">"Tracking studies/Domestic/Automotive"</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="va">proj</span>, <span class="st">"Tracking studies/Domestic/Automotive"</span><span class="op">)</span></code></pre></div>
 <p>If your folder names should legitimately have a “/” in them, you can set a different character to be the path separator. See <code><a href="../reference/mv.html">?mkdir</a></code> or any of the other functions’ help files for details.</p>
 <p>You can also specify paths as a vector of path segments, like</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/mv.html">mkdir</a></span>(<span class="kw">proj</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Tracking studies"</span>, <span class="st">"Domestic"</span>, <span class="st">"Automotive"</span>))
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="va">proj</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tracking studies"</span>, <span class="st">"Domestic"</span>, <span class="st">"Automotive"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>which is equivalent to the previous example. One or the other way may be more convenient, depending on what you’re trying to accomplish.</p>
 <p>These functions all take a project as the first argument, and they return the same object passed to it. As such, they are designed to work with <code>magrittr</code>-style piping (<code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>) for convenience in chaining together steps, though they don’t require that you do.</p>
 </div>
@@ -211,9 +207,9 @@
 <p>During this period of API transition, we’ll refer to the organization of datasets into “groups” inside a project as that more accurately reflects the current API and its limited capabilities. In the new API, “projects” will contain other “projects”.</p>
 </blockquote>
 <p>To get started, let’s look at the contents of our “Crunch.io Devs” project.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span>()[[<span class="st">"Crunch.io Devs"</span>]]
-<span class="kw">proj</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"Crunch.io Devs"</span><span class="op">]</span><span class="op">]</span>
+<span class="va">proj</span>
 
 <span class="co"># Project “Crunch.io Devs”</span>
 <span class="co"># </span>
@@ -223,23 +219,21 @@
 <span class="co"># Crunch User Quarterly Tracker (Q4 2017)</span>
 <span class="co"># Crunch User Survey</span>
 <span class="co"># Stack Overflow Developer Survey (2016)</span>
-<span class="co"># Stack Overflow Developer Survey (2017)</span>
-</pre></div>
+<span class="co"># Stack Overflow Developer Survey (2017)</span></code></pre></div>
 <p>It’s flat—there are no groups here, only datasets.</p>
 </div>
 <div id="creating-groups" class="section level2">
 <h2 class="hasAnchor">
 <a href="#creating-groups" class="anchor"></a>Creating groups</h2>
 <p>Let’s make some groups and move some datasets into them. To start, we want to setup a folder for the collection of yearly Stack Overflow datasets. We could call <code><a href="../reference/mv.html">mkdir()</a></code> and then <code><a href="../reference/mv.html">mv()</a></code>, but for convenience, <code><a href="../reference/mv.html">mv()</a></code> will create the group specified by your path if it doesn’t already exist, so we can use <code><a href="../reference/mv.html">mv()</a></code> alone and get</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_so2016</span>, <span class="st">"Stack Overflow"</span>)
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_so2017</span>, <span class="st">"Stack Overflow"</span>)
-</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_so2016</span>, <span class="st">"Stack Overflow"</span><span class="op">)</span>
+<span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_so2017</span>, <span class="st">"Stack Overflow"</span><span class="op">)</span></code></pre></div>
 <p>Now when we look at the top-level directory again, we see a “Stack Overflow” folder and those datasets are no longer at the root level:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">proj</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span>
 
 <span class="co"># Project “Crunch.io Devs”</span>
 <span class="co"># </span>
@@ -250,26 +244,24 @@
 <span class="co"># Crunch User Survey</span>
 <span class="co"># [+] Stack Overflow</span>
 <span class="co">#     Stack Overflow Developer Survey (2016)</span>
-<span class="co">#     Stack Overflow Developer Survey (2017)</span>
-</pre></div>
+<span class="co">#     Stack Overflow Developer Survey (2017)</span></code></pre></div>
 <p>We can also make nested groups and move datasets into them as well:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_tracker_q32017</span>, <span class="st">"Trackers/Quarterly"</span>)
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_tracker_q42017</span>, <span class="st">"Trackers/Quarterly"</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_q32017</span>, <span class="st">"Trackers/Quarterly"</span><span class="op">)</span>
+<span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_q42017</span>, <span class="st">"Trackers/Quarterly"</span><span class="op">)</span>
     
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_tracker_012018</span>, <span class="st">"Trackers/Monthly"</span>)
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_tracker_022018</span>, <span class="st">"Trackers/Monthly"</span>)    
+<span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_012018</span>, <span class="st">"Trackers/Monthly"</span><span class="op">)</span>
+<span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_022018</span>, <span class="st">"Trackers/Monthly"</span><span class="op">)</span>    
     
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_user</span>, <span class="st">"User Surveys"</span>)
-</pre></div>
+<span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_user</span>, <span class="st">"User Surveys"</span><span class="op">)</span></code></pre></div>
 <p>And finally, we can see that our project has three groups, each containing a different set of datasets. Datasets can only be in one group at a time.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">proj</span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span>
 
 <span class="co"># Project “Crunch.io Devs”</span>
 <span class="co"># </span>
@@ -284,25 +276,23 @@
 <span class="co">#         Crunch User Monthly Tracker (January 2018)</span>
 <span class="co">#         Crunch User Monthly Tracker (February 2018)</span>
 <span class="co"># [+] User Surveys</span>
-<span class="co">#     Crunch User Survey</span>
-</pre></div>
+<span class="co">#     Crunch User Survey</span></code></pre></div>
 </div>
 <div id="deleting-groups" class="section level2">
 <h2 class="hasAnchor">
 <a href="#deleting-groups" class="anchor"></a>Deleting groups</h2>
 <p>Just above, we created a group and put the <code>Crunch User Survey</code> dataset in it. But, it turns out, that was a one off and we won’t have any more like it. So we want to get rid of that group The cleanest way to delete a group is with <code><a href="../reference/rmdir.html">rmdir()</a></code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span>(<span class="st">"User Surveys"</span>)
-<span class="co"># Error: Cannot remove 'User Surveys' because it is not empty. Move its contents somewhere else and then retry. </span>
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span><span class="op">(</span><span class="st">"User Surveys"</span><span class="op">)</span>
+<span class="co"># Error: Cannot remove 'User Surveys' because it is not empty. Move its contents somewhere else and then retry. </span></code></pre></div>
 <p>If the group isn’t empty, <code><a href="../reference/rmdir.html">rmdir()</a></code> warns us and doesn’t do anything, to delete it, we need to move the dataset out.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="kw">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span>(<span class="kw">ds_user</span>, <span class="st">"/"</span>) <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span>(<span class="st">"User Surveys"</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_user</span>, <span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span><span class="op">(</span><span class="st">"User Surveys"</span><span class="op">)</span>
 
-<span class="kw">proj</span> 
+<span class="va">proj</span> 
 
 <span class="co"># Project “Crunch.io Devs”</span>
 <span class="co"># </span>
@@ -316,9 +306,8 @@
 <span class="co">#     [+] Monthly</span>
 <span class="co">#         Crunch User Monthly Tracker (January 2018)</span>
 <span class="co">#         Crunch User Monthly Tracker (February 2018)</span>
-<span class="co"># Crunch User Survey</span>
-</pre></div>
-<p>As we said at the top, we are actively developing organizing datasets, so please give us any feedback you have as a <a href="https://github.com/Crunch-io/rcrunch/issues">GitHub issue</a> or at <a href="mailto:support@crunch.io">support@crunch.io</a>.</p>
+<span class="co"># Crunch User Survey</span></code></pre></div>
+<p>As we said at the top, we are actively developing organizing datasets, so please give us any feedback you have as a <a href="https://github.com/Crunch-io/rcrunch/issues">GitHub issue</a> or at <a href="mailto:support@crunch.io" class="email">support@crunch.io</a>.</p>
 <p><a href="derive.html">Next: transforming and deriving</a></p>
 </div>
   </div>
@@ -338,7 +327,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

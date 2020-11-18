@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="variables_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="variables_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="variables_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Crunch Variables</h1>
@@ -164,15 +165,13 @@
 <a href="#accessing-variables-within-a-dataset" class="anchor"></a>Accessing variables within a dataset</h3>
 <p>When dealing with variables within a dataset, the alias is used to identify variables. This is because (1) aliases are typically what were used to identify variables in whatever format from which the dataset was imported, and consequently, (2) aliases are typically more machine-friendly as names, less likely to contain characters that are not valid as variable names in R.</p>
 <p>Because the <code>names</code> attribute is used for indexing elements in R, if we want to extract variables based on alias, it means that the <code>names</code> attribute of dataset must actually expose aliases. This may be dissonant, but it has some nice properties. For one, comparing our Crunch dataset with the <code>data.frame</code> from which it was created, their <code>names</code> attribute have the same contents:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="kw">ds</span>), <span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="kw">economist</span>))
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">economist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>You can reference and extract variables from a dataset as if it were a <code>data.frame</code>, using the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code>, and <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code> methods.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">track.var</span> <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">track</span>
-<span class="kw">track.var</span>
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">track.var</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">track</span>
+<span class="va">track.var</span></code></pre></div>
 <pre><code>## track (categorical)
 ## 
 ##                                         Count
@@ -180,69 +179,58 @@
 ## Generally headed in the right direction    80
 ## Not sure                                   33</code></pre>
 <p>Like datasets, variables have various attributes like <code>name</code> and <code>description</code> that can be set naturally.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">track.var</span>) <span class="op">&lt;-</span> <span class="st">"Direction of country"</span>
-<span class="fu"><a href="../reference/describe-entity.html">description</a></span>(<span class="kw">track.var</span>) <span class="op">&lt;-</span> <span class="st">"In your opinon, is the country going in the right direction, or is it on the wrong track?"</span>
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Direction of country"</span>
+<span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"In your opinon, is the country going in the right direction, or is it on the wrong track?"</span></code></pre></div>
 <p>Two caveats. First, because we first extracted the variable from the dataset before making edits, the dataset object has stale metadata for this variable.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">track.var</span>) <span class="op">==</span> <span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">track</span>)
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>If we had instead modified <code>track</code> within <code>ds</code>, like</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="co">## Not run</span>
-<span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">track</span>) <span class="op">&lt;-</span> <span class="st">"Direction of country"</span>
-</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Not run</span>
+<span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Direction of country"</span></code></pre></div>
 <p><code>ds</code> would be up to date.</p>
 <p>This can be remedied one of two ways. We could either assign <code>track.var</code> back to <code>ds</code>, as in</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">ds</span><span class="op">$</span><span class="kw">track</span> <span class="op">&lt;-</span> <span class="kw">track.var</span>
-</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">track</span> <span class="op">&lt;-</span> <span class="va">track.var</span></code></pre></div>
 <p>or we can just refresh the dataset and fetch data from the server again:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <p>Now, <code>ds</code> has our edits:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">track.var</span>) <span class="op">==</span> <span class="fu"><a href="../reference/describe-entity.html">name</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">track</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="addressing-the-variable-catalog" class="section level3">
 <h3 class="hasAnchor">
 <a href="#addressing-the-variable-catalog" class="anchor"></a>Addressing the variable catalog</h3>
 <p>It is not always convenient that the <code>names</code> attribute of the dataset actually yields <em>aliases</em>. Moreover, if we want to edit the Crunch names of many variables, we need a way of accessing the Crunch metadata more directly. It will be very slow to edit each variable in the dataset individually, referencing them with <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, because each edit would send a request to the server. Instead, we’d rather bundle those into a single request. To do this, we can access the <code>variables</code> attribute of the dataset, which is a “variable catalog”:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>))
-</pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "VariableCatalog"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
 <p>In the variable catalog, Crunch names are names, and aliases are aliases. Hence,</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="kw">ds</span>), <span class="fu"><a href="../reference/aliases.html">aliases</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>)))
-</pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/aliases.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>but</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="kw">ds</span>), <span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>)))
-</pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>because “Direction of country” is the name for <code>ds$track</code></p>
-<div class="sourceCode" id="cb19"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>)), <span class="fl">10</span>)
-</pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "perc_skipped"         "newsint2"             "Direction of country" "snowdenfav"           "snowdenleakapp"      
 ##  [6] "snowdenpros"          "snowdenpenalty"       "manningknowledge"     "manningfavorability"  "manningguilt"</code></pre>
 <p>These attributes all allow assignment with <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. The methods <code>names</code> and <code>aliases</code> yield character vectors, and they take characters in assignment. Hence, you can use any vectorized string manipulation tools available in R, such as regular expressions, to edit variable names efficiently. You can also just supply a replacement vector, like</p>
-<div class="sourceCode" id="cb21"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>))[<span class="fl">4</span><span class="op">:</span><span class="fl">7</span>] <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Favorability of Edward Snowden"</span>,
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Favorability of Edward Snowden"</span>,
                                <span class="st">"Approval of Snowden's Leak"</span>,
                                <span class="st">"Support for Prosecution of Snowden"</span>,
-                               <span class="st">"Penalty for Snowden"</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/variables.html">variables</a></span>(<span class="kw">ds</span>)), <span class="fl">10</span>)
-</pre></div>
+                               <span class="st">"Penalty for Snowden"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "perc_skipped"                       "newsint2"                           "Direction of country"              
 ##  [4] "Favorability of Edward Snowden"     "Approval of Snowden's Leak"         "Support for Prosecution of Snowden"
 ##  [7] "Penalty for Snowden"                "manningknowledge"                   "manningfavorability"               
@@ -254,13 +242,11 @@
 <a href="#categorical-variables" class="anchor"></a>Categorical variables</h2>
 <p>Many variables in survey data are categorical: respondents have a finite set of answers to the survey question, and the answers are first and foremost of a nominal, not quantitative nature. In R, this data type is represented as a <code>factor</code>. The response options, are contained in the factor’s “levels” as a character vector. Manipulation of these levels is limited and often challenging.</p>
 <p>In Crunch, categorical variables’ “categories” are objects with richer metadata.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="fu"><a href="../reference/is.VariableDefinition.html">is.Categorical</a></span>(<span class="kw">track.var</span>)
-</pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/is.VariableDefinition.html">is.Categorical</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit">
-<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)
-</pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span></code></pre></div>
 <pre><code>##   id                                    name value missing
 ## 1  1 Generally headed in the right direction     1   FALSE
 ## 2  2                  Off on the wrong track     2   FALSE
@@ -270,51 +256,44 @@
 <h3 class="hasAnchor">
 <a href="#category-attributes" class="anchor"></a>Category attributes</h3>
 <p>Categories have <code>names</code>, the factor’s levels; numeric <code>values</code> which can be used when interpreting the categorical variable as numeric; and <code>ids</code>, which are analogous to the integer values that underlie an R factor. Categories also have their own “missing” status. Indeed, because Crunch supports more complex missing value support than does R, multiple categories can be marked as missing: there’s not a single “NA” value.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>))
-</pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Generally headed in the right direction" "Off on the wrong track"                 
 ## [3] "Not sure"                                "No Data"</code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">values</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>))
-</pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">values</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  1  2  3 NA</code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">ids</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>))
-</pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">ids</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  1  2  3 -1</code></pre>
-<div class="sourceCode" id="cb33"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>))
-</pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Generally headed in the right direction                  Off on the wrong track                                Not sure 
 ##                                   FALSE                                   FALSE                                   FALSE 
 ##                                 No Data 
 ##                                    TRUE</code></pre>
 <p>Names and values can be assigned into categories, but ids cannot: they are immutable references to values within the column of data on the server. Missingness can be set with <code>is.na</code>. Character values assigned will mark those categories as missing, leaving other categories unchanged. Logical values assigned will set the missing TRUE/FALSE accordingly.</p>
-<div class="sourceCode" id="cb35"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>))[<span class="fl">1</span><span class="op">:</span><span class="fl">2</span>] <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Right track"</span>, <span class="st">"Wrong track"</span>)
-<span class="fu"><a href="../reference/aliases.html">values</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)) <span class="op">&lt;-</span> <span class="st">"Not sure"</span>
-<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)
-</pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Right track"</span>, <span class="st">"Wrong track"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/aliases.html">values</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Not sure"</span>
+<span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span></code></pre></div>
 <pre><code>##   id                                    name value missing
 ## 1  1 Generally headed in the right direction     1   FALSE
 ## 2  3                                Not sure     0    TRUE
 ## 3  2                             Wrong track    -1   FALSE
 ## 4 -1                                 No Data    NA    TRUE</code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit">
-<span class="fu"><a href="../reference/aliases.html">ids</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fu"><a href="../reference/aliases.html">ids</a></span>(<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)), replace=<span class="fl">FALSE</span>)
-</pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">ids</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">ids</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## Error : Cannot modify category ids</code></pre>
 </div>
 <div id="reordering-categories" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reordering-categories" class="anchor"></a>Reordering categories</h3>
 <p>Categories can also be reordered by index, like any list object</p>
-<div class="sourceCode" id="cb39"><pre class="downlit">
-<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>) <span class="op">&lt;-</span> <span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)[<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span>)]
-<span class="fu"><a href="../reference/var-categories.html">categories</a></span>(<span class="kw">track.var</span>)
-</pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span>
+<span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span></code></pre></div>
 <pre><code>##   id                                    name value missing
 ## 1  1 Generally headed in the right direction     1   FALSE
 ## 2  2                             Wrong track    -1   FALSE
@@ -328,22 +307,19 @@
 <p>Datasets often contain variables that you may want to use – perhaps through a derived variable, a transformation, or a recode – or that may simply not be relevant for the analytic tasks at hand. In short, you want to hide them. They aren’t deleted, so you can restore them if you need them later, but they no longer clutter the dataset “workspace”.</p>
 <p>As when working with a <code>data.frame</code>, you typically assign the return of a dataset-level function back to the variable representing the dataset in your R script or session.</p>
 <p>In our example dataset, we have two copies of a voter-registration variable, “votereg_new” and “votereg_old”. Let’s hide the old version:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit">
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">hideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"votereg_old"</span>)
-<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">hideVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"votereg_old"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "votereg_old"</code></pre>
 <p>As with the <code>is.na</code> function, you can update a variable by assigning it to the hidden variables list.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit">
-<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="st">"pid7others"</span>
-<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pid7others"</span>
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "votereg_old"  "pid7others"</code></pre>
 <p>These variables are now hidden, both locally in your R session and remotely on the server, which you can see in the web application. And, just as you could restore them there, you can also restore them from R:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit">
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">unhideVariables</a></span>(<span class="kw">ds</span>, <span class="st">"pid7others"</span>)
-<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hiddenFolder.html">unhideVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"pid7others"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/hiddenFolder.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "votereg_old"</code></pre>
 </div>
 <div id="deleting-variables" class="section level2">
@@ -351,15 +327,13 @@
 <a href="#deleting-variables" class="anchor"></a>Deleting variables</h2>
 <p>Sometimes you do want to delete variables permanently. Doing so is easy, but we have some protections in place to keep you from accidentally deleting things from a dataset that may be shared with many people on the server.</p>
 <p>To delete, you can assign <code>NULL</code> in to the dataset for that variable, just like you were removing a column from a <code>data.frame</code>. Let’s kill the “votereg_old” variable permanently:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit">
-<span class="kw">ds</span><span class="op">$</span><span class="kw">votereg_old</span> <span class="op">&lt;-</span> <span class="kw">NULL</span>
-</pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">votereg_old</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
 <pre><code>## Really delete "votereg_old"?</code></pre>
 <p>The delete function requires confirmation when you’re running from an interactive session, just to make sure you aren’t accidentally assigning something in that is NULL and deleting your variable. If you know that you want to delete the variable, you can give your approval in advance by wrapping it in a <code>with</code> statement, using the <code>consent</code> context manager:</p>
-<div class="sourceCode" id="cb49"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="fu"><a href="../reference/consent.html">consent</a></span>(), <span class="kw">ds</span><span class="op">$</span><span class="kw">votereg_old</span> <span class="op">&lt;-</span> <span class="kw">NULL</span>)
-<span class="st">"votereg_old"</span> <span class="op">%in%</span> <span class="fu"><a href="../reference/aliases.html">names</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="fu"><a href="../reference/consent.html">consent</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">ds</span><span class="op">$</span><span class="va">votereg_old</span> <span class="op">&lt;-</span> <span class="cn">NULL</span><span class="op">)</span>
+<span class="st">"votereg_old"</span> <span class="op">%in%</span> <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>The <code><a href="https://rdrr.io/r/base/with.html">with(consent(), ...)</a></code> pattern works everywhere in <code>crunch</code> that requires confirmation to do an action, such as deleting datasets.</p>
 <p><a href="array-variables.html">Next: create and manipulate array variables</a></p>
@@ -381,7 +355,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

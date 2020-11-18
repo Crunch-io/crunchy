@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="derive_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="derive_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="derive_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Adding Variables</h1>
@@ -153,24 +154,20 @@
 <h2 class="hasAnchor">
 <a href="#creating-derived-variables" class="anchor"></a>Creating derived variables</h2>
 <p>In our sample dataset, we don’t have an “Age” variable, but we do have “Birth Year” (<code>birthyr</code>). We can create an age variable simply by taking the current year and subtracting the “Birth Year” variable from it–just as you would do if you were working with a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;-</span> <span class="fl">2015</span> <span class="op">-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span>
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span></code></pre></div>
 <p>Now, we have an age variable, and it looks like we’d expect it would relative to <code>birthyr</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">age</span>)
-</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   49.62   59.75   90.00</code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1925    1955    1966    1965    1977    1993</code></pre>
 <p>Age is now a derived variable, functionally linked to <code>birthyr</code> on the server. Note that in order to create <code>age</code>, we didn’t pull any values off of the server; we just supplied the derivation expression.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="fl">2015</span> <span class="op">-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span>)
-</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "CrunchExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
@@ -179,25 +176,21 @@
 <h2 class="hasAnchor">
 <a href="#updating-values" class="anchor"></a>Updating values</h2>
 <p>We can also use these expressions to update values. Suppose, just for demonstration purposes, that we want to truncate the range of the <code>birthyr</code> variable and set it to 1945 everywhere where it is less than 1945. We can once again write the R code we’d write if we were working with a <code>data.frame</code>, even though we’re working with a Crunch dataset:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span>] <span class="op">&lt;-</span> <span class="fl">1945</span>
-</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1945</span></code></pre></div>
 <p>If we look at the summary again, we’ll see that our data have been updated, and the minimum Birth Year is now 1945.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span>)
-</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1945    1955    1966    1966    1977    1993</code></pre>
 <p>Not only that: since <code>age</code> is a function of <code>birthyr</code> on the server, its values also update now that we’ve modified <code>birthyr</code>. Max age is now 70, or 2015 - 1945.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">age</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   22.00   38.00   48.50   48.98   59.75   70.00</code></pre>
 <p>Once again, we’ve done this operation by turning idiomatic R expressions into Crunch expression syntax.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span>)
-</pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "CrunchLogicalExpr"
 ## attr(,"package")
 ## [1] "crunch"</code></pre>
@@ -221,7 +214,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

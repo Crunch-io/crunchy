@@ -103,7 +103,7 @@ for numeric variables it is a single number or variable or expression." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -207,9 +207,9 @@ a <code>Category</code> or a categorical <code>CrunchVariable</code> or <code>Cr
 for numeric variables it is a single number or variable or expression.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeCaseWhenVariable</span>(<span class='kw'>...</span>, data = <span class='kw'>NULL</span>, cases = <span class='kw'>NULL</span>, <span class='kw'>name</span>, type = <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span><span class='va'>...</span>, data <span class='op'>=</span> <span class='cn'>NULL</span>, cases <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>name</span>, type <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>caseWhenExpr</span>(<span class='kw'>...</span>, data = <span class='kw'>NULL</span>, cases = <span class='kw'>NULL</span>, type = <span class='kw'>NULL</span>)</pre>
+<span class='fu'>caseWhenExpr</span><span class='op'>(</span><span class='va'>...</span>, data <span class='op'>=</span> <span class='cn'>NULL</span>, cases <span class='op'>=</span> <span class='cn'>NULL</span>, type <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -253,65 +253,65 @@ required if all fills are expressions and so their type cannot be guessed automa
 <code>caseWhenExpr()</code> returns an expression</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='co'># Creating categorical variables</span>
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>new_var</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>) <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>y</span>, <span class='co'># can fill with a variable</span>
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>) <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"c or d"</span>, numeric_value = <span class='fl'>10</span>), <span class='co'># or a Category</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>new_var</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>y</span>, <span class='co'># can fill with a variable</span>
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"c"</span>, <span class='st'>"d"</span><span class='op'>)</span> <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"c or d"</span>, numeric_value <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, <span class='co'># or a Category</span>
    <span class='co'># If none of the categories match, will be set to missing unless you</span>
    <span class='co'># specify an "else" case with `TRUE` in the left hand side</span>
-   <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"catch all"</span>),
-   name = <span class='st'>"combined x and y"</span>
-)
+   <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"catch all"</span><span class='op'>)</span>,
+   name <span class='op'>=</span> <span class='st'>"combined x and y"</span>
+<span class='op'>)</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand_x_pref</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand</span>[[<span class='fl'>1</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>pref</span>[[<span class='fl'>1</span>]],
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand</span>[[<span class='fl'>2</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>pref</span>[[<span class='fl'>2</span>]],
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand</span>[[<span class='fl'>3</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>pref</span>[[<span class='fl'>3</span>]],
-   name = <span class='st'>"brand x preference"</span>
-)
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>brand_x_pref</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>pref</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>,
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>pref</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span>,
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand</span><span class='op'>[[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>pref</span><span class='op'>[[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>]</span>,
+   name <span class='op'>=</span> <span class='st'>"brand x preference"</span>
+<span class='op'>)</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x_among_aware</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-   <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>aware_x</span> <span class='op'>==</span> <span class='st'>"Yes"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span>,
-   <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span>(name = <span class='st'>"(Not aware)"</span>, missing = <span class='fl'>TRUE</span>),
-   name = <span class='st'>"x (among respondents aware of x)"</span>
-)
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>x_among_aware</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+   <span class='va'>ds</span><span class='op'>$</span><span class='va'>aware_x</span> <span class='op'>==</span> <span class='st'>"Yes"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span>,
+   <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='fu'><a href='Categories-class.html'>Category</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"(Not aware)"</span>, missing <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+   name <span class='op'>=</span> <span class='st'>"x (among respondents aware of x)"</span>
+<span class='op'>)</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>new_num_var</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-  <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>) <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>z</span>, <span class='co'># LHS as before, RHS can be numeric variables,</span>
-  <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span> <span class='op'>==</span> <span class='st'>"c"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>z</span> <span class='op'>*</span> <span class='fl'>10</span>, <span class='co'># expressions,</span>
-  <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span> <span class='op'>==</span> <span class='st'>"d"</span> <span class='op'>~</span> <span class='fl'>100</span>, <span class='co'># or numbers</span>
-  name = <span class='st'>"New numeric variable"</span>
-)
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>new_num_var</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+  <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>z</span>, <span class='co'># LHS as before, RHS can be numeric variables,</span>
+  <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>==</span> <span class='st'>"c"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>z</span> <span class='op'>*</span> <span class='fl'>10</span>, <span class='co'># expressions,</span>
+  <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span> <span class='op'>==</span> <span class='st'>"d"</span> <span class='op'>~</span> <span class='fl'>100</span>, <span class='co'># or numbers</span>
+  name <span class='op'>=</span> <span class='st'>"New numeric variable"</span>
+<span class='op'>)</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>capped_z</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-  <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>z</span> <span class='op'>&gt;</span> <span class='fl'>10</span> <span class='op'>~</span> <span class='fl'>10</span>,
-  <span class='fl'>TRUE</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>z</span>,
-  name = <span class='st'>"Capped z"</span>
-)
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>capped_z</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+  <span class='va'>ds</span><span class='op'>$</span><span class='va'>z</span> <span class='op'>&gt;</span> <span class='fl'>10</span> <span class='op'>~</span> <span class='fl'>10</span>,
+  <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>z</span>,
+  name <span class='op'>=</span> <span class='st'>"Capped z"</span>
+<span class='op'>)</span>
 
 <span class='co'># caseWhenExpr can be used inside other expressions</span>
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand_x_prefer_high</span> <span class='op'>&lt;-</span> <span class='fu'><a href='VariableDefinition.html'>VarDef</a></span>(
-   <span class='fu'><a href='expressions-internal.html'>selectCategories</a></span>(
-       <span class='fu'>caseWhenExpr</span>(
-           <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand_shown</span>[[<span class='fl'>1</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>ratings</span>[[<span class='fl'>1</span>]],
-           <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand_shown</span>[[<span class='fl'>2</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>ratings</span>[[<span class='fl'>2</span>]],
-           <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>brand_shown</span>[[<span class='fl'>3</span>]] <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>ratings</span>[[<span class='fl'>3</span>]]
-       ),
-       <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Best"</span>, <span class='st'>"Very Good"</span>)
-   ),
-   name = <span class='st'>"Rate X highly"</span>
-)
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>brand_x_prefer_high</span> <span class='op'>&lt;-</span> <span class='fu'><a href='VariableDefinition.html'>VarDef</a></span><span class='op'>(</span>
+   <span class='fu'><a href='expressions-internal.html'>selectCategories</a></span><span class='op'>(</span>
+       <span class='fu'>caseWhenExpr</span><span class='op'>(</span>
+           <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand_shown</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>ratings</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>,
+           <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand_shown</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>ratings</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span>,
+           <span class='va'>ds</span><span class='op'>$</span><span class='va'>brand_shown</span><span class='op'>[[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>==</span> <span class='st'>"Brand X"</span> <span class='op'>~</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>ratings</span><span class='op'>[[</span><span class='fl'>3</span><span class='op'>]</span><span class='op'>]</span>
+       <span class='op'>)</span>,
+       <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Best"</span>, <span class='st'>"Very Good"</span><span class='op'>)</span>
+   <span class='op'>)</span>,
+   name <span class='op'>=</span> <span class='st'>"Rate X highly"</span>
+<span class='op'>)</span>
 
 <span class='co'># Using lists in `cases` argument can be helpful when working programmatically</span>
-<span class='kw'>source_var</span> <span class='op'>&lt;-</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x</span>
-<span class='kw'>inclusion_condition</span> <span class='op'>&lt;-</span> <span class='kw'>ds</span><span class='op'>$</span><span class='kw'>skipped_x</span> != <span class='st'>"Yes"</span>
+<span class='va'>source_var</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>x</span>
+<span class='va'>inclusion_condition</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>skipped_x</span> <span class='op'>!=</span> <span class='st'>"Yes"</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>x2_among_aware</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span>(
-   cases = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(fill = <span class='kw'>source_var</span>, expression = <span class='kw'>inclusion_condition</span>)),
-   name = <span class='st'>"x2 among aware"</span>
-)
-}
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>x2_among_aware</span> <span class='op'>&lt;-</span> <span class='fu'>makeCaseWhenVariable</span><span class='op'>(</span>
+   cases <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>source_var</span>, expression <span class='op'>=</span> <span class='va'>inclusion_condition</span><span class='op'>)</span><span class='op'>)</span>,
+   name <span class='op'>=</span> <span class='st'>"x2 among aware"</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -328,7 +328,7 @@ required if all fills are expressions and so their type cannot be guessed automa
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

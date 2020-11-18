@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -134,7 +134,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="filters_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="filters_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="filters_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Filtering Data</h1>
@@ -155,10 +156,9 @@
 <p>As we’ve seen in previous vignettes, making logical expressions with Crunch datasets and variables is natural. We showed how to <a href="derive.html">update a selection of values</a> on the server, as well as how to <a href="analyze.html">crosstab in a subset of a dataset</a>. Other applications work just as intuitively.</p>
 <!-- Add links with anchors to "Updating values" and to "Subsetting data" -->
 <p>Filtering like this works by creating a dataset or variable object that has the filter embedded in it:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">dems</span> <span class="op">&lt;-</span> <span class="kw">ds</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,]
-<span class="kw">dems</span>
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dems</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,<span class="op">]</span>
+<span class="va">dems</span></code></pre></div>
 <pre><code>## Dataset “Economist/YouGov Weekly Survey”
 ## 
 ## Contains 96 rows of 38 variables:
@@ -202,9 +202,8 @@
 ## $votereg_old: votereg_old (numeric)
 ## $votereg: votereg (numeric)
 ## $age: age (numeric)</code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/cube-computing.html">round</a></span>(<span class="fu"><a href="../reference/crtabs.html">crtabs</a></span>(<span class="fu"><a href="../reference/crunch-uni.html">mean</a></span>(<span class="kw">track</span>) <span class="op">~</span> <span class="kw">educ</span> <span class="op">+</span> <span class="kw">gender</span>, data=<span class="kw">dems</span>), <span class="fl">2</span>)
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">dems</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
 ## educ                    Male Female
 ##   No HS                  NaN   1.00
@@ -214,27 +213,24 @@
 ##   4-year               -0.12   0.40
 ##   Post-grad             0.33   0.12</code></pre>
 <p>When you extract a variable from a filtered dataset, it too is filtered. So</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/table.html">table</a></span>(<span class="kw">dems</span><span class="op">$</span><span class="kw">educ</span>)
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">dems</span><span class="op">$</span><span class="va">educ</span><span class="op">)</span></code></pre></div>
 <pre><code>## educ
 ##                No HS High school graduate         Some college               2-year               4-year 
 ##             5.990781            23.817206            19.000165             4.962549            18.238301 
 ##            Post-grad 
 ##             6.278870</code></pre>
 <p>is the same as</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/table.html">table</a></span>(<span class="kw">ds</span><span class="op">$</span><span class="kw">educ</span>[<span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,])
-</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">educ</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,<span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## educ
 ##                No HS High school graduate         Some college               2-year               4-year 
 ##             5.990781            23.817206            19.000165             4.962549            18.238301 
 ##            Post-grad 
 ##             6.278870</code></pre>
 <p>As an aside, if you prefer using the <code>subset</code> function, that works just the same as the <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> extract method on datasets:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="kw">ds</span>, <span class="kw">ds</span><span class="op">$</span><span class="kw">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>), <span class="kw">dems</span>)
-</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">ds</span>, <span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span><span class="op">)</span>, <span class="va">dems</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="filter-entities" class="section level2">
@@ -242,39 +238,33 @@
 <a href="#filter-entities" class="anchor"></a>Filter entities</h2>
 <p>In the web application, you can save filter definitions with names for easy reuse. You can also share these filter definitions with other viewers of the dataset.</p>
 <p>To do so, we work with the dataset’s filter catalog. To start, our filter catalog will be empty:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## data frame with 0 columns and 0 rows</code></pre>
 <p>Create a filter by assigning a Crunch logical expression to the catalog by the name we want to give it, using <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> or <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code>:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">30</span>
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
-</pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;</span> <span class="fl">30</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 30</code></pre>
 <p>This new filter now appears in our filter catalog.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males 257567b10b4d46e19c703cf2de0b7cd4     FALSE</code></pre>
 <p>You could also have made the filter with the <code>newFilter</code> function:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="kw">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newFilter.html">newFilter</a></span>(<span class="st">"Young males"</span>, <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">30</span>)
-</pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newFilter.html">newFilter</a></span><span class="op">(</span><span class="st">"Young males"</span>, <span class="va">ds</span><span class="op">$</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;</span> <span class="fl">30</span><span class="op">)</span></code></pre></div>
 <p>This filter is now available for you to use in the web application. If you want to make the filter available to all viewers of the dataset, make it “public”:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="fu"><a href="../reference/is-public.html">is.public</a></span>(<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]) <span class="op">&lt;-</span> <span class="fl">TRUE</span>
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/is-public.html">is.public</a></span><span class="op">(</span><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##          name                               id is_public
 ## 1 Young males 257567b10b4d46e19c703cf2de0b7cd4      TRUE</code></pre>
 <p>You can also edit the filter expressions by assigning a new one in, like:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]] <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">age</span> <span class="op">&lt;</span> <span class="fl">35</span>
-<span class="fu"><a href="../reference/filters.html">filters</a></span>(<span class="kw">ds</span>)[[<span class="st">"Young males"</span>]]
-</pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;</span> <span class="fl">35</span>
+<span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## Crunch filter “Young males”
 ## Expression: gender == "Male" &amp; age &lt; 35</code></pre>
 </div>
@@ -282,34 +272,29 @@
 <h2 class="hasAnchor">
 <a href="#exclusion-filters" class="anchor"></a>Exclusion filters</h2>
 <p>One other application for filtering is the dataset exclusion filter. The exclusion allows you to suppress from view rows that match a certain condition. Exclusions are set on the dataset with a Crunch logical expression:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 250  38</code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit">
-<span class="fu"><a href="../reference/exclusion.html">exclusion</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="kw">ds</span><span class="op">$</span><span class="kw">perc_skipped</span> <span class="op">&gt;</span> <span class="fl">15</span>
-<span class="fu"><a href="../reference/exclusion.html">exclusion</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exclusion.html">exclusion</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">perc_skipped</span> <span class="op">&gt;</span> <span class="fl">15</span>
+<span class="fu"><a href="../reference/exclusion.html">exclusion</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## Crunch logical expression: perc_skipped &gt; 15</code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 229  38</code></pre>
 <p>All viewers of the dataset will see the dataset as if those rows do not exist; however, as the editor of the dataset, you can remove the exclusion filter to see them if you need:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="fu"><a href="../reference/exclusion.html">exclusion</a></span>(<span class="kw">ds</span>) <span class="op">&lt;-</span> <span class="kw">NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">ds</span>)
-</pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/exclusion.html">exclusion</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 250  38</code></pre>
 <div id="alternative-droprows" class="section level3">
 <h3 class="hasAnchor">
 <a href="#alternative-droprows" class="anchor"></a>Alternative: <code>dropRows</code>
 </h3>
 <p>If you do know that you never want to see those rows again, you can permanently delete them with <code>dropRows</code>:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit">
-<span class="co">## Not run</span>
-<span class="kw">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dropRows.html">dropRows</a></span>(<span class="kw">ds</span>, <span class="kw">ds</span><span class="op">$</span><span class="kw">perc_skipped</span> <span class="op">&gt;</span> <span class="fl">15</span>)
-</pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Not run</span>
+<span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dropRows.html">dropRows</a></span><span class="op">(</span><span class="va">ds</span>, <span class="va">ds</span><span class="op">$</span><span class="va">perc_skipped</span> <span class="op">&gt;</span> <span class="fl">15</span><span class="op">)</span></code></pre></div>
 <p><a href="export.html">Next: exporting data</a></p>
 </div>
 </div>
@@ -330,7 +315,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

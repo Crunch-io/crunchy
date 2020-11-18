@@ -101,7 +101,7 @@ of a tab book." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -203,7 +203,7 @@ web app to display tables side by side, as well as to define one dimension
 of a tab book.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>newMultitable</span>(<span class='kw'>formula</span>, <span class='kw'>data</span>, <span class='kw'>name</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>newMultitable</span><span class='op'>(</span><span class='va'>formula</span>, <span class='va'>data</span>, <span class='va'>name</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -241,10 +241,10 @@ a default name will be derived from <code>formula</code>.</p></td>
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/stats/formula.html'>stats::formula</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>m</span> <span class='op'>&lt;-</span> <span class='fu'>newMultitable</span>(<span class='op'>~</span> <span class='kw'>gender</span> <span class='op'>+</span> <span class='kw'>age4</span> <span class='op'>+</span> <span class='kw'>marstat</span>, data = <span class='kw'>ds</span>)
-<span class='fu'><a href='describe-entity.html'>name</a></span>(<span class='kw'>m</span>) <span class='co'># [1] "gender + age4 + marstat"</span>
-}
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>newMultitable</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>gender</span> <span class='op'>+</span> <span class='va'>age4</span> <span class='op'>+</span> <span class='va'>marstat</span>, data <span class='op'>=</span> <span class='va'>ds</span><span class='op'>)</span>
+<span class='fu'><a href='describe-entity.html'>name</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span> <span class='co'># [1] "gender + age4 + marstat"</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -261,7 +261,7 @@ a default name will be derived from <code>formula</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

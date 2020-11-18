@@ -100,7 +100,7 @@ perform those actions, you can preemptively provide consent." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -201,9 +201,9 @@ want to do them. If you're running a script and you know that you want to
 perform those actions, you can preemptively provide <code>consent</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>consent</span>()
+    <pre class="usage"><span class='fu'>consent</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>with_consent</span>(<span class='kw'>expr</span>)</pre>
+<span class='fu'>with_consent</span><span class='op'>(</span><span class='va'>expr</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -224,11 +224,11 @@ inside the <code>consent</code> context.</p>
     <div class='dont-index'><p><code><a href='with-context-manager.html'>with-context-manager</a></code> <code><a href='ContextManager.html'>ContextManager</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='fu'>consent</span>(), <span class='fu'><a href='delete.html'>delete</a></span>(<span class='kw'>ds</span>))
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='fu'>consent</span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='delete.html'>delete</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Equivalent to:</span>
-<span class='fu'>with_consent</span>(<span class='fu'><a href='delete.html'>delete</a></span>(<span class='kw'>ds</span>))
-}
+<span class='fu'>with_consent</span><span class='op'>(</span><span class='fu'><a href='delete.html'>delete</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -245,7 +245,7 @@ inside the <code>consent</code> context.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

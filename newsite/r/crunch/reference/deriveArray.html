@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a Categorical Array or Multiple Response variable — makeArray • Crunch</title>
+<title>Make a Categorical Array or Multiple Response variable — deriveArray • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,12 +54,14 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Make a Categorical Array or Multiple Response variable — makeArray" />
-<meta property="og:description" content="Array variables are composed of a set of &quot;subvariables&quot; bound
-together for display in the app. For example, you might have a set of
-survey questions that ask how the respondent would rate a tv show from
-1-5. Array variables allow you to display all of their ratings in a compact
-table rather than a set of distinct variables." />
+<meta property="og:title" content="Make a Categorical Array or Multiple Response variable — deriveArray" />
+<meta property="og:description" content="In most situations we recommend using deriveArray which leaves your
+subvariables in the dataset. makeArray removes component subvariables
+from your dataset. Array variables are composed of a set of &quot;subvariables&quot;
+bound together for display  in the app. For example, you might have a set of
+survey questions that ask how the respondent would rate a TV show from 1-5.
+Array variables allow you to display all of their ratings in a compact table
+rather than a set of distinct variables." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -102,7 +104,7 @@ table rather than a set of distinct variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -194,22 +196,24 @@ table rather than a set of distinct variables." />
     <div class="page-header">
     <h1>Make a Categorical Array or Multiple Response variable</h1>
     <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/make-array.R'><code>R/make-array.R</code></a></small>
-    <div class="hidden name"><code>makeArray.Rd</code></div>
+    <div class="hidden name"><code>deriveArray.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Array variables are composed of a set of "subvariables" bound
-together for display in the app. For example, you might have a set of
-survey questions that ask how the respondent would rate a tv show from
-1-5. Array variables allow you to display all of their ratings in a compact
-table rather than a set of distinct variables.</p>
+    <p>In most situations we recommend using <code>deriveArray</code> which leaves your
+subvariables in the dataset. <code>makeArray</code> <em>removes</em> component subvariables
+from your dataset. Array variables are composed of a set of "subvariables"
+bound together for display  in the app. For example, you might have a set of
+survey questions that ask how the respondent would rate a TV show from 1-5.
+Array variables allow you to display all of their ratings in a compact table
+rather than a set of distinct variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeArray</span>(<span class='kw'>subvariables</span>, <span class='kw'>name</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>deriveArray</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>selections</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>makeMR</span>(<span class='kw'>subvariables</span>, <span class='kw'>name</span>, <span class='kw'>selections</span>, <span class='kw'>...</span>)
+<span class='fu'>makeArray</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>deriveArray</span>(<span class='kw'>subvariables</span>, <span class='kw'>name</span>, <span class='kw'>selections</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>makeMR</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>selections</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -225,14 +229,14 @@ Dataset subset which contains only the Variables to bind.</p></td>
 should have.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Optional additional attributes to set on the new variable.</p></td>
-    </tr>
-    <tr>
       <th>selections</th>
       <td><p>character, for <code>makeMR</code> and <code>deriveArray</code> the names of the
 categories to mark as the dichotomous selections. Required for
 <code>makeMR</code>; optional for <code>deriveArray</code>; ignored in <code>makeArray</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Optional additional attributes to set on the new variable.</p></td>
     </tr>
     </table>
 
@@ -260,7 +264,7 @@ independent existence.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

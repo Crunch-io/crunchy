@@ -104,7 +104,7 @@ can be posted to the server." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -209,9 +209,9 @@ This function converts an R vector or set of attributes into a variable definiti
 can be posted to the server.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>VariableDefinition</span>(<span class='kw'>data</span>, <span class='kw'>...</span>)
+    <pre class="usage"><span class='fu'>VariableDefinition</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>VarDef</span>(<span class='kw'>data</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'>VarDef</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -238,10 +238,10 @@ familiar with the Crunch API.</p></td>
     <div class='dont-index'><p><code>toVariable</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>VariableDefinition</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>5</span>),
-    name = <span class='st'>"Some numbers"</span>,
-    description = <span class='st'>"Generated pseudorandomly from the normal distribution"</span>
-)
+    <pre class="examples"><div class='input'><span class='fu'>VariableDefinition</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>,
+    name <span class='op'>=</span> <span class='st'>"Some numbers"</span>,
+    description <span class='op'>=</span> <span class='st'>"Generated pseudorandomly from the normal distribution"</span>
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; $values
 #&gt; [1] -1.400043517  0.255317055 -2.437263611 -0.005571287  0.621552721
 #&gt; 
@@ -255,11 +255,11 @@ familiar with the Crunch API.</p></td>
 #&gt; [1] "Generated pseudorandomly from the normal distribution"
 #&gt; 
 #&gt; attr(,"class")
-#&gt; [1] "VariableDefinition"</div><div class='input'><span class='fu'>VarDef</span>(
-    name = <span class='st'>"Integers"</span>, values = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, type = <span class='st'>"numeric"</span>,
-    description = <span class='st'>"When creating variable definitions with 'values', you must
+#&gt; [1] "VariableDefinition"</div><div class='input'><span class='fu'>VarDef</span><span class='op'>(</span>
+    name <span class='op'>=</span> <span class='st'>"Integers"</span>, values <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, type <span class='op'>=</span> <span class='st'>"numeric"</span>,
+    description <span class='op'>=</span> <span class='st'>"When creating variable definitions with 'values', you must
     specify 'type', and categorical variables will require 'categories'."</span>
-)
+<span class='op'>)</span>
 </div><div class='output co'>#&gt; $name
 #&gt; [1] "Integers"
 #&gt; 
@@ -289,7 +289,7 @@ familiar with the Crunch API.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

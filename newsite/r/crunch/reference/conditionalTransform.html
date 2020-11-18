@@ -103,7 +103,7 @@ value, depending on the type of variable you're constructing." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
       </span>
     </div>
 
@@ -207,14 +207,14 @@ true. This is commonly a Crunch variable but may be a string or numeric
 value, depending on the type of variable you're constructing.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>conditionalTransform</span>(
-  <span class='kw'>...</span>,
-  <span class='kw'>data</span>,
-  else_condition = <span class='fl'>NA</span>,
-  type = <span class='kw'>NULL</span>,
-  categories = <span class='kw'>NULL</span>,
-  formulas = <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>conditionalTransform</span><span class='op'>(</span>
+  <span class='va'>...</span>,
+  <span class='va'>data</span>,
+  else_condition <span class='op'>=</span> <span class='cn'>NA</span>,
+  type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  categories <span class='op'>=</span> <span class='cn'>NULL</span>,
+  formulas <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -275,15 +275,15 @@ to/from the local R session. <code>conditionalTransform</code> on the other hand
 download the data necessary to construct the new variable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 
-<span class='kw'>ds</span><span class='op'>$</span><span class='kw'>cat_opinion</span> <span class='op'>&lt;-</span> <span class='fu'>conditionalTransform</span>(<span class='kw'>pet1</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='kw'>Opinion1</span>,
-    <span class='kw'>pet2</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='kw'>Opinion2</span>,
-    <span class='kw'>pet3</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='kw'>Opinion3</span>,
-    data = <span class='kw'>ds</span>,
-    name = <span class='st'>"Opinion of Cats"</span>
-)
-}
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>cat_opinion</span> <span class='op'>&lt;-</span> <span class='fu'>conditionalTransform</span><span class='op'>(</span><span class='va'>pet1</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='va'>Opinion1</span>,
+    <span class='va'>pet2</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='va'>Opinion2</span>,
+    <span class='va'>pet3</span> <span class='op'>==</span> <span class='st'>"Cat"</span> <span class='op'>~</span> <span class='va'>Opinion3</span>,
+    data <span class='op'>=</span> <span class='va'>ds</span>,
+    name <span class='op'>=</span> <span class='st'>"Opinion of Cats"</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -300,7 +300,7 @@ download the data necessary to construct the new variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
