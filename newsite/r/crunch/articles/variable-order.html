@@ -175,14 +175,14 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="va">ds</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brands"</span>, <span class="st">"Cars and Trucks"</span>, <span class="st">"Domestic"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>which is equivalent to the previous example. One or the other way may be more convenient, depending on what you’re trying to accomplish.</p>
-<p>These four functions all take a dataset or a folder as the first argument, and they return the same object passed to it, except for <code>cd</code>, which returns the selected folder. As such, they are designed to work with <code>magrittr</code>-style piping (<code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>) for convenience in chaining together steps, though they don’t require that you do.</p>
+<p>These four functions all take a dataset or a folder as the first argument, and they return the same object passed to it, except for <code>cd</code>, which returns the selected folder. As such, they are designed to work with <code>magrittr</code>-style piping (<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>) for convenience in chaining together steps, though they don’t require that you do.</p>
 </div>
 <div id="viewing-the-folders" class="section level2">
 <h2 class="hasAnchor">
 <a href="#viewing-the-folders" class="anchor"></a>Viewing the folders</h2>
 <p>To get started, let’s pick up the dataset we used in the <a href="array-variables.html">array variables vignette</a> and view its starting layout. We can do that by selecting the root folder (“/”) and printing it</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
 <span class="va">ds</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
