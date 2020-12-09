@@ -149,7 +149,7 @@
     
     
 <p><a href="subtotals.html">Previous: subtotals</a></p>
-<p>The Crunch web app and the <code>crunch</code> package are both built on a <a href="https://docs.crunch.io/">REST API</a>. Users can interact with very large datasets because most of the heavy computation is done on the Crunch servers and not on the users computer. In most cases, you don’t need to know how the API works—the R package handles the HTTP requests and responses and presents meaningful objects and methods to you. To go beyond the basics, though, it can be useful to understand how the API works so that you can make more complex or more efficient (read: faster) operations.</p>
+<p>The Crunch web app and the <code>crunch</code> package are both built on a <a href="https://crunch.io/api/reference/">REST API</a>. Users can interact with very large datasets because most of the heavy computation is done on the Crunch servers and not on the users computer. In most cases, you don’t need to know how the API works—the R package handles the HTTP requests and responses and presents meaningful objects and methods to you. To go beyond the basics, though, it can be useful to understand how the API works so that you can make more complex or more efficient (read: faster) operations.</p>
 <div id="catalogs" class="section level3">
 <h3 class="hasAnchor">
 <a href="#catalogs" class="anchor"></a>Catalogs</h3>
@@ -193,9 +193,9 @@ datasets(proj) &lt;- ds</code></pre>
 &gt; dim(showMissing(cube))
 [1] 5 6 10</code></pre>
 <p>This makes subsetting a bit easier because we can enforce the dimensions of the printed cube. For instance</p>
-<pre><code>cube[5, 6, 10] </code></pre>
+<pre><code>cube[5, 6, 10]</code></pre>
 <p>Errors because the user supplied the wrong number of dimensions while</p>
-<pre><code>showMissing(cube)[cube[5, 6, 10] </code></pre>
+<pre><code>showMissing(cube)[cube[5, 6, 10]</code></pre>
 <p>Returns the correct data they were looking for.</p>
 <p>Subsetting the printed cube</p>
 <p>There are two cases for dropping dimensions from the printed and user cubes which need special handling.</p>

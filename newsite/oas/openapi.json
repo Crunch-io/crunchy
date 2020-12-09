@@ -980,7 +980,7 @@
     }
   },
   "info": {
-    "description": "Developer API for Crunch.io\n\nThis documentation contains information for all of the public API endpoints for the Crunch platform. Please navigate to an endpoint using the menu on the left.\n\n## Developer guides\nStart here if you are [new to the Crunch API](https://help.crunch.io/hc/en-us/sections/360008315951-Start-Here).\n\nAll of Crunch's developer documentation can be found at [Help Center - Developer Guides](https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides).\n\n## API conventions\nFor detailed information regarding Crunch's API conventions, see [Help Center - API Conventions](https://help.crunch.io/hc/en-us/articles/360052404911-API-Conventions).\n\n## API response envelopes (shoji)\nFor detailed information regarding Crunch's API response (shoji) envelopes, see [Help Center - API Response Envelopes](https://help.crunch.io/hc/en-us/articles/360052405191-API-Response-Envelopes).\n\n## How do I authenticate?\nSee [Help Center - Authentication](https://help.crunch.io/hc/en-us/articles/360052418111-Authentication).\n\n## Object reference\nThe Crunch API consists of just a few primitive objects, arranged differently for each request and response. Learning the basic components will help you create the most complicated queries. For more detailed information, see [Help Center - Object Reference](https://help.crunch.io/hc/en-us/sections/360008619392-Object-Reference).\n\n## Contact information",
+    "description": "Developer API for Crunch.io\n\nThis documentation contains information for all of the public API endpoints for the Crunch platform. Please navigate to an endpoint using the menu on the left.\n\n## Developer guides\nStart here if you are [new the the Crunch API](https://help.crunch.io/hc/en-us/sections/360008315951-Start-Here).\n\nAll of Crunch's developer documentation can be found at [Help Center - Developer Guides](https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides).\n\n## API conventions\nFor detailed information regarding Crunch's API conventions, see [Help Center - API Conventions](https://help.crunch.io/hc/en-us/articles/360052404911-API-Conventions).\n\n## API response envelopes (shoji)\nFor detailed information regarding Crunch's API response (shoji) envelopes, see [Help Center - API Response Envelopes](https://help.crunch.io/hc/en-us/articles/360052405191-API-Response-Envelopes).\n\n## How do I authenticate?\nSee [Help Center - Authentication](https://help.crunch.io/hc/en-us/articles/360052418111-Authentication).\n\n## Object reference\nThe Crunch API consists of just a few primitive objects, arranged differently for each request and response. Learning the basic components will help you create the most complicated queries. For more detailed information, see [Help Center - Object Reference](https://help.crunch.io/hc/en-us/sections/360008619392-Object-Reference).\n\n## Contact information",
     "title": "Crunch API",
     "version": "1.1",
     "contact": {
@@ -993,7 +993,7 @@
   "paths": {
     "/geodata/": {
       "get": {
-        "description": "Crunch maintains a few geojson/topojson resources and publishes them on CDN.\n\nThis endpoint returns an index of available geographies, each of which then includes a location to download the actual geojson or topojson.\n\n# Geodata for common applications\n* https://app.crunch.io/api/geodata/7ae898e210b04a9a8992314452c6677b/ US States \u2013 Use properties.name or properties.postal-code as your feature_key depending on the variable (state name or abbreviation), or id is FIPS code.\n\n* https://app.crunch.io/api/geodata/8f9f5fed101042c4815d2dd1fd248cec/ World \u2013 properties include ISO3166 name as well as ISO3166-1 Alpha-3 abbrev\n\n* https://app.crunch.io/api/geodata/d878d8471090417fa361536733e5f176/ UK Regions \u2013 properties.EER13NM matches a YouGov stylization of United Kingdom region names.",
+        "description": "Crunch maintains a few public geojson and topojson resources and makes them available to our frontend application via CDN.\n\nThis endpoint returns an index of available resources, each with a location to download the actual geojson or topojson, name, creation date, owner_id, and description of the given dataset.",
         "operationId": "get-geodata",
         "parameters": [],
         "responses": {
@@ -1197,6 +1197,7 @@
       },
       "parameters": [],
       "post": {
+        "deprecated": true,
         "description": "Users with permission to create datasets can also create geodata, although in practice Crunch curates and makes available many common geographies, listed in the geodata catalog. Note that geodata created outside of the Crunch domain (ie without a .crunch.io domain in the URL) will not be available in the Crunch application due to browser constraints. If you would like to make your geodatum public and have Crunch serve it, please contact our support team.\n\nAdding a new geodatum is as easy as POSTing it to the geodata catalog, most easily via pycrunch. Crunch will attempt to download the geodata file and analyze the properties present on the features (generally polygons), which can then be associated with Crunch variables. The metadata extraction and summary can help you align variables and select the right property to associate with your Crunch geographic variable by category name.\n\nInclude a format member in the request body to trigger automatic metadata extraction. The server will fetch and aggregate properties from FeatureCollections in order to provide hints for eventual consumers of the Crunch geodatum. The automatic feature extractor supports GeoJSON and TopoJSON formats; you may register a Shapefile (shp) or other resource as a Crunch geodatum, but will have to supply metadata hints yourself and are advised to indicate its non-json format.\n\nThe lists of properties returned in the metadata are correlated, such that if a feature in your geodata is missing a given property, it will return null.\n\n## Associating variables with geodata\nTo make maps with variables, update a variable\u2019s view (or include with metadata at creation) as follows, where `feature_key` is key defined for each Feature in the geojson/topojson that matches the relevant field on the variable at hand (generally category names).\n\n\n```\n>>> import pycrunch\n>>> site = pycrunch.connect(\"me@mycompany.com\", \"yourpassword\", \"https://app.crunch.io/api/\")\n>>> geodata = site.geodata.index['<geodatum_url>'].entity\n>>> ds = site.datasets.index['<dataset_url>'].entity\n>>> var = ds.variables.by('alias')['<var_alias>'].entity\n>>> var_view = var.body.view\n>>> var_view[\"geodata\"] = [\n>>>     {\n>>>         \"geodatum\": '<geodatum_url>',\n>>>         \"feature_key\": \"properties.name\",\n>>>         \"match_field\": \"name\",\n>>>     }\n>>> ]\n>>> var.edit(view=var_view)\n```",
         "operationId": "post-geodata",
         "parameters": [],
@@ -1235,7 +1236,6 @@
                         "type": "string"
                       }
                     },
-                    "required": [],
                     "title": "Body",
                     "type": "object"
                   },
@@ -1243,7 +1243,6 @@
                     "$ref": "#/components/schemas/Shoji-entity-element"
                   }
                 },
-                "required": [],
                 "title": "GeodataPostRequest",
                 "type": "object"
               }
@@ -1304,6 +1303,7 @@
     },
     "/geodata/{geodata_id}/": {
       "delete": {
+        "deprecated": true,
         "description": "Deletes a geodata entry that you are the owner of.",
         "operationId": "delete-geodata-geodata_id",
         "parameters": [],
@@ -1404,28 +1404,40 @@
                       "additionalProperties": false,
                       "properties": {
                         "created": {
+                          "description": "When the entity was created.",
                           "format": "date-time",
+                          "type": "string"
+                        },
+                        "format": {
+                          "description": "`geojson` or `topojson`, the two formats we support.",
                           "type": "string"
                         },
                         "id": {
                           "type": "string"
                         },
                         "location": {
+                          "description": "URI pointing to where the actual data file exists (usually a link to the Crunch CDN).",
                           "type": "string"
                         },
                         "metadata": {
                           "additionalProperties": false,
+                          "description": "A listing of all the properties available for each geometric object (usually a polygon) inside the given resource.\u00a0These are provided to make it easier to search for geodata objects in the collection. Common fields are: `name`, `postal-code`, `NUTS112CD`, and others.",
                           "title": "Metadata",
                           "type": "object"
                         },
                         "name": {
+                          "description": "Name of the geodata entity.",
                           "type": "string"
                         },
                         "owner_id": {
+                          "description": "UserId for the user who created the entity.",
+                          "enum": [
+                            "geojson",
+                            "topojson"
+                          ],
                           "type": "string"
                         }
                       },
-                      "required": [],
                       "title": "Body",
                       "type": "object"
                     },
@@ -1443,7 +1455,6 @@
                       ]
                     }
                   },
-                  "required": [],
                   "title": "GeodataGeodataIDGetRequest",
                   "type": "object"
                 }
@@ -1524,6 +1535,7 @@
         }
       ],
       "patch": {
+        "deprecated": true,
         "description": "This endpoint can be used to update geodata that you are the owner of. You can modify any Geodatum that you own.\n\nNote that you can transfer ownership to another user if you change the owner_id of your geodatum.\n\nYou may also change the metadata of your geodatum, but keep in mind that if you do this you will override any automated metadata extraction that Crunch provides. If you modify the location of the geodatum and do not provide a metadata parameter in the patch, Crunch will automatically extract metadata as long as the location is publicly accessible.",
         "operationId": "patch-geodata-geodata_id",
         "requestBody": {
@@ -1587,7 +1599,7 @@
             "in": "query",
             "name": "f",
             "schema": {
-              "default": "{\"dataset_ids\":[\"https://app.crunch.io/api/datasets/de620c7f794a4181b4d9c079c88bd62a/\"]}",
+              "default": "{}",
               "example": "{\"dataset_ids\":[\"https://app.crunch.io/api/datasets/de620c7f794a4181b4d9c079c88bd62a/\"]}",
               "type": "string"
             }
@@ -1697,7 +1709,7 @@
             "in": "query",
             "name": "projection",
             "schema": {
-              "default": "[\"variables.nonexistingfield\"]",
+              "default": "[\"datasets.id\"]",
               "example": "[\"variables.nonexistingfield\"]",
               "type": "string"
             }
@@ -6107,7 +6119,7 @@
     },
     "/teams/": {
       "get": {
-        "description": "Teams contain references to users and datasets. By sharing a dataset with a team, you can grant access to a set of users at once, and by adding a user to a team, you can grant them access to a set of datasets.\n\nThis endpoint returns a list of all the teams the current user is a member of.",
+        "description": "This endpoint returns a list of all the teams the current user is a member of.\n\nBy adding teams to projects, you can grant access to all the datasets in that project and its sub-projects to all users in that team.\n\n",
         "operationId": "get-teams",
         "parameters": [],
         "responses": {
@@ -6212,7 +6224,7 @@
       },
       "parameters": [],
       "post": {
-        "description": "To create a new team, POST a Shoji Entity with a team \u201cname\u201d in the body. No other attributes are required, and you will be automatically assigned as a \u201cteam_admin\u201d.",
+        "description": "To create a new team, POST a Shoji Entity with a team \u201cname\u201d in the body. No other attributes are required, and you will be automatically assigned as a \u201cteam_admin\u201d.\n\nOnce a team is created, you can add the team to a project which will share all datasets in that project and sub-projects with the team.",
         "operationId": "post-teams",
         "parameters": [],
         "requestBody": {
@@ -6253,7 +6265,15 @@
         },
         "responses": {
           "201": {
-            "description": "Item created"
+            "description": "Item created",
+            "headers": {
+              "Location": {
+                "description": "URL for the new team resource",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "400": {
             "content": {
@@ -6570,6 +6590,7 @@
     },
     "/teams/{team_id}/datasets/": {
       "get": {
+        "deprecated": true,
         "description": "This endpoint returns a list of datasets shared with this team.",
         "operationId": "get-teams-team_id-datasets",
         "parameters": [],
@@ -6924,7 +6945,7 @@
         }
       ],
       "patch": {
-        "description": "This endpoint can be used to add users to the team, to modify permissions of members already on the team, and to remove team members.\n\nIn the `index` attribute of the catalog, object keys must be either (a) URLs of User entities or (b) email addresses. They can be mixed in a single API request. Using email address allows you to invite a user to Crunch while adding them to the team if they do not yet have a Crunch account, but it is also valid as a reference to users that already exist.\n\nAuthorization is required: team members who do not have the `team_admin` permission and who attempt this endpoint will receive a 403 response. Non-members will receive status code 404.\n\n### Add and modify members\nIf the index object keys correspond to users that already appear in the member catalog, their permissions will be updated with the corresponding value.\n\nIf the index object keys do not correspond to users already found in the member catalog, the indicated users will be added to the team. And, if the indicated user, as specified by email address, does not yet exist, they will be invited to Crunch and added to the team.\n\nIf `send_notification` was included and true in the request, new-to-Crunch users will receive a notification email informing them that they have been invited to Crunch. New users, unless they have an OAuth provider specified, will need to set a password, and the client application should send a URL template that directs them to a place where they can set that password. To do so, include a `url_base` attribute in the payload, a URL template with a `${token}` variable into which the server will insert the password-setting token. For the Crunch web application, this template is `https://app.crunch.io/authentication/password-change/${token}/`.\n\n### Removing members\nTo remove members from the team, submit the catalog with a null value.",
+        "description": "This endpoint can be used to add users to the team, to modify permissions of members already on the team, and to remove team members.\n\nIn the `index` attribute of the catalog, object keys must be either (a) URLs of User entities or (b) email addresses. They can be mixed in a single API request. Using email address allows you to invite a user to Crunch while adding them to the team if they do not yet have a Crunch account, but it is also valid as a reference to users that already exist.\n\nAuthorization is required: team members who do not have the `team_admin` permission and who attempt this endpoint will receive a 403 response. Non-members will receive status code 404.\n\n### Add and modify members\nIf the index object keys correspond to users that already appear in the member catalog, their permissions will be updated with the corresponding value.\n\nIf the index object keys do not correspond to users already found in the member catalog, the indicated users will be added to the team. And, if the indicated user, as specified by email address, does not yet exist, they will be invited to Crunch and added to the team.\n\n### Removing members\nTo remove members from the team, submit the catalog with a null value.",
         "operationId": "patch-teams-team_id-members",
         "requestBody": {
           "content": {
@@ -6945,8 +6966,7 @@
                           "team_admin": true
                         }
                       }
-                    },
-                    "send_notification": true
+                    }
                   }
                 }
               },
@@ -6966,15 +6986,9 @@
                                 "type": "boolean"
                               }
                             },
-                            "required": [
-                              "team_admin"
-                            ],
                             "type": "object"
                           }
                         },
-                        "required": [
-                          "permissions"
-                        ],
                         "type": "object"
                       },
                       "user_url1": {
@@ -6985,37 +6999,18 @@
                                 "type": "boolean"
                               }
                             },
-                            "required": [
-                              "team_admin"
-                            ],
                             "type": "object"
                           }
                         },
-                        "required": [
-                          "permissions"
-                        ],
                         "type": "object"
                       },
                       "user_url2": {
                         "type": "null"
                       }
                     },
-                    "required": [
-                      "user_url1",
-                      "user_url2",
-                      "user_email_3"
-                    ],
                     "type": "object"
-                  },
-                  "send_notification": {
-                    "type": "boolean"
                   }
                 },
-                "required": [
-                  "element",
-                  "index",
-                  "send_notification"
-                ],
                 "type": "object"
               }
             }
@@ -17938,7 +17933,7 @@
         }
       ],
       "post": {
-        "description": "Batches are what Crunch uses to import a Source into a Dataset.  Batch objects live for the time it takes to append a source to a dataset and are a place to store information such as progress of a given import.\n\nThis endpoint adds a new batch. The request payload can contain\n\n1. the URL of another dataset,\n1. the URL of a source object, or \n1. a Crunch table definition with variable metadata, row data, or both.\n\nA successful request will return either 201 status, if sufficiently fast, or 202, if the task is large enough to require processing outside of the request cycle. In both cases, the newly created batch entity\u2019s URL is returned in the Location header. The 202 response contains a body with a Progress resource in it; poll that URL for updates on the completion of the append. See Task Progress endpoint.\n\nBatches are created in importing state and will be advanced through imported state if there are no problems. If there was a problem in processing it, its status will be error. Note that the response status code will always be 202 for asynchronous or 201 for synchronous creation of the batch whether there were conflicts or not. So you need to GET the new batch\u2019s URL to see if the data is ready (status imported).\n\nIf an append is already in process on the dataset, the POST request will return 409 status.\n\n### Appending a dataset\nTo append a Dataset, POST a Shoji Entity with a dataset URL. You must have at least view (read) permissions on this dataset. Internally, this action will create a Source entity pointing to that dataset.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\"\n  }\n}\n```\n\nThe variables from the incoming dataset to be included by default will depend on the current user\u2019s permissions. Those with edit permissions on the incoming dataset will append all public and hidden (discarded = true) variables. Those with only view permissions will just include public variables that aren\u2019t hidden.\n\nTo append only certain variables from the incoming dataset, include an where attribute in the entity body. See Frame functions for how to compose the where expression.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\",\n      \"where\": {\n          \"function\":\"select\",\n          \"args\": [\n                {\"map\":\n                    {\"000001\": {\"variable\": \"<url>\"},\n                     \"000002\": {\"variable\": \"<url>\"}}\n                }\n          ]\n      }\n  }\n}\n```\n\n**For more information about how to construct the WHERE filter, see [Frame functions](https://docs.crunch.io/feature-guide/feature-appending.html?highlight=frame#transformations-during-combination).**\n\nUsers with edit permissions on the incoming dataset can select hidden variables to be included, but viewers cannot. Editors and viewers can however both specify their personal variables to be included.\n\nTo select a subset of rows to append, include an filter attribute in the entity body, containing a Crunch filter expression.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\",\n      \"where\": {\n          \"function\":\"select\",\n          \"args\": [\n                {\"map\":\n                    {\"000001\": {\"variable\": \"<url>\"},\n                     \"000002\": {\"variable\": \"<url>\"}}\n                }\n          ]\n      },\n      \"filter\": {\n          \"function\":\"<\",\n          \"args\": [\n                {\"variable\": \"<url>\"},\n                {\"value\": \"<value>\"}\n          ]\n      }\n  }\n}\n```\n\n### Appending a source\nPOST a Shoji Entity with a Source URL. The user must have permission to view the Source entity. Use Source appending to send data in CSV format that matches the schema of the Dataset.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"source\": \"<url>\"\n  }\n}\n```\n\n### Append Failures\nFor single appends, if a batch fails, the dataset will be automatically reverted back to the state it was before the append; the batch is automatically deleted.\n\nWhen multiple appends are performed in immediate succession, it\u2019s not efficient to checkpoint the state of each one. In this case, only the first append is rolled back on failure.",
+        "description": "Batches are what Crunch uses to import a Source into a Dataset.  Batch objects live for the time it takes to append a source to a dataset and are a place to store information such as progress of a given import.\n\nThis endpoint adds a new batch. The request payload can contain\n\n1. the URL of another dataset,\n1. the URL of a source object, or \n1. a Crunch table definition with variable metadata, row data, or both.\n\nA successful request will return either 201 status, if sufficiently fast, or 202, if the task is large enough to require processing outside of the request cycle. In both cases, the newly created batch entity\u2019s URL is returned in the Location header. The 202 response contains a body with a Progress resource in it; poll that URL for updates on the completion of the append. See Task Progress endpoint.\n\nBatches are created in importing state and will be advanced through imported state if there are no problems. If there was a problem in processing it, its status will be error. Note that the response status code will always be 202 for asynchronous or 201 for synchronous creation of the batch whether there were conflicts or not. So you need to GET the new batch\u2019s URL to see if the data is ready (status imported).\n\nIf an append is already in process on the dataset, the POST request will return 409 status.\n\n### Appending a dataset\nTo append a Dataset, POST a Shoji Entity with a dataset URL. You must have at least view (read) permissions on this dataset. Internally, this action will create a Source entity pointing to that dataset.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\"\n  }\n}\n```\n\nThe variables from the incoming dataset to be included by default will depend on the current user\u2019s permissions. Those with edit permissions on the incoming dataset will append all public and hidden (discarded = true) variables. Those with only view permissions will just include public variables that aren\u2019t hidden.\n\nTo append only certain variables from the incoming dataset, include an where attribute in the entity body. See Frame functions for how to compose the where expression.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\",\n      \"where\": {\n          \"function\":\"select\",\n          \"args\": [\n                {\"map\":\n                    {\"000001\": {\"variable\": \"<url>\"},\n                     \"000002\": {\"variable\": \"<url>\"}}\n                }\n          ]\n      }\n  }\n}\n```\n\n**For more information about how to construct the WHERE filter, see [Frame functions](https://help.crunch.io/hc/en-us/articles/360044732771-Working-with-Data-and-Datasets#toc19).**\n\nUsers with edit permissions on the incoming dataset can select hidden variables to be included, but viewers cannot. Editors and viewers can however both specify their personal variables to be included.\n\nTo select a subset of rows to append, include an filter attribute in the entity body, containing a Crunch filter expression.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"dataset\": \"<url>\",\n      \"where\": {\n          \"function\":\"select\",\n          \"args\": [\n                {\"map\":\n                    {\"000001\": {\"variable\": \"<url>\"},\n                     \"000002\": {\"variable\": \"<url>\"}}\n                }\n          ]\n      },\n      \"filter\": {\n          \"function\":\"<\",\n          \"args\": [\n                {\"variable\": \"<url>\"},\n                {\"value\": \"<value>\"}\n          ]\n      }\n  }\n}\n```\n\n### Appending a source\nPOST a Shoji Entity with a Source URL. The user must have permission to view the Source entity. Use Source appending to send data in CSV format that matches the schema of the Dataset.\n\n```\n{\n  \"element\": \"shoji:entity\",\n  \"body\": {\n      \"source\": \"<url>\"\n  }\n}\n```\n\n### Append Failures\nFor single appends, if a batch fails, the dataset will be automatically reverted back to the state it was before the append; the batch is automatically deleted.\n\nWhen multiple appends are performed in immediate succession, it\u2019s not efficient to checkpoint the state of each one. In this case, only the first append is rolled back on failure.",
         "operationId": "post-datasets-datasetId-batches",
         "parameters": [],
         "requestBody": {
@@ -27332,24 +27327,7 @@
       "get": {
         "description": "This endpoint returns a Shoji Catalog whose `index` URL contains user objects. If the `email` or `id` parameters are provided on the query string, the result is narrowed to users matching those parameters.\n\nThis method only supports GET requests. To add users they need to be added from each account users\u2019 catalog. This endpoint ensures that the new users belong to an account and get an invitation accordingly.",
         "operationId": "get-users",
-        "parameters": [
-          {
-            "description": "User ID to search for.",
-            "in": "query",
-            "name": "id",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "description": "Email address to search for.",
-            "in": "query",
-            "name": "email",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -27495,25 +27473,7 @@
       "get": {
         "description": "This endpoint returns the details for a user.\n\nThe authenticated user can only access another user\u2019s entity endpoint IF any of the following are true:\n\n* Both belong to the same account.\n* They are both members of a common team.\n* Authenticated user is account admin and viewed user is collaborator on such account.",
         "operationId": "get-users-user_id",
-        "parameters": [
-          {
-            "description": "update",
-            "in": "query",
-            "name": "update",
-            "schema": {
-              "default": "1",
-              "example": "1",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "reason_url",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "content": {
@@ -27820,7 +27780,7 @@
         }
       ],
       "patch": {
-        "description": "Use this endpoint to change the attributes of your user record. A user may only alter their own record.\n",
+        "description": "Use this endpoint to change the attributes of a user record.\n\nYou only have permission to use this endpoint if the target `user_id` is the same as the currently authenticated user or if the authenticated user has `can_alter_users` permissions and the target user is in the same account as the authenticated user.\n\nIf the authenticated user has the `can_alter_users` account permission, then the valid fields in the request body are:\n\n* name\n* preferences\n* role_url OR account_permissions (not both)\n* email\n* id_method\n* id_provider\n\nOtherwise, the only valid fields in the body of the request are:\n* name\n* preferences\n\nIf a field is left out of the request body then that user property is not altered.",
         "operationId": "patch-users-user_id",
         "parameters": [],
         "requestBody": {
@@ -27830,209 +27790,7 @@
                 "example-1": {
                   "value": {
                     "body": {
-                      "preferences": {
-                        "datasetDisplaySettings": {
-                          "displayArchivedDatasets": true
-                        },
-                        "displaySettings": {
-                          "columnSignificance": null,
-                          "countsOrPercents": "percent",
-                          "decimalPlaces": 2,
-                          "geoChart": true,
-                          "percentageDirection": "colPct",
-                          "populationMagnitude": 3,
-                          "separateOrCombined": "separate",
-                          "showCategoriesSubtotals": "both",
-                          "showDescription": true,
-                          "showEmpty": false,
-                          "showMean": false,
-                          "showSignif": false,
-                          "showValueLabels": false,
-                          "showVisualization": true,
-                          "simpleOrExtended": "simple"
-                        },
-                        "dsVisibleProps": {
-                          "access_time": true,
-                          "modification_time": true,
-                          "name": true
-                        },
-                        "exportTabbookSettings": {
-                          "doc_layout": {
-                            "toc": false,
-                            "variable_sheets": "many_sheets"
-                          },
-                          "fields": {
-                            "base_unweighted": false,
-                            "base_weighted": false,
-                            "col_index": false,
-                            "col_percent": true,
-                            "count_unweighted": false,
-                            "count_weighted": false,
-                            "p_value": false,
-                            "pairwise_t_test": false,
-                            "population": false,
-                            "row_percent": false,
-                            "table_percent": false,
-                            "z_score": false
-                          },
-                          "format": {
-                            "decimal_places": 0,
-                            "pval_colors": false,
-                            "show_empty": false
-                          },
-                          "page_layout": {
-                            "measure_layout": "wide",
-                            "rows": {
-                              "bottom": {
-                                "base_unweighted": true,
-                                "base_weighted": false,
-                                "scale_mean": false,
-                                "significant_columns": false
-                              },
-                              "top": {
-                                "column_letters": false
-                              }
-                            }
-                          },
-                          "sig_threshold": 0.05,
-                          "version": 8
-                        },
-                        "features": {
-                          "confirmit": true,
-                          "dashboard-kpi": true,
-                          "dashboard-tabs-ui": true,
-                          "decipher": true,
-                          "interaction-builder": true,
-                          "profiles": true,
-                          "project_admin": true,
-                          "secure_folder": true,
-                          "stand_alone_dashboards": true,
-                          "triple_s": true,
-                          "variable_tags": true
-                        },
-                        "labs": true,
-                        "notificationsReadDate": "2021-04-29T06:00:00.000Z",
-                        "openedDecks": {
-                          "06380a99595247d8a4fd43d231270c04": "https://app.crunch.io/api/datasets/06380a99595247d8a4fd43d231270c04/decks/0503a68cb8e8420680f5675c4d701174/",
-                          "0f32914c66d7461c989fed5cd92628c2": "https://app.crunch.io/api/datasets/0f32914c66d7461c989fed5cd92628c2/decks/0dc67d5696f543a3b35e673a09771f02/",
-                          "0f4d5cc2c7a9476792e05f66ecbebdf4": "https://app.crunch.io/api/datasets/0f4d5cc2c7a9476792e05f66ecbebdf4/decks/b5dca924b0334aab856831048ecda315/",
-                          "12f54e4320304d738bf8792e516dccc0": "https://app.crunch.io/api/datasets/12f54e4320304d738bf8792e516dccc0/decks/a84d3ea6a2d34a32987e3b6b9e891eda/",
-                          "1352bc6cd4634713a83f3099c0f72218": "https://app.crunch.io/api/datasets/1352bc6cd4634713a83f3099c0f72218/decks/40d95af03fa746c5859ca08ba8e7dbff/",
-                          "14155fdb29944052a4e4338fe727977e": "https://app.crunch.io/api/datasets/14155fdb29944052a4e4338fe727977e/decks/ba2575d17ffe4a44b8d22eedb3ec5bc3/",
-                          "1456549e2ed7481586454d73b74fe65b": "https://app.crunch.io/api/datasets/1456549e2ed7481586454d73b74fe65b/decks/6ae830faf43a42ab952c1ac239affe5f/",
-                          "1aaf1507a4794f738aff2949293f9004": "https://app.crunch.io/api/datasets/1aaf1507a4794f738aff2949293f9004/decks/e7ba53df13ba445aba21b6f26e66ebbf/",
-                          "1b6e7a1bfa84460dab54b60f8e96e2e6": "https://app.crunch.io/api/datasets/1b6e7a1bfa84460dab54b60f8e96e2e6/decks/36e1c8a75cbe4b628ea651496452d982/",
-                          "1c208db49f2b40b7a81625b35f645457": "https://app.crunch.io/api/datasets/1c208db49f2b40b7a81625b35f645457/decks/3b53c01ee8844c78bc483a0e4e2eb9b0/",
-                          "1eaf61aaffc64d1c9c3cae20367bcb24": "https://app.crunch.io/api/datasets/1eaf61aaffc64d1c9c3cae20367bcb24/decks/c2c4db18517e4a64988549a7d4c6a216/",
-                          "1ef94dbfa0884a18a40adb5844a2362d": "https://app.crunch.io/api/datasets/1ef94dbfa0884a18a40adb5844a2362d/decks/0c2592594b314564b6a7c51407ebe1df/",
-                          "297b71dc0f74456fa7f241e7db51d031": "https://app.crunch.io/api/datasets/297b71dc0f74456fa7f241e7db51d031/decks/140c3f0293a540139c7b2646dc6af215/",
-                          "2af00f74f374442ca82bbf77c18d7ac1": "https://app.crunch.io/api/datasets/2af00f74f374442ca82bbf77c18d7ac1/decks/21ec9b1449434f8694db02c16444707b/",
-                          "2b8ed5f47167490883b6f99fe0c2afb4": "https://app.crunch.io/api/datasets/2b8ed5f47167490883b6f99fe0c2afb4/decks/aa6089c8fbe04ece8d7401a530e173d1/",
-                          "2ca2f24c919d4bfe88c77404da096f27": "https://app.crunch.io/api/datasets/2ca2f24c919d4bfe88c77404da096f27/decks/d644d2e4956f44ce9cc862039bbd201d/",
-                          "300774c82b3a4da084125272cfb47764": "https://app.crunch.io/api/datasets/300774c82b3a4da084125272cfb47764/decks/4ab08cc9ce754457abe13c977ac5a4c0/",
-                          "301d755b7a2c4e848026ef1aeb9282c8": "https://app.crunch.io/api/datasets/301d755b7a2c4e848026ef1aeb9282c8/decks/11773bd869c743a1892098ec4ea7c221/",
-                          "31bda8e9660448bf8d6a13cb7bb86f12": "https://app.crunch.io/api/datasets/31bda8e9660448bf8d6a13cb7bb86f12/decks/83406b66230e4ef8b3883a7061124518/",
-                          "3230bf672dfb46dc8ac1fc3a34128413": "https://app.crunch.io/api/datasets/3230bf672dfb46dc8ac1fc3a34128413/decks/6dca99fcb2384049af8c861f282ca771/",
-                          "33e744ad16754b9aa72424ea3357567f": "https://app.crunch.io/api/datasets/33e744ad16754b9aa72424ea3357567f/decks/1165f7cf959c451cac66d448a31b5dd6/",
-                          "34164340840048fd91d4737d1151f47f": "https://app.crunch.io/api/datasets/34164340840048fd91d4737d1151f47f/decks/e78b95347a1d449da92d81e260d32aea/",
-                          "352e8a82228b4779b7bbee0c435c1cfe": "https://app.crunch.io/api/datasets/352e8a82228b4779b7bbee0c435c1cfe/decks/9b318a0f319745348c2e61ea74fea516/",
-                          "3a339aca80564f94a1aa31cd242d31e6": "https://app.crunch.io/api/datasets/3a339aca80564f94a1aa31cd242d31e6/decks/65e6465e23f84ba9a039cb0b5abe46fc/",
-                          "3e78dab27eba41a3b014edb7ef962dd3": "https://app.crunch.io/api/datasets/3e78dab27eba41a3b014edb7ef962dd3/decks/78210d9b3216456d8d85613bec321c6c/",
-                          "4304922de3554b32b9b052422e25000e": "https://app.crunch.io/api/datasets/4304922de3554b32b9b052422e25000e/decks/d2c99fd0f2be493d9342249ca404c4b9/",
-                          "43e76aeb0bfd48cf94294d8f1d7537d4": "https://app.crunch.io/api/datasets/43e76aeb0bfd48cf94294d8f1d7537d4/decks/4a1c189b00b943978cd4a27bfe27bc83/",
-                          "475fd14e571049beb6722b9094b67b72": "https://app.crunch.io/api/datasets/475fd14e571049beb6722b9094b67b72/decks/0d2d40ddd77a434e871b52eaaf21aea6/",
-                          "496a820d65ac421d9aadf97f317ce133": "https://app.crunch.io/api/datasets/496a820d65ac421d9aadf97f317ce133/decks/888c66a041f548edafdf804958f4cd9f/",
-                          "49dfd6e663ca44aa977079f4a36c23c7": "https://app.crunch.io/api/datasets/49dfd6e663ca44aa977079f4a36c23c7/decks/51ab45a134d0435b9c2b637e643311c8/",
-                          "4cf23365f0c9451d9667132e805092ec": "https://app.crunch.io/api/datasets/4cf23365f0c9451d9667132e805092ec/decks/f2d49505a1d844448e7fb485df90d1f3/",
-                          "4e84b4ccd49343f486fc7657db7fbdd2": "https://app.crunch.io/api/datasets/4e84b4ccd49343f486fc7657db7fbdd2/decks/138dc433d9a94b80ba9953ddfae82583/",
-                          "56933de85ba943dea1569c9976c0d408": "https://app.crunch.io/api/datasets/56933de85ba943dea1569c9976c0d408/decks/07633a987c9747d787af2d0337f40737/",
-                          "59611987e4ea49458ab9bc635fdcca9c": "https://app.crunch.io/api/datasets/59611987e4ea49458ab9bc635fdcca9c/decks/b3e13b2aaa9d4b85bc67e6a65bd07667/",
-                          "5a2ed2753d56490baeea203f4503135d": "https://app.crunch.io/api/datasets/5a2ed2753d56490baeea203f4503135d/decks/cbb0af4f47f1466e955ced5dad7d8edc/",
-                          "5b297e9b3149464188ad5f052b04720c": "https://app.crunch.io/api/datasets/5b297e9b3149464188ad5f052b04720c/decks/a9298c9dd3c54aa393cb01a8333be70f/",
-                          "5b87159f598c4bac89b7bdc689e50f01": "https://app.crunch.io/api/datasets/5b87159f598c4bac89b7bdc689e50f01/decks/95ccaeae21414ba08311047f7d7969ea/",
-                          "5f4a7b5d3b6341eca2dcb236898f0f20": "https://app.crunch.io/api/datasets/5f4a7b5d3b6341eca2dcb236898f0f20/decks/a8406e87970742969415a348023aa977/",
-                          "5fe2b268035e40dab1e7ba0d41b2fe2e": "https://app.crunch.io/api/datasets/5fe2b268035e40dab1e7ba0d41b2fe2e/decks/caabf67543804638bd9b4e07397b7ed8/",
-                          "6089fc9d532e425b95e656b3ae788932": "https://app.crunch.io/api/datasets/6089fc9d532e425b95e656b3ae788932/decks/73bd08e9f3b1410c9eb6f8cf584e619f/",
-                          "6269fa6a302b46b5b2bcd74c9d3bfb3f": "https://app.crunch.io/api/datasets/6269fa6a302b46b5b2bcd74c9d3bfb3f/decks/526403bebf744883b800843de072d995/",
-                          "628a307bb38f47848fdb36f44067fb6d": "https://app.crunch.io/api/datasets/628a307bb38f47848fdb36f44067fb6d/decks/c404e953143940ee897958bbc7f390d3/",
-                          "6b452c445f034f37b7add27c548f5a56": "https://app.crunch.io/api/datasets/6b452c445f034f37b7add27c548f5a56/decks/4b632fcb081c4a7bbcfc138e411b36d6/",
-                          "6dc241bc18554d3e937690cc949a9db4": "https://app.crunch.io/api/datasets/6dc241bc18554d3e937690cc949a9db4/decks/573ca30399314b5989e254e9732cf297/",
-                          "6dc4c7731c6c4e33a2d846eaefc7b823": "https://app.crunch.io/api/datasets/6dc4c7731c6c4e33a2d846eaefc7b823/decks/d7562d3dfe24448fa003d165f8730b5d/",
-                          "77a9efb5cbca4594a518a8072c003210": "https://app.crunch.io/api/datasets/77a9efb5cbca4594a518a8072c003210/decks/8c8aebfd2970432da2078d8a6b24ae36/",
-                          "78a135b5765044b394705ba6c1acfe93": "https://app.crunch.io/api/datasets/78a135b5765044b394705ba6c1acfe93/decks/3303d086b78947d28de61b90e78a511a/",
-                          "7bf101c749c34917be195db4d17a0006": "https://app.crunch.io/api/datasets/7bf101c749c34917be195db4d17a0006/decks/68f3de5699b34aad8b5d8e4e2b22a2bc/",
-                          "7c129cc4d8314794abad5df70707e15b": "https://app.crunch.io/api/datasets/7c129cc4d8314794abad5df70707e15b/decks/f3dce986eef647a69e87cc93e6482f83/",
-                          "7f0ff3458e234cd9b960cf8beccf721c": "https://app.crunch.io/api/datasets/7f0ff3458e234cd9b960cf8beccf721c/decks/fd98601411174d79abb77e1d1cd2cad8/",
-                          "851162b9f4124a74b04faeade65287f2": "https://app.crunch.io/api/datasets/851162b9f4124a74b04faeade65287f2/decks/276a76cec3b04f309560a3507e5c5ede/",
-                          "88e2c5d1c6f0448aa13aa1c0a2363121": "https://app.crunch.io/api/datasets/88e2c5d1c6f0448aa13aa1c0a2363121/decks/5258c394a4914f4f97c86993e98f1860/",
-                          "8c1e5664b8314d1e9a9e03362444f795": "https://app.crunch.io/api/datasets/8c1e5664b8314d1e9a9e03362444f795/decks/0c83ba0b3b42471e8e0a1074de736c44/",
-                          "8d3ced9eb1dd4e6fba6d47a473583bb7": "https://app.crunch.io/api/datasets/8d3ced9eb1dd4e6fba6d47a473583bb7/decks/8ccff3fb62cb46ceb5e5bf7dc6d89347/",
-                          "9888eaeec71344d8b4cdb76f2fe8c1ad": "https://app.crunch.io/api/datasets/9888eaeec71344d8b4cdb76f2fe8c1ad/decks/9211e99e4af245a7bb7ce48139cff7bc/",
-                          "9aebd5b03a42498cb4fdbf1813bc911b": "https://app.crunch.io/api/datasets/9aebd5b03a42498cb4fdbf1813bc911b/decks/abc4f5fd1e3f4dd1aa5ba4396803b98a/",
-                          "9b3cacfb50d44de4832379fd23cb5ddf": "https://app.crunch.io/api/datasets/9b3cacfb50d44de4832379fd23cb5ddf/decks/f948b31ea1374aeab45df4224a917fcb/",
-                          "9c05e8a888494a4784a041c95abe674f": "https://app.crunch.io/api/datasets/9c05e8a888494a4784a041c95abe674f/decks/6b789238a71b443084e220183ffcb6ef/",
-                          "9cba4e0243944cddaf4616c7f2d2af87": "https://app.crunch.io/api/datasets/9cba4e0243944cddaf4616c7f2d2af87/decks/d05e6674721e46a3b15a3dec3a34b14c/",
-                          "a1aa8ed05d774f4e906a8d491a7162c6": "https://app.crunch.io/api/datasets/a1aa8ed05d774f4e906a8d491a7162c6/decks/79f2fffef55647f7a57b69784ba6e838/",
-                          "a22b5f5a0ca74fa297a00bb413e7456a": "https://app.crunch.io/api/datasets/a22b5f5a0ca74fa297a00bb413e7456a/decks/b0ea22db1cf945209fb5ea97b03ae07f/",
-                          "a2e0c93582864b21ad52cb8f313b9ffe": "https://app.crunch.io/api/datasets/a2e0c93582864b21ad52cb8f313b9ffe/decks/ffd97a2ee39d4515a787c0559fa23c40/",
-                          "a3779eed6924437191028145e1dfc678": "https://app.crunch.io/api/datasets/a3779eed6924437191028145e1dfc678/decks/925538cc1eb24db4b96fad87efc8b6f3/",
-                          "a48b8accbb3241628032e98237a77cbb": "https://app.crunch.io/api/datasets/a48b8accbb3241628032e98237a77cbb/decks/be670faf519c482e886dc08c562620ed/",
-                          "a65d2adfd89d4c7b8af8600853898905": "https://app.crunch.io/api/datasets/a65d2adfd89d4c7b8af8600853898905/decks/14bc57da327b415c818ac8aa96a59b53/",
-                          "a7eb117d334a49fc90f4c89ace785acd": "https://app.crunch.io/api/datasets/a7eb117d334a49fc90f4c89ace785acd/decks/b50ca6ea5f2a490893a7094b2934fadf/",
-                          "a887befecdc447bfa1cf7fb6be058f45": "https://app.crunch.io/api/datasets/a887befecdc447bfa1cf7fb6be058f45/decks/649f9a4fa4f74664a59f1a20c8bb5fa4/",
-                          "a88c7d84fc704ba6881bbf476a78f6b9": "https://app.crunch.io/api/datasets/a88c7d84fc704ba6881bbf476a78f6b9/decks/5b395c7bc80044dfa6878dac6867425d/",
-                          "a91840a9651944bba82200798f495cbd": "https://app.crunch.io/api/datasets/a91840a9651944bba82200798f495cbd/decks/7244a9739233422d814e1ede62b7795c/",
-                          "aefffcbb2a6f432cb3c8db7d24e63e91": "https://app.crunch.io/api/datasets/aefffcbb2a6f432cb3c8db7d24e63e91/decks/52cdd9edfb4d4d40bf02a60dcc8d5ddc/",
-                          "b062564ea4fa4020843ac5dac43a265a": "https://app.crunch.io/api/datasets/b062564ea4fa4020843ac5dac43a265a/decks/128d6bfda41348d98b8648b8a3a915d2/",
-                          "b0f37d850c254ee7b9363877d5e1cae7": "https://app.crunch.io/api/datasets/b0f37d850c254ee7b9363877d5e1cae7/decks/293caa8401974549986edc78e1874cc4/",
-                          "b4b3ec24b2a14eeb8f05abfa9a93d7d7": "https://app.crunch.io/api/datasets/b4b3ec24b2a14eeb8f05abfa9a93d7d7/decks/1216ec5252824eec83ace1e99c76079c/",
-                          "b5a8cedc11c74abfa249abc17d81743d": "https://app.crunch.io/api/datasets/b5a8cedc11c74abfa249abc17d81743d/decks/96fe577ecf0645e0a5f52c1b909a2e15/",
-                          "b66d3205d3c94ec0b7c28205e9ed8d26": "https://app.crunch.io/api/datasets/b66d3205d3c94ec0b7c28205e9ed8d26/decks/0f43d1b33b7847fa9266d00f81ea0906/",
-                          "b80cb110ca334797b179e64bf07a4c5e": "https://app.crunch.io/api/datasets/b80cb110ca334797b179e64bf07a4c5e/decks/ef8dd7da16514ea9a7c80af479bba064/",
-                          "c1b5552efe21463bb3da41dd496a007a": "https://app.crunch.io/api/datasets/c1b5552efe21463bb3da41dd496a007a/decks/e7c82ca5db5e4c13bb16577ebc66a695/",
-                          "c1f48066c12f451a83a07d71718affa5": "https://app.crunch.io/api/datasets/c1f48066c12f451a83a07d71718affa5/decks/9a5ac27ec38c4e95ab7fac0fcd6ac5d0/",
-                          "c3cc06db4dee4c54b81ed9f9d7c55b66": "https://app.crunch.io/api/datasets/c3cc06db4dee4c54b81ed9f9d7c55b66/decks/8ab0de75e9d04318ab2cc77e566f3055/",
-                          "c3d71420bd7d40a3aec0a27291674eaa": "https://app.crunch.io/api/datasets/c3d71420bd7d40a3aec0a27291674eaa/decks/3573955986ec49e39d91559f13a841e1/",
-                          "c62d56a8148540a48e843a1995fdad23": "https://app.crunch.io/api/datasets/c62d56a8148540a48e843a1995fdad23/decks/b5d0eb5ebf064e06a1437394d449bc6a/",
-                          "cca2d574ef984c18a2c0e1e4e1f5af6b": "https://app.crunch.io/api/datasets/cca2d574ef984c18a2c0e1e4e1f5af6b/decks/0c1ca5d0468147ec9ea1eb524eed69c6/",
-                          "cd92dafbaaa24758857fc836ab9d2032": "https://app.crunch.io/api/datasets/cd92dafbaaa24758857fc836ab9d2032/decks/7811fdbb43334878af85523e98358a7b/",
-                          "d505b9eb39114e9ebdbbb24eebd619aa": "https://app.crunch.io/api/datasets/d505b9eb39114e9ebdbbb24eebd619aa/decks/96c2a631e8c54a22983689dd95991031/",
-                          "d51c013029cc4c05a0d995369c21990b": "https://app.crunch.io/api/datasets/d51c013029cc4c05a0d995369c21990b/decks/d1d5028dbf6d49edb0af4f2733d4f631/",
-                          "d8cd0fac65b043d88fc611441ca7554b": "https://app.crunch.io/api/datasets/d8cd0fac65b043d88fc611441ca7554b/decks/2ba95a7eaf0841a5a75bfa296e3b6440/",
-                          "da0dcc86c62343af8afb48017e46235f": "https://app.crunch.io/api/datasets/da0dcc86c62343af8afb48017e46235f/decks/4bed48bbd74949d789aed53d150c30a8/",
-                          "db8d46e78a024a058ed400e823f39824": "https://app.crunch.io/api/datasets/db8d46e78a024a058ed400e823f39824/decks/f8ac6d5472f1485eaa69e0b10f02c7dd/",
-                          "dc2615f613784e5ab7bf121a3c6f6864": "https://app.crunch.io/api/datasets/dc2615f613784e5ab7bf121a3c6f6864/decks/db23d9a53ba5446198951a42dcd24f6e/",
-                          "dc2b920630ca4c0cad95b42cd810001b": "https://app.crunch.io/api/datasets/dc2b920630ca4c0cad95b42cd810001b/decks/acd53a9c5d8e425791af03fb72cdd687/",
-                          "de620c7f794a4181b4d9c079c88bd62a": "https://app.crunch.io/api/datasets/de620c7f794a4181b4d9c079c88bd62a/decks/5e093f1e52d6458e898bc8a3298e8d0c/",
-                          "e46c50c99be9480b81706f9d6c037e17": "https://app.crunch.io/api/datasets/e46c50c99be9480b81706f9d6c037e17/decks/452e1e898e1840c6b354a554a3f0adb5/",
-                          "e9aece0073dd414ab0e5da4312562ef8": "https://app.crunch.io/api/datasets/e9aece0073dd414ab0e5da4312562ef8/decks/7160ffb2cf1d4f24b23438d9cb4789b7/",
-                          "e9dac71114d94860a66c098f13b6228b": "https://app.crunch.io/api/datasets/e9dac71114d94860a66c098f13b6228b/decks/682e9ef2df5c4326b76f49ccc65f7f17/",
-                          "ea035166a2c6498eaba5625d3f4fd84a": "https://app.crunch.io/api/datasets/ea035166a2c6498eaba5625d3f4fd84a/decks/e04d9facffed44a9ba0a4ed864193403/",
-                          "ef914b272fba45c69bfc9f105b610403": "https://app.crunch.io/api/datasets/ef914b272fba45c69bfc9f105b610403/decks/338d4ce2cda347cca00982a160862e1c/",
-                          "f0381389687c4a08b884cd84a1a50e47": "https://app.crunch.io/api/datasets/f0381389687c4a08b884cd84a1a50e47/decks/56f65c27333c47e98b8a9f4c28da8730/",
-                          "f894da6d854e413e89819ab7de662f48": "https://app.crunch.io/api/datasets/f894da6d854e413e89819ab7de662f48/decks/5ef1122a842b4d2f98bacbdc6b015d82/",
-                          "fa41507462ae4e1b85b7b7fd22be1fab": "https://app.crunch.io/api/datasets/fa41507462ae4e1b85b7b7fd22be1fab/decks/8dd23a0e23294b1cab0b0e0460f4745e/",
-                          "fe47f1c33690439094fda59c2a99130e": "https://app.crunch.io/api/datasets/fe47f1c33690439094fda59c2a99130e/decks/0f1ecd6787654d7da0d69aaebfb81002/",
-                          "ffb5b7ec81464639ad9552f0a2871523": "https://app.crunch.io/api/datasets/ffb5b7ec81464639ad9552f0a2871523/decks/ef635178e5074e0097e640ff13d477bc/",
-                          "ffc711a0a5e043fdb7b8f6a4221ce92b": "https://app.crunch.io/api/datasets/ffc711a0a5e043fdb7b8f6a4221ce92b/decks/7b7e8ac7d1884f2f95c4f1a7c1b639b7/",
-                          "ffd792f3f71a41af96d473197439872d": "https://app.crunch.io/api/datasets/ffd792f3f71a41af96d473197439872d/decks/c74ae3c0ca014af1ab4f653247f820f9/"
-                        },
-                        "prWhatsNew": {
-                          "lastSeen": 99999
-                        },
-                        "projectBrowser": {},
-                        "projectId": "https://app.crunch.io/api/projects/08ed498c0aa1422491b95a6b04c69653/",
-                        "search_settings": {
-                          "grouping": "datasets",
-                          "matchMode": "any-terms",
-                          "scope": null,
-                          "timeCriteria": null,
-                          "timeRange": null,
-                          "view": "ranked"
-                        },
-                        "undefined": {},
-                        "varCardSettings": {}
-                      }
+                      "name": "New user name"
                     },
                     "element": "shoji:entity"
                   }
@@ -28044,338 +27802,28 @@
                   "body": {
                     "additionalProperties": false,
                     "properties": {
+                      "account_permissions": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "id_methond": {
+                        "type": "string"
+                      },
+                      "ip_provider": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
                       "preferences": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "datasetDisplaySettings": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "displayArchivedDatasets": {
-                                "type": "boolean"
-                              }
-                            },
-                            "required": [],
-                            "title": "DatasetDisplaySettings",
-                            "type": "object"
-                          },
-                          "displaySettings": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "columnSignificance": {
-                                "anyOf": [
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "column": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ColumnSignificance",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  }
-                                ]
-                              },
-                              "countsOrPercents": {
-                                "enum": [
-                                  "percent",
-                                  "count",
-                                  "population"
-                                ],
-                                "title": "CountsOrPercents",
-                                "type": "string"
-                              },
-                              "decimalPlaces": {
-                                "type": "integer"
-                              },
-                              "geoChart": {
-                                "type": "boolean"
-                              },
-                              "percentageDirection": {
-                                "enum": [
-                                  "colPct",
-                                  "rowPct",
-                                  "cellPct"
-                                ],
-                                "title": "PercentageDirection",
-                                "type": "string"
-                              },
-                              "populationMagnitude": {
-                                "type": "integer"
-                              },
-                              "separateOrCombined": {
-                                "enum": [
-                                  "separate",
-                                  "combined"
-                                ],
-                                "title": "SeparateOrCombined",
-                                "type": "string"
-                              },
-                              "showCategoriesSubtotals": {
-                                "enum": [
-                                  "both",
-                                  "categories",
-                                  "subtotals"
-                                ],
-                                "title": "ShowCategoriesSubtotals",
-                                "type": "string"
-                              },
-                              "showDescription": {
-                                "type": "boolean"
-                              },
-                              "showEmpty": {
-                                "type": "boolean"
-                              },
-                              "showMean": {
-                                "type": "boolean"
-                              },
-                              "showSignif": {
-                                "type": "boolean"
-                              },
-                              "showValueLabels": {
-                                "type": "boolean"
-                              },
-                              "showVisualization": {
-                                "type": "boolean"
-                              },
-                              "simpleOrExtended": {
-                                "enum": [
-                                  "simple",
-                                  "extended"
-                                ],
-                                "title": "SimpleOrExtended",
-                                "type": "string"
-                              }
-                            },
-                            "required": [],
-                            "title": "DisplaySettings",
-                            "type": "object"
-                          },
-                          "dsVisibleProps": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "access_time": {
-                                "type": "boolean"
-                              },
-                              "modification_time": {
-                                "type": "boolean"
-                              },
-                              "name": {
-                                "type": "boolean"
-                              }
-                            },
-                            "required": [],
-                            "title": "DsVisibleProps",
-                            "type": "object"
-                          },
-                          "exportTabbookSettings": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "doc_layout": {
-                                "additionalProperties": false,
-                                "properties": {
-                                  "toc": {
-                                    "type": "boolean"
-                                  },
-                                  "variable_sheets": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [],
-                                "title": "DocLayout",
-                                "type": "object"
-                              },
-                              "fields": {
-                                "additionalProperties": {
-                                  "type": "boolean"
-                                },
-                                "type": "object"
-                              },
-                              "format": {
-                                "additionalProperties": false,
-                                "properties": {
-                                  "decimal_places": {
-                                    "type": "integer"
-                                  },
-                                  "pval_colors": {
-                                    "type": "boolean"
-                                  },
-                                  "show_empty": {
-                                    "type": "boolean"
-                                  }
-                                },
-                                "required": [],
-                                "title": "Format",
-                                "type": "object"
-                              },
-                              "page_layout": {
-                                "additionalProperties": false,
-                                "properties": {
-                                  "measure_layout": {
-                                    "type": "string"
-                                  },
-                                  "rows": {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "bottom": {
-                                        "additionalProperties": false,
-                                        "properties": {
-                                          "base_unweighted": {
-                                            "type": "boolean"
-                                          },
-                                          "base_weighted": {
-                                            "type": "boolean"
-                                          },
-                                          "scale_mean": {
-                                            "type": "boolean"
-                                          },
-                                          "significant_columns": {
-                                            "type": "boolean"
-                                          }
-                                        },
-                                        "required": [],
-                                        "title": "Bottom",
-                                        "type": "object"
-                                      },
-                                      "top": {
-                                        "additionalProperties": false,
-                                        "properties": {
-                                          "column_letters": {
-                                            "type": "boolean"
-                                          }
-                                        },
-                                        "required": [],
-                                        "title": "Top",
-                                        "type": "object"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "Rows",
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [],
-                                "title": "PageLayout",
-                                "type": "object"
-                              },
-                              "sig_threshold": {
-                                "type": "number"
-                              },
-                              "version": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "ExportTabbookSettings",
-                            "type": "object"
-                          },
-                          "features": {
-                            "additionalProperties": {
-                              "type": "boolean"
-                            },
-                            "type": "object"
-                          },
-                          "labs": {
-                            "type": "boolean"
-                          },
-                          "notificationsReadDate": {
-                            "format": "date-time",
-                            "type": "string"
-                          },
-                          "openedDecks": {
-                            "additionalProperties": {
-                              "format": "uri",
-                              "type": "string",
-                              "x-qt-uri-protocols": [
-                                "https"
-                              ]
-                            },
-                            "type": "object"
-                          },
-                          "prWhatsNew": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "lastSeen": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "PRWhatsNew",
-                            "type": "object"
-                          },
-                          "projectBrowser": {
-                            "additionalProperties": false,
-                            "title": "ProjectBrowser",
-                            "type": "object"
-                          },
-                          "projectId": {
-                            "format": "uri",
-                            "type": "string",
-                            "x-qt-uri-protocols": [
-                              "https"
-                            ]
-                          },
-                          "search_settings": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "grouping": {
-                                "enum": [
-                                  "datasets",
-                                  "variables"
-                                ],
-                                "title": "Grouping",
-                                "type": "string"
-                              },
-                              "matchMode": {
-                                "enum": [
-                                  "any-terms",
-                                  "all-terms"
-                                ],
-                                "title": "MatchMode",
-                                "type": "string"
-                              },
-                              "scope": {
-                                "nullable": true
-                              },
-                              "timeCriteria": {
-                                "nullable": true
-                              },
-                              "timeRange": {
-                                "nullable": true
-                              },
-                              "view": {
-                                "enum": [
-                                  "ranked",
-                                  "folders"
-                                ],
-                                "title": "View",
-                                "type": "string"
-                              }
-                            },
-                            "required": [],
-                            "title": "SearchSettings",
-                            "type": "object"
-                          },
-                          "undefined": {
-                            "additionalProperties": false,
-                            "title": "ProjectBrowser",
-                            "type": "object"
-                          },
-                          "varCardSettings": {
-                            "additionalProperties": false,
-                            "title": "ProjectBrowser",
-                            "type": "object"
-                          }
-                        },
-                        "required": [],
-                        "title": "Preferences",
                         "type": "object"
+                      },
+                      "role_url": {
+                        "type": "string"
                       }
                     },
-                    "required": [],
                     "title": "Body",
                     "type": "object"
                   },
@@ -28383,7 +27831,6 @@
                     "$ref": "#/components/schemas/Shoji-entity-element"
                   }
                 },
-                "required": [],
                 "title": "UsersUserIDPatchRequest",
                 "type": "object"
               }
@@ -28428,6 +27875,7 @@
         }
       ],
       "post": {
+        "deprecated": true,
         "description": "Use this endpoint to change a user's email address.\n\nA 204 indicates potential success to change the users email address to the newly provided email. The user should check their email and verify they own the email address in question.\n\nIf the password does not match the users current password they will receive an error message (400 Bad Request). If the user is an oauth account, then the email address may not be changed (409 Conflict).\n\nIf the user ID does not match the current signed in user, an 403 Forbidden will be sent back.",
         "operationId": "post-users-user_id-change_email",
         "requestBody": {
@@ -28496,6 +27944,7 @@
     },
     "/users/{user_id}/datasets/": {
       "get": {
+        "deprecated": true,
         "description": "This endpoint returns a list of all datasets owned by this user. This endpoint is only accessible and available to account admins.",
         "operationId": "get-users-user_id-datasets",
         "responses": {
@@ -28655,7 +28104,7 @@
         }
       ],
       "post": {
-        "description": "Use this endpoint to send a reset password notification to the identified user. If a `url_base` parameter is included in the request body, it will be used to form links inside the notification.",
+        "description": "Use this endpoint to send a reset password notification to the identified user. If a `url_base` parameter is included in the request body, it will be used to form links inside the notification.\n\nYou only have permission to use this endpoint if the target `user_id` is the same as the currently authenticated user or if the authenticated user has `can_alter_users` permissions and the target user is in the same account as the authenticated user.",
         "operationId": "post-users-user_id-password_reset",
         "requestBody": {
           "content": {
@@ -28703,7 +28152,7 @@
         }
       ],
       "post": {
-        "description": "An account admin can reassign user artifacts from one user to another. This will transfer personal variables, favorites, filters, decks, and multitables to the new user.\n\nOnly artifacts from datasets within the account admin\u2019s account will be transferred from one user to another.",
+        "description": "An account admin can reassign user artifacts from one user to another. This will transfer ALL personal variables, favorites, filters, decks, and multitables from the old user to the new user. \n\nYou might use this endpoint when someone leaves your organization and someone else is taking over their responsibilities.\n\nYou must be an account admin to use this endpoint.\n\nOnly artifacts from datasets within the account admin\u2019s account will be transferred from one user to another user.",
         "operationId": "post-users-user_id-reassign",
         "requestBody": {
           "content": {
@@ -28748,7 +28197,7 @@
           }
         },
         "responses": {},
-        "summary": "Reassign a user",
+        "summary": "Reassign user artifacts to another user",
         "tags": [
           "Users"
         ],
@@ -32093,819 +31542,6 @@
         ]
       }
     },
-    "/datasets/{dataset_id}/decks/{deck_id}/slides/{slide_id}/analyses/": {
-      "get": {
-        "description": "Each slide contains one or more analyses. An analysis \u2013 a table or graph with some specific combination of variables defining measures, rows, columns, and tabs; and settings such as percentage direction and decimal places \u2013 can be saved to a deck, which can then be exported, or the analysis can be reloaded in whole in the application or even exported as a standalone embeddable result. Note that while a slide can have multiple analyses, only the first analysis for each slide is used when exporting to Excel or PowerPoint.\n\nAn analysis is defined by a query, query environment, and display settings. To save an analysis, POST these to a deck as a new slide.\n\nAnalysis queries are described in detail in the feature guide. Filters may contain a mix of stored filters or expressions. Expressions may contain an optional name which may be used to label results.\n\nDisplay settings can be anything a client may need to reproduce the view of the data returned from the query. The settings the Crunch web client uses are shown here, but other clients are free to store other attributes as they see fit. Display settings should be objects with a value member.",
-        "operationId": "get-datasets-dataset_id-decks-deck_id-slides-slide_id-analyses",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "description": "List of all analyses inside this slide",
-                      "element": "shoji:catalog",
-                      "index": {
-                        "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/decks/39e837852d1e4d22ada34fbe7cb7bb38/slides/eaf7b61a91e8481e9f5756a034f1db77/analyses/2049af9d9fa645edb3b595f51f9dc336/": {
-                          "display_settings": {},
-                          "query": {
-                            "dimensions": [
-                              {
-                                "local": "v1.variables"
-                              },
-                              {
-                                "local": "v1.subvariables"
-                              },
-                              {
-                                "local": "v1.categories"
-                              }
-                            ],
-                            "measures": {
-                              "count": {
-                                "args": [],
-                                "function": "cube_count"
-                              }
-                            },
-                            "with": {
-                              "v1": {
-                                "args": [
-                                  [
-                                    {
-                                      "args": [
-                                        {
-                                          "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/0e4674f46dcb4188adc82b7fca1f3ede/"
-                                        }
-                                      ],
-                                      "function": "as_selected"
-                                    },
-                                    {
-                                      "args": [
-                                        {
-                                          "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/e19bb384f740410a833ee361a08a21a5/"
-                                        }
-                                      ],
-                                      "function": "as_selected"
-                                    }
-                                  ]
-                                ],
-                                "function": "fuse"
-                              }
-                            }
-                          },
-                          "query_environment": {}
-                        }
-                      },
-                      "self": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/decks/39e837852d1e4d22ada34fbe7cb7bb38/slides/eaf7b61a91e8481e9f5756a034f1db77/analyses/"
-                    }
-                  }
-                },
-                "schema": {
-                  "description": "",
-                  "properties": {
-                    "description": {
-                      "minLength": 1,
-                      "type": "string"
-                    },
-                    "element": {
-                      "$ref": "#/components/schemas/Shoji-catalog-element"
-                    },
-                    "index": {
-                      "properties": {
-                        "analysis_url": {
-                          "properties": {
-                            "display_settings": {
-                              "description": "An object containing client-specific instructions on how to recreate the analysis.",
-                              "properties": {
-                                "countsOrPercents": {
-                                  "properties": {
-                                    "value": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "decimalPlaces": {
-                                  "properties": {
-                                    "value": {
-                                      "type": "number"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "percentageDirection": {
-                                  "properties": {
-                                    "value": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "uiView": {
-                                  "properties": {
-                                    "value": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "vizType": {
-                                  "properties": {
-                                    "value": {
-                                      "minLength": 1,
-                                      "type": "string"
-                                    }
-                                  },
-                                  "type": "object"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "query": {
-                              "description": "Includes the query body for this analysis.",
-                              "properties": {
-                                "dimensions": {
-                                  "items": {
-                                    "properties": {
-                                      "local": {
-                                        "minLength": 1,
-                                        "type": "string"
-                                      }
-                                    },
-                                    "type": "object"
-                                  },
-                                  "minItems": 1,
-                                  "type": "array",
-                                  "uniqueItems": true
-                                },
-                                "measures": {
-                                  "properties": {
-                                    "count": {
-                                      "properties": {
-                                        "args": {
-                                          "items": {
-                                            "type": "object"
-                                          },
-                                          "type": "array"
-                                        },
-                                        "function": {
-                                          "minLength": 1,
-                                          "type": "string"
-                                        }
-                                      },
-                                      "type": "object"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "with": {
-                                  "properties": {
-                                    "v1": {
-                                      "properties": {
-                                        "args": {
-                                          "items": {
-                                            "properties": {
-                                              "0": {
-                                                "items": {
-                                                  "properties": {
-                                                    "args": {
-                                                      "items": {
-                                                        "properties": {
-                                                          "variable": {
-                                                            "minLength": 1,
-                                                            "type": "string"
-                                                          }
-                                                        },
-                                                        "type": "object"
-                                                      },
-                                                      "minItems": 1,
-                                                      "type": "array",
-                                                      "uniqueItems": true
-                                                    },
-                                                    "function": {
-                                                      "minLength": 1,
-                                                      "type": "string"
-                                                    }
-                                                  },
-                                                  "type": "object"
-                                                },
-                                                "minItems": 1,
-                                                "type": "array",
-                                                "uniqueItems": true
-                                              }
-                                            },
-                                            "type": "object"
-                                          },
-                                          "type": "array"
-                                        },
-                                        "function": {
-                                          "minLength": 1,
-                                          "type": "string"
-                                        }
-                                      },
-                                      "type": "object"
-                                    }
-                                  },
-                                  "type": "object"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "query_environment": {
-                              "properties": {
-                                "filter": {
-                                  "items": {
-                                    "properties": {
-                                      "args": {
-                                        "items": {
-                                          "type": "object"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "function": {
-                                        "minLength": 1,
-                                        "type": "string"
-                                      },
-                                      "name": {
-                                        "minLength": 1,
-                                        "type": "string"
-                                      }
-                                    },
-                                    "type": "object"
-                                  },
-                                  "minItems": 1,
-                                  "type": "array",
-                                  "uniqueItems": true
-                                },
-                                "weight": {
-                                  "description": "A variable URL, null, or `weight` may be omitted. A variable URL must correspond to a variable in the `weight_variables` collection for the dataset. A value of `null` indicates unweighted. When the weight key is omitted, the current-weight of the user making the evaluate/render/export request is used and may vary between users.",
-                                  "minLength": 1,
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "transform": {
-                              "description": "An object containing client-specific instructions on how to manipulate results, such as order and renaming.",
-                              "type": "object"
-                            },
-                            "viz_specs": {
-                              "description": "An object containing client-specific instructions on how to display the results of the `query`.\n",
-                              "properties": {
-                                "default": {
-                                  "properties": {
-                                    "format": {
-                                      "properties": {
-                                        "decimal_places": {
-                                          "properties": {
-                                            "moe": {
-                                              "type": "number"
-                                            },
-                                            "other": {
-                                              "type": "number"
-                                            },
-                                            "percentages": {
-                                              "type": "number"
-                                            }
-                                          },
-                                          "type": "object"
-                                        },
-                                        "show_empty": {
-                                          "description": "Specifies whether a row or column containing no valid responses will be displayed.",
-                                          "type": "boolean"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "measures": {
-                                      "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
-                                      "items": {
-                                        "type": "string"
-                                      },
-                                      "type": "array"
-                                    }
-                                  },
-                                  "type": "object"
-                                },
-                                "table": {
-                                  "properties": {
-                                    "format": {
-                                      "properties": {
-                                        "pval_colors": {
-                                          "description": "Specifies whether value-cells should be shaded red or green depending on the p-value (a statistical-significance measure) of that cell.",
-                                          "type": "boolean"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "measures": {
-                                      "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
-                                      "items": {
-                                        "type": "string"
-                                      },
-                                      "type": "array"
-                                    },
-                                    "page_layout": {
-                                      "properties": {
-                                        "measure_layout": {
-                                          "enum": [
-                                            "wide",
-                                            "long"
-                                          ],
-                                          "minLength": 1,
-                                          "type": "string"
-                                        },
-                                        "rows": {
-                                          "description": "Optional object field specifying the summary rows to appear in the exported table.",
-                                          "properties": {
-                                            "bottom": {
-                                              "items": {
-                                                "type": "object"
-                                              },
-                                              "type": "array"
-                                            },
-                                            "top": {
-                                              "items": {
-                                                "type": "object"
-                                              },
-                                              "type": "array"
-                                            }
-                                          },
-                                          "type": "object"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "pairwise_comparison": {
-                                      "description": "This optional object field specifies settings that govern pairwise significance testing. In an exported table, this appears as the addition of alphabetical column headings and a pairwise_t_test measure indicating which other-column cells are pairwise-significant by their column letter, e.g. `AcdGj`.\n\n`\u201cpairwise_comparison\u201d: {\u201csig_threshold\u201d: [0.05, 0.1]}`",
-                                      "properties": {
-                                        "compare_by": {
-                                          "minLength": 1,
-                                          "type": "string"
-                                        },
-                                        "sig_threshold": {
-                                          "items": {
-                                            "type": "object"
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    }
-                                  },
-                                  "type": "object"
-                                }
-                              },
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "self": {
-                      "minLength": 1,
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Success"
-          }
-        },
-        "summary": "List analyses",
-        "tags": [
-          "Slides"
-        ],
-        "x-code-samples": [
-          {
-            "lang": "SHELL",
-            "source": "curl -X GET https://app.crunch.io/api/datasets/0001a/decks/0001g/slides/0001f/analyses/ \\\n  -H 'Authorization: Bearer 598d9e1105'",
-            "syntaxLang": "bash"
-          },
-          {
-            "lang": "JAVASCRIPT",
-            "source": "const getDatasetsDataset_idDecksDeck_idSlidesSlide_idAnalyses = await fetch(\n  'https://app.crunch.io/api/datasets/0001a/decks/0001g/slides/0001f/analyses/',\n{\n   method: 'GET',\n   headers: {\n    'Authorization': 'Bearer 598d9e1105'\n   }\n })\n .then(response => response.json())\n .then(jsonResponse => jsonResponse.index)",
-            "syntaxLang": "javascript"
-          }
-        ]
-      },
-      "parameters": [
-        {
-          "description": "Unique ID of the dataset you are working with",
-          "in": "path",
-          "name": "dataset_id",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "description": "Unique ID of the deck you are working with",
-          "in": "path",
-          "name": "deck_id",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "description": "Unique ID of the slide you are working with",
-          "in": "path",
-          "name": "slide_id",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "patch": {
-        "description": "Use this endpoint to edit an analysis. Editable attributes include:\n\n* query\n* query_environment\n* display_settings\n* transform\n* viz_specs\n\nProviding invalid values for those attributes or extra attributes will be rejected with a 400 response from the server.\n\nEditing an analysis query on a public deck cannot add reference to a secure variable; such a request results in a 400 response. Hidden variables, however, are permitted.",
-        "operationId": "patch-datasets-dataset_id-decks-deck_id-slides-slide_id-analyses",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "body": {
-                      "display_settings": {},
-                      "query": {
-                        "dimensions": [
-                          {
-                            "local": "v1.variables"
-                          },
-                          {
-                            "local": "v1.subvariables"
-                          },
-                          {
-                            "local": "v1.categories"
-                          }
-                        ],
-                        "measures": {
-                          "count": {
-                            "args": [],
-                            "function": "cube_count"
-                          }
-                        },
-                        "with": {
-                          "v1": {
-                            "args": [
-                              [
-                                {
-                                  "args": [
-                                    {
-                                      "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/0e4674f46dcb4188adc82b7fca1f3ede/"
-                                    }
-                                  ],
-                                  "function": "as_selected"
-                                },
-                                {
-                                  "args": [
-                                    {
-                                      "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/e19bb384f740410a833ee361a08a21a5/"
-                                    }
-                                  ],
-                                  "function": "as_selected"
-                                }
-                              ]
-                            ],
-                            "function": "fuse"
-                          }
-                        }
-                      },
-                      "query_environment": {}
-                    },
-                    "element": "shoji:entity"
-                  }
-                }
-              },
-              "schema": {
-                "description": "",
-                "properties": {
-                  "body": {
-                    "properties": {
-                      "display_settings": {
-                        "description": "An object containing client-specific instructions on how to recreate the analysis.",
-                        "properties": {
-                          "countsOrPercents": {
-                            "properties": {
-                              "value": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "decimalPlaces": {
-                            "properties": {
-                              "value": {
-                                "type": "number"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "percentageDirection": {
-                            "properties": {
-                              "value": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "uiView": {
-                            "properties": {
-                              "value": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "vizType": {
-                            "properties": {
-                              "value": {
-                                "minLength": 1,
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "query": {
-                        "description": "Includes the query body for this analysis.",
-                        "properties": {
-                          "dimensions": {
-                            "items": {
-                              "properties": {
-                                "local": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "minItems": 1,
-                            "type": "array",
-                            "uniqueItems": true
-                          },
-                          "measures": {
-                            "properties": {
-                              "count": {
-                                "properties": {
-                                  "args": {
-                                    "items": {
-                                      "type": "object"
-                                    },
-                                    "type": "array"
-                                  },
-                                  "function": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  }
-                                },
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "with": {
-                            "properties": {
-                              "v1": {
-                                "properties": {
-                                  "args": {
-                                    "items": {
-                                      "properties": {
-                                        "0": {
-                                          "items": {
-                                            "properties": {
-                                              "args": {
-                                                "items": {
-                                                  "properties": {
-                                                    "variable": {
-                                                      "minLength": 1,
-                                                      "type": "string"
-                                                    }
-                                                  },
-                                                  "type": "object"
-                                                },
-                                                "minItems": 1,
-                                                "type": "array",
-                                                "uniqueItems": true
-                                              },
-                                              "function": {
-                                                "minLength": 1,
-                                                "type": "string"
-                                              }
-                                            },
-                                            "type": "object"
-                                          },
-                                          "minItems": 1,
-                                          "type": "array",
-                                          "uniqueItems": true
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "type": "array"
-                                  },
-                                  "function": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  }
-                                },
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "query_environment": {
-                        "properties": {
-                          "filter": {
-                            "items": {
-                              "properties": {
-                                "args": {
-                                  "items": {
-                                    "type": "object"
-                                  },
-                                  "type": "array"
-                                },
-                                "function": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                },
-                                "name": {
-                                  "minLength": 1,
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "minItems": 1,
-                            "type": "array",
-                            "uniqueItems": true
-                          },
-                          "weight": {
-                            "description": "A variable URL, null, or `weight` may be omitted. A variable URL must correspond to a variable in the `weight_variables` collection for the dataset. A value of `null` indicates unweighted. When the weight key is omitted, the current-weight of the user making the evaluate/render/export request is used and may vary between users.",
-                            "minLength": 1,
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "transform": {
-                        "description": "An object containing client-specific instructions on how to manipulate results, such as order and renaming.",
-                        "type": "object"
-                      },
-                      "viz_specs": {
-                        "description": "An object containing client-specific instructions on how to display the results of the `query`.\n",
-                        "properties": {
-                          "default": {
-                            "properties": {
-                              "format": {
-                                "properties": {
-                                  "decimal_places": {
-                                    "properties": {
-                                      "moe": {
-                                        "type": "number"
-                                      },
-                                      "other": {
-                                        "type": "number"
-                                      },
-                                      "percentages": {
-                                        "type": "number"
-                                      }
-                                    },
-                                    "type": "object"
-                                  },
-                                  "show_empty": {
-                                    "description": "Specifies whether a row or column containing no valid responses will be displayed.",
-                                    "type": "boolean"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "measures": {
-                                "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
-                                "items": {
-                                  "type": "string"
-                                },
-                                "type": "array"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "table": {
-                            "properties": {
-                              "format": {
-                                "properties": {
-                                  "pval_colors": {
-                                    "description": "Specifies whether value-cells should be shaded red or green depending on the p-value (a statistical-significance measure) of that cell.",
-                                    "type": "boolean"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "measures": {
-                                "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
-                                "items": {
-                                  "type": "string"
-                                },
-                                "type": "array"
-                              },
-                              "page_layout": {
-                                "properties": {
-                                  "measure_layout": {
-                                    "enum": [
-                                      "wide",
-                                      "long"
-                                    ],
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "rows": {
-                                    "description": "Optional object field specifying the summary rows to appear in the exported table.",
-                                    "properties": {
-                                      "bottom": {
-                                        "items": {
-                                          "type": "object"
-                                        },
-                                        "type": "array"
-                                      },
-                                      "top": {
-                                        "items": {
-                                          "type": "object"
-                                        },
-                                        "type": "array"
-                                      }
-                                    },
-                                    "type": "object"
-                                  }
-                                },
-                                "type": "object"
-                              },
-                              "pairwise_comparison": {
-                                "description": "This optional object field specifies settings that govern pairwise significance testing. In an exported table, this appears as the addition of alphabetical column headings and a pairwise_t_test measure indicating which other-column cells are pairwise-significant by their column letter, e.g. `AcdGj`.\n\n`\u201cpairwise_comparison\u201d: {\u201csig_threshold\u201d: [0.05, 0.1]}`",
-                                "properties": {
-                                  "compare_by": {
-                                    "minLength": 1,
-                                    "type": "string"
-                                  },
-                                  "sig_threshold": {
-                                    "items": {
-                                      "type": "object"
-                                    },
-                                    "type": "array"
-                                  }
-                                },
-                                "type": "object"
-                              }
-                            },
-                            "type": "object"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "description": {
-                    "minLength": 1,
-                    "type": "string"
-                  },
-                  "element": {
-                    "$ref": "#/components/schemas/Shoji-entity-element"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Change analysis"
-      }
-    },
     "/datasets/{dataset_id}/decks/{deck_id}/slides/{slide_id}/analyses/{analysis_id}/": {
       "get": {
         "description": "An analysis is defined by a query, query environment, and display settings. To save an analysis, POST these to a deck as a new slide.\n\nAnalysis queries are described in detail in the feature guide. Filters may contain a mix of stored filters or expressions. Expressions may contain an optional name which may be used to label results.\n\nDisplay settings can be anything a client may need to reproduce the view of the data returned from the query. The settings the Crunch web client uses are shown here, but other clients are free to store other attributes as they see fit. Display settings should be objects with a value member.",
@@ -34195,7 +32831,7 @@
         }
       ],
       "patch": {
-        "description": "Editable attributes are:\n\n* query\n* query_environment\n* display_settings\n* transform\n\nProviding invalid values for those attributes or extra attributes will be rejected with a 400 response from the server.\n\nEditing an analysis query on a public deck cannot add reference to a secure variable; such a request results in a 400 response. Hidden variables, however, are permitted.",
+        "description": "Use this endpoint to edit an analysis. Editable attributes include:\n\n* query\n* query_environment\n* display_settings\n* transform\n* viz_specs\n\nProviding invalid values for those attributes or extra attributes will be rejected with a 400 response from the server.\n\nEditing an analysis query on a public deck cannot add reference to a secure variable; such a request results in a 400 response. Hidden variables, however, are permitted.",
         "operationId": "patch-datasets-dataset_id-decks-deck_id-slides-slide_id-analyses-analysis_id",
         "parameters": [],
         "requestBody": {
@@ -34203,6 +32839,59 @@
             "application/json": {
               "examples": {
                 "example-1": {
+                  "value": {
+                    "body": {
+                      "display_settings": {},
+                      "query": {
+                        "dimensions": [
+                          {
+                            "local": "v1.variables"
+                          },
+                          {
+                            "local": "v1.subvariables"
+                          },
+                          {
+                            "local": "v1.categories"
+                          }
+                        ],
+                        "measures": {
+                          "count": {
+                            "args": [],
+                            "function": "cube_count"
+                          }
+                        },
+                        "with": {
+                          "v1": {
+                            "args": [
+                              [
+                                {
+                                  "args": [
+                                    {
+                                      "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/0e4674f46dcb4188adc82b7fca1f3ede/"
+                                    }
+                                  ],
+                                  "function": "as_selected"
+                                },
+                                {
+                                  "args": [
+                                    {
+                                      "variable": "https://app.crunch.io/api/datasets/3b7aea07d2554426baa1f4b50342e6b0/variables/e19bb384f740410a833ee361a08a21a5/"
+                                    }
+                                  ],
+                                  "function": "as_selected"
+                                }
+                              ]
+                            ],
+                            "function": "fuse"
+                          }
+                        }
+                      },
+                      "query_environment": {}
+                    },
+                    "element": "shoji:entity"
+                  }
+                },
+                "example-2": {
                   "value": {
                     "body": {
                       "display_settings": {
@@ -34394,7 +33083,7 @@
                     }
                   }
                 },
-                "example-2": {
+                "example-3": {
                   "value": {
                     "body": {
                       "query": {
@@ -34414,7 +33103,7 @@
                     "element": "shoji:entity"
                   }
                 },
-                "example-3": {
+                "example-4": {
                   "value": {
                     "body": {
                       "display_settings": {
@@ -34453,7 +33142,7 @@
                     "element": "shoji:entity"
                   }
                 },
-                "example-4": {
+                "example-5": {
                   "value": {
                     "body": {
                       "display_settings": {
@@ -34628,1130 +33317,308 @@
                 }
               },
               "schema": {
-                "additionalProperties": false,
+                "description": "",
                 "properties": {
                   "body": {
-                    "additionalProperties": false,
                     "properties": {
                       "display_settings": {
-                        "additionalProperties": false,
+                        "description": "An object containing client-specific instructions on how to recreate the analysis.",
                         "properties": {
-                          "bins": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "bivariateCycle": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "columnSignificance": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "countMarginType": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
                           "countsOrPercents": {
-                            "additionalProperties": false,
                             "properties": {
                               "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "currentTab": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "decimalPlaces": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "dropdownSettings": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "geoChart": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "groupMode": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "marginLocation": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "minBaseSize": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "percentageDirection": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "pivot": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "populationMagnitude": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "populationSize": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "preferredBarPlotMode": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "selectedColumn": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "separateOrCombined": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showCategoriesSubtotals": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showDescription": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showEmpty": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "disabled": {
-                                "type": "boolean"
-                              },
-                              "value": {
-                                "type": "boolean"
-                              }
-                            },
-                            "required": [],
-                            "title": "ShowEmpty",
-                            "type": "object"
-                          },
-                          "showMean": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showSignif": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showValueLabels": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "showVisualization": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "simpleOrExtended": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "sortDirection": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "sortKey": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "type": "integer"
-                              }
-                            },
-                            "required": [],
-                            "title": "Bins",
-                            "type": "object"
-                          },
-                          "sortSource": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "suppressOnMinBaseSize": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "uiView": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          },
-                          "vizType": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "value": {
-                                "anyOf": [
-                                  {
-                                    "type": "boolean"
-                                  },
-                                  {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                      "col_id": {
-                                        "type": "integer"
-                                      },
-                                      "row_id": {
-                                        "type": "integer"
-                                      }
-                                    },
-                                    "required": [],
-                                    "title": "ValueClass",
-                                    "type": "object"
-                                  },
-                                  {
-                                    "nullable": true
-                                  },
-                                  {
-                                    "type": "string"
-                                  }
-                                ],
-                                "title": "ValueUnion"
-                              }
-                            },
-                            "required": [],
-                            "title": "BivariateCycle",
-                            "type": "object"
-                          }
-                        },
-                        "required": [],
-                        "title": "DisplaySettings",
-                        "type": "object"
-                      },
-                      "query": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "dimensions": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "variable": {
-                                  "format": "uri",
-                                  "type": "string",
-                                  "x-qt-uri-protocols": [
-                                    "https"
-                                  ]
-                                }
-                              },
-                              "required": [],
-                              "title": "Dimension",
-                              "type": "object"
-                            },
-                            "type": "array"
-                          },
-                          "measures": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "count": {
-                                "additionalProperties": false,
-                                "properties": {
-                                  "args": {
-                                    "items": {},
-                                    "type": "array"
-                                  },
-                                  "function": {
-                                    "type": "string"
-                                  }
-                                },
-                                "required": [],
-                                "title": "Count",
-                                "type": "object"
-                              }
-                            },
-                            "required": [],
-                            "title": "Measures",
-                            "type": "object"
-                          }
-                        },
-                        "required": [],
-                        "title": "Query",
-                        "type": "object"
-                      },
-                      "transform": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "app_schema": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "rows_dimension": {
-                                "additionalProperties": false,
-                                "properties": {
-                                  "elements": {
-                                    "additionalProperties": {
-                                      "additionalProperties": false,
-                                      "properties": {
-                                        "fill": {
-                                          "type": "string"
-                                        }
-                                      },
-                                      "required": [],
-                                      "title": "Element",
-                                      "type": "object"
-                                    },
-                                    "type": "object"
-                                  }
-                                },
-                                "required": [],
-                                "title": "RowsDimension",
-                                "type": "object"
-                              },
-                              "version": {
+                                "minLength": 1,
                                 "type": "string"
                               }
                             },
-                            "required": [],
-                            "title": "AppSchema",
                             "type": "object"
                           },
-                          "rows_dimension": {
-                            "additionalProperties": false,
+                          "decimalPlaces": {
                             "properties": {
-                              "elements": {
-                                "additionalProperties": {
-                                  "additionalProperties": false,
-                                  "properties": {
-                                    "fill": {
-                                      "type": "string"
-                                    }
+                              "value": {
+                                "type": "number"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "percentageDirection": {
+                            "properties": {
+                              "value": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "uiView": {
+                            "properties": {
+                              "value": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "vizType": {
+                            "properties": {
+                              "value": {
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "query": {
+                        "description": "Includes the query body for this analysis.",
+                        "properties": {
+                          "dimensions": {
+                            "items": {
+                              "properties": {
+                                "local": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array",
+                            "uniqueItems": true
+                          },
+                          "measures": {
+                            "properties": {
+                              "count": {
+                                "properties": {
+                                  "args": {
+                                    "items": {
+                                      "type": "object"
+                                    },
+                                    "type": "array"
                                   },
-                                  "required": [],
-                                  "title": "Element",
-                                  "type": "object"
+                                  "function": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  }
                                 },
                                 "type": "object"
                               }
                             },
-                            "required": [],
-                            "title": "RowsDimension",
                             "type": "object"
                           },
-                          "version": {
+                          "with": {
+                            "properties": {
+                              "v1": {
+                                "properties": {
+                                  "args": {
+                                    "items": {
+                                      "properties": {
+                                        "0": {
+                                          "items": {
+                                            "properties": {
+                                              "args": {
+                                                "items": {
+                                                  "properties": {
+                                                    "variable": {
+                                                      "minLength": 1,
+                                                      "type": "string"
+                                                    }
+                                                  },
+                                                  "type": "object"
+                                                },
+                                                "minItems": 1,
+                                                "type": "array",
+                                                "uniqueItems": true
+                                              },
+                                              "function": {
+                                                "minLength": 1,
+                                                "type": "string"
+                                              }
+                                            },
+                                            "type": "object"
+                                          },
+                                          "minItems": 1,
+                                          "type": "array",
+                                          "uniqueItems": true
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "function": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "query_environment": {
+                        "properties": {
+                          "filter": {
+                            "items": {
+                              "properties": {
+                                "args": {
+                                  "items": {
+                                    "type": "object"
+                                  },
+                                  "type": "array"
+                                },
+                                "function": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "minLength": 1,
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "minItems": 1,
+                            "type": "array",
+                            "uniqueItems": true
+                          },
+                          "weight": {
+                            "description": "A variable URL, null, or `weight` may be omitted. A variable URL must correspond to a variable in the `weight_variables` collection for the dataset. A value of `null` indicates unweighted. When the weight key is omitted, the current-weight of the user making the evaluate/render/export request is used and may vary between users.",
+                            "minLength": 1,
                             "type": "string"
                           }
                         },
-                        "required": [],
-                        "title": "Transform",
+                        "type": "object"
+                      },
+                      "transform": {
+                        "description": "An object containing client-specific instructions on how to manipulate results, such as order and renaming.",
                         "type": "object"
                       },
                       "viz_specs": {
-                        "additionalProperties": false,
+                        "description": "An object containing client-specific instructions on how to display the results of the `query`.\n",
                         "properties": {
-                          "kpi": {
-                            "additionalProperties": false,
+                          "default": {
                             "properties": {
-                              "aux_indicators": {
-                                "additionalProperties": false,
-                                "title": "AuxIndicators",
-                                "type": "object"
-                              },
-                              "select": {
-                                "additionalProperties": false,
+                              "format": {
                                 "properties": {
-                                  "value": {
-                                    "anyOf": [
-                                      {
-                                        "type": "boolean"
+                                  "decimal_places": {
+                                    "properties": {
+                                      "moe": {
+                                        "type": "number"
                                       },
-                                      {
-                                        "additionalProperties": false,
-                                        "properties": {
-                                          "col_id": {
-                                            "type": "integer"
-                                          },
-                                          "row_id": {
-                                            "type": "integer"
-                                          }
-                                        },
-                                        "required": [],
-                                        "title": "ValueClass",
-                                        "type": "object"
+                                      "other": {
+                                        "type": "number"
                                       },
-                                      {
-                                        "nullable": true
-                                      },
-                                      {
-                                        "type": "string"
+                                      "percentages": {
+                                        "type": "number"
                                       }
-                                    ],
-                                    "title": "ValueUnion"
+                                    },
+                                    "type": "object"
+                                  },
+                                  "show_empty": {
+                                    "description": "Specifies whether a row or column containing no valid responses will be displayed.",
+                                    "type": "boolean"
                                   }
                                 },
-                                "required": [],
-                                "title": "BivariateCycle",
+                                "type": "object"
+                              },
+                              "measures": {
+                                "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "table": {
+                            "properties": {
+                              "format": {
+                                "properties": {
+                                  "pval_colors": {
+                                    "description": "Specifies whether value-cells should be shaded red or green depending on the p-value (a statistical-significance measure) of that cell.",
+                                    "type": "boolean"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "measures": {
+                                "description": "The (single) second-order analysis (SOA) measure to display in the visualization. If present, it must contain exactly one measure keyword. Options include `col_percent`,\n`row_percent`,\n`table_percent`,\n`count_weighted`,\n`count_unweighted`,\n`col_base_weighted`,\n`col_base_unweighted`,\n`row_base_weighted`,\n`row_base_unweighted`,\n`table_base_weighted`,\n`table_base_unweighted`,\n`columns_moe`,\n`columns_std_dev`,\n`columns_std_err`,\n`row_percent_moe`,\n`row_std_dev`,\n`row_std_err`,\n`table_percent_moe`,\n`table_std_dev`,\n`table_std_err`,\n`z_score`,\n`p_value`,\n`col_index`,\n`pairwise_t_test`,\n`population`,\nand `population_moe`.",
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "page_layout": {
+                                "properties": {
+                                  "measure_layout": {
+                                    "enum": [
+                                      "wide",
+                                      "long"
+                                    ],
+                                    "minLength": 1,
+                                    "type": "string"
+                                  },
+                                  "rows": {
+                                    "description": "Optional object field specifying the summary rows to appear in the exported table.",
+                                    "properties": {
+                                      "bottom": {
+                                        "items": {
+                                          "type": "object"
+                                        },
+                                        "type": "array"
+                                      },
+                                      "top": {
+                                        "items": {
+                                          "type": "object"
+                                        },
+                                        "type": "array"
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "pairwise_comparison": {
+                                "description": "This optional object field specifies settings that govern pairwise significance testing. In an exported table, this appears as the addition of alphabetical column headings and a pairwise_t_test measure indicating which other-column cells are pairwise-significant by their column letter, e.g. `AcdGj`.\n\n`\u201cpairwise_comparison\u201d: {\u201csig_threshold\u201d: [0.05, 0.1]}`",
+                                "properties": {
+                                  "compare_by": {
+                                    "minLength": 1,
+                                    "type": "string"
+                                  },
+                                  "sig_threshold": {
+                                    "items": {
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  }
+                                },
                                 "type": "object"
                               }
                             },
-                            "required": [],
-                            "title": "Kpi",
                             "type": "object"
                           }
                         },
-                        "required": [],
-                        "title": "VizSpecs",
                         "type": "object"
                       }
                     },
-                    "required": [],
-                    "title": "Body",
                     "type": "object"
+                  },
+                  "description": {
+                    "minLength": 1,
+                    "type": "string"
                   },
                   "element": {
                     "$ref": "#/components/schemas/Shoji-entity-element"
-                  },
-                  "query_environment": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "filter": {
-                        "items": {},
-                        "type": "array"
-                      }
-                    },
-                    "required": [],
-                    "title": "QueryEnvironment",
-                    "type": "object"
                   }
                 },
-                "required": [],
-                "title": "DatasetsDatasetIDDecksDeckIDSlidesSlideIDAnalysesAnalysisIDPatchRequest",
                 "type": "object"
               }
             }
@@ -35759,45 +33626,13 @@
         },
         "responses": {
           "204": {
-            "description": "Item updated"
+            "description": "No Content"
           },
           "400": {
-            "content": {
-              "application/json": {
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "exception": [
-                        "Cannot edit attribute: x"
-                      ],
-                      "message": "Cannot edit attribute: x",
-                      "status": "400 Bad Request"
-                    }
-                  }
-                },
-                "schema": {
-                  "properties": {
-                    "exception": {
-                      "items": {
-                        "type": "string"
-                      },
-                      "type": "array"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
             "description": "Bad Request"
           }
         },
-        "summary": "Update analysis",
+        "summary": "Change analysis",
         "tags": [
           "Slides"
         ],
@@ -48062,7 +45897,7 @@
     },
     "/integrations/": {
       "get": {
-        "description": "This endpoint returns a list of the integrations available to Crunch users.",
+        "description": "This endpoint returns a list of the third party organizations you can use to connect with Crunch.\u00a0 These allow you to create new datasets by connecting to the third party directly and bring data to the Crunch platform without having to do manual downloads or creating your own variable definitions.\u00a0 We create variable definitions that are consistent based on the source integration's api and help skip some of the guesswork behind creating a useful dataset.",
         "operationId": "get-integrations",
         "parameters": [],
         "responses": {
@@ -48148,7 +45983,7 @@
     },
     "/integrations/{integration_partner}/": {
       "get": {
-        "description": "",
+        "description": "This endponit provides a list of views available for a given url.\u00a0The possible available views are `add_dataset`, `auth`, and `update_dataset`.\u00a0These endpoints allow you to create datasets, authenticate with the third party, and update a dataset that was originally created with the integration.\u00a0",
         "operationId": "get-integrations-decipher",
         "parameters": [],
         "responses": {
@@ -48432,7 +46267,7 @@
         }
       ],
       "post": {
-        "description": "Crunch supports the ability to synchronize the responses in Crunch with that which exists in the integration partner survey. To do this, Crunch grabs any new responses that have been generated in the partner survey and integrate them with the existing dataset in crunch. Any derived variables on your Crunch dataset will remain.\n\nOne limitation of this process is that any metadata changes on the partner survey will not allow an update to occur, but you may create a new dataset in this case. Only datasets that were originally created using the partner integration endpoint are eligible to update.\n\nThe endpoint response is a 202 status code with a JSON object containing a link to the asynchronous task that can be monitored for import progress.",
+        "description": "Crunch can update the responses of a dataset to match that of the source survey.\u00a0Crunch does this by clearing existing responses from the existing dataset and replacing them with the responses from the source.\u00a0Any new variables are also added at this time, but no other metadata-level changes are supported.\u00a0\n\nOnly datasets that were created from a third-party integration are eligible to update their data. In other words, you cannot add data to a dataset created by any other method.\n\nThis endpoint returns a JSON object containing a link to the asynchronous task that can be monitored for update progress. The\u00a0status code for this\u00a0response\u00a0is 202.",
         "operationId": "post-integrations-decipher-update_dataset",
         "parameters": [],
         "requestBody": {
@@ -48599,7 +46434,7 @@
         }
       ],
       "post": {
-        "description": "In order to read datasets from an integration partner, you must provide the integration partner's api key for Crunch to use. Ths endpoint allows you to store the integration api key. You will receive a 201 status code with `Location` header which indicates the url for the newly-created integration URL. This integration URL will be provided to the partner integration endpoints to indicate which set of credentials to use to read from the partner API.\n\n**For Decipher:** Please provide a combination of a company name (the mycompany subdomain bit of the mycompany.decipherinc.com) and an API key. To obtain an api key, visit https://mycompany.decipherinc.com/apps/api/keys, where mycompany is the given subdomain for your organization. A link appears when you open the page, where you can create a new key. Make sure you copy the key that is noted when you create a new key, as you need to provide Crunch with it in order to gain access to your decipher datasets within Crunch.\n",
+        "description": "In order to allow Crunch to connect to an integration partner on your behalf, you must provide authentication information for Crunch to use. This endpoint allows Crunch to save that information so that we can connect to third-party\u00a0APIs and extract data. Upon successfully saving the information, you will receive a 201 response with\u00a0Location\u00a0header which indicates the URL for the newly-created integration connection.\n\n**For Decipher:**\u00a0Please provide a combination of company name (the mycompany subdomain bit of the mycompany.decipherinc.com) and API key. To obtain an API key, visit\u00a0`https://mycompany.decipherinc.com/apps/api/keys`, where mycompany is the given subdomain for your organization. A link appears when you open the page, where you can create a new key. Make sure you copy the key that is noted when you create a new key, as you need to submit it to Crunch in order to gain access to your Decipher datasets within Crunch.\n",
         "operationId": "post-users-user_id-integrations",
         "requestBody": {
           "content": {
@@ -48837,6 +46672,7 @@
       },
       "parameters": [
         {
+          "description": "User's Crunch user id",
           "in": "path",
           "name": "user_id",
           "required": true,
@@ -48845,6 +46681,7 @@
           }
         },
         {
+          "description": "Unique id of the partner integration you set up by supplying partner authentication credentials.",
           "in": "path",
           "name": "integration_id",
           "required": true,
@@ -48857,7 +46694,11 @@
   },
   "servers": [
     {
-      "description": "Crunch API (production). EXERCISE EXTREME CAUTION as all non-GET requests to this server can be destructive to real data. Any api requests you perform are real and will execute against real datasets.",
+      "description": "Crunch API (testing sandbox)",
+      "url": "https://alpha.crunch.io/api"
+    },
+    {
+      "description": "Crunch API (production). EXERCISE EXTREME CAUTION as all non-GET requests to this server can be destructive to real data.",
       "url": "https://app.crunch.io/api"
     }
   ],
