@@ -47,7 +47,6 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache R packages
-        if: runner.os != 'Windows'
         uses: actions/cache@v2
         with:
           path: ${{ env.R_LIBS_USER }}
@@ -104,14 +103,13 @@ jobs:
         if: matrix.config.r == 'release'
         run: |
           remotes::install_cran("pkgdown")
-          install.packages(c("pkgdown"))
         shell: Rscript {0}
 
       - name: Install package and run script
         if: matrix.config.r == 'release'
         run: |
           R CMD INSTALL .
-          Rscript -e 'pkgdown::build_site()'
+          R -e 'install.packages("pkgdown"); library(crunchy); pkgdown::build_site()'
 
       - uses: actions/checkout@v2
         if: matrix.config.r == 'release'
