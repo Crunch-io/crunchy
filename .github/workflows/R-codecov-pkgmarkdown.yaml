@@ -132,12 +132,10 @@ jobs:
           cp -r ../docs/. static/r/crunchy
           ls -lrt static/r/crunchy/
 
-
       - name: Commit and Push
         if: matrix.config.r == 'release' && github.event_name == 'push'
         working-directory: ./ta-da
-        uses: github-actions-x/commit@v2.7
-        with:
-          commit-message: 'Updating crunchy pkgdown site (release ${RELEASE_VERSION})'
-          push-branch: 'src'
-          github-token: ${GH_TOKEN}
+        run: |
+          git add .
+          git commit -m "Updating crunchy pkgdown site (release ${RELEASE_VERSION})" || true
+          git push origin src || true
