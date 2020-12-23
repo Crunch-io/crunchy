@@ -103,8 +103,8 @@ jobs:
       - name: Install dependencies for pkgdown
         if: matrix.config.r == 'release'
         run: |
-          remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("pkgdown")
+          install.packages(c("pkgdown"))
         shell: Rscript {0}
 
       - name: Install package and run script
