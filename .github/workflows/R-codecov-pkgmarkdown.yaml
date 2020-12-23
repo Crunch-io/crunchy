@@ -82,7 +82,7 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
 
-      - name: Install dependencies
+      - name: Install dependencies for coverage and lintr
         if: matrix.config.r == 'release'
         run: |
           remotes::install_cran("covr")
@@ -101,15 +101,43 @@ jobs:
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Install dependencies for pkgdown
-        if: matrix.config.r == 'release' && github.event_name == 'push'
+        if: matrix.config.r == 'release'
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("pkgdown")
         shell: Rscript {0}
 
       - name: Install package and run script
-        if: matrix.config.r == 'release' && github.event_name == 'push'
+        if: matrix.config.r == 'release'
         run: |
           R CMD INSTALL .
           Rscript -e 'pkgdown::build_site()'
-          bash 'pkgdown.sh'
+
+      - uses: actions/checkout@v2
+        if: matrix.config.r == 'release'
+        with:
+          repository: 'Crunch-io/ta-da'
+          token: ${GH_TOKEN}
+          path: 'ta-da'
+          fetch-depth: 2
+          ref: 'src'
+
+      - name: Run prep tasks
+        if: matrix.config.r == 'release'
+        working-directory: ./ta-da
+        run: |
+          rm -rf static/r/crunchy
+          pwd
+          ls -lrt
+          cp -r ../docs/. static/r/crunchy
+          ls -lrt static/r/crunchy/
+
+
+      - name: Commit and Push
+        if: matrix.config.r == 'release' && github.event_name == 'push'
+        working-directory: ./ta-da
+        uses: github-actions-x/commit@v2.7
+        with:
+          commit-message: 'Updating crunchy pkgdown site (release ${RELEASE_VERSION})'
+          push-branch: 'src'
+          github-token: ${GH_TOKEN}
