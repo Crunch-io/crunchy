@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">crplyr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.7</span>
       </span>
     </div>
 
@@ -73,7 +73,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/Crunch-io/crplyr/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -87,7 +87,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="plotting_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Plotting Crunch Objects</h1>
@@ -102,32 +102,40 @@
     
 <p>The Crunch web app provides a number of excellent visualizations and summary statistics to help communicate survey results to clients, but by its nature a web interface can’t accommodate every type of plot or analysis. As a result one of our core design principles at Crunch is to let users access their data in as convenient a way as possible. This lets you seamlessly integrate Crunch data into your tool of choice, and customize how you communicate that data. This vignette goes through how you can use <code>ggplot2</code> and <code>tidyverse</code> tools to analyze and display Crunch data.</p>
 <p>First we need to load a dataset into R. If this is a new process to you, see the <a href="https://crunch.io/r/crunch/articles/">crunch vignettes</a>.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">crunch</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">crplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/">crunch</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crplyr/">crplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
 <div id="ggplots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#ggplots" class="anchor"></a>ggplots</h1>
 <p>You can plot crunch variables using <code>ggplot2</code>’s <code><a href="../reference/autoplot.html">autoplot()</a></code> method. This will generate a plot which looks a lot like the plots produced on the app, but can be customized with ggplot methods.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">CompanySize</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">CompanySize</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/basic-card-plots-1.png" width="768"></p>
 <p>Crunch autoplot methods can produce three families of charts: dot plots, bar plots, and tile plots. These methods will automatically adjust for the dimensionality of the data which is sent into the plotting method. For instance, categorical array variables have two dimensions, so when they are plotted, you get a two dimensional plot.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">ImportantHiring</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/CA-plotting-1.png" width="768"></p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">ImportantHiring</span>, <span class="st">"tile"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span>, <span class="st">"tile"</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/CA-plotting-2.png" width="768"></p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">ImportantHiring</span>, <span class="st">"bar"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span>, <span class="st">"bar"</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/CA-plotting-3.png" width="768"></p>
 <p>Since the autoplot methods produce <code>ggplot</code> objects, you can customize and extend them just as you would any other ggplot. For example, you can change the theme of the plot or alter the color palette.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">CompanySize</span>)
-<span class="no">p</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_grey</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">CompanySize</span><span class="op">)</span>
+<span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_grey</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/themes-1.png" width="768"></p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">p</span> +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>(<span class="kw">color</span> <span class="kw">=</span> <span class="st">"red"</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">3</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/themes-2.png" width="768"></p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>(<span class="no">ds</span>$<span class="no">ImportantHiring</span>) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Scale for 'colour' is already present. Adding another scale for 'colour',
 ## which will replace the existing scale.</code></pre>
 <p><img src="plotting_files/figure-html/themes-3.png" width="768"></p>
@@ -143,15 +151,17 @@
 <a href="#working-with-crunchcubes" class="anchor"></a>Working with CrunchCubes</h1>
 <p>Crunch datasets are often large enough that you can’t easily calculate summary statistics on your local machine. As a result we try to keep as much computation as possible on the server and only send the results of the calculation to your local R session. One of the main ways this is accomplished it through CrunchCubes, which are typically used to calculate cross-tabs between categorical variables.</p>
 <p>CrunchCubes are n-dimensional arrays where each dimension corresponds to one of the variables used to calculate the cross tab. For instance <code><a href="http://crunch.io/r/crunch//reference/crtabs.html">crtabs(~ Professional + CompanySize + Country, ds)</a></code> will generate a three dimensional array where each entry is the number of respondents who selected a given category along the three dimensions. You can plot high dimensional CrunchCubes in the same way that you can plot Crunch Variables and the additional dimensions will be assigned to plot facets.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">ds</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="../reference/group_by.html">group_by</a></span>(<span class="no">CompanySize</span>, <span class="no">Professional</span>, <span class="no">TabsSpaces</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="../reference/summarize.html">summarize</a></span>(<span class="kw">count</span> <span class="kw">=</span> <span class="fu">n</span>(<span class="no">Country</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="../reference/autoplot.html">autoplot</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">CompanySize</span>, <span class="va">Professional</span>, <span class="va">TabsSpaces</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/summarize.html">summarize</a></span><span class="op">(</span>count <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="va">Country</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-3-1.png" width="768"></p>
 <p>Autoplots are great, but cubes can quickly become too complex for a general plotting method to do a good job at representing the plot. If we include lots of dimensions in a cube, or include a dimension with a lot of categories the plot becomes unreadable. We can still work with these types of cubes by using the <code>as_tibble</code> method to convert it into a long data frame. This lets us further process the data to produce a readable plot.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">cube</span> <span class="kw">&lt;-</span> <span class="fu"><a href="http://crunch.io/r/crunch//reference/crtabs.html">crtabs</a></span>(~ <span class="no">Country</span> + <span class="no">Professional</span> + <span class="no">TabsSpaces</span>, <span class="no">ds</span>)
-<span class="no">cube_tbl</span> <span class="kw">&lt;-</span> <span class="fu">as_tibble</span>(<span class="no">cube</span>)
-<span class="no">cube_tbl</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cube</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://crunch.io/r/crunch//reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Country</span> <span class="op">+</span> <span class="va">Professional</span> <span class="op">+</span> <span class="va">TabsSpaces</span>, <span class="va">ds</span><span class="op">)</span>
+<span class="va">cube_tbl</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">cube</span><span class="op">)</span>
+<span class="va">cube_tbl</span></code></pre></div>
 <pre><code>## # A tibble: 4,848 x 6
 ##    Country             Professional  TabsSpaces is_missing count row_count
 ##    &lt;fct&gt;               &lt;fct&gt;         &lt;fct&gt;      &lt;lgl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
@@ -168,15 +178,16 @@
 ## # … with 4,838 more rows</code></pre>
 <p>The tibble contains most of the same information as the cube data structure, but it is easier to work with using tidy tools. The first few columns will always correspond to the dimensions of the cube. The <code>is_missing</code> column represents whether any of the constituent categories are missing, which lets you easily filter out missing elements from the table. The last columns contain the cube measures which will usually be <code>count</code> and <code>row_count</code>. The <code>row_count</code> column contains the unweighted counts, and the <code>count</code> column contains the weighted counts. If there is no weighting applied to the dataset, then <code>count</code> and <code>row_count</code> will be the same.</p>
 <p>The cube output is now in the correct format to feed into tidyverse tools. Here we filter the dataset to produce a readable chart.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">cube_tbl</span> <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="../reference/filter.html">filter</a></span>(
-        !<span class="no">is_missing</span>,
-        <span class="no">Professional</span> <span class="kw">==</span> <span class="st">"Professional developer"</span>) <span class="kw">%&gt;%</span>
-    <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="no">count</span>)) <span class="kw">%&gt;%</span>
-    <span class="fu">top_n</span>(<span class="fl">10</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">y</span> <span class="kw">=</span> <span class="no">Country</span>, <span class="kw">x</span> <span class="kw">=</span> <span class="no">count</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="no">TabsSpaces</span>)) +
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
-    <span class="fu"><a href="../reference/theme_crunch.html">theme_crunch</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cube_tbl</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/filter.html">filter</a></span><span class="op">(</span>
+        <span class="op">!</span><span class="va">is_missing</span>,
+        <span class="va">Professional</span> <span class="op">==</span> <span class="st">"Professional developer"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu">top_n</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">Country</span>, x <span class="op">=</span> <span class="va">count</span>, color <span class="op">=</span> <span class="va">TabsSpaces</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu"><a href="../reference/theme_crunch.html">theme_crunch</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Selecting by row_count</code></pre>
 <p><img src="plotting_files/figure-html/unnamed-chunk-5-1.png" width="768"></p>
 <p>This lets you combine the speed and efficiency of the Crunch computation infrastructure with the flexibility of the tidyverse. You can let Crunch do the memory intensive counting operation, but still get a tidy dataframe representation that is easy to work with using other packages.</p>
@@ -184,9 +195,10 @@
 <h2 class="hasAnchor">
 <a href="#array-variables-in-tibbles" class="anchor"></a>Array Variables in tibbles</h2>
 <p>Array variables are treated slightly differently from regular Crunch variables both in the cube itself and the tbl_df which is produced by <code>as_tibble</code>. Array variables add two dimensions to the tibble, in the case of categorical array variables these will be the subvariables and their categories, and for multiple response this will be the options and whether or not each option was selected.</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">cube</span> <span class="kw">&lt;-</span> <span class="fu"><a href="http://crunch.io/r/crunch//reference/crtabs.html">crtabs</a></span>(~ <span class="no">WantWorkMR</span> + <span class="no">ImportantHiring</span>, <span class="no">ds</span>)
-<span class="no">cube_tbl</span> <span class="kw">&lt;-</span> <span class="fu">as_tibble</span>(<span class="no">cube</span>)
-<span class="no">cube_tbl</span></pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cube</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://crunch.io/r/crunch//reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">WantWorkMR</span> <span class="op">+</span> <span class="va">ImportantHiring</span>, <span class="va">ds</span><span class="op">)</span>
+<span class="va">cube_tbl</span> <span class="op">&lt;-</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="va">cube</span><span class="op">)</span>
+<span class="va">cube_tbl</span></code></pre></div>
 <pre><code>## # A tibble: 6,120 x 7
 ##    WantWorkMR_items WantWorkMR_sele… ImportantHiring… ImportantHiring…
 ##    &lt;fct&gt;            &lt;lgl&gt;            &lt;fct&gt;            &lt;fct&gt;           
@@ -227,7 +239,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
