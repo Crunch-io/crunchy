@@ -74,6 +74,7 @@ with_mock_crunch({
         expect_equivalent(names(l), "ds")
     })
     test_that("generateCategoryCheckboxes produces correct HTML", {
+        skip_on_cran()
         tag <- generateCategoryCheckboxes(ds, "location", "Multiple Response")
         expected_html <- c(
             "<div id=\"mr_selection\" class=\"form-group shiny-input-checkboxgroup shiny-input-container\">",
