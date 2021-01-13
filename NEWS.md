@@ -1,7 +1,9 @@
-# crunch 0.3.3 (Development version)
+# crunchy 0.3.4 (Development version)
+
+# crunchy 0.3.3
 * Skip tests that are too dependent on shiny's internals. 
 
-# crunch 0.3.2
+# crunchy 0.3.2
 * Fixes to tests for upcoming crunch package update.
 
 # crunchy 0.3.1
