@@ -5,7 +5,7 @@
     <description>Recent content in The Dev Blog on Modern survey data analysis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>2021-01-27T19:21:19+00:00</lastBuildDate>
+    <lastBuildDate>2021-01-28T17:44:55+00:00</lastBuildDate>
     
         <atom:link href="//crunch-io.github.io/crunchy/newsite/dev/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,6 +21,246 @@
       <noProfiles>false</noProfiles>
       <pinned>false</pinned>
       <description></description>
+      <content>&lt;p&gt;At Crunch, one of the ways we try to make data exploration simple is by
+providing sensible default views that take into account the properties
+of your data and metadata. We&amp;rsquo;re in the process of releasing some
+plotting methods in our &lt;code&gt;crplyr&lt;/code&gt; R package that define methods for
+&lt;code&gt;ggplot2&lt;/code&gt;&amp;rsquo;s
+&lt;a href=&#34;https://ggplot2.tidyverse.org/reference/autoplot.html&#34;&gt;&lt;code&gt;autoplot()&lt;/code&gt;&lt;/a&gt;
+function. &lt;code&gt;autoplot()&lt;/code&gt; was the ideal approach for us to encapsulate the
+logic of how to &amp;ldquo;just do the right thing.&amp;rdquo; You can do the analysis you
+want, and it will make smart choices about how to display it with no
+additional input&amp;ndash;all of which you can control or override with
+additional &lt;code&gt;ggplot2&lt;/code&gt; layers, if you want.&lt;/p&gt;
+&lt;p&gt;This lets us plot Crunch variables and high dimensional survey
+cross-tabs easily, while making sure that the plot always fits the data.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
+&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(crplyr)
+
+crunch&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;login&lt;/span&gt;()
+ds &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loadDataset&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Not-so-simple dataset with all types&amp;#34;&lt;/span&gt;)
+
+ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(pasta, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(abolitionists, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tile&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(ds&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;ec, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Making it look easy, though, can be hard work. Our &lt;code&gt;autoplot&lt;/code&gt; methods
+inspect the input objects to understand their dimensionality and data
+types and choose an appropriate visualization. Figuring out and passing
+the right arguments to the right places can be messy, so in order to
+make these functions work, we took advantage of
+&lt;a href=&#34;https://dplyr.tidyverse.org/articles/programming.html&#34;&gt;tidyeval&lt;/a&gt;, a
+framework that systematizes non-standard evaluation in R, now
+also supported in the new &lt;a href=&#34;https://www.tidyverse.org/articles/2018/07/ggplot2-3-0-0/&#34;&gt;3.0.0 release of
+ggplot2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To illustrate this pattern, this blog post goes through a simplified
+example using the &amp;ldquo;diamonds&amp;rdquo; example dataset and pure &lt;code&gt;dplyr&lt;/code&gt; methods.
+We&amp;rsquo;ll create a plotting function that adjusts to the number of grouping
+variables in a tibble. This lets you pipe data from a dplyr pipeline
+into a single function and get a meaningful, appropriate plot.&lt;/p&gt;
+&lt;p&gt;The actual code for our Crunch &lt;code&gt;autoplot&lt;/code&gt; methods is
+&lt;a href=&#34;https://github.com/Crunch-io/crplyr/blob/ggplot-methods/R/plotting.R&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;non-standard-evaluation-great-power-great-pain&#34;&gt;Non-Standard Evaluation: Great Power, Great Pain&lt;/h2&gt;
+&lt;p&gt;A great feature the R language has is that it lets you access and
+manipulate the environment in which a function is called. This
+non-standard evaluation (NSE) gives package authors a flexible and
+powerful way to build programming interfaces.&lt;/p&gt;
+&lt;p&gt;At Crunch, we use NSE a lot. One example is in reporting better error
+messages. If you send the wrong data to the API, you might get back a
+response like &lt;code&gt;400: Payload is malformed&lt;/code&gt;. That&amp;rsquo;s not very helpful even
+for users who know our API well. We use NSE to inspect the user&amp;rsquo;s
+calling environment, figure out which variables or data structures are
+causing the problem, and &lt;a href=&#34;https://github.com/Crunch-io/rcrunch/blob/1b8ab2f22f3b08d246cd50232c3322de963f0165/R/geo.R#L108&#34;&gt;suggest a
+fix&lt;/a&gt;:
+instead of a generic validation message, we error with the more helpful
+&lt;code&gt;ds$some_name must be a Crunch Variable&lt;/code&gt;, pointing back to the input that the user typed.&lt;/p&gt;
+&lt;p&gt;Despite working with NSE all the time, we&amp;rsquo;re pretty sure that
+we&amp;rsquo;ve never once gotten it right on the first try. The main reason is
+that whenever you are capturing an expression to evaluate later you need
+to also keep track of which environment you should evaluate that
+expression in. This makes it really difficult to pass unevaluated
+expressions between functions and have the evaluation occur without
+error. For instance, take this code which replaces a &lt;code&gt;missing&lt;/code&gt; function
+argument with a logical value:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f1 &amp;lt;- function(i, j, ...) {
+    args &amp;lt;- eval(substitute(alist(i, j, ...)))
+    args &amp;lt;- replace_missing(args)
+    return(as.character(args))
+}
+
+replace_missing &amp;lt;- function(args){
+    out &amp;lt;- lapply(args, function(x){
+        if (is.symbol(x)) {
+            x &amp;lt;- tryCatch(eval(x), error = function(c){
+                msg &amp;lt;- conditionMessage(c)
+                if (msg == &amp;quot;argument is missing, with no default&amp;quot;) {
+                    return(TRUE)
+                } else {
+                    stop(c)
+                }
+            })
+        }
+        return(eval(x))
+    })
+    return(out)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This code captures an expression at the top level, and passes it down to
+a second function which returns &lt;code&gt;TRUE&lt;/code&gt; if it can&amp;rsquo;t find the argument,
+and evaluates expression if it can. We use code very similar to this
+for &lt;a href=&#34;https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R#L116-L131&#34;&gt;subsetting CrunchCube
+objects&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a tricky mistake here though: we aren&amp;rsquo;t specifying in which
+environment we want that evaluation to take place. So if we happen to
+send a variable that is used somewhere in the call stack, we&amp;rsquo;ll get the
+wrong result:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x &amp;lt;- 1
+y &amp;lt;- 1
+
+f1(1, , 3)
+
+## [1] &amp;quot;1&amp;quot;    &amp;quot;TRUE&amp;quot; &amp;quot;3&amp;quot;
+
+f1(y, , 3)
+
+## [1] &amp;quot;1&amp;quot;    &amp;quot;TRUE&amp;quot; &amp;quot;3&amp;quot;
+
+f1(x, , 3)
+
+## [1] &amp;quot;x&amp;quot;    &amp;quot;TRUE&amp;quot; &amp;quot;3&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;What&amp;rsquo;s happening here is that when the final &lt;code&gt;eval(x)&lt;/code&gt; is happening, &lt;code&gt;x&lt;/code&gt;
+is identified through lexical scoping, and so it ends up using the &lt;code&gt;x&lt;/code&gt;
+that&amp;rsquo;s in the &lt;code&gt;lapply&lt;/code&gt; environment, rather than the one that&amp;rsquo;s in the
+global environment. To fix this, we need to specify the environment
+where that evaluation should take place. This is an easy thing to
+forget, and presents its own problems if you move functions around, or
+later call them in a different order.&lt;/p&gt;
+&lt;h2 id=&#34;enter-the-quosure&#34;&gt;Enter the Quosure&lt;/h2&gt;
+&lt;p&gt;Tidyeval offers a solution to this problem: it bundles the expression
+and its environment in a single object called a &amp;ldquo;quosure&amp;rdquo;. What this
+means is that as a developer, you don&amp;rsquo;t have to worry about matching
+expressions to environments and can pass unevaluated expressions between
+functions with confidence. Because the expression and the environment
+are bundled together, when you end up evaluating it you won&amp;rsquo;t ever be
+surprised by the result.&lt;/p&gt;
+&lt;h2 id=&#34;autoplot&#34;&gt;Autoplot&lt;/h2&gt;
+&lt;p&gt;Back to our &lt;code&gt;autoplot()&lt;/code&gt; project, our initial goal is to have a single function that will produce different
+plots based on the number of grouping variables in the tibble it
+receives. First, we create a general plotting function
+that figures out which plotting sub-function to use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
+&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(dplyr)
+
+autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
+    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
+    } else {
+        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
+    }
+    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The function inspects the data frame and then selects a plotting
+function based on the number of groups in it. It then
+captures the names of the dataset as a list of symbols and passes it
+down to the plotting function. The next step is to write the two
+plotting functions that actually do the work:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;plot_1d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
+    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
+    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
+    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
+}
+
+diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-5-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The convenient thing about using tidy eval in this case is that we can
+confidently pass the unevaluated names into both the &lt;code&gt;dplyr&lt;/code&gt; and
+&lt;code&gt;ggplot2&lt;/code&gt; code without worrying that the evaluation will fail. This
+means we can arrange the dataset based on the measure name, and then
+plot that measure even though we don&amp;rsquo;t know ahead of time what the
+measure will be called. We can do the same thing with the 2d plot:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;plot_2d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
+    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
+    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
+    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups, &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], , color &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[2]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
+}
+
+diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut ,clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-6-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This is basically the same code as the 1D plot except that we used the
+splice operator (&lt;code&gt;!!!&lt;/code&gt;) in the select call and added another grouping
+variable on the color dimension.&lt;/p&gt;
+&lt;p&gt;What happens when you have more than three dimensions? The &lt;code&gt;ggplot2&lt;/code&gt;
+package allows us to use tidyeval to dynamically add facets.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
+    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
+    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
+
+    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
+    } else {
+        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
+    }
+    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
+    out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
+
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) {
+        groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(groups)
+        out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; out &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+            &lt;span style=&#34;color:#a6e22e&#34;&gt;facet_wrap&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;vars&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups[3&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups)]))
+    }
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;return&lt;/span&gt;(out)
+}
+
+diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut, color, clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(number_of_diamonds &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-7-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Tidyeval solves the main challenges of working with R&amp;rsquo;s non-standard evaluation by
+bundling expressions and environments into quosures. The new release of
+&lt;code&gt;ggplot2&lt;/code&gt; unlocks the power of using tidyeval for making powerful
+visualizations quickly. Though we could have made &lt;code&gt;autoplot&lt;/code&gt; methods for
+Crunch objects before tidyeval support, it would have been much more
+complicated and error-prone. Using tidyeval and &lt;code&gt;ggplot2&lt;/code&gt; 3.0.0 to pass
+quosures between functions unlocks powerful new
+mechanisms of building user-friendly functions. And that let&amp;rsquo;s us do
+what we strive to do most: get out of the way and let our users explore
+their data quickly in a way that matches their intuitions for how R and
+tidy conventions work.&lt;/p&gt;
+</content>
     </item>
     
     
@@ -35,6 +275,125 @@
       <noProfiles>false</noProfiles>
       <pinned>false</pinned>
       <description>&#34;Nightwatchrun&#34;, our new open-source tool, eliminates the &#34;works on my machine&#34; problem for automated end-to-end browser testing. Ensure that everyone&#39;s machine has the same configuration using Docker.</description>
+      <content>&lt;p&gt;At Crunch we greatly value tests. We have unit tests, functional tests, and the stack wouldn&amp;rsquo;t be complete without end-to-end tests. Good tests allow us to update code quickly and confidently.&lt;/p&gt;
+&lt;p&gt;For our end-to-end testing we use &lt;a href=&#34;http://nightwatchjs.org&#34;&gt;Nightwatch.js&lt;/a&gt;, a JavaScript
+testing tool that uses &lt;a href=&#34;http://www.seleniumhq.org&#34;&gt;Selenium&lt;/a&gt; to drive a browser to perform tests. Our goal is to be
+able to test our Python backend, our REST APIs, and the
+behavior of our JavaScript single-page application, using a real browser,
+running real code.&lt;/p&gt;
+&lt;p&gt;Anyone that has set up Selenium knows that it can be very picky about
+the versions of the different tools you should have. Selenium 3.4.0 might need
+&lt;a href=&#34;https://sites.google.com/a/chromium.org/chromedriver/&#34;&gt;ChromeDriver&lt;/a&gt; 2.31 which requires &lt;a href=&#34;https://www.google.com/chrome/&#34;&gt;Chrome&lt;/a&gt; 56.3920.234034249324234329 (okay, so
+those version numbers may be made up), and unless you have
+the exact same versions every single time, it can easily result in tests
+that work on one developer&amp;rsquo;s machine but not on another.&lt;/p&gt;
+&lt;p&gt;Compounding the version mismatch problem, we build and test our entire stack on a &lt;a href=&#34;https://jenkins.io&#34;&gt;Jenkins&lt;/a&gt; cluster. Many of our developers would code and test on &lt;a href=&#34;https://www.apple.com/macos/&#34;&gt;Apple MacOS&lt;/a&gt;, but our Jenkins pipeline
+was running on &lt;a href=&#34;http://ubuntu.com&#34;&gt;Ubuntu&lt;/a&gt; or &lt;a href=&#34;https://www.centos.org&#34;&gt;CentOS&lt;/a&gt;. This led to messages like these being posted to our Slack channel:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;new variable tests pass locally so I&amp;rsquo;m sending them to jenkins for failure&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;and&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;once again it passes locally (I’m tired of saying that). we’ll see if it
+passes the Jenkins Arbitron 5000&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As a result, developers were less likely to run all tests locally before pushing because Jenkins was the final arbiter
+of truth, and well, it would pass locally anyway (right?). Moreover, trying to debug this kind of &amp;ldquo;works on my machine&amp;rdquo; problem was really, really painful.&lt;/p&gt;
+&lt;p&gt;In addition to the cost to developers, operations spent an awful
+lot of time testing Selenium/ChromeDriver/Chrome versions to verify that
+everything continued to work. Linux package management makes installing the
+latest version of a package incredibly simple, but rolling back is less so. Unless you manually keep
+around the old versions of packages, you end up scouring the net for just the
+right &lt;code&gt;.deb&lt;/code&gt; or &lt;code&gt;.rpm&lt;/code&gt; that would make everything function again. In the mean
+time, developers are unhappy because you&amp;rsquo;ve just taken down their testing
+platform.&lt;/p&gt;
+&lt;p&gt;This is where &lt;a href=&#34;https://www.docker.com&#34;&gt;Docker&lt;/a&gt; containers presented a perfect solution for us.
+Selenium makes Docker containers available in a variety of configurations on
+the &lt;a href=&#34;https://hub.docker.com/u/selenium/&#34;&gt;Selenium Dockerhub&lt;/a&gt;. Using the &lt;a href=&#34;https://hub.docker.com/r/selenium/standalone-chrome/&#34;&gt;standalone-chrome&lt;/a&gt; container, we
+can easily spawn a Selenium server that allows us to connect and spawn Chrome
+browsers for testing. The docker container is easy to start up, easy to
+tear down, and because it is self contained and doesn&amp;rsquo;t require installation of
+packages or software, easy to upgrade.&lt;/p&gt;
+&lt;p&gt;Hence the birth of &lt;a href=&#34;https://github.com/crunch-io/nightwatchrun/&#34;&gt;nightwatchrun&lt;/a&gt;, which we have just made public under the MIT license. Given our existing test suite of Nightwatch
+tests, we wanted to be able to quickly spin up a new container, run our tests,
+and after the tests were completed, tear down the container. This approach solved our two big problems.
+Because Jenkins is running the exact same software/container as developers, &amp;ldquo;Passes locally, but not on Jenkins&amp;rdquo;
+is a thing of the past. Our developers can now easily run their Nightwatch
+tests against the exact same software stack used by Jenkins with &lt;a href=&#34;https://www.docker.com/docker-mac&#34;&gt;Docker for Mac&lt;/a&gt;.
+Moreover, operations is no longer in the business of testing all kinds of different
+versions against each other to find the right combination of dependencies.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nightwatchrun.sh&lt;/code&gt; is a simple shell script that, given a Nightwatch.js
+configuration file, will run a Docker container, get its IP address/port
+number, set some environment variables, and start Nightwatch. The environment
+variables are used to set the Selenium host/port number.&lt;/p&gt;
+&lt;p&gt;You can try it out yourself:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone git@github.com:Crunch-io/nightwatchrun.git
+yarn install
+./nightwatchrun.sh -c nightwatch.conf.js
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This will output something similar to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Riley:nightwatchrun laurenipsum$ ./nightwatchrun.sh -c nightwatch.conf.js
+Starting selenium testing against environment: stable with version latest
+Using config file: nightwatch.conf.js
+Unable to find image &#39;selenium/standalone-chrome:latest&#39; locally
+latest: Pulling from selenium/standalone-chrome
+9fb6c798fa41: Pull complete
+3b61febd4aef: Pull complete
+9d99b9777eb0: Pull complete
+d010c8cf75d7: Pull complete
+7fac07fb303e: Pull complete
+64b080cf80c2: Pull complete
+4eb86df147d6: Pull complete
+4dd0b38ce61c: Pull complete
+2b0fc7beb522: Pull complete
+8682d4afe8ba: Pull complete
+8ad935df4db2: Pull complete
+e3890abf9672: Pull complete
+96df5dc43939: Pull complete
+18b664097abd: Pull complete
+984e25c49459: Pull complete
+4369356a8c66: Pull complete
+bb31d692f888: Pull complete
+c11c4dfb44fe: Pull complete
+Digest: sha256:35f9029adb074c6a23c367e0c4a5986bd7fa0fb14cdac7f8cdcc42a4613de392
+Status: Downloaded newer image for selenium/standalone-chrome:latest
+513369b2e07b93794b8ddd5837131475c58405e7ea6d60fcf8447edec7c1c227
+Today&#39;s test are run against:
+Google Chrome 61.0.3163.100 unknown
+Selenium is running at 0.0.0.0 port 32785
+Selenium is not yet alive. Sleeping 1 second.
+yarn run v1.1.0
+warning From Yarn 1.0 onwards, scripts don&#39;t require &amp;quot;--&amp;quot; for options to be forwarded. In a future version, any explicit &amp;quot;--&amp;quot; will be forwarded as-is to the scripts.
+$ &amp;quot;/Users/xistence/Projects/Crunch/nightwatchrun/node_modules/.bin/nightwatch&amp;quot; &amp;quot;-c&amp;quot; &amp;quot;nightwatch.conf.js&amp;quot;
+Running in parallel with auto workers.
+Started child process for: crunchDemo
+ crunchDemo   Running in parallel with auto workers.
+ crunchDemo   \n
+ crunchDemo   [Crunch Demo] Test Suite
+============================
+ crunchDemo   Results for:  Demo test Crunch
+ crunchDemo   ✔ Element &amp;lt;body&amp;gt; was visible after 46 milliseconds.
+ crunchDemo   ✔ Testing if the page title equals &amp;quot;Crunch&amp;quot;.
+ crunchDemo   ✔ Testing if element &amp;lt;div.intro-message h3&amp;gt; contains text: &amp;quot;A modern platform&amp;quot;.
+ crunchDemo   ✔ Testing if element &amp;lt;div.intro-message h3 + h3&amp;gt; contains text: &amp;quot;for analytics&amp;quot;.
+ crunchDemo   OK. 4 assertions passed. (4.503s)
+
+  &amp;gt;&amp;gt; crunchDemo finished.  
+
+
+✨  Done in 5.04s.
+Executed tests 1 times successfully
+Removing the docker container: nightwatchrun.nightwatch.conf.js
+nightwatchrun.nightwatch.conf.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Already have a Nightwatch.js setup? Take a look at
+&lt;a href=&#34;https://github.com/Crunch-io/nightwatchrun/blob/master/nightwatch.conf.js&#34;&gt;nightwatch.conf.js&lt;/a&gt;, and copy over the changes necessary.&lt;/p&gt;
+&lt;p&gt;Testing with Docker has made a world of difference. Less hassle, no need to
+locally install the right combination of the JRE/Selenium/ChromeDriver/Chrome,
+and tests now run self-contained in a headless container, so no flash of a
+browser opening or focus stealing.&lt;/p&gt;
+&lt;p&gt;If you have suggestions or improvements for nightwatchrun, please add an issue on the &lt;a href=&#34;https://github.com/Crunch-io/nightwatchrun/issues&#34;&gt;Github
+issue tracker&lt;/a&gt;, or provide a pull request with your suggested changes.&lt;/p&gt;
+</content>
     </item>
     
     
@@ -49,6 +408,25 @@
       <noProfiles>false</noProfiles>
       <pinned>false</pinned>
       <description>Building software for a specific target audience can be challenging, particularly when developers&#39; intuitions are very different from those of that audience. At a recent all-hands meeting, we exploited a unique opportunity to turn our developers into legitimate users of our product.</description>
+      <content>&lt;p&gt;Crunch is designed to make it easy to manage and explore data, and it is particularly optimized for survey data. We natively support data types that are common in survey research, and it is also simple to do things like generate population weights and apply them automatically to all calculations. And the kinds of analyses and reports that are standard among researchers are easily selected and exported.&lt;/p&gt;
+&lt;p&gt;These features are great if you work at a research company, or in a marketing department, or otherwise work with surveys professionally. But if you&amp;rsquo;re a software engineer, you live in code, not crosstabs and spreadsheets. So on the development team, we face this tension continually: we&amp;rsquo;re building a product for which the target audience is not people like us. How can we best allow our team to find solutions and engage our brains fully to make the product better without letting &lt;a href=&#34;https://www.amazon.com/Inmates-Are-Running-Asylum-Products/dp/0672326140&#34;&gt;the inmates run the asylum&lt;/a&gt;?&lt;/p&gt;
+&lt;figure class=&#34;float-md-left img-fluid&#34;&gt;
+    &lt;img src=&#34;dev/blog/images/ice-cream-display-figure.jpg&#34; width=&#34;287&#34; height=&#34;384&#34;/&gt; &lt;figcaption&gt;
+            &lt;p&gt;
+                    &lt;a href=&#34;https://commons.wikimedia.org/wiki/File:Ice_cream_display_figure.JPG&#34;&gt;Ice cream eating ice cream&lt;/a&gt;&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;We routinely do many things to open ourselves to our users, from discussions and screensharing with those who report bugs or request features to periodic full product demos to the team. Those are all good ways to learn more about our users and how they think, and they definitely help increase our empathy. However, there&amp;rsquo;s no better way to increase empathy with your users than to become one yourself: to eat your own ice cream (also known as &lt;a href=&#34;https://en.wikipedia.org/wiki/Eating_your_own_dog_food&#34;&gt;eating your own dog food&lt;/a&gt;, although ice cream appears to be more popular amongst our team). Under normal circumstances, though, our development team doesn&amp;rsquo;t have a real reason to use our product&amp;mdash;it&amp;rsquo;s not designed to help us write software.&lt;/p&gt;
+&lt;p&gt;At our all-hands meetup this summer near Tahoe, we gave the team a special assignment: Import, clean, and analyze the &lt;a href=&#34;https://insights.stackoverflow.com/survey/&#34;&gt;Stack Overflow developer survey&lt;/a&gt;. Find something about software developers that you think our CEO should know, and deliver results to him, all using our product. It&amp;rsquo;s a great exercise because the dataset is about things developers are more likely to care about&amp;mdash;themselves and developers like them&amp;mdash;and it received a bit of &lt;a href=&#34;https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&#34;&gt;popular attention&lt;/a&gt;   &lt;a href=&#34;http://evelinag.com/blog/2017/06-20-stackoverflow-tabs-spaces-and-salary/&#34;&gt;and reaction&lt;/a&gt;. At the same time, it&amp;rsquo;s a survey&amp;mdash;so our product should be ideal for exploring it.&lt;/p&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;p&gt;The experience was great. Over the coming weeks, we&amp;rsquo;ll be writing more about some of the work that various people on the team did and what we found in the data. One of the fun things about the exercise was seeing how different people took the open-ended prompt and ran with it in very different directions, exploiting a broad spectrum of features of the Crunch platform.&lt;/p&gt;
+&lt;p&gt;We collectively created 15 different reports that covered topics from gender representation in tech to job satisfaction internationally. These reports took many different forms: there were slide decks shared with the team in the web app, Excel workbooks exported, iPython notebooks, and data visualizations done in R. Some also created a CrunchBox, our public widget that allows our users to embed data visualizations in online articles or blog posts (like this!). Here&amp;rsquo;s an example: click on the graph below to pick different variables to analyze and change the visualization settings.&lt;/p&gt;
+&lt;div style=&#34;text-align: center; padding: 30px;&#34;&gt;
+&lt;iframe src=&#34;https://s.crunch.io/widget/index.html#/ds/b877914954c7e82db199753717ddaef9/row/00001c/column/000003?viz=geo&amp;cp=percent&amp;dp=0&amp;grp=stack&#34; width=&#34;600&#34; height=&#34;480&#34;&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;h2 id=&#34;what-does-our-ice-cream-taste-like&#34;&gt;What does our ice cream taste like?&lt;/h2&gt;
+&lt;p&gt;Overall, we felt that our ice cream tasted pretty good! Yet, as with any fine dining experience, the difference between a good meal and an excellent meal comes down to the details in the service and presentation. We noticed a lot of little bugs and usability issues, rough edges that our everyday users know how to navigate but that stick out to someone new, or perhaps details that aren&amp;rsquo;t quite right but that aren&amp;rsquo;t critical enough that people bother to report them. But with our attention on them, and with our inherent drive to build a better product, we not only saw them but said, &amp;ldquo;Hey, let me just fix that right now.&amp;rdquo; We fixed about 20 issues in the web app and pushed a bunch of enhancements to our R and Python libraries as well.&lt;/p&gt;
+</content>
     </item>
     
     
@@ -63,6 +441,57 @@
       <noProfiles>false</noProfiles>
       <pinned>false</pinned>
       <description>Life is short. Here are seven tips to help you automate your static-site building so that you can focus on more important things.</description>
+      <content>&lt;p&gt;At Crunch.io, we&amp;rsquo;re fervent believers in automation. If something requires a human to remember to do an extra manual step, it won&amp;rsquo;t happen consistently. We automate test running so that we don&amp;rsquo;t have to fix the same bug twice. We write code to do tedious tasks so that we can devote our mental energy to harder problems. We automate processes and policies so that developers don&amp;rsquo;t have remember the right things to do—the build and continuous-integration systems guide us.&lt;/p&gt;
+&lt;p&gt;Occasionally we find an area where we are doing manual, menial tasks, and someone will carve out some time to automate them away. Recently we noticed that our &lt;a href=&#34;https://crunch.io/api/reference/&#34;&gt;API documentation&lt;/a&gt; wasn&amp;rsquo;t consistently being updated. It wasn&amp;rsquo;t that developers were failing to write documentation updates with each change—that part is integrated with our build and review process. Rather, the updates were to markdown files, but the &lt;a href=&#34;https://github.com/lord/slate&#34;&gt;static site generator&lt;/a&gt; that turned them into HTML wasn&amp;rsquo;t being run regularly.&lt;/p&gt;
+&lt;p&gt;GitHub builds Jekyll sites automatically, and we use it for some other pages. But this one, while in Ruby, required an extra build step. And we don&amp;rsquo;t use Ruby in production and don&amp;rsquo;t have any Ruby developers on the team, so there was a nontrivial setup cost associated with being able to build the docs website. Some of us (on OSX/macOS) struggled to get a working Ruby setup. So no one really wanted to mess with it.&lt;/p&gt;
+&lt;p&gt;Plus, someone had to remember to take action when there were changes to the documentation markdown. Even the best multitaskers among us struggled to keep track consistently. As a result, the published documentation was often only updated when someone asked us about an API that we knew was documented but didn&amp;rsquo;t show up in our api reference.&lt;/p&gt;
+&lt;p&gt;That situation was not improving on its own, and as we were starting to add another static site (this blog), also using GitHub Pages and also not using Jekyll—it uses Hugo—we figured it was time to learn how to automate away this build step.&lt;/p&gt;
+&lt;h1 id=&#34;automating-the-site-build&#34;&gt;Automating the site build&lt;/h1&gt;
+&lt;p&gt;Our goal: automatically build the site and deploy on GitHub Pages using Travis-CI. On each push to the &lt;code&gt;master&lt;/code&gt; branch, build it, commit the built code to the &lt;code&gt;gh-pages&lt;/code&gt; branch, and push that. GitHub Pages then updates what it is serving.&lt;/p&gt;
+&lt;p&gt;There &lt;a href=&#34;https://blog.christophvoigt.com/setting-up-hugo-with-github-pages/&#34;&gt;are&lt;/a&gt; &lt;a href=&#34;http://speps.github.io/articles/hugo-setup/&#34;&gt;lots&lt;/a&gt; &lt;a href=&#34;http://rcoedo.com/post/hugo-static-site-generator/&#34;&gt;of&lt;/a&gt; &lt;a href=&#34;https://pghalliday.com/github/ssh/travis-ci/2014/09/19/auto-build-and-deploy-github-pages-with-travis-ci.html&#34;&gt;blog&lt;/a&gt; &lt;a href=&#34;https://www.metachris.com/2017/04/continuous-deployment-hugo---travis-ci--github-pages/&#34;&gt;posts&lt;/a&gt; about how to use Travis to build your static site. Many of them were helpful. Some gave bad advice. None were complete enough to just drop in and use. In the end, it took nine attempts to get the build-and-publish working for the API docs and ten attempts for the dev blog. The following discussion synthesizes the useful parts of those posts and adds (or emphasizes differently) the parts that we found essential. The discussion does assume familiarity with GitHub, Travis-CI, and static-site generators, so if you need more context on those, start with those other blog posts (or Google).&lt;/p&gt;
+&lt;h2 id=&#34;1-make-a-github-api-key-and-encrypt-it&#34;&gt;1. Make a GitHub API key and encrypt it&lt;/h2&gt;
+&lt;p&gt;Your build script needs more access to the repository on GitHub than Travis typically does—it needs to be able to push. To allow this, generate an API key for this job, encrypt it, and add it to the .travis.yml.&lt;/p&gt;
+&lt;p&gt;First, go to the GitHub site and &lt;a href=&#34;https://github.com/settings/tokens&#34;&gt;generate a new token&lt;/a&gt;. You only need to give it access to the &lt;code&gt;public_repo&lt;/code&gt; scope because your GitHub Pages repository needs to be public anyway.&lt;/p&gt;
+&lt;p&gt;Once you have that, encrypt it using travis&amp;rsquo;s Ruby library (yes, you still need a functioning Ruby environment, but only this once). See their &lt;a href=&#34;https://docs.travis-ci.com/user/encryption-keys/&#34;&gt;instructions&lt;/a&gt;. Note that you&amp;rsquo;re not just encrypting the API token, you&amp;rsquo;re encrypting the pair of &lt;code&gt;NAME=tokenstring&lt;/code&gt;, so remember that variable name for use in your script. To keep with the examples here (and borrowing from somewhere else on the internet), we did:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gem install travis
+travis encrypt GH_TOKEN=token --add
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;token&lt;/code&gt; is the string copied from the GitHub page when the token was generated. Do this in the directory of your git repository, and the &lt;code&gt;--add&lt;/code&gt; it will add it to the .travis.yml file for you.&lt;/p&gt;
+&lt;h2 id=&#34;2-create-an-orphan-gh-pages-branch&#34;&gt;2. Create an orphan gh-pages branch&lt;/h2&gt;
+&lt;p&gt;In order to set &amp;ldquo;gh-pages&amp;rdquo; as the branch from which to &lt;a href=&#34;https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/&#34;&gt;serve the website&lt;/a&gt;, the branch needs to exist. And you don&amp;rsquo;t want or need it to have any of your markdown and theme code—you just want it to have the generated site. So, create an empty &amp;ldquo;orphan&amp;rdquo; branch called &amp;ldquo;gh-pages&amp;rdquo; and push that. &lt;a href=&#34;http://www.bitflop.dk/tutorials/how-to-create-a-new-and-empty-branch-in-git.html&#34;&gt;This post&lt;/a&gt; has a simple explanation; &lt;a href=&#34;https://gist.github.com/seanbuscay/5877413&#34;&gt;here&lt;/a&gt; is some sample code that&amp;rsquo;s four lines too long.&lt;/p&gt;
+&lt;p&gt;Once you&amp;rsquo;ve pushed, you can turn on GitHub Pages. Now you&amp;rsquo;re ready to start composing the .travis.yml file that will drive the build.&lt;/p&gt;
+&lt;h2 id=&#34;3-re-clone-the-repository&#34;&gt;3. Re-clone the repository&lt;/h2&gt;
+&lt;p&gt;Travis will as a matter of course clone your github repository and checkout the current branch. Unfortunately, for efficiency, it only clones the active commit—there&amp;rsquo;s no branch history, and importantly, no other branches. You need to be able to build on master, then checkout gh-pages and commit the build artifacts there. In order to do this, clone the repository again and get the full tree. So this goes in one of the sections that runs code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- git clone https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-run-only-on-the-master-branch&#34;&gt;4. Run only on the master branch&lt;/h2&gt;
+&lt;p&gt;We don&amp;rsquo;t want any development branches to be built and pushed to our production site automatically. And moreover, if the Travis workflow is build, commit, and push to gh-pages, each build would kick off another build if we didn&amp;rsquo;t restrict it. So this goes in the .travis.yml:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;branches:
+  only:
+  - master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;5-add-some-git-config&#34;&gt;5. Add some git config&lt;/h2&gt;
+&lt;p&gt;The commit will fail if it doesn&amp;rsquo;t have a username. You could inline it with the commit, but it reads more cleanly if you set them up before.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- git config user.email &amp;quot;you@example.com&amp;quot;
+- git config user.name &amp;quot;You&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;6-on-commit-pass-if-there-are-no-changes&#34;&gt;6. On commit, pass if there are no changes&lt;/h2&gt;
+&lt;p&gt;If there are no changes, &lt;code&gt;git commit&lt;/code&gt; will exit with an error code, which will terminate your script and mark your build as failed. Normally, there will be changes to commit, but sometimes, like when you&amp;rsquo;re tweaking your .travis.yml to get the build to work, there won&amp;rsquo;t be. However, if you add &lt;code&gt;|| true&lt;/code&gt; to the end of the line, the script will continue to evaluate. So we added that to the &lt;code&gt;git commit&lt;/code&gt; and &lt;code&gt;git push&lt;/code&gt; lines.&lt;/p&gt;
+&lt;h2 id=&#34;7-push-quietly&#34;&gt;7. Push quietly&lt;/h2&gt;
+&lt;p&gt;A few blog posts recommended adding the &lt;code&gt;--quiet&lt;/code&gt; flag to the &lt;code&gt;git push&lt;/code&gt; command, and/or to redirect the standard output to &lt;code&gt;/dev/null&lt;/code&gt;, because otherwise it would print your GitHub token, thus defeating the purpose of encrypting it in step 1. Eventually someone realized that this was a &lt;a href=&#34;https://blog.travis-ci.com/2017-05-08-security-advisory&#34;&gt;security vulnerability&lt;/a&gt; by which tokens could be harvested from Travis logs. Consequently, Travis has presumably fixed this so that &lt;code&gt;push&lt;/code&gt; doesn&amp;rsquo;t print your token anymore, so it&amp;rsquo;s likely fine to omit this detail now, but we&amp;rsquo;ve &lt;a href=&#34;https://github.com/Crunch-io/clatter/blob/master/.travis.yml#L31&#34;&gt;left&lt;/a&gt; the &lt;code&gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt; in there anyway—it&amp;rsquo;s not hurting anything, and we weren&amp;rsquo;t looking at the push log anyway once we got the flow working.&lt;/p&gt;
+&lt;h1 id=&#34;walking-through-the-build-scripts&#34;&gt;Walking through the build scripts&lt;/h1&gt;
+&lt;p&gt;Here are the end results. For the &lt;a href=&#34;https://github.com/Crunch-io/apidocs/blob/master/.travis.yml&#34;&gt;API docs&lt;/a&gt;, we use a Ruby container, install the &lt;code&gt;bundler&lt;/code&gt; package, do a fresh clone of the repository so we get all the branches, and then install necessary dependencies. In the &lt;a href=&#34;https://github.com/Crunch-io/apidocs/blob/master/build.sh&#34;&gt;build script&lt;/a&gt; called next, the HTML and other static files are generated. Then we checkout the &lt;code&gt;gh-pages&lt;/code&gt; branch, delete the old static files, and copy in the ones we just built. After that, commit, push, and the site is updated.&lt;/p&gt;
+&lt;p&gt;For the &lt;a href=&#34;https://github.com/Crunch-io/clatter/blob/master/.travis.yml&#34;&gt;dev blog&lt;/a&gt;, the flow is a little different: we use Hugo (golang) instead of a Ruby library, and instead of pushing to &lt;code&gt;gh-pages&lt;/code&gt;, we &lt;a href=&#34;https://github.com/Crunch-io/clatter/blob/master/.travis.yml#L19-L21&#34;&gt;copy the built blog to serve as a subdirectory&lt;/a&gt; of our company website, which is hosted in a &lt;em&gt;different&lt;/em&gt; repository. (We do also publish a version to &lt;code&gt;gh-pages&lt;/code&gt;, a holdover from our initial testing process, so that&amp;rsquo;s woven in the script too, but it&amp;rsquo;s not a necessary part.)&lt;/p&gt;
+&lt;p&gt;There are a few Hugo-specific features in the dev blog build as well. First, the &amp;ldquo;theme&amp;rdquo; is not part of our repository, so we need to install it by cloning it from GitHub as well. (Note that this means that you should be sure to add the &amp;ldquo;themes&amp;rdquo; directory to your &lt;code&gt;.gitignore&lt;/code&gt; file, as well as the &amp;ldquo;public&amp;rdquo; directory to which the built site gets generated.) Second, as &lt;a href=&#34;http://rcoedo.com/post/hugo-static-site-generator/&#34;&gt;this blog&lt;/a&gt; notes at the very bottom, by some &lt;del&gt;quirk&lt;/del&gt; feature of how Travis builds go projects, the Hugo build will fail unless you provide a Makefile, &lt;em&gt;which can be empty&lt;/em&gt;. So, &lt;code&gt;touch Makefile&lt;/code&gt; and commit before you throw the job up on Travis.&lt;/p&gt;
+&lt;h1 id=&#34;final-observations&#34;&gt;Final observations&lt;/h1&gt;
+&lt;h2 id=&#34;script-or-yaml&#34;&gt;Script or YAML?&lt;/h2&gt;
+&lt;p&gt;Some blogs proposed putting your build script into a .sh file that the .travis.yml file invokes. We didn&amp;rsquo;t find that to help anything. Unless you&amp;rsquo;re planning to run your build script outside of Travis too, there doesn&amp;rsquo;t seem to be a reason to put your build steps outside of the YAML file itself. In fact, it just complicated things—one more file to look at to debug, not to mention that you had to deal with making the shell script executable. Either way works—one of our repos uses a script, the other is all in YAML—but all in the .travis.yml seemed simpler. It evaluates like a script.&lt;/p&gt;
+&lt;h2 id=&#34;before_script-install-after_success-&#34;&gt;before_script, install, after_success, &amp;hellip;&lt;/h2&gt;
+&lt;p&gt;Travis&amp;rsquo;s YAML file supports various blocks that get evaluated sequentially. Where should the code go?&lt;/p&gt;
+&lt;p&gt;It doesn&amp;rsquo;t really matter. Travis-CI is designed for running automated tests. In that context, it makes sense that you have different contexts for setup, running the tests, and things that you&amp;rsquo;d only do if the tests passed, and so on. Here, we&amp;rsquo;re just running a script. Organize your script in a way that makes sense to you, but you could put everything in &lt;code&gt;install&lt;/code&gt;, or &lt;code&gt;script&lt;/code&gt;, or whatever, and it should run just the same.&lt;/p&gt;
+&lt;h2 id=&#34;just-automate-it&#34;&gt;Just automate it.&lt;/h2&gt;
+&lt;p&gt;Even if it takes you nine tries to get the Travis build set up correctly, that&amp;rsquo;s time well spent. Automation isn&amp;rsquo;t just about &lt;a href=&#34;https://xkcd.com/1319/&#34;&gt;saving&lt;/a&gt; &lt;a href=&#34;https://xkcd.com/1205/&#34;&gt;time&lt;/a&gt;: it&amp;rsquo;s about &lt;a href=&#34;https://www.johndcook.com/blog/2015/12/22/automate-to-save-mental-energy-not-time/&#34;&gt;saving mental energy&lt;/a&gt;, and about making sure that important things happen without having to remember to do them. After setting up these jobs on Travis, we can much more easily push updates to our static sites and don&amp;rsquo;t have to remember to do an extra build step. That frees us to build more cool stuff!&lt;/p&gt;
+</content>
     </item>
     
     

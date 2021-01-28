@@ -285,16 +285,16 @@
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
 <pre><code>## Subvariables:
-##   $`ImportantHiringAlgorithms`
-##   $`ImportantHiringTechExp`
-##   $`ImportantHiringCommunication`
-##   $`ImportantHiringOpenSource`
-##   $`ImportantHiringPMExp`
-##   $`ImportantHiringCompanies`
-##   $`ImportantHiringTitles`
-##   $`ImportantHiringEducation`
-##   $`ImportantHiringRep`
-##   $`ImportantHiringGettingThingsDone`</code></pre>
+##   $ImportantHiringAlgorithms         | ImportantHiringAlgorithms
+##   $ImportantHiringTechExp            | ImportantHiringTechExp
+##   $ImportantHiringCommunication      | ImportantHiringCommunication
+##   $ImportantHiringOpenSource         | ImportantHiringOpenSource
+##   $ImportantHiringPMExp              | ImportantHiringPMExp
+##   $ImportantHiringCompanies          | ImportantHiringCompanies
+##   $ImportantHiringTitles             | ImportantHiringTitles
+##   $ImportantHiringEducation          | ImportantHiringEducation
+##   $ImportantHiringRep                | ImportantHiringRep
+##   $ImportantHiringGettingThingsDone  | ImportantHiringGettingThingsDone</code></pre>
 <p>Those names aren’t that pretty. As we saw above, though, we have better names for them appended to the question wording we read in from the schema. Each subvariable <code>description</code> has the full question wording, which really should be the <code>description</code> of the parent array variable, and then after the question mark, the response label.</p>
 <p>Let’s use some regular expressions to clean that up. We can pull the part before the question mark from one of the subvariables and add that to the parent, and then prune the question wording from all and use that as the “names”:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
@@ -305,16 +305,16 @@
 
 <span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
 <pre><code>## Subvariables:
-##   $`Knowledge of algorithms and data structures`
-##   $`Experience with specific tools (libraries, frameworks, etc.) used by the employer`
-##   $`Communication skills`
-##   $`Contributions to open source projects`
-##   $`Experience with specific project management tools &amp; techniques`
-##   $`Previous companies worked at`
-##   $`Previous job titles held`
-##   $`Educational credentials (e.g. schools attended, specific field of study, grades earned)`
-##   $`Stack Overflow reputation`
-##   $`Track record of getting things done`</code></pre>
+##   $ImportantHiringAlgorithms         | Knowledge of algorithms and data struc...
+##   $ImportantHiringTechExp            | Experience with specific tools (librar...
+##   $ImportantHiringCommunication      | Communication skills
+##   $ImportantHiringOpenSource         | Contributions to open source projects
+##   $ImportantHiringPMExp              | Experience with specific project manag...
+##   $ImportantHiringCompanies          | Previous companies worked at
+##   $ImportantHiringTitles             | Previous job titles held
+##   $ImportantHiringEducation          | Educational credentials (e.g. schools ...
+##   $ImportantHiringRep                | Stack Overflow reputation
+##   $ImportantHiringGettingThingsDone  | Track record of getting things done</code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/webApp.html">webApp</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
 <p><img src="images/crunch-importantHiringCA.png"><!-- --></p>

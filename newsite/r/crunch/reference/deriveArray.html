@@ -209,7 +209,7 @@ Array variables allow you to display all of their ratings in a compact table
 rather than a set of distinct variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>deriveArray</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>selections</span>, <span class='va'>...</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>deriveArray</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>selections</span>, numeric <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='fu'>makeArray</span><span class='op'>(</span><span class='va'>subvariables</span>, <span class='va'>name</span>, <span class='va'>...</span><span class='op'>)</span>
 
@@ -233,6 +233,14 @@ should have.</p></td>
       <td><p>character, for <code>makeMR</code> and <code>deriveArray</code> the names of the
 categories to mark as the dichotomous selections. Required for
 <code>makeMR</code>; optional for <code>deriveArray</code>; ignored in <code>makeArray</code>.</p></td>
+    </tr>
+    <tr>
+      <th>numeric</th>
+      <td><p>Logical indicating whether the array should be a numeric
+array or categorical array. <code>NULL</code> the default will guess numeric if
+all variables are known to be numeric and categorical if all are
+categorical. If any subvariables are created from expressions, then
+their type cannot be guessed and so <code>numeric</code> must be specified.</p></td>
     </tr>
     <tr>
       <th>...</th>
