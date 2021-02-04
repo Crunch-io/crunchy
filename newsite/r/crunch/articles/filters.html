@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
       </span>
     </div>
 
@@ -204,13 +204,13 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">dems</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
-## educ                    Male Female
-##   No HS                  NaN   1.00
-##   High school graduate  0.64  -0.08
-##   Some college          0.73   0.30
-##   2-year                1.00   0.00
-##   4-year               -0.12   0.40
-##   Post-grad             0.33   0.12</code></pre>
+## educ                   Male Female
+##   No HS                   0      3
+##   High school graduate    7     17
+##   Some college            8     16
+##   2-year                  1      6
+##   4-year                  9     19
+##   Post-grad               5      5</code></pre>
 <p>When you extract a variable from a filtered dataset, it too is filtered. So</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">dems</span><span class="op">$</span><span class="va">educ</span><span class="op">)</span></code></pre></div>

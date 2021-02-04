@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
       </span>
     </div>
 
@@ -193,13 +193,13 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
-## educ                        Male    Female
-##   No HS                12.628200  8.698227
-##   High school graduate 43.315170 43.297542
-##   Some college         31.612096 29.963579
-##   2-year                8.567314 15.260707
-##   4-year               16.492669 22.581293
-##   Post-grad             8.935983  8.647220</code></pre>
+## educ                   Male Female
+##   No HS                   6      6
+##   High school graduate   33     38
+##   Some college           26     35
+##   2-year                  6     18
+##   4-year                 25     32
+##   Post-grad              15     10</code></pre>
 <p>If we want unweighted data, that’s easy enough:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span>, weight<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
@@ -257,37 +257,37 @@
 ## 
 ##                         imiss
 ## imiss                    Very Important Somewhat Important Not very Important Unimportant
-##   Abortion                     31.11036           27.53957          30.125371   32.776132
-##   Education                    47.47270           46.51134          11.613407   15.953981
-##   Gay rights                   11.31668           28.19149          26.431299   55.117086
-##   Health care                  75.85298           39.27766           3.819861    2.600933
-##   Immigration                  49.31502           37.34169          17.139246   17.755480
-##   Medicare                     59.80997           47.99707           9.550301    4.194091
-##   Social security              68.15899           41.79910           6.273460    5.319881
-##   Taxes                        65.01490           41.59154           6.653878    7.761953
-##   Terrorism                    45.64391           42.62133          11.107822   19.924924
-##   The budget deficit           59.03394           30.34666          16.027038   16.143793
-##   The economy                  90.19129           18.19050          13.169648    0.000000
-##   The environment              30.96798           59.36010          19.180623   12.042728
-##   The war in Afghanistan       21.66667           51.95812          20.996176   25.220936
+##   Abortion                           32                 31                 26          22
+##   Education                          49                 44                 12           6
+##   Gay rights                         18                 25                 21          46
+##   Health care                        79                 23                  5           4
+##   Immigration                        51                 38                 14           8
+##   Medicare                           58                 35                 12           6
+##   Social security                    67                 33                  5           6
+##   Taxes                              75                 29                  5           1
+##   Terrorism                          44                 38                 17          11
+##   The budget deficit                 60                 26                 16           9
+##   The economy                        93                 14                  4           0
+##   The environment                    35                 42                 20          14
+##   The war in Afghanistan             24                 51                 25          10
 ## 
 ## , , gender = Female
 ## 
 ##                         imiss
 ## imiss                    Very Important Somewhat Important Not very Important Unimportant
-##   Abortion                     52.59306           45.01694          17.535359   12.266433
-##   Education                    70.03272           45.04846           6.944584    6.422805
-##   Gay rights                   33.97914           34.23703          24.418990   35.813411
-##   Health care                  90.70215           29.57668           3.697671    3.856843
-##   Immigration                  48.19794           48.71002          17.758330   11.222931
-##   Medicare                     72.39412           38.22034          12.111045    4.282138
-##   Social security              73.35809           35.84414          13.522809    5.723524
-##   Taxes                        78.98925           29.93235          11.747300    7.779673
-##   Terrorism                    63.89258           37.68492          14.613920   12.257150
-##   The budget deficit           58.46827           45.55364          15.087550    9.339109
-##   The economy                  93.86900           25.30076           5.421963    3.084749
-##   The environment              53.05919           43.99564          15.071708   11.953823
-##   The war in Afghanistan       48.27161           48.41640          17.997678   13.762882</code></pre>
+##   Abortion                           63                 42                 24           9
+##   Education                          87                 41                  7           4
+##   Gay rights                         41                 36                 25          37
+##   Health care                       102                 30                  4           2
+##   Immigration                        56                 53                 20           9
+##   Medicare                           80                 41                 15           2
+##   Social security                    82                 41                 14           2
+##   Taxes                              85                 35                 15           4
+##   Terrorism                          68                 44                 18           9
+##   The budget deficit                 65                 50                 17           7
+##   The economy                       103                 30                  4           1
+##   The environment                    64                 45                 16          11
+##   The war in Afghanistan             49                 57                 20          13</code></pre>
 <p>Note that even though we specified two variables in our formula, because “imiss” itself is two dimensional, our result is a three-dimensional array.</p>
 <p>To illustrate working with multiple response variables, let’s convert “imiss” to multiple response, selecting its positive categories as indicating selection:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -339,11 +339,11 @@
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span><span class="op">$</span><span class="va">imiss_f</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##                     gender
-## imiss_f                  Male   Female
-##   Very Important     45.64391 63.89258
-##   Somewhat Important 42.62133 37.68492
-##   Not very Important 11.10782 14.61392
-##   Unimportant        19.92492 12.25715</code></pre>
+## imiss_f              Male Female
+##   Very Important       44     68
+##   Somewhat Important   38     44
+##   Not very Important   17     18
+##   Unimportant          11      9</code></pre>
 </div>
 <div id="n-way-tables" class="section level3">
 <h3 class="hasAnchor">
@@ -355,37 +355,37 @@
 ## 
 ##                         educ
 ## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad
-##   Abortion                   6                   17           21      1      9         5
-##   Education                 13                   25           27      9     13         8
-##   Gay rights                 1                   10           18      1      4         5
-##   Health care               12                   43           28      9     15         8
-##   Immigration               10                   25           23      9     12         8
-##   Medicare                  12                   39           27      8     14         7
-##   Social security           12                   41           25      9     14         9
-##   Taxes                     13                   31           31      9     15         8
-##   Terrorism                 12                   25           24      9     12         7
-##   The budget deficit        13                   24           24      8     13         7
-##   The economy               13                   32           31      9     16         9
-##   The environment           12                   31           24      7      9         8
-##   The war in Afghanistan    11                   17           24      2     13         6
+##   Abortion                   3                   19           18      1     14         8
+##   Education                  6                   23           22      6     23        13
+##   Gay rights                 1                   11           12      1      8        10
+##   Health care                5                   33           22      6     22        14
+##   Immigration                4                   26           20      6     20        13
+##   Medicare                   5                   29           21      5     21        12
+##   Social security            5                   31           22      6     21        15
+##   Taxes                      6                   30           25      6     23        14
+##   Terrorism                  5                   24           19      6     16        12
+##   The budget deficit         6                   25           20      5     18        12
+##   The economy                6                   31           25      6     24        15
+##   The environment            5                   22           16      4     17        13
+##   The war in Afghanistan     5                   17           20      3     20        10
 ## 
 ## , , gender = Female
 ## 
 ##                         educ
 ## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad
-##   Abortion                   5                   31           24     10     19         8
-##   Education                  9                   32           28     15     23         9
-##   Gay rights                 4                   17           21      5     15         6
-##   Health care                9                   38           29     15     21         9
-##   Immigration                6                   28           27     10     17         9
-##   Medicare                   9                   34           26     15     19         7
-##   Social security            9                   34           27     13     19         7
-##   Taxes                      9                   32           24     14     22         8
-##   Terrorism                  5                   35           22     14     18         7
-##   The budget deficit         6                   34           23     14     19         7
-##   The economy                9                   37           27     15     23         9
-##   The environment            6                   29           19     14     21         8
-##   The war in Afghanistan     8                   27           27     13     15         7</code></pre>
+##   Abortion                   4                   26           27     12     27         9
+##   Education                  6                   31           32     17     32        10
+##   Gay rights                 3                   15           23      9     21         6
+##   Health care                6                   35           33     18     30        10
+##   Immigration                5                   27           30     13     24        10
+##   Medicare                   6                   32           30     18     27         8
+##   Social security            6                   33           33     16     27         8
+##   Taxes                      6                   30           29     15     31         9
+##   Terrorism                  4                   32           27     16     25         8
+##   The budget deficit         5                   32           28     16     26         8
+##   The economy                6                   34           33     18     32        10
+##   The environment            5                   25           24     16     30         9
+##   The war in Afghanistan     5                   26           31     15     22         7</code></pre>
 <!--
 ### Special functions
 #### bin
@@ -400,28 +400,28 @@
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
-## educ                       Male   Female
-##   No HS                54.00829 56.02205
-##   High school graduate 50.31550 48.09241
-##   Some college         40.84733 43.06316
-##   2-year               55.25996 46.68702
-##   4-year               50.14993 40.75736
-##   Post-grad            50.85838 48.64874</code></pre>
+## educ                   Male Female
+##   No HS                   6      6
+##   High school graduate   33     38
+##   Some college           26     35
+##   2-year                  6     18
+##   4-year                 25     32
+##   Post-grad              15     10</code></pre>
 <p>Other supported aggregations include <code>min</code>, <code>max</code>, <code>sd</code>, and <code>sum</code>. For the minimum age by gender and education,</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
 ## educ                   Male Female
-##   No HS                  42     45
-##   High school graduate   35     27
-##   Some college           22     24
-##   2-year                 35     26
-##   4-year                 32     24
-##   Post-grad              26     27</code></pre>
+##   No HS                   6      6
+##   High school graduate   33     38
+##   Some college           26     35
+##   2-year                  6     18
+##   4-year                 25     32
+##   Post-grad              15     10</code></pre>
 <p>We can get unconditional (univariate) statistics by making the right-hand side of your formula be just the number <code>1</code>:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 22</code></pre>
+<pre><code>## [1] 250</code></pre>
 <p>Numeric aggregation functions also work with categorical variables that have numeric values defined for their categories; this is the reason why numeric values for categories are defined, in fact. In the <a href="variables.html">variables vignette</a>, we worked with the “On the right track” question and set some numeric values:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></code></pre></div>
@@ -434,13 +434,13 @@
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
-## educ                    Male Female
-##   No HS                -0.39  -0.05
-##   High school graduate -0.69  -0.22
-##   Some college         -0.05  -0.14
-##   2-year               -0.56  -0.40
-##   4-year               -0.57  -0.08
-##   Post-grad            -0.17   0.02</code></pre>
+## educ                   Male Female
+##   No HS                   6      6
+##   High school graduate   33     38
+##   Some college           26     35
+##   2-year                  6     18
+##   4-year                 25     32
+##   Post-grad              15     10</code></pre>
 <p>Looks like most people surveyed thought that the U.S. is on the wrong track, but that pessimism is less pronounced for women with higher levels of education.</p>
 </div>
 <div id="subsetting-data" class="section level3">
@@ -450,13 +450,13 @@
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,<span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>##                       gender
-## educ                    Male Female
-##   No HS                  NaN   1.00
-##   High school graduate  0.64  -0.08
-##   Some college          0.73   0.30
-##   2-year                1.00   0.00
-##   4-year               -0.12   0.40
-##   Post-grad             0.33   0.12</code></pre>
+## educ                   Male Female
+##   No HS                   0      3
+##   High school graduate    7     17
+##   Some college            8     16
+##   2-year                  1      6
+##   4-year                  9     19
+##   Post-grad               5      5</code></pre>
 <p>Not surprisingly, Democrats were less pessimistic about the direction of the country than the general population.</p>
 <p>A few final observations about <code>crtabs</code>. First, all of these calculations have been weighted by the weight variable we set above. We set it and could then forget about it–we didn’t have to litter all of our expressions with <code>ds$weight</code> and extra arithmetic to do the weighting. Crunch handles this for us.</p>
 <p>Second, none of these aggregations required pulling case-level data to your computer. <code>crtabs</code> sends Crunch expressions to the server and receives in return an <code>n</code>-D array of results. The only computations happening locally are the margin tables and sweeping in <code>prop.table</code>, computing on the aggregate results. Your computer would work exactly as hard with this example dataset of 1000 rows as it would with a dataset of 100 million rows.</p>

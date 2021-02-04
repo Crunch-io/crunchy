@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
       </span>
     </div>
 
@@ -233,34 +233,34 @@
 <p>Now that we have defined subtotals on the congressional approval question, if we use it in a crosstab, we can see the subtotals.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">congapp</span> <span class="op">+</span> <span class="va">gender</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>##                               gender          
-## congapp                                    Male           Female
-##               Strongly approve                0                0
-##               Somewhat approve 2.51012984049177 5.46240518719819
-##                       Approves 2.51012984049177 5.46240518719819
-## Neither approve nor disapprove 11.2916608660399 18.8687169535911
-##            Somewhat disapprove 12.2769754589437 24.3223013661526
-##            Strongly disapprove 62.6898938858094 38.2775564880149
-##                     Disapprove 74.9668693447531 62.5998578541675
-##                       Not sure 15.2265010614957 25.8714100226452</code></pre>
+<pre><code>##                               gender
+## congapp                          Male Female
+##               Strongly approve      0      0
+##               Somewhat approve      4      5
+##                       Approves      4      5
+## Neither approve nor disapprove     11     21
+##            Somewhat disapprove     14     33
+##            Strongly disapprove     67     46
+##                     Disapprove     81     79
+##                       Not sure      5     23</code></pre>
 <p>We can even get just the subtotals as an array from the result if we want to ignore the constituent groups:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/subtotalArray.html">subtotalArray</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">congapp</span> <span class="op">+</span> <span class="va">gender</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##             gender
-## congapp          Male    Female
-##   Approves    2.51013  5.462405
-##   Disapprove 74.96687 62.599858</code></pre>
+## congapp      Male Female
+##   Approves      4      5
+##   Disapprove   81     79</code></pre>
 <p>If you don’t want to see the subtotals as part of these summaries, you can suppress them from display with the <code><a href="../reference/noTransforms.html">noTransforms()</a></code> function around <code><a href="../reference/crtabs.html">crtabs()</a></code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/noTransforms.html">noTransforms</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">congapp</span> <span class="op">+</span> <span class="va">gender</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                 gender
-## congapp                              Male    Female
-##   Strongly approve                0.00000  0.000000
-##   Somewhat approve                2.51013  5.462405
-##   Neither approve nor disapprove 11.29166 18.868717
-##   Somewhat disapprove            12.27698 24.322301
-##   Strongly disapprove            62.68989 38.277556
-##   Not sure                       15.22650 25.871410</code></pre>
+## congapp                          Male Female
+##   Strongly approve                  0      0
+##   Somewhat approve                  4      5
+##   Neither approve nor disapprove   11     21
+##   Somewhat disapprove              14     33
+##   Strongly disapprove              67     46
+##   Not sure                          5     23</code></pre>
 <p>This does not modify the variable—the subtotals are still defined and visible in the web app—but they are removed from the current analysis.</p>
 <p><a href="crunch-internals.html">Next: Crunch internals</a></p>
 </div>

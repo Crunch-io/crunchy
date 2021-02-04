@@ -52,7 +52,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@
 <!-- badges: start -->
 
 <p><a href="http://crunch-io.github.io/rcrunch/">Cloud Collaboration with Crunch</a></p>
-<p><a href="http://crunch.io/">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface: because all connect to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
+<p><a href="https://crunch.io/">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface: because all connect to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
 <p><a href="mailto:rcrunch+subscribe@crunch.io">Subscribe to the mailing list</a> to receive notification of releases and to ask general support questions.</p>
 <div id="installing" class="section level2">
 <h2 class="hasAnchor">
@@ -216,7 +216,7 @@
 <div id="running-tests" class="section level3">
 <h3 class="hasAnchor">
 <a href="#running-tests" class="anchor"></a>Running tests</h3>
-<p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="http://testthat.r-lib.org/"><code>testthat</code></a> package.</p>
+<p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="https://testthat.r-lib.org/"><code>testthat</code></a> package.</p>
 <p>Testing has two options: unit tests only, and tests that communicate with an API server. This is governed by an environment variable, <code>INTEGRATION</code>, which is false by default, meaning that API integration tests are not run. To modify this and test against the Crunch API, you can run <code>$ make test INTEGRATION=TRUE</code>.</p>
 <p>To run integration tests, you will need to specify a test user, password, and API server to communicate with, either by setting <code>test.user</code>, <code>test.pw</code>, and <code>test.api</code> in your <code>.Rprofile</code>, as in:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
