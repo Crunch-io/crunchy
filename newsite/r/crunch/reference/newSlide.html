@@ -203,6 +203,9 @@
   display_settings <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
   title <span class='op'>=</span> <span class='st'>""</span>,
   subtitle <span class='op'>=</span> <span class='st'>""</span>,
+  filter <span class='op'>=</span> <span class='cn'>NULL</span>,
+  weight <span class='op'>=</span> <span class='cn'>NULL</span>,
+  viz_specs <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -236,6 +239,22 @@ exports show labels on bars or arcs of donuts.</p></td>
     <tr>
       <th>subtitle</th>
       <td><p>The slide's subtitle</p></td>
+    </tr>
+    <tr>
+      <th>filter</th>
+      <td><p>a <code>CrunchLogicalExpression</code>, a crunch <code>filter</code> object or
+a vector of names of <code><a href='filters.html'>filters</a></code> defined in the dataset (defaults
+to <code>NULL</code>, using all data).</p></td>
+    </tr>
+    <tr>
+      <th>weight</th>
+      <td><p>A weight variable (defaults to NULL, meaning no weight)</p></td>
+    </tr>
+    <tr>
+      <th>viz_specs</th>
+      <td><p>Another set of options for the display of the slide, see
+the <a href='https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/'>API documentation</a>
+for more information.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -291,7 +310,42 @@ exports show labels on bars or arcs of donuts.</p></td>
     subtitle <span class='op'>=</span> <span class='st'>"2017 Data"</span>
 <span class='op'>)</span>
 
-<span class='co'># Can specify advanced options by specifying `analyses` directly</span>
+
+<span class='co'># Example of advanced options being set:</span>
+<span class='co'># viz_specs can get quite long, see</span>
+<span class='co'># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span>
+<span class='va'>viz_specs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+            decimal_places <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>percentages <span class='op'>=</span> <span class='fl'>0L</span>, other <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>,
+            show_empty <span class='op'>=</span> <span class='cn'>FALSE</span>
+        <span class='op'>)</span>
+    <span class='op'>)</span>,
+    table <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        measures <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col_percent"</span>, <span class='st'>"pairwise_t_test"</span><span class='op'>)</span>,
+        page_layout <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+            rows <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+                top <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+                bottom <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"base_unweighted"</span>, <span class='st'>"scale_mean"</span>, <span class='st'>"significant_columns"</span><span class='op'>)</span>
+            <span class='op'>)</span>,
+            measure_layout <span class='op'>=</span> <span class='st'>"long"</span>
+        <span class='op'>)</span>,
+        pairwise_comparison <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sig_threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>,
+        format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>pval_colors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='fu'>newSlide</span><span class='op'>(</span>
+    <span class='va'>main_deck</span>,
+    <span class='op'>~</span><span class='fu'><a href='var-categories.html'>categories</a></span><span class='op'>(</span><span class='va'>fav_array</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='Subvariables-class.html'>subvariables</a></span><span class='op'>(</span><span class='va'>fav_array</span><span class='op'>)</span>,
+    display_settings <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>viz_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span><span class='op'>)</span>,
+    title <span class='op'>=</span> <span class='st'>"custom slide"</span>,
+    filter <span class='op'>=</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>,
+    weight <span class='op'>=</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span>,
+    viz_specs <span class='op'>=</span> <span class='va'>viz_specs</span>
+<span class='op'>)</span>
+
+<span class='co'># Can also specify `analyses` directly, which allows for very advanced use.</span>
 <span class='co'># `formulaToSlideQuery()` and `slideQueryEnv()` help describe the API</span>
 <span class='fu'>newSlide</span><span class='op'>(</span>
     <span class='va'>main_deck</span>,
@@ -300,26 +354,7 @@ exports show labels on bars or arcs of donuts.</p></td>
         query <span class='op'>=</span> <span class='fu'><a href='filter.html'>formulaToSlideQuery</a></span><span class='op'>(</span><span class='op'>~</span><span class='fu'><a href='var-categories.html'>categories</a></span><span class='op'>(</span><span class='va'>fav_array</span><span class='op'>)</span><span class='op'>+</span><span class='fu'><a href='Subvariables-class.html'>subvariables</a></span><span class='op'>(</span><span class='va'>fav_array</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span>,
         query_environment <span class='op'>=</span> <span class='fu'><a href='filter.html'>slideQueryEnv</a></span><span class='op'>(</span>filter <span class='op'>=</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>,
         display_settings <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>viz_type <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>value <span class='op'>=</span> <span class='st'>"table"</span><span class='op'>)</span><span class='op'>)</span>,
-        viz_specs <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-            default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-                format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-                    decimal_places <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>percentages <span class='op'>=</span> <span class='fl'>0L</span>, other <span class='op'>=</span> <span class='fl'>2L</span><span class='op'>)</span>,
-                    show_empty <span class='op'>=</span> <span class='cn'>FALSE</span>
-                <span class='op'>)</span>
-             <span class='op'>)</span>,
-             table <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-             measures <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col_percent"</span>, <span class='st'>"pairwise_t_test"</span><span class='op'>)</span>,
-             page_layout <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-                 rows <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-                     top <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
-                     bottom <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"base_unweighted"</span>, <span class='st'>"scale_mean"</span>, <span class='st'>"significant_columns"</span><span class='op'>)</span>
-                 <span class='op'>)</span>,
-                 measure_layout <span class='op'>=</span> <span class='st'>"long"</span>
-             <span class='op'>)</span>,
-             pairwise_comparison <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sig_threshold <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.05</span>, <span class='fl'>0.01</span><span class='op'>)</span><span class='op'>)</span>,
-             format <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>pval_colors <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-            <span class='op'>)</span>
-        <span class='op'>)</span>
+        viz_specs <span class='op'>=</span> <span class='va'>viz_specs</span>
     <span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
 <span class='op'>}</span>
