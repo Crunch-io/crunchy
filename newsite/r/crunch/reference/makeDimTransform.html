@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dataset weights — is.weight&lt;- • Crunch</title>
+<title>Helper for creating slide dimension transformations for dashboards and exports — makeDimTransform • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,10 +54,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Dataset weights — is.weight&lt;-" />
-<meta property="og:description" content="weight lets you view and set your user's currently applied weight on the
-server. weightVariables lets you view all of the variables that have been
-designated as valid to use as weights." />
+<meta property="og:title" content="Helper for creating slide dimension transformations for dashboards and exports — makeDimTransform" />
+<meta property="og:description" content="When displayed in a Crunch Dashboard or exported, crunch slides can have transformations
+that customize their display. This is a helper to form the correct data structure for
+the functions newSlide() for setting the transformation directly. For more details see the
+API documentation" />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -190,66 +191,92 @@ designated as valid to use as weights." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dataset weights</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/weight.R'><code>R/weight.R</code></a></small>
-    <div class="hidden name"><code>weight.Rd</code></div>
+    <h1>Helper for creating slide dimension transformations for dashboards and exports</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/dimension-transforms.R'><code>R/dimension-transforms.R</code></a></small>
+    <div class="hidden name"><code>makeDimTransform.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>weight</code> lets you view and set your user's currently applied weight on the
-server. <code>weightVariables</code> lets you view all of the variables that have been
-designated as valid to use as weights.</p>
+    <p>When displayed in a Crunch Dashboard or exported, crunch slides can have transformations
+that customize their display. This is a helper to form the correct data structure for
+the functions <code><a href='newSlide.html'>newSlide()</a></code> for setting the transformation directly. For more details see the
+<a href='https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/'>API documentation</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>is.weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for Analysis,CrunchVariable</span>
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for Analysis,`NULL`</span>
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for CrunchDataset</span>
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='co'># S4 method for CrunchDataset,ANY</span>
-<span class='fu'>weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='fu'>is.weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='co'># S4 method for NumericVariable</span>
-<span class='fu'>is.weight</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
+    <pre class="usage"><span class='fu'>makeDimTransform</span><span class='op'>(</span>
+  colors <span class='op'>=</span> <span class='cn'>NULL</span>,
+  hide <span class='op'>=</span> <span class='cn'>NULL</span>,
+  rename <span class='op'>=</span> <span class='cn'>NULL</span>,
+  order <span class='op'>=</span> <span class='cn'>NULL</span>,
+  name <span class='op'>=</span> <span class='cn'>NULL</span>,
+  description <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a Dataset</p></td>
+      <th>colors</th>
+      <td><p>A crunch <code>AnalyticPalettes</code> (<code><a href='palettes.html'>palettes()</a></code>) or a vector of color RGB hex color
+codes that will be used for the color of graphs in the dashboard (used in the order of
+appearance of categories/subvariables).</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>a Variable, VariableDefinition, or <code>NULL</code>. If a
-VariableDefinition is passed, the variable will first be created and then set
-as the datasets weight. Set to <code>NULL</code> to remove existing weights from the
-dataset.</p></td>
+      <th>hide</th>
+      <td><p>A vector of category names/ids or subvariable names/aliases to hide from display</p></td>
+    </tr>
+    <tr>
+      <th>rename</th>
+      <td><p>A named vector of category names/ids or subvariable names/aliases to override
+their default values</p></td>
+    </tr>
+    <tr>
+      <th>order</th>
+      <td><p>A vector of category names/ids or subvariable names/aliases to override the
+default ordering of the dimension.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>A name for the dimension, overrides the variable's name</p></td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td><p>A description for the dimension, overrides the variable's description</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments, passed directly to the API for future expansion</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>For the <code>weight</code> getter, a Variable if there is a weight, else
-NULL. For the setter, x, modified accordingly. <code>weightVariables</code> returns
-the aliases (or names, according to <code><a href='https://rdrr.io/r/base/options.html'>options(crunch.namekey.dataset)</a></code>),
-of the variables designated as weights.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># Hiding an element</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'>makeDimTransform</span><span class='op'>(</span>hide <span class='op'>=</span> <span class='st'>"Neutral"</span><span class='op'>)</span><span class='op'>)</span>
 
-    <div class='dont-index'><p><code><a href='weightVariables.html'>weightVariables()</a></code> <code><a href='makeWeight.html'>makeWeight()</a></code></p></div>
+<span class='co'># Using an existing saved palette</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'>makeDimTransform</span><span class='op'>(</span>
+    colors <span class='op'>=</span> <span class='fu'><a href='palettes.html'>defaultPalette</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
 
+<span class='co'># Setting specific colors</span>
+<span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'>makeDimTransform</span><span class='op'>(</span>
+     colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#af8dc3"</span>, <span class='st'>"#f7f7f7"</span>, <span class='st'>"#7fbf7b"</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Reordering &amp; renaming elements</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+     rows_dimension <span class='op'>=</span> <span class='fu'>makeDimTransform</span><span class='op'>(</span>
+         rename <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"V. Good"</span> <span class='op'>=</span> <span class='st'>"Very Good"</span>, <span class='st'>"V. Bad"</span> <span class='op'>=</span> <span class='st'>"Very Bad"</span><span class='op'>)</span>,
+         order <span class='op'>=</span> <span class='fl'>5</span><span class='op'>:</span><span class='fl'>1</span>
+     <span class='op'>)</span>,
+     columns_dimension <span class='op'>=</span> <span class='fu'>makeDimTransform</span><span class='op'>(</span>order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Brand X"</span>, <span class='st'>"Brand A"</span>, <span class='st'>"Brand B"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

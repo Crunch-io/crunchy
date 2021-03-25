@@ -57,7 +57,10 @@
 <meta property="og:title" content="Get and set slide analyses — filter" />
 <meta property="og:description" content="Slides are composed of analyses, which are effectively CrunchCubes with some
 additional metadata. You can get and set a slide's Analysis Catalog with the
-analyses method, and access an individual analysis with analysis." />
+analyses method, and access an individual analysis with analysis. There
+are also helpers to get and set the components of the analysis such as filter(),
+weight(), transforms(), displaySettings() and vizSpecs(). You can also
+get the CrunchCube from an analysis using cube()." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -191,14 +194,17 @@ analyses method, and access an individual analysis with analysis." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get and set slide analyses</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/decks.R'><code>R/decks.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/decks.R'><code>R/decks.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/dimension-transforms.R'><code>R/dimension-transforms.R</code></a>, and 1 more</small>
     <div class="hidden name"><code>analysis-methods.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Slides are composed of analyses, which are effectively <code>CrunchCubes</code> with some
 additional metadata. You can get and set a slide's Analysis Catalog with the
-<code>analyses</code> method, and access an individual analysis with <code>analysis</code>.</p>
+<code>analyses</code> method, and access an individual analysis with <code>analysis</code>. There
+are also helpers to get and set the components of the analysis such as <code>filter()</code>,
+<code><a href='is.weight<-.html'>weight()</a></code>, <code><a href='Transforms-class.html'>transforms()</a></code>, <code>displaySettings()</code> and <code>vizSpecs()</code>. You can also
+get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -206,7 +212,28 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for CrunchDeck,ANY</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchDeck,ANY</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchSlide</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for AnalysisCatalog</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Analysis</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for AnalysisCatalog,ANY</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for Analysis,ANY</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='fu'>analyses</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
@@ -219,6 +246,14 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='fu'>cube</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='fu'>cubes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for CrunchSlide</span>
 <span class='fu'>analyses</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -250,8 +285,32 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='co'># S4 method for CrunchSlide</span>
 <span class='fu'>cube</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
+<span class='co'># S4 method for CrunchSlide</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchSlide</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
 <span class='co'># S4 method for AnalysisCatalog</span>
 <span class='fu'>cubes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for AnalysisCatalog</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for AnalysisCatalog,list</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for AnalysisCatalog</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for AnalysisCatalog,list</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis,formula</span>
 <span class='fu'>query</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
@@ -260,6 +319,18 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 
 <span class='co'># S4 method for Analysis</span>
 <span class='fu'>cube</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Analysis</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Analysis,ANY</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for Analysis</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Analysis,ANY</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
@@ -279,7 +350,19 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
 <span class='co'># S4 method for Analysis,`NULL`</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>slideQueryEnv</span><span class='op'>(</span><span class='va'>weight</span>, <span class='va'>filter</span><span class='op'>)</span></pre>
+<span class='fu'>slideQueryEnv</span><span class='op'>(</span><span class='va'>weight</span>, <span class='va'>filter</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchDeck</span>
+<span class='fu'>cubes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchSlide</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for Analysis</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -294,7 +377,7 @@ additional metadata. You can get and set a slide's Analysis Catalog with the
     </tr>
     <tr>
       <th>value</th>
-      <td><p>for the setter, a query</p></td>
+      <td><p>for the setter, an object to set it</p></td>
     </tr>
     <tr>
       <th>query</th>
@@ -318,14 +401,11 @@ the slide.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>an <code>AnalysisCatalog</code>, <code>Analysis</code>, <code>Cube</code>, or <code>Filter</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>You can get the <code>CrunchCube</code> from a slide or analysis with the <code>cube</code> method and
-from a <code>CrunchDeck</code> with <code>cubes</code>. Analyses can be changed by assigning a formula
-into the <code>query</code> function.</p>
+    <p>For more complex objects like <code>displaySettings()</code>, <code>vizSpecs()</code> and <code><a href='Transforms-class.html'>transforms()</a></code>,
+the <a href='https://crunch.io/api/reference/#patch-/datasets/-dataset_id-/decks/-deck_id-/slides/-slide_id-/analyses/-analysis_id-/'>API documentation</a>
+provides more details.</p>
 <p>Advanced users of the API can assign a list to  <code>analysis&lt;-</code> to specify settings
 on the analyses that are not otherwise available in <code>rcrunch</code>. The helpers
 <code>formulaToSlideQuery()</code> and <code>slideQueryEnv()</code> help you create objects for the
@@ -333,13 +413,33 @@ on the analyses that are not otherwise available in <code>rcrunch</code>. The he
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>analysis</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span>
-<span class='fu'>cube</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span>
-<span class='fu'>cubes</span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span>
-<span class='fu'>query</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='op'>~</span> <span class='va'>cyl</span> <span class='op'>+</span> <span class='va'>wt</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span>
+<span class='co'># Examples of setting analysis details (in general these setters work on</span>
+<span class='co'># the slide, analysis catalog and analysis, but for brevity the examples only</span>
+<span class='co'># show on the slide)</span>
+
+<span class='co'># Change the filter</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove a filter</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span>
+<span class='fu'>filter</span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># Can set the same filter on a whole deck too</span>
+
+<span class='co'># Change the weight</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span>
+<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span> <span class='co'># Can set the same weight on a whole deck too</span>
+
+<span class='co'># Change the transforms</span>
+<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'><a href='makeDimTransform.html'>makeDimTransform</a></span><span class='op'>(</span>hide <span class='op'>=</span> <span class='st'>"Neutral"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='co'># Change the displaySettings</span>
+<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>vizType <span class='op'>=</span> <span class='st'>"groupedBarPlot"</span><span class='op'>)</span>
+
+<span class='co'># Change the vizSpecs</span>
+<span class='co'># viz_specs can get quite long, see</span>
+<span class='co'># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span>
+<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>viz_specs</span>
+
+<span class='co'># Change the query</span>
+<span class='co'>#' query(slide) &lt;- ~ cyl + wt</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get or set a slide's display settings — displaySettings • Crunch</title>
+<title>Get the palettes from a crunch object — palettes • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,8 +54,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get or set a slide's display settings — displaySettings" />
-<meta property="og:description" content="A slide's display settings can be modified by assigning a named list" />
+<meta property="og:title" content="Get the palettes from a crunch object — palettes" />
+<meta property="og:description" content="CrunchDatasets have color palettes associated with them
+that can be used as default colors for dashboard tiles. One of
+them can be assigned the &quot;default&quot;." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -188,50 +190,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get or set a slide's display settings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a></small>
-    <div class="hidden name"><code>display-settings.Rd</code></div>
+    <h1>Get the palettes from a crunch object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/palettes.R'><code>R/palettes.R</code></a></small>
+    <div class="hidden name"><code>palettes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A slide's display settings can be modified by assigning a named list</p>
+    <p><code>CrunchDataset</code>s have color palettes associated with them
+that can be used as default colors for dashboard tiles. One of
+them can be assigned the "default".</p>
     </div>
 
-    <pre class="usage"><span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>palettes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='fu'>defaultPalette</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='co'># S4 method for CrunchDataset</span>
+<span class='fu'>palettes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='co'># S4 method for CrunchDataset</span>
+<span class='fu'>defaultPalette</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S4 method for AnalysisCatalog</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='co'># S4 method for AnalysisCatalog,list</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for Analysis</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-
-<span class='co'># S4 method for Analysis,ANY</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
-<span class='co'># S4 method for CrunchDeck</span>
-<span class='fu'><a href='filter.html'>cubes</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+<span class='co'># S4 method for AnalyticPalettes</span>
+<span class='fu'>defaultPalette</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a CrunchSlide, Analysis, or AnalysisCatalog</p></td>
+      <td><p>A crunch object, like a <code>CrunchDataset</code></p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>a named list, for valid settings see <a href='https://crunch.io/api/reference/#patch-/datasets/-dataset_id-/decks/-deck_id-/slides/-slide_id-/analyses/-analysis_id-/'>API documentation</a></p></td>
+      <th>...</th>
+      <td><p>ignored (reserved for future expansion)</p></td>
     </tr>
     </table>
 

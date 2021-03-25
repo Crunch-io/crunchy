@@ -206,6 +206,7 @@
   filter <span class='op'>=</span> <span class='cn'>NULL</span>,
   weight <span class='op'>=</span> <span class='cn'>NULL</span>,
   viz_specs <span class='op'>=</span> <span class='cn'>NULL</span>,
+  transform <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -255,6 +256,11 @@ to <code>NULL</code>, using all data).</p></td>
       <td><p>Another set of options for the display of the slide, see
 the <a href='https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/'>API documentation</a>
 for more information.</p></td>
+    </tr>
+    <tr>
+      <th>transform</th>
+      <td><p>A list of slide transformations, usually created using the function
+<code><a href='makeDimTransform.html'>makeDimTransform()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -310,6 +316,18 @@ for more information.</p></td>
     subtitle <span class='op'>=</span> <span class='st'>"2017 Data"</span>
 <span class='op'>)</span>
 
+<span class='co'># A Grouped bar plot with slide transformations to hide a category</span>
+<span class='fu'>newSlide</span><span class='op'>(</span>
+    <span class='va'>main_deck</span>,
+    <span class='op'>~</span> <span class='va'>approval</span> <span class='op'>+</span> <span class='va'>age4</span>,
+    title <span class='op'>=</span> <span class='st'>"Approval by age group"</span>,
+    display_settings <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        vizType <span class='op'>=</span> <span class='st'>"groupedBarPlot"</span>,
+        showValueLabels <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <span class='op'>)</span>,
+    transform <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'><a href='makeDimTransform.html'>makeDimTransform</a></span><span class='op'>(</span>hide <span class='op'>=</span> <span class='st'>"Neutral"</span><span class='op'>)</span><span class='op'>)</span>,
+    subtitle <span class='op'>=</span> <span class='st'>"2017 Data"</span>
+<span class='op'>)</span>
 
 <span class='co'># Example of advanced options being set:</span>
 <span class='co'># viz_specs can get quite long, see</span>

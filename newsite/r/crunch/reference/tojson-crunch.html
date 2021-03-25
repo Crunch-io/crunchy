@@ -225,7 +225,7 @@ objects that you want to successfully serialize to JSON.</p>
 <span class='co'># S4 method for OrderGroup</span>
 <span class='fu'>jsonprep</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>toJSON</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>toJSON</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, for_query_string <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -237,6 +237,13 @@ objects that you want to successfully serialize to JSON.</p>
     <tr>
       <th>...</th>
       <td><p>additional arguments</p></td>
+    </tr>
+    <tr>
+      <th>for_query_string</th>
+      <td><p>If <code>TRUE</code>, and <code>crunch.stabilize.query</code> option
+is also set to <code>TRUE</code>, then dictionary items in the JSON are
+sorted alphabetically, which can be useful when capturing
+mocks using "httptest".</p></td>
     </tr>
     </table>
 
