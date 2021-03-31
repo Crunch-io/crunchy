@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Quirk&#39;s Virtual Global</title>
+    <title>Crunch | Release 2021.10</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Quirk&#39;s Virtual Global &middot; Modern survey data analysis">
+    <meta property="og:title" content="Release 2021.10 &middot; Modern survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/info.crunch.io/quirks-virtual-global-2021">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-03-26/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2020-11-02T17:07:06-04:00">
+  <meta property="og:updated_time" content="2021-03-26T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Quirk&#39;s Virtual Global"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Release 2021.10"/>
+<meta name="twitter:description" content="Crunch web application  Added feature to show values on a time plot when the user has Display &gt; Values selected in the extended panel of the Display Controller (in early access). Updated horizontal bar graphs so that labels on an axis are no longer truncated. Added hint text to alert users who have any profile analyses saved to a deck, since these analyses cannot be exported via the &ldquo;Export from deck&rdquo; panel."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -51,6 +51,7 @@
   </head>
 
   <body>
+
 
 
 
@@ -129,41 +130,97 @@
     </nav>
 
 
-<div class="container">
-<div id="hero" class="row">
-    <div class="intro-post col">
-        <h1 itemprop="headline">  Quirk's Virtual Global</h1>
-        
-        <time class="post-time">
-  Published <span datetime="2020-11-02T17:07:06-04:00">2 Nov 2020</span>
+<div id="wrapper">
 
-</time>
-    </div>
-</div>
-<div id="post-box" class="row">
-    <div class="col">
-        <div id="post" itemprop="articleBody">
-            
-        </div><br/>
-        <div>
-            <p class="post-footer">
-  Published
-  
-  <time datetime="2020-11-02T17:07:06-04:00">
-    2 Nov 2020
-  </time>
-  
-  
-</p>
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
 
-            
+            <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
 
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <h2>Release 2021.10</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>March 26, 2021 </span>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
 
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
 
-        </div>
-    </div>
-</div>
-</div>
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <h3 id="crunch-web-application">Crunch web application</h3>
+<ul>
+<li>Added feature to show values on a time plot when the user has Display &gt; Values selected in the extended panel of the Display Controller (in early access).</li>
+<li>Updated horizontal bar graphs so that labels on an axis are no longer truncated.</li>
+<li>Added hint text to alert users who have any profile analyses saved to a deck, since these analyses cannot be exported via the &ldquo;Export from deck&rdquo; panel.</li>
+<li>Added a &ldquo;Fit to tile&rdquo; option, which is available in the Edit panel for saved analyses that have the &lsquo;time plot&rsquo; visualization type (in early access).</li>
+</ul>
+<h3 id="api-endpoints-and-api-reference">API Endpoints and API Reference</h3>
+<ul>
+<li>Changed several user-level permissions to enable better sharing and editing of datasets.</li>
+<li>Fixed a bug that occurred when searching for personal variables.</li>
+<li>Improved the dataset scripts endpoint by including the script ID on the shoji tuple.</li>
+<li>Enhanced the <code>POST /api/account/users/</code> endpoint to enable granting users the ability to edit datasets separately from creating datasets.</li>
+</ul>
+<h3 id="sdks-rcrunch-pycrunch-and-scrunch">SDKs (<code>rCrunch</code>, <code>pyCrunch</code>, and <code>sCrunch</code>)</h3>
+<ul>
+<li>Added the ability to perform backfill replacements without a filter in sCrunch (full column).</li>
+<li>Added Python 3.4 support to sCrunch.</li>
+<li>Released sCrunch version 0.9.3.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Added the ability to use reference functions to act on a variable number of input variables for the <code>RENAME</code> command. See the <a href="https://help.crunch.io/hc/en-us/articles/360042247331-RENAME-command">documentation</a> for more information.</li>
+<li>Improved support for Unicode characters in Crunch Automation strings.</li>
+</ul>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Added more descriptive information on how to use the <a href="https://help.crunch.io/hc/en-us/articles/360044567952-CREATE-MULTIPLE-DICHOTOMY-WITH-RECODE-command">CREATE MULTIPLE DICHOTOMY WITH RECODE command</a>.</li>
+<li>Updated the <a href="https://help.crunch.io/hc/en-us/articles/360041769292-Crunch-Automation-basics">Crunch Automation basics</a> article with better examples.</li>
+</ul>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
 
 <div class="alert alert-dismissible text-center cookiealert" role="alert">
   <div class="cookiealert-container">
