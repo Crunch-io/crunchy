@@ -104,17 +104,23 @@ rather than a set of distinct variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/crunch.html">Intro</a>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../reference/">Reference</a>
+  <a href="../articles/crunch.html">Get started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -123,49 +129,57 @@ rather than a set of distinct variables." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li class="dropdown-header">Getting started</li>
     <li>
-      <a href="../articles/crunch.html">Getting Started</a>
-    </li>
-    <li>
-      <a href="../articles/variables.html">Variables</a>
+      <a href="../articles/variables.html">Crunch Variables</a>
     </li>
     <li>
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Organize Variables</a>
+      <a href="../articles/variable-order.html">Variable Folders and Organization</a>
     </li>
     <li>
-      <a href="../articles/derive.html">Derive Variables</a>
+      <a href="../articles/projects.html">Organizing Datasets in Projects</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Exploring and analyzing</li>
+    <li>
+      <a href="../articles/derive.html">Adding Variables</a>
     </li>
     <li>
-      <a href="../articles/analyze.html">Analyze Data</a>
+      <a href="../articles/analyze.html">Analyzing Crunch Data</a>
     </li>
     <li>
-      <a href="../articles/filters.html">Filter Data</a>
-    </li>
-    <li>
-      <a href="../articles/export.html">Export Data</a>
-    </li>
-    <li>
-      <a href="../articles/projects.html">Projects</a>
-    </li>
-    <li>
-      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
+      <a href="../articles/filters.html">Filtering Data</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
     </li>
+    <li>
+      <a href="../articles/export.html">Exporting Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
     <li>
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Cookbooks</li>
+    <li>
+      <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
+    </li>
   </ul>
 </li>
 <li>
-  <a href="../news/">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -230,9 +244,12 @@ should have.</p></td>
     </tr>
     <tr>
       <th>selections</th>
-      <td><p>character, for <code>makeMR</code> and <code>deriveArray</code> the names of the
-categories to mark as the dichotomous selections. Required for
-<code>makeMR</code>; optional for <code>deriveArray</code>; ignored in <code>makeArray</code>.</p></td>
+      <td><p>character (preferred, indicating the names of the
+categories), or numeric (indicating the IDs of the categories
+in the combined array, which may not be the same as in the original
+variables - also note that a category's ID is not the same thing
+as its <code>numeric_value</code>). Required for <code>makeMR</code>; optional for
+<code>deriveArray</code>; ignored in <code>makeArray</code>.</p></td>
     </tr>
     <tr>
       <th>numeric</th>
@@ -257,6 +274,53 @@ if <code>selections</code> are supplied), while <code>makeArray</code> and <code
 return an expression that "binds" variables together, removing them from
 independent existence.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># Categorical Array - Variables from list of variables</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy_cat2</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy1</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy2</span><span class='op'>)</span>,
+    <span class='st'>"Enjoy activities"</span>
+<span class='op'>)</span>
+
+<span class='co'># Categorical Array - Variables from var catalog</span>
+<span class='co'># (result is the same as `ds$enjoy_cat1` above)</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy_cat2</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='va'>ds</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"enjoy1"</span>, <span class='st'>"enjoy2"</span><span class='op'>)</span><span class='op'>]</span>,
+    <span class='st'>"Enjoy activities v2"</span>
+<span class='op'>)</span>
+
+<span class='co'># Multiple Response (selections as character names)</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy_mr1</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy1</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy2</span><span class='op'>)</span>,
+    <span class='st'>"Enjoy activities very much or a little"</span>,
+    selections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Very much"</span>, <span class='st'>"A little"</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='co'># Numeric Array</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>rating_numa</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>rating1</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>rating2</span><span class='op'>)</span>,
+    <span class='st'>"Activity Rating"</span>
+<span class='op'>)</span>
+
+<span class='co'># Using VarDef to specify metadata (and thus needing to specify type)</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy_mr</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        <span class='fu'><a href='VariableDefinition.html'>VarDef</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy1</span> <span class='op'>==</span> <span class='st'>"Very much"</span>, name <span class='op'>=</span> <span class='st'>"enjoy brand 1"</span><span class='op'>)</span>,
+        <span class='fu'><a href='VariableDefinition.html'>VarDef</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy2</span> <span class='op'>==</span> <span class='st'>"Very much"</span>, name <span class='op'>=</span> <span class='st'>"enjoy brand 2"</span><span class='op'>)</span>
+    <span class='op'>)</span>,
+    <span class='st'>"Enjoy activities with custom names"</span>
+<span class='op'>)</span>
+
+<span class='co'># Multiple Response (selections as ids, same as ds$enjoy_mr1)</span>
+<span class='co'># Be careful `ids(categories(ds$enjoy1))` is not necessarily the same as</span>
+<span class='co'># `values(categories(ds$enjoy1))`</span>
+<span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy_mr1</span> <span class='op'>&lt;-</span> <span class='fu'>deriveArray</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy1</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>enjoy2</span><span class='op'>)</span>,
+    <span class='st'>"Enjoy activities very much or a little v2"</span>,
+    selections <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -47,17 +47,23 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.27.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../articles/crunch.html">Intro</a>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../reference/">Reference</a>
+  <a href="../articles/crunch.html">Get started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -66,49 +72,57 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/crunch.html">Getting Started</a>
-    </li>
+<li class="divider">
+    <li class="dropdown-header">Getting started</li>
     <li>
-      <a href="../articles/variables.html">Variables</a>
+      <a href="../articles/variables.html">Crunch Variables</a>
     </li>
     <li>
       <a href="../articles/array-variables.html">Array Variables</a>
     </li>
     <li>
-      <a href="../articles/variable-order.html">Organize Variables</a>
+      <a href="../articles/variable-order.html">Variable Folders and Organization</a>
     </li>
     <li>
-      <a href="../articles/derive.html">Derive Variables</a>
+      <a href="../articles/projects.html">Organizing Datasets in Projects</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Exploring and analyzing</li>
+    <li>
+      <a href="../articles/derive.html">Adding Variables</a>
     </li>
     <li>
-      <a href="../articles/analyze.html">Analyze Data</a>
+      <a href="../articles/analyze.html">Analyzing Crunch Data</a>
     </li>
     <li>
-      <a href="../articles/filters.html">Filter Data</a>
-    </li>
-    <li>
-      <a href="../articles/export.html">Export Data</a>
-    </li>
-    <li>
-      <a href="../articles/projects.html">Projects</a>
-    </li>
-    <li>
-      <a href="../articles/fork-and-merge.html">Fork and Merge</a>
+      <a href="../articles/filters.html">Filtering Data</a>
     </li>
     <li>
       <a href="../articles/subtotals.html">Subtotals and Headings</a>
     </li>
+    <li>
+      <a href="../articles/export.html">Exporting Data</a>
+    </li>
+    <li>
+      <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
     <li>
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
+    <li class="divider">
+    <li class="dropdown-header">Cookbooks</li>
+    <li>
+      <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
+    </li>
   </ul>
 </li>
 <li>
-  <a href="../news/">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -160,12 +174,13 @@
 <p>You now have a copied dataset which is identical to the original, and are free to make changes without fear of disrupting the client’s experience. You can add or remove variables, delete records, or change the dataset’s organization. These changes will be isolated to your fork and won’t be visible to the end user until you decide to merge the fork back into the original dataset. This lets you edit the dataset with confidence because your work is isolated.</p>
 <p>In this case, let’s create a new categorical array variable.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiringCA</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ImportantHiringTechExp"</span>, <span class="st">"ImportantHiringPMExp"</span><span class="op">)</span><span class="op">]</span>,
+<code class="sourceCode R"><span class="va">forked_ds</span><span class="op">$</span><span class="va">ImportantHiringCA</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">forked_ds</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ImportantHiringTechExp"</span>, <span class="st">"ImportantHiringPMExp"</span><span class="op">)</span><span class="op">]</span>,
     name <span class="op">=</span> <span class="st">"importantCatArray"</span><span class="op">)</span></code></pre></div>
 <p>Our forked dataset has diverged from the original dataset. Which we can see by comparing their names.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">forked_ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] FALSE</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html">all.equal</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">forked_ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Lengths (22, 23) differ (string compare on first 22)"
+## [2] "14 string mismatches"</code></pre>
 <p>You can work with the forked dataset as long as you like, if you want to see it in the web App or share it with other analysts by you can do so by calling <code><a href="../reference/webApp.html">webApp(forked_ds)</a></code>. You might create many forks and discard most of them without merging them into the original dataset.</p>
 <p>If you do end up with changes to the forked dataset that you want to include in the original dataset you can do so with the <code><a href="../reference/mergeFork.html">mergeFork()</a></code> function. This function figures out what changes you made the fork, and then applies those changes to the original dataset.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -230,9 +245,9 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">TabsSpaces</span> <span class="op">+</span> <span class="va">HouseholdSize</span>, <span class="va">ds_fork</span><span class="op">)</span></code></pre></div>
 <pre><code>##           HouseholdSize
 ## TabsSpaces   1   2   3   4   5
-##     Both   124 142  98 116 106
-##     Spaces 244 246 252 240 280
-##     Tabs   280 278 244 290 304</code></pre>
+##     Both   128 120 106 132 100
+##     Spaces 264 260 248 220 270
+##     Tabs   310 256 294 284 252</code></pre>
 <p>And finally once we’re comfortable that everything went as expected we can send the data to the client by merging the fork back to the original dataset.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mergeFork.html">mergeFork</a></span><span class="op">(</span><span class="va">ds</span>, <span class="va">ds_fork</span><span class="op">)</span>
@@ -240,7 +255,7 @@
 <pre><code>## HouseholdSize (numeric)
 ## 
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   3.000   3.018   4.000   5.000</code></pre>
+##   1.000   2.000   3.000   2.948   4.000   5.000</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
