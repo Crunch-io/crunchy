@@ -1,3 +1,12 @@
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 250){
+        $('.navbar').addClass("borderClass");
+    }
+    else{
+        $('.navbar').removeClass("borderClass");
+    }
+});
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("resources-filter");
