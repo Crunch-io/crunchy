@@ -219,9 +219,10 @@ multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, o
 
     <pre class="usage"><span class='fu'>Subtotal</span><span class='op'>(</span>
   <span class='va'>name</span>,
-  <span class='va'>categories</span>,
+  categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
-  after <span class='op'>=</span> <span class='cn'>NULL</span>
+  after <span class='op'>=</span> <span class='cn'>NULL</span>,
+  negative <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
 
 <span class='fu'>Heading</span><span class='op'>(</span><span class='va'>name</span>, position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>, after <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
@@ -232,9 +233,10 @@ multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, o
 
 <span class='fu'>Subtotal</span><span class='op'>(</span>
   <span class='va'>name</span>,
-  <span class='va'>categories</span>,
+  categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
-  after <span class='op'>=</span> <span class='cn'>NULL</span>
+  after <span class='op'>=</span> <span class='cn'>NULL</span>,
+  negative <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
 
 <span class='fu'>is.Subtotal</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -282,6 +284,11 @@ relative to another category in the cube (default).</p></td>
       <td><p>character or numeric if <code>position</code> is "relative", then the
 category name or id to position the subtotal or heading after. If not supplied
 this defaults to the last of the <code>categories</code> supplied to <code>Subtotal</code>.</p></td>
+    </tr>
+    <tr>
+      <th>negative</th>
+      <td><p>character or numeric of the category names or ids to be subtracted
+for subtotals only</p></td>
     </tr>
     <tr>
       <th>x</th>

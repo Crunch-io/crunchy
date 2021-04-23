@@ -183,9 +183,9 @@
 <p>Now, if we check <code><a href="../reference/Subtotal-class.html">subtotals()</a></code>, we can see that we have saved them. In this output we see a few different aspects of subtotals: the <code>anchor</code> is the id of the category to put the subtotal after (matching the <code>after</code> or <code>position</code> argument in <code><a href="../reference/Subtotal-class.html">Subtotal()</a></code>), name, aggregation functions and <code>args</code>, which in the this case are the category ids to include in the subtotal.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/Subtotal-class.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">manningknowledge</span><span class="op">)</span></code></pre></div>
-<pre><code>##   anchor                   name     func    args
-## 1      2        Follows closely subtotal 2 and 1
-## 2      4 Doesn't Follow Closely subtotal 3 and 4</code></pre>
+<pre><code>##   anchor                   name     func    args               kwargs
+## 1      2        Follows closely subtotal 2 and 1 positive: 2 and 1 | 
+## 2      4 Doesn't Follow Closely subtotal 3 and 4 positive: 3 and 4 |</code></pre>
 <p>This shows up in the Categorical variable card on the web app like this:</p>
 <p><img src="images/manning_knowledge_subtotals.png"><!-- --></p>
 <p>We can also add <em>headings</em>, which are similar to subtotals in that they are additions to categorical variables that will be displayed in the app, but they don’t sum up any categories. For a variable with many categories, they can help group variables visually. Here we add some guides to Obama’s approval rating.</p>
@@ -200,9 +200,9 @@
 <span class="op">)</span>
 
 <span class="fu"><a href="../reference/Subtotal-class.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">obamaapp</span><span class="op">)</span></code></pre></div>
-<pre><code>##   anchor       name func args
-## 1      0   Approves   NA   NA
-## 2      2 Disapprove   NA   NA
+<pre><code>##   anchor       name func args kwargs
+## 1      0   Approves   NA   NA       
+## 2      2 Disapprove   NA   NA       
 ## 3      4  No Answer   NA   NA</code></pre>
 <p>Again, this shows up in the Categorical variable card on the web app:</p>
 <p><img src="images/obama_headings.png"><!-- --></p>
@@ -234,12 +234,12 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/Subtotal-class.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">snowdenleakapp</span><span class="op">)</span>
 <span class="fu"><a href="../reference/Subtotal-class.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">congapp</span><span class="op">)</span></code></pre></div>
-<pre><code>##   anchor       name     func    args
-## 1      2   Approves subtotal 2 and 1
-## 2      4 Disapprove subtotal 3 and 4</code></pre>
-<pre><code>##   anchor       name     func    args
-## 1      2   Approves subtotal 2 and 1
-## 2      5 Disapprove subtotal 4 and 5</code></pre>
+<pre><code>##   anchor       name     func    args               kwargs
+## 1      2   Approves subtotal 2 and 1 positive: 2 and 1 | 
+## 2      4 Disapprove subtotal 3 and 4 positive: 3 and 4 |</code></pre>
+<pre><code>##   anchor       name     func    args               kwargs
+## 1      2   Approves subtotal 2 and 1 positive: 2 and 1 | 
+## 2      5 Disapprove subtotal 4 and 5 positive: 4 and 5 |</code></pre>
 </div>
 <div id="computing-with-subtotals" class="section level1">
 <h1 class="hasAnchor">
