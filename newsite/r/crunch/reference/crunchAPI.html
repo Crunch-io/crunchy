@@ -211,7 +211,14 @@
     <p>Main Crunch API handling function</p>
     </div>
 
-    <pre class="usage"><span class='fu'>crunchAPI</span><span class='op'>(</span><span class='va'>http.verb</span>, <span class='va'>url</span>, config <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, status.handlers <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>crunchAPI</span><span class='op'>(</span>
+  <span class='va'>http.verb</span>,
+  <span class='va'>url</span>,
+  config <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  status.handlers <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>,
+  progress.handler <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -233,6 +240,11 @@
       <td><p>named list of specific HTTP statuses and a response
 function to call in the case where that status is returned. Passed to the
 <code><a href='handleAPIresponse.html'>handleAPIresponse()</a></code> function.</p></td>
+    </tr>
+    <tr>
+      <th>progress.handler</th>
+      <td><p>an optional function that resolves errors raised
+during an async request. Passed to the <code><a href='pollProgress.html'>pollProgress()</a></code> function.</p></td>
     </tr>
     <tr>
       <th>...</th>

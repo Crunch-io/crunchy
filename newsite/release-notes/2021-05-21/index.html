@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Quick Multitable Export</title>
+    <title>Crunch | Release 2021.18</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Quick Multitable Export &middot; Modern survey data analysis">
-<meta property="og:description" content="Export only what you see to XLSX or use saved settings to include more.">
+    <meta property="og:title" content="Release 2021.18 &middot; Modern survey data analysis">
+<meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/export-this-table/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-05-21/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2019-04-05T23:20:47-04:00">
+  <meta property="og:updated_time" content="2021-05-21T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Quick Multitable Export"/>
-<meta name="twitter:description" content="Export only what you see to XLSX or use saved settings to include more."/>
+<meta name="twitter:title" content="Release 2021.18"/>
+<meta name="twitter:description" content="Crunch web application  Added the ability for organizations to route user questions and problems directly to personnel or online resources (blogs, knowledge base, help center, videos, etc) for any folder via the &ldquo;Report an Issue&rdquo; menu option. For example, you may want to configure a top-level regional folder to route user issues to your own, branded https://help.mycomany.com and configure a lower-level folder to route user questions to a specific email address like usa-questions@mycompany."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -136,12 +136,26 @@
         <div class="container-fluid">
 
             <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="blog-content">
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <span class="date">Apr 18, 2019 </span>
-                                <h2 class="title">Quick Multitable Export</h2>
-                                <p class="blog-description">Export only what you see to XLSX or use saved settings to include more.</p>
+                                <h2>Release 2021.18</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>May 21, 2021 </span>
                             </div>
                         </div> 
                 </div> 
@@ -152,17 +166,32 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <h2 id="export-all-on-a-single-page">Export all on a single page</h2>
-<figure class="float-md-right img-fluid"><img src="dev/features/images/export-tab-book-menu.png"/>
-</figure>
-
-<p>Multitables are a great way to quickly find key relationships in your data. When <em>exporting</em> multitables, you now have three choices, allowing you to create just the right export for your needs.</p>
+                          <h3 id="crunch-web-application">Crunch web application</h3>
 <ul>
-<li><strong>Export this table</strong> – instantly grab an XLSX file of just what you see on screen, using whatever display settings you have currently selected.</li>
-<li><strong>Export this table (saved settings)</strong> – instantly grab an XLSX file of the table that you see on screen but with whatever settings you’ve chosen in the Export tab book &gt; Customize panel. This allows you to use your favorite settings (counts, percentages, unweighted bases, etc.) without selecting them each time. Just choose them once and then you’ll be able to use them every time with this option.</li>
-<li><strong>Export tab book…”</strong> – export several variables or a whole dataset in a single or multi-page layout, complete with customizable settings via the Customize… button.</li>
+<li>Added the ability for organizations to route user questions and problems directly to personnel or online resources (blogs, knowledge base, help center, videos, etc) for any folder via the &ldquo;Report an Issue&rdquo; menu option. For example, you may want to configure a top-level regional folder to route user issues to your own, branded <a href="https://help.mycomany.com"><code>https://help.mycomany.com</code></a> and configure a lower-level folder to route user questions to a specific email address like <code>usa-questions@mycompany.com</code>. See the <a href="https://help.crunch.io/hc/en-us/articles/360061158712-End-user-support-requests">help article</a> for more information.</li>
+<li>Added support that tracks how users are interacting with datasets: upon request, Crunch will send clickstream data to each organization&rsquo;s Google Analytics reports. See the <a href="https://help.crunch.io/hc/en-us/articles/360061144172-Understanding-end-user-usage">help article</a> for more information.</li>
+<li>Made the following improvements to the variable organizer when accessed by selecting &ldquo;Edit Variables&rdquo; from dataset properties:
+<ul>
+<li>Dragging and dropping are smoother, and a dropzone now appears with a dashed border where the dragged variables are moved, making it easier to see.</li>
+<li>When clicking or dragging to &ldquo;Move&hellip;&rdquo; a &lsquo;Move to&hellip;&rsquo; dialog appears, which allows you to more easily navigate your folder hierarchy and even create new folders as part of the moving process.</li>
 </ul>
-<p>Now it is easier than ever to take those insights away and build your data story with XLSX exports.</p>
+</li>
+<li>Improved how &ldquo;Export this table&rdquo; performs so that it correctly exports the displayed measure and decimal place setting in multitable view.</li>
+<li>Improved how the &ldquo;Above table&rdquo; and &ldquo;Below table&rdquo; bases options are properly reflected in the tab book export for crosstabs.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Added the <code>MINUS</code> modifier info to the DISPLAY command. See the <a href="https://help.crunch.io/hc/en-us/articles/360042038692-DISPLAY-command">help article</a> for more information and examples.</li>
+<li>Made speed improvements when working with large scripts or datasets in the <a href="https://help.crunch.io/hc/en-us/articles/360042038132-CHANGE-command">CHANGE</a>, <a href="https://help.crunch.io/hc/en-us/articles/360044079971-CREATE-MULTIPLE-SELECTION-command">CREATE MULTIPLE SELECTION</a>, and <a href="https://help.crunch.io/hc/en-us/articles/360042457291-ORGANIZE-command">ORGANIZE command</a>s.</li>
+<li>Fixed a bug in the <a href="https://help.crunch.io/hc/en-us/articles/360044080131-SET-DATES-command">SET DATES command</a> when working on derived variables.</li>
+<li>Added support for the <a href="https://help.crunch.io/hc/en-us/articles/360042038132-CHANGE-command">CHANGE LABELS command</a> to allow you to change subvariable labels for numeric arrays.</li>
+<li>Added the ability to delete a script even if multitables or filters depend on any of the variables created by the script.</li>
+</ul>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Added <a href="https://help.crunch.io/hc/en-us/articles/360061158712-End-user-support-requests">documentation</a> that describes how to use the &ldquo;Report an Issue&rdquo; feature within the Crunch web app.</li>
+<li>Made improvements to the <a href="https://help.crunch.io/hc/en-us/articles/360040059832-Target-Population">Target Population</a> help desk article.</li>
+</ul>
 
                       </div>
                   </div>

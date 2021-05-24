@@ -213,7 +213,7 @@ error message tells you to call pollProgress to resume." />
 error message tells you to call <code>pollProgress</code> to resume.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pollProgress</span><span class='op'>(</span><span class='va'>progress_url</span>, wait <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pollProgress</span><span class='op'>(</span><span class='va'>progress_url</span>, wait <span class='op'>=</span> <span class='fl'>0.5</span>, error_handler <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -226,6 +226,11 @@ error message tells you to call <code>pollProgress</code> to resume.</p>
       <th>wait</th>
       <td><p>Number of seconds to wait between polling. This time is increased
 20 percent on each poll.</p></td>
+    </tr>
+    <tr>
+      <th>error_handler</th>
+      <td><p>An optional function that takes the status object
+when the progress is less than 0 (meaning the request failed)</p></td>
     </tr>
     </table>
 

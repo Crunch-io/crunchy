@@ -211,7 +211,7 @@
     <p>Do the right thing with the HTTP response</p>
     </div>
 
-    <pre class="usage"><span class='fu'>handleAPIresponse</span><span class='op'>(</span><span class='va'>response</span>, special.statuses <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>handleAPIresponse</span><span class='op'>(</span><span class='va'>response</span>, special.statuses <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, progress.handler <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -223,6 +223,12 @@
     <tr>
       <th>special.statuses</th>
       <td><p>an optional named list of functions by status code.</p></td>
+    </tr>
+    <tr>
+      <th>progress.handler</th>
+      <td><p>an optional function to handle errors reported by
+a progress result. Default NULL prints the string <code>message</code>; other
+functions required to handle non-string messages in progress responses.</p></td>
     </tr>
     </table>
 

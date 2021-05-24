@@ -215,7 +215,13 @@ concisely describe the metadata of your data when importing. The
 syntax is described <a href='https://help.crunch.io/hc/en-us/categories/360004356012-Crunch-Automation'>in the crunch API documentation</a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>dataset</span>, <span class='va'>script</span>, is_file <span class='op'>=</span> <span class='fu'>string_is_file_like</span><span class='op'>(</span><span class='va'>script</span><span class='op'>)</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>runCrunchAutomation</span><span class='op'>(</span>
+  <span class='va'>dataset</span>,
+  <span class='va'>script</span>,
+  is_file <span class='op'>=</span> <span class='fu'>string_is_file_like</span><span class='op'>(</span><span class='va'>script</span><span class='op'>)</span>,
+  encoding <span class='op'>=</span> <span class='st'>"UTF-8"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
 <span class='fu'>showScriptErrors</span><span class='op'>(</span><span class='op'>)</span></pre>
 
@@ -237,6 +243,17 @@ or a string the syntax loaded in R.</p></td>
 used in the <code>script</code> argument, but you can override the heuristics
 by specifying <code>TRUE</code> for a file, and <code>FALSE</code> for a string.</p></td>
     </tr>
+    <tr>
+      <th>encoding</th>
+      <td><p>Optional encoding to convert <strong>from</strong>, defaults to UTF-8.
+The API accepts only UTF-8, so all text will be converted to UTF-8 before
+being sent to the server.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional options, such as <code>dry_run = TRUE</code> passed on
+to the API</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -257,6 +274,9 @@ For <code>showScriptErrors()</code>, when run after a failure, a list with two i
 
 <span class='co'># Or a string directly:</span>
 <span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME v1 TO age;"</span><span class='op'>)</span>
+
+<span class='co'># A "dry run" that validates the script but does not run it:</span>
+<span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME V1 TO age;"</span>, dry_run <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='co'># After a failed run, some error information prints to console,</span>
 <span class='co'># But more details are available with function:</span>

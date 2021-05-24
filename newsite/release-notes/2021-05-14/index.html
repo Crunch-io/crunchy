@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Quick Multitable Export</title>
+    <title>Crunch | Release 2021.17</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Quick Multitable Export &middot; Modern survey data analysis">
-<meta property="og:description" content="Export only what you see to XLSX or use saved settings to include more.">
+    <meta property="og:title" content="Release 2021.17 &middot; Modern survey data analysis">
+<meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/export-this-table/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-05-14/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2019-04-05T23:20:47-04:00">
+  <meta property="og:updated_time" content="2021-05-14T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Quick Multitable Export"/>
-<meta name="twitter:description" content="Export only what you see to XLSX or use saved settings to include more."/>
+<meta name="twitter:title" content="Release 2021.17"/>
+<meta name="twitter:description" content="Crunch web application  Improved the time marker bar so that when you click the diamond symbol it now expands to display the margin of error when confidence bands are enabled in time plots. Improved the export settings functionality (for both deck and tab book exports), so that it now features a &lsquo;bases&rsquo; options for numeric measures. Added performance improvements and fixed various bugs to the export settings crosstab sections (tab book and edit slide)."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -136,12 +136,26 @@
         <div class="container-fluid">
 
             <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="blog-content">
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <span class="date">Apr 18, 2019 </span>
-                                <h2 class="title">Quick Multitable Export</h2>
-                                <p class="blog-description">Export only what you see to XLSX or use saved settings to include more.</p>
+                                <h2>Release 2021.17</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>May 14, 2021 </span>
                             </div>
                         </div> 
                 </div> 
@@ -152,17 +166,32 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <h2 id="export-all-on-a-single-page">Export all on a single page</h2>
-<figure class="float-md-right img-fluid"><img src="dev/features/images/export-tab-book-menu.png"/>
-</figure>
-
-<p>Multitables are a great way to quickly find key relationships in your data. When <em>exporting</em> multitables, you now have three choices, allowing you to create just the right export for your needs.</p>
+                          <h3 id="crunch-web-application">Crunch web application</h3>
 <ul>
-<li><strong>Export this table</strong> – instantly grab an XLSX file of just what you see on screen, using whatever display settings you have currently selected.</li>
-<li><strong>Export this table (saved settings)</strong> – instantly grab an XLSX file of the table that you see on screen but with whatever settings you’ve chosen in the Export tab book &gt; Customize panel. This allows you to use your favorite settings (counts, percentages, unweighted bases, etc.) without selecting them each time. Just choose them once and then you’ll be able to use them every time with this option.</li>
-<li><strong>Export tab book…”</strong> – export several variables or a whole dataset in a single or multi-page layout, complete with customizable settings via the Customize… button.</li>
+<li>Improved the time marker bar so that when you click the diamond symbol it now expands to display the margin of error when confidence bands are enabled in time plots.</li>
+<li>Improved the export settings functionality (for both deck and tab book exports), so that it now features a &lsquo;bases&rsquo; options for numeric measures.</li>
+<li>Added performance improvements and fixed various bugs to the export settings crosstab sections (tab book and edit slide).</li>
+<li>Fixed how decks appear, which are now alphabetically sorted.</li>
+<li>Improved how long format exports are handled when &ldquo;All variables on one sheet&rdquo; is selected so that legends are now separately included for both crosstabs and numeric exports where applicable.</li>
+<li>Enhanced how calculations are performed when population estimates in a crosstab include a categorical date variable – each wave is now assumed to represent the entire population.</li>
 </ul>
-<p>Now it is easier than ever to take those insights away and build your data story with XLSX exports.</p>
+<h3 id="api-endpoints-and-api-reference">API Endpoints and API Reference</h3>
+<ul>
+<li>Updated the API email policy so that users with appropriate permissions may still change a user&rsquo;s email through the <code>/api/user/&lt;userID&gt;/change_email/</code> endpoint.</li>
+</ul>
+<h3 id="sdks-rcrunch-pycrunch-and-scrunch">SDKs (<code>rCrunch</code>, <code>pyCrunch</code>, and <code>sCrunch</code>)</h3>
+<ul>
+<li>Fixed a bug that caused some sCrunch library commands to fail when fetching data from the <code>/tables/</code> endpoint.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Fixed a bug in the Crunch Automation script runner that caused certain Unicode strings in categories to be incorrectly matched.</li>
+</ul>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Created a new <a href="https://help.crunch.io/hc/en-us/categories/360006281331-Integrations">section</a> and <a href="https://help.crunch.io/hc/en-us/articles/360061204751-Crunch-importers-overview">overview</a> article for integrations, in order to help users easily find information on how to import data from popular data-collection platforms into Crunch. We&rsquo;ll be adding new information on all of the platforms in the coming weeks.</li>
+<li>Added new information about how to use web app and Crunch Automation for <a href="https://help.crunch.io/hc/en-us/articles/360045631232-Nets-on-a-multiple-response-variable">nets on a multiple response variable</a>.</li>
+</ul>
 
                       </div>
                   </div>
