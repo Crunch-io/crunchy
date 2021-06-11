@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | IIEX Forward</title>
+    <title>Crunch | Release 2021.19</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="IIEX Forward &middot; Modern survey data analysis">
+    <meta property="og:title" content="Release 2021.19 &middot; Modern survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/info.crunch.io/iiex-forward-2021">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-05-28/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2021-04-28T16:01:45-04:00">
+  <meta property="og:updated_time" content="2021-05-28T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="IIEX Forward"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Release 2021.19"/>
+<meta name="twitter:description" content="Crunch web application  Fixed various Confirmit integration issues, including how responses appear when they contain newlines. Made the following Decipher integration improvements:  Fixed an error when adding subvariables to an array when updating a &lsquo;Decipher Integrated&rsquo; dataset. Addressed issues with numeric arrays when updating datasets that are integrated with Decipher datasets.   Improved how subtotals and differences are displayed by adding a boldface font in categorical-array variable summary cards."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -51,6 +51,7 @@
   </head>
 
   <body>
+
 
 
 
@@ -129,41 +130,99 @@
     </nav>
 
 
-<div class="container">
-<div id="hero" class="row">
-    <div class="intro-post col">
-        <h1 itemprop="headline">  IIEX Forward</h1>
-        
-        <time class="post-time">
-  Published <span datetime="2021-04-28T16:01:45-04:00">28 Apr 2021</span>
+<div id="wrapper">
 
-</time>
-    </div>
-</div>
-<div id="post-box" class="row">
-    <div class="col">
-        <div id="post" itemprop="articleBody">
-            
-        </div><br/>
-        <div>
-            <p class="post-footer">
-  Published
-  
-  <time datetime="2021-04-28T16:01:45-04:00">
-    28 Apr 2021
-  </time>
-  
-  
-</p>
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
 
-            
+            <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
 
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <h2>Release 2021.19</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>May 28, 2021 </span>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
 
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
 
-        </div>
-    </div>
-</div>
-</div>
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <h3 id="crunch-web-application">Crunch web application</h3>
+<ul>
+<li>Fixed various Confirmit integration issues, including how responses appear when they contain newlines.</li>
+<li>Made the following Decipher integration improvements:
+<ul>
+<li>Fixed an error when adding subvariables to an array when updating a &lsquo;Decipher Integrated&rsquo; dataset.</li>
+<li>Addressed issues with numeric arrays when updating datasets that are integrated with Decipher datasets.</li>
+</ul>
+</li>
+<li>Improved how subtotals and differences are displayed by adding a boldface font in categorical-array variable summary cards.</li>
+<li>Added the ability to show weighted and unweighted bases on the tooltip when the measure is set to row percent in &lsquo;Tables &amp; Graphs&rsquo; and &lsquo;Multitable&rsquo; modes.</li>
+<li>Improved how variable summary cards appear for numeric arrays so that they now correctly reflect filtered values after applying filters.</li>
+</ul>
+<h3 id="api-endpoints-and-api-reference">API Endpoints and API Reference</h3>
+<ul>
+<li>Made numerous QA edits to the <a href="https://crunch.io/api/reference/">Crunch API reference</a> docs.</li>
+<li>Added more information about filter parameters when using the <a href="https://crunch.io/api/reference/#get-/search/">Cross-dataset search endpoint</a> as well as the ability for users to use an &ldquo;all terms&rdquo; parameter to improve search results.</li>
+<li>Improved performance by 12% when when filtering the root folder on large dataset search queries.</li>
+<li>Added <a href="https://crunch.io/api/reference/#patch-/datasets/-dataset_id-/">API documentation</a> that describes how to copy views from one dataset to another.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Made speed improvements to scripts that have multiple <a href="https://help.crunch.io/hc/en-us/articles/360042038692-DISPLAY-command">DISPLAY,</a> <a href="https://help.crunch.io/hc/en-us/articles/360042038132-CHANGE-command">CHANGE</a>, or <a href="https://help.crunch.io/hc/en-us/articles/360042247331-RENAME-command">RENAME</a> commands, especially on datasets with many variables.</li>
+</ul>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Updated documentation to describe how to use new functionality when <a href="https://help.crunch.io/hc/en-us/articles/360040060112-Organizing-Variables">organizing variables</a>.</li>
+<li>Updated the <a href="https://help.crunch.io/hc/en-us/articles/360059213452-Category-Differences">Category Differences</a> article with new information for broad release.</li>
+<li>Added new Crunch Automation commands to the <a href="https://help.crunch.io/hc/en-us/articles/360045984071-Recoding-case-level-missing-valid-values-rebasing-">Recoding</a> article.</li>
+<li>Updated and added new info to the <a href="https://help.crunch.io/hc/en-us/articles/360044362492-The-Definitive-Guide-to-Importing-and-Preparing-Data">Importing and Preparing data definitive guide</a>.</li>
+<li>Added more &lsquo;import data&rsquo; examples in the <a href="https://help.crunch.io/hc/en-us/articles/360044732771-Working-with-Data-and-Datasets">Working with Data and Datasets</a> article.</li>
+</ul>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
 
 <div class="alert alert-dismissible text-center cookiealert" role="alert">
   <div class="cookiealert-container">
