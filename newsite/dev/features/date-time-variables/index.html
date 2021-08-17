@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prepare and analyze survey data quickly and easily.">
+    <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
+    <base href="//crunch-io.github.io/crunchy/newsite/">
+    <title>Crunch | Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date-Time variables</title>
+
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta property="og:title" content="Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date-Time variables &middot; Modern survey data analysis">
+<meta property="og:description" content="Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs.">
+<meta property="og:type" content="website" >
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/date-time-variables/">
+<meta property="og:locale" content="en">
+
+
+    
+        <meta property="og:image" content="https://crunch.io/img/logo-1200x630.png">
+    
+
+
+
+  <meta property="og:updated_time" content="2021-08-17T16:52:04-04:00">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
+
+<meta name="twitter:title" content="Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date-Time variables"/>
+<meta name="twitter:description" content="Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs."/>
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5GB59T2');</script>
+    
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GB59T2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img class="d-inline-block align-top" src="img/crunch_logo.svg" alt="" width="140"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capabilities
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
+                      <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
+                      <a class="dropdown-item" href="crunchbox">CrunchBox</a>
+                      <a class="dropdown-item" href="tracker-analytics">Tracker Analytics</a>
+                      <a class="dropdown-item" href="diy">DIY</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="about">About</a>
+                      <a class="dropdown-item" href="team">Team</a>
+                      <a class="dropdown-item" href="jobs">Careers</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item"  href="resources">Webinars & White Papers</a>
+                        <a class="dropdown-item" href="case-studies">Case Studies</a>
+                    </div>
+
+
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Support
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="http://help.crunch.io/">Help Center</a>
+                      <a class="dropdown-item" href="api/reference/">API Reference</a>
+                      <a class="dropdown-item" href="dev/features/">Feature Announcements</a>
+                      <a class="dropdown-item" href="release-notes/">Release Notes</a>
+                      <a class="dropdown-item" href="https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides">Developer Guides</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact">Contact us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://app.crunch.io/" target="_blank">Sign in</a>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-sm btn-success" onclick="window.location.href='/request-demo'">Request a demo</button>
+                </li>
+              </ul>
+            </div>
+        </div> 
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <span class="date">Aug 17, 2021 </span>
+                                <h2 class="title">Crunch's new visualizations for time-series analyses and trackers are now extended to Date-Time variables</h2>
+                                <p class="blog-description">Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs.</p>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <p>Back in April this year, we announced that a great new visualization was available for time series analyses that used the new &ldquo;Categorical Date&rdquo; variable type. Existing time plots that used the older Date-Time variable type were unaffected and continued to use the previous line graph component. Since then, we&rsquo;ve worked to extend the new line graph functionality to those original Date-Time variables so that everyone can benefit from their better design and functionality, and we can now announce that <em>all</em> time plots will be using the new visualization. Below you will find a summary of what you can expect from your new time plots in Crunch.</p>
+<p><strong>Category selection</strong></p>
+<p>Line graphs become really hard to read when there are lots of lines shown simultaneously, so Crunch now defaults to showing just the top 5 for newly created analyses, but you can pick whichever combination of lines (including showing more or fewer than 5) from the new &ldquo;Select categories&rdquo; interface. This allows you to show just the lines that tell your chosen data story. And your selection is then reflected in PowerPoint exports and dashboards.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_01.gif"/>
+</figure>
+
+<p>Existing line graphs, saved to decks or used in dashboards, will have their current set of lines preserved so you won&rsquo;t see any changes to the lines shown.</p>
+<p><strong>Confidence bands</strong></p>
+<p>Crunch&rsquo;s line graphs now support the display of confidence bands, calculated at 95% confidence, and you can turn these on or off with a click of the * asterisk button.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_02.gif"/>
+</figure>
+
+<p><strong>Draggable bar</strong></p>
+<p>As well as being able to hover over points to see their values, there&rsquo;s a vertical bar that you can drag to any point in the time-series to see all the values and ranking at that point in time.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_03.gif"/>
+</figure>
+
+<p>Note that there are two benefits <em>not</em> available for Date-Time analyses because they rely on the new Categorical Date variable type: Smoothing (a.k.a. &ldquo;Rolling averages&rdquo;) and editable time-axis labels. There is therefore still good motivation for using Categorical Date variables in your projects. You can read more about the smoothing feature <a href="https://help.crunch.io/hc/en-us/articles/360053244351-Time-series-smoothing-moving-average-">here</a> and about the editable labels <a href="https://help.crunch.io/hc/en-us/articles/360050751471-Defining-survey-wave-variables">here</a>.</p>
+<p>For full details of this new feature and where to find it, see the <a href="https://help.crunch.io/hc/en-us/articles/360057226852-Time-series-analysis-with-time-plots">help center</a>.</p>
+<p>Currently this feature is only available if you have enabled <a href="https://help.crunch.io/hc/en-us/articles/360040465331-How-to-enable-early-access">Early access</a> in your application settings.</p>
+<p>We’d love your feedback at <a href="mailto:support@crunch.io">support@crunch.io</a>.</p>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+  <div class="cookiealert-container">
+      <div class="row">
+          <div class="col-sm-8 col-md-10 text-left">
+              Crunch.io uses cookies to ensure you get the best experience on our site. By using this site, you agree to the use of cookies in accordance with our <a href="about/privacy">Cookie Policy</a>.
+          </div>
+
+          <div class="col-sm-4 col-md-2">
+              <button type="button" class="btn btn-success acceptcookies" aria-label="Close"> I accept </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://js.hsforms.net/forms/shell.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/script.js"></script>
+
+
+
+
+</body>
+</html>
+
