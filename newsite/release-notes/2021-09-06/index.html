@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Crunch R Package 1.18.0 Released</title>
+    <title>Crunch | Release 2021.33</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Crunch R Package 1.18.0 Released &middot; Modern survey data analysis">
-<meta property="og:description" content="New tools for working with maps, derived variables, multitables, and more.">
+    <meta property="og:title" content="Release 2021.33 &middot; Modern survey data analysis">
+<meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/r-package-1-18-0/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-09-06/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2017-08-25T18:20:47-04:00">
+  <meta property="og:updated_time" content="2021-09-07T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Crunch R Package 1.18.0 Released"/>
-<meta name="twitter:description" content="New tools for working with maps, derived variables, multitables, and more."/>
+<meta name="twitter:title" content="Release 2021.33"/>
+<meta name="twitter:description" content="Crunch web application  Updated the Crunch UI so that deck slides and dashboard tiles are correctly weighted with the updated variable when a weight variable is deleted and re-created with the same alias. Improved Qualtrics integrations, which now support embedded data. Updated how &lsquo;Unweighted N / All&rsquo; column values appear so that they now correctly display in multitable view when the row variable is a categorical array. Added the ability to allow a dataset editor to reorder the slides of a deck that are owned by another user."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -136,12 +136,26 @@
         <div class="container-fluid">
 
             <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="blog-content">
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <span class="date">Aug 25, 2017 </span>
-                                <h2 class="title">Crunch R Package 1.18.0 Released</h2>
-                                <p class="blog-description">New tools for working with maps, derived variables, multitables, and more.</p>
+                                <h2>Release 2021.33</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>September 7, 2021 </span>
                             </div>
                         </div> 
                 </div> 
@@ -152,49 +166,21 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <p>We&rsquo;ve just released version 1.18.0 of the Crunch R package. Current package users should see a message when they load the package instructing you how to update to the latest version. New users (or anyone) can install this latest release from CRAN with</p>
-<pre><code>install.packages(&quot;crunch&quot;)
-</code></pre>
-<p>See the <a href="/r/crunch/">package website</a> for further instructions.</p>
-<p>Since the last CRAN release in June (1.17.0), some significant features have been added. A full list of changes can be found <a href="/r/crunch/news/#crunch-1-18-0">here</a>, but here is an overview of the main additions.</p>
-<h2 id="mapping">Mapping</h2>
-<p>Crunch-hosted geographic data can now be set and updated. Use <a href="/r/crunch/reference/geo.html"><code>geo()</code></a> on a variable to see if there is already associated geographic data. Use the <a href="/r/crunch/reference/addGeoMetadata.html"><code>addGeoMetadata()</code></a> function to match a text or categorical variable with available geodata based on the contents of the variable and metadata associated with Crunch-hosted geographic data. This function looks at the contents of the variable and the currently available geodata files that are available on Crunch. In most cases, you can set the geographic connection with just</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">geo(ds$state) &lt;- addGeoMetadata(ds$state)
-</code></pre><p>Once a variable has been associated with geographic data, you can use the Crunch web app to make beautiful choropleths like this:</p>
-<div class="crunchbox-container">
-    <div class="crunchbox">
-        <iframe src="https://s.crunch.io/widget/index.html#/ds/b877914954c7e82db199753717ddaef9/row/00001c/column/000003?viz=geo&cp=percent&dp=0&grp=stack"></iframe>
-    </div>
-</div>
-<p>We&rsquo;re also working on a new R package for working with Crunch&rsquo;s geographic data, so watch this space for news about that.</p>
-<h2 id="new-variable-builders">New variable builders</h2>
-<p>This release adds support for case variables, what the &ldquo;<a href="http://support.crunch.io/crunch/crunch_creating-a-categorical-variable.html">Build Categorical Variable</a>&rdquo; interface allows you to do in the web application. <a href="/r/crunch/reference/makeCaseVariable.html"><code>makeCaseVariable()</code></a> takes a sequence of case statements to derive a new variable based on the values from other variables.</p>
-<p>Case variables are useful when you want a categorical variable that is dependent on the contents of other variables. For example, we had two 10 point scores for how likely a respondent was to recommend ACME corp, both unaided and aided, but what we want is an overall net promoter score for ACME corp across both aided and unaided recommendations. We could create this NPS variable simply with a case variable as follows:</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">ds_pets$ACME_NPS &lt;- makeCaseVariable(
-    Promoter = ds_pets$ACME_unaided &gt;= 9 | ds_pets$ACME_aided &gt;= 9,
-    Neutral = ds_pets$ACME_unaided &gt;= 7 | ds_pets$ACME_aided &gt;= 7,
-    Detractor = ds_pets$ACME_unaided &lt;= 6 | ds_pets$ACME_aided &lt;= 6,
-    name = &quot;ACME Net Promoter&quot;
-)
-</code></pre><p>Case variables match the first case that evaluates to <code>TRUE</code>, so in this example, a value of <code>9</code> gets classified as &ldquo;promoter&rdquo; and not &ldquo;neutral&rdquo;. If none of the cases match and there is no <code>else</code> case specified, the system default <code>No Data</code> category will be used.</p>
-<p><code>makeCaseVariable()</code> is incredibly powerful for making complicated derived variables that are based on anything that can be expressed with a Crunch expression. Best of all, <code>makeCaseVariable()</code> uses the power of Crunch&rsquo;s servers to do all of this computation, so there&rsquo;s no need to pull data and then send it back to Crunch. And, whenever the data in the input variables are changed or new rows are added, <a href="/r/crunch/articles/derive.html">your derived variable automatically updates</a>.</p>
-<p>We also added a convenience function to create interactions of variables. <a href="/r/crunch/reference/interactVariables.html"><code>interactVariables()</code></a> takes two or more categorical variables and derives a new variable with the combination of each, like how the base R <code>interact()</code> function works, except the resulting variable is a derivation that lives on the Crunch servers, as with <code>makeCaseVariable()</code>.</p>
-<h2 id="derived-variable-tools">Derived variable tools</h2>
-<p>We&rsquo;ve added some methods to help you work with derived variables more generally. First, you can check if a variable is derived with <code>is.derived(ds$variable)</code>. If it is derived, you can see its derivation expression with <code>derivation(ds$derived_variable)</code>. You can change that derivation expression by assigning a new one: <code>derivation(ds$derived_variable) &lt;- ds$var1 + ds$var2</code>. Finally, if you want to sever the link to the variable&rsquo;s sources, you can &ldquo;integrate&rdquo; (integration is the opposite of derivation, right?) the variable by assigning a <code>NULL</code> derivation, like <code>derivation(ds$derived_variable) &lt;- NULL</code> or you can set <code>is.derived(ds$derived_variable) &lt;- FALSE</code>. The resulting variable will no longer update when its (former) source variables are altered.</p>
-<p>See <a href="/r/crunch/reference/derivations.html">derivations</a> for more detailed documentation and information.</p>
-<h2 id="multitables">Multitables</h2>
-<p>Similar to the new tools for working with derived variables, there are also new methods for working with &ldquo;<a href="/r/crunch/reference/multitable-catalog.html">multitables</a>&rdquo;, the table header definitions composed of multiple variables that can be used interactively in the web app and to generate tab books of the dataset. Multitables can now be updated with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- ~ var1 + var2</code> formula syntax. In addition, multitables can be deleted with <code>multitables(ds)[[&quot;Multitable name&quot;]] &lt;- NULL</code>. Multitables also have new <code>name()</code> and <code>delete()</code> methods.</p>
-<h2 id="assorted-enhancements-and-fixes">Assorted enhancements and fixes</h2>
-<p>There are many more changes in the release; see the <a href="/r/crunch/news/#crunch-1-18-0">full release notes</a> for more details. A few other new functions are worth mentioning.</p>
+                          <h3 id="crunch-web-application">Crunch web application</h3>
 <ul>
-<li>Better integration with the web application. You can copy the URL from the browser in the web app and pass it to <a href="/r/crunch/reference/loadDataset.html"><code>loadDataset()</code></a> to load the same dataset in your R session. To go the other way, call <a href="/r/crunch/reference/webApp.html"><code>webApp()</code></a> on your R dataset object and it will open it in your web browser.</li>
-<li><a href="/r/crunch/reference/resetPassword.html"><code>resetPassword()</code></a> allows you to trigger a password reset from R.</li>
-<li><a href="/r/crunch/reference/copyOrder.html"><code>copyOrder()</code></a> to copy the ordering of variables from one dataset to another.</li>
-<li><a href="/r/crunch/reference/searchDatasets.html"><code>searchDatasets()</code></a> provides a basic interface to the Crunch search API for finding variables and datasets.</li>
-<li>Support for streaming data: check for received data with <a href="/r/crunch/reference/pendingStream.html"><code>pendingStream()</code></a>; append that pending stream data to the dataset with <a href="/r/crunch/reference/appendStream.html"><code>appendStream()</code></a>.</li>
+<li>Updated the Crunch UI so that deck slides and dashboard tiles are correctly weighted with the updated variable when a weight variable is deleted and re-created with the same alias.</li>
+<li>Improved Qualtrics integrations, which now support embedded data.</li>
+<li>Updated how &lsquo;Unweighted N / All&rsquo; column values appear so that they now correctly display in multitable view when the row variable is a categorical array.</li>
+<li>Added the ability to allow a dataset editor to reorder the slides of a deck that are owned by another user.</li>
+<li>Fixed an issue in which an exported tab book yields an incorrectly arranged output if the multitable includes hidden elements.</li>
+<li>Improved support for hypothesis-testing shading when empty rows/columns are not displayed and a column is selected for comparison.</li>
+<li>Enhanced filter usage by allowing direct exports of dataset row-level data in situations that involve &ldquo;at least N of&rdquo; expressions.</li>
 </ul>
-<h2 id="new-website">New website</h2>
-<p>Finally, you may have noticed that all of the links here point to a <a href="/r/crunch/">new website for the <code>crunch</code> package</a>, built with the <a href="https://github.com/hadley/pkgdown">pkgdown</a> static site generator. We&rsquo;re excited to have a new space to develop with improved, easier-to-use documentation and examples. Check back there for the latest updates to the package, and see the <a href="/r/">Crunch + R</a> page for more developments.</p>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Updated the <a href="https://help.crunch.io/hc/en-us/articles/360040297192-Scorecards-your-flexible-summary-grid">Scorecards: your flexible summary grid</a> article with new information on how to create a scorecard.</li>
+<li>Update the <a href="https://help.crunch.io/hc/en-us/articles/360057226852-Time-series-analysis-with-time-plots">Time series analysis with time plots</a> article with additional information on how to work with Date/Time variables.</li>
+</ul>
 
                       </div>
                   </div>
