@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date/Time variables</title>
+    <title>Crunch | Release 2021.34</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date/Time variables &middot; Modern survey data analysis">
-<meta property="og:description" content="Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs.">
+    <meta property="og:title" content="Release 2021.34 &middot; Modern survey data analysis">
+<meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/date-time-variables/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-09-13/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2021-09-21T13:39:46-04:00">
+  <meta property="og:updated_time" content="2021-09-13T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Crunch&#39;s new visualizations for time-series analyses and trackers are now extended to Date/Time variables"/>
-<meta name="twitter:description" content="Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs."/>
+<meta name="twitter:title" content="Release 2021.34"/>
+<meta name="twitter:description" content="Crunch web application  Fixed an issue that occurred when a filter is created by dragging a variable from &ldquo;My variables&rdquo; to the filter zone so that it now works correctly. Fixed an issue that occurred when an unexpected format for the filter definition sometimes causes a dashboard tile to not load properly.  API endpoints and API reference  Updated the folder endpoint to obtain the variable organization script so that it now returns a shoji:view as default, but will return a plain text response if requested with the Accept HTTP header text/plain."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -136,12 +136,26 @@
         <div class="container-fluid">
 
             <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="blog-content">
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <span class="date">Sep 21, 2021 </span>
-                                <h2 class="title">Crunch's new visualizations for time-series analyses and trackers are now extended to Date/Time variables</h2>
-                                <p class="blog-description">Crunch&#39;s completely redesigned time plot that offers confidence bands and custom selection of categories to show/hide is now available for all line graphs.</p>
+                                <h2>Release 2021.34</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>September 13, 2021 </span>
                             </div>
                         </div> 
                 </div> 
@@ -152,27 +166,20 @@
 
                   <div class="row spacer-bottom">
                       <div class="col-md-10 offset-md-1">
-                          <p>Back in April this year, we announced that a great new visualization was available for time series analyses that used the new &ldquo;Categorical Date&rdquo; variable type. Existing time plots that used the older Date/Time variable type were unaffected and continued to use the previous line graph component. Since then, we&rsquo;ve worked to extend the new line graph functionality to those original Date/Time variables so that everyone can benefit from their better design and functionality, and we can now announce that <em>all</em> time plots will be using the new visualization. Below you will find a summary of what you can expect from your new time plots in Crunch.</p>
-<p><strong>Category selection</strong></p>
-<p>Line graphs become really hard to read when there are lots of lines shown simultaneously, so Crunch now defaults to showing just the top 5 for newly created analyses, but you can pick whichever combination of lines (including showing more or fewer than 5) from the new &ldquo;Select categories&rdquo; interface. This allows you to show just the lines that tell your chosen data story. And your selection is then reflected in PowerPoint exports and dashboards.</p>
-<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_01.gif"/>
-</figure>
-
-<p>Existing line graphs, saved to decks or used in dashboards, will have their current set of lines preserved so you won&rsquo;t see any changes to the lines shown.</p>
-<p><strong>Confidence bands</strong></p>
-<p>Crunch&rsquo;s line graphs now support the display of confidence bands, calculated at 95% confidence, and you can turn these on or off with a click of the * asterisk button.</p>
-<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_02.gif"/>
-</figure>
-
-<div id="draggable" style="padding-top:80px;"></div>
-<p><strong>Draggable bar</strong></p>
-<p>As well as being able to hover over points to see their values, there&rsquo;s a vertical bar that you can drag to any point in the time-series to see all the values and ranking at that point in time.</p>
-<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/date-time-variables_03.gif"/>
-</figure>
-
-<p>Note that there are two benefits <em>not</em> available for Date/Time analyses because they rely on the new Categorical Date variable type: Smoothing (a.k.a. &ldquo;Rolling averages&rdquo;) and editable time-axis labels. There is therefore still good motivation for using Categorical Date variables in your projects. You can read more about the smoothing feature <a href="https://help.crunch.io/hc/en-us/articles/360053244351-Time-series-smoothing-moving-average-">here</a> and about the editable labels <a href="https://help.crunch.io/hc/en-us/articles/360050751471-Defining-survey-wave-variables">here</a>.</p>
-<p>For full details of this new feature and where to find it, see the <a href="https://help.crunch.io/hc/en-us/articles/360057226852-Time-series-analysis-with-time-plots">help center</a>.</p>
-<p>We’d love your feedback at <a href="mailto:support@crunch.io">support@crunch.io</a>.</p>
+                          <h3 id="crunch-web-application">Crunch web application</h3>
+<ul>
+<li>Fixed an issue that occurred when a filter is created by dragging a variable from &ldquo;My variables&rdquo; to the filter zone so that it now works correctly.</li>
+<li>Fixed an issue that occurred when an unexpected format for the filter definition sometimes causes a dashboard tile to not load properly.</li>
+</ul>
+<h3 id="api-endpoints-and-api-reference">API endpoints and API reference</h3>
+<ul>
+<li>Updated the <a href="https://crunch.io/api/reference/#get-/datasets/-dataset_id-/folders/script/">folder endpoint</a> to obtain the variable organization script so that it now returns a <code>shoji:view</code> as default, but will return a plain text response if requested with the <code>Accept</code> HTTP header <code>text/plain</code>.</li>
+<li>Added <a href="https://crunch.io/api/reference/#post-/datasets/-dataset_view_id-/view_preview/">documentation</a> about a new API endpoint that allows you to do a dependency check for proposed changes to dataset view definitions.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Fixed two bugs for the <a href="https://help.crunch.io/hc/en-us/articles/360042247331-RENAME-command">RENAME command</a> when working with arrays and their subvariables within the same script.</li>
+</ul>
 
                       </div>
                   </div>
