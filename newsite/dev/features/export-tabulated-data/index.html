@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prepare and analyze survey data quickly and easily.">
+    <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
+    <base href="//crunch-io.github.io/crunchy/newsite/">
+    <title>Crunch | Export Crunch survey results in a BI-ready format</title>
+
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta property="og:title" content="Export Crunch survey results in a BI-ready format &middot; Modern survey data analysis">
+<meta property="og:description" content="New tabulated data export format for multitables.">
+<meta property="og:type" content="website" >
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/dev/features/export-tabulated-data/">
+<meta property="og:locale" content="en">
+
+
+    
+        <meta property="og:image" content="https://crunch.io/img/logo-1200x630.png">
+    
+
+
+
+  <meta property="og:updated_time" content="2021-10-29T16:52:54-04:00">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
+
+<meta name="twitter:title" content="Export Crunch survey results in a BI-ready format"/>
+<meta name="twitter:description" content="New tabulated data export format for multitables."/>
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5GB59T2');</script>
+    
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GB59T2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img class="d-inline-block align-top" src="img/crunch_logo.svg" alt="" width="140"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capabilities
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
+                      <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
+                      <a class="dropdown-item" href="crunchbox">CrunchBox</a>
+                      <a class="dropdown-item" href="tracker-analytics">Tracker Analytics</a>
+                      <a class="dropdown-item" href="diy">DIY</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="about">About</a>
+                      <a class="dropdown-item" href="team">Team</a>
+                      <a class="dropdown-item" href="jobs">Careers</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item"  href="resources">Webinars & White Papers</a>
+                        <a class="dropdown-item" href="case-studies">Case Studies</a>
+                    </div>
+
+
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Support
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="http://help.crunch.io/">Help Center</a>
+                      <a class="dropdown-item" href="api/reference/">API Reference</a>
+                      <a class="dropdown-item" href="dev/features/">Feature Announcements</a>
+                      <a class="dropdown-item" href="release-notes/">Release Notes</a>
+                      <a class="dropdown-item" href="https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides">Developer Guides</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact">Contact us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://app.crunch.io/" target="_blank">Sign in</a>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-sm btn-success" onclick="window.location.href='/request-demo'">Request a demo</button>
+                </li>
+              </ul>
+            </div>
+        </div> 
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <span class="date">Oct 29, 2021 </span>
+                                <h2 class="title">Export Crunch survey results in a BI-ready format</h2>
+                                <p class="blog-description">New tabulated data export format for multitables.</p>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <p><strong>Crunch gives you the best of all worlds</strong> — you analyze all your survey data in Crunch, and now you can export those results into your other reporting tools (such as Tableau, Google Data Studio, PowerBI) so that you can see your survey results alongside your other business metrics.</p>
+<p>Your tables (tab books) can now be exported in a specialized output format. This format contains a row for each cell of the table you see in the Crunch app. For example, this table from Crunch would generate 40 rows. There will be a row for the “All” category for “I am making more sustainable choices….” response, one for males and more sustainable choices, females and more sustainable choices, etc. all the way down to the 55+ age group and “Don’t know”.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-1.png"/>
+</figure>
+
+<p>The output format is a delimited text file of results that is ready to put into other analysis and presentation tools. Below is an excerpt of the file generated from the table above:</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-2.png"/>
+</figure>
+
+<p>You have a few options to customize your file (noted below).</p>
+<p>To generate your file, navigate to your multitable. In the upper right hand corner, click <strong>Export</strong> and select <strong>Export settings</strong> from the dropdown menu.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-3.png"/>
+</figure>
+
+<p>This screen will appear:</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-4.png"/>
+</figure>
+
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-5.png"/>
+</figure>
+
+<p>You can customize the format and contents of the export. Column headings (the first row of the exported file) can be compact, single-word labels or space-separated labels. Columns can be separated by commas or semicolons; and decimals by a period or comma. After making your customizations, click Save to persist them.</p>
+<p>To export, click <strong>Export</strong> again in the upper-right and select <strong>Export tab book</strong> from the dropdown menu. Select the <strong>CSV</strong> option from the <strong>Format</strong> menu, choose which variables to export, and then click <strong>Export</strong> to download your results.</p>
+<p>Once you’ve downloaded your tabulated results file, consult the documentation on the tool of your choice for guidance on how to upload. Below we show you how our sustainability results look in Google Data Studio.</p>
+<figure class="img-fluid"><img src="https://crunch.io/dev/features/images/export-bi-ready-format-6.png"/>
+</figure>
+
+<p>Details regarding this new feature can be found in the <a href="https://help.crunch.io/hc/en-us/articles/4412334662157-Export-tabulated-data">help center</a>.</p>
+<p>Currently, this feature is only available for <a href="https://help.crunch.io/hc/en-us/articles/360040465331-How-to-enable-early-access">early access</a> users.</p>
+<p>Questions or feedback on this feature? Please contact <a href="mailto:support@crunch.io">support@crunch.io</a> and use “Tabulated results export” in the subject line.</p>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+  <div class="cookiealert-container">
+      <div class="row">
+          <div class="col-sm-8 col-md-10 text-left">
+              Crunch.io uses cookies to ensure you get the best experience on our site. By using this site, you agree to the use of cookies in accordance with our <a href="about/privacy">Cookie Policy</a>.
+          </div>
+
+          <div class="col-sm-4 col-md-2">
+              <button type="button" class="btn btn-success acceptcookies" aria-label="Close"> I accept </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://js.hsforms.net/forms/shell.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/script.js"></script>
+
+
+
+
+</body>
+</html>
+
