@@ -267,26 +267,26 @@ For <code>showScriptErrors()</code>, when run after a failure, a list with two i
     <div class='dont-index'><p><code><a href='automation-undo.html'>automation-undo</a></code> &amp; <code><a href='scripts.html'>script-catalog</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Can use a path to a file:</span>
-<span class='va'>script_file</span> <span class='op'>&lt;-</span> <span class='st'>"crunch_automation.txt"</span>
-<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='va'>script_file</span><span class='op'>)</span>
-
-<span class='co'># Or a string directly:</span>
-<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME v1 TO age;"</span><span class='op'>)</span>
-
-<span class='co'># A "dry run" that validates the script but does not run it:</span>
-<span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME V1 TO age;"</span>, dry_run <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='co'># After a failed run, some error information prints to console,</span>
-<span class='co'># But more details are available with function:</span>
-<span class='fu'>showScriptErrors</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># After a successful run, can look at scripts</span>
-<span class='fu'><a href='scripts.html'>scripts</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># Can use a path to a file:</span></span>
+<span class='r-in'><span class='va'>script_file</span> <span class='op'>&lt;-</span> <span class='st'>"crunch_automation.txt"</span></span>
+<span class='r-in'><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='va'>script_file</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Or a string directly:</span></span>
+<span class='r-in'><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME v1 TO age;"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># A "dry run" that validates the script but does not run it:</span></span>
+<span class='r-in'><span class='fu'>runCrunchAutomation</span><span class='op'>(</span><span class='va'>ds</span>, <span class='st'>"RENAME V1 TO age;"</span>, dry_run <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># After a failed run, some error information prints to console,</span></span>
+<span class='r-in'><span class='co'># But more details are available with function:</span></span>
+<span class='r-in'><span class='fu'>showScriptErrors</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># After a successful run, can look at scripts</span></span>
+<span class='r-in'><span class='fu'><a href='scripts.html'>scripts</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

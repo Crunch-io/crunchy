@@ -307,30 +307,30 @@ the type specified. See below for detailed examples.</p>
 <code>as.character</code> and <code>as.numeric</code> are provided for convenience.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># ds$v1 is of type Text</span>
-<span class='fu'><a href='is.VariableDefinition.html'>is.Text</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span>
-<span class='co'># [1] TRUE</span>
-
-<span class='co'># that has strings of numbers</span>
-<span class='fu'><a href='as-vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span>
-<span class='co'># [1] "32"   "8"    "4096" "1024"</span>
-
-<span class='co'># convert this to a numeric variable with the alias `v1_numeric`</span>
-<span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span> <span class='op'>&lt;-</span> <span class='fu'>as.Numeric</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span>
-
-<span class='co'># the values are the same, but are now numerics and the type is Numeric</span>
-<span class='fu'><a href='as-vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span>
-<span class='co'># [1]   32    8 4096 1024</span>
-<span class='fu'><a href='is.VariableDefinition.html'>is.Numeric</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span>
-<span class='co'># [1] TRUE</span>
-
-<span class='co'># this new variable is derived, so if new data is appended or streamed, the</span>
-<span class='co'># new rows of data will be updated.</span>
-<span class='fu'><a href='derivation.html'>is.derived</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span>
-<span class='co'># [1] TRUE</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># ds$v1 is of type Text</span></span>
+<span class='r-in'><span class='fu'><a href='is.VariableDefinition.html'>is.Text</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] TRUE</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># that has strings of numbers</span></span>
+<span class='r-in'><span class='fu'><a href='as-vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] "32"   "8"    "4096" "1024"</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># convert this to a numeric variable with the alias `v1_numeric`</span></span>
+<span class='r-in'><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span> <span class='op'>&lt;-</span> <span class='fu'>as.Numeric</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># the values are the same, but are now numerics and the type is Numeric</span></span>
+<span class='r-in'><span class='fu'><a href='as-vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1]   32    8 4096 1024</span></span>
+<span class='r-in'><span class='fu'><a href='is.VariableDefinition.html'>is.Numeric</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] TRUE</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># this new variable is derived, so if new data is appended or streamed, the</span></span>
+<span class='r-in'><span class='co'># new rows of data will be updated.</span></span>
+<span class='r-in'><span class='fu'><a href='derivation.html'>is.derived</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>v1_numeric</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] TRUE</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -171,7 +171,7 @@
 <div id="basic-examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#basic-examples" class="anchor"></a>Basic examples</h3>
-<p>Like <code>xtabs</code>, <code>crtabs</code> takes a formula and a data argument. Dimensions of your crosstab go on the right side of the <code><a href="https://rdrr.io/r/base/tilde.html">~</a></code>. For a univariate table of frequencies by education, we can do</p>
+<p>Like <code>xtabs</code>, <code>crtabs</code> takes a formula and a data argument. Dimensions of your crosstab go on the right side of the <code>~</code>. For a univariate table of frequencies by education, we can do</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
 <span class="va">tab1</span></code></pre></div>
@@ -180,7 +180,7 @@
 ##                   12                   71                   61                   24                   57 
 ##            Post-grad 
 ##                   25</code></pre>
-<p>Additional dimensions are added with <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code>. For a two-way table of education and gender,</p>
+<p>Additional dimensions are added with <code>+</code>. For a two-way table of education and gender,</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
 <span class="va">tab2</span></code></pre></div>

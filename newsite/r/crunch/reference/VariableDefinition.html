@@ -252,42 +252,44 @@ familiar with the Crunch API.</p></td>
     <div class='dont-index'><p><code>toVariable</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>VariableDefinition</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>,
-    name <span class='op'>=</span> <span class='st'>"Some numbers"</span>,
-    description <span class='op'>=</span> <span class='st'>"Generated pseudorandomly from the normal distribution"</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; $values
-#&gt; [1] -1.400043517  0.255317055 -2.437263611 -0.005571287  0.621552721
-#&gt; 
-#&gt; $type
-#&gt; [1] "numeric"
-#&gt; 
-#&gt; $name
-#&gt; [1] "Some numbers"
-#&gt; 
-#&gt; $description
-#&gt; [1] "Generated pseudorandomly from the normal distribution"
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "VariableDefinition"</div><div class='input'><span class='fu'>VarDef</span><span class='op'>(</span>
-    name <span class='op'>=</span> <span class='st'>"Integers"</span>, values <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, type <span class='op'>=</span> <span class='st'>"numeric"</span>,
-    description <span class='op'>=</span> <span class='st'>"When creating variable definitions with 'values', you must
-    specify 'type', and categorical variables will require 'categories'."</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; $name
-#&gt; [1] "Integers"
-#&gt; 
-#&gt; $values
-#&gt; [1] 1 2 3 4 5
-#&gt; 
-#&gt; $type
-#&gt; [1] "numeric"
-#&gt; 
-#&gt; $description
-#&gt; [1] "When creating variable definitions with 'values', you must\n    specify 'type', and categorical variables will require 'categories'."
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "VariableDefinition"</div></pre>
+    <pre class="examples"><span class='r-in'><span class='fu'>VariableDefinition</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>5</span><span class='op'>)</span>,</span>
+<span class='r-in'>    name <span class='op'>=</span> <span class='st'>"Some numbers"</span>,</span>
+<span class='r-in'>    description <span class='op'>=</span> <span class='st'>"Generated pseudorandomly from the normal distribution"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $values</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -1.400043517  0.255317055 -2.437263611 -0.005571287  0.621552721</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $type</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "numeric"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $name</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Some numbers"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Generated pseudorandomly from the normal distribution"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"class")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "VariableDefinition"</span>
+<span class='r-in'><span class='fu'>VarDef</span><span class='op'>(</span></span>
+<span class='r-in'>    name <span class='op'>=</span> <span class='st'>"Integers"</span>, values <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, type <span class='op'>=</span> <span class='st'>"numeric"</span>,</span>
+<span class='r-in'>    description <span class='op'>=</span> <span class='st'>"When creating variable definitions with 'values', you must</span>
+<span class='r-in'>    specify 'type', and categorical variables will require 'categories'."</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $name</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Integers"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $values</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 1 2 3 4 5</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $type</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "numeric"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $description</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "When creating variable definitions with 'values', you must\n    specify 'type', and categorical variables will require 'categories'."</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> attr(,"class")</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "VariableDefinition"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

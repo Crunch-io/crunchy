@@ -211,7 +211,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="va">proj</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tracking studies"</span>, <span class="st">"Domestic"</span>, <span class="st">"Automotive"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>which is equivalent to the previous example. One or the other way may be more convenient, depending on what you’re trying to accomplish.</p>
-<p>These functions all take a project as the first argument, and they return the same object passed to it. As such, they are designed to work with <code>magrittr</code>-style piping (<code><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>) for convenience in chaining together steps, though they don’t require that you do.</p>
+<p>These functions all take a project as the first argument, and they return the same object passed to it. As such, they are designed to work with <code>magrittr</code>-style piping (<code>%&gt;%</code>) for convenience in chaining together steps, though they don’t require that you do.</p>
 </div>
 <div id="viewing-the-groups" class="section level2">
 <h2 class="hasAnchor">
@@ -240,9 +240,9 @@
 <a href="#creating-groups" class="anchor"></a>Creating groups</h2>
 <p>Let’s make some groups and move some datasets into them. To start, we want to setup a folder for the collection of yearly Stack Overflow datasets. We could call <code><a href="../reference/mv.html">mkdir()</a></code> and then <code><a href="../reference/mv.html">mv()</a></code>, but for convenience, <code><a href="../reference/mv.html">mv()</a></code> will create the group specified by your path if it doesn’t already exist, so we can use <code><a href="../reference/mv.html">mv()</a></code> alone and get</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_so2016</span>, <span class="st">"Stack Overflow"</span><span class="op">)</span>
-<span class="va">proj</span> <span class="op">%&gt;%</span>
+<span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_so2017</span>, <span class="st">"Stack Overflow"</span><span class="op">)</span></code></pre></div>
 <p>Now when we look at the top-level directory again, we see a “Stack Overflow” folder and those datasets are no longer at the root level:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -260,17 +260,17 @@
 <span class="co">#     Stack Overflow Developer Survey (2017)</span></code></pre></div>
 <p>We can also make nested groups and move datasets into them as well:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_q32017</span>, <span class="st">"Trackers/Quarterly"</span><span class="op">)</span>
-<span class="va">proj</span> <span class="op">%&gt;%</span>
+<span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_q42017</span>, <span class="st">"Trackers/Quarterly"</span><span class="op">)</span>
     
-<span class="va">proj</span> <span class="op">%&gt;%</span>
+<span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_012018</span>, <span class="st">"Trackers/Monthly"</span><span class="op">)</span>
-<span class="va">proj</span> <span class="op">%&gt;%</span>
+<span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_tracker_022018</span>, <span class="st">"Trackers/Monthly"</span><span class="op">)</span>    
     
-<span class="va">proj</span> <span class="op">%&gt;%</span>
+<span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_user</span>, <span class="st">"User Surveys"</span><span class="op">)</span></code></pre></div>
 <p>And finally, we can see that our project has three groups, each containing a different set of datasets. Datasets can only be in one group at a time.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -296,13 +296,13 @@
 <a href="#deleting-groups" class="anchor"></a>Deleting groups</h2>
 <p>Just above, we created a group and put the <code>Crunch User Survey</code> dataset in it. But, it turns out, that was a one off and we won’t have any more like it. So we want to get rid of that group The cleanest way to delete a group is with <code><a href="../reference/rmdir.html">rmdir()</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span><span class="op">(</span><span class="st">"User Surveys"</span><span class="op">)</span>
 <span class="co"># Error: Cannot remove 'User Surveys' because it is not empty. Move its contents somewhere else and then retry. </span></code></pre></div>
 <p>If the group isn’t empty, <code><a href="../reference/rmdir.html">rmdir()</a></code> warns us and doesn’t do anything, to delete it, we need to move the dataset out.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">proj</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_user</span>, <span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">proj</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">ds_user</span>, <span class="st">"/"</span><span class="op">)</span> <span class="op"><a href="https://purrr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span><span class="op">(</span><span class="st">"User Surveys"</span><span class="op">)</span>
 
 <span class="va">proj</span> 

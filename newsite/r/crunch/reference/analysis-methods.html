@@ -228,10 +228,13 @@ get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
 <span class='co'># S4 method for CrunchDeck,ANY</span>
 <span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchDeck,ANY</span>
+<span class='co'># S4 method for CrunchDeck</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchDeck,ANY</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># S4 method for AnalysisCatalog</span>
@@ -240,7 +243,7 @@ get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
 <span class='co'># S4 method for Analysis</span>
 <span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
 <span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for AnalysisCatalog,ANY</span>
@@ -270,45 +273,51 @@ get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
 <span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for CrunchSlide</span>
+<span class='fu'><a href='type.html'>type</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>analyses</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>analysis</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,formula</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,formula</span>
 <span class='fu'>analysis</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide,Analysis</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,Analysis</span>
 <span class='fu'>analysis</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide,list</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,list</span>
 <span class='fu'>analysis</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
 <span class='fu'>query</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>cubes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>cube</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
 <span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
 <span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for AnalysisCatalog</span>
@@ -349,30 +358,39 @@ get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
 <span class='co'># S4 method for Analysis</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
+<span class='co'># S4 method for Analysis</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
 <span class='co'># S4 method for ANY</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
+<span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for Analysis</span>
 <span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis,CrunchLogicalExpr</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis,CrunchFilter</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis,`NULL`</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for Analysis,list</span>
+<span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='fu'>slideQueryEnv</span><span class='op'>(</span><span class='va'>weight</span>, <span class='va'>filter</span><span class='op'>)</span>
 
 <span class='co'># S4 method for CrunchDeck</span>
 <span class='fu'>cubes</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide</span>
+<span class='co'># S4 method for CrunchAnalysisSlide</span>
 <span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
-<span class='co'># S4 method for CrunchSlide,ANY</span>
+<span class='co'># S4 method for CrunchAnalysisSlide,ANY</span>
 <span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
 <span class='co'># S4 method for Analysis</span>
@@ -426,36 +444,40 @@ on the analyses that are not otherwise available in <code>rcrunch</code>. The he
 <code>query</code> and <code>query_environment</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Examples of setting analysis details (in general these setters work on</span>
-<span class='co'># the slide, analysis catalog and analysis, but for brevity the examples only</span>
-<span class='co'># show on the slide)</span>
-
-<span class='co'># Change the filter</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove a filter</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span>
-<span class='fu'>filter</span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># Can set the same filter on a whole deck too</span>
-
-<span class='co'># Change the weight</span>
-<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove</span>
-<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span>
-<span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span> <span class='co'># Can set the same weight on a whole deck too</span>
-
-<span class='co'># Change the transforms</span>
-<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'><a href='makeDimTransform.html'>makeDimTransform</a></span><span class='op'>(</span>hide <span class='op'>=</span> <span class='st'>"Neutral"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># Change the displaySettings</span>
-<span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>vizType <span class='op'>=</span> <span class='st'>"groupedBarPlot"</span><span class='op'>)</span>
-
-<span class='co'># Change the vizSpecs</span>
-<span class='co'># viz_specs can get quite long, see</span>
-<span class='co'># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span>
-<span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>viz_specs</span>
-
-<span class='co'># Change the query</span>
-<span class='co'>#' query(slide) &lt;- ~ cyl + wt</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># Examples of setting analysis details (in general these setters work on</span></span>
+<span class='r-in'><span class='co'># the slide, analysis catalog and analysis, but for brevity the examples only</span></span>
+<span class='r-in'><span class='co'># show on the slide)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the filter</span></span>
+<span class='r-in'><span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove a filter</span></span>
+<span class='r-in'><span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span></span>
+<span class='r-in'><span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span> <span class='co'># Can set multiple filter</span></span>
+<span class='r-in'>    <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span>,</span>
+<span class='r-in'>    <span class='va'>ds</span><span class='op'>$</span><span class='va'>age_grp</span> <span class='op'>==</span> <span class='st'>"18-35"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='filters.html'>filters</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>[[</span><span class='st'>"My filter"</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># Can set the same filter on a whole deck too</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the weight</span></span>
+<span class='r-in'><span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span> <span class='co'># to remove</span></span>
+<span class='r-in'><span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span></span>
+<span class='r-in'><span class='fu'><a href='is.weight<-.html'>weight</a></span><span class='op'>(</span><span class='va'>deck</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>ds</span><span class='op'>$</span><span class='va'>weight</span> <span class='co'># Can set the same weight on a whole deck too</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the transforms</span></span>
+<span class='r-in'><span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>rows_dimension <span class='op'>=</span> <span class='fu'><a href='makeDimTransform.html'>makeDimTransform</a></span><span class='op'>(</span>hide <span class='op'>=</span> <span class='st'>"Neutral"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the displaySettings</span></span>
+<span class='r-in'><span class='fu'>displaySettings</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>vizType <span class='op'>=</span> <span class='st'>"groupedBarPlot"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the vizSpecs</span></span>
+<span class='r-in'><span class='co'># viz_specs can get quite long, see</span></span>
+<span class='r-in'><span class='co'># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span></span>
+<span class='r-in'><span class='fu'>vizSpecs</span><span class='op'>(</span><span class='va'>slide</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>viz_specs</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Change the query</span></span>
+<span class='r-in'><span class='co'>#' query(slide) &lt;- ~ cyl + wt</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

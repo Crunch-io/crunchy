@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a variable by interacting categorical variables — interactVariables • Crunch</title>
+<title>Add a new markdown slide to a deck — slideMarkdown • Crunch</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,13 +54,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create a variable by interacting categorical variables — interactVariables" />
-<meta property="og:description" content="interactVariables takes two or more variables and creates a new one that
-is the cartesian product expansion of their unique values. For example, if
-we cross ethnicity (with 2 categories) and race (with 4 categories), the new
-variable would have 8 valid categories (e.g. black:hispanic, white:hispanic,
-black:non-hispanic, etc.) and 7 categories where at least one of the
-variables is missing (e.g. white:No Data)." />
+<meta property="og:title" content="Add a new markdown slide to a deck — slideMarkdown" />
+<meta property="og:description" content="Markdown slides allow you to add rich text tiles to your Crunch Dashboards.
+markdownSlideImage() is a helper for embedding the data of an image from
+your computer into the slide." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
 
@@ -207,50 +204,89 @@ variables is missing (e.g. white:No Data)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a variable by interacting categorical variables</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/interact.R'><code>R/interact.R</code></a></small>
-    <div class="hidden name"><code>interactVariables.Rd</code></div>
+    <h1>Add a new markdown slide to a deck</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Crunch-io/rcrunch/blob/master/R/slides.R'><code>R/slides.R</code></a></small>
+    <div class="hidden name"><code>newMarkdownSlide.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>interactVariables</code> takes two or more variables and creates a new one that
-is the cartesian product expansion of their unique values. For example, if
-we cross ethnicity (with 2 categories) and race (with 4 categories), the new
-variable would have 8 valid categories (e.g. black:hispanic, white:hispanic,
-black:non-hispanic, etc.) and 7 categories where at least one of the
-variables is missing (e.g. white:No Data).</p>
+    <p>Markdown slides allow you to add rich text tiles to your Crunch Dashboards.
+<code>markdownSlideImage()</code> is a helper for embedding the data of an image from
+your computer into the slide.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>interactVariables</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>name</span>, sep <span class='op'>=</span> <span class='st'>":"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>slideMarkdown</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>slideMarkdown</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='fu'>newMarkdownSlide</span><span class='op'>(</span><span class='va'>deck</span>, <span class='va'>...</span>, title <span class='op'>=</span> <span class='st'>""</span>, subtitle <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+
+<span class='fu'>markdownSlideImage</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchMarkdownSlide</span>
+<span class='fu'>slideMarkdown</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchMarkdownSlide,character</span>
+<span class='fu'>slideMarkdown</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>x</th>
+      <td><p>A <code>CrunchMarkdownSlide</code></p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>A string to replace the markdown content with</p></td>
+    </tr>
+    <tr>
+      <th>deck</th>
+      <td><p>A Crunch Deck</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>a sequence of categorical variables to make an interaction from
-as well as other properties to pass about the case variable (i.e. alias,
-description)</p></td>
+      <td><p>Unnamed arguments are text that are combined to create the markdown body
+named arguments are passed to the API.</p></td>
     </tr>
     <tr>
-      <th>name</th>
-      <td><p>a character to use as the name for the interaction variable</p></td>
+      <th>title</th>
+      <td><p>The slide's title</p></td>
     </tr>
     <tr>
-      <th>sep</th>
-      <td><p>a character to separate the values of the individual variables
-(default: <code>:</code>)</p></td>
+      <th>subtitle</th>
+      <td><p>The slide's subtitle</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>File path to an image</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='VariableDefinition.html'>VariableDefinition</a></code> that creates the new interaction variable.</p>
+    <p>A <code>MarkdownCrunchSlide</code></p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='newSlide.html'>newSlide()</a></code> for creating an analysis slide</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'><span class='va'>ds</span><span class='op'>$</span><span class='va'>ethn_race</span> <span class='op'>&lt;-</span> <span class='fu'>interactVariables</span><span class='op'>(</span></span>
-<span class='r-in'>  <span class='va'>ds</span><span class='op'>$</span><span class='va'>ethnicity</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>race</span>, name <span class='op'>=</span> <span class='st'>"Interaction of ethnicity and race"</span></span>
+<span class='r-in'><span class='fu'>newMarkdownSlide</span><span class='op'>(</span><span class='va'>deck</span>, <span class='st'>"We contacted 1,000 people by telephone"</span>, title <span class='op'>=</span> <span class='st'>"Methodology"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>newMarkdownSlide</span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>deck</span>,</span>
+<span class='r-in'>    <span class='st'>"The 3 most **popular** vegetables are:\n"</span>,</span>
+<span class='r-in'>    <span class='st'>"- Fennel\n"</span>,</span>
+<span class='r-in'>    <span class='st'>"- Carrots\n"</span>,</span>
+<span class='r-in'>    <span class='st'>"- Avocado\n"</span>,</span>
+<span class='r-in'>    title <span class='op'>=</span> <span class='st'>"Key findings"</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>newMarkdownSlide</span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>deck</span>,</span>
+<span class='r-in'>    <span class='st'>"crunch.io: "</span>,</span>
+<span class='r-in'>    <span class='fu'>markdownSlideImage</span><span class='op'>(</span><span class='st'>"logo.png"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 </pre>

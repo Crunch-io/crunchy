@@ -243,7 +243,7 @@ resolution they will roll-up to, if not specified in <code>rollup()</code>;
     <tr>
       <th>value</th>
       <td><p>a resolution string. Valid resolutions in Crunch are
-<code><a href='https://rdrr.io/r/base/c.html'>c("Y", "Q", "M", "W", "D", "h", "m", "s", "ms")</a></code>. <code>NULL</code> is also valid for
+<code>c("Y", "Q", "M", "W", "D", "h", "m", "s", "ms")</code>. <code>NULL</code> is also valid for
 <code>rollupResolution&lt;-</code> but not for <code>resolution&lt;-</code>.</p></td>
     </tr>
     <tr>
@@ -268,16 +268,16 @@ coarse resolution (e.g. going from "s" to "m"), it cannot be reversed.
 Setting <code>rollupResolution</code> is non-destructive.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span>
-<span class='co'>## [1] "ms"</span>
-<span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"s"</span>
-<span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span>
-<span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span>, <span class='st'>"D"</span><span class='op'>)</span>
-<span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"D"</span>
-<span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>rollup</span><span class='op'>(</span><span class='va'>starttime</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>ds</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>## [1] "ms"</span></span>
+<span class='r-in'><span class='fu'>resolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"s"</span></span>
+<span class='r-in'><span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>rollup</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span>, <span class='st'>"D"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>rollupResolution</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>starttime</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='st'>"D"</span></span>
+<span class='r-in'><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span> <span class='fu'>rollup</span><span class='op'>(</span><span class='va'>starttime</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

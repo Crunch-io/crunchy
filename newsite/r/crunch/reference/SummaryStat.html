@@ -233,6 +233,7 @@ statistic to an existing CrunchCube.</p>
   categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
   after <span class='op'>=</span> <span class='cn'>NULL</span>,
+  before <span class='op'>=</span> <span class='cn'>NULL</span>,
   includeNA <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -242,6 +243,7 @@ statistic to an existing CrunchCube.</p>
   categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
   after <span class='op'>=</span> <span class='cn'>NULL</span>,
+  before <span class='op'>=</span> <span class='cn'>NULL</span>,
   includeNA <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -275,6 +277,11 @@ relative to another category in the cube (default)</p></td>
       <th>after</th>
       <td><p>character or numeric if <code>position</code> is "relative", then the
 category name or id to position the subtotal or heading after</p></td>
+    </tr>
+    <tr>
+      <th>before</th>
+      <td><p>character or numeric if <code>position</code> is relative (and the
+insertion type allows it - currently only MR subtotals).</p></td>
     </tr>
     <tr>
       <th>includeNA</th>

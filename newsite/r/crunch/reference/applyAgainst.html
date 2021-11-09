@@ -252,157 +252,161 @@ common use case is a function that adds new entries to the vector,
 effectively expanding the array in the dimension given.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>array</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span><span class='op'>)</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>3</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>array</span>
-</div><div class='output co'>#&gt; , , 1
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]    1    5    9
-#&gt; [2,]    2    6   10
-#&gt; [3,]    3    7   11
-#&gt; [4,]    4    8   12
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   13   17   21
-#&gt; [2,]   14   18   22
-#&gt; [3,]   15   19   23
-#&gt; [4,]   16   20   24
-#&gt; </div><div class='input'><span class='co'># , , 1</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]    1    5    9</span>
-<span class='co'># [2,]    2    6   10</span>
-<span class='co'># [3,]    3    7   11</span>
-<span class='co'># [4,]    4    8   12</span>
-<span class='co'>#</span>
-<span class='co'># , , 2</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]   13   17   21</span>
-<span class='co'># [2,]   14   18   22</span>
-<span class='co'># [3,]   15   19   23</span>
-<span class='co'># [4,]   16   20   24</span>
-
-<span class='va'>add_one_hundred</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>100</span><span class='op'>)</span>
-
-<span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>1</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; , , 1
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]    1    5    9
-#&gt; [2,]    2    6   10
-#&gt; [3,]    3    7   11
-#&gt; [4,]    4    8   12
-#&gt; [5,]  100  100  100
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   13   17   21
-#&gt; [2,]   14   18   22
-#&gt; [3,]   15   19   23
-#&gt; [4,]   16   20   24
-#&gt; [5,]  100  100  100
-#&gt; </div><div class='input'><span class='co'># , , 1</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]    1    5    9</span>
-<span class='co'># [2,]    2    6   10</span>
-<span class='co'># [3,]    3    7   11</span>
-<span class='co'># [4,]    4    8   12</span>
-<span class='co'># [5,]  100  100  100</span>
-<span class='co'>#</span>
-<span class='co'># , , 2</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]   13   17   21</span>
-<span class='co'># [2,]   14   18   22</span>
-<span class='co'># [3,]   15   19   23</span>
-<span class='co'># [4,]   16   20   24</span>
-<span class='co'># [5,]  100  100  100</span>
-
-<span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>2</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; , , 1
-#&gt; 
-#&gt;      [,1] [,2] [,3] [,4]
-#&gt; [1,]    1    5    9  100
-#&gt; [2,]    2    6   10  100
-#&gt; [3,]    3    7   11  100
-#&gt; [4,]    4    8   12  100
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;      [,1] [,2] [,3] [,4]
-#&gt; [1,]   13   17   21  100
-#&gt; [2,]   14   18   22  100
-#&gt; [3,]   15   19   23  100
-#&gt; [4,]   16   20   24  100
-#&gt; </div><div class='input'><span class='co'># , , 1</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3] [,4]</span>
-<span class='co'># [1,]    1    5    9  100</span>
-<span class='co'># [2,]    2    6   10  100</span>
-<span class='co'># [3,]    3    7   11  100</span>
-<span class='co'># [4,]    4    8   12  100</span>
-<span class='co'>#</span>
-<span class='co'># , , 2</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3] [,4]</span>
-<span class='co'># [1,]   13   17   21  100</span>
-<span class='co'># [2,]   14   18   22  100</span>
-<span class='co'># [3,]   15   19   23  100</span>
-<span class='co'># [4,]   16   20   24  100</span>
-
-<span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>3</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; , , 1
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]    1    5    9
-#&gt; [2,]    2    6   10
-#&gt; [3,]    3    7   11
-#&gt; [4,]    4    8   12
-#&gt; 
-#&gt; , , 2
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]   13   17   21
-#&gt; [2,]   14   18   22
-#&gt; [3,]   15   19   23
-#&gt; [4,]   16   20   24
-#&gt; 
-#&gt; , , 3
-#&gt; 
-#&gt;      [,1] [,2] [,3]
-#&gt; [1,]  100  100  100
-#&gt; [2,]  100  100  100
-#&gt; [3,]  100  100  100
-#&gt; [4,]  100  100  100
-#&gt; </div><div class='input'><span class='co'># , , 1</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]    1    5    9</span>
-<span class='co'># [2,]    2    6   10</span>
-<span class='co'># [3,]    3    7   11</span>
-<span class='co'># [4,]    4    8   12</span>
-<span class='co'>#</span>
-<span class='co'># , , 2</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]   13   17   21</span>
-<span class='co'># [2,]   14   18   22</span>
-<span class='co'># [3,]   15   19   23</span>
-<span class='co'># [4,]   16   20   24</span>
-<span class='co'>#</span>
-<span class='co'># , , 3</span>
-<span class='co'>#</span>
-<span class='co'>#      [,1] [,2] [,3]</span>
-<span class='co'># [1,]  100  100  100</span>
-<span class='co'># [2,]  100  100  100</span>
-<span class='co'># [3,]  100  100  100</span>
-<span class='co'># [4,]  100  100  100</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>array</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>24</span><span class='op'>)</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>3</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>array</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]    1    5    9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]    2    6   10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]    3    7   11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]    4    8   12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]   13   17   21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]   14   18   22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]   15   19   23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]   16   20   24</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># , , 1</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]    1    5    9</span></span>
+<span class='r-in'><span class='co'># [2,]    2    6   10</span></span>
+<span class='r-in'><span class='co'># [3,]    3    7   11</span></span>
+<span class='r-in'><span class='co'># [4,]    4    8   12</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># , , 2</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]   13   17   21</span></span>
+<span class='r-in'><span class='co'># [2,]   14   18   22</span></span>
+<span class='r-in'><span class='co'># [3,]   15   19   23</span></span>
+<span class='r-in'><span class='co'># [4,]   16   20   24</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>add_one_hundred</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>100</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>1</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]    1    5    9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]    2    6   10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]    3    7   11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]    4    8   12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]   13   17   21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]   14   18   22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]   15   19   23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]   16   20   24</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># , , 1</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]    1    5    9</span></span>
+<span class='r-in'><span class='co'># [2,]    2    6   10</span></span>
+<span class='r-in'><span class='co'># [3,]    3    7   11</span></span>
+<span class='r-in'><span class='co'># [4,]    4    8   12</span></span>
+<span class='r-in'><span class='co'># [5,]  100  100  100</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># , , 2</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]   13   17   21</span></span>
+<span class='r-in'><span class='co'># [2,]   14   18   22</span></span>
+<span class='r-in'><span class='co'># [3,]   15   19   23</span></span>
+<span class='r-in'><span class='co'># [4,]   16   20   24</span></span>
+<span class='r-in'><span class='co'># [5,]  100  100  100</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>2</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3] [,4]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]    1    5    9  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]    2    6   10  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]    3    7   11  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]    4    8   12  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3] [,4]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]   13   17   21  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]   14   18   22  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]   15   19   23  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]   16   20   24  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># , , 1</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3] [,4]</span></span>
+<span class='r-in'><span class='co'># [1,]    1    5    9  100</span></span>
+<span class='r-in'><span class='co'># [2,]    2    6   10  100</span></span>
+<span class='r-in'><span class='co'># [3,]    3    7   11  100</span></span>
+<span class='r-in'><span class='co'># [4,]    4    8   12  100</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># , , 2</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3] [,4]</span></span>
+<span class='r-in'><span class='co'># [1,]   13   17   21  100</span></span>
+<span class='r-in'><span class='co'># [2,]   14   18   22  100</span></span>
+<span class='r-in'><span class='co'># [3,]   15   19   23  100</span></span>
+<span class='r-in'><span class='co'># [4,]   16   20   24  100</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>crunch</span><span class='fu'>:::</span><span class='fu'>applyAgainst</span><span class='op'>(</span><span class='va'>array</span>, <span class='fl'>3</span>, <span class='va'>add_one_hundred</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]    1    5    9</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]    2    6   10</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]    3    7   11</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]    4    8   12</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]   13   17   21</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]   14   18   22</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]   15   19   23</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]   16   20   24</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> , , 3</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      [,1] [,2] [,3]</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [3,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [4,]  100  100  100</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># , , 1</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]    1    5    9</span></span>
+<span class='r-in'><span class='co'># [2,]    2    6   10</span></span>
+<span class='r-in'><span class='co'># [3,]    3    7   11</span></span>
+<span class='r-in'><span class='co'># [4,]    4    8   12</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># , , 2</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]   13   17   21</span></span>
+<span class='r-in'><span class='co'># [2,]   14   18   22</span></span>
+<span class='r-in'><span class='co'># [3,]   15   19   23</span></span>
+<span class='r-in'><span class='co'># [4,]   16   20   24</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># , , 3</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'>#      [,1] [,2] [,3]</span></span>
+<span class='r-in'><span class='co'># [1,]  100  100  100</span></span>
+<span class='r-in'><span class='co'># [2,]  100  100  100</span></span>
+<span class='r-in'><span class='co'># [3,]  100  100  100</span></span>
+<span class='r-in'><span class='co'># [4,]  100  100  100</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -255,18 +255,18 @@ Default is the currently applied <code><a href='is.weight<-.html'>weight()</a></
     <p>There are 3 types of queries supported:</p><ul>
 <li><p>Crosstabs: Share the most in common with <code><a href='https://rdrr.io/r/stats/xtabs.html'>stats::xtabs()</a></code>, are defined by
 a formula with only a right hand side, with each dimension specified on the
-right-hand side, separated by a <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code>. A dimension are generally variables, but
+right-hand side, separated by a <code>+</code>. A dimension are generally variables, but
 categorical array variables contribute 2 dimensions, &#8220;categories&#8221; and
 &#8220;subvariables&#8221;.
 If you just use the categorical array variable directly, the subvariables dimensions
 will be added first and the categories second, but you can choose their order by
-specifying both <code><a href='var-categories.html'>categories(var)</a></code> and <code><a href='Subvariables-class.html'>subvariables(var)</a></code> (where <code>var</code> is a
+specifying both <code>categories(var)</code> and <code>subvariables(var)</code> (where <code>var</code> is a
 Categorical Array CrunchVariable).</p></li>
 <li><p>Aggregations: An extension to 'Crosstabs' where you can select one or more
 measures by putting them in the left-hand side of the formula. Multiple measures
 can be placed in a list to calculate them together. The currently supported
-measures are <code><a href='crunch-uni.html'>mean(var)</a></code>, <code>n()</code> (the same as a crosstab), <code><a href='crunch-uni.html'>min(var)</a></code>, <code><a href='crunch-uni.html'>max(var)</a></code>,
-<code><a href='crunch-uni.html'>sd(var)</a></code>, <code><a href='https://rdrr.io/r/base/sum.html'>sum(var)</a></code> and <code><a href='crunch-uni.html'>median(var)</a></code> (where <code>var</code> is a CrunchVariable).</p></li>
+measures are <code>mean(var)</code>, <code>n()</code> (the same as a crosstab), <code>min(var)</code>, <code>max(var)</code>,
+<code>sd(var)</code>, <code>sum(var)</code> and <code>median(var)</code> (where <code>var</code> is a CrunchVariable).</p></li>
 <li><p>Scorecards: When you want to compare multiple MR variables with the same
 subvariables, you can use a scorecard to create a tabulation where they are
 lined up. Scorecard queries cannot be combined with the other types. Use
@@ -279,30 +279,30 @@ the <code>scorecard(..., vars = NULL)</code> (where <code>...</code> is a set of
     <div class='dont-index'><p><code><a href='is.weight<-.html'>weight()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Crosstab of people by `age_cat`:</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span>
-
-<span class='co'># Aggregation of means of income by `age_cat`</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='fu'><a href='crunch-uni.html'>mean</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span>
-
-<span class='co'># Scorecard of multiple MRs with aligned subvariables</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'>scorecard</span><span class='op'>(</span><span class='va'>trust_mr</span>, <span class='va'>value_mr</span>, <span class='va'>quality_mr</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span>
-<span class='co'># Can also pre-define the variables in a scorecard with</span>
-<span class='va'>mr_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>trust_mr</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>value_mr</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>quality_mr</span><span class='op'>)</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'>scorecard</span><span class='op'>(</span>vars <span class='op'>=</span> <span class='va'>mr_list</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span>
-
-<span class='co'># Crosstab of people by `age_cat` and the reasons for enjoying a brand (cat array)</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='va'>age_cat</span> <span class='op'>+</span> <span class='va'>enjoy_array</span>, <span class='va'>ds</span><span class='op'>)</span>
-
-<span class='co'># Crosstab of people by `age_cat` and the `enjoy_array` (cat array)</span>
-<span class='co'># But manually choosing the order of the dimensions</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'><a href='Subvariables-class.html'>subvariables</a></span><span class='op'>(</span><span class='va'>enjoy_array</span><span class='op'>)</span> <span class='op'>+</span> <span class='va'>age_cat</span> <span class='op'>+</span> <span class='fu'><a href='var-categories.html'>categories</a></span><span class='op'>(</span><span class='va'>enjoy_array</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span>
-
-<span class='co'># Aggregation of means &amp; standard deviations of income by `age_cat`</span>
-<span class='fu'>crtabs</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='crunch-uni.html'>mean</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='crunch-uni.html'>sd</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># Crosstab of people by `age_cat`:</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Aggregation of means of income by `age_cat`</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='fu'><a href='crunch-uni.html'>mean</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Scorecard of multiple MRs with aligned subvariables</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'>scorecard</span><span class='op'>(</span><span class='va'>trust_mr</span>, <span class='va'>value_mr</span>, <span class='va'>quality_mr</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># Can also pre-define the variables in a scorecard with</span></span>
+<span class='r-in'><span class='va'>mr_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>trust_mr</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>value_mr</span>, <span class='va'>ds</span><span class='op'>$</span><span class='va'>quality_mr</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'>scorecard</span><span class='op'>(</span>vars <span class='op'>=</span> <span class='va'>mr_list</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Crosstab of people by `age_cat` and the reasons for enjoying a brand (cat array)</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='va'>age_cat</span> <span class='op'>+</span> <span class='va'>enjoy_array</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Crosstab of people by `age_cat` and the `enjoy_array` (cat array)</span></span>
+<span class='r-in'><span class='co'># But manually choosing the order of the dimensions</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='op'>~</span><span class='fu'><a href='Subvariables-class.html'>subvariables</a></span><span class='op'>(</span><span class='va'>enjoy_array</span><span class='op'>)</span> <span class='op'>+</span> <span class='va'>age_cat</span> <span class='op'>+</span> <span class='fu'><a href='var-categories.html'>categories</a></span><span class='op'>(</span><span class='va'>enjoy_array</span><span class='op'>)</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Aggregation of means &amp; standard deviations of income by `age_cat`</span></span>
+<span class='r-in'><span class='fu'>crtabs</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='fu'><a href='crunch-uni.html'>mean</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span>, sd <span class='op'>=</span> <span class='fu'><a href='crunch-uni.html'>sd</a></span><span class='op'>(</span><span class='va'>income</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>age_cat</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

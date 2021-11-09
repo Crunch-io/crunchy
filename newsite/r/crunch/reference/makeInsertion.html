@@ -60,6 +60,12 @@ other insertions all have the same shape. Before sending insertions to the
 server, we need to call makeInsertion on any insertions to make sure they
 are proper Insertions. This process sometimes requires a variable's
 categories object (e.g. in order to convert from category names to category
+ids)
+The Crunch API expects that Subtotals, Headings, and
+other insertions all have the same shape. Before sending insertions to the
+server, we need to call makeInsertion on any insertions to make sure they
+are proper Insertions. This process sometimes requires a variable's
+categories object (e.g. in order to convert from category names to category
 ids)" />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
 
@@ -219,19 +225,34 @@ server, we need to call <code>makeInsertion</code> on any insertions to make sur
 are proper <code>Insertion</code>s. This process sometimes requires a variable's
 categories object (e.g. in order to convert from category names to category
 ids)</p>
+<p>The Crunch API expects that <a href='Subtotal-class.html'>Subtotals, Headings</a>, and
+other insertions all have the same shape. Before sending insertions to the
+server, we need to call <code>makeInsertion</code> on any insertions to make sure they
+are proper <code>Insertion</code>s. This process sometimes requires a variable's
+categories object (e.g. in order to convert from category names to category
+ids)</p>
     </div>
 
     <pre class="usage"><span class='co'># S4 method for Subtotal</span>
-<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Heading</span>
-<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Insertion</span>
-<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Subtotal</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Heading</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
+
+<span class='co'># S4 method for Insertion</span>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummaryStat</span>
-<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span></pre>
+<span class='fu'>makeInsertion</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span>, <span class='va'>alias</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -242,16 +263,23 @@ ids)</p>
 <code>Subtotal</code>, <code>Heading</code>)</p></td>
     </tr>
     <tr>
-      <th>var_categories</th>
-      <td><p>categories (from <code><a href='var-categories.html'>categories(variable)</a></code>) to used by
+      <th>var_items</th>
+      <td><p>Either categories (from <code>categories(variable)</code>) or subvariables
+(from <code>subvariables(variable)</code>) to used by
 <code>makeInsertions</code> to make <code>Insertions</code> from a child object (e.g. <code>Subtotal</code> or
-<code>Heading</code>)</p></td>
+<code>Heading</code>).</p></td>
+    </tr>
+    <tr>
+      <th>alias</th>
+      <td><p>The alias of the variable the insertion is being added to, only
+needed for MR insertions.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>an Insertion object</p>
+<p>an Insertion object</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

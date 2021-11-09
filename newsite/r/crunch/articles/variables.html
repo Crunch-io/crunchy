@@ -181,7 +181,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">economist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>You can reference and extract variables from a dataset as if it were a <code>data.frame</code>, using the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code>, and <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code> methods.</p>
+<p>You can reference and extract variables from a dataset as if it were a <code>data.frame</code>, using the <code>$</code>, <code>[</code>, and <code>[[</code> methods.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">track.var</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">track</span>
 <span class="va">track.var</span></code></pre></div>
@@ -218,7 +218,7 @@
 <div id="addressing-the-variable-catalog" class="section level3">
 <h3 class="hasAnchor">
 <a href="#addressing-the-variable-catalog" class="anchor"></a>Addressing the variable catalog</h3>
-<p>It is not always convenient that the <code>names</code> attribute of the dataset actually yields <em>aliases</em>. Moreover, if we want to edit the Crunch names of many variables, we need a way of accessing the Crunch metadata more directly. It will be very slow to edit each variable in the dataset individually, referencing them with <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code>, because each edit would send a request to the server. Instead, we’d rather bundle those into a single request. To do this, we can access the <code>variables</code> attribute of the dataset, which is a “variable catalog”:</p>
+<p>It is not always convenient that the <code>names</code> attribute of the dataset actually yields <em>aliases</em>. Moreover, if we want to edit the Crunch names of many variables, we need a way of accessing the Crunch metadata more directly. It will be very slow to edit each variable in the dataset individually, referencing them with <code>$</code>, because each edit would send a request to the server. Instead, we’d rather bundle those into a single request. To do this, we can access the <code>variables</code> attribute of the dataset, which is a “variable catalog”:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "VariableCatalog"
@@ -237,7 +237,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "perc_skipped"         "newsint2"             "Direction of country" "snowdenfav"           "snowdenleakapp"      
 ##  [6] "snowdenpros"          "snowdenpenalty"       "manningknowledge"     "manningfavorability"  "manningguilt"</code></pre>
-<p>These attributes all allow assignment with <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>. The methods <code>names</code> and <code>aliases</code> yield character vectors, and they take characters in assignment. Hence, you can use any vectorized string manipulation tools available in R, such as regular expressions, to edit variable names efficiently. You can also just supply a replacement vector, like</p>
+<p>These attributes all allow assignment with <code>&lt;-</code>. The methods <code>names</code> and <code>aliases</code> yield character vectors, and they take characters in assignment. Hence, you can use any vectorized string manipulation tools available in R, such as regular expressions, to edit variable names efficiently. You can also just supply a replacement vector, like</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Favorability of Edward Snowden"</span>,
                                <span class="st">"Approval of Snowden's Leak"</span>,
@@ -346,9 +346,9 @@
 <p>The delete function requires confirmation when you’re running from an interactive session, just to make sure you aren’t accidentally assigning something in that is NULL and deleting your variable. If you know that you want to delete the variable, you can give your approval in advance by wrapping it in a <code>with</code> statement, using the <code>consent</code> context manager:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="fu"><a href="../reference/consent.html">consent</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">ds</span><span class="op">$</span><span class="va">votereg_old</span> <span class="op">&lt;-</span> <span class="cn">NULL</span><span class="op">)</span>
-<span class="st">"votereg_old"</span> <span class="op">%in%</span> <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
+<span class="st">"votereg_old"</span> <span class="op"><a href="../reference/expressions-internal.html">%in%</a></span> <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>The <code><a href="https://rdrr.io/r/base/with.html">with(consent(), ...)</a></code> pattern works everywhere in <code>crunch</code> that requires confirmation to do an action, such as deleting datasets.</p>
+<p>The <code>with(consent(), ...)</code> pattern works everywhere in <code>crunch</code> that requires confirmation to do an action, such as deleting datasets.</p>
 <p><a href="array-variables.html">Next: create and manipulate array variables</a></p>
 </div>
   </div>

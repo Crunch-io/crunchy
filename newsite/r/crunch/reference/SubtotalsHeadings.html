@@ -55,8 +55,12 @@
   
 
 <meta property="og:title" content="Subtotals and headings — Subtotal-class" />
-<meta property="og:description" content="Subtotals and headings for categorical Variables and
-CrunchCubes. These are especially useful for making aggregates across
+<meta property="og:description" content="Subtotals and headings for Categorical Variables and Multiple Response
+Variables. These are especially useful for making aggregates across
+multiple categories (sometimes referred to as nets, top box, or
+top 2 box).
+Subtotals and headings for Categorical Variables and Multiple Response
+Variables. These are especially useful for making aggregates across
 multiple categories (sometimes referred to as nets, top box, or
 top 2 box)." />
 <meta property="og:image" content="http://crunch.io/r/crunch/logo.png" />
@@ -211,8 +215,12 @@ top 2 box)." />
     </div>
 
     <div class="ref-description">
-    <p>Subtotals and headings for categorical Variables and
-CrunchCubes. These are especially useful for making aggregates across
+    <p>Subtotals and headings for Categorical Variables and Multiple Response
+Variables. These are especially useful for making aggregates across
+multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, or
+<em>top 2 box</em>).</p>
+<p>Subtotals and headings for Categorical Variables and Multiple Response
+Variables. These are especially useful for making aggregates across
 multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, or
 <em>top 2 box</em>).</p>
     </div>
@@ -222,7 +230,12 @@ multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, o
   categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
   after <span class='op'>=</span> <span class='cn'>NULL</span>,
-  negative <span class='op'>=</span> <span class='cn'>NULL</span>
+  before <span class='op'>=</span> <span class='cn'>NULL</span>,
+  negative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  variable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  alias <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
 
 <span class='fu'>Heading</span><span class='op'>(</span><span class='va'>name</span>, position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>, after <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
@@ -236,7 +249,47 @@ multiple categories (sometimes referred to as <em>nets</em>, <em>top box</em>, o
   categories <span class='op'>=</span> <span class='cn'>NULL</span>,
   position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
   after <span class='op'>=</span> <span class='cn'>NULL</span>,
-  negative <span class='op'>=</span> <span class='cn'>NULL</span>
+  before <span class='op'>=</span> <span class='cn'>NULL</span>,
+  negative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  variable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  alias <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
+
+<span class='fu'>is.Subtotal</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>is.Heading</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>are.Subtotals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>are.Headings</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='fu'>Heading</span><span class='op'>(</span><span class='va'>name</span>, position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>, after <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchVariable</span>
+<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for VariableTuple</span>
+<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+
+<span class='co'># S4 method for CrunchVariable,ANY</span>
+<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='co'># S4 method for CrunchVariable,`NULL`</span>
+<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
+
+<span class='fu'>Subtotal</span><span class='op'>(</span>
+  <span class='va'>name</span>,
+  categories <span class='op'>=</span> <span class='cn'>NULL</span>,
+  position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"relative"</span>, <span class='st'>"top"</span>, <span class='st'>"bottom"</span><span class='op'>)</span>,
+  after <span class='op'>=</span> <span class='cn'>NULL</span>,
+  before <span class='op'>=</span> <span class='cn'>NULL</span>,
+  negative <span class='op'>=</span> <span class='cn'>NULL</span>,
+  na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  variable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  id <span class='op'>=</span> <span class='cn'>NULL</span>,
+  alias <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
 
 <span class='fu'>is.Subtotal</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -286,9 +339,37 @@ category name or id to position the subtotal or heading after. If not supplied
 this defaults to the last of the <code>categories</code> supplied to <code>Subtotal</code>.</p></td>
     </tr>
     <tr>
+      <th>before</th>
+      <td><p>character or numeric if <code>position</code> is "relative" and also the
+subtotal is on a Multiple Response variable only.</p></td>
+    </tr>
+    <tr>
       <th>negative</th>
       <td><p>character or numeric of the category names or ids to be subtracted
 for subtotals only</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>For Multiple Response subtotals, whether to remove missings before
+calculating the subtotal (so that if <code>na.rm=TRUE</code> and there is one missing and
+one selected, the response would selected instead of missing). This defaults to
+<code>TRUE</code> to match how the crunch web application behaves.</p></td>
+    </tr>
+    <tr>
+      <th>variable</th>
+      <td><p>For Multiple Response subtotals, the parent MR variable that
+contains the subvariables that are being subtotaled (defaults to the variable
+that is having the Subtotal added to it)</p></td>
+    </tr>
+    <tr>
+      <th>id</th>
+      <td><p>For Multiple Response subtotals, an optional number or string to use
+as the new insertion's id (defaults to a sequential number).</p></td>
+    </tr>
+    <tr>
+      <th>alias</th>
+      <td><p>For Multiple Response subtotals, an optional string to use as the
+new insertion's alias (defaults to letting the server choose the alias)</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -305,6 +386,7 @@ it is either a Subtotal or Heading</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>To see the subtotals or headings set for a variable, use <code>subtotals(variable)</code></p>
+<p>To see the subtotals or headings set for a variable, use <code>subtotals(variable)</code></p>
     <h2 class="hasAnchor" id="adding-subtotals-and-headings"><a class="anchor" href="#adding-subtotals-and-headings"></a>Adding Subtotals and Headings</h2>
 
     
@@ -317,10 +399,28 @@ that are already set on the variable are not removed when new subtotals or
 headings are added. To remove all subtotals and headings, set
 <code>subtotals(variable)</code> to <code>NULL</code>.</p>
 <p>To get an array of just the subtotal rows from a CrunchCube, use the function
-<code><a href='subtotalArray.html'>subtotalArray(CrunchCube)</a></code>.</p>
+<code>subtotalArray(CrunchCube)</code>.</p>
+
+<p>Subtotals and headings can be added either by passing a list of <code>Subtotal</code>s
+or <code>Heading</code>s, or they can be added one at a time by passing <code>Subtotal</code> or
+<code>Heading</code> to <code>subtotals(variable)</code> alone.</p>
+<p>Adding subtotals or headings is additive; meaning that subtotals or headings
+that are already set on the variable are not removed when new subtotals or
+headings are added. To remove all subtotals and headings, set
+<code>subtotals(variable)</code> to <code>NULL</code>.</p>
+<p>To get an array of just the subtotal rows from a CrunchCube, use the function
+<code>subtotalArray(CrunchCube)</code>.</p>
     <h2 class="hasAnchor" id="working-with-subtotals-and-headings"><a class="anchor" href="#working-with-subtotals-and-headings"></a>Working with Subtotals and headings</h2>
 
     
+
+<p>When interacting programmatically with Subtotals and Headings, it can be
+useful to be able to tell if something is a Subtotal or a Heading. The <code>is.*</code>
+family of methods are useful here: the singular versions (<code>is.Subtotal</code> and
+<code>is.Heading</code>) take a single object and returns <code>TRUE</code> if the object is either
+a Subtotal or a Heading and <code>FALSE</code> if not; the plural versions
+(<code>are.Subtotals</code> and <code>are.Headings</code>) take a list of objects (including an
+<code>Insertions</code> object) and returns a vector of <code>TRUE</code>/<code>FALSE</code>s.</p>
 
 <p>When interacting programmatically with Subtotals and Headings, it can be
 useful to be able to tell if something is a Subtotal or a Heading. The <code>is.*</code>
@@ -338,71 +438,139 @@ Subtotals and Headings. This action only applies to the CrunchCube object in
 R: it doesn't actually change the variables on Crunch servers or the query
 that generated the CrunchCube.</p>
 
+<p><code><a href='noTransforms.html'>noTransforms()</a></code> is useful if you don't want to see or use any transformations like
+Subtotals and Headings. This action only applies to the CrunchCube object in
+R: it doesn't actually change the variables on Crunch servers or the query
+that generated the CrunchCube.</p>
+
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># given a variable ds$opinion, with categories: Strongly Agree, Somewhat</span>
-<span class='co'># Agree, Neither Agree nor Disagree, Somewhat Disagree, and Strongly Disagree,</span>
-<span class='co'># to make two subtotals for Agree and Disagree:</span>
-<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-    <span class='fu'>Subtotal</span><span class='op'>(</span>
-        name <span class='op'>=</span> <span class='st'>"Agree"</span>,
-        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Agree"</span>, <span class='st'>"Somewhat Agree"</span><span class='op'>)</span>,
-        after <span class='op'>=</span> <span class='st'>"Somewhat Agree"</span>
-    <span class='op'>)</span>,
-    <span class='fu'>Subtotal</span><span class='op'>(</span>
-        name <span class='op'>=</span> <span class='st'>"Disagree"</span>,
-        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Disagree"</span>, <span class='st'>"Somewhat Disagree"</span><span class='op'>)</span>,
-        after <span class='op'>=</span> <span class='st'>"Strongly Disagree"</span>
-    <span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># headings can also be added:</span>
-<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'>Heading</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"All opinions"</span>, position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span>
-
-<span class='co'># to see the subtotals and headings associated with a variable</span>
-<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span>
-<span class='co'>#        anchor         name     func    args</span>
-<span class='co'># 1      2        Agree subtotal 1 and 2</span>
-<span class='co'># 2      4     Disagree subtotal 4 and 5</span>
-<span class='co'># 3      0 All opinions     &lt;NA&gt;      NA</span>
-
-<span class='co'># when you use a variable with subtotals and headings in a cube, you see them</span>
-<span class='co'># by default</span>
-<span class='va'>opinion_cube</span> <span class='op'>&lt;-</span> <span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span>
-<span class='va'>opinion_cube</span>
-<span class='co'>#               All opinions</span>
-<span class='co'>#             Strongly Agree 23</span>
-<span class='co'>#             Somewhat Agree 24</span>
-<span class='co'>#                      Agree 47</span>
-<span class='co'># Neither Agree nor Disagree 18</span>
-<span class='co'>#          Somewhat Disagree 16</span>
-<span class='co'>#          Strongly Disagree 19</span>
-<span class='co'>#                   Disagree 35</span>
-
-
-<span class='co'># to get just the subtotals,</span>
-<span class='fu'><a href='subtotalArray.html'>subtotalArray</a></span><span class='op'>(</span><span class='va'>opinion_cube</span><span class='op'>)</span>
-<span class='co'>#    Agree Disagree</span>
-<span class='co'>#       47       35</span>
-
-<span class='co'># to remove all subtotals and headings</span>
-<span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
-<span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span>
-<span class='co'>#             Strongly Agree 23</span>
-<span class='co'>#             Somewhat Agree 24</span>
-<span class='co'># Neither Agree nor Disagree 18</span>
-<span class='co'>#          Somewhat Disagree 16</span>
-<span class='co'>#          Strongly Disagree 19</span>
-
-<span class='co'># if you want to temporarily remove subtotals and headings, you can with `noTransforms`</span>
-<span class='fu'><a href='noTransforms.html'>noTransforms</a></span><span class='op'>(</span><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#             Strongly Agree             Somewhat Agree Neither Agree nor Disagree</span>
-<span class='co'>#                         23                         24                         18</span>
-<span class='co'>#          Somewhat Disagree          Strongly Disagree</span>
-<span class='co'>#                         16                         19</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># given a variable ds$opinion, with categories: Strongly Agree, Somewhat</span></span>
+<span class='r-in'><span class='co'># Agree, Neither Agree nor Disagree, Somewhat Disagree, and Strongly Disagree,</span></span>
+<span class='r-in'><span class='co'># to make two subtotals for Agree and Disagree:</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'>Subtotal</span><span class='op'>(</span></span>
+<span class='r-in'>        name <span class='op'>=</span> <span class='st'>"Agree"</span>,</span>
+<span class='r-in'>        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Agree"</span>, <span class='st'>"Somewhat Agree"</span><span class='op'>)</span>,</span>
+<span class='r-in'>        after <span class='op'>=</span> <span class='st'>"Somewhat Agree"</span></span>
+<span class='r-in'>    <span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'>Subtotal</span><span class='op'>(</span></span>
+<span class='r-in'>        name <span class='op'>=</span> <span class='st'>"Disagree"</span>,</span>
+<span class='r-in'>        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Disagree"</span>, <span class='st'>"Somewhat Disagree"</span><span class='op'>)</span>,</span>
+<span class='r-in'>        after <span class='op'>=</span> <span class='st'>"Strongly Disagree"</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># headings can also be added:</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'>Heading</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"All opinions"</span>, position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to see the subtotals and headings associated with a variable</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#        anchor         name     func    args</span></span>
+<span class='r-in'><span class='co'># 1      2        Agree subtotal 1 and 2</span></span>
+<span class='r-in'><span class='co'># 2      4     Disagree subtotal 4 and 5</span></span>
+<span class='r-in'><span class='co'># 3      0 All opinions     &lt;NA&gt;      NA</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># when you use a variable with subtotals and headings in a cube, you see them</span></span>
+<span class='r-in'><span class='co'># by default</span></span>
+<span class='r-in'><span class='va'>opinion_cube</span> <span class='op'>&lt;-</span> <span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>opinion_cube</span></span>
+<span class='r-in'><span class='co'>#               All opinions</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree 23</span></span>
+<span class='r-in'><span class='co'>#             Somewhat Agree 24</span></span>
+<span class='r-in'><span class='co'>#                      Agree 47</span></span>
+<span class='r-in'><span class='co'># Neither Agree nor Disagree 18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree 16</span></span>
+<span class='r-in'><span class='co'>#          Strongly Disagree 19</span></span>
+<span class='r-in'><span class='co'>#                   Disagree 35</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to get just the subtotals,</span></span>
+<span class='r-in'><span class='fu'><a href='subtotalArray.html'>subtotalArray</a></span><span class='op'>(</span><span class='va'>opinion_cube</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#    Agree Disagree</span></span>
+<span class='r-in'><span class='co'>#       47       35</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to remove all subtotals and headings</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree 23</span></span>
+<span class='r-in'><span class='co'>#             Somewhat Agree 24</span></span>
+<span class='r-in'><span class='co'># Neither Agree nor Disagree 18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree 16</span></span>
+<span class='r-in'><span class='co'>#          Strongly Disagree 19</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># if you want to temporarily remove subtotals and headings, you can with `noTransforms`</span></span>
+<span class='r-in'><span class='fu'><a href='noTransforms.html'>noTransforms</a></span><span class='op'>(</span><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree             Somewhat Agree Neither Agree nor Disagree</span></span>
+<span class='r-in'><span class='co'>#                         23                         24                         18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree          Strongly Disagree</span></span>
+<span class='r-in'><span class='co'>#                         16                         19</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='co'># given a variable ds$opinion, with categories: Strongly Agree, Somewhat</span></span>
+<span class='r-in'><span class='co'># Agree, Neither Agree nor Disagree, Somewhat Disagree, and Strongly Disagree,</span></span>
+<span class='r-in'><span class='co'># to make two subtotals for Agree and Disagree:</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='fu'>Subtotal</span><span class='op'>(</span></span>
+<span class='r-in'>        name <span class='op'>=</span> <span class='st'>"Agree"</span>,</span>
+<span class='r-in'>        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Agree"</span>, <span class='st'>"Somewhat Agree"</span><span class='op'>)</span>,</span>
+<span class='r-in'>        after <span class='op'>=</span> <span class='st'>"Somewhat Agree"</span></span>
+<span class='r-in'>    <span class='op'>)</span>,</span>
+<span class='r-in'>    <span class='fu'>Subtotal</span><span class='op'>(</span></span>
+<span class='r-in'>        name <span class='op'>=</span> <span class='st'>"Disagree"</span>,</span>
+<span class='r-in'>        categories <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Strongly Disagree"</span>, <span class='st'>"Somewhat Disagree"</span><span class='op'>)</span>,</span>
+<span class='r-in'>        after <span class='op'>=</span> <span class='st'>"Strongly Disagree"</span></span>
+<span class='r-in'>    <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># headings can also be added:</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'>Heading</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"All opinions"</span>, position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to see the subtotals and headings associated with a variable</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#        anchor         name     func    args</span></span>
+<span class='r-in'><span class='co'># 1      2        Agree subtotal 1 and 2</span></span>
+<span class='r-in'><span class='co'># 2      4     Disagree subtotal 4 and 5</span></span>
+<span class='r-in'><span class='co'># 3      0 All opinions     &lt;NA&gt;      NA</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># when you use a variable with subtotals and headings in a cube, you see them</span></span>
+<span class='r-in'><span class='co'># by default</span></span>
+<span class='r-in'><span class='va'>opinion_cube</span> <span class='op'>&lt;-</span> <span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>opinion_cube</span></span>
+<span class='r-in'><span class='co'>#               All opinions</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree 23</span></span>
+<span class='r-in'><span class='co'>#             Somewhat Agree 24</span></span>
+<span class='r-in'><span class='co'>#                      Agree 47</span></span>
+<span class='r-in'><span class='co'># Neither Agree nor Disagree 18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree 16</span></span>
+<span class='r-in'><span class='co'>#          Strongly Disagree 19</span></span>
+<span class='r-in'><span class='co'>#                   Disagree 35</span></span>
+<span class='r-in'></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to get just the subtotals,</span></span>
+<span class='r-in'><span class='fu'><a href='subtotalArray.html'>subtotalArray</a></span><span class='op'>(</span><span class='va'>opinion_cube</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#    Agree Disagree</span></span>
+<span class='r-in'><span class='co'>#       47       35</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># to remove all subtotals and headings</span></span>
+<span class='r-in'><span class='fu'>subtotals</span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>opinion</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree 23</span></span>
+<span class='r-in'><span class='co'>#             Somewhat Agree 24</span></span>
+<span class='r-in'><span class='co'># Neither Agree nor Disagree 18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree 16</span></span>
+<span class='r-in'><span class='co'>#          Strongly Disagree 19</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># if you want to temporarily remove subtotals and headings, you can with `noTransforms`</span></span>
+<span class='r-in'><span class='fu'><a href='noTransforms.html'>noTransforms</a></span><span class='op'>(</span><span class='fu'><a href='crtabs.html'>crtabs</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>opinion</span>, <span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#             Strongly Agree             Somewhat Agree Neither Agree nor Disagree</span></span>
+<span class='r-in'><span class='co'>#                         23                         24                         18</span></span>
+<span class='r-in'><span class='co'>#          Somewhat Disagree          Strongly Disagree</span></span>
+<span class='r-in'><span class='co'>#                         16                         19</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

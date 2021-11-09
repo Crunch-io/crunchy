@@ -241,7 +241,7 @@
 ##             5.990781            23.817206            19.000165             4.962549            18.238301 
 ##            Post-grad 
 ##             6.278870</code></pre>
-<p>As an aside, if you prefer using the <code>subset</code> function, that works just the same as the <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> extract method on datasets:</p>
+<p>As an aside, if you prefer using the <code>subset</code> function, that works just the same as the <code>[</code> extract method on datasets:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">ds</span>, <span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span><span class="op">)</span>, <span class="va">dems</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -254,7 +254,7 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## data frame with 0 columns and 0 rows</code></pre>
-<p>Create a filter by assigning a Crunch logical expression to the catalog by the name we want to give it, using <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> or <code><a href="https://rdrr.io/r/base/Extract.html">[[</a></code>:</p>
+<p>Create a filter by assigning a Crunch logical expression to the catalog by the name we want to give it, using <code>$</code> or <code>[[</code>:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"Male"</span> <span class="op">&amp;</span> <span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;</span> <span class="fl">30</span>
 <span class="fu"><a href="../reference/filters.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"Young males"</span><span class="op">]</span><span class="op">]</span></code></pre></div>

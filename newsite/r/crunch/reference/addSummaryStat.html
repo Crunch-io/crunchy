@@ -257,86 +257,86 @@ transforms of the variable specified</p>
     <div class='dont-index'><p>SummaryStat</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>pet_feelings</span>
-<span class='co'>#                   animals</span>
-<span class='co'># feelings            cats dogs</span>
-<span class='co'>#  extremely happy      9    5</span>
-<span class='co'>#  somewhat happy      12   12</span>
-<span class='co'>#  neutral             12    7</span>
-<span class='co'>#  somewhat unhappy    10   10</span>
-<span class='co'>#  extremely unhappy   11   12</span>
-
-<span class='co'># add a mean summary statistic to a CrunchCube</span>
-<span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"mean"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span>
-<span class='co'>#                 animals</span>
-<span class='co'># feelings                      cats             dogs</span>
-<span class='co'>#  extremely happy                9                5</span>
-<span class='co'>#   somewhat happy               12               12</span>
-<span class='co'>#          neutral               12                7</span>
-<span class='co'># somewhat unhappy               10               10</span>
-<span class='co'># extremely unhappy               11               12</span>
-<span class='co'>#             mean 4.90740740740741 4.34782608695652</span>
-
-<span class='co'># we can also store the CrunchCube for use elsewhere</span>
-<span class='va'>pet_feelings</span> <span class='op'>&lt;-</span> <span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"mean"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span>
-<span class='va'>pet_feelings</span>
-<span class='co'>#                 animals</span>
-<span class='co'># feelings                      cats             dogs</span>
-<span class='co'>#  extremely happy                9                5</span>
-<span class='co'>#   somewhat happy               12               12</span>
-<span class='co'>#          neutral               12                7</span>
-<span class='co'># somewhat unhappy               10               10</span>
-<span class='co'># extremely unhappy               11               12</span>
-<span class='co'>#             mean 4.90740740740741 4.34782608695652</span>
-
-<span class='co'># `addSummaryStat` returns a CrunchCube that has had the summary statistic</span>
-<span class='co'># added to it, so that you can still use the Crunch logic for multiple</span>
-<span class='co'># response variables, missingness, etc.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span>
-<span class='co'># [1] "CrunchCube"</span>
-<span class='co'># attr(,"package")</span>
-<span class='co'># [1] "crunch"</span>
-
-<span class='co'># Since `pet_feelings` is a CrunchCube, although it has similar properties</span>
-<span class='co'># and behaviors to arrays, it is not a R array:</span>
-<span class='fu'><a href='https://rdrr.io/r/base/array.html'>is.array</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span>
-<span class='co'># [1] FALSE</span>
-
-<span class='co'># cleanup transforms</span>
-<span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
-<span class='co'># add a median summary statistic to a CrunchCube</span>
-<span class='va'>pet_feelings</span> <span class='op'>&lt;-</span> <span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"median"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span>
-<span class='va'>pet_feelings</span>
-<span class='co'>#                 animals</span>
-<span class='co'># feelings             cats    dogs</span>
-<span class='co'>#  extremely happy       9       5</span>
-<span class='co'>#   somewhat happy      12      12</span>
-<span class='co'>#          neutral      12       7</span>
-<span class='co'># somewhat unhappy      10      10</span>
-<span class='co'># extremely unhappy      11      12</span>
-<span class='co'>#           median       5       5</span>
-
-<span class='co'># additionally, if you want a true matrix object from the CrunchCube, rather</span>
-<span class='co'># than the CrunchCube object itself, `applyTransforms()` will return the</span>
-<span class='co'># array with the summary statistics (just like subtotals and headings)</span>
-<span class='va'>pet_feelings_array</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subtotalArray.html'>applyTransforms</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span>
-<span class='va'>pet_feelings_array</span>
-<span class='co'>#                 animals</span>
-<span class='co'># feelings             cats    dogs</span>
-<span class='co'>#  extremely happy       9       5</span>
-<span class='co'>#   somewhat happy      12      12</span>
-<span class='co'>#          neutral      12       7</span>
-<span class='co'># somewhat unhappy      10      10</span>
-<span class='co'># extremely unhappy      11      12</span>
-<span class='co'>#           median       5       5</span>
-
-<span class='co'># and we can see that this is an array and no longer a CrunchCube</span>
-<span class='fu'><a href='https://rdrr.io/r/base/array.html'>is.array</a></span><span class='op'>(</span><span class='va'>pet_feelings_array</span><span class='op'>)</span>
-<span class='co'># [1] TRUE</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>pet_feelings</span></span>
+<span class='r-in'><span class='co'>#                   animals</span></span>
+<span class='r-in'><span class='co'># feelings            cats dogs</span></span>
+<span class='r-in'><span class='co'>#  extremely happy      9    5</span></span>
+<span class='r-in'><span class='co'>#  somewhat happy      12   12</span></span>
+<span class='r-in'><span class='co'>#  neutral             12    7</span></span>
+<span class='r-in'><span class='co'>#  somewhat unhappy    10   10</span></span>
+<span class='r-in'><span class='co'>#  extremely unhappy   11   12</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># add a mean summary statistic to a CrunchCube</span></span>
+<span class='r-in'><span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"mean"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#                 animals</span></span>
+<span class='r-in'><span class='co'># feelings                      cats             dogs</span></span>
+<span class='r-in'><span class='co'>#  extremely happy                9                5</span></span>
+<span class='r-in'><span class='co'>#   somewhat happy               12               12</span></span>
+<span class='r-in'><span class='co'>#          neutral               12                7</span></span>
+<span class='r-in'><span class='co'># somewhat unhappy               10               10</span></span>
+<span class='r-in'><span class='co'># extremely unhappy               11               12</span></span>
+<span class='r-in'><span class='co'>#             mean 4.90740740740741 4.34782608695652</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># we can also store the CrunchCube for use elsewhere</span></span>
+<span class='r-in'><span class='va'>pet_feelings</span> <span class='op'>&lt;-</span> <span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"mean"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>pet_feelings</span></span>
+<span class='r-in'><span class='co'>#                 animals</span></span>
+<span class='r-in'><span class='co'># feelings                      cats             dogs</span></span>
+<span class='r-in'><span class='co'>#  extremely happy                9                5</span></span>
+<span class='r-in'><span class='co'>#   somewhat happy               12               12</span></span>
+<span class='r-in'><span class='co'>#          neutral               12                7</span></span>
+<span class='r-in'><span class='co'># somewhat unhappy               10               10</span></span>
+<span class='r-in'><span class='co'># extremely unhappy               11               12</span></span>
+<span class='r-in'><span class='co'>#             mean 4.90740740740741 4.34782608695652</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># `addSummaryStat` returns a CrunchCube that has had the summary statistic</span></span>
+<span class='r-in'><span class='co'># added to it, so that you can still use the Crunch logic for multiple</span></span>
+<span class='r-in'><span class='co'># response variables, missingness, etc.</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] "CrunchCube"</span></span>
+<span class='r-in'><span class='co'># attr(,"package")</span></span>
+<span class='r-in'><span class='co'># [1] "crunch"</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Since `pet_feelings` is a CrunchCube, although it has similar properties</span></span>
+<span class='r-in'><span class='co'># and behaviors to arrays, it is not a R array:</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/array.html'>is.array</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] FALSE</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># cleanup transforms</span></span>
+<span class='r-in'><span class='fu'><a href='Transforms-class.html'>transforms</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='co'># add a median summary statistic to a CrunchCube</span></span>
+<span class='r-in'><span class='va'>pet_feelings</span> <span class='op'>&lt;-</span> <span class='fu'>addSummaryStat</span><span class='op'>(</span><span class='va'>pet_feelings</span>, stat <span class='op'>=</span> <span class='st'>"median"</span>, var <span class='op'>=</span> <span class='st'>"feelings"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>pet_feelings</span></span>
+<span class='r-in'><span class='co'>#                 animals</span></span>
+<span class='r-in'><span class='co'># feelings             cats    dogs</span></span>
+<span class='r-in'><span class='co'>#  extremely happy       9       5</span></span>
+<span class='r-in'><span class='co'>#   somewhat happy      12      12</span></span>
+<span class='r-in'><span class='co'>#          neutral      12       7</span></span>
+<span class='r-in'><span class='co'># somewhat unhappy      10      10</span></span>
+<span class='r-in'><span class='co'># extremely unhappy      11      12</span></span>
+<span class='r-in'><span class='co'>#           median       5       5</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># additionally, if you want a true matrix object from the CrunchCube, rather</span></span>
+<span class='r-in'><span class='co'># than the CrunchCube object itself, `applyTransforms()` will return the</span></span>
+<span class='r-in'><span class='co'># array with the summary statistics (just like subtotals and headings)</span></span>
+<span class='r-in'><span class='va'>pet_feelings_array</span> <span class='op'>&lt;-</span> <span class='fu'><a href='subtotalArray.html'>applyTransforms</a></span><span class='op'>(</span><span class='va'>pet_feelings</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>pet_feelings_array</span></span>
+<span class='r-in'><span class='co'>#                 animals</span></span>
+<span class='r-in'><span class='co'># feelings             cats    dogs</span></span>
+<span class='r-in'><span class='co'>#  extremely happy       9       5</span></span>
+<span class='r-in'><span class='co'>#   somewhat happy      12      12</span></span>
+<span class='r-in'><span class='co'>#          neutral      12       7</span></span>
+<span class='r-in'><span class='co'># somewhat unhappy      10      10</span></span>
+<span class='r-in'><span class='co'># extremely unhappy      11      12</span></span>
+<span class='r-in'><span class='co'>#           median       5       5</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># and we can see that this is an array and no longer a CrunchCube</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/array.html'>is.array</a></span><span class='op'>(</span><span class='va'>pet_feelings_array</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># [1] TRUE</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

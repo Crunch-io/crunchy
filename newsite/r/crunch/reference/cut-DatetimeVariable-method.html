@@ -285,19 +285,19 @@ vector of break points.</p></td>
 it as a derived variable on the server.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span>
-<span class='va'>ds</span><span class='op'>$</span><span class='va'>month_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"month"</span>, name <span class='op'>=</span> <span class='st'>"monthly"</span><span class='op'>)</span>
-<span class='va'>ds</span><span class='op'>$</span><span class='va'>four_weeks_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"4 weeks"</span>, name <span class='op'>=</span> <span class='st'>"four week categorical date"</span><span class='op'>)</span>
-
-<span class='va'>ds</span><span class='op'>$</span><span class='va'>wave_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span>
-    <span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2020-01-01"</span>, <span class='st'>"2020-02-15"</span>, <span class='st'>"2020-04-01"</span>, <span class='st'>"2020-05-15"</span><span class='op'>)</span><span class='op'>)</span>,
-    labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"wave1"</span>, <span class='st'>"wave2"</span>, <span class='st'>"wave3"</span><span class='op'>)</span>,
-    name <span class='op'>=</span> <span class='st'>"wave var"</span>
-  <span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loadDataset.html'>loadDataset</a></span><span class='op'>(</span><span class='st'>"example"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>ds</span><span class='op'>$</span><span class='va'>month_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"month"</span>, name <span class='op'>=</span> <span class='st'>"monthly"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>ds</span><span class='op'>$</span><span class='va'>four_weeks_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>, breaks <span class='op'>=</span> <span class='st'>"4 weeks"</span>, name <span class='op'>=</span> <span class='st'>"four week categorical date"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>ds</span><span class='op'>$</span><span class='va'>wave_cat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span></span>
+<span class='r-in'>    <span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span>,</span>
+<span class='r-in'>    <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2020-01-01"</span>, <span class='st'>"2020-02-15"</span>, <span class='st'>"2020-04-01"</span>, <span class='st'>"2020-05-15"</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span class='r-in'>    labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"wave1"</span>, <span class='st'>"wave2"</span>, <span class='st'>"wave3"</span><span class='op'>)</span>,</span>
+<span class='r-in'>    name <span class='op'>=</span> <span class='st'>"wave var"</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

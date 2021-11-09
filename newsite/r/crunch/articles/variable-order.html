@@ -188,7 +188,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="va">ds</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Brands"</span>, <span class="st">"Cars and Trucks"</span>, <span class="st">"Domestic"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>which is equivalent to the previous example. One or the other way may be more convenient, depending on what you’re trying to accomplish.</p>
-<p>These four functions all take a dataset or a folder as the first argument, and they return the same object passed to it, except for <code>cd</code>, which returns the selected folder. As such, they are designed to work with <code>magrittr</code>-style piping (<code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>) for convenience in chaining together steps, though they don’t require that you do.</p>
+<p>These four functions all take a dataset or a folder as the first argument, and they return the same object passed to it, except for <code>cd</code>, which returns the selected folder. As such, they are designed to work with <code>magrittr</code>-style piping (<code>%&gt;%</code>) for convenience in chaining together steps, though they don’t require that you do.</p>
 </div>
 <div id="viewing-the-folders" class="section level2">
 <h2 class="hasAnchor">
@@ -196,8 +196,8 @@
 <p>To get started, let’s pick up the dataset we used in the <a href="array-variables.html">array variables vignette</a> and view its starting layout. We can do that by selecting the root folder (“/”) and printing it</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
-<span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>(The <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> isn’t strictly necessary here as <code>cd</code> will return the folder and thus it will print by default, but we’ll use different <code>print</code> arguments later, so it’s included here both for explicitness and illustration.)</p>
 <p>It’s flat—there are no folders here, only variables. If you’re importing data from a <code>data.frame</code> or a file, like an SPSS file, this is where you’ll begin.</p>
@@ -207,40 +207,40 @@
 <a href="#creating-folders" class="anchor"></a>Creating folders</h2>
 <p>Let’s make some folders and move some variables into them. To start, I know that the demographic variables are at the back of the dataset, so let’s make a “Demos” folder and move variables 21 to 37 into it:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">37</span>, <span class="st">"Demos"</span><span class="op">)</span></code></pre></div>
 <p>Now when I print the top-level directory again, I see a “Demos” folder and don’t see those demographic variables:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span></code></pre></div>
 <p><code><a href="../reference/mv.html">mv()</a></code> can reference variables or folders within a level in several ways. Numeric indices like we just did probably won’t be the most common way you’ll do it: names work just as well and are more transparent. Let’s move the first variable, <code>perc_skipped</code>, into “Demos” as well</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="st">"perc_skipped"</span>, <span class="st">"Demos"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="st">"perc_skipped"</span>, <span class="st">"Demos"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="co">## To print the folder contents</span></code></pre></div>
 <blockquote>
 <p>A side note: although the last step of that chain was <code><a href="../reference/cd.html">cd()</a></code>, we haven’t changed state in our R session. There is no “working folder” set globally. <code><a href="../reference/cd.html">cd()</a></code> is a function that returns a folder; if we had assigned the return from the function (pipeline) to some object, we could then pass that in to another function to “start” in that folder.</p>
 </blockquote>
 <p>Another way we can identify variables is by using the <code>dplyr</code>-like functions <code>starts_with</code>, <code>ends_with</code>, <code>matches</code>, and <code>contains</code>. Let’s use <code>matches</code> to move all of the questions about Edward Snowden or Bradley (Chelsea) Manning to a folder for the topical questions in this week’s survey:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"This week"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"This week"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"manning|snowden"</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"This week"</span><span class="op">)</span></code></pre></div>
 <p>We can also select all variables in a folder using the <code>variables</code> function (or all folders within a folder using <code>folders</code>). Let’s move all remaining variables from the top level folder to a folder called “Tracking questions”. To do this, we do need to explicitly change to the top level folder.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span>
-    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Tracking questions"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Tracking questions"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="va">.</span>, <span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, <span class="st">"Tracking questions"</span><span class="op">)</span></code></pre></div>
 <blockquote>
 <p>(Curious about the “dot” notation? See the <a href="https://magrittr.tidyverse.org/articles/magrittr.html">magrittr docs</a>.)</p>
 </blockquote>
-<p>The reason we change to the top level folder here is that there is a subtle difference between passing <code>ds</code> to <code><a href="../reference/mv.html">mv()</a></code> versus <code><a href="../reference/cd.html">cd(ds, "/")</a></code>. Whatever object, dataset or folder, that is passed into <code><a href="../reference/mv.html">mv()</a></code> determines the scope from which the objects to move are selected. If you pass the dataset in, you can select any variables in the dataset, regardless of what folder they’re in. If you pass in a folder, you’re selecting just from that folder’s contents. It can be convenient to find all variables that match some criteria across the whole dataset to move them, but sometimes we don’t want that. In this case, we wanted only the variables sitting in the top level folder, not nested in other folders, so we wanted <code><a href="../reference/variables.html">variables(cd(ds, "/"))</a></code> and not <code><a href="../reference/variables.html">variables(ds)</a></code>.</p>
-<p>Now, our variable tree has some structure. Let’s use <code><a href="https://rdrr.io/r/base/print.html">print(folder, depth = 1)</a></code> to see these folders and their contents one level deep:</p>
+<p>The reason we change to the top level folder here is that there is a subtle difference between passing <code>ds</code> to <code><a href="../reference/mv.html">mv()</a></code> versus <code>cd(ds, "/")</code>. Whatever object, dataset or folder, that is passed into <code><a href="../reference/mv.html">mv()</a></code> determines the scope from which the objects to move are selected. If you pass the dataset in, you can select any variables in the dataset, regardless of what folder they’re in. If you pass in a folder, you’re selecting just from that folder’s contents. It can be convenient to find all variables that match some criteria across the whole dataset to move them, but sometimes we don’t want that. In this case, we wanted only the variables sitting in the top level folder, not nested in other folders, so we wanted <code>variables(cd(ds, "/"))</code> and not <code>variables(ds)</code>.</p>
+<p>Now, our variable tree has some structure. Let’s use <code>print(folder, depth = 1)</code> to see these folders and their contents one level deep:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>depth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="nested-folders" class="section level2">
@@ -248,19 +248,19 @@
 <a href="#nested-folders" class="anchor"></a>Nested folders</h2>
 <p>We can create folders within folders as well. In the “This week” folder, we have a set of questions about Edward Snowden. Let’s nest them inside their own subfolder inside “This week”:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"This week"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Snowden"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"snowden"</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"Snowden"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">".."</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"This week"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"Snowden"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"snowden"</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"Snowden"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">".."</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>depth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p>Note how we used <code>".."</code> to change folders up a level, as you can in a file system . We did that just so we can print the folder structure at the top level (and to illustrate that you can specify relative paths :).</p>
 <p>You could also do this using the full path segments. <code>mkdir</code> will recursively make all path segments it needs in order to ensure that the target folder exists.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"This week/Snowden"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"snowden"</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"This week/Snowden"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mkdir</a></span><span class="op">(</span><span class="st">"This week/Snowden"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/mv.html">mv</a></span><span class="op">(</span><span class="fu">matches</span><span class="op">(</span><span class="st">"snowden"</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"This week/Snowden"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>depth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="renaming-folders-and-folder-contents" class="section level2">
@@ -268,8 +268,8 @@
 <a href="#renaming-folders-and-folder-contents" class="anchor"></a>Renaming folders and folder contents</h2>
 <p>Folders themselves have names, which we can set with <code><a href="../reference/setName.html">setName()</a></code>:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/setNames.html">setNames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Birth Year"</span>, <span class="st">"Gender"</span>, <span class="st">"Political Ideo. (3 category)"</span>,
     <span class="st">"Political Ideo. (7 category)"</span>,  <span class="st">"Political Ideo. (7 category; other)"</span>,  
     <span class="st">"Race"</span>, <span class="st">"Education"</span>, <span class="st">"Marital Status"</span>, <span class="st">"Phone"</span>, <span class="st">"Family Income"</span>, <span class="st">"Region"</span>,
@@ -277,8 +277,8 @@
     <span class="st">"Voter Registration (old)"</span>, <span class="st">"Voter Registration"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>We can also set the names of the objects contained in a folder with <code><a href="../reference/setNames.html">setNames()</a></code>:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"Demos"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/setName.html">setName</a></span><span class="op">(</span><span class="st">"Demographics"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="ordering-within-folders" class="section level2">
@@ -287,8 +287,8 @@
 <p>Unlike files in a file system, variables within folders are ordered.</p>
 <p>Let’s move “Demographics” to the end. One way to do that is with the <code>setOrder</code> function. This lets you provide a specific order, but it requires you to specify all of the folder’s contents. Let’s use that function to put “Tracking questions” first:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+    <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="st">"/"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/setOrder.html">setOrder</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Tracking questions"</span>, <span class="st">"This week"</span>, <span class="st">"Demographics"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <!--
 We can do that a couple of ways. One is using `mv()`, giving it the "after" argument
@@ -312,7 +312,7 @@ folder(ds$var); can also mv to wherever that var is -->
 <a href="#deleting-folders" class="anchor"></a>Deleting folders</h2>
 <p>The cleanest way to delete a folder is with <code><a href="../reference/rmdir.html">rmdir()</a></code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
     <span class="fu"><a href="../reference/rmdir.html">rmdir</a></span><span class="op">(</span><span class="st">"This week/Snowden"</span><span class="op">)</span></code></pre></div>
 <p>This deletes the folder and all variables contained within it.</p>
 <p><a href="derive.html">Next: transforming and deriving</a></p>

@@ -173,7 +173,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/login.html">login</a></span><span class="op">(</span><span class="st">"xkcd@crunch.io"</span><span class="op">)</span></code></pre></div>
 <pre><code>Crunch.io password for xkcd@crunch.io: *enter your password here*
 ## Logged into crunch.io as xkcd@crunch.io</code></pre>
-<p>If you use an OAuth provider, such as Google, to log into the Crunch web application, you’ll need to first set a Crunch password for use here. Do <code><a href="../reference/resetPassword.html">resetPassword("xkcd@crunch.io")</a></code> with your email address, and you’ll receive an email with password setting instructions.</p>
+<p>If you use an OAuth provider, such as Google, to log into the Crunch web application, you’ll need to first set a Crunch password for use here. Do <code>resetPassword("xkcd@crunch.io")</code> with your email address, and you’ll receive an email with password setting instructions.</p>
 <p>Your email and Crunch password can be set via the <code>keyring</code> package, <code>options</code> in your .Rprofile (<code>crunch.email</code> and <code>crunch.pw</code>) or as environment variables (<code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code>) so that you can simply <code><a href="../reference/login.html">login()</a></code>. See <code><a href="../reference/login.html">?login</a></code> for details.</p>
 </div>
 <div id="datasets" class="section level2">
@@ -215,7 +215,7 @@
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] ""</code></pre>
-<p>Both can be set with <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> assignment. Let’s give our dataset an informative description:</p>
+<p>Both can be set with <code>&lt;-</code> assignment. Let’s give our dataset an informative description:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Subset of the main survey, restricted to self-reported R users"</span>
 <span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
@@ -224,7 +224,7 @@
 <div id="variables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#variables" class="anchor"></a>Variables</h2>
-<p>Just as a <code>data.frame</code> has columns you can access with the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> and <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code> operators, you can get variables from a Crunch dataset the same way.</p>
+<p>Just as a <code>data.frame</code> has columns you can access with the <code>$</code> and <code>[</code> operators, you can get variables from a Crunch dataset the same way.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">TabsSpaces</span></code></pre></div>
 <pre><code>## TabsSpaces (categorical)
@@ -241,7 +241,7 @@
 ## Contains 1634 rows of 1 variables:
 ## 
 ## $CompanySize: CompanySize (categorical)</code></pre>
-<p>The <strong>crunch</strong> package aims to bring the minimum amount of data down from the server. Most methods work by calculating values on the server, and then transmitting the results to you R session instead of transmitting all the data. In this case, the server calculates and transmits the variable summary instead of sending the data. If you ever want to actually access the data in the variable, you can call <code><a href="../reference/as-vector.html">as.vector(var)</a></code> to pull down its column.</p>
+<p>The <strong>crunch</strong> package aims to bring the minimum amount of data down from the server. Most methods work by calculating values on the server, and then transmitting the results to you R session instead of transmitting all the data. In this case, the server calculates and transmits the variable summary instead of sending the data. If you ever want to actually access the data in the variable, you can call <code>as.vector(var)</code> to pull down its column.</p>
 <p>Crunch allows you to store additional metadata about the variables that R doesn’t support. For instance, we can add the survey question wording as the “description” for each variable. This question wording is available in the schema file that comes with the Stack Overflow dataset, in the “Question” column.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">SO_schema</span><span class="op">$</span><span class="va">Question</span>

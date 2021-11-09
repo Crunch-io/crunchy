@@ -229,8 +229,6 @@ response on a variable's <a href='Transforms-class.html'>transformations</a>.</p
 
 <span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='fu'>kwarguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
 <span class='fu'>func</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='fu'>funcs</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -256,9 +254,6 @@ response on a variable's <a href='Transforms-class.html'>transformations</a>.</p
 <span class='co'># S4 method for Subtotal</span>
 <span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
-<span class='co'># S4 method for Subtotal</span>
-<span class='fu'>kwarguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
-
 <span class='co'># S4 method for Heading</span>
 <span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>value</span>
 
@@ -269,25 +264,25 @@ response on a variable's <a href='Transforms-class.html'>transformations</a>.</p
 <span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Subtotal</span>
-<span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Heading</span>
 <span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummaryStat</span>
-<span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>arguments</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Insertion</span>
-<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Subtotal</span>
-<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Heading</span>
-<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummaryStat</span>
-<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_categories</span><span class='op'>)</span>
+<span class='fu'>anchor</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>var_items</span><span class='op'>)</span>
 
 <span class='co'># S4 method for Insertion</span>
 <span class='fu'>func</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -312,7 +307,7 @@ response on a variable's <a href='Transforms-class.html'>transformations</a>.</p
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>additional arguments to <code><a href='https://rdrr.io/r/base/Extract.html'>[</a></code>, ignored</p></td>
+      <td><p>additional arguments to <code>[</code>, ignored</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -331,10 +326,11 @@ Insertion or Insertions</p></td>
       <td><p>For <code>[&lt;-</code>, the replacement Insertion to insert</p></td>
     </tr>
     <tr>
-      <th>var_categories</th>
-      <td><p>categories (from <code><a href='var-categories.html'>categories()</a></code>) to used by the
-<code>arguments</code> and <code>anchor</code> methods when needed to translate between category
-names and category ids.</p></td>
+      <th>var_items</th>
+      <td><p>categories (from <code><a href='var-categories.html'>categories()</a></code>) or subvariables (from
+<code><a href='Subvariables-class.html'>subvariables()</a></code> to used by the <code>arguments</code> and <code>anchor</code> methods when
+needed to translate between category/subvariable names and category
+ids/aliases.</p></td>
     </tr>
     </table>
 

@@ -212,7 +212,7 @@ proportions to compare against." />
 
     <div class="ref-description">
     <p>Index tables are percentages of percentages. They take the percentage from
-<code><a href='cube-computing.html'>prop.table(cube, margin)</a></code> and, by default, divide that by the proportions of
+<code>prop.table(cube, margin)</code> and, by default, divide that by the proportions of
 the other margin. The <code>baseline</code> argument can be used to provide baseline
 proportions to compare against.</p>
     </div>
@@ -247,30 +247,30 @@ same length as the extent of the dimension given in <code>margin</code>.</p></td
 calculate indexes for a higher dimension Cube, please slice the cube first.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>cube_object</span>
-<span class='co'>#    v7</span>
-<span class='co'># v4  C E</span>
-<span class='co'>#   B 5 2</span>
-<span class='co'>#   C 5 3</span>
-<span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>1</span><span class='op'>)</span>
-<span class='co'>#    v7</span>
-<span class='co'># v4         C         E</span>
-<span class='co'>#   B 107.1429  85.71429</span>
-<span class='co'>#   C  93.7500 112.50000</span>
-<span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>2</span><span class='op'>)</span>
-<span class='co'>#    v7</span>
-<span class='co'># v4    C   E</span>
-<span class='co'>#   B 100  80</span>
-<span class='co'>#   C 100 120</span>
-<span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.6</span>, <span class='fl'>0.4</span><span class='op'>)</span><span class='op'>)</span>
-<span class='co'>#    v7</span>
-<span class='co'># v4          C         E</span>
-<span class='co'>#   B  83.33333  66.66667</span>
-<span class='co'>#   C 125.00000 150.00000</span>
-<span class='op'>}</span>
-
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='va'>cube_object</span></span>
+<span class='r-in'><span class='co'>#    v7</span></span>
+<span class='r-in'><span class='co'># v4  C E</span></span>
+<span class='r-in'><span class='co'>#   B 5 2</span></span>
+<span class='r-in'><span class='co'>#   C 5 3</span></span>
+<span class='r-in'><span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#    v7</span></span>
+<span class='r-in'><span class='co'># v4         C         E</span></span>
+<span class='r-in'><span class='co'>#   B 107.1429  85.71429</span></span>
+<span class='r-in'><span class='co'>#   C  93.7500 112.50000</span></span>
+<span class='r-in'><span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#    v7</span></span>
+<span class='r-in'><span class='co'># v4    C   E</span></span>
+<span class='r-in'><span class='co'>#   B 100  80</span></span>
+<span class='r-in'><span class='co'>#   C 100 120</span></span>
+<span class='r-in'><span class='fu'>index.table</span><span class='op'>(</span><span class='va'>cube_object</span>, <span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.6</span>, <span class='fl'>0.4</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>#    v7</span></span>
+<span class='r-in'><span class='co'># v4          C         E</span></span>
+<span class='r-in'><span class='co'>#   B  83.33333  66.66667</span></span>
+<span class='r-in'><span class='co'>#   C 125.00000 150.00000</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -245,43 +245,43 @@ in native R functions, and are described in the details section below.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Logical expressions</p><ul>
-<li><p>These logical operators <code><a href='expressions-internal.html'>==</a></code>, <code><a href='expressions-internal.html'>!=</a></code>, <code>&amp;</code>, <code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code>, <code><a href='expressions-internal.html'>!</a></code>,<code><a href='expressions-internal.html'>%in%</a></code>  work the same way as their
+<li><p>These logical operators <code>==</code>, <code>!=</code>, <code>&amp;</code>, <code>|</code>, <code>!</code>,<code>%in%</code>  work the same way as their
 base R counterparts</p></li>
-<li><p><code><a href='dichotomize.html'>is.selected(x)</a></code> return <code>CrunchLogicalExpr</code> whether a value is in a selected category</p></li>
-<li><p><code><a href='expressions-internal.html'>rowAny(x)</a></code> and <code><a href='expressions-internal.html'>rowAll(x)</a></code> work row-wise on <code>MultipleResponse</code> Variables (and expressions),
-though <code>na.rm</code> is not implemented for <code><a href='https://rdrr.io/r/base/all.html'>all(x)</a></code>.
-<code>%ornm%</code> is similar to <code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code>, but where "not selected" beats "missing" (so <code>FALSE %ornm% NA</code>
+<li><p><code>is.selected(x)</code> return <code>CrunchLogicalExpr</code> whether a value is in a selected category</p></li>
+<li><p><code>rowAny(x)</code> and <code>rowAll(x)</code> work row-wise on <code>MultipleResponse</code> Variables (and expressions),
+though <code>na.rm</code> is not implemented for <code>all(x)</code>.
+<code>%ornm%</code> is similar to <code>|</code>, but where "not selected" beats "missing" (so <code>FALSE %ornm% NA</code>
 is <code>FALSE</code> instead of <code>NA</code> as it would be with <code>FALSE | NA</code>)</p></li>
 </ul>
 
 <p>Comparisons</p><ul>
 <li><p>Comparison operators <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> work the same way as their base R counterparts.</p></li>
-<li><p><code><a href='expressions-internal.html'>crunchBetween(x, lower, upper, inclusive)</a></code> to provide lower and upper bounds in a single
+<li><p><code>crunchBetween(x, lower, upper, inclusive)</code> to provide lower and upper bounds in a single
 expression.</p></li>
 </ul>
 
 <p>Missing data expressions</p><ul>
-<li><p><code><a href='https://rdrr.io/r/base/NA.html'>is.na(x)</a></code>, <code><a href='expressions-internal.html'>is.valid(x)</a></code> return <code>CrunchLogicalExpr</code> whether a single variable (or expression
+<li><p><code>is.na(x)</code>, <code>is.valid(x)</code> return <code>CrunchLogicalExpr</code> whether a single variable (or expression
 that creates one) is missing (or not missing).</p></li>
-<li><p><code><a href='expressions-internal.html'>rowAnyNA(x)</a></code>, <code><a href='expressions-internal.html'>rowAllNA(x)</a></code> return <code>CrunchLogicalExpr</code> whether any/all values in an
+<li><p><code>rowAnyNA(x)</code>, <code>rowAllNA(x)</code> return <code>CrunchLogicalExpr</code> whether any/all values in an
 array variable (or expression that creates one) are missing.</p></li>
-<li><p><code><a href='https://rdrr.io/r/stats/complete.cases.html'>complete.cases(x)</a></code> returns an expression that is "selected" if all cases are non-missing,
+<li><p><code>complete.cases(x)</code> returns an expression that is "selected" if all cases are non-missing,
 "missing" if they are all missing, and "other" otherwise.</p></li>
 </ul>
 
 <p>Selection expressions</p><ul>
-<li><p><code><a href='expressions-internal.html'>selectCategories(x, selections, collapse = TRUE)</a></code> takes a categorical variable (or array)
+<li><p><code>selectCategories(x, selections, collapse = TRUE)</code> takes a categorical variable (or array)
 and marks categories as selected. <code>selections</code> should be a list of category names or
 values. If <code>collapse</code> is <code>TRUE</code>, (the default), it collapses the categories to "selected",
 "other" and "missing", but it is <code>FALSE</code>, then the old categories are preserved.</p></li>
-<li><p><code><a href='expressions-internal.html'>asSelected(x)</a></code> returns an expression that condenses a categorical into 3 categories
+<li><p><code>asSelected(x)</code> returns an expression that condenses a categorical into 3 categories
 ("selected", "other" or "missing")</p></li>
-<li><p><code><a href='expressions-internal.html'>selectedDepth(x)</a></code> returns an expression that creates a numeric variable that counts the
+<li><p><code>selectedDepth(x)</code> returns an expression that creates a numeric variable that counts the
 number of selections across rows of an array variable (or expression that creates one)</p></li>
-<li><p><code><a href='expressions-internal.html'>arraySelections(x)</a></code> returns an expression that takes an array and creates an array with
+<li><p><code>arraySelections(x)</code> returns an expression that takes an array and creates an array with
 each variable condensed to "selected", "other" or "missing" and an extra subvariable
 "<strong>any</strong>" that indicates whether any is selected.</p></li>
-<li><p><code><a href='expressions-internal.html'>alterCategoriesExpr(x, categories = NULL, category_order = NULL, subvariables = NULL)</a></code>
+<li><p><code>alterCategoriesExpr(x, categories = NULL, category_order = NULL, subvariables = NULL)</code>
 Change the category names, order, or subvariable names of categorical or Array variables
 (can only modify existing ones, not add or remove categories or subvariables).
 <code>categories</code> is a <code>Categories</code> object or a list of lists, each with a <code>name</code> indicating
@@ -295,9 +295,9 @@ by <code>id</code>.</p></li>
 </ul>
 
 <p>Array expressions</p><ul>
-<li><p><code><a href='expressions-internal.html'>makeFrame(x, numeric = NULL)</a></code> an expression that creates an array from existing
+<li><p><code>makeFrame(x, numeric = NULL)</code> an expression that creates an array from existing
 variables or expressions, see <code><a href='deriveArray.html'>deriveArray()</a></code> for more details</p></li>
-<li><p><code><a href='expressions-internal.html'>arraySubsetExpr(x, subvars, subvar_id = c("alias", "name", "id"))</a></code> Take a subset of an
+<li><p><code>arraySubsetExpr(x, subvars, subvar_id = c("alias", "name", "id"))</code> Take a subset of an
 existing array variable, identifying the subvariables by alias, name, or id (if <code>x</code> is
 an expression, you must use id).</p></li>
 <li><p></p><pre> <span class='fu'><a href='expressions-internal.html'>alterArrayExpr</a></span><span class='op'>(</span>
@@ -321,23 +321,23 @@ list.</p></li>
 </ul>
 
 <p>Miscellaneous expressions</p><ul>
-<li><p><code><a href='makeCaseVariable.html'>caseExpr(..., cases)</a></code> Create a categorical variable from
+<li><p><code>caseExpr(..., cases)</code> Create a categorical variable from
 a set of logical expressions that when met are assigned to a category. See
 <code><a href='makeCaseVariable.html'>makeCaseVariable()</a></code> for more details.</p></li>
-<li><p><code><a href='expressions-internal.html'>bin(x)</a></code> returns a column's values binned into equidistant bins.</p></li>
-<li><p><code><a href='https://rdrr.io/r/base/nchar.html'>nchar(x)</a></code> returns a numeric value indicating the length of a string (or missing reason)
+<li><p><code>bin(x)</code> returns a column's values binned into equidistant bins.</p></li>
+<li><p><code>nchar(x)</code> returns a numeric value indicating the length of a string (or missing reason)
 in a <code>TextVariable</code> (or expression that creates one)</p></li>
 <li><p><code>unmissing(x)</code> for a <code>NumericVariable</code> (or expression that creates one) return the values of
 the data, ignoring the ones set to missing.</p></li>
-<li><p><code><a href='expressions-internal.html'>trim(x, min, max)</a></code> for a <code>NumericVariable</code> (or expression that creates one) return values
+<li><p><code>trim(x, min, max)</code> for a <code>NumericVariable</code> (or expression that creates one) return values
 that where all values less than <code>min</code> have been replaced with <code>min</code> and all values greater
 than <code>max</code> have been</p></li>
-<li><p><code><a href='expressions-internal.html'>crunchDifftime(e1, e2, resolution)</a></code> Gets the difference between two datetimes as a number
-with specified resolution units (one of <code><a href='https://rdrr.io/r/base/c.html'>c("Y", "Q", "M", "W", "D", "h", "m", "s", "ms")</a></code>).</p></li>
-<li><p><code><a href='expressions-internal.html'>datetimeFromCols(year, month, day, hours, minutes, seconds)</a></code> create a <code>Datetime</code> variable
+<li><p><code>crunchDifftime(e1, e2, resolution)</code> Gets the difference between two datetimes as a number
+with specified resolution units (one of <code>c("Y", "Q", "M", "W", "D", "h", "m", "s", "ms")</code>).</p></li>
+<li><p><code>datetimeFromCols(year, month, day, hours, minutes, seconds)</code> create a <code>Datetime</code> variable
 from numeric variables or expressions (<code>year</code>, <code>month</code>, and <code>day</code> are required, but <code>hours</code>,
 <code>minutes</code>, and <code>seconds</code> are optional)</p></li>
-<li><p><code><a href='resolution.html'>rollup(x, resolution)</a></code> sets the resolution of a datetime variable or expression, see
+<li><p><code>rollup(x, resolution)</code> sets the resolution of a datetime variable or expression, see
 <code><a href='resolution.html'>resolution()</a></code></p></li>
 </ul>
 
