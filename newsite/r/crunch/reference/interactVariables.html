@@ -221,7 +221,7 @@ black:non-hispanic, etc.) and 7 categories where at least one of the
 variables is missing (e.g. white:No Data).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>interactVariables</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>name</span>, sep <span class='op'>=</span> <span class='st'>":"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>interactVariables</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>name</span>, collapse_missings <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -237,9 +237,10 @@ description)</p></td>
       <td><p>a character to use as the name for the interaction variable</p></td>
     </tr>
     <tr>
-      <th>sep</th>
-      <td><p>a character to separate the values of the individual variables
-(default: <code>:</code>)</p></td>
+      <th>collapse_missings</th>
+      <td><p>a logical indicating whether to combine all
+new categories that are formed from existing missing categories into
+a single one (defaults to <code>FALSE</code>).</p></td>
     </tr>
     </table>
 
