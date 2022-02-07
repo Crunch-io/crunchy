@@ -35,6 +35,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +49,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/crunch.html">Get started</a>
 </li>
@@ -73,7 +69,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../articles/variables.html">Crunch Variables</a>
     </li>
@@ -87,7 +84,8 @@
       <a href="../articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="../articles/derive.html">Adding Variables</a>
     </li>
@@ -107,7 +105,8 @@
       <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -115,7 +114,8 @@
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,7 +154,7 @@
       <h1 data-toc-skip>Crunch Internals</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/crunch-internals.Rmd"><code>vignettes/crunch-internals.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/crunch-internals.Rmd" class="external-link"><code>vignettes/crunch-internals.Rmd</code></a></small>
       <div class="hidden name"><code>crunch-internals.Rmd</code></div>
 
     </div>
@@ -162,51 +162,51 @@
     
     
 <p><a href="subtotals.html">Previous: subtotals</a></p>
-<p>The Crunch web app and the <code>crunch</code> package are both built on a <a href="https://crunch.io/api/reference/">REST API</a>. Users can interact with very large datasets because most of the heavy computation is done on the Crunch servers and not on the users computer. In most cases, you don’t need to know how the API works—the R package handles the HTTP requests and responses and presents meaningful objects and methods to you. To go beyond the basics, though, it can be useful to understand how the API works so that you can make more complex or more efficient (read: faster) operations.</p>
-<div id="catalogs" class="section level3">
-<h3 class="hasAnchor">
-<a href="#catalogs" class="anchor"></a>Catalogs</h3>
+<p>The Crunch web app and the <code>crunch</code> package are both built on a <a href="https://crunch.io/api/reference/" class="external-link">REST API</a>. Users can interact with very large datasets because most of the heavy computation is done on the Crunch servers and not on the users computer. In most cases, you don’t need to know how the API works—the R package handles the HTTP requests and responses and presents meaningful objects and methods to you. To go beyond the basics, though, it can be useful to understand how the API works so that you can make more complex or more efficient (read: faster) operations.</p>
+<div class="section level3">
+<h3 id="catalogs">Catalogs<a class="anchor" aria-label="anchor" href="#catalogs"></a>
+</h3>
 <p>When you open a dataset in the Crunch web app, what happens is that the app sends an HTTP request to the Crunch server for information about that dataset. It gets the dataset description and a list of variables contained within that dataset, but the actual data is stored on the server and not sent to the app. The app only loads information about variables that are actually going to be displayed on the screen, which is why very large datasets load so quickly. You might have millions of rows in your dataset, but the web app only asks the server for the summary statistics it needs to display the variable card.</p>
 <p>This kind of minimally necessary information are stored in objects called catalogs. There is a <code>VariableCatalog</code>, which has information about a dataset’s variables; a <code>DatasetCatalog</code>, which has information about your datasets, and many others. You can think of catalogs just like the Sears Catalog: they are lists of things and descriptions about those things, but they are not the things themselves. You might flip through a catalog looking for the couch, but you need to make a special order if you actually want the couch delivered.</p>
 <p>The R package relates to the Crunch API in more or less the same manner as the web app. When you load a Crunch dataset from the server you are not typically loading the actual data, but instead you are loading a catalog representation of that dataset which is stored in a list. This object includes things like the dataset identifier, the variable names and types, and the dataset dimensions, but the actual data stays on the server. When calculations are performed on that data, an HTTP request is sent to the server, the server calculates the answer, and the results are sent back to the R session. This is what allows you to calculate statistics on objects which don’t fit in memory: the calculations are done remotely and only the result of that calculation is sent back to you.</p>
 </div>
-<div id="getters-and-setters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getters-and-setters" class="anchor"></a>Getters and Setters</h3>
+<div class="section level3">
+<h3 id="getters-and-setters">Getters and Setters<a class="anchor" aria-label="anchor" href="#getters-and-setters"></a>
+</h3>
 <p>Many Crunch functions both retrieve information from the server and allow the user to set information. For instance if you want to retrieve a list of datasets associated with a project you could call the [datasets()] function like this:</p>
-<pre><code>proj &lt;- projects()[["Project name"]]
-datasets(proj)</code></pre>
+<pre><code><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"Project name"</span><span class="op">]</span><span class="op">]</span>
+<span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span></code></pre>
 <p>What happens under the hood when you run this code is that R sends an HTTP request to the server asking for the datasets associated with a particular project. This is the “getter” side of the <code><a href="../reference/datasets.html">datasets()</a></code> function. However, the function also allows the user to change the datasets associated with that function using the assignment operator.</p>
-<pre><code>ds &lt;- loadDataset(mydatasets[["Dataset name"]])
-datasets(proj) &lt;- ds</code></pre>
+<pre><code><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="va">mydatasets</span><span class="op">[[</span><span class="st">"Dataset name"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span></code></pre>
 <p>Internally there is actually a second method <code>datasets&lt;-</code> that takes the value on the right hand side of the <code>&lt;-</code> operator and posts that value to the datasets attribute of the project catalog. The projects catalog will then update to reflect that a dataset belongs to a particular catalog, and that will be reflected in the web app. Similar patterns happen when you get and set attributes on objects, like “names”.</p>
 </div>
-<div id="cube-subsetting" class="section level2">
-<h2 class="hasAnchor">
-<a href="#cube-subsetting" class="anchor"></a>Cube Subsetting</h2>
+<div class="section level2">
+<h2 id="cube-subsetting">Cube Subsetting<a class="anchor" aria-label="anchor" href="#cube-subsetting"></a>
+</h2>
 <p>Crunch cubes are generally used to cross tabulate different variables in a crunch dataset. For instance if you cross tabulate two variables with <code>crtabs(~cyl + gear, data = ds)</code>, you get a 2 dimensional cube which looks just like a matrix. Cross tabbing three variables leads to a 3d cube, etc. This simple case gets quite a bit more complicated when you add array variables to the cube:</p>
 <p><em>Multiple response</em></p>
 <p>Multiple response variables are themselves 2d arrays with the items or responses on one dimension and the selection status on the second dimension. The result is that a categorical-by-MR cube ends up with three dimensions: the categorical variable categories, the MR items/responses, and the MR selection status.</p>
 <p><em>Categorical array</em> Categorical arrays are also represented cubes as 2d arrays. With the items/responses (the subvariable labels) on one dimension, and their categories on another dimension.</p>
-<div id="cube-to-array" class="section level3">
-<h3 class="hasAnchor">
-<a href="#cube-to-array" class="anchor"></a>Cube to Array</h3>
+<div class="section level3">
+<h3 id="cube-to-array">Cube to Array<a class="anchor" aria-label="anchor" href="#cube-to-array"></a>
+</h3>
 <p>The main feature of representing these counts as high dimensional arrays is that it makes a number of computational tasks a lot easier, but the problem is that you can quickly end up with cubes which are difficult for humans to conceptualize. For example if you created a cube with one MR variable which had 5 categories, one MR variable with 6 categories, and a categorical variable with 10 categories it would have 5 dimensions with 2700 <code>(5*3 * 6*3 * 10)</code> entries. This is hard to understand and to print, and as a result we try to figure out the parts of the cube which the user is interested in and print that sub-cube. For the purposes of this document we need three terms for cubes:</p>
 <p><em>Real cube</em>: The cube with all of the underlying data <em>User cube</em>: The cube the user thinks they’re interacting with. This is the same as the real cube without MR selection dimensions <em>Printed cube</em> The cube which prints to the console. The same as the the user cube but with missing categories suppressed.</p>
 <p>The user cube differs from the real cube in that it doesn’t include MR selection dimensions. We assume that when the user is including an MR in a cube, they really only care about the parts of the cube where the MR is selected. So the 5d real cube listed above would become a 3d user cube with 300 entries (<code>5 * 6 * 10</code>) because we are selecting the slices of the cube where each MR selection dimension is equal to “Selected” and are able to drop the selections dimensions</p>
 <p>The printed cube differs from the user cube in that it doesn’t include missing categories. We assume that the user mostly wants to look at categories which are not-missing, and that they don’t care that much about the parts of the cube which represent missing categories. If the categorical variable above had two missing categories: “No Data” and “Not Answered” it would reduce the number of entries to 240 (<code>5 * 6 * 8</code>) . This behavior can be changed by setting the <code>cube@useNA</code> slot to <code>“always”</code>. The function <code>setCubeNa()</code> handles setting this slot on the cube.</p>
 </div>
-<div id="cube-subsetting-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#cube-subsetting-1" class="anchor"></a>Cube subsetting</h3>
+<div class="section level3">
+<h3 id="cube-subsetting-1">Cube subsetting<a class="anchor" aria-label="anchor" href="#cube-subsetting-1"></a>
+</h3>
 <p>This structure gets a little tricky when we subset the cube. For instance the cube we’ve been working with has 5 dimensions, but to the user appears to only have 3, so should they subset it as a 5 dimensional array like <code>cube[1, 1,  2:3, 1, 5]</code> or a 3 dimensional array <code>cube[1, 2:3, 5]</code>. Similarly, if a dimension is missing, should that be included in the subset. For example if a cube has three entries A, B, C, along one dimension, and B is hidden, should <code>cube[ , 1:2]</code> return A, A &amp; B, or A &amp;C? Similarly should <code>dim(cube)</code> show the dimensions of the real cube or the printed cube?</p>
-<p>We resolve this problem by allowing the user to select whether they want the cube to represent the user cube or the printed cube, and make all of the behavior of those cubes consistent. The <code>cube@useNA</code> controls whether the user wanted to interact with the printed cube or the user cube and they can <code><a href="../reference/showMissing.html">showMissing()</a></code> and <code><a href="../reference/showMissing.html">hideMissing()</a></code> functions to control which cube they are interacting with</p>
+<p>We resolve this problem by allowing the user to select whether they want the cube to represent the user cube or the printed cube, and make all of the behavior of those cubes consistent. The <code>cube@useNA</code> controls whether the user wanted to interact with the printed cube or the user cube and they can <code><a href="../reference/cube-missingness.html">showMissing()</a></code> and <code><a href="../reference/cube-missingness.html">hideMissing()</a></code> functions to control which cube they are interacting with</p>
 <pre><code>&gt; dim(cube)
 [1] 5 6 8
 &gt; dim(showMissing(cube))
 [1] 5 6 10</code></pre>
 <p>This makes subsetting a bit easier because we can enforce the dimensions of the printed cube. For instance</p>
-<pre><code>cube[5, 6, 10]</code></pre>
+<pre><code><span class="va">cube</span><span class="op">[</span><span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">10</span><span class="op">]</span></code></pre>
 <p>Errors because the user supplied the wrong number of dimensions while</p>
 <pre><code>showMissing(cube)[cube[5, 6, 10]</code></pre>
 <p>Returns the correct data they were looking for.</p>
@@ -232,11 +232,13 @@ datasets(proj) &lt;- ds</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

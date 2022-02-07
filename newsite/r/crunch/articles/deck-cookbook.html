@@ -35,6 +35,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +49,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/crunch.html">Get started</a>
 </li>
@@ -73,7 +69,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../articles/variables.html">Crunch Variables</a>
     </li>
@@ -87,7 +84,8 @@
       <a href="../articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="../articles/derive.html">Adding Variables</a>
     </li>
@@ -107,7 +105,8 @@
       <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -115,7 +114,8 @@
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,7 +154,7 @@
       <h1 data-toc-skip>Crunch Deck Cookbook</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/deck-cookbook.Rmd"><code>vignettes/deck-cookbook.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/deck-cookbook.Rmd" class="external-link"><code>vignettes/deck-cookbook.Rmd</code></a></small>
       <div class="hidden name"><code>deck-cookbook.Rmd</code></div>
 
     </div>
@@ -175,29 +175,29 @@
 </ul>
 <p>The recipes in this cookbook all start from the pets example dataset (available from <code><a href="../reference/newExampleDataset.html">newExampleDataset()</a></code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/">crunch</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org" class="external-link">purrr</a></span><span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/" class="external-link">crunch</a></span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span><span class="st">"crunch.show.progress"</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span><span class="st">"crunch.show.progress"</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/login.html">login</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newExampleDataset.html">newExampleDataset</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div id="basic-deck-and-slide-manipulation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basic-deck-and-slide-manipulation" class="anchor"></a>Basic deck and slide manipulation</h2>
-<div id="creating-an-analysis-slide-on-a-new-deck" class="section level3">
-<h3 class="hasAnchor">
-<a href="#creating-an-analysis-slide-on-a-new-deck" class="anchor"></a>Creating an analysis slide on a new deck</h3>
-<div id="problem" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem" class="anchor"></a>Problem</h4>
+<div class="section level2">
+<h2 id="basic-deck-and-slide-manipulation">Basic deck and slide manipulation<a class="anchor" aria-label="anchor" href="#basic-deck-and-slide-manipulation"></a>
+</h2>
+<div class="section level3">
+<h3 id="creating-an-analysis-slide-on-a-new-deck">Creating an analysis slide on a new deck<a class="anchor" aria-label="anchor" href="#creating-an-analysis-slide-on-a-new-deck"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem">Problem<a class="anchor" aria-label="anchor" href="#problem"></a>
+</h4>
 <p>You want to create a new deck and add slides to it.</p>
 </div>
-<div id="solution" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution">Solution<a class="anchor" aria-label="anchor" href="#solution"></a>
+</h4>
 <p>A deck is created on a dataset with the command <code><a href="../reference/newDeck.html">newDeck()</a></code>. It takes the dataset, a title for the deck, and can take <code>is_public=TRUE</code> if the deck should be made public to other users of the dataset (it defaults to <code>FALSE</code>).</p>
 <p>After the deck is created, the <code><a href="../reference/newSlide.html">newSlide()</a></code> function adds a slide.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -212,24 +212,24 @@
     <span class="va">deck</span>, 
     <span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">ndogs</span><span class="op">)</span> <span class="op">~</span> <span class="va">country</span>, 
     title <span class="op">=</span> <span class="st">"Dot Plot of Mean Dogs by Country"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"dotplot"</span><span class="op">)</span>,
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"dotplot"</span><span class="op">)</span>,
     filter <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">q1</span> <span class="op">==</span> <span class="st">"Dog"</span>
 <span class="op">)</span>
 
 <span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="creating-an-analysis-slide-on-an-existing-deck" class="section level3">
-<h3 class="hasAnchor">
-<a href="#creating-an-analysis-slide-on-an-existing-deck" class="anchor"></a>Creating an analysis slide on an existing deck</h3>
-<div id="problem-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-1" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="creating-an-analysis-slide-on-an-existing-deck">Creating an analysis slide on an existing deck<a class="anchor" aria-label="anchor" href="#creating-an-analysis-slide-on-an-existing-deck"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-1">Problem<a class="anchor" aria-label="anchor" href="#problem-1"></a>
+</h4>
 <p>You want to add a slide to a deck that has already been made.</p>
 </div>
-<div id="solution-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-1" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-1">Solution<a class="anchor" aria-label="anchor" href="#solution-1"></a>
+</h4>
 <p>The <code><a href="../reference/decks.html">decks()</a></code> function access the decks catalog for a dataset. You can select one name or position and then add to it.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>
@@ -241,89 +241,89 @@
     <span class="va">private_deck</span>, 
     <span class="op">~</span><span class="va">q1</span>, 
     title <span class="op">=</span> <span class="st">"Bar Plot of Favorite Pet"</span>, 
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="creating-a-markdown-slide" class="section level3">
-<h3 class="hasAnchor">
-<a href="#creating-a-markdown-slide" class="anchor"></a>Creating a markdown slide</h3>
-<div id="problem-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-2" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="creating-a-markdown-slide">Creating a markdown slide<a class="anchor" aria-label="anchor" href="#creating-a-markdown-slide"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-2">Problem<a class="anchor" aria-label="anchor" href="#problem-2"></a>
+</h4>
 <p>You want to add a markdown slide</p>
 </div>
-<div id="solution-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-2" class="anchor"></a>Solution</h4>
-<p>You can create a new markdown slide with the function <code><a href="../reference/slideMarkdown.html">newMarkdownSlide()</a></code>.</p>
+<div class="section level4">
+<h4 id="solution-2">Solution<a class="anchor" aria-label="anchor" href="#solution-2"></a>
+</h4>
+<p>You can create a new markdown slide with the function <code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slideMarkdown.html">newMarkdownSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="st">"This survey included **10,000 participants**!"</span>, title <span class="op">=</span> <span class="st">"About"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMarkdownSlide.html">newMarkdownSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="st">"This survey included **10,000 participants**!"</span>, title <span class="op">=</span> <span class="st">"About"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="adding-an-image-to-a-markdown-slide" class="section level3">
-<h3 class="hasAnchor">
-<a href="#adding-an-image-to-a-markdown-slide" class="anchor"></a>Adding an image to a markdown slide</h3>
-<div id="problem-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-3" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="adding-an-image-to-a-markdown-slide">Adding an image to a markdown slide<a class="anchor" aria-label="anchor" href="#adding-an-image-to-a-markdown-slide"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-3">Problem<a class="anchor" aria-label="anchor" href="#problem-3"></a>
+</h4>
 <p>You want to include an image on a markdown slide</p>
 </div>
-<div id="solution-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-3" class="anchor"></a>Solution</h4>
-<p>The function <code><a href="../reference/slideMarkdown.html">markdownSlideImage()</a></code> helps add an image to a markdown slide. The function takes a path to an image on your local machine, and you use it as an unnamed arugment of <code><a href="../reference/slideMarkdown.html">newMarkdownSlide()</a></code>.</p>
+<div class="section level4">
+<h4 id="solution-3">Solution<a class="anchor" aria-label="anchor" href="#solution-3"></a>
+</h4>
+<p>The function <code><a href="../reference/newMarkdownSlide.html">markdownSlideImage()</a></code> helps add an image to a markdown slide. The function takes a path to an image on your local machine, and you use it as an unnamed arugment of <code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slideMarkdown.html">newMarkdownSlide</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMarkdownSlide.html">newMarkdownSlide</a></span><span class="op">(</span>
   <span class="va">deck</span>, 
   <span class="st">"This survey was collected by ACME surveys"</span>, 
-  <span class="fu"><a href="../reference/slideMarkdown.html">markdownSlideImage</a></span><span class="op">(</span><span class="st">"acme-logo.png"</span><span class="op">)</span>,
+  <span class="fu"><a href="../reference/newMarkdownSlide.html">markdownSlideImage</a></span><span class="op">(</span><span class="st">"acme-logo.png"</span><span class="op">)</span>,
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="editing-an-existing-slide" class="section level3">
-<h3 class="hasAnchor">
-<a href="#editing-an-existing-slide" class="anchor"></a>Editing an existing slide</h3>
-<div id="problem-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-4" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="editing-an-existing-slide">Editing an existing slide<a class="anchor" aria-label="anchor" href="#editing-an-existing-slide"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-4">Problem<a class="anchor" aria-label="anchor" href="#problem-4"></a>
+</h4>
 <p>You want to edit a slide that’s already been created.</p>
 </div>
-<div id="solution-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-4" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-4">Solution<a class="anchor" aria-label="anchor" href="#solution-4"></a>
+</h4>
 <p>Slides can be accessed from the deck’s slide catalog, available from the <code><a href="../reference/slides.html">slides()</a></code> command. You can retrieve them by their title or position.</p>
 <p>The helper functions <code>title&lt;-</code>, <code>subtitle&lt;-</code>, <code>query&lt;-</code>, <code>weight&lt;-</code>, <code>filters&lt;-</code>, <code>transforms&lt;-</code>, <code>displaySettings&lt;-</code> and <code>vizSpecs&lt;-</code> help set options on a analysis slide, and the function <code>slideMarkdown&lt;-</code> edits the text of a markdown slide.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Move title to subtitle and change the title</span>
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="st">"Table of Favorite Pet"</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="../reference/titles.html">subtitle</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/titles.html">title</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span>
-<span class="fu"><a href="../reference/titles.html">title</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Cats are the most popular"</span>
+<span class="fu"><a href="../reference/deck-titles.html">subtitle</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deck-titles.html">title</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span>
+<span class="fu"><a href="../reference/deck-titles.html">title</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Cats are the most popular"</span>
 
 
 <span class="co"># Rename a category</span>
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="../reference/Transforms-class.html">transforms</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>rename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AUS"</span> <span class="op">=</span> <span class="st">"Australia"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/Transforms.html">transforms</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+    rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>rename <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AUS"</span> <span class="op">=</span> <span class="st">"Australia"</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span>
 
 
 <span class="co"># Edit a markdown slide</span>
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="../reference/slideMarkdown.html">slideMarkdown</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"**Replacement text**"</span></code></pre></div>
+<span class="fu"><a href="../reference/newMarkdownSlide.html">slideMarkdown</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"**Replacement text**"</span></code></pre></div>
 </div>
 </div>
-<div id="deleting-slides-on-a-deck" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deleting-slides-on-a-deck" class="anchor"></a>Deleting slides on a deck</h3>
-<div id="problem-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-5" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="deleting-slides-on-a-deck">Deleting slides on a deck<a class="anchor" aria-label="anchor" href="#deleting-slides-on-a-deck"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-5">Problem<a class="anchor" aria-label="anchor" href="#problem-5"></a>
+</h4>
 <p>You want to delete a slide from a deck.</p>
 </div>
-<div id="solution-5" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-5" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-5">Solution<a class="anchor" aria-label="anchor" href="#solution-5"></a>
+</h4>
 <p>Access a slide from the slide catalog and then use the <code><a href="../reference/delete.html">delete()</a></code> command to delete it (it will ask before deleting unless you use command <code><a href="../reference/consent.html">with_consent()</a></code>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
@@ -333,38 +333,38 @@
 <span class="op">}</span></code></pre></div>
 </div>
 </div>
-<div id="making-a-deck-public-or-private" class="section level3">
-<h3 class="hasAnchor">
-<a href="#making-a-deck-public-or-private" class="anchor"></a>Making a deck public (or private)</h3>
-<div id="problem-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-6" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="making-a-deck-public-or-private">Making a deck public (or private)<a class="anchor" aria-label="anchor" href="#making-a-deck-public-or-private"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-6">Problem<a class="anchor" aria-label="anchor" href="#problem-6"></a>
+</h4>
 <p>You want to change a deck from being private to public (or vice-versa).</p>
 </div>
-<div id="solution-6" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-6" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-6">Solution<a class="anchor" aria-label="anchor" href="#solution-6"></a>
+</h4>
 <p>The <code>is.public&lt;-</code> function can set the deck’s status.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/is-public.html">is.public</a></span><span class="op">(</span><span class="va">private_deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># now public</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="query-types" class="section level2">
-<h2 class="hasAnchor">
-<a href="#query-types" class="anchor"></a>Query types</h2>
-<p>Queries define the variables and summary measures used for the slide’s analysis. They use the formula notation used by the crunch function <code><a href="../reference/crtabs.html">crtabs()</a></code> which is based on base R’s <code><a href="https://rdrr.io/r/stats/xtabs.html">xtabs()</a></code>.</p>
-<div id="univariate-frequencies" class="section level3">
-<h3 class="hasAnchor">
-<a href="#univariate-frequencies" class="anchor"></a>Univariate frequencies</h3>
-<div id="problem-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-7" class="anchor"></a>Problem</h4>
+<div class="section level2">
+<h2 id="query-types">Query types<a class="anchor" aria-label="anchor" href="#query-types"></a>
+</h2>
+<p>Queries define the variables and summary measures used for the slide’s analysis. They use the formula notation used by the crunch function <code><a href="../reference/crtabs.html">crtabs()</a></code> which is based on base R’s <code><a href="https://rdrr.io/r/stats/xtabs.html" class="external-link">xtabs()</a></code>.</p>
+<div class="section level3">
+<h3 id="univariate-frequencies">Univariate frequencies<a class="anchor" aria-label="anchor" href="#univariate-frequencies"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-7">Problem<a class="anchor" aria-label="anchor" href="#problem-7"></a>
+</h4>
 <p>You want to get the frequencies of a single categorical or multiple response variable.</p>
 </div>
-<div id="solution-7" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-7" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-7">Solution<a class="anchor" aria-label="anchor" href="#solution-7"></a>
+</h4>
 <p>The query for a univariate count query puts the variable on the right hand side of a formula (for example <code>~var</code>).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
@@ -374,17 +374,17 @@
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="bivariate-frequencies-crosstabs" class="section level3">
-<h3 class="hasAnchor">
-<a href="#bivariate-frequencies-crosstabs" class="anchor"></a>Bivariate frequencies (crosstabs)</h3>
-<div id="problem-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-8" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="bivariate-frequencies-crosstabs">Bivariate frequencies (crosstabs)<a class="anchor" aria-label="anchor" href="#bivariate-frequencies-crosstabs"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-8">Problem<a class="anchor" aria-label="anchor" href="#problem-8"></a>
+</h4>
 <p>You want to get a crosstab (or a frequency from two variables’ joint distribution)</p>
 </div>
-<div id="solution-8" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-8" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-8">Solution<a class="anchor" aria-label="anchor" href="#solution-8"></a>
+</h4>
 <p>The query for a multivariate frequency uses the <code>+</code> to separate the variables on the right hand side of the formula (for example <code>~var1 + var2</code>).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
@@ -401,17 +401,17 @@
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="frequencies-from-a-categorical-array" class="section level3">
-<h3 class="hasAnchor">
-<a href="#frequencies-from-a-categorical-array" class="anchor"></a>Frequencies from a Categorical Array</h3>
-<div id="problem-9" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-9" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="frequencies-from-a-categorical-array">Frequencies from a Categorical Array<a class="anchor" aria-label="anchor" href="#frequencies-from-a-categorical-array"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-9">Problem<a class="anchor" aria-label="anchor" href="#problem-9"></a>
+</h4>
 <p>You want to get the frequencies from a categorical array variable</p>
 </div>
-<div id="solution-9" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-9" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-9">Solution<a class="anchor" aria-label="anchor" href="#solution-9"></a>
+</h4>
 <p>A categorical array contributes two dimensions to the analysis, a “categories” dimension and a “subvariables” dimension. If your query just specifies the variable, by default the categories dimension is used first and the categories second, but you can specify the order by using <code><a href="../reference/var-categories.html">categories()</a></code> and <code>subvaribles()</code> functions in your query.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
@@ -422,7 +422,7 @@
 
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
-    <span class="op">~</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span>, 
+    <span class="op">~</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span>, 
     title <span class="op">=</span> <span class="st">"Categorical array: categories on rows dimension"</span>
 <span class="op">)</span></code></pre></div>
 <p>The “categories” dimension cannot be the first dimension (used in the “tabs” of the analysis in a Crunch Dashboard) of a slide analysis that has 3 dimensions. Instead, to get the “tabs” dimension have the categorical array variable, choose one category to select, and create a Multiple Response variable out of it.</p>
@@ -481,17 +481,17 @@
 </table>
 </div>
 </div>
-<div id="mean-of-a-numeric-variable" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mean-of-a-numeric-variable" class="anchor"></a>Mean of a Numeric variable</h3>
-<div id="problem-10" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-10" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="mean-of-a-numeric-variable">Mean of a Numeric variable<a class="anchor" aria-label="anchor" href="#mean-of-a-numeric-variable"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-10">Problem<a class="anchor" aria-label="anchor" href="#problem-10"></a>
+</h4>
 <p>You want to get the mean from a Numeric (Numeric Array) variable</p>
 </div>
-<div id="solution-10" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-10" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-10">Solution<a class="anchor" aria-label="anchor" href="#solution-10"></a>
+</h4>
 <p>A numeric summary measure like a mean goes on the left hand side of the formula in a query. The right hand side cannot be empty, but to get the mean of the whole dataset put <code>1</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
@@ -507,17 +507,17 @@
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="scorecard-of-aligned-multiple-response-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#scorecard-of-aligned-multiple-response-variables" class="anchor"></a>Scorecard of aligned Multiple Response variables</h3>
-<div id="problem-11" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-11" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="scorecard-of-aligned-multiple-response-variables">Scorecard of aligned Multiple Response variables<a class="anchor" aria-label="anchor" href="#scorecard-of-aligned-multiple-response-variables"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-11">Problem<a class="anchor" aria-label="anchor" href="#problem-11"></a>
+</h4>
 <p>You want to make comparisons of frequencies of a set of Multiple Response variables with the same items (response)</p>
 </div>
-<div id="solution-11" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-11" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-11">Solution<a class="anchor" aria-label="anchor" href="#solution-11"></a>
+</h4>
 <p>A scorecard is a rectangular grid of different Multiple Response variables with their items aligned. The query for a scorecard can be created using the <code>scorecard()</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># There's only one MR available on this dataset, so we repeat the same one twice to illustrate</span>
@@ -529,30 +529,30 @@
 </div>
 </div>
 </div>
-<div id="dimension-transforms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dimension-transforms" class="anchor"></a>Dimension transforms</h2>
+<div class="section level2">
+<h2 id="dimension-transforms">Dimension transforms<a class="anchor" aria-label="anchor" href="#dimension-transforms"></a>
+</h2>
 <p>Query results have “dimensions”, which are enumerated sets that the calculation’s results are formed in, such as the categories of a categorical variables or the items in a multiple response variables. Their behavior in the slide can be customized using dimension transforms.</p>
 <p>A query result generally has up to three dimensions. The first is the “rows_dimension”, second is the “columns” dimension and third is the “tabs_dimension”. When using the <code>transform</code> argument of <code><a href="../reference/newSlide.html">newSlide()</a></code> or setting the <code>transforms&lt;-</code> of a slide directly, you form a named list with these dimensions as the names. The helper function <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> can also help create the dimension changes.</p>
-<div id="using-a-datasets-palette" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-a-datasets-palette" class="anchor"></a>Using a dataset’s palette</h3>
-<div id="problem-12" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-12" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="using-a-datasets-palette">Using a dataset’s palette<a class="anchor" aria-label="anchor" href="#using-a-datasets-palette"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-12">Problem<a class="anchor" aria-label="anchor" href="#problem-12"></a>
+</h4>
 <p>You want to make the colors of a dashboard tile use a pre-defined palette.</p>
 </div>
-<div id="solution-12" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-12" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-12">Solution<a class="anchor" aria-label="anchor" href="#solution-12"></a>
+</h4>
 <p>Each Crunch Dataset has a set of color palettes associated with it’s account and folder. You can access the palettes using the <code><a href="../reference/palettes.html">palettes()</a></code> or <code><a href="../reference/palettes.html">defaultPalette()</a></code> functions. Then using the <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> function you can use this palette. The colors are used in the order they appear and if more colors are needed than provided by the palette, the default colors are used.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">q1</span>, 
     title <span class="op">=</span> <span class="st">"Favorite pet using default palette"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
-    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
+    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="../reference/palettes.html">defaultPalette</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">)</span>
@@ -560,85 +560,85 @@
 <span class="va">graph_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/palettes.html">palettes</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"purple palette"</span><span class="op">]</span><span class="op">]</span>
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
-    <span class="op">~</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">petloc</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">petloc</span><span class="op">)</span>, 
+    <span class="op">~</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">petloc</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">petloc</span><span class="op">)</span>, 
     title <span class="op">=</span> <span class="st">"Pets by location using another palette"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"horizontalBarPlot"</span><span class="op">)</span>,
-    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"horizontalBarPlot"</span><span class="op">)</span>,
+    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="va">graph_pal</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="using-a-set-of-colors-from-r" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-a-set-of-colors-from-r" class="anchor"></a>Using a set of colors from R</h3>
-<div id="problem-13" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-13" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="using-a-set-of-colors-from-r">Using a set of colors from R<a class="anchor" aria-label="anchor" href="#using-a-set-of-colors-from-r"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-13">Problem<a class="anchor" aria-label="anchor" href="#problem-13"></a>
+</h4>
 <p>You want to make the colors of a dashboard tile use a set of colors you specify in the script</p>
 </div>
-<div id="solution-13" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-13" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-13">Solution<a class="anchor" aria-label="anchor" href="#solution-13"></a>
+</h4>
 <p>If you want to specify the colors manually, you can also use a character vector of RGB hex codes.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">q1</span>, 
     title <span class="op">=</span> <span class="st">"Favorite pet using colors from R"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
-    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-        rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#af8dc3"</span>, <span class="st">"#f7f7f7"</span>, <span class="st">"#7fbf7b"</span><span class="op">)</span><span class="op">)</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
+    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+        rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#af8dc3"</span>, <span class="st">"#f7f7f7"</span>, <span class="st">"#7fbf7b"</span><span class="op">)</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="hiding-a-dimension-item" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hiding-a-dimension-item" class="anchor"></a>Hiding a dimension item</h3>
-<div id="problem-14" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-14" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="hiding-a-dimension-item">Hiding a dimension item<a class="anchor" aria-label="anchor" href="#hiding-a-dimension-item"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-14">Problem<a class="anchor" aria-label="anchor" href="#problem-14"></a>
+</h4>
 <p>You want to hide a dimension item (a category or subvariable) from the slide.</p>
 </div>
-<div id="solution-14" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-14" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-14">Solution<a class="anchor" aria-label="anchor" href="#solution-14"></a>
+</h4>
 <p>The <code>hide</code> argument of <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> takes a category name or id, if the dimension is made from categories, or a subvariable name or alias if the dimension is made from subvariables (as in a Multiple Response variable or a subvariables dimension of a Categorical Array or Numeric Array).</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">q1</span>, 
     title <span class="op">=</span> <span class="st">"Favorite pet excluding birds"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
-    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>,
+    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
         rows_dimension <span class="op">=</span> <span class="fu"><a href="../reference/makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="st">"Bird"</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="display-settings-and-visual-specifications" class="section level2">
-<h2 class="hasAnchor">
-<a href="#display-settings-and-visual-specifications" class="anchor"></a>Display settings and visual specifications</h2>
-<div id="choosing-a-graph-type" class="section level3">
-<h3 class="hasAnchor">
-<a href="#choosing-a-graph-type" class="anchor"></a>Choosing a graph type</h3>
-<div id="problem-15" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-15" class="anchor"></a>Problem</h4>
+<div class="section level2">
+<h2 id="display-settings-and-visual-specifications">Display settings and visual specifications<a class="anchor" aria-label="anchor" href="#display-settings-and-visual-specifications"></a>
+</h2>
+<div class="section level3">
+<h3 id="choosing-a-graph-type">Choosing a graph type<a class="anchor" aria-label="anchor" href="#choosing-a-graph-type"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-15">Problem<a class="anchor" aria-label="anchor" href="#problem-15"></a>
+</h4>
 <p>You want to create a slide with a display type other than table.</p>
 </div>
-<div id="solution-15" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-15" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-15">Solution<a class="anchor" aria-label="anchor" href="#solution-15"></a>
+</h4>
 <p>The default display of a tile is the table, but the <code>vizType</code> display setting chooses between other options. The most commonly used <code>vizType</code>s are: - <code>table</code> (always available) - <code>groupedBarPlot</code>, <code>stackedBarPlot</code>, <code>horizontalBarPlot</code>, <code>horizontalStackedBarPlot</code> (available for queries based on a count in any number of dimensions) - <code>timeplot</code> (available when the second dimension has a time component) - <code>dotplot</code> (available for displays of means) - <code>donut</code> (available only for 1 dimensional count queries)</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">q1</span> <span class="op">+</span> <span class="va">country</span>, 
     title <span class="op">=</span> <span class="st">"Favorite pet by country horizontal bar plot"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"horizontalBarPlot"</span><span class="op">)</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"horizontalBarPlot"</span><span class="op">)</span>
 <span class="op">)</span>
 
 
@@ -646,33 +646,33 @@
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">q1</span> <span class="op">+</span> <span class="va">wave</span>, 
     title <span class="op">=</span> <span class="st">"Favorite pet over time timeplot"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"timeplot"</span><span class="op">)</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"timeplot"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="using-a-slide-as-a-template" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-a-slide-as-a-template" class="anchor"></a>Using a slide as a template</h3>
-<div id="problem-16" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-16" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="using-a-slide-as-a-template">Using a slide as a template<a class="anchor" aria-label="anchor" href="#using-a-slide-as-a-template"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-16">Problem<a class="anchor" aria-label="anchor" href="#problem-16"></a>
+</h4>
 <p>You want to use the settings from an existing slide to create a new one (or modify an existing one).</p>
 </div>
-<div id="solution-16" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-16" class="anchor"></a>Solution</h4>
-<p>The functions <code><a href="../reference/filter.html">displaySettings()</a></code> and <code><a href="../reference/filter.html">vizSpecs()</a></code> give access to the settings on an existing slide. This slide can be a slide you’ve created from R or from the web app, so that you can use the visual editor to perfect the look for one slide and then use it for a whole set of slides. You can either set the attributes directly, or use <code><a href="https://rdrr.io/r/base/dput.html">dput()</a></code> to print out the object in a way that you can copy and paste into your code.</p>
+<div class="section level4">
+<h4 id="solution-16">Solution<a class="anchor" aria-label="anchor" href="#solution-16"></a>
+</h4>
+<p>The functions <code><a href="../reference/analysis-methods.html">displaySettings()</a></code> and <code><a href="../reference/analysis-methods.html">vizSpecs()</a></code> give access to the settings on an existing slide. This slide can be a slide you’ve created from R or from the web app, so that you can use the visual editor to perfect the look for one slide and then use it for a whole set of slides. You can either set the attributes directly, or use <code><a href="https://rdrr.io/r/base/dput.html" class="external-link">dput()</a></code> to print out the object in a way that you can copy and paste into your code.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">template_deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Templates"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
     <span class="va">template_deck</span>, 
     <span class="op">~</span><span class="va">q1</span>, 
     title <span class="op">=</span> <span class="st">"Donut with value labels"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"donut"</span>, showValueLabels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-    viz_specs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-        default <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-            format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-                decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,
+    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"donut"</span>, showValueLabels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    viz_specs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+        default <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+            format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+                decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,
                 show_empty <span class="op">=</span> <span class="cn">FALSE</span>
             <span class="op">)</span>
         <span class="op">)</span>
@@ -684,152 +684,152 @@
     <span class="va">deck</span>, 
     <span class="op">~</span><span class="va">country</span>,
     title <span class="op">=</span> <span class="st">"Country donut with value labels"</span>,
-    display_settings <span class="op">=</span> <span class="fu"><a href="../reference/filter.html">displaySettings</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
-    viz_specs <span class="op">=</span> <span class="fu"><a href="../reference/filter.html">vizSpecs</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
+    display_settings <span class="op">=</span> <span class="fu"><a href="../reference/analysis-methods.html">displaySettings</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
+    viz_specs <span class="op">=</span> <span class="fu"><a href="../reference/analysis-methods.html">vizSpecs</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="op">)</span>
 
 <span class="co"># How to print out the structure in a format that can be copy and pasted into your code</span>
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dput.html">dput</a></span><span class="op">(</span><span class="fu"><a href="../reference/filter.html">displaySettings</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/dput.html" class="external-link">dput</a></span><span class="op">(</span><span class="fu"><a href="../reference/analysis-methods.html">displaySettings</a></span><span class="op">(</span><span class="va">template_deck</span><span class="op">[[</span><span class="st">"Donut with value labels"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="bulk-creation-of-slides" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bulk-creation-of-slides" class="anchor"></a>Bulk creation of slides</h2>
+<div class="section level2">
+<h2 id="bulk-creation-of-slides">Bulk creation of slides<a class="anchor" aria-label="anchor" href="#bulk-creation-of-slides"></a>
+</h2>
 <p>Sometimes you want to make many slides with related formatting to create a document that gives a good high level overview of a dataset. The [<code><a href="../reference/tabBook.html">tabBook()</a></code>] function is designed to create a basic “top line” report of simple crosstabs from a multitable, and is probably the first thing you should check if you’re thinking of making bulk analyses. However, <code><a href="../reference/tabBook.html">tabBook()</a></code> does not allow for all of the customization possible in a slide.</p>
-<p>The trickiest part of bulk creating slides from R is iterating over the variables. The general behind all of these cookbook recipes is to get a list of variable aliases, iterate over them using them to get other variable metadata. The trickiest part is to create a query formula from a string, but the <code><a href="https://rdrr.io/r/stats/formula.html">as.formula()</a></code> function helps with this. This cookbook uses base R functions <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> and <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code>, but the “tidyverse” functions <code><a href="https://purrr.tidyverse.org/reference/map.html">purrr::walk()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue.html">glue::glue()</a></code> are well-suited to this task.</p>
-<div id="basic-top-line-for-entire-dataset" class="section level3">
-<h3 class="hasAnchor">
-<a href="#basic-top-line-for-entire-dataset" class="anchor"></a>Basic top line for entire dataset</h3>
-<div id="problem-17" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-17" class="anchor"></a>Problem</h4>
+<p>The trickiest part of bulk creating slides from R is iterating over the variables. The general behind all of these cookbook recipes is to get a list of variable aliases, iterate over them using them to get other variable metadata. The trickiest part is to create a query formula from a string, but the <code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code> function helps with this. This cookbook uses base R functions <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> and <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>, but the “tidyverse” functions <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::walk()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue::glue()</a></code> are well-suited to this task.</p>
+<div class="section level3">
+<h3 id="basic-top-line-for-entire-dataset">Basic top line for entire dataset<a class="anchor" aria-label="anchor" href="#basic-top-line-for-entire-dataset"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-17">Problem<a class="anchor" aria-label="anchor" href="#problem-17"></a>
+</h4>
 <p>You want to create a simple report for every variable in a dataset.</p>
 </div>
-<div id="solution-17" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-17" class="anchor"></a>Solution</h4>
-<p>Use the <code><a href="../reference/variables.html">variables()</a></code> function to get the variables from a dataset, and the <code><a href="../reference/aliases.html">aliases()</a></code> function to get their aliases. Then use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> to iterate over the variable aliases and construct the slide using <code><a href="https://rdrr.io/r/base/paste.html">paste0()</a></code> and <code><a href="https://rdrr.io/r/stats/formula.html">as.formula()</a></code>.</p>
+<div class="section level4">
+<h4 id="solution-17">Solution<a class="anchor" aria-label="anchor" href="#solution-17"></a>
+</h4>
+<p>Use the <code><a href="../reference/variables.html">variables()</a></code> function to get the variables from a dataset, and the <code><a href="../reference/describe-catalog.html">aliases()</a></code> function to get their aliases. Then use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over the variable aliases and construct the slide using <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code> and <code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Full Dataset Topline Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aliases.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>
+<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/describe-catalog.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Topline - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Topline - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
     
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="va">slide_query</span>, title <span class="op">=</span> <span class="va">slide_title</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="slides-for-variables-within-a-particular-folder" class="section level3">
-<h3 class="hasAnchor">
-<a href="#slides-for-variables-within-a-particular-folder" class="anchor"></a>Slides for variables within a particular folder</h3>
-<div id="problem-18" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-18" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="slides-for-variables-within-a-particular-folder">Slides for variables within a particular folder<a class="anchor" aria-label="anchor" href="#slides-for-variables-within-a-particular-folder"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-18">Problem<a class="anchor" aria-label="anchor" href="#problem-18"></a>
+</h4>
 <p>You want to create a simple report for every variable in a particular folder.</p>
 </div>
-<div id="solution-18" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-18" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-18">Solution<a class="anchor" aria-label="anchor" href="#solution-18"></a>
+</h4>
 <p>The <code><a href="../reference/variables.html">variables()</a></code> function can also work on a folder, so we can make a deck from variables in a folder in a similar way to making one for a whole dataset.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Folder Topline Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="va">folder</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Key Pet Indicators"</span><span class="op">)</span>
-<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aliases.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">folder</span><span class="op">)</span><span class="op">)</span>
+<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/describe-catalog.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">folder</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Topline - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
+    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Topline - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
     
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="va">slide_query</span>, title <span class="op">=</span> <span class="va">slide_title</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="problem-19" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-19" class="anchor"></a>Problem</h4>
+<div class="section level4">
+<h4 id="problem-19">Problem<a class="anchor" aria-label="anchor" href="#problem-19"></a>
+</h4>
 <p>You want to create crosstabs for many variables across a set of variables.</p>
 </div>
-<div id="solution-19" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-19" class="anchor"></a>Solution</h4>
-<p>You can use <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> to iterate over both the row and column variables of the crosstab.</p>
+<div class="section level4">
+<h4 id="solution-19">Solution<a class="anchor" aria-label="anchor" href="#solution-19"></a>
+</h4>
+<p>You can use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over both the row and column variables of the crosstab.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Crosstabs Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="va">demo_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aliases.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Dimensions"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="va">demo_vars</span><span class="op">)</span> <span class="co"># don't cross demo vars with themselves</span>
+<span class="va">demo_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/describe-catalog.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="fu"><a href="../reference/cd.html">cd</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Dimensions"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="va">demo_vars</span><span class="op">)</span> <span class="co"># don't cross demo vars with themselves</span>
 
-<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
+<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
     <span class="co"># Add a slide before crosstabs of the univariate frequency</span>
-    <span class="va">all_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">all_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Frequency - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">all_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">all_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Frequency - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
     
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="va">all_query</span>, title <span class="op">=</span> <span class="va">all_title</span><span class="op">)</span>
     
-    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">demo_vars</span>, <span class="kw">function</span><span class="op">(</span><span class="va">demo_alias</span><span class="op">)</span> <span class="op">{</span>
-        <span class="va">crosstab_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">demo_alias</span>, <span class="st">" + "</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-        <span class="va">crosstab_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Crosstab - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="st">" by "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">demo_alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">demo_vars</span>, <span class="kw">function</span><span class="op">(</span><span class="va">demo_alias</span><span class="op">)</span> <span class="op">{</span>
+        <span class="va">crosstab_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">demo_alias</span>, <span class="st">" + "</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+        <span class="va">crosstab_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Crosstab - "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="st">" by "</span>, <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">demo_alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
         
         <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="va">crosstab_query</span>, title <span class="op">=</span> <span class="va">crosstab_title</span><span class="op">)</span>
     <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="slides-based-on-variable-type" class="section level3">
-<h3 class="hasAnchor">
-<a href="#slides-based-on-variable-type" class="anchor"></a>Slides based on variable type</h3>
-<div id="problem-20" class="section level4">
-<h4 class="hasAnchor">
-<a href="#problem-20" class="anchor"></a>Problem</h4>
+<div class="section level3">
+<h3 id="slides-based-on-variable-type">Slides based on variable type<a class="anchor" aria-label="anchor" href="#slides-based-on-variable-type"></a>
+</h3>
+<div class="section level4">
+<h4 id="problem-20">Problem<a class="anchor" aria-label="anchor" href="#problem-20"></a>
+</h4>
 <p>You want to create a report with slides that vary based on the variable’s type.</p>
 </div>
-<div id="solution-20" class="section level4">
-<h4 class="hasAnchor">
-<a href="#solution-20" class="anchor"></a>Solution</h4>
+<div class="section level4">
+<h4 id="solution-20">Solution<a class="anchor" aria-label="anchor" href="#solution-20"></a>
+</h4>
 <p>You can create functions that create slides for a particular variable type and then choose which function to use based on the variable’s type while iterating.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cat_slide</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
         <span class="va">deck</span>, 
         <span class="va">slide_query</span>,
         title <span class="op">=</span> <span class="va">slide_title</span>,
-        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"donut"</span><span class="op">)</span>
+        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"donut"</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">mr_slide</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
         <span class="va">deck</span>, 
         <span class="va">slide_query</span>,
         title <span class="op">=</span> <span class="va">slide_title</span>,
-        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>
+        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">numeric_slide</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"mean("</span>, <span class="va">alias</span>, <span class="st">") ~ wave"</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="st">" over time"</span><span class="op">)</span>
+    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"mean("</span>, <span class="va">alias</span>, <span class="st">") ~ wave"</span><span class="op">)</span><span class="op">)</span>
+    <span class="va">slide_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="st">" over time"</span><span class="op">)</span>
     <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span>
         <span class="va">deck</span>, 
         <span class="va">slide_query</span>,
         title <span class="op">=</span> <span class="va">slide_title</span>,
-        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"timeplot"</span><span class="op">)</span>
+        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"timeplot"</span><span class="op">)</span>
     <span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Slides Customized by Variable Type"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
-<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"q1"</span>, <span class="st">"allpets"</span>, <span class="st">"ndogs"</span><span class="op">)</span>
-<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span>
+<span class="va">var_aliases</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"q1"</span>, <span class="st">"allpets"</span>, <span class="st">"ndogs"</span><span class="op">)</span>
+<span class="va">slides</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">var_aliases</span>, <span class="kw">function</span><span class="op">(</span><span class="va">alias</span><span class="op">)</span> <span class="op">{</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/switch.html" class="external-link">switch</a></span><span class="op">(</span>
         <span class="fu"><a href="../reference/type.html">type</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[[</span><span class="va">alias</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
         <span class="st">"categorical"</span> <span class="op">=</span> <span class="fu">cat_slide</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span>,
         <span class="st">"multiple_response"</span> <span class="op">=</span> <span class="fu">mr_slide</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span>,
@@ -852,11 +852,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

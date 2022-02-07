@@ -35,6 +35,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +49,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/crunch.html">Get started</a>
 </li>
@@ -73,7 +69,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../articles/variables.html">Crunch Variables</a>
     </li>
@@ -87,7 +84,8 @@
       <a href="../articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="../articles/derive.html">Adding Variables</a>
     </li>
@@ -107,7 +105,8 @@
       <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -115,7 +114,8 @@
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,7 +154,7 @@
       <h1 data-toc-skip>Array Variables</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/array-variables.Rmd"><code>vignettes/array-variables.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/array-variables.Rmd" class="external-link"><code>vignettes/array-variables.Rmd</code></a></small>
       <div class="hidden name"><code>array-variables.Rmd</code></div>
 
     </div>
@@ -164,211 +164,211 @@
 <p><a href="variables.html">Previous: variables</a></p>
 <p>Crunch supports more types of variables than many of the data formats from which you can create datasets. Plain-text .csv files, for example, can’t express that some columns are actually indicator matrices of multiple selections (Multiple Response Variables). Most SPSS .sav files do not indicate Categorical Arrays (otherwise known as “grids”) as being part of a group—they are simply several categorical variables. The same is true for an R <code>data.frame</code>.</p>
 <p>You can use <code>crunch</code> to “bind” categorical variables into Multiple Response and Categorical Array variables.</p>
-<div id="creating-an-array" class="section level2">
-<h2 class="hasAnchor">
-<a href="#creating-an-array" class="anchor"></a>Creating an array</h2>
+<div class="section level2">
+<h2 id="creating-an-array">Creating an array<a class="anchor" aria-label="anchor" href="#creating-an-array"></a>
+</h2>
 <p>One of the reasons to use R with Crunch is to leverage the power of scripting for tasks that would be repetitive in a GUI. Many crunch functions operating on Crunch datasets have an optional <code>pattern</code> argument that lets you use regular expressions for these “bulk” operations.</p>
 <p>In our sample <em>Economist</em> dataset, we have set of variables prefixed with “imiss”:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^imiss_"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"
-##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^imiss_"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"</span>
+<span class="co">##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</span></code></pre>
 <p>These correspond to a survey grid question about how important respondents view a set of issues. Examining one of them, we see</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">imiss_b</span></code></pre></div>
-<pre><code>## imiss_b (categorical)
-## 
-##                    Count
-## Very Important       196
-## Somewhat Important    44
-## Not very Important     8
-## Unimportant            1</code></pre>
+<pre><code><span class="co">## imiss_b (categorical)</span>
+<span class="co">## </span>
+<span class="co">##                    Count</span>
+<span class="co">## Very Important       196</span>
+<span class="co">## Somewhat Important    44</span>
+<span class="co">## Not very Important     8</span>
+<span class="co">## Unimportant            1</span></code></pre>
 <p>All of these “imiss” categorical variables have the same structure. We can combine them into a categorical array variable with <code>makeArray</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^imiss_"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>, name<span class="op">=</span><span class="st">"Issue importance"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^imiss_"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>, name<span class="op">=</span><span class="st">"Issue importance"</span><span class="op">)</span>
 <span class="va">ds</span><span class="op">$</span><span class="va">imiss</span></code></pre></div>
-<pre><code>## Issue importance (categorical_array)
-## Subvariables:
-##   $`imiss_b`
-##   $`imiss_c`
-##   $`imiss_d`
-##   $`imiss_f`
-##   $`imiss_g`
-##   $`imiss_h`
-##   $`imiss_j`
-##   $`imiss_m`
-##   $`imiss_p`
-##   $`imiss_q`
-##   $`imiss_r`
-##   $`imiss_s`
-##   $`imiss_t`</code></pre>
+<pre><code><span class="co">## Issue importance (categorical_array)</span>
+<span class="co">## Subvariables:</span>
+<span class="co">##   $`imiss_b`</span>
+<span class="co">##   $`imiss_c`</span>
+<span class="co">##   $`imiss_d`</span>
+<span class="co">##   $`imiss_f`</span>
+<span class="co">##   $`imiss_g`</span>
+<span class="co">##   $`imiss_h`</span>
+<span class="co">##   $`imiss_j`</span>
+<span class="co">##   $`imiss_m`</span>
+<span class="co">##   $`imiss_p`</span>
+<span class="co">##   $`imiss_q`</span>
+<span class="co">##   $`imiss_r`</span>
+<span class="co">##   $`imiss_s`</span>
+<span class="co">##   $`imiss_t`</span></code></pre>
 <p>The set of “important issue” variables have gone from thirteen separate categorical variable cards to just one, where the subvariables are shown as rows, and the common categories across all of them are shown as columns.</p>
 <p>In our example dataset, the categorical variables <code>imiss_*</code> are now not visible in the dataset directly, but we can access them as “subvariables” of the array we just created.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
-<pre><code>## Subvariables:
-##   $`imiss_b`
-##   $`imiss_c`
-##   $`imiss_d`
-##   $`imiss_f`
-##   $`imiss_g`
-##   $`imiss_h`
-##   $`imiss_j`
-##   $`imiss_m`
-##   $`imiss_p`
-##   $`imiss_q`
-##   $`imiss_r`
-##   $`imiss_s`
-##   $`imiss_t`</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Subvariables:</span>
+<span class="co">##   $`imiss_b`</span>
+<span class="co">##   $`imiss_c`</span>
+<span class="co">##   $`imiss_d`</span>
+<span class="co">##   $`imiss_f`</span>
+<span class="co">##   $`imiss_g`</span>
+<span class="co">##   $`imiss_h`</span>
+<span class="co">##   $`imiss_j`</span>
+<span class="co">##   $`imiss_m`</span>
+<span class="co">##   $`imiss_p`</span>
+<span class="co">##   $`imiss_q`</span>
+<span class="co">##   $`imiss_r`</span>
+<span class="co">##   $`imiss_s`</span>
+<span class="co">##   $`imiss_t`</span></code></pre>
 <p>We can also step into the subvariables and access the underlying categorical variables:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">$</span><span class="va">imiss_b</span></code></pre></div>
-<pre><code>## imiss_b (categorical)
-## 
-##                    Count
-## Very Important       196
-## Somewhat Important    44
-## Not very Important     8
-## Unimportant            1</code></pre>
+<pre><code><span class="co">## imiss_b (categorical)</span>
+<span class="co">## </span>
+<span class="co">##                    Count</span>
+<span class="co">## Very Important       196</span>
+<span class="co">## Somewhat Important    44</span>
+<span class="co">## Not very Important     8</span>
+<span class="co">## Unimportant            1</span></code></pre>
 </div>
-<div id="manipulating-subvariables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#manipulating-subvariables" class="anchor"></a>Manipulating subvariables</h2>
+<div class="section level2">
+<h2 id="manipulating-subvariables">Manipulating subvariables<a class="anchor" aria-label="anchor" href="#manipulating-subvariables"></a>
+</h2>
 <p>The names <code>imiss_b</code> through <code>imiss_t</code> are unsatisfying from a human-readability perspective: you can’t tell which political issues correspond to the variables. Unfortunately, we didn’t have additional metadata on these survey questions in the <code>data.frame</code> we imported initially. However, we can rectify this.</p>
 <p>Subvariables have methods similar to those for <a href="variables.html">categories</a>. They have a names attribute that we can get:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"
-##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "imiss_b" "imiss_c" "imiss_d" "imiss_f" "imiss_g" "imiss_h" "imiss_j"</span>
+<span class="co">##  [8] "imiss_m" "imiss_p" "imiss_q" "imiss_r" "imiss_s" "imiss_t"</span></code></pre>
 <p>We can set it, too:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"The economy"</span>, <span class="st">"Immigration"</span>,
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"The economy"</span>, <span class="st">"Immigration"</span>,
     <span class="st">"The environment"</span>, <span class="st">"Terrorism"</span>, <span class="st">"Gay rights"</span>, <span class="st">"Education"</span>,
     <span class="st">"Health care"</span>, <span class="st">"Social security"</span>, <span class="st">"The budget deficit"</span>,
     <span class="st">"The war in Afghanistan"</span>, <span class="st">"Taxes"</span>, <span class="st">"Medicare"</span>, <span class="st">"Abortion"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
-<pre><code>## Subvariables:
-##   $`The economy`
-##   $`Immigration`
-##   $`The environment`
-##   $`Terrorism`
-##   $`Gay rights`
-##   $`Education`
-##   $`Health care`
-##   $`Social security`
-##   $`The budget deficit`
-##   $`The war in Afghanistan`
-##   $`Taxes`
-##   $`Medicare`
-##   $`Abortion`</code></pre>
+<span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Subvariables:</span>
+<span class="co">##   $`The economy`</span>
+<span class="co">##   $`Immigration`</span>
+<span class="co">##   $`The environment`</span>
+<span class="co">##   $`Terrorism`</span>
+<span class="co">##   $`Gay rights`</span>
+<span class="co">##   $`Education`</span>
+<span class="co">##   $`Health care`</span>
+<span class="co">##   $`Social security`</span>
+<span class="co">##   $`The budget deficit`</span>
+<span class="co">##   $`The war in Afghanistan`</span>
+<span class="co">##   $`Taxes`</span>
+<span class="co">##   $`Medicare`</span>
+<span class="co">##   $`Abortion`</span></code></pre>
 <p>Another useful thing we can do with array subvariables is reorder them. Let’s alphabetize the subvariables:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sorting</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">[</span><span class="va">sorting</span><span class="op">]</span>
-<span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
-<pre><code>## Subvariables:
-##   $`Abortion`
-##   $`Education`
-##   $`Gay rights`
-##   $`Health care`
-##   $`Immigration`
-##   $`Medicare`
-##   $`Social security`
-##   $`Taxes`
-##   $`Terrorism`
-##   $`The budget deficit`
-##   $`The economy`
-##   $`The environment`
-##   $`The war in Afghanistan`</code></pre>
+<code class="sourceCode R"><span class="va">sorting</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span><span class="op">[</span><span class="va">sorting</span><span class="op">]</span>
+<span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Subvariables:</span>
+<span class="co">##   $`Abortion`</span>
+<span class="co">##   $`Education`</span>
+<span class="co">##   $`Gay rights`</span>
+<span class="co">##   $`Health care`</span>
+<span class="co">##   $`Immigration`</span>
+<span class="co">##   $`Medicare`</span>
+<span class="co">##   $`Social security`</span>
+<span class="co">##   $`Taxes`</span>
+<span class="co">##   $`Terrorism`</span>
+<span class="co">##   $`The budget deficit`</span>
+<span class="co">##   $`The economy`</span>
+<span class="co">##   $`The environment`</span>
+<span class="co">##   $`The war in Afghanistan`</span></code></pre>
 </div>
-<div id="creating-multiple-response-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#creating-multiple-response-variables" class="anchor"></a>Creating multiple response variables</h2>
+<div class="section level2">
+<h2 id="creating-multiple-response-variables">Creating multiple response variables<a class="anchor" aria-label="anchor" href="#creating-multiple-response-variables"></a>
+</h2>
 <p>Just as we created a categorical array, we can create a multiple response variable. Like categorical arrays, multiple responses contain a set of subvariables, categorical variables with a common list of categories. However, the subvariables in a multiple response are treated as dichotomous indicators. We specify one or more categories that indicate “selected” versus “not selected”. Hence, when a multiple response appears in the web app, it looks like a single categorical variable, each subvariable shown like a category. Unlike a categorical variable, though, the multiple responses are not mutually exclusive, so tabulations with them may not sum to 100 percent.</p>
 <p>In the <em>Economist</em> dataset, we have another set of parallel categorical variables, “boap”, which indicate approval of President Obama on a range of issues.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">boap_4</span></code></pre></div>
-<pre><code>## boap_4 (categorical)
-## 
-##                     Count
-## Somewhat approve       68
-## Strongly disapprove    67
-## No opinion             46
-## Somewhat disapprove    43
-## Strongly approve       26</code></pre>
+<pre><code><span class="co">## boap_4 (categorical)</span>
+<span class="co">## </span>
+<span class="co">##                     Count</span>
+<span class="co">## Somewhat approve       68</span>
+<span class="co">## Strongly disapprove    67</span>
+<span class="co">## No opinion             46</span>
+<span class="co">## Somewhat disapprove    43</span>
+<span class="co">## Strongly approve       26</span></code></pre>
 <p>In the questionnaire that collected this data, “boap” appeared as a grid question, just as “imiss” did. But, for illustration purposes—and to show how you can convert between categorical array and multiple response—let’s treat this as multiple response.</p>
 <p>The function <code>makeMR</code> works like <code>makeArray</code> but with an additional argument, “selections”, in which you specify the category name(s) that identify which category or categories should be the dichotomous indicator.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">boap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeMR</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^boap_[0-9]+"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>,
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">boap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeMR</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^boap_[0-9]+"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>,
     name<span class="op">=</span><span class="st">"Approval of Obama on issues"</span>,
-    selections<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Strongly approve"</span>, <span class="st">"Somewhat approve"</span><span class="op">)</span><span class="op">)</span>
+    selections<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Strongly approve"</span>, <span class="st">"Somewhat approve"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">ds</span><span class="op">$</span><span class="va">boap</span></code></pre></div>
-<pre><code>## Approval of Obama on issues (multiple_response)
-## Subvariables:
-##   $`boap_2`
-##   $`boap_3`
-##   $`boap_4`
-##   $`boap_5`
-##   $`boap_6`
-##   $`boap_7`
-##   $`boap_8`
-##   $`boap_9`
-##   $`boap_10`
-##   $`boap_11`
-##   $`boap_12`
-##   $`boap_13`
-##   $`boap_14`</code></pre>
+<pre><code><span class="co">## Approval of Obama on issues (multiple_response)</span>
+<span class="co">## Subvariables:</span>
+<span class="co">##   $`boap_2`</span>
+<span class="co">##   $`boap_3`</span>
+<span class="co">##   $`boap_4`</span>
+<span class="co">##   $`boap_5`</span>
+<span class="co">##   $`boap_6`</span>
+<span class="co">##   $`boap_7`</span>
+<span class="co">##   $`boap_8`</span>
+<span class="co">##   $`boap_9`</span>
+<span class="co">##   $`boap_10`</span>
+<span class="co">##   $`boap_11`</span>
+<span class="co">##   $`boap_12`</span>
+<span class="co">##   $`boap_13`</span>
+<span class="co">##   $`boap_14`</span></code></pre>
 </div>
-<div id="undichotomize" class="section level2">
-<h2 class="hasAnchor">
-<a href="#undichotomize" class="anchor"></a>(un)dichotomize</h2>
+<div class="section level2">
+<h2 id="undichotomize">(un)dichotomize<a class="anchor" aria-label="anchor" href="#undichotomize"></a>
+</h2>
 <p>Multiple response variables can be thought of as categorical arrays that have extra metadata indicating which categories are “selected”. This metadata can be manipulated, and we can thus transform categorical arrays into multiple response and vice versa.</p>
 <p>The function <code>undichotomize</code> removes the dichotomization metadata:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">boap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dichotomize.html">undichotomize</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">boap</span><span class="op">)</span>
 <span class="va">ds</span><span class="op">$</span><span class="va">boap</span></code></pre></div>
-<pre><code>## Approval of Obama on issues (categorical_array)
-## Subvariables:
-##   $`boap_2`
-##   $`boap_3`
-##   $`boap_4`
-##   $`boap_5`
-##   $`boap_6`
-##   $`boap_7`
-##   $`boap_8`
-##   $`boap_9`
-##   $`boap_10`
-##   $`boap_11`
-##   $`boap_12`
-##   $`boap_13`
-##   $`boap_14`</code></pre>
+<pre><code><span class="co">## Approval of Obama on issues (categorical_array)</span>
+<span class="co">## Subvariables:</span>
+<span class="co">##   $`boap_2`</span>
+<span class="co">##   $`boap_3`</span>
+<span class="co">##   $`boap_4`</span>
+<span class="co">##   $`boap_5`</span>
+<span class="co">##   $`boap_6`</span>
+<span class="co">##   $`boap_7`</span>
+<span class="co">##   $`boap_8`</span>
+<span class="co">##   $`boap_9`</span>
+<span class="co">##   $`boap_10`</span>
+<span class="co">##   $`boap_11`</span>
+<span class="co">##   $`boap_12`</span>
+<span class="co">##   $`boap_13`</span>
+<span class="co">##   $`boap_14`</span></code></pre>
 <p>We can add that information with <code>dichotomize</code>. Taking our categorical array “boap,” let’s make it into a multiple response, but this time, let’s only include the “Strongly approve” category:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">boap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dichotomize.html">dichotomize</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">boap</span>, <span class="st">"Strongly approve"</span><span class="op">)</span>
 <span class="va">ds</span><span class="op">$</span><span class="va">boap</span></code></pre></div>
-<pre><code>## Approval of Obama on issues (multiple_response)
-## Subvariables:
-##   $`boap_2`
-##   $`boap_3`
-##   $`boap_4`
-##   $`boap_5`
-##   $`boap_6`
-##   $`boap_7`
-##   $`boap_8`
-##   $`boap_9`
-##   $`boap_10`
-##   $`boap_11`
-##   $`boap_12`
-##   $`boap_13`
-##   $`boap_14`</code></pre>
+<pre><code><span class="co">## Approval of Obama on issues (multiple_response)</span>
+<span class="co">## Subvariables:</span>
+<span class="co">##   $`boap_2`</span>
+<span class="co">##   $`boap_3`</span>
+<span class="co">##   $`boap_4`</span>
+<span class="co">##   $`boap_5`</span>
+<span class="co">##   $`boap_6`</span>
+<span class="co">##   $`boap_7`</span>
+<span class="co">##   $`boap_8`</span>
+<span class="co">##   $`boap_9`</span>
+<span class="co">##   $`boap_10`</span>
+<span class="co">##   $`boap_11`</span>
+<span class="co">##   $`boap_12`</span>
+<span class="co">##   $`boap_13`</span>
+<span class="co">##   $`boap_14`</span></code></pre>
 </div>
-<div id="splitting-arrays-back-into-categoricals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#splitting-arrays-back-into-categoricals" class="anchor"></a>Splitting arrays back into categoricals</h2>
+<div class="section level2">
+<h2 id="splitting-arrays-back-into-categoricals">Splitting arrays back into categoricals<a class="anchor" aria-label="anchor" href="#splitting-arrays-back-into-categoricals"></a>
+</h2>
 <p>As noted above, when we make an array, its subvariables no longer appear in the dataset outside of the array.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"boap"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "boap"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"boap"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "boap"</span></code></pre>
 <p>We can access the subvariables and do things with them directly via the <code>subvariables</code> method, but the case may arise in which we want to undo our binding of these subvariables into the array. The function <code>unbind</code> deletes the array variable and restores the subvariables as top-level variables.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/unbind.html">unbind</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">boap</span><span class="op">)</span>
@@ -376,9 +376,9 @@
 <p>Note the use of <code>refresh</code>. Most functions that modify objects on the server refresh their local copies in our R session automatically; however, because <code>unbind</code> doesn’t assign back into <code>ds</code>, the local dataset object doesn’t get updated with the change, so we need to refresh it manually.</p>
 <p>Now, if we check the names of <code>ds</code>, we see our full set of <code>boap_*</code> former subvariables:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"boap"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] "boap_2"  "boap_3"  "boap_4"  "boap_5"  "boap_6"  "boap_7"  "boap_8" 
-##  [8] "boap_9"  "boap_10" "boap_11" "boap_12" "boap_13" "boap_14"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"boap"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">##  [1] "boap_2"  "boap_3"  "boap_4"  "boap_5"  "boap_6"  "boap_7"  "boap_8" </span>
+<span class="co">##  [8] "boap_9"  "boap_10" "boap_11" "boap_12" "boap_13" "boap_14"</span></code></pre>
 <p><a href="variable-order.html">Next: variable organization</a></p>
 </div>
   </div>
@@ -394,11 +394,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

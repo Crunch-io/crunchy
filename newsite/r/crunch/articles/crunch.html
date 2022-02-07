@@ -35,6 +35,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +49,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/crunch.html">Get started</a>
 </li>
@@ -73,7 +69,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../articles/variables.html">Crunch Variables</a>
     </li>
@@ -87,7 +84,8 @@
       <a href="../articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="../articles/derive.html">Adding Variables</a>
     </li>
@@ -107,7 +105,8 @@
       <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -115,7 +114,8 @@
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,47 +154,65 @@
       <h1 data-toc-skip>Getting Started</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/crunch.Rmd"><code>vignettes/crunch.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/crunch.Rmd" class="external-link"><code>vignettes/crunch.Rmd</code></a></small>
       <div class="hidden name"><code>crunch.Rmd</code></div>
 
     </div>
 
     
     
-<p><a href="https://crunch.io/">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface. Because every user connects to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
+<p><a href="https://crunch.io/" class="external-link">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/" class="external-link">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface. Because every user connects to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/">crunch</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/" class="external-link">crunch</a></span><span class="op">)</span></code></pre></div>
 <p>Both <strong>crunch</strong> and the Crunch web application communicate with the same application programming interface (API), served over secure HTTP. Within an R script or interactive session, the <strong>crunch</strong> package allows you to interact with your data in Crunch with expressive, idiomatic R. Functions in crunch handle the translation between R objects and API requests and responses, so you can typically interact with your datasets as if they were local <code>data.frames</code> (with some additional metadata), not data on a remote server.</p>
-<div id="authentication" class="section level2">
-<h2 class="hasAnchor">
-<a href="#authentication" class="anchor"></a>Authentication</h2>
-<p>All work with data in Crunch requires authentication. Thus, the first step after loading the <strong>crunch</strong> package is to log in. In an interactive R session, provide the email address associated with your Crunch account, and you will be prompted to give your password safely:</p>
+<div class="section level2">
+<h2 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
+</h2>
+<p>All work with data in Crunch requires authentication with an API key, which you can create from the web application, by following the instructions in the <a href="https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys" class="external-link">help center</a>.</p>
+<p>The crunch R package will use the key automatically if it is stored in environment variable <code>R_CRUNCH_API_KEY</code>. To store your key there, you can run the following code from your R console:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/login.html">login</a></span><span class="op">(</span><span class="st">"xkcd@crunch.io"</span><span class="op">)</span></code></pre></div>
-<pre><code>Crunch.io password for xkcd@crunch.io: *enter your password here*
-## Logged into crunch.io as xkcd@crunch.io</code></pre>
-<p>If you use an OAuth provider, such as Google, to log into the Crunch web application, you’ll need to first set a Crunch password for use here. Do <code>resetPassword("xkcd@crunch.io")</code> with your email address, and you’ll receive an email with password setting instructions.</p>
-<p>Your email and Crunch password can be set via the <code>keyring</code> package, <code>options</code> in your .Rprofile (<code>crunch.email</code> and <code>crunch.pw</code>) or as environment variables (<code>R_CRUNCH_EMAIL</code> and <code>R_CRUNCH_PW</code>) so that you can simply <code><a href="../reference/login.html">login()</a></code>. See <code><a href="../reference/login.html">?login</a></code> for details.</p>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://usethis.r-lib.org" class="external-link">"usethis"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span>
+<span class="co"># Note: After running this command, R may ask you one or two questions.</span>
+<span class="co"># While you likely *do* want to update the dependency packages, you likely</span>
+<span class="co"># *do not* want to install any package from source, so you can answer something</span>
+<span class="co"># like "update all packages from CRAN" if it asks which packages to update, </span>
+<span class="co"># and "No" if it asks you to install from source.</span>
+<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will open a file where you can put the following (replacing <code>your-secret-key</code> with the key from the web app, and <code>api-url</code> with the API for your company, generally something like <code>"https://your-brand.crunch.io/api/"</code>):</p>
+<pre><code><span class="va">R_CRUNCH_API</span><span class="op">=</span><span class="va">api</span><span class="op">-</span><span class="va">url</span>
+<span class="va">R_CRUNCH_API_KEY</span><span class="op">=</span><span class="va">your</span><span class="op">-</span><span class="va">secret</span><span class="op">-</span><span class="va">key</span></code></pre>
+<p>After you save the file R will read these environment variables in during startup. However, because you already have R open, it doesn’t immediately take effect. If you don’t want to restart your R session, you can run the following command from your R console:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readRenviron.html" class="external-link">readRenviron</a></span><span class="op">(</span><span class="st">"~/.Renviron"</span><span class="op">)</span></code></pre></div>
+<p>(The next time you start R, you won’t need to run this command, it is run automatically.)</p>
+<p>Now the <code>crunch</code> R package will use your token and connect to the right API.</p>
+<p>If you’re having trouble connecting, use <code><a href="../reference/crunch_sitrep.html">crunch_sitrep()</a></code> to get the situation report on the current status of the <code>crunch</code> package.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/crunch_sitrep.html">crunch_sitrep</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## crunch API: https://your-brand.crunch.io/api/</span>
+<span class="co">##             (found in environment variable `R_CRUNCH_API`)</span>
+<span class="co">##        key: abcdefghi***************************************</span>
+<span class="co">##             (found in environment variable `R_CRUNCH_API_KEY`)</span></code></pre>
 </div>
-<div id="datasets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#datasets" class="anchor"></a>Datasets</h2>
+<div class="section level2">
+<h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
+</h2>
 <p>The Crunch data store is built around datasets, which contain variables. Crunch datasets and variables include more metadata than R <code>data.frames</code> and <code>vectors</code> and if possible the functions and methods in <strong>crunch</strong> work to keep all of the data on the server, only pulling metadata and aggregations when requested. That way, you can explore datasets much larger than you can comfortably load on your laptop.</p>
 <p>To get started, we’re going to import a dataset from R to Crunch. If you already have a dataset—perhaps someone has invited you to collaborate on one already—see <code><a href="../reference/listDatasets.html">listDatasets()</a></code> or <code><a href="../reference/loadDataset.html">loadDataset()</a></code> for information on how to find and load it.</p>
 </div>
-<div id="importing-data-to-crunch" class="section level2">
-<h2 class="hasAnchor">
-<a href="#importing-data-to-crunch" class="anchor"></a>Importing data to Crunch</h2>
+<div class="section level2">
+<h2 id="importing-data-to-crunch">Importing data to Crunch<a class="anchor" aria-label="anchor" href="#importing-data-to-crunch"></a>
+</h2>
 <p>There are multiple ways to create a new dataset. In the web application, you can upload files to create datasets using the file loader. From <strong>crunch</strong>, there are two methods for creating datasets: one for <code>data.frames</code> and one for files of other (non-R) formats.</p>
-<p>We’ve included with the package a sample from the <a href="https://insights.stackoverflow.com/survey/">2017 Stack Overflow developer survey</a> which is filtered on those respondents who reported having been R users and selecting a handful of variables.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">SO_survey</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1634   23</code></pre>
+<p>We’ve included with the package a sample from the <a href="https://insights.stackoverflow.com/survey/" class="external-link">2017 Stack Overflow developer survey</a> which is filtered on those respondents who reported having been R users and selecting a handful of variables.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">SO_survey</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 1634   23</span></code></pre>
 <p>You can create a dataset from any <code>data.frame</code> you have in your R session with <code>newDataset</code>. Let’s use that sample dataset:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDataset.html">newDataset</a></span><span class="op">(</span><span class="va">SO_survey</span>, name<span class="op">=</span><span class="st">"Stack Overflow Developer Survey 2017"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1634   23</code></pre>
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] 1634   23</span></code></pre>
 <p><code>newDataset</code> takes a <code>data.frame</code> as it’s input and translates R data types into their analogous types in Crunch.</p>
 <ul>
 <li>character –&gt; Text Variable</li>
@@ -205,140 +223,140 @@
 <p>If you have an SPSS or CSV file, you can upload it with that without first reading it into R by giving <code>newDataset</code> the file name or URL. In this case, it essentially does what you would do in the web application: uploads your file and creates a dataset from it.</p>
 <!-- TODO: host that CSV on our website, give example -->
 </div>
-<div id="dataset-properties" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dataset-properties" class="anchor"></a>Dataset properties</h2>
+<div class="section level2">
+<h2 id="dataset-properties">Dataset properties<a class="anchor" aria-label="anchor" href="#dataset-properties"></a>
+</h2>
 <p>Datasets allow you to provide a human-readable <code>name</code> is specified when the dataset is uploaded, and a <code>description</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Stack Overflow Developer Survey 2017"</code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## [1] "Stack Overflow Developer Survey 2017"</span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] ""</code></pre>
+<pre><code><span class="co">## [1] ""</span></code></pre>
 <p>Both can be set with <code>&lt;-</code> assignment. Let’s give our dataset an informative description:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Subset of the main survey, restricted to self-reported R users"</span>
 <span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Subset of the main survey, restricted to self-reported R users"</code></pre>
+<pre><code><span class="co">## [1] "Subset of the main survey, restricted to self-reported R users"</span></code></pre>
 </div>
-<div id="variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#variables" class="anchor"></a>Variables</h2>
+<div class="section level2">
+<h2 id="variables">Variables<a class="anchor" aria-label="anchor" href="#variables"></a>
+</h2>
 <p>Just as a <code>data.frame</code> has columns you can access with the <code>$</code> and <code>[</code> operators, you can get variables from a Crunch dataset the same way.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">TabsSpaces</span></code></pre></div>
-<pre><code>## TabsSpaces (categorical)
-## 
-##        Count
-## Tabs     698
-## Spaces   631
-## Both     293</code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## TabsSpaces (categorical)</span>
+<span class="co">## </span>
+<span class="co">##        Count</span>
+<span class="co">## Tabs     698</span>
+<span class="co">## Spaces   631</span>
+<span class="co">## Both     293</span></code></pre>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">[</span>, <span class="st">"CompanySize"</span><span class="op">]</span></code></pre></div>
-<pre><code>## Dataset "Stack Overflow Developer Survey 2017"
-## Subset of the main survey, restricted to self-reported R users
-## 
-## Contains 1634 rows of 1 variables:
-## 
-## $CompanySize: CompanySize (categorical)</code></pre>
+<pre><code><span class="co">## Dataset "Stack Overflow Developer Survey 2017"</span>
+<span class="co">## Subset of the main survey, restricted to self-reported R users</span>
+<span class="co">## </span>
+<span class="co">## Contains 1634 rows of 1 variables:</span>
+<span class="co">## </span>
+<span class="co">## $CompanySize: CompanySize (categorical)</span></code></pre>
 <p>The <strong>crunch</strong> package aims to bring the minimum amount of data down from the server. Most methods work by calculating values on the server, and then transmitting the results to you R session instead of transmitting all the data. In this case, the server calculates and transmits the variable summary instead of sending the data. If you ever want to actually access the data in the variable, you can call <code>as.vector(var)</code> to pull down its column.</p>
 <p>Crunch allows you to store additional metadata about the variables that R doesn’t support. For instance, we can add the survey question wording as the “description” for each variable. This question wording is available in the schema file that comes with the Stack Overflow dataset, in the “Question” column.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/aliases.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">SO_schema</span><span class="op">$</span><span class="va">Question</span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-catalog.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">SO_schema</span><span class="op">$</span><span class="va">Question</span>
 <span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">CompanySize</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "In terms of the number of employees, how large is the company or organization you work for?"</code></pre>
+<pre><code><span class="co">## [1] "In terms of the number of employees, how large is the company or organization you work for?"</span></code></pre>
 <p>Since the R package and the web app use the same API to interact with Crunch datasets, you can go back and forth between viewing data in R and on the web. For convenience, the package includes a <code><a href="../reference/webApp.html">webApp()</a></code> function, which opens a dataset or a variable within a dataset in your browser in the web application.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/webApp.html">webApp</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">CompanySize</span><span class="op">)</span></code></pre></div>
 <p><img src="images/crunch-companySize-screen.png"><!-- --></p>
 </div>
-<div id="array-variables" class="section level2">
-<h2 class="hasAnchor">
-<a href="#array-variables" class="anchor"></a>Array Variables</h2>
+<div class="section level2">
+<h2 id="array-variables">Array Variables<a class="anchor" aria-label="anchor" href="#array-variables"></a>
+</h2>
 <p>Crunch is designed for survey data, and it includes native support for two data structures common in survey data: categorical arrays (or “grids”) and multiple response. In R, these would typically be represented either as multiple, separate columns in a <code>data.frame</code> or as some other data structure that needs processing before you can analyze it. Crunch makes it so you don’t have to think about the underlying data structures in order to do exploratory analysis.</p>
-<div id="categorical-arrays" class="section level4">
-<h4 class="hasAnchor">
-<a href="#categorical-arrays" class="anchor"></a>Categorical Arrays</h4>
+<div class="section level4">
+<h4 id="categorical-arrays">Categorical Arrays<a class="anchor" aria-label="anchor" href="#categorical-arrays"></a>
+</h4>
 <p>Surveys commonly ask sets of related questions. In the Stack Overflow survey, there are several questions about the importance of various factors for hiring. Conceptually these questions go together, but because of the limitations of storing data in a table they are presented as separate variables.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiringCompanies</span></code></pre></div>
-<pre><code>## ImportantHiringCompanies (categorical)
-## Congratulations! You've just been put in charge of technical recruiting at Globex, a multinational high- tech firm. This job comes with a corner office, and you have an experienced staff of recruiters at your disposal. They want to know what they should prioritize when recruiting software developers. How important should each of the following be in Globex's hiring process? Previous companies worked at
-## 
-##                      Count
-## Somewhat important     511
-## Not very important     316
-## Important              230
-## Not at all important    63
-## Very important          43</code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<pre><code><span class="co">## ImportantHiringCompanies (categorical)</span>
+<span class="co">## Congratulations! You've just been put in charge of technical recruiting at Globex, a multinational high- tech firm. This job comes with a corner office, and you have an experienced staff of recruiters at your disposal. They want to know what they should prioritize when recruiting software developers. How important should each of the following be in Globex's hiring process? Previous companies worked at</span>
+<span class="co">## </span>
+<span class="co">##                      Count</span>
+<span class="co">## Somewhat important     511</span>
+<span class="co">## Not very important     316</span>
+<span class="co">## Important              230</span>
+<span class="co">## Not at all important    63</span>
+<span class="co">## Very important          43</span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiringAlgorithms</span></code></pre></div>
-<pre><code>## ImportantHiringAlgorithms (categorical)
-## Congratulations! You've just been put in charge of technical recruiting at Globex, a multinational high- tech firm. This job comes with a corner office, and you have an experienced staff of recruiters at your disposal. They want to know what they should prioritize when recruiting software developers. How important should each of the following be in Globex's hiring process? Knowledge of algorithms and data structures
-## 
-##                      Count
-## Important              502
-## Very important         320
-## Somewhat important     281
-## Not very important      50
-## Not at all important    14</code></pre>
+<pre><code><span class="co">## ImportantHiringAlgorithms (categorical)</span>
+<span class="co">## Congratulations! You've just been put in charge of technical recruiting at Globex, a multinational high- tech firm. This job comes with a corner office, and you have an experienced staff of recruiters at your disposal. They want to know what they should prioritize when recruiting software developers. How important should each of the following be in Globex's hiring process? Knowledge of algorithms and data structures</span>
+<span class="co">## </span>
+<span class="co">##                      Count</span>
+<span class="co">## Important              502</span>
+<span class="co">## Very important         320</span>
+<span class="co">## Somewhat important     281</span>
+<span class="co">## Not very important      50</span>
+<span class="co">## Not at all important    14</span></code></pre>
 <p>Crunch allows you to bundle these related questions together into a <em>Categorical Array</em>. This is immensely useful when you want to analyze or communicate information about the set of questions. You can use the whole array in a cross-tab without having to process dozens of individual variables.</p>
 <p>To create a Categorical Array variable from R, we can use the <code>makeArray</code> function. We’ll pass to that function a selection of variables to bind together into an array, along with any additional metadata we want to provide. Fortunately here, the variables we want to select have a common naming convention, so we can <code>grep</code> for them:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">imphire</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^ImportantHiring"</span>, <span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">imphire</span></code></pre></div>
-<pre><code>##  [1] "ImportantHiringAlgorithms"        "ImportantHiringTechExp"          
-##  [3] "ImportantHiringCommunication"     "ImportantHiringOpenSource"       
-##  [5] "ImportantHiringPMExp"             "ImportantHiringCompanies"        
-##  [7] "ImportantHiringTitles"            "ImportantHiringEducation"        
-##  [9] "ImportantHiringRep"               "ImportantHiringGettingThingsDone"</code></pre>
-<p>Now we can use that selection in <code>makeArray</code>:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="va">imphire</span><span class="op">]</span>, name <span class="op">=</span> <span class="st">"Importance in Hiring Process"</span><span class="op">)</span></code></pre></div>
-<p>The variables we included in the array have been converted into subvariables of the categorical array, and are still accessible using the <code><a href="../reference/Subvariables-class.html">subvariables()</a></code> function.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
-<pre><code>## Subvariables:
-##   $ImportantHiringAlgorithms         | ImportantHiringAlgorithms
-##   $ImportantHiringTechExp            | ImportantHiringTechExp
-##   $ImportantHiringCommunication      | ImportantHiringCommunication
-##   $ImportantHiringOpenSource         | ImportantHiringOpenSource
-##   $ImportantHiringPMExp              | ImportantHiringPMExp
-##   $ImportantHiringCompanies          | ImportantHiringCompanies
-##   $ImportantHiringTitles             | ImportantHiringTitles
-##   $ImportantHiringEducation          | ImportantHiringEducation
-##   $ImportantHiringRep                | ImportantHiringRep
-##   $ImportantHiringGettingThingsDone  | ImportantHiringGettingThingsDone</code></pre>
+<code class="sourceCode R"><span class="va">imphire</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"^ImportantHiring"</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">imphire</span></code></pre></div>
+<pre><code><span class="co">##  [1] "ImportantHiringAlgorithms"        "ImportantHiringTechExp"          </span>
+<span class="co">##  [3] "ImportantHiringCommunication"     "ImportantHiringOpenSource"       </span>
+<span class="co">##  [5] "ImportantHiringPMExp"             "ImportantHiringCompanies"        </span>
+<span class="co">##  [7] "ImportantHiringTitles"            "ImportantHiringEducation"        </span>
+<span class="co">##  [9] "ImportantHiringRep"               "ImportantHiringGettingThingsDone"</span></code></pre>
+<p>Now we can use that selection in <code>makeArray</code>:</p>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/deriveArray.html">makeArray</a></span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="va">imphire</span><span class="op">]</span>, name <span class="op">=</span> <span class="st">"Importance in Hiring Process"</span><span class="op">)</span></code></pre></div>
+<p>The variables we included in the array have been converted into subvariables of the categorical array, and are still accessible using the <code><a href="../reference/Subvariables.html">subvariables()</a></code> function.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Subvariables:</span>
+<span class="co">##   $ImportantHiringAlgorithms         | ImportantHiringAlgorithms</span>
+<span class="co">##   $ImportantHiringTechExp            | ImportantHiringTechExp</span>
+<span class="co">##   $ImportantHiringCommunication      | ImportantHiringCommunication</span>
+<span class="co">##   $ImportantHiringOpenSource         | ImportantHiringOpenSource</span>
+<span class="co">##   $ImportantHiringPMExp              | ImportantHiringPMExp</span>
+<span class="co">##   $ImportantHiringCompanies          | ImportantHiringCompanies</span>
+<span class="co">##   $ImportantHiringTitles             | ImportantHiringTitles</span>
+<span class="co">##   $ImportantHiringEducation          | ImportantHiringEducation</span>
+<span class="co">##   $ImportantHiringRep                | ImportantHiringRep</span>
+<span class="co">##   $ImportantHiringGettingThingsDone  | ImportantHiringGettingThingsDone</span></code></pre>
 <p>Those names aren’t that pretty. As we saw above, though, we have better names for them appended to the question wording we read in from the schema. Each subvariable <code>description</code> has the full question wording, which really should be the <code>description</code> of the parent array variable, and then after the question mark, the response label.</p>
 <p>Let’s use some regular expressions to clean that up. We can pull the part before the question mark from one of the subvariables and add that to the parent, and then prune the question wording from all and use that as the “names”:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^(.*\\?).*$"</span>, <span class="st">"\\1"</span>,
-    <span class="fu"><a href="../reference/aliases.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">sub</a></span><span class="op">(</span><span class="st">"^.*\\? (.*)$"</span>, <span class="st">"\\1"</span>,
-    <span class="fu"><a href="../reference/aliases.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^(.*\\?).*$"</span>, <span class="st">"\\1"</span>,
+    <span class="fu"><a href="../reference/describe-catalog.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"^.*\\? (.*)$"</span>, <span class="st">"\\1"</span>,
+    <span class="fu"><a href="../reference/describe-catalog.html">descriptions</a></span><span class="op">(</span><span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
-<pre><code>## Subvariables:
-##   $ImportantHiringAlgorithms         | Knowledge of algorithms and data struc...
-##   $ImportantHiringTechExp            | Experience with specific tools (librar...
-##   $ImportantHiringCommunication      | Communication skills
-##   $ImportantHiringOpenSource         | Contributions to open source projects
-##   $ImportantHiringPMExp              | Experience with specific project manag...
-##   $ImportantHiringCompanies          | Previous companies worked at
-##   $ImportantHiringTitles             | Previous job titles held
-##   $ImportantHiringEducation          | Educational credentials (e.g. schools ...
-##   $ImportantHiringRep                | Stack Overflow reputation
-##   $ImportantHiringGettingThingsDone  | Track record of getting things done</code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Subvariables:</span>
+<span class="co">##   $ImportantHiringAlgorithms         | Knowledge of algorithms and data struc...</span>
+<span class="co">##   $ImportantHiringTechExp            | Experience with specific tools (librar...</span>
+<span class="co">##   $ImportantHiringCommunication      | Communication skills</span>
+<span class="co">##   $ImportantHiringOpenSource         | Contributions to open source projects</span>
+<span class="co">##   $ImportantHiringPMExp              | Experience with specific project manag...</span>
+<span class="co">##   $ImportantHiringCompanies          | Previous companies worked at</span>
+<span class="co">##   $ImportantHiringTitles             | Previous job titles held</span>
+<span class="co">##   $ImportantHiringEducation          | Educational credentials (e.g. schools ...</span>
+<span class="co">##   $ImportantHiringRep                | Stack Overflow reputation</span>
+<span class="co">##   $ImportantHiringGettingThingsDone  | Track record of getting things done</span></code></pre>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/webApp.html">webApp</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">ImportantHiring</span><span class="op">)</span></code></pre></div>
 <p><img src="images/crunch-importantHiringCA.png"><!-- --></p>
 </div>
-<div id="multiple-response" class="section level4">
-<h4 class="hasAnchor">
-<a href="#multiple-response" class="anchor"></a>Multiple Response</h4>
+<div class="section level4">
+<h4 id="multiple-response">Multiple Response<a class="anchor" aria-label="anchor" href="#multiple-response"></a>
+</h4>
 <p>Crunch also has a special variable type for multiple-response data. These are survey questions that give users a set of options and allow them to select more than one of them. An example of this from the Stack Overflow survey is asking which language a respondent wanted to work with. In this dataset, the responses are stored in a single column with each language delimited by semicolon:</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">SO_survey</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="st">"HaveWorkedLanguage"</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">SO_survey</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="st">"HaveWorkedLanguage"</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">HaveWorkedLanguage</th>
@@ -362,39 +380,39 @@
 </tbody>
 </table>
 <p>To analyze this data without Crunch you would usually go through an elaborate data cleaning process to split the delimited variable up into its constituent parts, and then reshape it into a format which is more amenable to analysis. With Crunch, you can make use of multiple response variables to store it in a compact form, and analyze it just like any other variable. Since delimited text is such a common way of storing this kind of answer, Crunch allows you to create a variable directly from the text. This function creates a <em>derived variable</em>, which means that if you make changes to the data in the initial variable, the derived variable will change along with it.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMRFromText.html">makeMRFromText</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguage</span>,
     delim <span class="op">=</span> <span class="st">"; "</span>,
     name <span class="op">=</span> <span class="st">"Languages Desired for Work"</span>,
     description <span class="op">=</span> <span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguage</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>To see what this looks like, let’s do a simple <code><a href="../reference/table.html">table()</a></code> of the new variable and see the counts:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span></code></pre></div>
-<pre><code>## WantWorkLanguageMR
-##            VBA     TypeScript           Java          Scala     JavaScript 
-##             44            170            418            257            591 
-##           Perl            Lua         Matlab         Erlang       Assembly 
-##             65             69            120             67             89 
-##         VB.NET         Python    Common Lisp           Dart   CoffeeScript 
-##             24            915             44             22             51 
-##         Elixir           Ruby         Groovy              C             F# 
-##             70            143             43            255             88 
-##           Hack            C++    Objective-C              R        Clojure 
-##             18            420             65            815             82 
-##           Rust          Swift          Julia        Haskell Visual Basic 6 
-##            105            148            155            150             23 
-##            SQL             Go            PHP      Smalltalk 
-##            594            289            149             24</code></pre>
+<pre><code><span class="co">## WantWorkLanguageMR</span>
+<span class="co">##            VBA     TypeScript           Java          Scala     JavaScript </span>
+<span class="co">##             44            170            418            257            591 </span>
+<span class="co">##           Perl            Lua         Matlab         Erlang       Assembly </span>
+<span class="co">##             65             69            120             67             89 </span>
+<span class="co">##         VB.NET         Python    Common Lisp           Dart   CoffeeScript </span>
+<span class="co">##             24            915             44             22             51 </span>
+<span class="co">##         Elixir           Ruby         Groovy              C             F# </span>
+<span class="co">##             70            143             43            255             88 </span>
+<span class="co">##           Hack            C++    Objective-C              R        Clojure </span>
+<span class="co">##             18            420             65            815             82 </span>
+<span class="co">##           Rust          Swift          Julia        Haskell Visual Basic 6 </span>
+<span class="co">##            105            148            155            150             23 </span>
+<span class="co">##            SQL             Go            PHP      Smalltalk </span>
+<span class="co">##            594            289            149             24</span></code></pre>
 <p>Since this is multiple-response data, the sum of these numbers may be bigger than the number of respondents because people were allowed to select more than one.</p>
 <p>We can reorder the subvariables to make this card easier to read. Let’s sort them by frequency.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Subvariables-class.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="../reference/aliases.html">names</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="../reference/table.html">table</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">WantWorkLanguageMR</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <p><img src="images/WantWorkMRReodered.png"><!-- --></p>
 </div>
-<div id="conclusion" class="section level4">
-<h4 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h4>
+<div class="section level4">
+<h4 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h4>
 <p>This vignette has gone through some of the basics of working with crunch in R including loading data, manipulating dataset properties, and creating array variables. The <strong>crunch</strong> package provides an extensive set of tools for working with survey data and nearly everything that can be done in the crunch web app can be accomplished programmatically using R. To learn more about specific use cases, check out some of the other articles:</p>
 <ul>
 <li>
@@ -433,11 +451,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

@@ -40,6 +40,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -52,18 +54,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/crunch.html">Get started</a>
 </li>
@@ -78,7 +74,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="articles/variables.html">Crunch Variables</a>
     </li>
@@ -92,7 +89,8 @@
       <a href="articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="articles/derive.html">Adding Variables</a>
     </li>
@@ -112,7 +110,8 @@
       <a href="articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -120,7 +119,8 @@
       <a href="articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -132,7 +132,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -155,98 +155,85 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="crunch" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#crunch" class="anchor"></a>crunch</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="crunch">crunch<a class="anchor" aria-label="anchor" href="#crunch"></a>
+</h1></div>
 <!-- badges: start -->
 
-<p><a href="http://crunch-io.github.io/rcrunch/">Cloud Collaboration with Crunch</a></p>
-<p><a href="https://crunch.io/">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface: because all connect to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
+<p><a href="http://crunch-io.github.io/rcrunch/" class="external-link">Cloud Collaboration with Crunch</a></p>
+<p><a href="https://crunch.io/" class="external-link">Crunch.io</a> provides a cloud-based data store and analytic engine. It has a <a href="https://app.crunch.io/" class="external-link">web client</a> for interactive data exploration and visualization. The <strong>crunch</strong> package for R allows analysts to interact with and manipulate Crunch datasets from within R. Importantly, this allows technical researchers to collaborate naturally with team members, managers, and clients who prefer a point-and-click interface: because all connect to the same dataset in the cloud, there is no need to email files back and forth continually to share results.</p>
 <p><a href="mailto:rcrunch+subscribe@crunch.io">Subscribe to the mailing list</a> to receive notification of releases and to ask general support questions.</p>
-<div id="installing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installing" class="anchor"></a>Installing</h2>
+<div class="section level2">
+<h2 id="installing">Installing<a class="anchor" aria-label="anchor" href="#installing"></a>
+</h2>
 <p><code>crunch</code> can be installed from CRAN with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">"crunch"</span>)</span></code></pre></div>
-<p>The pre-release version of the package can be pulled from GitHub using the <a href="https://github.com/r-lib/remotes"><code>remotes</code></a> package (part of <code>devtools</code>):</p>
+<p>The pre-release version of the package can be pulled from GitHub using the <a href="https://github.com/r-lib/remotes" class="external-link"><code>remotes</code></a> package (part of <code>devtools</code>):</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"Crunch-io/rcrunch"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Crunch-io/rcrunch"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="getting-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting started</h2>
-<p>Connecting to Crunch and working with datasets is simple: load the <code>crunch</code> package and then <code><a href="reference/login.html">login()</a></code>.</p>
+<div class="section level2">
+<h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
+<p>The crunch R package needs to know what URL to use for the API and what your token is for authentication. For more details on how to get an API token, see the <a href="(https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys)" class="external-link">help center article</a>.</p>
+<p>The <code>usethis</code> package can help you set environment environment variables, the following code will open a text editor:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">$</span><span class="st"> </span>R</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(crunch)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="op">&gt;</span><span class="st"> </span><span class="kw">login</span>(<span class="st">"jane.r_user@crunch.io"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4"></a>Crunch password <span class="cf">for</span> jane.r_user<span class="op">@</span>crunch.io<span class="op">:</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a></span>
-<span id="cb3-6"><a href="#cb3-6"></a>You are now logged into Crunch as jane.r_user<span class="op">@</span>crunch.io</span>
-<span id="cb3-7"><a href="#cb3-7"></a>[crunch] <span class="op">&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>...</span></code></pre></div>
-<p>If you use OAuth to log into the web application, you’ll need to create a Crunch password to use with the R package. To set one, load the package, call <code>resetPassword("your.email@example.com")</code>, and check your email for instructions. You may need to log out of your current web app session before you click the link in that email to set your Crunch password.</p>
-<p>Once you’ve logged in, check out <code><a href="reference/listDatasets.html">listDatasets()</a></code> to see the names of your existing datasets, which you can load like <code>ds &lt;- loadDataset("The name of my dataset")</code>. New Crunch datasets can be made from a <code>data.frame</code>, a .csv or .sav file, or a URL to a file with <code><a href="reference/newDataset.html">newDataset()</a></code>. See the help for these functions or <a href="https://crunch.io/r/crunch/articles/crunch.html"><code>vignette("crunch")</code></a> for more information.</p>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"usethis"</span>)) <span class="kw">install.packages</span>(<span class="st">"usethis"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">&gt;</span><span class="st"> </span>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</span></code></pre></div>
+<p>And then you can add environment variables by adding the following (filling in for <code>&lt;API-URL&gt;</code> and <code>&lt;API-KEY&gt;</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>R_CRUNCH_API=<span class="er">&lt;</span>API<span class="op">-</span>URL<span class="op">&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>R_CRUNCH_API_KEY=<span class="er">&lt;</span>API<span class="op">-</span>KEY<span class="op">&gt;</span></span></code></pre></div>
+<p>Restart your R session, or run command <code>readRenviron("~/.Renviron")</code>, and then you will be authenticated automatically.</p>
+<p>Check out <code><a href="reference/listDatasets.html">listDatasets()</a></code> to see the names of your existing datasets, which you can load like <code>ds &lt;- loadDataset("The name of my dataset")</code>. New Crunch datasets can be made from a <code>data.frame</code>, a .csv or .sav file, or a URL to a file with <code><a href="reference/newDataset.html">newDataset()</a></code>. See the help for these functions or <a href="https://crunch.io/r/crunch/articles/crunch.html" class="external-link"><code>vignette("crunch")</code></a> for more information.</p>
 </div>
-<div id="additional-configuration" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-configuration" class="anchor"></a>Additional configuration</h2>
-<p>You can set several parameters in your .Rprofile to simplify your workflow:</p>
-<ul>
-<li>
-<code>crunch.email</code> and <code>crunch.pw</code>: you can save your Crunch credentials so that you don’t have to enter them each time. I.e., you can just <code>&gt; login()</code>. Please be advised of the risks of storing your password like this. See <code><a href="reference/login.html">?login</a></code> for more information. Also, note that you can opt to store just your <code>crunch.email</code> and enter your password each time you log in–a mix of convenience and security.</li>
-<li>
-<code>crunch.api</code>: if not defined, it defaults to “<code>https://app.crunch.io/api/</code>”, the production server. To specify a different location, either set it in your .Rprofile or after loading the <code>crunch</code> package, do <code>&gt; options(crunch.api="https://otherapi.crunch.io/api/")</code>.</li>
-</ul>
-<p>If you prefer, you can set the environment variables <code>R_CRUNCH_EMAIL</code>, <code>R_CRUNCH_PW</code>, and <code>R_CRUNCH_API</code>.</p>
-</div>
-<div id="for-developers" class="section level2">
-<h2 class="hasAnchor">
-<a href="#for-developers" class="anchor"></a>For developers</h2>
+<div class="section level2">
+<h2 id="for-developers">For developers<a class="anchor" aria-label="anchor" href="#for-developers"></a>
+</h2>
 <p><code>crunch</code> requires R version 3.0 or greater. Note that if you’re on Ubuntu, particularly older versions, you’ll need to add an alternative PPA before trying to <code>apt-get install</code> R. For 12.04 Precise, for example,</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># echo "deb http://cran.r-project.org/bin/linux/ubuntu precise/" &gt;&gt; /etc/apt/sources.list</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># apt-get update</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># apt-get install libcurl4-openssl-dev</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co"># sudo apt-get install r-base r-base-dev</span></span></code></pre></div>
-<p>See <a href="https://cran.r-project.org/bin/linux/ubuntu/README" class="uri">https://cran.r-project.org/bin/linux/ubuntu/README</a> for more details.</p>
-<div id="mocks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#mocks" class="anchor"></a>Mocks</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># echo "deb http://cran.r-project.org/bin/linux/ubuntu precise/" &gt;&gt; /etc/apt/sources.list</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># apt-get update</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># apt-get install libcurl4-openssl-dev</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># sudo apt-get install r-base r-base-dev</span></span></code></pre></div>
+<p>See <a href="https://cran.r-project.org/bin/linux/ubuntu/README" class="external-link uri">https://cran.r-project.org/bin/linux/ubuntu/README</a> for more details.</p>
+<div class="section level3">
+<h3 id="mocks">Mocks<a class="anchor" aria-label="anchor" href="#mocks"></a>
+</h3>
 <p>The tests for the rcrunch package relies on mocks that are compressed into a tarball so that the package stays within the CRAN 5MB size limit. To avoid git merge conflicts this file is not checked in so it must be created before you can run tests. It is created for you if you run <code>make test</code>, or you can create it explicitly by running <code>make compress-fixtures</code> or <code>Rscript dev-misc/compress-fixtures.R</code>.</p>
 </div>
-<div id="contributing" class="section level3">
-<h3 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h3>
+<div class="section level3">
+<h3 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h3>
 <p>See the <a href="CONTRIBUTING.html">contribution guidelines</a>.</p>
 </div>
-<div id="installing-from-a-local-checkout" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installing-from-a-local-checkout" class="anchor"></a>Installing from a local checkout</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># make deps</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># make test</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="installing-from-a-local-checkout">Installing from a local checkout<a class="anchor" aria-label="anchor" href="#installing-from-a-local-checkout"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># make deps</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># make test</span></span></code></pre></div>
 <p>This installs dependencies and then runs the tests, which installs <code>crunch</code> from your local checkout in the process. If the dependencies fail to install, check the error message. You may need to install <code>libcurl</code> on your system before installing the R packages.</p>
 </div>
-<div id="running-tests" class="section level3">
-<h3 class="hasAnchor">
-<a href="#running-tests" class="anchor"></a>Running tests</h3>
-<p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="https://testthat.r-lib.org/"><code>testthat</code></a> package.</p>
+<div class="section level3">
+<h3 id="running-tests">Running tests<a class="anchor" aria-label="anchor" href="#running-tests"></a>
+</h3>
+<p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest" class="external-link"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="https://testthat.r-lib.org/" class="external-link"><code>testthat</code></a> package.</p>
 <p>Testing has two options: unit tests only, and tests that communicate with an API server. This is governed by an environment variable, <code>INTEGRATION</code>, which is false by default, meaning that API integration tests are not run. To modify this and test against the Crunch API, you can run <code>$ make test INTEGRATION=TRUE</code>.</p>
 <p>To run integration tests, you will need to specify a test user, password, and API server to communicate with, either by setting <code>test.user</code>, <code>test.pw</code>, and <code>test.api</code> in your <code>.Rprofile</code>, as in:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>
     test.user<span class="op">=</span><span class="st">"magic.testuser@crunch.io"</span>,
     test.pw<span class="op">=</span><span class="st">"t0pSecretP@ssw0rD"</span>,
     test.api<span class="op">=</span><span class="st">"https://app.crunch.io/api/"</span>
 <span class="op">)</span></code></pre></div>
 <p>or by setting the environment variables <code>R_TEST_USER</code>, <code>R_TEST_PW</code>, and <code>R_TEST_API</code>.</p>
-<p>If you are a Crunch developer serving a version of the API/backend with Vagrant or Docker, you will have best results if your R_TEST_API/test.api (1) is <code>local.crunch.io</code>, thanks to a mapping of localhost to that in your hosts file. In order to avoid self-signed certificate errors use the environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>. You might point at “<a href="https://local.crunch.io:28443/api/" class="uri">https://local.crunch.io:28443/api/</a>”, for example. Some tests that cannot run successfully in the local environment will be skipped when run against a local.crunch.io URL.</p>
+<p>If you are a Crunch developer serving a version of the API/backend with Vagrant or Docker, you will have best results if your R_TEST_API/test.api (1) is <code>local.crunch.io</code>, thanks to a mapping of localhost to that in your hosts file. In order to avoid self-signed certificate errors use the environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>. You might point at “<a href="https://local.crunch.io:28443/api/" class="external-link uri">https://local.crunch.io:28443/api/</a>”, for example. Some tests that cannot run successfully in the local environment will be skipped when run against a local.crunch.io URL.</p>
 <p>Example of local usage:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">R_TEST_USER=</span>magic.testuser<span class="ex">@crunch.io</span> R_TEST_PW=t0pSecretP@ssw0rD R_TEST_API=https://local.crunch.io:28443/api/ make test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">R_TEST_USER=</span>magic.testuser<span class="ex">@crunch.io</span> R_TEST_PW=t0pSecretP@ssw0rD R_TEST_API=https://local.crunch.io:28443/api/ make test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
 </div>
-<div id="updating-documentation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#updating-documentation" class="anchor"></a>Updating documentation</h3>
+<div class="section level3">
+<h3 id="updating-documentation">Updating documentation<a class="anchor" aria-label="anchor" href="#updating-documentation"></a>
+</h3>
 <p>Run <code>$ make doc</code>. Requires the <code>roxygen2</code> package.</p>
 </div>
 </div>
@@ -255,31 +242,38 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=crunch">https://​cloud.r-project.org/​package=crunch</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/Crunch-io/rcrunch/">https://​github.com/​Crunch-io/​rcrunch/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/Crunch-io/rcrunch/issues">https://​github.com/​Crunch-io/​rcrunch/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=crunch" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/Crunch-io/rcrunch/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/Crunch-io/rcrunch/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>LGPL (&gt;= 3)</small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing crunch</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Greg Freedman Ellis <br><small class="roles"> Author, maintainer </small>  </li>
 <li>Jonathan Keane <br><small class="roles"> Author </small>  </li>
@@ -289,24 +283,27 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/Crunch-io/rcrunch/actions"><img src="https://github.com/Crunch-io/rcrunch/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://cran.r-project.org/package=crunch"><img src="https://www.r-pkg.org/badges/version-last-release/crunch" alt="cran"></a></li>
-<li><a href="https://codecov.io/gh/Crunch-io/rcrunch"><img src="https://codecov.io/gh/Crunch-io/rcrunch/branch/master/graph/badge.svg" alt="codecov"></a></li>
+<li><a href="https://github.com/Crunch-io/rcrunch/actions" class="external-link"><img src="https://github.com/Crunch-io/rcrunch/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://cran.r-project.org/package=crunch" class="external-link"><img src="https://www.r-pkg.org/badges/version-last-release/crunch" alt="cran"></a></li>
+<li><a href="https://codecov.io/gh/Crunch-io/rcrunch" class="external-link"><img src="https://codecov.io/gh/Crunch-io/rcrunch/branch/master/graph/badge.svg" alt="codecov"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>

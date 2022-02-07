@@ -35,6 +35,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -47,18 +49,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.28.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/crunch.html">Get started</a>
 </li>
@@ -73,7 +69,8 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li class="divider">
-    <li class="dropdown-header">Getting started</li>
+    </li>
+<li class="dropdown-header">Getting started</li>
     <li>
       <a href="../articles/variables.html">Crunch Variables</a>
     </li>
@@ -87,7 +84,8 @@
       <a href="../articles/projects.html">Organizing Datasets in Projects</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Exploring and analyzing</li>
+    </li>
+<li class="dropdown-header">Exploring and analyzing</li>
     <li>
       <a href="../articles/derive.html">Adding Variables</a>
     </li>
@@ -107,7 +105,8 @@
       <a href="../articles/fork-and-merge.html">Fork and Merge a Dataset</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Going deeper</li>
+    </li>
+<li class="dropdown-header">Going deeper</li>
     <li>
       <a href="../articles/crunch-internals.html">Crunch Internals</a>
     </li>
@@ -115,7 +114,8 @@
       <a href="../articles/abstract-categories.html">Abstract Categories</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Cookbooks</li>
+    </li>
+<li class="dropdown-header">Cookbooks</li>
     <li>
       <a href="../articles/deck-cookbook.html">Crunch Deck Cookbook</a>
     </li>
@@ -127,7 +127,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Crunch-io/rcrunch/">
+  <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -154,7 +154,7 @@
       <h1 data-toc-skip>Abstract Categories</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/abstract-categories.Rmd"><code>vignettes/abstract-categories.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/abstract-categories.Rmd" class="external-link"><code>vignettes/abstract-categories.Rmd</code></a></small>
       <div class="hidden name"><code>abstract-categories.Rmd</code></div>
 
     </div>
@@ -163,35 +163,35 @@
     
 <p><a href="crunch-internals.html">Previous: Crunch internals</a></p>
 <p>There are number of areas where Crunch needs to represent an object as belonging to one of many categories. The simplest and most common example of this is the categories of a categorical variable. For a categorical variable, the values of the variable can be one of a limited set of categories and those categories are specified in the Crunch API as metadata about the variable. These categoricals are similar to R’s <code>factor</code>s but are richer because Crunch categoricals can have any number of missing values (compared to just <code>NA</code> for <code>factor</code>s), as well as a numeric representation that is separate from the category ids (which is useful for things like income bins, where you might put the middle of the bin as the value).</p>
-<p>Moving beyond just categorical variables, we have a need to be able to represent a number of different properties, transformations, etc. in a category-like way. One concrete example is used heavily in order to add subtotals and headings to representations of categorical variables. In order to do this, we have two families of <a href="http://adv-r.had.co.nz/S4.html">S4 classes</a>: <code>AbstractCategory</code> and <code>AbstractCategories</code> Although subtotals and headings was the initial motivation for the new classes, they will allow for other types of representations and manipulations in the future.</p>
-<div id="abstractcategories" class="section level2">
-<h2 class="hasAnchor">
-<a href="#abstractcategories" class="anchor"></a>AbstractCategories</h2>
+<p>Moving beyond just categorical variables, we have a need to be able to represent a number of different properties, transformations, etc. in a category-like way. One concrete example is used heavily in order to add subtotals and headings to representations of categorical variables. In order to do this, we have two families of <a href="http://adv-r.had.co.nz/S4.html" class="external-link">S4 classes</a>: <code>AbstractCategory</code> and <code>AbstractCategories</code> Although subtotals and headings was the initial motivation for the new classes, they will allow for other types of representations and manipulations in the future.</p>
+<div class="section level2">
+<h2 id="abstractcategories">AbstractCategories<a class="anchor" aria-label="anchor" href="#abstractcategories"></a>
+</h2>
 <p>The core classes that all other classes inherit from are <code>AbstractCategory</code> and <code>AbstractCategories</code>. The first, <code>AbstractCategory</code>, is designed to represent a single category, which might have a number of properties about it (what those are will be explained in more detail below). The second, <code>AbstractCategories</code> is designed to hold more than one <code>AbstractCategory</code> together to form a coherent group. As a simple, example: an <code>AbstractCategories</code> for binned income could have 5 <code>AbstractCategory</code>s: &lt;$25,000, $25,000-$49,999, $50,000-$99,999, $100,000-$199,999, &gt;$200,000. This could be represented in R as:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategories</a></span><span class="op">(</span><span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
-                             <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategories</a></span><span class="op">(</span><span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
+                             <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategory</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>An alternate (and less typing) way to instantiate this same <code>AbstractCategories</code> is to send lists, and the constructor takes care of calling the <code>AbstractCategory</code> class on each (as below). Each of the child-classes of <code>AbstractCategories</code> (described in the sections below) have their own mapping of plural container to singular entity constructor in the same way, so passing <code>Categories</code> a list will result in a <code>Categories</code> object full of <code>Category</code> objects.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategories</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
-                             <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
-                             <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategories</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
+                             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
+                             <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Finally, there’s a <code>data</code> argument, if you already have a list of <code>AbstractCategory</code>s (or simply named lists!) you want to pass in (the same thing could also be accomplished with <code>do.call</code>):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">income_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
-                    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
-                    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
-                    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
-                    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategories-class.html">AbstractCategories</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">income_list</span><span class="op">)</span></code></pre></div>
-<div id="methods" class="section level3">
-<h3 class="hasAnchor">
-<a href="#methods" class="anchor"></a>Methods</h3>
+<code class="sourceCode R"><span class="va">income_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&lt;$25,000"</span><span class="op">)</span>,
+                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$25,000-$49,999"</span><span class="op">)</span>,
+                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$50,000-$99,999"</span><span class="op">)</span>,
+                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"$100,000-$199,999"</span><span class="op">)</span>,
+                    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"&gt;$200,000"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">income</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AbstractCategory.html">AbstractCategories</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">income_list</span><span class="op">)</span></code></pre></div>
+<div class="section level3">
+<h3 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
+</h3>
 <p>Any methods that are defined for the abstract classes will function on the subclasses as well. Child classes might have special over-ride methods defined for them, but for the most part, if a method can be used on <code>AbstractCategories</code> or <code>AbstractCategory</code> it can be used on the child classes as well.</p>
 <p><code>AbstractCategories</code> inherits from <code>list</code> and <code>AbstractCategory</code> inherits from <code>namedList</code> so many of the same methods will be work with both of them. This includes using <code>[</code>, <code>[[</code>, <code>[&lt;-</code>, and <code>[[&lt;-</code> to get and set subsets of <code>AbstractCategories</code> and <code>$</code>, and <code>[[</code> to get the properties in an <code>AbstractCategory</code>.</p>
 <p><code>lapply</code> has also been defined for <code>AbstractCategories</code> for easily iterating over all members. <code>modifyCats</code> also allows for modifying one <code>AbstractCategories</code> object by updating with new information from a second <code>AbstractCategories</code> object in the same way that <code>modifyList</code> works, but crucially it does not recurse into the <code>AbstractCategory</code> objects themselves.</p>
@@ -199,13 +199,13 @@
 <p><code>names</code> returns the names associated with each <code>AbstractCategory</code> in an <code>AbstractCategories</code> object. And <code>name</code> returns the names associated with an <code>AbstractCategory</code> object. <code>ids</code> and <code>id</code> patterns the exact same way.</p>
 </div>
 </div>
-<div id="categories" class="section level2">
-<h2 class="hasAnchor">
-<a href="#categories" class="anchor"></a>Categories</h2>
+<div class="section level2">
+<h2 id="categories">Categories<a class="anchor" aria-label="anchor" href="#categories"></a>
+</h2>
 <p>Categories from a categorical variable are represented by the <code>Categories</code> and <code>Category</code> classes. They inherit directly from <code>AbstractCategories</code> and <code>Category</code> respectively. For these, each <code>Category</code> must have a <code>name</code> and an <code>id</code>, they optionally can have a <code>numeric_value</code>, <code>missing</code>, and <code>selected</code> property.</p>
-<div id="methods-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#methods-1" class="anchor"></a>Methods</h3>
+<div class="section level3">
+<h3 id="methods-1">Methods<a class="anchor" aria-label="anchor" href="#methods-1"></a>
+</h3>
 <ul>
 <li>
 <code>values</code> and <code>value</code> return the <code>numeric_value</code>s property from <code>Categories</code> or a single <code>Category</code> respectively.</li>
@@ -216,16 +216,16 @@
 </ul>
 </div>
 </div>
-<div id="insertions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#insertions" class="anchor"></a>Insertions</h2>
+<div class="section level2">
+<h2 id="insertions">Insertions<a class="anchor" aria-label="anchor" href="#insertions"></a>
+</h2>
 <p>Insertions allow users to insert new categories into a variable or a CrunchCube for display purposes. This is useful when the user would like to show things like aggregates (e.g. subtotals) without manipulating the underlying data (or creating a new variable). Insertions are defined as part of the Crunch API (see the Transforms section below for an explanation about where Insertions live). The <code>Insertion</code>s class is designed to mirror the Crunch API for insertions as closely as possible. <code>Insertions</code> and <code>Insertion</code> inherit directly from <code>AbstractCategories</code> and <code>Category</code> respectively.</p>
 <p><code>Insertion</code>s must have a <code>name</code> and an <code>anchor</code>. The <code>name</code> is just like <code>Category</code> names, and is used as the label to display. The <code>anchor</code> is the id of the category after which the insertion should be placed.</p>
 <p>Since insertions can represent a number of different aggregations, they also can have <code>function</code> and <code>args</code> properties. The <code>function</code> property is a character describing the aggregation to use (e.g. <code>"subtotal"</code>) and the <code>args</code> property is a vector of the category <code>id</code>s to use as operands for the <code>function</code>.</p>
 <p>The <code>Insertion</code> class has two child classes: <code>Subtotal</code> and <code>Heading</code>. The <code>Insertions</code> class can contain anything that inherits from <code>Insertion</code>. Therefor an <code>Insertions</code> object might include <code>Insertion</code>s, <code>Subtotal</code>s, and <code>Heading</code>s.</p>
-<div id="methods-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#methods-2" class="anchor"></a>Methods</h3>
+<div class="section level3">
+<h3 id="methods-2">Methods<a class="anchor" aria-label="anchor" href="#methods-2"></a>
+</h3>
 <ul>
 <li>
 <code>anchors</code> and <code>anchor</code> return the anchor property from <code>Insertions</code> or a single <code>Insertion</code> respectively.</li>
@@ -236,113 +236,113 @@
 </ul>
 </div>
 </div>
-<div id="subtotals-and-headings" class="section level2">
-<h2 class="hasAnchor">
-<a href="#subtotals-and-headings" class="anchor"></a>Subtotals and Headings</h2>
+<div class="section level2">
+<h2 id="subtotals-and-headings">Subtotals and Headings<a class="anchor" aria-label="anchor" href="#subtotals-and-headings"></a>
+</h2>
 <p>Subtotals and headings are both <em>types</em> of insertions. Because of this <code>Subtotal</code> and <code>Heading</code> classes inherit from <code>Insertion</code> rather than directly from <code>AbstractCategory</code>. These classes are designed to hold known types of Insertions to make it easier to work with Insertions (for example: testing which insertion to style in what way when using <code>prettyPrint</code> functions). Additionally, these classes have slightly more user-friendly names (e.g. <code>after</code> instead of <code>anchor</code>), and they accept either <code>id</code>s or <code>name</code>s to refer to specific <code>Category</code>s.</p>
-<div id="subtotal" class="section level3">
-<h3 class="hasAnchor">
-<a href="#subtotal" class="anchor"></a>Subtotal</h3>
+<div class="section level3">
+<h3 id="subtotal">Subtotal<a class="anchor" aria-label="anchor" href="#subtotal"></a>
+</h3>
 <p>A <code>Subtotal</code> must have <code>name</code>, <code>after</code>, and <code>categories</code> properties. <code>name</code> is the same as other abstract categories. <code>after</code> is similar to <code>anchor</code> but can be either a category <code>id</code> or a category <code>name</code> after which the subtotal should be placed. <code>categories</code> is either the category <code>id</code>s or a category <code>name</code>s to subtotal.</p>
-<div id="methods-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#methods-3" class="anchor"></a>Methods</h4>
+<div class="section level4">
+<h4 id="methods-3">Methods<a class="anchor" aria-label="anchor" href="#methods-3"></a>
+</h4>
 <p>The same as <code>Insertion</code>, however some have customizations: * <code>func</code> always returns the string <code>"subtotal"</code> (because by definition a <code>Subtotal</code> object is an <code>Insertion</code> with <code>function="subtotal"</code>) * <code>anchor</code> and <code>arguments</code> both have an option <code>var_items</code> which is required if the <code>Subtotal</code> is using category names instead of ids in the <code>after</code> or <code>categories</code> properties. Supplying the categories is required in order to translate from category <code>name</code>s to <code>id</code>s which are required to be a well-formed <code>Insertion</code>.</p>
 </div>
 </div>
-<div id="heading" class="section level3">
-<h3 class="hasAnchor">
-<a href="#heading" class="anchor"></a>Heading</h3>
+<div class="section level3">
+<h3 id="heading">Heading<a class="anchor" aria-label="anchor" href="#heading"></a>
+</h3>
 <p>A <code>Heading</code> must have <code>name</code> and <code>after</code> properties. Both of which have the same interpretation as <code>Subtotal</code> above.</p>
-<div id="methods-4" class="section level4">
-<h4 class="hasAnchor">
-<a href="#methods-4" class="anchor"></a>Methods</h4>
+<div class="section level4">
+<h4 id="methods-4">Methods<a class="anchor" aria-label="anchor" href="#methods-4"></a>
+</h4>
 <p>The same as <code>Subtotal</code> for <code>anchor</code>. <code>func</code> and <code>arguments</code> return <code>NA</code></p>
 <p>As a concrete example, let’s take the following categories:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">feeling_cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Categories-class.html">Categories</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Very Happy"</span>, id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Somewhat Happy"</span>, id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Neither Happy nor Unhappy"</span>, id <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Somewhat Unhappy"</span>, id <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Very Unhappy"</span>, id <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">feeling_cats</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Categories.html">Categories</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Very Happy"</span>, id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Somewhat Happy"</span>, id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Neither Happy nor Unhappy"</span>, id <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Somewhat Unhappy"</span>, id <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Very Unhappy"</span>, id <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="op">)</span>
 <span class="va">feeling_cats</span></code></pre></div>
-<pre><code>##   id                      name value missing
-## 1  1                Very Happy    NA   FALSE
-## 2  2            Somewhat Happy    NA   FALSE
-## 3  3 Neither Happy nor Unhappy    NA   FALSE
-## 4  4          Somewhat Unhappy    NA   FALSE
-## 5  5              Very Unhappy    NA   FALSE</code></pre>
+<pre><code><span class="co">##   id                      name value missing</span>
+<span class="co">## 1  1                Very Happy    NA   FALSE</span>
+<span class="co">## 2  2            Somewhat Happy    NA   FALSE</span>
+<span class="co">## 3  3 Neither Happy nor Unhappy    NA   FALSE</span>
+<span class="co">## 4  4          Somewhat Unhappy    NA   FALSE</span>
+<span class="co">## 5  5              Very Unhappy    NA   FALSE</span></code></pre>
 <p>And make some subtotals and headings to use as insertions:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">feeling_subtotals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Insertions-class.html">Insertions</a></span><span class="op">(</span>
-    <span class="fu"><a href="../reference/Subtotal-class.html">Heading</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"How I feel about cheese"</span>, position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span>,
-    <span class="fu"><a href="../reference/Subtotal-class.html">Subtotal</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Generally Happy"</span>, after <span class="op">=</span> <span class="st">"Somewhat Happy"</span>, 
-        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very Happy"</span>, <span class="st">"Somewhat Happy"</span><span class="op">)</span><span class="op">)</span>,
-    <span class="fu"><a href="../reference/Subtotal-class.html">Subtotal</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Generally Unhappy"</span>, after <span class="op">=</span> <span class="fl">5</span>, 
-        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">feeling_subtotals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Insertions.html">Insertions</a></span><span class="op">(</span>
+    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Heading</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"How I feel about cheese"</span>, position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span>,
+    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Generally Happy"</span>, after <span class="op">=</span> <span class="st">"Somewhat Happy"</span>, 
+        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Very Happy"</span>, <span class="st">"Somewhat Happy"</span><span class="op">)</span><span class="op">)</span>,
+    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Generally Unhappy"</span>, after <span class="op">=</span> <span class="fl">5</span>, 
+        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Notice that the “Generally Happy” subtotal is made specifying category <code>name</code>s for <code>after</code> and <code>categories</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_subtotals</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">after</span></code></pre></div>
-<pre><code>## [1] "Somewhat Happy"</code></pre>
+<pre><code><span class="co">## [1] "Somewhat Happy"</span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_subtotals</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
-<pre><code>## [1] "Very Happy"     "Somewhat Happy"</code></pre>
+<pre><code><span class="co">## [1] "Very Happy"     "Somewhat Happy"</span></code></pre>
 <p>Where as the “Generally Unhappy” subtotal uses <code>id</code>s:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_subtotals</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">after</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<pre><code><span class="co">## [1] 5</span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_subtotals</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
-<pre><code>## [1] 4 5</code></pre>
+<pre><code><span class="co">## [1] 4 5</span></code></pre>
 </div>
 </div>
-<div id="converting-from-subtotalheading-to-insertion" class="section level3">
-<h3 class="hasAnchor">
-<a href="#converting-from-subtotalheading-to-insertion" class="anchor"></a>Converting from Subtotal/Heading to Insertion</h3>
+<div class="section level3">
+<h3 id="converting-from-subtotalheading-to-insertion">Converting from Subtotal/Heading to Insertion<a class="anchor" aria-label="anchor" href="#converting-from-subtotalheading-to-insertion"></a>
+</h3>
 <p>Since the Crunch API does not have a distinction between <code>Subtotal</code>s <code>Heading</code>s, and other <code>Insertion</code>s, we sometimes need to convert from <code>Subtotal</code>s or <code>Heading</code>s to <code>Insertion</code>s. This is accomplished with the method <code><a href="../reference/makeInsertion.html">makeInsertion()</a></code>. This method takes a <code>Subtotal</code> or <code>Heading</code> and returns a valid <code>Insertion</code>. If the <code>Subtotal</code> or <code>Heading</code> has category <code>name</code> references instead of <code>id</code>s, then you must include a <code>Categories</code> object as the <code>var_items</code> argument. In general, this is only needed before sending a heterogeneous set of <code>Insertions</code> to the Crunch API.</p>
 <p>Using the examples we used before, we can see how this works:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">feeling_insertions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Insertions-class.html">Insertions</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">feeling_subtotals</span>, <span class="va">makeInsertion</span>, var_items <span class="op">=</span> <span class="va">feeling_cats</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">feeling_insertions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Insertions.html">Insertions</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">feeling_subtotals</span>, <span class="va">makeInsertion</span>, var_items <span class="op">=</span> <span class="va">feeling_cats</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now, all of the <code>Subtotal</code>s and <code>Heading</code> from <code>feeling_subtotals</code> are proper <code>Insertion</code>s:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">feeling_insertions</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Insertion" "Insertion" "Insertion"</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">feeling_insertions</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "Insertion" "Insertion" "Insertion"</span></code></pre>
 <p>This means that the <code>after</code> property has been translated into <code>anchor</code>, and the <code>function</code> and <code>args</code> properties have been filled in appropriately:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_insertions</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">anchor</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<pre><code><span class="co">## [1] 5</span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_insertions</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">`function`</span></code></pre></div>
-<pre><code>## [1] "subtotal"</code></pre>
+<pre><code><span class="co">## [1] "subtotal"</span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_insertions</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">args</span></code></pre></div>
-<pre><code>## [1] 4 5</code></pre>
+<pre><code><span class="co">## [1] 4 5</span></code></pre>
 <p>Because <code>Insertion</code>s are required to use category <code>id</code>s only, the new all-<code>Insertion</code>s <code>feeling_insertions</code> has translated the “Generally Happy” subtotal’s category <code>name</code>s to <code>id</code>s:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_insertions</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">anchor</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code><span class="co">## [1] 2</span></code></pre>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_insertions</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">args</span></code></pre></div>
-<pre><code>## [1] 1 2</code></pre>
+<pre><code><span class="co">## [1] 1 2</span></code></pre>
 </div>
-<div id="converting-from-insertion-to-subtotalheading" class="section level3">
-<h3 class="hasAnchor">
-<a href="#converting-from-insertion-to-subtotalheading" class="anchor"></a>Converting from Insertion to Subtotal/Heading</h3>
+<div class="section level3">
+<h3 id="converting-from-insertion-to-subtotalheading">Converting from Insertion to Subtotal/Heading<a class="anchor" aria-label="anchor" href="#converting-from-insertion-to-subtotalheading"></a>
+</h3>
 <p>Since the Crunch API does not have a distinction between <code>Subtotal</code>s <code>Heading</code>s, and other <code>Insertion</code>s when we get data about <code>Insertion</code>s from the API, we need to change the classes for the <code>Insertion</code>s that the <code>crunch</code> package knows about. To do this, we can use either <code>subtypeInsertions</code> to change the types of all of the members of an <code>Insertions</code> object, or <code>subtypeInsertion</code> to change the type of a single <code>Insertion</code> object.</p>
 <p>These functions work by inspecting the <code>Insertion</code> and determining if it can be identified as one of the known child classes of <code>Insertion</code> (namely: <code>Subtotal</code> or <code>Heading</code>).</p>
 <p>Using the same example above, we can convert back from all <code>Insertion</code>s to the subtypes:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">feeling_subtotals_again</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/subtypeInsertion.html">subtypeInsertions</a></span><span class="op">(</span><span class="va">feeling_insertions</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">feeling_subtotals_again</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] "Heading"  "Subtotal" "Subtotal"</code></pre>
+<span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">feeling_subtotals_again</span>, <span class="va">class</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## [1] "Heading"  "Subtotal" "Subtotal"</span></code></pre>
 </div>
 </div>
-<div id="inheritance" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inheritance" class="anchor"></a>Inheritance</h2>
+<div class="section level2">
+<h2 id="inheritance">Inheritance<a class="anchor" aria-label="anchor" href="#inheritance"></a>
+</h2>
 <p>There are two sets of inheritance: one for containers and one for members: Classes inherit from those immediately to their left</p>
 <table class="table">
 <thead><tr class="header">
@@ -391,13 +391,13 @@
 </tbody>
 </table>
 </div>
-<div id="shared-methods-chart" class="section level2">
-<h2 class="hasAnchor">
-<a href="#shared-methods-chart" class="anchor"></a>Shared methods chart</h2>
+<div class="section level2">
+<h2 id="shared-methods-chart">Shared methods chart<a class="anchor" aria-label="anchor" href="#shared-methods-chart"></a>
+</h2>
 <p>The methods are listed as row labels and the classes are column labels. If a method is implemented, it is marked “impl.”.</p>
-<div id="containers" class="section level3">
-<h3 class="hasAnchor">
-<a href="#containers" class="anchor"></a>Containers</h3>
+<div class="section level3">
+<h3 id="containers">Containers<a class="anchor" aria-label="anchor" href="#containers"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th></th>
@@ -451,9 +451,9 @@
 </tbody>
 </table>
 </div>
-<div id="members" class="section level3">
-<h3 class="hasAnchor">
-<a href="#members" class="anchor"></a>Members</h3>
+<div class="section level3">
+<h3 id="members">Members<a class="anchor" aria-label="anchor" href="#members"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th></th>
@@ -532,9 +532,9 @@
 </table>
 </div>
 </div>
-<div id="transforms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#transforms" class="anchor"></a>Transforms</h2>
+<div class="section level2">
+<h2 id="transforms">Transforms<a class="anchor" aria-label="anchor" href="#transforms"></a>
+</h2>
 <p>The <code>Transforms</code> class and set of functions is not an abstract category at all, but rather it mirrors the Crunch API’s set of transformations that are allowed on a variable or CrunchCube. One of the possible transformations are insertions (which is where <code>Insertions</code> are stored). Currently the <code>crunch</code> package doesn’t support other transformations.</p>
 </div>
   </div>
@@ -550,11 +550,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
+  <p></p>
+<p>Developed by Greg Freedman Ellis, Jonathan Keane, Mike Malecki, Neal Richardson, Gordon Shotwell.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
