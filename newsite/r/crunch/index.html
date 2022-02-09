@@ -176,7 +176,7 @@
 <div class="section level2">
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>The crunch R package needs to know what URL to use for the API and what your token is for authentication. For more details on how to get an API token, see the <a href="(https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys)" class="external-link">help center article</a>.</p>
+<p>The crunch R package needs to know what URL to use for the API and what your token is for authentication. For more details on how to get an API token, see the <a href="https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys" class="external-link">help center article</a>.</p>
 <p>The <code>usethis</code> package can help you set environment environment variables, the following code will open a text editor:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">$</span><span class="st"> </span>R</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"usethis"</span>)) <span class="kw">install.packages</span>(<span class="st">"usethis"</span>)</span>
@@ -190,13 +190,7 @@
 <div class="section level2">
 <h2 id="for-developers">For developers<a class="anchor" aria-label="anchor" href="#for-developers"></a>
 </h2>
-<p><code>crunch</code> requires R version 3.0 or greater. Note that if you’re on Ubuntu, particularly older versions, you’ll need to add an alternative PPA before trying to <code>apt-get install</code> R. For 12.04 Precise, for example,</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># echo "deb http://cran.r-project.org/bin/linux/ubuntu precise/" &gt;&gt; /etc/apt/sources.list</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># apt-get update</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># apt-get install libcurl4-openssl-dev</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co"># sudo apt-get install r-base r-base-dev</span></span></code></pre></div>
-<p>See <a href="https://cran.r-project.org/bin/linux/ubuntu/README" class="external-link uri">https://cran.r-project.org/bin/linux/ubuntu/README</a> for more details.</p>
+<p><code>crunch</code> requires R version 3.0 or greater. Rstudio has instructions for a variety of platforms both <a href="https://docs.rstudio.com/resources/install-r" class="external-link">installing from binaries (recommended)</a> or <a href="https://docs.rstudio.com/resources/install-r-source/" class="external-link">from source</a> if necessary.</p>
 <div class="section level3">
 <h3 id="mocks">Mocks<a class="anchor" aria-label="anchor" href="#mocks"></a>
 </h3>
@@ -210,8 +204,8 @@
 <div class="section level3">
 <h3 id="installing-from-a-local-checkout">Installing from a local checkout<a class="anchor" aria-label="anchor" href="#installing-from-a-local-checkout"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># make deps</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co"># make test</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># make deps</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># make test</span></span></code></pre></div>
 <p>This installs dependencies and then runs the tests, which installs <code>crunch</code> from your local checkout in the process. If the dependencies fail to install, check the error message. You may need to install <code>libcurl</code> on your system before installing the R packages.</p>
 </div>
 <div class="section level3">
@@ -220,7 +214,7 @@
 <p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest" class="external-link"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="https://testthat.r-lib.org/" class="external-link"><code>testthat</code></a> package.</p>
 <p>Testing has two options: unit tests only, and tests that communicate with an API server. This is governed by an environment variable, <code>INTEGRATION</code>, which is false by default, meaning that API integration tests are not run. To modify this and test against the Crunch API, you can run <code>$ make test INTEGRATION=TRUE</code>.</p>
 <p>To run integration tests, you will need to specify a test user, password, and API server to communicate with, either by setting <code>test.user</code>, <code>test.pw</code>, and <code>test.api</code> in your <code>.Rprofile</code>, as in:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>
     test.user<span class="op">=</span><span class="st">"magic.testuser@crunch.io"</span>,
     test.pw<span class="op">=</span><span class="st">"t0pSecretP@ssw0rD"</span>,
@@ -229,7 +223,7 @@
 <p>or by setting the environment variables <code>R_TEST_USER</code>, <code>R_TEST_PW</code>, and <code>R_TEST_API</code>.</p>
 <p>If you are a Crunch developer serving a version of the API/backend with Vagrant or Docker, you will have best results if your R_TEST_API/test.api (1) is <code>local.crunch.io</code>, thanks to a mapping of localhost to that in your hosts file. In order to avoid self-signed certificate errors use the environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>. You might point at “<a href="https://local.crunch.io:28443/api/" class="external-link uri">https://local.crunch.io:28443/api/</a>”, for example. Some tests that cannot run successfully in the local environment will be skipped when run against a local.crunch.io URL.</p>
 <p>Example of local usage:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">R_TEST_USER=</span>magic.testuser<span class="ex">@crunch.io</span> R_TEST_PW=t0pSecretP@ssw0rD R_TEST_API=https://local.crunch.io:28443/api/ make test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">R_TEST_USER=</span>magic.testuser<span class="ex">@crunch.io</span> R_TEST_PW=t0pSecretP@ssw0rD R_TEST_API=https://local.crunch.io:28443/api/ make test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="updating-documentation">Updating documentation<a class="anchor" aria-label="anchor" href="#updating-documentation"></a>
