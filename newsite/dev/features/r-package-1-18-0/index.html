@@ -181,7 +181,7 @@
     Promoter = ds_pets$ACME_unaided &gt;= 9 | ds_pets$ACME_aided &gt;= 9,
     Neutral = ds_pets$ACME_unaided &gt;= 7 | ds_pets$ACME_aided &gt;= 7,
     Detractor = ds_pets$ACME_unaided &lt;= 6 | ds_pets$ACME_aided &lt;= 6,
-    name = &quot;ACME Net Promoter&quot;
+    name = &#34;ACME Net Promoter&#34;
 )
 </code></pre><p>Case variables match the first case that evaluates to <code>TRUE</code>, so in this example, a value of <code>9</code> gets classified as &ldquo;promoter&rdquo; and not &ldquo;neutral&rdquo;. If none of the cases match and there is no <code>else</code> case specified, the system default <code>No Data</code> category will be used.</p>
 <p><code>makeCaseVariable()</code> is incredibly powerful for making complicated derived variables that are based on anything that can be expressed with a Crunch expression. Best of all, <code>makeCaseVariable()</code> uses the power of Crunch&rsquo;s servers to do all of this computation, so there&rsquo;s no need to pull data and then send it back to Crunch. And, whenever the data in the input variables are changed or new rows are added, <a href="/r/crunch/articles/derive.html">your derived variable automatically updates</a>.</p>

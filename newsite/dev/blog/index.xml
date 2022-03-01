@@ -5,7 +5,7 @@
     <description>Recent content in The Dev Blog on Online survey data analysis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>2022-02-22T10:26:57+00:00</lastBuildDate>
+    <lastBuildDate>2022-03-01T12:15:10+00:00</lastBuildDate>
     
         <atom:link href="//crunch-io.github.io/crunchy/newsite/dev/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -34,24 +34,24 @@ additional input&amp;ndash;all of which you can control or override with
 additional &lt;code&gt;ggplot2&lt;/code&gt; layers, if you want.&lt;/p&gt;
 &lt;p&gt;This lets us plot Crunch variables and high dimensional survey
 cross-tabs easily, while making sure that the plot always fits the data.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
-&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(crplyr)
-
-crunch&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;login&lt;/span&gt;()
-ds &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loadDataset&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Not-so-simple dataset with all types&amp;#34;&lt;/span&gt;)
-
-ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(pasta, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(abolitionists, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tile&amp;#34;&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(ds&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;ec, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(crplyr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;crunch&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;login&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loadDataset&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Not-so-simple dataset with all types&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(pasta, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(abolitionists, food_groups) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(count&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tile&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;(ds&lt;span style=&#34;color:#f92672&#34;&gt;$&lt;/span&gt;ec, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-1-3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Making it look easy, though, can be hard work. Our &lt;code&gt;autoplot&lt;/code&gt; methods
 inspect the input objects to understand their dimensionality and data
 types and choose an appropriate visualization. Figuring out and passing
@@ -157,97 +157,97 @@ surprised by the result.&lt;/p&gt;
 plots based on the number of grouping variables in the tibble it
 receives. First, we create a general plotting function
 that figures out which plotting sub-function to use:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
-&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(dplyr)
-
-autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
-    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
-    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
-
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
-        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
-    } else {
-        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
-    }
-    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The function inspects the data frame and then selects a plotting
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(ggplot2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;library&lt;/span&gt;(dplyr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } else {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The function inspects the data frame and then selects a plotting
 function based on the number of groups in it. It then
 captures the names of the dataset as a list of symbols and passes it
 down to the plotting function. The next step is to write the two
 plotting functions that actually do the work:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;plot_1d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
-    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
-    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
-    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
-}
-
-diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-5-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;plot_1d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-5-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The convenient thing about using tidy eval in this case is that we can
 confidently pass the unevaluated names into both the &lt;code&gt;dplyr&lt;/code&gt; and
 &lt;code&gt;ggplot2&lt;/code&gt; code without worrying that the evaluation will fail. This
 means we can arrange the dataset based on the measure name, and then
 plot that measure even though we don&amp;rsquo;t know ahead of time what the
 measure will be called. We can do the same thing with the 2d plot:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;plot_2d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
-    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
-    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
-    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups, &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], , color &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[2]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
-}
-
-diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut ,clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-6-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;plot_2d &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df, vars){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars[vars &lt;span style=&#34;color:#f92672&#34;&gt;%in%&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    measure &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; vars&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(vars)][[1]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;select&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups, &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;arrange&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;desc&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure)) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;ggplot&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;aes&lt;/span&gt;(x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;measure, y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[1]], , color &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;groups[[2]])) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;geom_point&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;theme_minimal&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut ,clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;tally&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-6-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is basically the same code as the 1D plot except that we used the
 splice operator (&lt;code&gt;!!!&lt;/code&gt;) in the select call and added another grouping
 variable on the color dimension.&lt;/p&gt;
 &lt;p&gt;What happens when you have more than three dimensions? The &lt;code&gt;ggplot2&lt;/code&gt;
 package allows us to use tidyeval to dynamically add facets.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
-    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
-    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
-
-    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
-        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
-    } else {
-        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
-    }
-    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
-    out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
-
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) {
-        groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(groups)
-        out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; out &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
-            &lt;span style=&#34;color:#a6e22e&#34;&gt;facet_wrap&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;vars&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups[3&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups)]))
-    }
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;return&lt;/span&gt;(out)
-}
-
-diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut, color, clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(number_of_diamonds &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-7-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;autoplot &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;function&lt;/span&gt;(df) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Add grouping variable which was stripped by summarize&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    df &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; df &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df), &lt;span style=&#34;color:#f92672&#34;&gt;!!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;sym&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df)&lt;span style=&#34;color:#a6e22e&#34;&gt;[length&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)) &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;groups&lt;/span&gt;(df)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_1d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } else {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        plot_fun &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; plot_2d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    vars &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;names&lt;/span&gt;(df))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;plot_fun&lt;/span&gt;(df, vars)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;if &lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        groups &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;syms&lt;/span&gt;(groups)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        out &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;-&lt;/span&gt; out &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;facet_wrap&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;vars&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;!!!&lt;/span&gt;groups[3&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;(groups)]))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;return&lt;/span&gt;(out)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;diamonds &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;group_by&lt;/span&gt;(cut, color, clarity) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;summarize&lt;/span&gt;(number_of_diamonds &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;n&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;%&amp;gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;autoplot&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/tidyeval/unnamed-chunk-7-1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Tidyeval solves the main challenges of working with R&amp;rsquo;s non-standard evaluation by
 bundling expressions and environments into quosures. The new release of
