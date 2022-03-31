@@ -67,7 +67,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -181,9 +181,9 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">$</span><span class="st"> </span>R</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span><span class="st"> </span><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">"usethis"</span>)) <span class="kw">install.packages</span>(<span class="st">"usethis"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="op">&gt;</span><span class="st"> </span>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</span></code></pre></div>
-<p>And then you can add environment variables by adding the following (filling in for <code>&lt;API-URL&gt;</code> and <code>&lt;API-KEY&gt;</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>R_CRUNCH_API=<span class="er">&lt;</span>API<span class="op">-</span>URL<span class="op">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>R_CRUNCH_API_KEY=<span class="er">&lt;</span>API<span class="op">-</span>KEY<span class="op">&gt;</span></span></code></pre></div>
+<p>And then you can add environment variables by adding the following (filling in the correct values for for <code>https://my-awesome-brand.crunch.io/api/</code> and <code>secret-key-goes-here</code>, with one set of quotation marks around the url and key).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>R_CRUNCH_API=<span class="st">"https://my-awesome-brand.crunch.io/api/"</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>R_CRUNCH_API_KEY=<span class="st">"secret-key-goes-here"</span></span></code></pre></div>
 <p>Restart your R session, or run command <code>readRenviron("~/.Renviron")</code>, and then you will be authenticated automatically.</p>
 <p>Check out <code><a href="reference/listDatasets.html">listDatasets()</a></code> to see the names of your existing datasets, which you can load like <code>ds &lt;- loadDataset("The name of my dataset")</code>. New Crunch datasets can be made from a <code>data.frame</code>, a .csv or .sav file, or a URL to a file with <code><a href="reference/newDataset.html">newDataset()</a></code>. See the help for these functions or <a href="https://crunch.io/r/crunch/articles/crunch.html" class="external-link"><code>vignette("crunch")</code></a> for more information.</p>
 </div>
@@ -213,16 +213,10 @@
 </h3>
 <p>You can run tests in an interactive session, or from the command line, <code>$ make test</code> is all you need. Requires the <a href="https://github.com/nealrichardson/httptest" class="external-link"><code>httptest</code></a> package for R. You can also specify a specific test file or files to run by adding a “file=” argument, like <code>$ make test file=auth</code>. <code>test_package</code> will do a regular-expression pattern match within the file names. See its documentation in the <a href="https://testthat.r-lib.org/" class="external-link"><code>testthat</code></a> package.</p>
 <p>Testing has two options: unit tests only, and tests that communicate with an API server. This is governed by an environment variable, <code>INTEGRATION</code>, which is false by default, meaning that API integration tests are not run. To modify this and test against the Crunch API, you can run <code>$ make test INTEGRATION=TRUE</code>.</p>
-<p>To run integration tests, you will need to specify a test user, password, and API server to communicate with, either by setting <code>test.api.key</code> and <code>test.api</code> in your <code>.Rprofile</code>, as in:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>
-    test.api<span class="op">=</span><span class="st">"https://app.crunch.io/api/"</span>,
-    test.api.key<span class="op">=</span><span class="st">"&lt;SECRET KEY&gt;"</span>
-<span class="op">)</span></code></pre></div>
-<p>or by setting the environment variables <code>R_TEST_API</code> and <code>R_TEST_API_KEY</code>.</p>
-<p>If you are a Crunch developer serving a version of the API/backend with Vagrant or Docker, you will have best results if your R_TEST_API/test.api (1) is <code>local.crunch.io</code>, thanks to a mapping of localhost to that in your hosts file. In order to avoid self-signed certificate errors use the environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>. You might point at “<a href="https://local.crunch.io:28443/api/" class="external-link uri">https://local.crunch.io:28443/api/</a>”, for example. Some tests that cannot run successfully in the local environment will be skipped when run against a local.crunch.io URL.</p>
+<p>To run integration tests, you will need to specify an API key and API server to communicate with. You can do this by setting the environment variables <code>R_TEST_API</code> and <code>CRUNCH_TEST_API_KEY</code>.</p>
+<p>If you are a Crunch developer serving a version of the API/backend with Vagrant or Docker, you will have best results if your R_TEST_API/CRUNCH_TEST_API_KEY (1) is <code>local.crunch.io</code>, thanks to a mapping of localhost to that in your hosts file. In order to avoid self-signed certificate errors use the environment variable <code>R_TEST_VERIFY_SSL=FALSE</code>. You might point at “<a href="https://local.crunch.io:28443/api/" class="external-link uri">https://local.crunch.io:28443/api/</a>”, for example. Some tests that cannot run successfully in the local environment will be skipped when run against a local.crunch.io URL.</p>
 <p>Example of local usage:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">R_TEST_API_KEY=</span>t0pSecretK3y! <span class="va">R_TEST_API=</span>https://local.crunch.io:28443/api/ <span class="fu">make</span> test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a>$ <span class="va">R_TEST_VERIFY_SSL=</span>TRUE <span class="va">CRUNCH_TEST_API_KEY=</span>t0pSecretK3y! <span class="va">R_TEST_API=</span>https://local.crunch.io:28443/api/ <span class="fu">make</span> test INTEGRATION=TRUE file=variable-summary</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="updating-documentation">Updating documentation<a class="anchor" aria-label="anchor" href="#updating-documentation"></a>

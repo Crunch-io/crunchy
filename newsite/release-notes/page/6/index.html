@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prepare and analyze survey data quickly and easily.">
+    <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
+    <base href="//crunch-io.github.io/crunchy/newsite/">
+    <title>Crunch | Release Notes</title>
+
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta property="og:title" content="Release Notes &middot; Online survey data analysis">
+<meta property="og:description" content="Developer notes, bug fixes, documentation, API, and application changes.">
+<meta property="og:type" content="website" >
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/">
+<meta property="og:locale" content="en">
+
+    
+        
+            <meta property="og:image" content="//crunch-io.github.io/crunchy/newsite/img/logo-1200x630.png">
+        
+    
+
+
+  <meta property="og:updated_time" content="2021-01-20T14:08:35&#43;02:00">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
+
+<meta name="twitter:title" content="Release Notes"/>
+<meta name="twitter:description" content="Developer notes, bug fixes, documentation, API, and application changes."/>
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5GB59T2');</script>
+    
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GB59T2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img class="d-inline-block align-top" src="img/crunch_logo.svg" alt="" width="140"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Our Differentiation
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="for-insights-teams">For Insights Teams</a>
+                    <a class="dropdown-item" href="market-researchers">For Market Research Firms</a>
+                </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capabilities
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
+                      <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                      <a class="dropdown-item" href="dashboards">Dashboards</a>
+                      <a class="dropdown-item" href="crunchbox">CrunchBox</a>
+                      <a class="dropdown-item" href="tracker-analytics">Tracker Analytics</a>
+                      <a class="dropdown-item" href="diy">DIY</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="about">About</a>
+                      <a class="dropdown-item" href="team">Team</a>
+                      <a class="dropdown-item" href="jobs">Careers</a>
+                      <a class="dropdown-item" href="contact">Contact Us</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item"  href="resources">Webinars & White Papers</a>
+                        <a class="dropdown-item" href="case-studies">Case Studies</a>
+                    </div>
+
+
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Support
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="http://help.crunch.io/">Help Center</a>
+                      <a class="dropdown-item" href="api/reference/">API Reference</a>
+                      <a class="dropdown-item" href="dev/features/">Feature Announcements</a>
+                      <a class="dropdown-item" href="release-notes/">Release Notes</a>
+                      <a class="dropdown-item" href="https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides">Developer Guides</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://app.crunch.io/" target="_blank">Sign In</a>
+                </li>
+                <li class="nav-item">
+                  <button type="button" class="btn btn-sm btn-success" onclick="window.location.href='/request-demo'">Request a Demo</button>
+                </li>
+              </ul>
+            </div>
+        </div> 
+    </nav>
+
+
+<div id="wrapper">
+
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                <div class="jumbotron" style="padding-top: 47px; padding-bottom: 30px;">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                                <p><p>Developer notes, bug fixes, documentation, API, and application changes.</p>
+</p>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container">
+
+                  <div class="row">
+                      <div class="col-md-6 col-lg-4 subscribe-release-notes">
+                          
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+     
+</style>
+<div id="mc_embed_signup">
+    <form action="https://crunch.us20.list-manage.com/subscribe/post?u=0d29cf89c3f465ed1f368bc02&amp;id=e2470fae4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="padding-top: 0px;">
+        <div id="mc_embed_signup_scroll">
+            <h2 style="margin-top: 0; padding-top: 20px;">Subscribe to automatically receive release notes via email</h2>
+            <div class="mc-field-group" style="margin-bottom: 0px; font-family: 'ProximaNova'; font-weight: 100;">
+                <label for="mce-EMAIL">Email address </label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+            </div>
+            <div class="mc-field-group input-group" style="display: none;">
+                <strong>Interest Group </strong>
+                <ul>
+                    <li><input type="checkbox" value="1" name="group[7235][1]" id="mce-group[7235]-7235-0" checked><label for="mce-group[7235]-7235-0">Release Notes</label></li>
+                    <li><input type="checkbox" value="2" name="group[7235][2]" id="mce-group[7235]-7235-1"><label for="mce-group[7235]-7235-1">Feature announcements</label></li>
+                    <li><input type="checkbox" value="4" name="group[7235][4]" id="mce-group[7235]-7235-2"><label for="mce-group[7235]-7235-2">Monthly newsletter</label></li>
+                </ul>
+            </div>
+            <div id="mce-responses" class="clear" style="float: none; margin: 0; padding: 0; width: 100%;">
+                <div class="response" id="mce-error-response" style="display:none; font-family: 'ProximaNova', sans-serif; color:#fff; width: 100%; font-weight: 100;"></div>
+                <div class="response" id="mce-success-response" style="display:none; font-family: 'ProximaNova', sans-serif; color:#fff; width: 100%; font-weight: 100;"></div>
+            </div>    
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0d29cf89c3f465ed1f368bc02_e2470fae4d" tabindex="-1" value=""></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';fnames[7]='TITLE';ftypes[7]='text';fnames[8]='MESSAGE';ftypes[8]='text';fnames[9]='MMERGE9';ftypes[9]='text';fnames[10]='MMERGE10';ftypes[10]='text';fnames[11]='MMERGE11';ftypes[11]='text';fnames[12]='MMERGE12';ftypes[12]='text';fnames[13]='MMERGE13';ftypes[13]='text';fnames[14]='MMERGE14';ftypes[14]='text';fnames[15]='MMERGE15';ftypes[15]='text';fnames[16]='MMERGE16';ftypes[16]='text';fnames[17]='MMERGE17';ftypes[17]='text';fnames[18]='MMERGE18';ftypes[18]='text';fnames[19]='MMERGE19';ftypes[19]='text';fnames[20]='MMERGE20';ftypes[20]='text';fnames[21]='MMERGE21';ftypes[21]='text';fnames[22]='MMERGE22';ftypes[22]='text';fnames[23]='MMERGE23';ftypes[23]='text';fnames[24]='MMERGE24';ftypes[24]='text';fnames[25]='MMERGE25';ftypes[25]='text';fnames[26]='MMERGE26';ftypes[26]='text';fnames[27]='MMERGE27';ftypes[27]='text';fnames[28]='MMERGE28';ftypes[28]='text';fnames[29]='MMERGE29';ftypes[29]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+
+                      </div>
+                      
+                          <div class="col-md-6 col-lg-4">
+                              <div class="post-card post-min-height" onclick="location.href='\/\/crunch-io.github.io\/crunchy\/newsite\/release-notes\/2021-01-22\/'">
+                                  <div class="posts">
+                                      <h4 class="post-title">Release 2021.1</h4>
+                                      <span>January 22, 2021</span>
+                                      <p></p>
+                                      <a href="//crunch-io.github.io/crunchy/newsite/release-notes/2021-01-22/">Learn More &#10230;</a>
+                                  </div>
+                              </div>
+                          </div>
+                      
+                  </div>
+
+                  
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="page-item">
+            <a href="/crunchy/newsite/release-notes/page/5/" class="page-link" aria-label="Previous"><span aria-hidden="true">&#10229; Previous</span></a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        
+        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/">1</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/2/">2</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/3/">3</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item disabled">
+                <span aria-hidden="true">&nbsp;&hellip;&nbsp;</span>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/5/">5</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item active">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/6/">6</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    <div class="col-md-3 text-right">
+        <div class="page-item disabled">
+            <a  class="page-link" aria-label="Next"><span aria-hidden="true">Next &#10230;</span></a>
+        </div>
+    </div>
+</div>
+
+
+
+              </div> 
+            </div> 
+
+            <div class="footer-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1>Learn about <span>our team</span></h1>
+                                <a href="team" class="btn btn-link">Our team &#10230;</a>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div>
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+  <div class="cookiealert-container">
+      <div class="row">
+          <div class="col-sm-8 col-md-10 text-left">
+              Crunch.io uses cookies to ensure you get the best experience on our site. By using this site, you agree to the use of cookies in accordance with our <a href="about/privacy">Cookie Policy</a>.
+          </div>
+
+          <div class="col-sm-4 col-md-2">
+              <button type="button" class="btn btn-success acceptcookies" aria-label="Close"> I accept </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://js.hsforms.net/forms/shell.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/script.js"></script>
+
+
+
+
+</body>
+</html>
+
