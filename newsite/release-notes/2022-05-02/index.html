@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Quirks Chicago</title>
+    <title>Crunch | Release 2022.08</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Quirks Chicago &middot; Online survey data analysis">
+    <meta property="og:title" content="Release 2022.08 &middot; Online survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/info.crunch.io/quirks-chicago-2022">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2022-05-02/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2021-12-27T12:19:23-04:00">
+  <meta property="og:updated_time" content="2022-05-02T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Quirks Chicago"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Release 2022.08"/>
+<meta name="twitter:description" content="Crunch web application  Fixed the following issues:  Certain messages were not sent to clients who have requested notification, specifically for dataset sharing. Time plots using categorical dates with the date format YYYY-Www were not rendering properly. Time plots would sometimes not save properly to the deck. Scorecard creation would sometimes not work. Vertical scrolling was not working properly for folders that have homepages defined for them.   Updated the Decipher variable format."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -51,6 +51,7 @@
   </head>
 
   <body>
+
 
 
 
@@ -136,27 +137,99 @@
     </nav>
 
 
-<div class="container">
-<div id="hero" class="row">
-    <div class="intro-post col">
-        <h1 itemprop="headline">  Quirks Chicago</h1>
-        
-        <time class="post-time">
-  Published <span datetime="2021-12-27T12:19:23-04:00">27 Dec 2021</span>
+<div id="wrapper">
 
-</time>
-    </div>
-</div>
-<div id="post-box" class="row">
-    <div class="col">
-        <div id="post" itemprop="articleBody">
-            
-        </div><br/>
-        <div>
-        </div>
-    </div>
-</div>
-</div>
+    <div id="secondary-pages-wrapper">
+        <div class="container-fluid">
+
+            <div class="blog-content">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-8 text-center">
+                                <h1 class="display-5">Release Notes</h1>
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+            <div class="blog-content">
+                    <div class="container spacer-top">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <h2>Release 2022.08</h2>
+                                <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
+                                <hr>
+                                <p></p>
+                                <span>May 2, 2022 </span>
+                            </div>
+                        </div> 
+                </div> 
+            </div> 
+
+            <div class="secondary-content">
+              <div class="container blog-content-mg">
+
+                  <div class="row spacer-bottom">
+                      <div class="col-md-10 offset-md-1">
+                          <h3 id="crunch-web-application">Crunch web application</h3>
+<ul>
+<li>Fixed the following issues:
+<ul>
+<li>Certain messages were not sent to clients who have requested notification, specifically for dataset sharing.</li>
+<li>Time plots using categorical dates with the date format <code>YYYY-Www</code> were not rendering properly.</li>
+<li>Time plots would sometimes not save properly to the deck.</li>
+<li>Scorecard creation would sometimes not work.</li>
+<li>Vertical scrolling was not working properly for folders that have homepages defined for them.</li>
+</ul>
+</li>
+<li>Updated the <a href="https://help.crunch.io/hc/en-us/sections/360013455752-Decipher">Decipher</a> variable format.</li>
+<li>Made a fix to how categorical arrays are exported to Excel (<code>.xlsx</code> ) files: since exports only print tables for the first 150 subvariables, users are advised to split larger arrays into chunks.</li>
+<li>Made improvements to the UI experience when exporting a tab book.</li>
+<li>Removed the option to import a multitable from the multitable builder.</li>
+<li>Updated the transformation for &ldquo;multiple selections&rdquo; operations to adapt to an earlier change in the handling of categorical arrays in order to reduce memory consumption.</li>
+</ul>
+<h3 id="api-endpoints-and-api-reference">API endpoints and API reference</h3>
+<ul>
+<li>Enforced <a href="https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys">API Keys</a>. Crunch is no longer allowing a username and password to access the Crunch API.</li>
+</ul>
+<h3 id="sdks-rcrunch-pycrunch-and-scrunch">SDKs (<code>rCrunch</code>, <code>pyCrunch</code>, and <code>sCrunch</code>)</h3>
+<ul>
+<li>Added information to <a href="https://github.com/Crunch-io/scrunch/wiki/Scrunch-Reference#scrunchget_datasetdataset-sitenone-editorfalse">sCrunch docs</a> that describe support for using API keys.</li>
+<li>Updated rCrunch to explain how authenticating with crunch via <code>login()</code> is no longer supported. See <a href="https://crunch.io/r/crunch/reference/crunch-api-key.html">Crunch API Keys</a> for more details on authenticating with API keys.</li>
+<li>Added experimental <a href="https://crunch.io/r/crunch/reference/exportDataset.html">rCrunch support for parquet exports</a> in <code>exportDataset()</code>.</li>
+</ul>
+<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
+<ul>
+<li>Added new information to the <a href="https://help.crunch.io/hc/en-us/articles/360040119051#credentials">Importing Decipher</a> article, which describes how to obtain prerequisite credential information to load data from Decipher into Crunch.</li>
+<li>Created a new article for the new <a href="https://help.crunch.io/hc/en-us/articles/5737523462669-The-Script-Builder-a-generator-for-Crunch-Automation">Script Builder</a>, which describes how to use a customized Google Sheet that consolidates all of the key metadata from a dataset into one place. It acts as both a metadata reference and a tool for automatically generating <a href="https://help.crunch.io/hc/en-us/articles/360041769292-Crunch-Automation-basics">Crunch Automation</a>.</li>
+</ul>
+
+                      </div>
+                  </div>
+
+              </div> 
+            </div> 
+
+            <footer class="footer d-flex justify-content-center bg-black">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a class="nav-link active" href="about">About</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="team">Team</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://help.crunch.io/">Support</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="http://status.crunch.io/" target="_blank">Status</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="about/privacy">Privacy</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="https://app.crunch.io/">Sign in</a></li>
+                    <li class="list-inline-item"><a class="nav-link" href="contact">Contact us</a></li>
+                </ul>
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
 
 <div class="alert alert-dismissible text-center cookiealert" role="alert">
   <div class="cookiealert-container">

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.29.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.30.0</span>
       </span>
     </div>
 
@@ -124,7 +124,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">exportDataset</span><span class="op">(</span>
   <span class="va">dataset</span>,
   <span class="va">file</span>,
-  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csv"</span>, <span class="st">"spss"</span><span class="op">)</span>,
+  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csv"</span>, <span class="st">"spss"</span>, <span class="st">"parquet"</span><span class="op">)</span>,
   categorical <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>,
   na <span class="op">=</span> <span class="cn">NULL</span>,
   varlabel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"description"</span><span class="op">)</span>,
@@ -145,7 +145,7 @@ expression on the rows and a selection of variables on the columns.</p></dd>
 <dd><p>character local filename to write to</p></dd>
 <dt>format</dt>
 <dd><p>character export format: currently supported values are "csv"
-and "spss".</p></dd>
+and "spss" (and experimental support for "parquet").</p></dd>
 <dt>categorical</dt>
 <dd><p>character: export categorical values to CSV as category
 "name" (default) or "id". Ignored by the SPSS exporter.</p></dd>
@@ -179,6 +179,18 @@ expression on the rows and a selection of variables on the columns.</p></dd>
     <p>Invisibly, <code>file</code>.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="va">csv_file</span> <span class="op">&lt;-</span> <span class="fu">exportDataset</span><span class="op">(</span><span class="va">ds</span>, <span class="st">"data.csv"</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="va">csv_file</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># parquet will likely read more quickly and be a smaller download size</span></span>
+<span class="r-in"><span class="va">parquet_file</span> <span class="op">&lt;-</span> <span class="fu">exportDataset</span><span class="op">(</span><span class="va">ds</span>, <span class="st">"data.parquet"</span><span class="op">)</span></span>
+<span class="r-in"><span class="co"># data &lt;- arrow::read_parquet(parquet_file) # The arrow package can read parquet files</span></span>
+<span class="r-in"><span class="op">}</span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
@@ -191,7 +203,7 @@ expression on the rows and a selection of variables on the columns.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

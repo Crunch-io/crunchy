@@ -8,6 +8,80 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jan 2021 14:08:35 +0200</lastBuildDate><atom:link href="//crunch-io.github.io/crunchy/newsite/release-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Release 2022.08</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2022-05-02/</link>
+      <pubDate>Mon, 02 May 2022 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2022-05-02/</guid>
+      <description>Crunch web application  Fixed the following issues:  Certain messages were not sent to clients who have requested notification, specifically for dataset sharing. Time plots using categorical dates with the date format YYYY-Www were not rendering properly. Time plots would sometimes not save properly to the deck. Scorecard creation would sometimes not work. Vertical scrolling was not working properly for folders that have homepages defined for them.   Updated the Decipher variable format.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed the following issues:
+&lt;ul&gt;
+&lt;li&gt;Certain messages were not sent to clients who have requested notification, specifically for dataset sharing.&lt;/li&gt;
+&lt;li&gt;Time plots using categorical dates with the date format &lt;code&gt;YYYY-Www&lt;/code&gt; were not rendering properly.&lt;/li&gt;
+&lt;li&gt;Time plots would sometimes not save properly to the deck.&lt;/li&gt;
+&lt;li&gt;Scorecard creation would sometimes not work.&lt;/li&gt;
+&lt;li&gt;Vertical scrolling was not working properly for folders that have homepages defined for them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/360013455752-Decipher&#34;&gt;Decipher&lt;/a&gt; variable format.&lt;/li&gt;
+&lt;li&gt;Made a fix to how categorical arrays are exported to Excel (&lt;code&gt;.xlsx&lt;/code&gt; ) files: since exports only print tables for the first 150 subvariables, users are advised to split larger arrays into chunks.&lt;/li&gt;
+&lt;li&gt;Made improvements to the UI experience when exporting a tab book.&lt;/li&gt;
+&lt;li&gt;Removed the option to import a multitable from the multitable builder.&lt;/li&gt;
+&lt;li&gt;Updated the transformation for &amp;ldquo;multiple selections&amp;rdquo; operations to adapt to an earlier change in the handling of categorical arrays in order to reduce memory consumption.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;api-endpoints-and-api-reference&#34;&gt;API endpoints and API reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Enforced &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/4415963337869-API-Keys&#34;&gt;API Keys&lt;/a&gt;. Crunch is no longer allowing a username and password to access the Crunch API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sdks-rcrunch-pycrunch-and-scrunch&#34;&gt;SDKs (&lt;code&gt;rCrunch&lt;/code&gt;, &lt;code&gt;pyCrunch&lt;/code&gt;, and &lt;code&gt;sCrunch&lt;/code&gt;)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added information to &lt;a href=&#34;https://github.com/Crunch-io/scrunch/wiki/Scrunch-Reference#scrunchget_datasetdataset-sitenone-editorfalse&#34;&gt;sCrunch docs&lt;/a&gt; that describe support for using API keys.&lt;/li&gt;
+&lt;li&gt;Updated rCrunch to explain how authenticating with crunch via &lt;code&gt;login()&lt;/code&gt; is no longer supported. See &lt;a href=&#34;https://crunch.io/r/crunch/reference/crunch-api-key.html&#34;&gt;Crunch API Keys&lt;/a&gt; for more details on authenticating with API keys.&lt;/li&gt;
+&lt;li&gt;Added experimental &lt;a href=&#34;https://crunch.io/r/crunch/reference/exportDataset.html&#34;&gt;rCrunch support for parquet exports&lt;/a&gt; in &lt;code&gt;exportDataset()&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added new information to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040119051#credentials&#34;&gt;Importing Decipher&lt;/a&gt; article, which describes how to obtain prerequisite credential information to load data from Decipher into Crunch.&lt;/li&gt;
+&lt;li&gt;Created a new article for the new &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/5737523462669-The-Script-Builder-a-generator-for-Crunch-Automation&#34;&gt;Script Builder&lt;/a&gt;, which describes how to use a customized Google Sheet that consolidates all of the key metadata from a dataset into one place. It acts as both a metadata reference and a tool for automatically generating &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360041769292-Crunch-Automation-basics&#34;&gt;Crunch Automation&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2022.07</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2022-04-11/</link>
+      <pubDate>Mon, 11 Apr 2022 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2022-04-11/</guid>
+      <description>Crunch web application  Folder Homepages is now available in wide release. Made the following PowerPoint export improvements:  Removed the “All” title from exports of univariate bar graphs. Exports for a tabbed graph analysis now reflect the tab&amp;rsquo;s name corresponding to the data on the slide.   Fixed the following issues:  The search query was not working properly when a query contained an ampersand (&amp;amp;) character. Graph categories were rendered with incorrect colors if certain categories were suppressed.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://crunch.io/dev/features/folder-homepage/&#34;&gt;Folder Homepages&lt;/a&gt; is now available in wide release.&lt;/li&gt;
+&lt;li&gt;Made the following PowerPoint export improvements:
+&lt;ul&gt;
+&lt;li&gt;Removed the “All” title from exports of univariate bar graphs.&lt;/li&gt;
+&lt;li&gt;Exports for a tabbed graph analysis now reflect the tab&amp;rsquo;s name corresponding to the data on the slide.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Fixed the following issues:
+&lt;ul&gt;
+&lt;li&gt;The search query was not working properly when a query contained an ampersand (&lt;code&gt;&amp;amp;&lt;/code&gt;) character.&lt;/li&gt;
+&lt;li&gt;Graph categories were rendered with incorrect colors if certain categories were suppressed.&lt;/li&gt;
+&lt;li&gt;For numeric array timeplot analyses, the vertical axis would adjust incorrectly if there were negative values to plot.&lt;/li&gt;
+&lt;li&gt;The color assignment was sometimes assigned incorrectly for CrunchBoxes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed an issue in the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042039012-CREATE-CATEGORICAL-RECODE-command&#34;&gt;RECODE command&lt;/a&gt; where duplicate category IDs are created under certain conditions.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
       <title>Release 2022.06</title>
       <link>//crunch-io.github.io/crunchy/newsite/release-notes/2022-03-28/</link>
       <pubDate>Mon, 28 Mar 2022 10:00:00 -0700</pubDate>
