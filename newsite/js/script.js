@@ -181,22 +181,11 @@ $(document).ready(function() {
 
     // Hidden elements of accordion that ar active
     var accordionTargets;
-    $("#accordion-container .accordion .card-title button").on("click",function(e){
-<<<<<<< HEAD
-
-      accordionTargets = $(this).data("target");
-      $('#accordion-container .collapse.show').collapse('hide');
-      // we forsure that the carousel to open after 380 milliseconds
-      setTimeout(function(){
-        $(accordionTargets).collapse('show');
-      },380);
-
-=======
+    $("#accordion-container button").on("click",function(e){
       accordionTargets = $(this).data("target");
       $(accordionTargets).on('show.bs.collapse', function (e) {
         jQuery(".hide.collapse.show").collapse('hide');
       })
->>>>>>> visual-fixes-and-interaction-on-the-career-page
     });
 
 // End
