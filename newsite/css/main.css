@@ -13481,11 +13481,30 @@ figure figcaption h4 {
 .navbar .navbar-toggler {
   border: 0;
 }
+.navbar .dropdown .dropdown-menu {
+  border: 0px;
+  padding: 0 0 0.5rem;
+  transition: all 0.2s ease-out;
+}
 .navbar .dropdown .dropdown-menu .dropdown-item {
-  font-weight: 100;
+  font-size: 14.5px;
+  font-weight: 300;
+  padding: 0.25rem 0px;
+  transition: all 0.2s ease-out;
 }
 .navbar .dropdown .dropdown-menu .dropdown-item:hover, .navbar .dropdown .dropdown-menu .dropdown-item:focus, .navbar .dropdown .dropdown-menu .dropdown-item.active, .navbar .dropdown .dropdown-menu .dropdown-item:active {
   background-color: #f9f9f9;
+}
+.navbar .dropdown::before {
+  content: "";
+  background: transparent;
+  position: absolute;
+  left: calc(100% - 34px );
+  color: #575656;
+  top: 12px;
+}
+.navbar .dropdown.show::before {
+  transform: rotate(90deg);
 }
 
 #dot-nav {
@@ -13498,6 +13517,19 @@ figure figcaption h4 {
 @media (max-width: 767.98px) {
   #dot-nav {
     display: none;
+  }
+
+  .navbar .dropdown::before {
+    content: "";
+    background: url(/img/angle-right.svg);
+    background-size: cover;
+    color: #575656;
+    height: 20px;
+    left: calc(100% - 34px );
+    position: absolute;
+    transition: all 0.2s ease-out;
+    top: 12px;
+    width: 20px;
   }
 }
 #dot-nav ul {

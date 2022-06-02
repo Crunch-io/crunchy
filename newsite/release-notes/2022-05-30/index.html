@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Release 2021.27</title>
+    <title>Crunch | Release 2022.09</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Release 2021.27 &middot; Online survey data analysis">
+    <meta property="og:title" content="Release 2022.09 &middot; Online survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-07-26/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2022-05-30/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2021-07-26T10:00:00-07:00">
+  <meta property="og:updated_time" content="2022-05-30T10:00:00-07:00">
 
 
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
 
-<meta name="twitter:title" content="Release 2021.27"/>
-<meta name="twitter:description" content="Crunch web application Added functionality to prepend &lsquo;Loop Names&rsquo; to loop variables, which makes them work better in the UI and prevents clashes between variables. Fixed a bug in the Confirmit importer, which caused the variable name to be the same as the alias. Fixed a bug that caused integrated datasets to not have a working update dropdown. Made the following fixes and improvements: Negative differences now display properly if the checkbox &lsquo;Empty rows/columns&rsquo; in the display controller is deselected."/>
+<meta name="twitter:title" content="Release 2022.09"/>
+<meta name="twitter:description" content="Crunch web application Fixed the following in Confirmit integrations: Errors occurred when non-numeric category IDs are used. Surveys were not being displayed because they exist on subsequent pages. Fixed the following in the web ap: The numeric scale for a CrunchBox could mismatch the selected measure. Changes to the ‘Min’ and ‘Max’ value axis settings for a graph were not persisting. Enabled Dataset Views (in early access). See the announcement and documentation for more information."/>
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -158,11 +158,11 @@
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <h2>Release 2021.27</h2>
+                                <h2>Release 2022.09</h2>
                                 <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
                                 <hr>
                                 <p></p>
-                                <span>July 26, 2021 </span>
+                                <span>May 30, 2022 </span>
                             </div>
                         </div> 
                 </div> 
@@ -175,31 +175,28 @@
                       <div class="col-md-10 offset-md-1">
                           <h3 id="crunch-web-application">Crunch web application</h3>
 <ul>
-<li>Added functionality to prepend &lsquo;Loop Names&rsquo; to loop variables, which makes them work better in the UI and prevents clashes between variables.</li>
-<li>Fixed a bug in the <a href="https://help.crunch.io/hc/en-us/articles/4403966631309-How-your-survey-metadata-maps-from-Confirmit-into-Crunch">Confirmit importer</a>, which caused the variable name to be the same as the alias.</li>
-<li>Fixed a bug that caused integrated datasets to not have a working update dropdown.</li>
-<li>Made the following fixes and improvements:
+<li>Fixed the following in <a href="https://help.crunch.io/hc/en-us/articles/360060784772-How-to-import-from-Confirmit-into-Crunch">Confirmit integrations</a>:
 <ul>
-<li>Negative differences now display properly if the checkbox &lsquo;Empty rows/columns&rsquo; in the display controller is deselected.</li>
-<li>Displayed categories now correctly match the selected list of categories in dashboard time plots.</li>
-<li>Pairwise comparisons now appear correctly for an analysis that has a multiple response variable in the column position (in cases where the multiple response variable included at least one subtotal).</li>
-<li>The UI now works properly when &lsquo;Missing&rsquo; categories are positioned anywhere outside of the bottom of the category list.</li>
-<li>The anchoring of subtotals at the bottom of the list of categories now correctly renders the relevant variable summary card.</li>
-<li>Tooltips above table cells now display the correct information.</li>
-<li>The properties panel for a categorical array now displays correct information when one or more subtotals or differences were defined on the categories.</li>
-<li>The &lsquo;Set comparison&rsquo; hypothesis testing option is now available in cases where subvariables are in the column position.</li>
+<li>Errors occurred when non-numeric category IDs are used.</li>
+<li>Surveys were not being displayed because they exist on subsequent pages.</li>
 </ul>
 </li>
+<li>Fixed the following in the web ap:
+<ul>
+<li>The numeric scale for a CrunchBox could mismatch the selected measure.</li>
+<li>Changes to the ‘Min’ and ‘Max’ value axis settings for a graph were not persisting.</li>
+</ul>
+</li>
+<li>Enabled Dataset Views (<em>in early access</em>). See the <a href="https://crunch.io/dev/features/dataset-views/">announcement</a> and <a href="https://help.crunch.io/hc/en-us/articles/4405522348301-Dataset-Views">documentation</a> for more information.</li>
+</ul>
+<h3 id="crunch-automation">Crunch Automation</h3>
+<ul>
+<li>Fixed an issue that occurred when using the <a href="https://help.crunch.io/hc/en-us/articles/360057819011-OVERWRITE-VALUES-command">OVERWRITE VALUES command</a> to overwrite numeric array subvariables.</li>
+<li>Added the <a href="https://help.crunch.io/hc/en-us/articles/6354863541133-CREATE-TEXT-CONCATENATE-command">CREATE TEXT CONCATENATE command</a>, which allows you to create a new text variable by concatenating multiple inputs by alias and using an optional separator.</li>
 </ul>
 <h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
 <ul>
-<li>Created new <a href="https://help.crunch.io/hc/en-us/articles/4405014460301-SPSS-datafile-specifications">SPSS datafile specifications</a> article.</li>
-<li>Created new <a href="https://help.crunch.io/hc/en-us/articles/4405077579405-Cleaning-relabeling-categories">Cleaning/relabeling categories</a> article.</li>
-<li>Added new info to the <a href="https://help.crunch.io/hc/en-us/articles/360041300531-Dataset-Level-User-Access">Dataset Level User Access</a> article.</li>
-<li>Updated the <a href="https://help.crunch.io/hc/en-us/articles/360044362492-The-Definitive-Guide-to-Importing-and-Preparing-Data">Definitive Guide to Importing and Preparing Data</a> article.</li>
-<li>Updated the <a href="https://help.crunch.io/hc/en-us/articles/360045930891-Setting-category-numeric-values-dates">Setting category numeric values &amp; dates</a> with new information.</li>
-<li>Added Crunch Automation commands to the <a href="https://help.crunch.io/hc/en-us/articles/360059213452-Category-Differences">Category Differences</a> article.</li>
-<li>Added more info and links to the <a href="https://help.crunch.io/hc/en-us/articles/360044737751-Multidimensional-Analysis">Multidimensional Analysis</a> article.</li>
+<li>Created a <a href="https://help.crunch.io/hc/en-us/articles/6134285384205-Adding-an-API-key-in-the-browser">new article</a> that describes how to add an API key in your browser.</li>
 </ul>
 
                       </div>
