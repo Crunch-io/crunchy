@@ -178,7 +178,6 @@ $(document).ready(function() {
         $("#video").attr('src',$videoSrc);
     })
 
-
     // Hidden elements of accordion that ar active
     var accordionTargets;
     $("#accordion-container button").on("click",function(e){
