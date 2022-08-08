@@ -125,58 +125,81 @@ work with by subsetting the <code>dataset</code> you pass into the function.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabBook</span><span class="op">(</span>
-  <span class="va">multitable</span>,
-  <span class="va">dataset</span>,
-  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,
-  output_format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"json"</span>, <span class="st">"xlsx"</span>, <span class="st">"csv"</span><span class="op">)</span>,
-  <span class="va">file</span>,
-  filter <span class="op">=</span> <span class="cn">NULL</span>,
-  use_legacy_endpoint <span class="op">=</span> <span class="fu"><a href="envOrOption.html">envOrOption</a></span><span class="op">(</span><span class="st">"use.legacy.tabbook.endpoint"</span>, <span class="cn">FALSE</span>, expect_lgl <span class="op">=</span>
-    <span class="cn">TRUE</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabBook</span><span class="op">(</span></span>
+<span>  <span class="va">multitable</span>,</span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>  output_format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"json"</span>, <span class="st">"xlsx"</span>, <span class="st">"csv"</span><span class="op">)</span>,</span>
+<span>  <span class="va">file</span>,</span>
+<span>  filter <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  use_legacy_endpoint <span class="op">=</span> <span class="fu"><a href="envOrOption.html">envOrOption</a></span><span class="op">(</span><span class="st">"use.legacy.tabbook.endpoint"</span>, <span class="cn">FALSE</span>, expect_lgl <span class="op">=</span></span>
+<span>    <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>multitable</dt>
 <dd><p>a <code>Multitable</code> object</p></dd>
+
+
 <dt>dataset</dt>
 <dd><p>CrunchDataset, which may be subset with a filter expression
 on the rows, and a selection of variables to use on the columns.</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>a CrunchVariable that has been designated as a potential
 weight variable for <code>dataset</code>, or <code>NULL</code> for unweighted results.
 Default is the currently applied <code><a href="weight.html">weight</a></code>.</p></dd>
+
+
 <dt>output_format</dt>
 <dd><p>character export format: currently supported values are "json"
 (default), "xlsx" and "csv".</p></dd>
+
+
 <dt>file</dt>
 <dd><p>character local filename to write to. A default filename will be
 generated from the <code>multitable</code>'s name if one is not supplied and the
 "xlsx" format is requested. Not required for "json" format export.</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>a Crunch <code>filter</code> object or a vector of names
 of <code><a href="filter-catalog.html">filters</a></code> defined in the dataset.</p></dd>
+
+
 <dt>use_legacy_endpoint</dt>
 <dd><p>Logical, indicating whether to use a 'legacy'
 endpoint for compatibility (this endpoint will be removed in the future).
 Defaults to <code>FALSE</code>, but can be set in the function, or with the environment
 variable <code>R_USE_LEGACY_TABBOOK_ENDPOINT</code> or R option
 <code>use.legacy.tabbook.endpoint</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional "options" passed to the tab book POST request.
 More details can be found
 <a href="https://crunch.io/api/reference/#post-/datasets/-dataset_id-/multitables/" class="external-link">in the crunch API documentation</a></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>If "json" format is requested, the function returns an object of
-class <code>TabBookResult</code>, containing a list of <code>MultitableResult</code>objects, which themselves contain <code>CrunchCube</code>s. If "xlsx" or "csv", is requested,
+    
+
+<p>If "json" format is requested, the function returns an object of
+class <code>TabBookResult</code>, containing a list of <code>MultitableResult</code></p>
+
+
+<p>objects, which themselves contain <code>CrunchCube</code>s. If "xlsx" or "csv", is requested,
 the function invisibly returns the filename (<code>file</code>, if specified, or the
 the autogenerated file name). If you request "json" and wish to access the
-JSON data underlying the <code>TabBookResult</code>, pass in a path for <code>file</code>and you will get a JSON file written there as well.</p>
+JSON data underlying the <code>TabBookResult</code>, pass in a path for <code>file</code></p>
+
+
+<p>and you will get a JSON file written there as well.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -187,42 +210,42 @@ results. You can then further format these and construct custom tab reports.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Excel export</span></span>
-<span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="newMultitable.html">newMultitable</a></span><span class="op">(</span><span class="op">~</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age4</span> <span class="op">+</span> <span class="va">marstat</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tabBook</span><span class="op">(</span><span class="va">m</span>, <span class="va">ds</span>, format <span class="op">=</span> <span class="st">"xlsx"</span>, file <span class="op">=</span> <span class="st">"wealthy-tab-book.xlsx"</span>, filter <span class="op">=</span> <span class="st">"wealthy"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># csv export</span></span>
-<span class="r-in"><span class="fu">tabBook</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">mt</span>,</span>
-<span class="r-in">    <span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"q5a"</span>, <span class="st">"q8"</span>, <span class="st">"q2a_1"</span>, <span class="st">"q2a_2"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">    output_format <span class="op">=</span> <span class="st">"csv"</span>,</span>
-<span class="r-in">    file <span class="op">=</span> <span class="st">"tabbook.csv"</span>,</span>
-<span class="r-in">    format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        pval_colors <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">        decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,</span>
-<span class="r-in">        show_empty <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    sig_threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span class="r-in">    doc_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>toc <span class="op">=</span> <span class="cn">FALSE</span>, variable_sheets <span class="op">=</span> <span class="st">"one_sheet"</span><span class="op">)</span>,</span>
-<span class="r-in">    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">        <span class="st">"col_percent"</span>, <span class="st">"row_percent"</span>, <span class="st">"count_unweighted"</span>, <span class="st">"mean"</span>,</span>
-<span class="r-in">        <span class="st">"valid_count_weighted"</span>, <span class="st">"valid_count_unweighted"</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    page_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">            top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"base_weighted"</span>, <span class="st">"base_unweighted"</span><span class="op">)</span>,</span>
-<span class="r-in">            bottom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scale_mean"</span>, <span class="st">"scale_median"</span><span class="op">)</span></span>
-<span class="r-in">        <span class="op">)</span>,</span>
-<span class="r-in">        measure_layout <span class="op">=</span> <span class="st">"long"</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># JSON export (loads into R)</span></span>
-<span class="r-in"><span class="va">book</span> <span class="op">&lt;-</span> <span class="fu">tabBook</span><span class="op">(</span><span class="va">m</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">book</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Excel export</span></span></span>
+<span class="r-in"><span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="newMultitable.html">newMultitable</a></span><span class="op">(</span><span class="op">~</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age4</span> <span class="op">+</span> <span class="va">marstat</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tabBook</span><span class="op">(</span><span class="va">m</span>, <span class="va">ds</span>, format <span class="op">=</span> <span class="st">"xlsx"</span>, file <span class="op">=</span> <span class="st">"wealthy-tab-book.xlsx"</span>, filter <span class="op">=</span> <span class="st">"wealthy"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># csv export</span></span></span>
+<span class="r-in"><span><span class="fu">tabBook</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">mt</span>,</span></span>
+<span class="r-in"><span>    <span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"q5a"</span>, <span class="st">"q8"</span>, <span class="st">"q2a_1"</span>, <span class="st">"q2a_2"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    output_format <span class="op">=</span> <span class="st">"csv"</span>,</span></span>
+<span class="r-in"><span>    file <span class="op">=</span> <span class="st">"tabbook.csv"</span>,</span></span>
+<span class="r-in"><span>    format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        pval_colors <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>        decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        show_empty <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    sig_threshold <span class="op">=</span> <span class="fl">0.05</span>,</span></span>
+<span class="r-in"><span>    doc_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>toc <span class="op">=</span> <span class="cn">FALSE</span>, variable_sheets <span class="op">=</span> <span class="st">"one_sheet"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="st">"col_percent"</span>, <span class="st">"row_percent"</span>, <span class="st">"count_unweighted"</span>, <span class="st">"mean"</span>,</span></span>
+<span class="r-in"><span>        <span class="st">"valid_count_weighted"</span>, <span class="st">"valid_count_unweighted"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    page_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"base_weighted"</span>, <span class="st">"base_unweighted"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>            bottom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"scale_mean"</span>, <span class="st">"scale_median"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span>,</span></span>
+<span class="r-in"><span>        measure_layout <span class="op">=</span> <span class="st">"long"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># JSON export (loads into R)</span></span></span>
+<span class="r-in"><span><span class="va">book</span> <span class="op">&lt;-</span> <span class="fu">tabBook</span><span class="op">(</span><span class="va">m</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tables</span> <span class="op">&lt;-</span> <span class="fu"><a href="cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">book</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -237,7 +260,7 @@ results. You can then further format these and construct custom tab reports.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -125,19 +125,22 @@ perform those actions, you can preemptively provide <code>consent</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">consent</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">with_consent</span><span class="op">(</span><span class="va">expr</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">consent</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">with_consent</span><span class="op">(</span><span class="va">expr</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>expr</dt>
 <dd><p>Code to evaluate with consent</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>consent</code> returns an S3 class "contextManager" object, which
+    
+
+<p><code>consent</code> returns an S3 class "contextManager" object, which
 you can use with <code>with</code>. <code>with_consent</code> evaluates its arguments
 inside the <code>consent</code> context.</p>
     </div>
@@ -148,11 +151,11 @@ inside the <code>consent</code> context.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu">consent</span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="delete.html">delete</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Equivalent to:</span></span>
-<span class="r-in"><span class="fu">with_consent</span><span class="op">(</span><span class="fu"><a href="delete.html">delete</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu">consent</span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="delete.html">delete</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Equivalent to:</span></span></span>
+<span class="r-in"><span><span class="fu">with_consent</span><span class="op">(</span><span class="fu"><a href="delete.html">delete</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -167,7 +170,7 @@ inside the <code>consent</code> context.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

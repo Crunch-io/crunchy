@@ -123,31 +123,38 @@ wraps it and displays a message if there is a new version. It is called in
     <p><code>checkForNewVersion</code> looks for a tagged version on GitHub and compares with
 the version number of the currently installed package. <code>notifyIfNewVersion</code>
 wraps it and displays a message if there is a new version. It is called in
-<code><a href="https://rdrr.io/r/base/ns-hooks.html" class="external-link">.onLoad()</a></code>.</p>
+<code>.onLoad()</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">notifyIfNewVersion</span><span class="op">(</span>
-  package <span class="op">=</span> <span class="st">"crunch"</span>,
-  github <span class="op">=</span> <span class="st">"Crunch-io/rcrunch"</span>,
-  installed.version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="va">package</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">checkForNewVersion</span><span class="op">(</span><span class="va">github</span>, <span class="va">installed.version</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">notifyIfNewVersion</span><span class="op">(</span></span>
+<span>  package <span class="op">=</span> <span class="st">"crunch"</span>,</span>
+<span>  github <span class="op">=</span> <span class="st">"Crunch-io/rcrunch"</span>,</span>
+<span>  installed.version <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="va">package</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">checkForNewVersion</span><span class="op">(</span><span class="va">github</span>, <span class="va">installed.version</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>package</dt>
 <dd><p>character package name</p></dd>
+
+
 <dt>github</dt>
 <dd><p>character "organization/repo" of your package on GitHub</p></dd>
+
+
 <dt>installed.version</dt>
 <dd><p>character the currently installed version string</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>checkForNewVersion</code> returns the version string if there is a new
+    
+
+<p><code>checkForNewVersion</code> returns the version string if there is a new
 version, or NULL. <code>notifyIfNewVersion</code> returns nothing invisibly, called for
 its side effects.</p>
     </div>
@@ -164,7 +171,7 @@ its side effects.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

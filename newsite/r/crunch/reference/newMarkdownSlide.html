@@ -125,42 +125,59 @@ your computer into the slide.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">newMarkdownSlide</span><span class="op">(</span><span class="va">deck</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="st">""</span>, subtitle <span class="op">=</span> <span class="st">""</span><span class="op">)</span>
-
-<span class="fu">markdownSlideImage</span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchMarkdownSlide</span>
-<span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchMarkdownSlide,character</span>
-<span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">newMarkdownSlide</span><span class="op">(</span><span class="va">deck</span>, <span class="va">...</span>, title <span class="op">=</span> <span class="st">""</span>, subtitle <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">markdownSlideImage</span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchMarkdownSlide</span></span>
+<span><span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchMarkdownSlide,character</span></span>
+<span><span class="fu">slideMarkdown</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <code>CrunchMarkdownSlide</code></p></dd>
+
+
 <dt>value</dt>
 <dd><p>A string to replace the markdown content with</p></dd>
+
+
 <dt>deck</dt>
 <dd><p>A Crunch Deck</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Unnamed arguments are text that are combined to create the markdown body
 named arguments are passed to the API.</p></dd>
+
+
 <dt>title</dt>
 <dd><p>The slide's title</p></dd>
+
+
 <dt>subtitle</dt>
 <dd><p>The slide's subtitle</p></dd>
+
+
 <dt>file</dt>
 <dd><p>File path to an image</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>MarkdownCrunchSlide</code></p>
+    
+
+<p>A <code>MarkdownCrunchSlide</code></p>
+
+
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -169,24 +186,24 @@ named arguments are passed to the API.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">newMarkdownSlide</span><span class="op">(</span><span class="va">deck</span>, <span class="st">"We contacted 1,000 people by telephone"</span>, title <span class="op">=</span> <span class="st">"Methodology"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">newMarkdownSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">deck</span>,</span>
-<span class="r-in">    <span class="st">"The 3 most **popular** vegetables are:\n"</span>,</span>
-<span class="r-in">    <span class="st">"- Fennel\n"</span>,</span>
-<span class="r-in">    <span class="st">"- Carrots\n"</span>,</span>
-<span class="r-in">    <span class="st">"- Avocado\n"</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Key findings"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">newMarkdownSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">deck</span>,</span>
-<span class="r-in">    <span class="st">"crunch.io: "</span>,</span>
-<span class="r-in">    <span class="fu">markdownSlideImage</span><span class="op">(</span><span class="st">"logo.png"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">newMarkdownSlide</span><span class="op">(</span><span class="va">deck</span>, <span class="st">"We contacted 1,000 people by telephone"</span>, title <span class="op">=</span> <span class="st">"Methodology"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">newMarkdownSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">deck</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"The 3 most **popular** vegetables are:\n"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"- Fennel\n"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"- Carrots\n"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"- Avocado\n"</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Key findings"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">newMarkdownSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">deck</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"crunch.io: "</span>,</span></span>
+<span class="r-in"><span>    <span class="fu">markdownSlideImage</span><span class="op">(</span><span class="st">"logo.png"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -201,7 +218,7 @@ named arguments are passed to the API.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -123,30 +123,39 @@ baseline. Internally this function uses <code><a href="dimension-comparison.html
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">compareColsPairwise</span><span class="op">(</span><span class="va">cube</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">compareRowsPairwise</span><span class="op">(</span><span class="va">cube</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">compareDimsPairwise</span><span class="op">(</span><span class="va">cube</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cols"</span>, <span class="st">"rows"</span><span class="op">)</span>, <span class="va">baseline</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">compareColsPairwise</span><span class="op">(</span><span class="va">cube</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">compareRowsPairwise</span><span class="op">(</span><span class="va">cube</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">compareDimsPairwise</span><span class="op">(</span><span class="va">cube</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cols"</span>, <span class="st">"rows"</span><span class="op">)</span>, <span class="va">baseline</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>cube</dt>
 <dd><p>a cube to calculate the comparison on</p></dd>
+
+
 <dt>...</dt>
 <dd><p>arguments passed from <code>compareRowsPairwise()</code> or
 <code>compareColsPairwise()</code> to <code>compareDimsPairwise()</code> (i.e. <code>baseline</code>)</p></dd>
+
+
 <dt>dim</dt>
 <dd><p>which dimension is being compared (<code>rows</code> or <code>cols</code>, only valid
 for <code><a href="dimension-comparison.html">compareDims()</a></code>)</p></dd>
+
+
 <dt>baseline</dt>
 <dd><p>a character, the column to use as a baseline to compare
 against all other columns</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an array of z-score for the all the columns or rows compared to
+    
+
+<p>an array of z-score for the all the columns or rows compared to
 <code>baseline</code>. The <code>baseline</code> column is all 0s</p>
     </div>
     <div id="details">
@@ -175,7 +184,7 @@ should be used when interpreting z-scores from the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

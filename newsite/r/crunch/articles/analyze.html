@@ -173,233 +173,233 @@
 </h3>
 <p>Like <code>xtabs</code>, <code>crtabs</code> takes a formula and a data argument. Dimensions of your crosstab go on the right side of the <code>~</code>. For a univariate table of frequencies by education, we can do</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="va">tab1</span></code></pre></div>
-<pre><code><span class="co">## educ</span>
-<span class="co">##                No HS High school graduate         Some college               2-year               4-year </span>
-<span class="co">##                   12                   71                   61                   24                   57 </span>
-<span class="co">##            Post-grad </span>
-<span class="co">##                   25</span></code></pre>
+<code class="sourceCode R"><span><span class="va">tab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="va">tab1</span></span></code></pre></div>
+<pre><code><span><span class="co">## educ</span></span>
+<span><span class="co">##                No HS High school graduate         Some college               2-year               4-year </span></span>
+<span><span class="co">##                   12                   71                   61                   24                   57 </span></span>
+<span><span class="co">##            Post-grad </span></span>
+<span><span class="co">##                   25</span></span></code></pre>
 <p>Additional dimensions are added with <code>+</code>. For a two-way table of education and gender,</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="va">tab2</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="va">tab2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="va">tab2</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="weighting">Weighting<a class="anchor" aria-label="anchor" href="#weighting"></a>
 </h3>
 <p><code>crtabs</code> takes advantage of several Crunch features that <code>xtabs</code> does not support. First, it respects weight variables that have been set on the server. This dataset is not currently weighted</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/weight.html">weight</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## NULL</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/weight.html">weight</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## NULL</span></span></code></pre>
 <p>but we can very easily change that. Let’s use the “weight” variable that already exists in the dataset:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/weight.html">weight</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/weight.html">weight</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span></span></code></pre></div>
 <p>Now, if we request the same two-way table as before, we’ll get weighted results:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 <p>If we want unweighted data, that’s easy enough:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span>, weight<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span>, weight<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="proportion-tables">Proportion tables<a class="anchor" aria-label="anchor" href="#proportion-tables"></a>
 </h3>
 <p>As with any <code>array</code> data type, we can compute margin tables, and the <code>prop.table</code> function in R provides a convenient way for sweeping a table by a margin. These work on the output of <code>crtabs</code>, too:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab1</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## educ</span>
-<span class="co">##                No HS High school graduate         Some college               2-year               4-year </span>
-<span class="co">##                0.048                0.284                0.244                0.096                0.228 </span>
-<span class="co">##            Post-grad </span>
-<span class="co">##                0.100</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## educ</span></span>
+<span><span class="co">##                No HS High school graduate         Some college               2-year               4-year </span></span>
+<span><span class="co">##                0.048                0.284                0.244                0.096                0.228 </span></span>
+<span><span class="co">##            Post-grad </span></span>
+<span><span class="co">##                0.100</span></span></code></pre>
 <p>For column proportions, specify margin=2 (by rows, margin=1):</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab2</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                         Male     Female</span>
-<span class="co">##   No HS                0.05405405 0.04316547</span>
-<span class="co">##   High school graduate 0.29729730 0.27338129</span>
-<span class="co">##   Some college         0.23423423 0.25179856</span>
-<span class="co">##   2-year               0.05405405 0.12949640</span>
-<span class="co">##   4-year               0.22522523 0.23021583</span>
-<span class="co">##   Post-grad            0.13513514 0.07194245</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab2</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                         Male     Female</span></span>
+<span><span class="co">##   No HS                0.05405405 0.04316547</span></span>
+<span><span class="co">##   High school graduate 0.29729730 0.27338129</span></span>
+<span><span class="co">##   Some college         0.23423423 0.25179856</span></span>
+<span><span class="co">##   2-year               0.05405405 0.12949640</span></span>
+<span><span class="co">##   4-year               0.22522523 0.23021583</span></span>
+<span><span class="co">##   Post-grad            0.13513514 0.07194245</span></span></code></pre>
 <p>Let’s make that more readable:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   5      4</span>
-<span class="co">##   High school graduate   30     27</span>
-<span class="co">##   Some college           23     25</span>
-<span class="co">##   2-year                  5     13</span>
-<span class="co">##   4-year                 23     23</span>
-<span class="co">##   Post-grad              14      7</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   5      4</span></span>
+<span><span class="co">##   High school graduate   30     27</span></span>
+<span><span class="co">##   Some college           23     25</span></span>
+<span><span class="co">##   2-year                  5     13</span></span>
+<span><span class="co">##   4-year                 23     23</span></span>
+<span><span class="co">##   Post-grad              14      7</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="complex-data-types">Complex data types<a class="anchor" aria-label="anchor" href="#complex-data-types"></a>
 </h3>
 <p><code>crtabs</code> also comfortably handles the more complex data types that Crunch supports, including categorical array and multiple response variables. In the <a href="array-variables.html">array variables vignette</a>, we created a categorical array, “imiss”, for “Important issues”. We can crosstab with arrays just as we do non-arrays.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tab3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="va">tab3</span></code></pre></div>
-<pre><code><span class="co">## , , gender = Male</span>
-<span class="co">## </span>
-<span class="co">##                         imiss</span>
-<span class="co">## imiss                    Very Important Somewhat Important Not very Important Unimportant</span>
-<span class="co">##   Abortion                           32                 31                 26          22</span>
-<span class="co">##   Education                          49                 44                 12           6</span>
-<span class="co">##   Gay rights                         18                 25                 21          46</span>
-<span class="co">##   Health care                        79                 23                  5           4</span>
-<span class="co">##   Immigration                        51                 38                 14           8</span>
-<span class="co">##   Medicare                           58                 35                 12           6</span>
-<span class="co">##   Social security                    67                 33                  5           6</span>
-<span class="co">##   Taxes                              75                 29                  5           1</span>
-<span class="co">##   Terrorism                          44                 38                 17          11</span>
-<span class="co">##   The budget deficit                 60                 26                 16           9</span>
-<span class="co">##   The economy                        93                 14                  4           0</span>
-<span class="co">##   The environment                    35                 42                 20          14</span>
-<span class="co">##   The war in Afghanistan             24                 51                 25          10</span>
-<span class="co">## </span>
-<span class="co">## , , gender = Female</span>
-<span class="co">## </span>
-<span class="co">##                         imiss</span>
-<span class="co">## imiss                    Very Important Somewhat Important Not very Important Unimportant</span>
-<span class="co">##   Abortion                           63                 42                 24           9</span>
-<span class="co">##   Education                          87                 41                  7           4</span>
-<span class="co">##   Gay rights                         41                 36                 25          37</span>
-<span class="co">##   Health care                       102                 30                  4           2</span>
-<span class="co">##   Immigration                        56                 53                 20           9</span>
-<span class="co">##   Medicare                           80                 41                 15           2</span>
-<span class="co">##   Social security                    82                 41                 14           2</span>
-<span class="co">##   Taxes                              85                 35                 15           4</span>
-<span class="co">##   Terrorism                          68                 44                 18           9</span>
-<span class="co">##   The budget deficit                 65                 50                 17           7</span>
-<span class="co">##   The economy                       103                 30                  4           1</span>
-<span class="co">##   The environment                    64                 45                 16          11</span>
-<span class="co">##   The war in Afghanistan             49                 57                 20          13</span></code></pre>
+<code class="sourceCode R"><span><span class="va">tab3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="va">tab3</span></span></code></pre></div>
+<pre><code><span><span class="co">## , , gender = Male</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                         imiss</span></span>
+<span><span class="co">## imiss                    Very Important Somewhat Important Not very Important Unimportant</span></span>
+<span><span class="co">##   Abortion                           32                 31                 26          22</span></span>
+<span><span class="co">##   Education                          49                 44                 12           6</span></span>
+<span><span class="co">##   Gay rights                         18                 25                 21          46</span></span>
+<span><span class="co">##   Health care                        79                 23                  5           4</span></span>
+<span><span class="co">##   Immigration                        51                 38                 14           8</span></span>
+<span><span class="co">##   Medicare                           58                 35                 12           6</span></span>
+<span><span class="co">##   Social security                    67                 33                  5           6</span></span>
+<span><span class="co">##   Taxes                              75                 29                  5           1</span></span>
+<span><span class="co">##   Terrorism                          44                 38                 17          11</span></span>
+<span><span class="co">##   The budget deficit                 60                 26                 16           9</span></span>
+<span><span class="co">##   The economy                        93                 14                  4           0</span></span>
+<span><span class="co">##   The environment                    35                 42                 20          14</span></span>
+<span><span class="co">##   The war in Afghanistan             24                 51                 25          10</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## , , gender = Female</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                         imiss</span></span>
+<span><span class="co">## imiss                    Very Important Somewhat Important Not very Important Unimportant</span></span>
+<span><span class="co">##   Abortion                           63                 42                 24           9</span></span>
+<span><span class="co">##   Education                          87                 41                  7           4</span></span>
+<span><span class="co">##   Gay rights                         41                 36                 25          37</span></span>
+<span><span class="co">##   Health care                       102                 30                  4           2</span></span>
+<span><span class="co">##   Immigration                        56                 53                 20           9</span></span>
+<span><span class="co">##   Medicare                           80                 41                 15           2</span></span>
+<span><span class="co">##   Social security                    82                 41                 14           2</span></span>
+<span><span class="co">##   Taxes                              85                 35                 15           4</span></span>
+<span><span class="co">##   Terrorism                          68                 44                 18           9</span></span>
+<span><span class="co">##   The budget deficit                 65                 50                 17           7</span></span>
+<span><span class="co">##   The economy                       103                 30                  4           1</span></span>
+<span><span class="co">##   The environment                    64                 45                 16          11</span></span>
+<span><span class="co">##   The war in Afghanistan             49                 57                 20          13</span></span></code></pre>
 <p>Note that even though we specified two variables in our formula, because “imiss” itself is two dimensional, our result is a three-dimensional array.</p>
 <p>To illustrate working with multiple response variables, let’s convert “imiss” to multiple response, selecting its positive categories as indicating selection:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dichotomize.html">dichotomize</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Very Important"</span>, <span class="st">"Somewhat Important"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dichotomize.html">dichotomize</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">imiss</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Very Important"</span>, <span class="st">"Somewhat Important"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Now, when we crosstab it, we’ll get a two-dimensional table because multiple response variables present a one-dimensional interface:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tab3mr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="va">tab3mr</span></code></pre></div>
-<pre><code><span class="co">##                         gender</span>
-<span class="co">## imiss                         Male    Female</span>
-<span class="co">##   Abortion                58.64993  97.61001</span>
-<span class="co">##   Education               93.98404 115.08118</span>
-<span class="co">##   Gay rights              39.50817  68.21617</span>
-<span class="co">##   Health care            115.13064 120.27883</span>
-<span class="co">##   Immigration             86.65671  96.90796</span>
-<span class="co">##   Medicare               107.80704 110.61446</span>
-<span class="co">##   Social security        109.95809 109.20223</span>
-<span class="co">##   Taxes                  106.60644 108.92159</span>
-<span class="co">##   Terrorism               88.26523 101.57750</span>
-<span class="co">##   The budget deficit      89.38060 104.02191</span>
-<span class="co">##   The economy            108.38178 119.16976</span>
-<span class="co">##   The environment         90.32808  97.05483</span>
-<span class="co">##   The war in Afghanistan  73.62479  96.68801</span></code></pre>
+<code class="sourceCode R"><span><span class="va">tab3mr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="va">tab3mr</span></span></code></pre></div>
+<pre><code><span><span class="co">##                         gender</span></span>
+<span><span class="co">## imiss                         Male    Female</span></span>
+<span><span class="co">##   Abortion                58.64993  97.61001</span></span>
+<span><span class="co">##   Education               93.98404 115.08118</span></span>
+<span><span class="co">##   Gay rights              39.50817  68.21617</span></span>
+<span><span class="co">##   Health care            115.13064 120.27883</span></span>
+<span><span class="co">##   Immigration             86.65671  96.90796</span></span>
+<span><span class="co">##   Medicare               107.80704 110.61446</span></span>
+<span><span class="co">##   Social security        109.95809 109.20223</span></span>
+<span><span class="co">##   Taxes                  106.60644 108.92159</span></span>
+<span><span class="co">##   Terrorism               88.26523 101.57750</span></span>
+<span><span class="co">##   The budget deficit      89.38060 104.02191</span></span>
+<span><span class="co">##   The economy            108.38178 119.16976</span></span>
+<span><span class="co">##   The environment         90.32808  97.05483</span></span>
+<span><span class="co">##   The war in Afghanistan  73.62479  96.68801</span></span></code></pre>
 <p>It’s worth noting here that the result of <code>crtabs</code> isn’t an <code>array</code> object but a <code>CrunchCube</code> object.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">tab3mr</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "CrunchCube"</span>
-<span class="co">## attr(,"package")</span>
-<span class="co">## [1] "crunch"</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">tab3mr</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "CrunchCube"</span></span>
+<span><span class="co">## attr(,"package")</span></span>
+<span><span class="co">## [1] "crunch"</span></span></code></pre>
 <p>This allows us to do the appropriate calculations on arrays and multiple response variables when <code>prop.table</code> is called. To compute a margin table over a multiple response variable, summing along the dimension would give an incorrect value because the responses in a multiple response are not mutually exclusive–they can’t be assumed to sum to 100 percent. However, the <code>margin.table</code> method on <code>CrunchCubes</code> can compute the correct margin, so <code>prop.table</code> gives correct proportions:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab3mr</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                         gender</span>
-<span class="co">## imiss                    Male Female</span>
-<span class="co">##   Abortion                 48     77</span>
-<span class="co">##   Education                77     90</span>
-<span class="co">##   Gay rights               33     53</span>
-<span class="co">##   Health care              95     94</span>
-<span class="co">##   Immigration              71     77</span>
-<span class="co">##   Medicare                 89     87</span>
-<span class="co">##   Social security          90     85</span>
-<span class="co">##   Taxes                    88     85</span>
-<span class="co">##   Terrorism                74     79</span>
-<span class="co">##   The budget deficit       74     81</span>
-<span class="co">##   The economy              89     93</span>
-<span class="co">##   The environment          74     78</span>
-<span class="co">##   The war in Afghanistan   61     75</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="../reference/cube-computing.html">prop.table</a></span><span class="op">(</span><span class="va">tab3mr</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                         gender</span></span>
+<span><span class="co">## imiss                    Male Female</span></span>
+<span><span class="co">##   Abortion                 48     77</span></span>
+<span><span class="co">##   Education                77     90</span></span>
+<span><span class="co">##   Gay rights               33     53</span></span>
+<span><span class="co">##   Health care              95     94</span></span>
+<span><span class="co">##   Immigration              71     77</span></span>
+<span><span class="co">##   Medicare                 89     87</span></span>
+<span><span class="co">##   Social security          90     85</span></span>
+<span><span class="co">##   Taxes                    88     85</span></span>
+<span><span class="co">##   Terrorism                74     79</span></span>
+<span><span class="co">##   The budget deficit       74     81</span></span>
+<span><span class="co">##   The economy              89     93</span></span>
+<span><span class="co">##   The environment          74     78</span></span>
+<span><span class="co">##   The war in Afghanistan   61     75</span></span></code></pre>
 <p>Finally, just as we saw in the <a href="array-variables.html">array variables</a> vignette, we can grab individual subvariables and crosstab with them:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span><span class="op">$</span><span class="va">imiss_f</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                     gender</span>
-<span class="co">## imiss_f              Male Female</span>
-<span class="co">##   Very Important       44     68</span>
-<span class="co">##   Somewhat Important   38     44</span>
-<span class="co">##   Not very Important   17     18</span>
-<span class="co">##   Unimportant          11      9</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span><span class="op">$</span><span class="va">imiss_f</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                     gender</span></span>
+<span><span class="co">## imiss_f              Male Female</span></span>
+<span><span class="co">##   Very Important       44     68</span></span>
+<span><span class="co">##   Somewhat Important   38     44</span></span>
+<span><span class="co">##   Not very Important   17     18</span></span>
+<span><span class="co">##   Unimportant          11      9</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="n-way-tables">N-way tables<a class="anchor" aria-label="anchor" href="#n-way-tables"></a>
 </h3>
 <p>It’s worth noting that we can extend the crosstabbing to higher dimensions, just by adding more terms on the right-hand side of the formula:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## , , gender = Male</span>
-<span class="co">## </span>
-<span class="co">##                         educ</span>
-<span class="co">## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad</span>
-<span class="co">##   Abortion                   3                   19           18      1     14         8</span>
-<span class="co">##   Education                  6                   23           22      6     23        13</span>
-<span class="co">##   Gay rights                 1                   11           12      1      8        10</span>
-<span class="co">##   Health care                5                   33           22      6     22        14</span>
-<span class="co">##   Immigration                4                   26           20      6     20        13</span>
-<span class="co">##   Medicare                   5                   29           21      5     21        12</span>
-<span class="co">##   Social security            5                   31           22      6     21        15</span>
-<span class="co">##   Taxes                      6                   30           25      6     23        14</span>
-<span class="co">##   Terrorism                  5                   24           19      6     16        12</span>
-<span class="co">##   The budget deficit         6                   25           20      5     18        12</span>
-<span class="co">##   The economy                6                   31           25      6     24        15</span>
-<span class="co">##   The environment            5                   22           16      4     17        13</span>
-<span class="co">##   The war in Afghanistan     5                   17           20      3     20        10</span>
-<span class="co">## </span>
-<span class="co">## , , gender = Female</span>
-<span class="co">## </span>
-<span class="co">##                         educ</span>
-<span class="co">## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad</span>
-<span class="co">##   Abortion                   4                   26           27     12     27         9</span>
-<span class="co">##   Education                  6                   31           32     17     32        10</span>
-<span class="co">##   Gay rights                 3                   15           23      9     21         6</span>
-<span class="co">##   Health care                6                   35           33     18     30        10</span>
-<span class="co">##   Immigration                5                   27           30     13     24        10</span>
-<span class="co">##   Medicare                   6                   32           30     18     27         8</span>
-<span class="co">##   Social security            6                   33           33     16     27         8</span>
-<span class="co">##   Taxes                      6                   30           29     15     31         9</span>
-<span class="co">##   Terrorism                  4                   32           27     16     25         8</span>
-<span class="co">##   The budget deficit         5                   32           28     16     26         8</span>
-<span class="co">##   The economy                6                   34           33     18     32        10</span>
-<span class="co">##   The environment            5                   25           24     16     30         9</span>
-<span class="co">##   The war in Afghanistan     5                   26           31     15     22         7</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="va">imiss</span> <span class="op">+</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## , , gender = Male</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                         educ</span></span>
+<span><span class="co">## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad</span></span>
+<span><span class="co">##   Abortion                   3                   19           18      1     14         8</span></span>
+<span><span class="co">##   Education                  6                   23           22      6     23        13</span></span>
+<span><span class="co">##   Gay rights                 1                   11           12      1      8        10</span></span>
+<span><span class="co">##   Health care                5                   33           22      6     22        14</span></span>
+<span><span class="co">##   Immigration                4                   26           20      6     20        13</span></span>
+<span><span class="co">##   Medicare                   5                   29           21      5     21        12</span></span>
+<span><span class="co">##   Social security            5                   31           22      6     21        15</span></span>
+<span><span class="co">##   Taxes                      6                   30           25      6     23        14</span></span>
+<span><span class="co">##   Terrorism                  5                   24           19      6     16        12</span></span>
+<span><span class="co">##   The budget deficit         6                   25           20      5     18        12</span></span>
+<span><span class="co">##   The economy                6                   31           25      6     24        15</span></span>
+<span><span class="co">##   The environment            5                   22           16      4     17        13</span></span>
+<span><span class="co">##   The war in Afghanistan     5                   17           20      3     20        10</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## , , gender = Female</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                         educ</span></span>
+<span><span class="co">## imiss                    No HS High school graduate Some college 2-year 4-year Post-grad</span></span>
+<span><span class="co">##   Abortion                   4                   26           27     12     27         9</span></span>
+<span><span class="co">##   Education                  6                   31           32     17     32        10</span></span>
+<span><span class="co">##   Gay rights                 3                   15           23      9     21         6</span></span>
+<span><span class="co">##   Health care                6                   35           33     18     30        10</span></span>
+<span><span class="co">##   Immigration                5                   27           30     13     24        10</span></span>
+<span><span class="co">##   Medicare                   6                   32           30     18     27         8</span></span>
+<span><span class="co">##   Social security            6                   33           33     16     27         8</span></span>
+<span><span class="co">##   Taxes                      6                   30           29     15     31         9</span></span>
+<span><span class="co">##   Terrorism                  4                   32           27     16     25         8</span></span>
+<span><span class="co">##   The budget deficit         5                   32           28     16     26         8</span></span>
+<span><span class="co">##   The economy                6                   34           33     18     32        10</span></span>
+<span><span class="co">##   The environment            5                   25           24     16     30         9</span></span>
+<span><span class="co">##   The war in Afghanistan     5                   26           31     15     22         7</span></span></code></pre>
 <!--
 ### Special functions
 #### bin
@@ -412,49 +412,49 @@
 </h3>
 <p><code>crtabs</code> can also compute quantities other than counts. Using the left-hand side of the formula, we can specify other aggregations to put in the cells of the table. For example, in the <a href="derive.html">deriving variables vignette</a>, we created an “age” variable. We can easily compute the average age by gender and education:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 <p>Other supported aggregations include <code>min</code>, <code>max</code>, <code>sd</code>, and <code>sum</code>. For the minimum age by gender and education,</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 <p>We can get unconditional (univariate) statistics by making the right-hand side of your formula be just the number <code>1</code>:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] 250</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">min</a></span><span class="op">(</span><span class="va">age</span><span class="op">)</span> <span class="op">~</span> <span class="fl">1</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 250</span></span></code></pre>
 <p>Numeric aggregation functions also work with categorical variables that have numeric values defined for their categories; this is the reason why numeric values for categories are defined, in fact. In the <a href="variables.html">variables vignette</a>, we worked with the “On the right track” question and set some numeric values:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##   id                                    name value missing</span>
-<span class="co">## 1  1 Generally headed in the right direction     1   FALSE</span>
-<span class="co">## 2  3                                Not sure     0    TRUE</span>
-<span class="co">## 3  2                             Wrong track    -1   FALSE</span>
-<span class="co">## 4 -1                                 No Data    NA    TRUE</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   id                                    name value missing</span></span>
+<span><span class="co">## 1  1 Generally headed in the right direction     1   FALSE</span></span>
+<span><span class="co">## 2  3                                Not sure     0    TRUE</span></span>
+<span><span class="co">## 3  2                             Wrong track    -1   FALSE</span></span>
+<span><span class="co">## 4 -1                                 No Data    NA    TRUE</span></span></code></pre>
 <p>We can use these numeric values to compute an “on the right track index” by averaging them. If the index is greater than zero, more people thing things are going well, and if it is negative, more respondents are pessimistic.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   6      6</span>
-<span class="co">##   High school graduate   33     38</span>
-<span class="co">##   Some college           26     35</span>
-<span class="co">##   2-year                  6     18</span>
-<span class="co">##   4-year                 25     32</span>
-<span class="co">##   Post-grad              15     10</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   6      6</span></span>
+<span><span class="co">##   High school graduate   33     38</span></span>
+<span><span class="co">##   Some college           26     35</span></span>
+<span><span class="co">##   2-year                  6     18</span></span>
+<span><span class="co">##   4-year                 25     32</span></span>
+<span><span class="co">##   Post-grad              15     10</span></span></code></pre>
 <p>Looks like most people surveyed thought that the U.S. is on the wrong track, but that pessimism is less pronounced for women with higher levels of education.</p>
 </div>
 <div class="section level3">
@@ -462,15 +462,15 @@
 </h3>
 <p>We can also specify a subset of <code>ds</code> to analyze, just as if it were a data.frame. Let’s do the same calculation for Democrats only:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,<span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##                       gender</span>
-<span class="co">## educ                   Male Female</span>
-<span class="co">##   No HS                   0      3</span>
-<span class="co">##   High school graduate    7     17</span>
-<span class="co">##   Some college            8     16</span>
-<span class="co">##   2-year                  1      6</span>
-<span class="co">##   4-year                  9     19</span>
-<span class="co">##   Post-grad               5      5</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/cube-computing.html">round</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="fu"><a href="../reference/crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">track</span><span class="op">)</span> <span class="op">~</span> <span class="va">educ</span> <span class="op">+</span> <span class="va">gender</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">pid3</span> <span class="op">==</span> <span class="st">"Democrat"</span>,<span class="op">]</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                       gender</span></span>
+<span><span class="co">## educ                   Male Female</span></span>
+<span><span class="co">##   No HS                   0      3</span></span>
+<span><span class="co">##   High school graduate    7     17</span></span>
+<span><span class="co">##   Some college            8     16</span></span>
+<span><span class="co">##   2-year                  1      6</span></span>
+<span><span class="co">##   4-year                  9     19</span></span>
+<span><span class="co">##   Post-grad               5      5</span></span></code></pre>
 <p>Not surprisingly, Democrats were less pessimistic about the direction of the country than the general population.</p>
 <p>A few final observations about <code>crtabs</code>. First, all of these calculations have been weighted by the weight variable we set above. We set it and could then forget about it–we didn’t have to litter all of our expressions with <code>ds$weight</code> and extra arithmetic to do the weighting. Crunch handles this for us.</p>
 <p>Second, none of these aggregations required pulling case-level data to your computer. <code>crtabs</code> sends Crunch expressions to the server and receives in return an <code>n</code>-D array of results. The only computations happening locally are the margin tables and sweeping in <code>prop.table</code>, computing on the aggregate results. Your computer would work exactly as hard with this example dataset of 1000 rows as it would with a dataset of 100 million rows.</p>
@@ -482,82 +482,82 @@
 <p>Any statistical modeling function that takes a <code>data</code> argument should happily accept a <code>CrunchDataset</code> and just do the right thing–no extra effort or thought required.</p>
 <p>Let’s fit a basic Ordinary Least Squares (OLS) model. In our dataset, we have a few questions about Edward Snowden, such as:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">snowdenleakapp</span></code></pre></div>
-<pre><code><span class="co">## Approval of Snowden's Leak (categorical)</span>
-<span class="co">## </span>
-<span class="co">##                        Count</span>
-<span class="co">## Strongly disapprove 86.00644</span>
-<span class="co">## Not sure            55.82542</span>
-<span class="co">## Somewhat approve    43.19385</span>
-<span class="co">## Somewhat disapprove 40.26587</span>
-<span class="co">## Strongly approve    24.70842</span></code></pre>
+<code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">snowdenleakapp</span></span></code></pre></div>
+<pre><code><span><span class="co">## Approval of Snowden's Leak (categorical)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##                        Count</span></span>
+<span><span class="co">## Strongly disapprove 86.00644</span></span>
+<span><span class="co">## Not sure            55.82542</span></span>
+<span><span class="co">## Somewhat approve    43.19385</span></span>
+<span><span class="co">## Somewhat disapprove 40.26587</span></span>
+<span><span class="co">## Strongly approve    24.70842</span></span></code></pre>
 <p>We can use <code>lm</code> to fit our model. Let’s explore the relationship between approval of Snowden’s leak and respondents’ interest in current events, party identification, gender, and age.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ols1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">snowdenleakapp</span> <span class="op">==</span> <span class="st">"Strongly approve"</span><span class="op">)</span> <span class="op">~</span> <span class="va">newsint2</span> <span class="op">+</span> <span class="va">pid3</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age</span>,
-    data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ols1</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## </span>
-<span class="co">## Call:</span>
-<span class="co">## lm(formula = I(snowdenleakapp == "Strongly approve") ~ newsint2 + </span>
-<span class="co">##     pid3 + gender + age, data = ds)</span>
-<span class="co">## </span>
-<span class="co">## Residuals:</span>
-<span class="co">##      Min       1Q   Median       3Q      Max </span>
-<span class="co">## -0.33261 -0.15753 -0.12930 -0.06006  0.94924 </span>
-<span class="co">## </span>
-<span class="co">## Coefficients:</span>
-<span class="co">##                            Estimate Std. Error t value Pr(&gt;|t|)</span>
-<span class="co">## (Intercept)                0.133723   0.093700   1.427    0.155</span>
-<span class="co">## newsint2Some of the time   0.016157   0.050750   0.318    0.750</span>
-<span class="co">## newsint2Only now and then -0.007068   0.074048  -0.095    0.924</span>
-<span class="co">## newsint2Hardly at all     -0.058744   0.091630  -0.641    0.522</span>
-<span class="co">## pid3Republican            -0.088822   0.058002  -1.531    0.127</span>
-<span class="co">## pid3Independent            0.022139   0.052650   0.420    0.675</span>
-<span class="co">## pid3Other                  0.185892   0.198541   0.936    0.350</span>
-<span class="co">## pid3Not sure              -0.049288   0.103442  -0.476    0.634</span>
-<span class="co">## genderFemale              -0.019411   0.045856  -0.423    0.672</span>
-<span class="co">## age                        0.000361   0.001651   0.219    0.827</span>
-<span class="co">## </span>
-<span class="co">## Residual standard error: 0.3366 on 240 degrees of freedom</span>
-<span class="co">## Multiple R-squared:  0.02533,    Adjusted R-squared:  -0.01122 </span>
-<span class="co">## F-statistic: 0.6931 on 9 and 240 DF,  p-value: 0.7149</span></code></pre>
+<code class="sourceCode R"><span><span class="va">ols1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">snowdenleakapp</span> <span class="op">==</span> <span class="st">"Strongly approve"</span><span class="op">)</span> <span class="op">~</span> <span class="va">newsint2</span> <span class="op">+</span> <span class="va">pid3</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age</span>,</span>
+<span>    data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ols1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = I(snowdenleakapp == "Strongly approve") ~ newsint2 + </span></span>
+<span><span class="co">##     pid3 + gender + age, data = ds)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residuals:</span></span>
+<span><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">## -0.33261 -0.15753 -0.12930 -0.06006  0.94924 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##                            Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span><span class="co">## (Intercept)                0.133723   0.093700   1.427    0.155</span></span>
+<span><span class="co">## newsint2Some of the time   0.016157   0.050750   0.318    0.750</span></span>
+<span><span class="co">## newsint2Only now and then -0.007068   0.074048  -0.095    0.924</span></span>
+<span><span class="co">## newsint2Hardly at all     -0.058744   0.091630  -0.641    0.522</span></span>
+<span><span class="co">## pid3Republican            -0.088822   0.058002  -1.531    0.127</span></span>
+<span><span class="co">## pid3Independent            0.022139   0.052650   0.420    0.675</span></span>
+<span><span class="co">## pid3Other                  0.185892   0.198541   0.936    0.350</span></span>
+<span><span class="co">## pid3Not sure              -0.049288   0.103442  -0.476    0.634</span></span>
+<span><span class="co">## genderFemale              -0.019411   0.045856  -0.423    0.672</span></span>
+<span><span class="co">## age                        0.000361   0.001651   0.219    0.827</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residual standard error: 0.3366 on 240 degrees of freedom</span></span>
+<span><span class="co">## Multiple R-squared:  0.02533,    Adjusted R-squared:  -0.01122 </span></span>
+<span><span class="co">## F-statistic: 0.6931 on 9 and 240 DF,  p-value: 0.7149</span></span></code></pre>
 <p>Looks like partisanship is weakly associated with approval of the NSA leak, but overall the model isn’t a great fit, given our data. (For what it’s worth, we’re working on a randomly drawn subset of the survey so that the size of data included with package is small. Results are more meaningful with the full dataset.) Nevertheless, this example illustrates how straightforward it is to do statistical analysis with data in Crunch. Even though your dataset lives on the server, you can think of it like a local <code>data.frame</code>. Note, for example, that our categorical variables (News Interest, Party ID, and Gender) expand their categories out as dichotomous indicators, just as if they were <code>factor</code> variables in a <code>data.frame</code>.</p>
 <p>Given that we’re estimating a model with a dichotomous dependent variable, perhaps a logit would be more appropriate than a strict linear predictor. We can use <code>glm</code> instead:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">logit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">snowdenleakapp</span> <span class="op">==</span> <span class="st">"Strongly approve"</span><span class="op">)</span> <span class="op">~</span> <span class="va">newsint2</span> <span class="op">+</span> <span class="va">pid3</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age</span>,
-    family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">logit1</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## </span>
-<span class="co">## Call:</span>
-<span class="co">## glm(formula = I(snowdenleakapp == "Strongly approve") ~ newsint2 + </span>
-<span class="co">##     pid3 + gender + age, family = binomial(link = "logit"), data = ds)</span>
-<span class="co">## </span>
-<span class="co">## Deviance Residuals: </span>
-<span class="co">##     Min       1Q   Median       3Q      Max  </span>
-<span class="co">## -0.8982  -0.5873  -0.5249  -0.3413   2.4261  </span>
-<span class="co">## </span>
-<span class="co">## Coefficients:</span>
-<span class="co">##                            Estimate Std. Error z value Pr(&gt;|z|)  </span>
-<span class="co">## (Intercept)               -1.883494   0.847876  -2.221   0.0263 *</span>
-<span class="co">## newsint2Some of the time   0.141215   0.439458   0.321   0.7480  </span>
-<span class="co">## newsint2Only now and then -0.075103   0.700499  -0.107   0.9146  </span>
-<span class="co">## newsint2Hardly at all     -0.734607   1.084190  -0.678   0.4980  </span>
-<span class="co">## pid3Republican            -1.077062   0.673224  -1.600   0.1096  </span>
-<span class="co">## pid3Independent            0.156299   0.439101   0.356   0.7219  </span>
-<span class="co">## pid3Other                  1.056509   1.273998   0.829   0.4069  </span>
-<span class="co">## pid3Not sure              -0.535621   1.119244  -0.479   0.6323  </span>
-<span class="co">## genderFemale              -0.176401   0.410364  -0.430   0.6673  </span>
-<span class="co">## age                        0.003547   0.015024   0.236   0.8134  </span>
-<span class="co">## ---</span>
-<span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">## </span>
-<span class="co">## (Dispersion parameter for binomial family taken to be 1)</span>
-<span class="co">## </span>
-<span class="co">##     Null deviance: 191.28  on 249  degrees of freedom</span>
-<span class="co">## Residual deviance: 184.52  on 240  degrees of freedom</span>
-<span class="co">## AIC: 204.52</span>
-<span class="co">## </span>
-<span class="co">## Number of Fisher Scoring iterations: 5</span></code></pre>
+<code class="sourceCode R"><span><span class="va">logit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">snowdenleakapp</span> <span class="op">==</span> <span class="st">"Strongly approve"</span><span class="op">)</span> <span class="op">~</span> <span class="va">newsint2</span> <span class="op">+</span> <span class="va">pid3</span> <span class="op">+</span> <span class="va">gender</span> <span class="op">+</span> <span class="va">age</span>,</span>
+<span>    family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span>, data<span class="op">=</span><span class="va">ds</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">logit1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## glm(formula = I(snowdenleakapp == "Strongly approve") ~ newsint2 + </span></span>
+<span><span class="co">##     pid3 + gender + age, family = binomial(link = "logit"), data = ds)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Deviance Residuals: </span></span>
+<span><span class="co">##     Min       1Q   Median       3Q      Max  </span></span>
+<span><span class="co">## -0.8982  -0.5873  -0.5249  -0.3413   2.4261  </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##                            Estimate Std. Error z value Pr(&gt;|z|)  </span></span>
+<span><span class="co">## (Intercept)               -1.883494   0.847876  -2.221   0.0263 *</span></span>
+<span><span class="co">## newsint2Some of the time   0.141215   0.439458   0.321   0.7480  </span></span>
+<span><span class="co">## newsint2Only now and then -0.075103   0.700499  -0.107   0.9146  </span></span>
+<span><span class="co">## newsint2Hardly at all     -0.734607   1.084190  -0.678   0.4980  </span></span>
+<span><span class="co">## pid3Republican            -1.077062   0.673224  -1.600   0.1096  </span></span>
+<span><span class="co">## pid3Independent            0.156299   0.439101   0.356   0.7219  </span></span>
+<span><span class="co">## pid3Other                  1.056509   1.273998   0.829   0.4069  </span></span>
+<span><span class="co">## pid3Not sure              -0.535621   1.119244  -0.479   0.6323  </span></span>
+<span><span class="co">## genderFemale              -0.176401   0.410364  -0.430   0.6673  </span></span>
+<span><span class="co">## age                        0.003547   0.015024   0.236   0.8134  </span></span>
+<span><span class="co">## ---</span></span>
+<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## (Dispersion parameter for binomial family taken to be 1)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     Null deviance: 191.28  on 249  degrees of freedom</span></span>
+<span><span class="co">## Residual deviance: 184.52  on 240  degrees of freedom</span></span>
+<span><span class="co">## AIC: 204.52</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Number of Fisher Scoring iterations: 5</span></span></code></pre>
 <p>As before, not a particularly interesting result, but this is just the beginning of the analysis process. Using <code>crunch</code>, you can keep exploring the data and perhaps find a better fit.</p>
 <p>Unlike the previous examples, these modeling functions do have to pull columns of data from the server to your local machine. However, only the columns of data you reference in your formula are copied, and if you specify a subset of the dataset to regress on (as we did above with <code>crtabs</code> when we looked at just Democrats), only those rows are retrieved. This helps minimize the time spent shipping data across the network. Moreover, because of the <code>crunch</code> package’s query cache, subsequent models that incorporate any of those variables will not have to go to the server to get them.</p>
 <p><a href="filters.html">Next: filtering datasets</a></p>
@@ -581,7 +581,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

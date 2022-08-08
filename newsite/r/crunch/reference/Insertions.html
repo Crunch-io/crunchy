@@ -123,115 +123,124 @@ response on a variable's <a href="Transforms.html">transformations</a>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Insertions</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">Insertion</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>
-
-<span class="fu">.Insertion</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">anchors</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">funcs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Insertion</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Subtotal</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Heading</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for SummaryStat</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Insertion,ANY</span>
-<span class="fu"><a href="SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Insertion</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Subtotal</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Heading</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for SummaryStat</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Insertion</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Subtotal</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span>
-
-<span class="co"># S4 method for Heading</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for SummaryStat</span>
-<span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span>
-
-<span class="co"># S4 method for Insertion</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for Subtotal</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span>
-
-<span class="co"># S4 method for Heading</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span>
-
-<span class="co"># S4 method for SummaryStat</span>
-<span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span>
-
-<span class="co"># S4 method for Insertion</span>
-<span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Subtotal</span>
-<span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Heading</span>
-<span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for SummaryStat</span>
-<span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Insertions</span>
-<span class="fu">anchors</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Insertions</span>
-<span class="fu">funcs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Insertions</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">Insertion</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">.Insertion</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">anchors</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">funcs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Subtotal</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Heading</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for SummaryStat</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion,ANY</span></span>
+<span><span class="fu"><a href="SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Subtotal</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Heading</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for SummaryStat</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Subtotal</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Heading</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SummaryStat</span></span>
+<span><span class="fu">arguments</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Subtotal</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Heading</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SummaryStat</span></span>
+<span><span class="fu">anchor</span><span class="op">(</span><span class="va">x</span>, <span class="va">var_items</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertion</span></span>
+<span><span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Subtotal</span></span>
+<span><span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Heading</span></span>
+<span><span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for SummaryStat</span></span>
+<span><span class="fu">func</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertions</span></span>
+<span><span class="fu">anchors</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Insertions</span></span>
+<span><span class="fu">funcs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
 <dd><p>additional arguments to <code>[</code>, ignored</p></dd>
+
+
 <dt>data</dt>
 <dd><p>For the constructor functions <code>Insertion</code> and
 <code>Insertions</code>, you can either pass in attributes via <code>...</code> or you
 can create the objects with a fully defined <code>list</code> representation of
 the objects via the <code>data</code> argument. See the examples.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>For the attribute getters and setters, an object of class
 Insertion or Insertions</p></dd>
+
+
 <dt>value</dt>
 <dd><p>For <code>[&lt;-</code>, the replacement Insertion to insert</p></dd>
+
+
 <dt>var_items</dt>
 <dd><p>categories (from <code><a href="var-categories.html">categories()</a></code>) or subvariables (from
 <code><a href="Subvariables.html">subvariables()</a></code> to used by the <code>arguments</code> and <code>anchor</code> methods when
 needed to translate between category/subvariable names and category
 ids/aliases.</p></dd>
+
 </dl></div>
     <div id="working-with-insertions">
     <h2>Working with Insertions</h2>
@@ -270,7 +279,7 @@ names.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

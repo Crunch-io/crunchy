@@ -133,42 +133,59 @@ is needed.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for CrunchDataFrame</span>
-<span class="fu">merge</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,
-  by.x <span class="op">=</span> <span class="va">by</span>,
-  by.y <span class="op">=</span> <span class="va">by</span>,
-  sort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for CrunchDataFrame</span></span>
+<span><span class="fu">merge</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  by.x <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  by.y <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  sort <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a CrunchDataFrame</p></dd>
+
+
 <dt>y</dt>
 <dd><p>a standard data.frame</p></dd>
+
+
 <dt>by</dt>
 <dd><p>name of the variable to match in both data sources (default: the
 intersection of the names of x and y)</p></dd>
+
+
 <dt>by.x</dt>
 <dd><p>name of the variable to match in x</p></dd>
+
+
 <dt>by.y</dt>
 <dd><p>name of the variable to match in y</p></dd>
+
+
 <dt>sort</dt>
 <dd><p>character, either "x" or "y" (default: "x"). Which of the inputs
 should be used for the output order. Unlike merge.data.frame,
 <code>merge.CrunchDataFrame</code> will not re-sort the order of the output. It will use
 the order of either <code>x</code> or <code>y</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>ignored</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a CrunchDataFrame with columns from both <code>x</code> and <code>y</code></p>
+    
+
+<p>a CrunchDataFrame with columns from both <code>x</code> and <code>y</code></p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -195,7 +212,7 @@ well as create a new CrunchDataFrame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

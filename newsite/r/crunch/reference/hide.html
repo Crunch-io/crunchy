@@ -131,109 +131,118 @@ personally identifiable information from non-editors of a dataset.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset</span>
-<span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableFolder</span>
-<span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset</span>
-<span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableFolder</span>
-<span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchVariable</span>
-<span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchVariable</span>
-<span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">hideVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">hiddenVariables</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">unhideVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">hiddenVariables</span><span class="op">(</span><span class="va">dataset</span>, key <span class="op">=</span> <span class="fu">namekey</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset</span>
-<span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableFolder</span>
-<span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchVariable</span>
-<span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchVariable</span>
-<span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for VariableCatalog</span>
-<span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">privatise</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">deprivatise</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">privatizeVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">privatiseVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">privateVariables</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">deprivatizeVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">deprivatiseVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span>
-
-<span class="fu">privateVariables</span><span class="op">(</span><span class="va">dataset</span>, key <span class="op">=</span> <span class="fu">namekey</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset</span></span>
+<span><span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableFolder</span></span>
+<span><span class="fu">publicFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset</span></span>
+<span><span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableFolder</span></span>
+<span><span class="fu">hiddenFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable</span></span>
+<span><span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">hide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable</span></span>
+<span><span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">unhide</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">hideVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">hiddenVariables</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">unhideVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">hiddenVariables</span><span class="op">(</span><span class="va">dataset</span>, key <span class="op">=</span> <span class="fu">namekey</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset</span></span>
+<span><span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableFolder</span></span>
+<span><span class="fu">privateFolder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable</span></span>
+<span><span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">privatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable</span></span>
+<span><span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for VariableCatalog</span></span>
+<span><span class="fu">deprivatize</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privatise</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">deprivatise</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privatizeVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privatiseVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privateVariables</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">deprivatizeVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">deprivatiseVariables</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">variables</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">privateVariables</span><span class="op">(</span><span class="va">dataset</span>, key <span class="op">=</span> <span class="fu">namekey</span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a Variable, VariableCatalog, or dataset to hide/unhide/privatize/deprivatize</p></dd>
+
+
 <dt>dataset</dt>
 <dd><p>A dataset</p></dd>
+
+
 <dt>variables</dt>
 <dd><p>Variables to change status of</p></dd>
+
+
 <dt>value</dt>
 <dd><p>Replacement values for assignment methods.</p></dd>
+
+
 <dt>key</dt>
 <dd><p>(for <code>hiddenVariables()</code> / <code>privateVariables()</code> the Variable attribute to
 return. Default is "alias", following <code>envOrOption("crunch.namekey.dataset")</code>.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -264,7 +273,7 @@ assign to <code>NULL</code> to remove all of them.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -121,9 +121,9 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">folder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">folder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">folder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">folder</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -132,14 +132,19 @@
 <dd><p>For <code>folder</code>, a Variable to find. For folder assignment, a Variable,
 selection of variables in a
 Dataset, or any other object that can be moved to a folder.</p></dd>
+
+
 <dt>value</dt>
 <dd><p>For assignment, a character "path" to the folder: either a
 vector of nested folder names or a single string with nested folders
 separated by a delimiter ("/" default)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>folder</code> returns the parent folder of <code>x</code>, or <code>NULL</code> if the <code>x</code> is the root
+    
+
+<p><code>folder</code> returns the parent folder of <code>x</code>, or <code>NULL</code> if the <code>x</code> is the root
 level. <code>folder&lt;-</code> returns the
 <code>x</code> input, having been moved to the requested location.</p>
     </div>
@@ -150,12 +155,12 @@ level. <code>folder&lt;-</code> returns the
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"Example survey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">folder</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">income</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Demographics/Economic"</span></span>
-<span class="r-in"><span class="fu">folder</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">income</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">## [1] "Demographics"    "Economic"</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"Example survey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">folder</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">income</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Demographics/Economic"</span></span></span>
+<span class="r-in"><span><span class="fu">folder</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">income</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## [1] "Demographics"    "Economic"</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -170,7 +175,7 @@ level. <code>folder&lt;-</code> returns the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

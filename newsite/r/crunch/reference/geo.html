@@ -123,22 +123,22 @@ functions that help access and change this metadata.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">CrunchGeography</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchVariable</span>
-<span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchVariable,CrunchGeography</span>
-<span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchVariable,`NULL`</span>
-<span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">availableGeodata</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">getAPIRoot</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">CrunchGeography</span><span class="op">(</span><span class="va">...</span>, data <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable</span></span>
+<span><span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable,CrunchGeography</span></span>
+<span><span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchVariable,`NULL`</span></span>
+<span><span class="fu">geo</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">availableGeodata</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">getAPIRoot</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -146,17 +146,26 @@ functions that help access and change this metadata.</p>
     <dl><dt>...</dt>
 <dd><p>for <code>CrunchGeography</code>, named arguments from which to construct a
 <code>CrunchGeography</code>: <code>geodatum</code>, <code>feature_key</code>, and <code>match_field</code></p></dd>
+
+
 <dt>data</dt>
 <dd><p>for <code>CrunchGeography</code>, list of named arguments from which to construct a
 <code>CrunchGeography</code>: <code>geodatum</code>, <code>feature_key</code>, and <code>match_field</code></p></dd>
+
+
 <dt>x</dt>
 <dd><p>a crunch variable</p></dd>
+
+
 <dt>value</dt>
 <dd><p>value of the geography property to set</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>geographic information of class <code>CrunchGeography</code> (<code>NULL</code> if there is none)</p>
+    
+
+<p>geographic information of class <code>CrunchGeography</code> (<code>NULL</code> if there is none)</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -173,12 +182,12 @@ to match <code>feature_key</code> to (e.g. name)</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span><span class="op">$</span><span class="va">feature_key</span> <span class="op">&lt;-</span> <span class="st">"properties.name"</span></span>
-<span class="r-in"><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span><span class="op">$</span><span class="va">match_field</span> <span class="op">&lt;-</span> <span class="st">"name"</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span><span class="op">$</span><span class="va">feature_key</span> <span class="op">&lt;-</span> <span class="st">"properties.name"</span></span></span>
+<span class="r-in"><span><span class="fu">geo</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">location</span><span class="op">)</span><span class="op">$</span><span class="va">match_field</span> <span class="op">&lt;-</span> <span class="st">"name"</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -193,7 +202,7 @@ to match <code>feature_key</code> to (e.g. name)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

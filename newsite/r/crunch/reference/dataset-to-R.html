@@ -127,54 +127,71 @@ a true <code>data.frame</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for CrunchDataset</span>
-<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  row.names <span class="op">=</span> <span class="cn">NULL</span>,
-  optional <span class="op">=</span> <span class="cn">FALSE</span>,
-  force <span class="op">=</span> <span class="cn">FALSE</span>,
-  categorical.mode <span class="op">=</span> <span class="st">"factor"</span>,
-  row.order <span class="op">=</span> <span class="cn">NULL</span>,
-  include.hidden <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for CrunchDataFrame</span>
-<span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  row.names <span class="op">=</span> <span class="cn">NULL</span>,
-  optional <span class="op">=</span> <span class="cn">FALSE</span>,
-  include.hidden <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"include.hidden"</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for CrunchDataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  row.names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  optional <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  force <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  categorical.mode <span class="op">=</span> <span class="st">"factor"</span>,</span>
+<span>  row.order <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  include.hidden <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for CrunchDataFrame</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  row.names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  optional <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  include.hidden <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"include.hidden"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a <code>CrunchDataset</code> or <code>CrunchDataFrame</code></p></dd>
+
+
 <dt>row.names</dt>
 <dd><p>part of <code>as.data.frame</code> signature. Ignored.</p></dd>
+
+
 <dt>optional</dt>
 <dd><p>part of <code>as.data.frame</code> signature. Ignored.</p></dd>
+
+
 <dt>force</dt>
 <dd><p>logical: actually coerce the dataset to <code>data.frame</code>, or
 leave the columns as unevaluated promises. Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>categorical.mode</dt>
 <dd><p>what mode should categoricals be pulled as? One of
 factor, numeric, id (default: factor)</p></dd>
+
+
 <dt>row.order</dt>
 <dd><p>vector of indices. Which, and their order, of the rows of
 the dataset should be presented as (default: <code>NULL</code>). If <code>NULL</code>, then the
 Crunch Dataset order will be used.</p></dd>
+
+
 <dt>include.hidden</dt>
 <dd><p>logical: should hidden variables be included? (default: <code>TRUE</code>)</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments passed to <code>as.data.frame</code> (default method).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>When called on a <code>CrunchDataset</code>, the method returns an object of
+    
+
+<p>When called on a <code>CrunchDataset</code>, the method returns an object of
 class <code>CrunchDataFrame</code> unless <code>force = TRUE</code>, in which case the return is a
 <code>data.frame</code>. For <code>CrunchDataFrame</code>, the method returns a <code>data.frame</code>.</p>
     </div>
@@ -222,7 +239,7 @@ for example, will result in three columns in the <code>data.frame</code>.</p></l
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

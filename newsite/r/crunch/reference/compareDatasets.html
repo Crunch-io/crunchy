@@ -129,25 +129,32 @@ the datasets will align before you do the append.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">compareDatasets</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">compareDatasets</span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>A</dt>
 <dd><p>CrunchDataset</p></dd>
+
+
 <dt>B</dt>
 <dd><p>CrunchDataset</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class 'compareDatasets', a list of three elements: (1)
+    
+
+<p>An object of class 'compareDatasets', a list of three elements: (1)
 'variables', a data.frame of variable metadata joined on alias; (2)
 'categories', a list of data.frames of category metadata joined on category
 name, one for each variable with categories; and (3) 'subvariables', a
 list of data.frames of subvariable metadata joined on alias, one for each
-array variable.
-Summary output reports on (1) variables that, when matched across datasets
+array variable.</p>
+
+
+<p>Summary output reports on (1) variables that, when matched across datasets
 by alias, have different types; (2) variables that have the same name but
 don't match on alias; (3) for variables that match and have categories,
 any categories that have the same id but don't match on name; (4) for
@@ -166,10 +173,10 @@ to result in better alignment.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">comp</span> <span class="op">&lt;-</span> <span class="fu">compareDataset</span><span class="op">(</span><span class="va">ds1</span>, <span class="va">ds2</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">comp</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">comp</span> <span class="op">&lt;-</span> <span class="fu">compareDataset</span><span class="op">(</span><span class="va">ds1</span>, <span class="va">ds2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">comp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -184,7 +191,7 @@ to result in better alignment.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

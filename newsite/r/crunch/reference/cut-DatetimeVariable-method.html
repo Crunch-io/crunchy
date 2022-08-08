@@ -139,14 +139,16 @@ whether the numeric vector falls between January 1 and 14 or January 15 and 31</
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for DatetimeVariable</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">breaks</span>, labels <span class="op">=</span> <span class="cn">NULL</span>, dates <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">name</span>, right <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for DatetimeVariable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">breaks</span>, labels <span class="op">=</span> <span class="cn">NULL</span>, dates <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">name</span>, right <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A Crunch <code>DatetimeVariable</code></p></dd>
+
+
 <dt>breaks</dt>
 <dd><p>Either a numeric vector of two or more unique cut point datetimes
 or a single string giving the interval size into which <code>x</code> is to be
@@ -154,46 +156,59 @@ cut with a number optionally at the beginning nd "day", "weeks", "months",
 a "quarters" or "years". If specifying cut points, values that are less than
 the smallest value in <code>breaks</code> or greater than the largest value in <code>breaks</code>
 will be marked missing in the resulting categorical variable.</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>A character vector representing the labels for the levels of
 the resulting categories. The length of the labels argument should be the
 same as the number of categories, which is one fewer than the number of
 breaks. If not specified, labels are constructed with a formatting like
 "YYYY/MM/DD - YYYY/MM/DD" (for example ("2020/01/01 - 2020/01/14"))</p></dd>
+
+
 <dt>dates</dt>
 <dd><p>(Optionally) A character vector with the date strings that should
 be associated with the resulting categories. These dates can have the form
 "YYYY-MM-DD", "YYYY-MM", "YYYY", "YYYY-WXX" (where "XX" is the ISO week number) or
 "YYYY-MM-DD,YYYY-MM-DD". If left <code>NULL</code>, it will be created from the categories.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The name of the resulting Crunch variable as a character string.</p></dd>
+
+
 <dt>right</dt>
 <dd><p>logical, indicating if the intervals should be closed on the
 right (and open on the left) or vice versa. This only applies if giving a
 vector of break points.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to <a href="makeCaseVariable.html">makeCaseVariable</a></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a Crunch <code><a href="VariableDefinition.html">VariableDefinition</a></code>. Assign it into the dataset to create
+    
+
+<p>a Crunch <code><a href="VariableDefinition.html">VariableDefinition</a></code>. Assign it into the dataset to create
 it as a derived variable on the server.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">month_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">date</span>, breaks <span class="op">=</span> <span class="st">"month"</span>, name <span class="op">=</span> <span class="st">"monthly"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">four_weeks_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">date</span>, breaks <span class="op">=</span> <span class="st">"4 weeks"</span>, name <span class="op">=</span> <span class="st">"four week categorical date"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">wave_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">ds</span><span class="op">$</span><span class="va">date</span>,</span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-01-01"</span>, <span class="st">"2020-02-15"</span>, <span class="st">"2020-04-01"</span>, <span class="st">"2020-05-15"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"wave1"</span>, <span class="st">"wave2"</span>, <span class="st">"wave3"</span><span class="op">)</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"wave var"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">month_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">date</span>, breaks <span class="op">=</span> <span class="st">"month"</span>, name <span class="op">=</span> <span class="st">"monthly"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">four_weeks_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">date</span>, breaks <span class="op">=</span> <span class="st">"4 weeks"</span>, name <span class="op">=</span> <span class="st">"four week categorical date"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">wave_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">ds</span><span class="op">$</span><span class="va">date</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-01-01"</span>, <span class="st">"2020-02-15"</span>, <span class="st">"2020-04-01"</span>, <span class="st">"2020-05-15"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"wave1"</span>, <span class="st">"wave2"</span>, <span class="st">"wave3"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="st">"wave var"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -208,7 +223,7 @@ it as a derived variable on the server.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -121,57 +121,72 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crunchBox</span><span class="op">(</span>
-  <span class="va">dataset</span>,
-  filters <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,
-  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,
-  <span class="va">brand_colors</span>,
-  <span class="va">static_colors</span>,
-  <span class="va">category_color_lookup</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">CrunchBox</span><span class="op">(</span>
-  <span class="va">dataset</span>,
-  filters <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,
-  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,
-  <span class="va">brand_colors</span>,
-  <span class="va">static_colors</span>,
-  <span class="va">category_color_lookup</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crunchBox</span><span class="op">(</span></span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  filters <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>  <span class="va">brand_colors</span>,</span>
+<span>  <span class="va">static_colors</span>,</span>
+<span>  <span class="va">category_color_lookup</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">CrunchBox</span><span class="op">(</span></span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  filters <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>  <span class="va">brand_colors</span>,</span>
+<span>  <span class="va">static_colors</span>,</span>
+<span>  <span class="va">category_color_lookup</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
 <dd><p>A CrunchDataset, potentially a selection of variables from it</p></dd>
+
+
 <dt>filters</dt>
 <dd><p>FilterCatalog, or <code>NULL</code> for no filters. Default all
 filters in your catalog, <code>filters(dataset)</code>.</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>a CrunchVariable that has been designated as a potential
 weight variable for <code>dataset</code>, or <code>NULL</code> for unweighted results.
 Default is the currently applied <code><a href="weight.html">weight()</a></code>.</p></dd>
+
+
 <dt>brand_colors</dt>
 <dd><p>an optional color vector of length 3 or less, or a named
 list with names 'primary', 'secondary', and 'message'. See "Details" for more
 about color specification.</p></dd>
+
+
 <dt>static_colors</dt>
 <dd><p>an optional vector of colors to use for categorical
 plots. Bars and lines are colored in the order of <code>static_colors</code>. See
 "Details" for more about color specification.</p></dd>
+
+
 <dt>category_color_lookup</dt>
 <dd><p>an optional list of category names to colors
 to use for that category, wherever it appears in the data. This allows you
 to always see a category displayed in a specific color. See
 "Details" for more about color specification.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional metadata for the box, such as "title", "header", etc.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The URL to the newly created box.</p>
+    
+
+<p>The URL to the newly created box.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -190,28 +205,28 @@ CrunchBox</p></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Creating a CrunchBox with three variables</span></span>
-<span class="r-in"><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>, title <span class="op">=</span> <span class="st">"New CrunchBox"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Creating a CrunchBox changing primary, secondary, and message brand colors</span></span>
-<span class="r-in"><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Branded CrunchBox"</span>,</span>
-<span class="r-in">    brand_colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#ff0aa4"</span>, <span class="st">"#af17ff"</span>, <span class="st">"#260aff"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Creating a CrunchBox changing category-specific colors</span></span>
-<span class="r-in"><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"CrunchBox with category colors"</span>,</span>
-<span class="r-in">    category_color_lookup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        <span class="st">"agree"</span> <span class="op">=</span> <span class="st">"#ff0aa4"</span>,</span>
-<span class="r-in">        <span class="st">"disagree"</span> <span class="op">=</span> <span class="st">"#af17ff"</span>,</span>
-<span class="r-in">        <span class="st">"don't know"</span> <span class="op">=</span> <span class="st">"#260aff"</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Creating a CrunchBox with three variables</span></span></span>
+<span class="r-in"><span><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>, title <span class="op">=</span> <span class="st">"New CrunchBox"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Creating a CrunchBox changing primary, secondary, and message brand colors</span></span></span>
+<span class="r-in"><span><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Branded CrunchBox"</span>,</span></span>
+<span class="r-in"><span>    brand_colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#ff0aa4"</span>, <span class="st">"#af17ff"</span>, <span class="st">"#260aff"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Creating a CrunchBox changing category-specific colors</span></span></span>
+<span class="r-in"><span><span class="fu">crunchBox</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"CrunchBox with category colors"</span>,</span></span>
+<span class="r-in"><span>    category_color_lookup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="st">"agree"</span> <span class="op">=</span> <span class="st">"#ff0aa4"</span>,</span></span>
+<span class="r-in"><span>        <span class="st">"disagree"</span> <span class="op">=</span> <span class="st">"#af17ff"</span>,</span></span>
+<span class="r-in"><span>        <span class="st">"don't know"</span> <span class="op">=</span> <span class="st">"#260aff"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -226,7 +241,7 @@ CrunchBox</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

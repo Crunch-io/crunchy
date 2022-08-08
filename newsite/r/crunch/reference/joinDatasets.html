@@ -125,82 +125,103 @@ the other.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">joinDatasets</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,
-  by.x <span class="op">=</span> <span class="va">by</span>,
-  by.y <span class="op">=</span> <span class="va">by</span>,
-  all <span class="op">=</span> <span class="cn">FALSE</span>,
-  all.x <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.y <span class="op">=</span> <span class="cn">FALSE</span>,
-  copy <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu">extendDataset</span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,
-  by.x <span class="op">=</span> <span class="va">by</span>,
-  by.y <span class="op">=</span> <span class="va">by</span>,
-  all <span class="op">=</span> <span class="cn">FALSE</span>,
-  all.x <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.y <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for CrunchDataset</span>
-<span class="fu"><a href="merge.html">merge</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">y</span>,
-  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,
-  by.x <span class="op">=</span> <span class="va">by</span>,
-  by.y <span class="op">=</span> <span class="va">by</span>,
-  all <span class="op">=</span> <span class="cn">FALSE</span>,
-  all.x <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.y <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">joinDatasets</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  by.x <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  by.y <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  all <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  all.x <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.y <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  copy <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">extendDataset</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  by.x <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  by.y <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  all <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  all.x <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.y <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for CrunchDataset</span></span>
+<span><span class="fu"><a href="merge.html">merge</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  by.x <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  by.y <span class="op">=</span> <span class="va">by</span>,</span>
+<span>  all <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  all.x <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.y <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>CrunchDataset to add data to</p></dd>
+
+
 <dt>y</dt>
 <dd><p>CrunchDataset to copy data from. May be filtered by rows and/or
 columns.</p></dd>
+
+
 <dt>by</dt>
 <dd><p>character, optional shortcut for specifying <code>by.x</code> and
 <code>by.y</code> by alias if the key variables have the same alias in both
 datasets.</p></dd>
+
+
 <dt>by.x</dt>
 <dd><p>CrunchVariable in <code>x</code> on which to join, or the alias
 (following <code>crunch.namekey.dataset</code> of a variable. Must be type
 numeric or text and have all unique, non-missing values.</p></dd>
+
+
 <dt>by.y</dt>
 <dd><p>CrunchVariable in <code>y</code> on which to join, or the alias
 (following <code>crunch.namekey.dataset</code> of a variable. Must be type
 numeric or text and have all unique, non-missing values.</p></dd>
+
+
 <dt>all</dt>
 <dd><p>logical: should all rows in x and y be kept, i.e. a "full outer"
 join? Only <code>FALSE</code> is currently supported.</p></dd>
+
+
 <dt>all.x</dt>
 <dd><p>logical: should all rows in x be kept, i.e. a "left outer"
 join? Only <code>TRUE</code> is currently supported.</p></dd>
+
+
 <dt>all.y</dt>
 <dd><p>logical: should all rows in y be kept, i.e. a "right outer"
 join? Only <code>FALSE</code> is currently supported.</p></dd>
+
+
 <dt>copy</dt>
 <dd><p>logical: make a virtual or materialized join. Default is
 <code>TRUE</code>, which means materialized. Virtual joins are in fact not currently
 implemented, so the default is the only valid value.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments, ignored</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>x</code> extended by the columns of <code>y</code>, matched on the "by" variables.</p>
+    
+
+<p><code>x</code> extended by the columns of <code>y</code>, matched on the "by" variables.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -225,7 +246,7 @@ with <code><a href="mergeFork.html">mergeFork()</a></code>. For more, see
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

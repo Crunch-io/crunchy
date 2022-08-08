@@ -127,29 +127,38 @@ version control system.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mergeFork</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">fork</span>, autorollback <span class="op">=</span> <span class="cn">TRUE</span>, force <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mergeFork</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">fork</span>, autorollback <span class="op">=</span> <span class="cn">TRUE</span>, force <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
 <dd><p>The <code>CrunchDataset</code> to merge to</p></dd>
+
+
 <dt>fork</dt>
 <dd><p>The <code>CrunchDataset</code>, which must be a fork from <code>dataset</code>, that is
 to be merged in.</p></dd>
+
+
 <dt>autorollback</dt>
 <dd><p>logical If the merge fails, should <code>dataset</code> be restored
 to its state prior to the merge, or should it be left in its partially
 merged state for debugging and manual fixing? Default is <code>TRUE</code>.</p></dd>
+
+
 <dt>force</dt>
 <dd><p>logical Attempt to push through merge conflicts by dropping all
 changes to <code>dataset</code> that occurred after <code>fork</code> diverged from and take only
 the changes from <code>fork</code>? Default is <code>FALSE</code>. You should only use <code>force=TRUE</code>
 after first attempting and failing to merge without forcing.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dataset</code> with changes from <code>fork</code> merged to it.</p>
+    
+
+<p><code>dataset</code> with changes from <code>fork</code> merged to it.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -169,13 +178,13 @@ the changes back into the original dataset. For more on this workflow, see
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"My survey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">fork</span> <span class="op">&lt;-</span> <span class="fu"><a href="forkDataset.html">forkDataset</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Do stuff to fork</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu">mergeFork</span><span class="op">(</span><span class="va">ds</span>, <span class="va">fork</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Now the changes you did to fork are also on ds</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"My survey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fork</span> <span class="op">&lt;-</span> <span class="fu"><a href="forkDataset.html">forkDataset</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Do stuff to fork</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu">mergeFork</span><span class="op">(</span><span class="va">ds</span>, <span class="va">fork</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Now the changes you did to fork are also on ds</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -190,7 +199,7 @@ the changes back into the original dataset. For more on this workflow, see
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

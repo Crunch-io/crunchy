@@ -129,23 +129,32 @@ to the end of each <code>MARGIN</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">X</span>, <span class="va">MARGIN</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">X</span>, <span class="va">MARGIN</span>, <span class="va">FUN</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>X</dt>
 <dd><p>an array</p></dd>
+
+
 <dt>MARGIN</dt>
 <dd><p>the dimension to apply the function against</p></dd>
+
+
 <dt>FUN</dt>
 <dd><p>the function to be applied</p></dd>
+
+
 <dt>...</dt>
 <dd><p>optional arguments to `FUN``</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an array with the function applied</p>
+    
+
+<p>an array with the function applied</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -156,8 +165,8 @@ effectively expanding the array in the dimension given.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">array</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">array</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">array</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/array.html" class="external-link">array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">24</span><span class="op">)</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">array</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
@@ -174,25 +183,25 @@ effectively expanding the array in the dimension given.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   15   19   23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   16   20   24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># , , 1</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]    1    5    9</span></span>
-<span class="r-in"><span class="co"># [2,]    2    6   10</span></span>
-<span class="r-in"><span class="co"># [3,]    3    7   11</span></span>
-<span class="r-in"><span class="co"># [4,]    4    8   12</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># , , 2</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]   13   17   21</span></span>
-<span class="r-in"><span class="co"># [2,]   14   18   22</span></span>
-<span class="r-in"><span class="co"># [3,]   15   19   23</span></span>
-<span class="r-in"><span class="co"># [4,]   16   20   24</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">add_one_hundred</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">1</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># , , 1</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]    1    5    9</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]    2    6   10</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]    3    7   11</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]    4    8   12</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># , , 2</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]   13   17   21</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]   14   18   22</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]   15   19   23</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]   16   20   24</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">add_one_hundred</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">1</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
@@ -211,25 +220,25 @@ effectively expanding the array in the dimension given.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   16   20   24</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,]  100  100  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># , , 1</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]    1    5    9</span></span>
-<span class="r-in"><span class="co"># [2,]    2    6   10</span></span>
-<span class="r-in"><span class="co"># [3,]    3    7   11</span></span>
-<span class="r-in"><span class="co"># [4,]    4    8   12</span></span>
-<span class="r-in"><span class="co"># [5,]  100  100  100</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># , , 2</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]   13   17   21</span></span>
-<span class="r-in"><span class="co"># [2,]   14   18   22</span></span>
-<span class="r-in"><span class="co"># [3,]   15   19   23</span></span>
-<span class="r-in"><span class="co"># [4,]   16   20   24</span></span>
-<span class="r-in"><span class="co"># [5,]  100  100  100</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">2</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># , , 1</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]    1    5    9</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]    2    6   10</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]    3    7   11</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]    4    8   12</span></span></span>
+<span class="r-in"><span><span class="co"># [5,]  100  100  100</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># , , 2</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]   13   17   21</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]   14   18   22</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]   15   19   23</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]   16   20   24</span></span></span>
+<span class="r-in"><span><span class="co"># [5,]  100  100  100</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">2</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3] [,4]</span>
@@ -246,23 +255,23 @@ effectively expanding the array in the dimension given.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   15   19   23  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]   16   20   24  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># , , 1</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3] [,4]</span></span>
-<span class="r-in"><span class="co"># [1,]    1    5    9  100</span></span>
-<span class="r-in"><span class="co"># [2,]    2    6   10  100</span></span>
-<span class="r-in"><span class="co"># [3,]    3    7   11  100</span></span>
-<span class="r-in"><span class="co"># [4,]    4    8   12  100</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># , , 2</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3] [,4]</span></span>
-<span class="r-in"><span class="co"># [1,]   13   17   21  100</span></span>
-<span class="r-in"><span class="co"># [2,]   14   18   22  100</span></span>
-<span class="r-in"><span class="co"># [3,]   15   19   23  100</span></span>
-<span class="r-in"><span class="co"># [4,]   16   20   24  100</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">3</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># , , 1</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3] [,4]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]    1    5    9  100</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]    2    6   10  100</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]    3    7   11  100</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]    4    8   12  100</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># , , 2</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3] [,4]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]   13   17   21  100</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]   14   18   22  100</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]   15   19   23  100</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]   16   20   24  100</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">crunch</span><span class="fu">:::</span><span class="fu">applyAgainst</span><span class="op">(</span><span class="va">array</span>, <span class="fl">3</span>, <span class="va">add_one_hundred</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> , , 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2] [,3]</span>
@@ -287,29 +296,29 @@ effectively expanding the array in the dimension given.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [3,]  100  100  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  100  100  100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="co"># , , 1</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]    1    5    9</span></span>
-<span class="r-in"><span class="co"># [2,]    2    6   10</span></span>
-<span class="r-in"><span class="co"># [3,]    3    7   11</span></span>
-<span class="r-in"><span class="co"># [4,]    4    8   12</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># , , 2</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]   13   17   21</span></span>
-<span class="r-in"><span class="co"># [2,]   14   18   22</span></span>
-<span class="r-in"><span class="co"># [3,]   15   19   23</span></span>
-<span class="r-in"><span class="co"># [4,]   16   20   24</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># , , 3</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#      [,1] [,2] [,3]</span></span>
-<span class="r-in"><span class="co"># [1,]  100  100  100</span></span>
-<span class="r-in"><span class="co"># [2,]  100  100  100</span></span>
-<span class="r-in"><span class="co"># [3,]  100  100  100</span></span>
-<span class="r-in"><span class="co"># [4,]  100  100  100</span></span>
+<span class="r-in"><span><span class="co"># , , 1</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]    1    5    9</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]    2    6   10</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]    3    7   11</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]    4    8   12</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># , , 2</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]   13   17   21</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]   14   18   22</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]   15   19   23</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]   16   20   24</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># , , 3</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#      [,1] [,2] [,3]</span></span></span>
+<span class="r-in"><span><span class="co"># [1,]  100  100  100</span></span></span>
+<span class="r-in"><span><span class="co"># [2,]  100  100  100</span></span></span>
+<span class="r-in"><span><span class="co"># [3,]  100  100  100</span></span></span>
+<span class="r-in"><span><span class="co"># [4,]  100  100  100</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -324,7 +333,7 @@ effectively expanding the array in the dimension given.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

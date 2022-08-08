@@ -127,21 +127,26 @@ results.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">datasets</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">getAPIRoot</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">datasets</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">datasets</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">getAPIRoot</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">datasets</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a <code>ProjectFolder</code> or <code>SearchResults</code> that may contain datasets</p></dd>
+
+
 <dt>value</dt>
 <dd><p>For assignment, a <code>CrunchDataset</code> to move</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>When <code>x</code> is a <code>ProjectFolder</code>, <code>datasets()</code> returns the folder with
+    
+
+<p>When <code>x</code> is a <code>ProjectFolder</code>, <code>datasets()</code> returns the folder with
 its "index" filtered to contain only datasets; otherwise, it returns an
 object of class <code>DatasetCatalog</code>. The assignment function returns the
 project <code>x</code> with the given dataset added to it.</p>
@@ -155,17 +160,17 @@ than using <code><a href="mv.html">mv()</a></code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Get the names of the datasets contained in a project</span></span>
-<span class="r-in"><span class="fu"><a href="projects.html">projects</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="cd.html">cd</a></span><span class="op">(</span><span class="st">"Important Clients"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">datasets</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># The assignment method lets you move a dataset to a project</span></span>
-<span class="r-in"><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="cd.html">cd</a></span><span class="op">(</span><span class="fu"><a href="projects.html">projects</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Important Clients"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"New important client survey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">datasets</span><span class="op">(</span><span class="va">proj</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Get the names of the datasets contained in a project</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="projects.html">projects</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="cd.html">cd</a></span><span class="op">(</span><span class="st">"Important Clients"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">datasets</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="describe-catalog.html">names</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># The assignment method lets you move a dataset to a project</span></span></span>
+<span class="r-in"><span><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="cd.html">cd</a></span><span class="op">(</span><span class="fu"><a href="projects.html">projects</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"Important Clients"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"New important client survey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">datasets</span><span class="op">(</span><span class="va">proj</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -180,7 +185,7 @@ than using <code><a href="mv.html">mv()</a></code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -125,12 +125,12 @@ additional optional arguments.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">listDatasets</span><span class="op">(</span>
-  kind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"active"</span>, <span class="st">"all"</span>, <span class="st">"archived"</span><span class="op">)</span>,
-  project <span class="op">=</span> <span class="cn">NULL</span>,
-  refresh <span class="op">=</span> <span class="cn">FALSE</span>,
-  shiny <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">listDatasets</span><span class="op">(</span></span>
+<span>  kind <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"active"</span>, <span class="st">"all"</span>, <span class="st">"archived"</span><span class="op">)</span>,</span>
+<span>  project <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  refresh <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  shiny <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,23 +138,34 @@ additional optional arguments.</p>
     <dl><dt>kind</dt>
 <dd><p>character specifying whether to look in active, archived, or all
 datasets. Default is "active", i.e. non-archived.</p></dd>
+
+
 <dt>project</dt>
 <dd><p><code>ProjectFolder</code> entity, character name of a project, or
 <code>NULL</code>, the default. If a Project entity or reference is supplied, the
 function will display datasets from that Project's datasets. If <code>NULL</code>,
 your personal folder will be used.</p></dd>
+
+
 <dt>refresh</dt>
 <dd><p>logical: should the function check the Crunch API for new
 datasets? Default is FALSE.</p></dd>
+
+
 <dt>shiny</dt>
 <dd><p>logical: launch a Shiny gadget to help select the right dataset.
 The gadget will return a valid <code><a href="loadDataset.html">loadDataset()</a></code> call which loads the selected
 dataset. The gadget requires RStudio, as well as the <code>crunchy</code> package.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A character vector of dataset names, each of which would be a valid
+    
+
+<p>A character vector of dataset names, each of which would be a valid
 input for <code><a href="loadDataset.html">loadDataset()</a></code></p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -175,7 +186,7 @@ tree to find a dataset, if you're running in RStudio.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

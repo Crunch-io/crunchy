@@ -137,30 +137,34 @@ whether the numeric vector falls between 1 and 5 or 5 and 10.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for NumericVariable</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span>
-  <span class="va">x</span>,
-  <span class="va">breaks</span>,
-  labels <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">name</span>,
-  include.lowest <span class="op">=</span> <span class="cn">FALSE</span>,
-  right <span class="op">=</span> <span class="cn">TRUE</span>,
-  dig.lab <span class="op">=</span> <span class="fl">3</span>,
-  ordered_result <span class="op">=</span> <span class="cn">FALSE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for NumericVariable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">breaks</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">name</span>,</span>
+<span>  include.lowest <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  right <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  dig.lab <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ordered_result <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A Crunch <code>NumericVariable</code></p></dd>
+
+
 <dt>breaks</dt>
 <dd><p>Either a numeric vector of two or more unique cut points
 or a single number giving the number of intervals into which <code>x</code> is to be
 cut. If specifying cut points, values that are less than the smallest value
 in <code>breaks</code> or greater than the largest value in <code>breaks</code> will be marked
 missing in the resulting categorical variable.</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>A character vector representing the labels for the levels of
 the resulting categories. The length of the labels argument should be the
@@ -171,42 +175,57 @@ bracket shape indicates whether the boundary value is included in the
 category, i.e. whether it is "closed". <code>[1, 5)</code> indicates that the interval
 includes (is closed on) 1 but does not include (is open on) 5.
 If labels = FALSE, simple integer codes are returned instead of a factor.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The name of the resulting Crunch variable as a character string.</p></dd>
+
+
 <dt>include.lowest</dt>
 <dd><p>logical, indicating if an <code>x[i]</code> equal to the lowest
 (or highest, for right = FALSE) <code>breaks</code> value should be included.</p></dd>
+
+
 <dt>right</dt>
 <dd><p>logical, indicating if the intervals should be closed on the
 right (and open on the left) or vice versa.</p></dd>
+
+
 <dt>dig.lab</dt>
 <dd><p>integer which is used when labels are not given.
 It determines the number of digits used in formatting the break numbers.</p></dd>
+
+
 <dt>ordered_result</dt>
 <dd><p>Ignored.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>further arguments passed to <a href="makeCaseVariable.html">makeCaseVariable</a></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a Crunch <code><a href="VariableDefinition.html">VariableDefinition</a></code>. Assign it into the dataset to create
+    
+
+<p>a Crunch <code><a href="VariableDefinition.html">VariableDefinition</a></code>. Assign it into the dataset to create
 it as a derived variable on the server.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">cat_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">mpg</span>,</span>
-<span class="r-in">    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"medium"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"Fuel efficiency"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">32</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">age4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">age</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">45</span>, <span class="fl">65</span>, <span class="fl">200</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Youth"</span>, <span class="st">"Adult"</span>, <span class="st">"Middle-aged"</span>, <span class="st">"Elderly"</span><span class="op">)</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"Age (4 category)"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">cat_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">mpg</span>,</span></span>
+<span class="r-in"><span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"medium"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"Fuel efficiency"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">32</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">age4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">age</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">45</span>, <span class="fl">65</span>, <span class="fl">200</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Youth"</span>, <span class="st">"Adult"</span>, <span class="st">"Middle-aged"</span>, <span class="st">"Elderly"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="st">"Age (4 category)"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -221,7 +240,7 @@ it as a derived variable on the server.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

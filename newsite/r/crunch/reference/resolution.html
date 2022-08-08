@@ -133,33 +133,40 @@ resolution they will roll-up to, if not specified in <code>rollup()</code>;
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">resolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">resolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">rollup</span><span class="op">(</span><span class="va">x</span>, resolution <span class="op">=</span> <span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">resolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">resolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">rollup</span><span class="op">(</span><span class="va">x</span>, resolution <span class="op">=</span> <span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">rollupResolution</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a Datetime variable</p></dd>
+
+
 <dt>value</dt>
 <dd><p>a resolution string. Valid resolutions in Crunch are
 <code>c("Y", "Q", "M", "W", "D", "h", "m", "s", "ms")</code>. <code>NULL</code> is also valid for
 <code>rollupResolution&lt;-</code> but not for <code>resolution&lt;-</code>.</p></dd>
+
+
 <dt>resolution</dt>
 <dd><p>Same as <code>value</code>, in <code>rollup()</code>. This may be <code>NULL</code>, in
 which case the server will determine an appropriate resolution based on the
 range of the data.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>resolution()</code> and <code>rollupResolution()</code> return the resolution string
+    
+
+<p><code>resolution()</code> and <code>rollupResolution()</code> return the resolution string
 for datetime variables, <code>NULL</code> otherwise. The setters return the variable
 entity after modifying the state on the server. <code>rollup()</code> returns a
 <code>CrunchExpr</code> expression.</p>
@@ -174,15 +181,15 @@ Setting <code>rollupResolution</code> is non-destructive.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">resolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">## [1] "ms"</span></span>
-<span class="r-in"><span class="fu">resolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"s"</span></span>
-<span class="r-in"><span class="fu">rollup</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">rollup</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span>, <span class="st">"D"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">rollupResolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"D"</span></span>
-<span class="r-in"><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">rollup</span><span class="op">(</span><span class="va">starttime</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">resolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## [1] "ms"</span></span></span>
+<span class="r-in"><span><span class="fu">resolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"s"</span></span></span>
+<span class="r-in"><span><span class="fu">rollup</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">rollup</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span>, <span class="st">"D"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">rollupResolution</span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">starttime</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"D"</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span> <span class="fu">rollup</span><span class="op">(</span><span class="va">starttime</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -197,7 +204,7 @@ Setting <code>rollupResolution</code> is non-destructive.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

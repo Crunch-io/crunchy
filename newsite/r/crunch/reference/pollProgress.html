@@ -123,23 +123,30 @@ error message tells you to call <code>pollProgress</code> to resume.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pollProgress</span><span class="op">(</span><span class="va">progress_url</span>, wait <span class="op">=</span> <span class="fl">0.5</span>, error_handler <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pollProgress</span><span class="op">(</span><span class="va">progress_url</span>, wait <span class="op">=</span> <span class="fl">0.5</span>, error_handler <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>progress_url</dt>
 <dd><p>A Crunch progress URL</p></dd>
+
+
 <dt>wait</dt>
 <dd><p>Number of seconds to wait between polling. This time is increased
 20 percent on each poll.</p></dd>
+
+
 <dt>error_handler</dt>
 <dd><p>An optional function that takes the status object
 when the progress is less than 0 (meaning the request failed)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The percent completed of the progress. Assuming the
+    
+
+<p>The percent completed of the progress. Assuming the
 <code>options(crunch.timeout)</code> (default: 15 minutes) hasn't been reached, this
 will be 100. If the timeout is reached, it will be the last reported progress
 value.</p>
@@ -157,7 +164,7 @@ value.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -168,45 +168,45 @@
 </h2>
 <p>In our sample dataset, we don’t have an “Age” variable, but we do have “Birth Year” (<code>birthyr</code>). We can create an age variable simply by taking the current year and subtracting the “Birth Year” variable from it–just as you would do if you were working with a <code>data.frame</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span></span></code></pre></div>
 <p>Now, we have an age variable, and it looks like we’d expect it would relative to <code>birthyr</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="co">##   22.00   38.00   48.50   49.62   59.75   90.00</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">##   22.00   38.00   48.50   49.62   59.75   90.00</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="co">##    1925    1955    1966    1965    1977    1993</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">##    1925    1955    1966    1965    1977    1993</span></span></code></pre>
 <p>Age is now a derived variable, functionally linked to <code>birthyr</code> on the server. Note that in order to create <code>age</code>, we didn’t pull any values off of the server; we just supplied the derivation expression.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "CrunchExpr"</span>
-<span class="co">## attr(,"package")</span>
-<span class="co">## [1] "crunch"</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fl">2015</span> <span class="op">-</span> <span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "CrunchExpr"</span></span>
+<span><span class="co">## attr(,"package")</span></span>
+<span><span class="co">## [1] "crunch"</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="updating-values">Updating values<a class="anchor" aria-label="anchor" href="#updating-values"></a>
 </h2>
 <p>We can also use these expressions to update values. Suppose, just for demonstration purposes, that we want to truncate the range of the <code>birthyr</code> variable and set it to 1945 everywhere where it is less than 1945. We can once again write the R code we’d write if we were working with a <code>data.frame</code>, even though we’re working with a Crunch dataset:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1945</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">[</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1945</span></span></code></pre></div>
 <p>If we look at the summary again, we’ll see that our data have been updated, and the minimum Birth Year is now 1945.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="co">##    1945    1955    1966    1966    1977    1993</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">##    1945    1955    1966    1966    1977    1993</span></span></code></pre>
 <p>Not only that: since <code>age</code> is a function of <code>birthyr</code> on the server, its values also update now that we’ve modified <code>birthyr</code>. Max age is now 70, or 2015 - 1945.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
-<span class="co">##   22.00   38.00   48.50   48.98   59.75   70.00</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">##   22.00   38.00   48.50   48.98   59.75   70.00</span></span></code></pre>
 <p>Once again, we’ve done this operation by turning idiomatic R expressions into Crunch expression syntax.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] "CrunchLogicalExpr"</span>
-<span class="co">## attr(,"package")</span>
-<span class="co">## [1] "crunch"</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">birthyr</span> <span class="op">&lt;</span> <span class="fl">1945</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "CrunchLogicalExpr"</span></span>
+<span><span class="co">## attr(,"package")</span></span>
+<span><span class="co">## [1] "crunch"</span></span></code></pre>
 <p>The work gets done without having to pull data off of the server.</p>
 <p><a href="analyze.html">Next: analyzing data</a></p>
 </div>
@@ -229,7 +229,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

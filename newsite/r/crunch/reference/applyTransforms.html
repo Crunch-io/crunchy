@@ -125,46 +125,61 @@ to use the values from the subtotals of the CrunchCube in an analysis.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">subtotalArray</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchCube</span>
-<span class="fu">subtotalArray</span><span class="op">(</span><span class="va">x</span>, headings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="fu">applyTransforms</span><span class="op">(</span>
-  <span class="va">x</span>,
-  array <span class="op">=</span> <span class="fu">cubeToArray</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  transforms_list <span class="op">=</span> <span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  dims_list <span class="op">=</span> <span class="fu"><a href="cube-methods.html">dimensions</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  useNA <span class="op">=</span> <span class="va">x</span><span class="op">@</span><span class="va">useNA</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subtotalArray</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchCube</span></span>
+<span><span class="fu">subtotalArray</span><span class="op">(</span><span class="va">x</span>, headings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">applyTransforms</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  array <span class="op">=</span> <span class="fu">cubeToArray</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  transforms_list <span class="op">=</span> <span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  dims_list <span class="op">=</span> <span class="fu"><a href="cube-methods.html">dimensions</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  useNA <span class="op">=</span> <span class="va">x</span><span class="op">@</span><span class="va">useNA</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a CrunchCube</p></dd>
+
+
 <dt>...</dt>
 <dd><p>arguments to pass to <code>calcTransforms</code>, for example <code>include</code></p></dd>
+
+
 <dt>headings</dt>
 <dd><p>for <code>subtotalArray</code>: a logical indicating if the headings
 should be included with the subtotals (default: <code>FALSE</code>)</p></dd>
+
+
 <dt>array</dt>
 <dd><p>an array to use, if not using the default array from the cube
 itself. (Default: not used, pulls an array from the cube directly)</p></dd>
+
+
 <dt>transforms_list</dt>
 <dd><p>list of transforms to be applied (default:
 <code>transforms(x)</code>)</p></dd>
+
+
 <dt>dims_list</dt>
 <dd><p>list of dimensions that correspond to <code>array</code> (default:
 <code>dimensions(x)</code>)</p></dd>
+
+
 <dt>useNA</dt>
 <dd><p><code>useNA</code> parameter from the CrunchCube to use (default:
 <code>x@useNA</code>)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an array with any transformations applied</p>
+    
+
+<p>an array with any transformations applied</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -179,28 +194,28 @@ combination of these can be given, by default all will be given.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># to get an array of just the subtotals</span></span>
-<span class="r-in"><span class="fu">subtotalArray</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#    Agree Disagree</span></span>
-<span class="r-in"><span class="co">#       47       35</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># to get the full array with the subtotals but not headings</span></span>
-<span class="r-in"><span class="fu">applyTransforms</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cube_cells"</span>, <span class="st">"subtotals"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#             Strongly Agree             Somewhat Agree                      Agree</span></span>
-<span class="r-in"><span class="co">#                         23                         24                         47</span></span>
-<span class="r-in"><span class="co"># Neither Agree nor Disagree          Strongly Disagree                   Disagree</span></span>
-<span class="r-in"><span class="co">#                         18                         19                         35</span></span>
-<span class="r-in"><span class="co">#          Somewhat Disagree</span></span>
-<span class="r-in"><span class="co">#                         16</span></span>
-<span class="r-in"><span class="co"># to get the full array with the headings but not subtotals</span></span>
-<span class="r-in"><span class="fu">applyTransforms</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cube_cells"</span>, <span class="st">"headings"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">#               All opinions             Strongly Agree             Somewhat Agree</span></span>
-<span class="r-in"><span class="co">#                         NA                         23                         24</span></span>
-<span class="r-in"><span class="co"># Neither Agree nor Disagree          Strongly Disagree          Somewhat Disagree</span></span>
-<span class="r-in"><span class="co">#                         18                         19                         16</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># to get an array of just the subtotals</span></span></span>
+<span class="r-in"><span><span class="fu">subtotalArray</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#    Agree Disagree</span></span></span>
+<span class="r-in"><span><span class="co">#       47       35</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># to get the full array with the subtotals but not headings</span></span></span>
+<span class="r-in"><span><span class="fu">applyTransforms</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cube_cells"</span>, <span class="st">"subtotals"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#             Strongly Agree             Somewhat Agree                      Agree</span></span></span>
+<span class="r-in"><span><span class="co">#                         23                         24                         47</span></span></span>
+<span class="r-in"><span><span class="co"># Neither Agree nor Disagree          Strongly Disagree                   Disagree</span></span></span>
+<span class="r-in"><span><span class="co">#                         18                         19                         35</span></span></span>
+<span class="r-in"><span><span class="co">#          Somewhat Disagree</span></span></span>
+<span class="r-in"><span><span class="co">#                         16</span></span></span>
+<span class="r-in"><span><span class="co"># to get the full array with the headings but not subtotals</span></span></span>
+<span class="r-in"><span><span class="fu">applyTransforms</span><span class="op">(</span><span class="fu"><a href="crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">opinion</span>, <span class="va">ds</span><span class="op">)</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cube_cells"</span>, <span class="st">"headings"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">#               All opinions             Strongly Agree             Somewhat Agree</span></span></span>
+<span class="r-in"><span><span class="co">#                         NA                         23                         24</span></span></span>
+<span class="r-in"><span><span class="co"># Neither Agree nor Disagree          Strongly Disagree          Somewhat Disagree</span></span></span>
+<span class="r-in"><span><span class="co">#                         18                         19                         16</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -215,7 +230,7 @@ combination of these can be given, by default all will be given.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

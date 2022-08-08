@@ -174,11 +174,11 @@
 <h3 id="getters-and-setters">Getters and Setters<a class="anchor" aria-label="anchor" href="#getters-and-setters"></a>
 </h3>
 <p>Many Crunch functions both retrieve information from the server and allow the user to set information. For instance if you want to retrieve a list of datasets associated with a project you could call the [datasets()] function like this:</p>
-<pre><code><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"Project name"</span><span class="op">]</span><span class="op">]</span>
-<span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span></code></pre>
+<pre><code><span><span class="va">proj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/projects.html">projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"Project name"</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span></span></code></pre>
 <p>What happens under the hood when you run this code is that R sends an HTTP request to the server asking for the datasets associated with a particular project. This is the “getter” side of the <code><a href="../reference/datasets.html">datasets()</a></code> function. However, the function also allows the user to change the datasets associated with that function using the assignment operator.</p>
-<pre><code><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="va">mydatasets</span><span class="op">[[</span><span class="st">"Dataset name"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span></code></pre>
+<pre><code><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="va">mydatasets</span><span class="op">[[</span><span class="st">"Dataset name"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/datasets.html">datasets</a></span><span class="op">(</span><span class="va">proj</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span></span></code></pre>
 <p>Internally there is actually a second method <code>datasets&lt;-</code> that takes the value on the right hand side of the <code>&lt;-</code> operator and posts that value to the datasets attribute of the project catalog. The projects catalog will then update to reflect that a dataset belongs to a particular catalog, and that will be reflected in the web app. Similar patterns happen when you get and set attributes on objects, like “names”.</p>
 </div>
 <div class="section level2">
@@ -206,7 +206,7 @@
 &gt; dim(showMissing(cube))
 [1] 5 6 10</code></pre>
 <p>This makes subsetting a bit easier because we can enforce the dimensions of the printed cube. For instance</p>
-<pre><code><span class="va">cube</span><span class="op">[</span><span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">10</span><span class="op">]</span></code></pre>
+<pre><code><span><span class="va">cube</span><span class="op">[</span><span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">10</span><span class="op">]</span></span></code></pre>
 <p>Errors because the user supplied the wrong number of dimensions while</p>
 <pre><code>showMissing(cube)[cube[5, 6, 10]</code></pre>
 <p>Returns the correct data they were looking for.</p>
@@ -238,7 +238,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

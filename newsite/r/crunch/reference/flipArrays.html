@@ -129,7 +129,7 @@ when new data is appended.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">flipArrays</span><span class="op">(</span><span class="va">variables</span>, suffix <span class="op">=</span> <span class="st">", flipped"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">flipArrays</span><span class="op">(</span><span class="va">variables</span>, suffix <span class="op">=</span> <span class="st">", flipped"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,13 +138,18 @@ when new data is appended.</p>
 <dd><p>List of variables, a variable catalog, or a dataset subset
 containing the categorical array or multiple response variables you want to
 rearrange.</p></dd>
+
+
 <dt>suffix</dt>
 <dd><p>character string to append to the new variable names. Pass
 <code>""</code> if you don't want it to append anything.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list of derived VariableDefinitions, one per unique subvariable
+    
+
+<p>A list of derived VariableDefinitions, one per unique subvariable
 name across all <code>variables</code>. Each variable in <code>variables</code> that
 contains this subvariable will appear as a subvariable in these new derived
 array definitions. Use <code><a href="addVariables.html">addVariables</a></code> to add these to your dataset.</p>
@@ -152,9 +157,9 @@ array definitions. Use <code><a href="addVariables.html">addVariables</a></code>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="addVariables.html">addVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="fu">flipArrays</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"petloc"</span>, <span class="st">"petloc2"</span><span class="op">)</span><span class="op">]</span>, suffix <span class="op">=</span> <span class="st">", rearranged"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="addVariables.html">addVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="fu">flipArrays</span><span class="op">(</span><span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"petloc"</span>, <span class="st">"petloc2"</span><span class="op">)</span><span class="op">]</span>, suffix <span class="op">=</span> <span class="st">", rearranged"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -169,7 +174,7 @@ array definitions. Use <code><a href="addVariables.html">addVariables</a></code>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

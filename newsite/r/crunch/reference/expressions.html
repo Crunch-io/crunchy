@@ -133,17 +133,22 @@ in native R functions, and are described in the details section below.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crunchdbFunc</span><span class="op">(</span><span class="va">fun</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crunchdbFunc</span><span class="op">(</span><span class="va">fun</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>fun</dt>
 <dd><p>The name of the crunch database function to call</p></dd>
+
+
 <dt>x</dt>
 <dd><p>An input, a crunch variable, expression or R object</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed to the database function</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -190,16 +195,16 @@ variables or expressions, see <code><a href="deriveArray.html">deriveArray()</a>
 <li><p><code>arraySubsetExpr(x, subvars, subvar_id = c("alias", "name", "id"))</code> Take a subset of an
 existing array variable, identifying the subvariables by alias, name, or id (if <code>x</code> is
 an expression, you must use id).</p></li>
-<li><p></p><div class="sourceCode"><pre><code><span class="fu"><a href="../reference/expressions-internal.html">alterArrayExpr</a></span><span class="op">(</span>
-   <span class="va">x</span>,
-   add <span class="op">=</span> <span class="cn">NULL</span>,
-   order <span class="op">=</span> <span class="cn">NULL</span>,
-   order_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>,
-   remove <span class="op">=</span> <span class="cn">NULL</span>,
-   remove_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>,
-   subreferences <span class="op">=</span> <span class="cn">NULL</span>,
-   subreferences_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<li><p></p><div class="sourceCode"><pre><code><span> <span class="fu"><a href="../reference/expressions-internal.html">alterArrayExpr</a></span><span class="op">(</span></span>
+<span>   <span class="va">x</span>,</span>
+<span>   add <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>   order <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>   order_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>,</span>
+<span>   remove <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>   remove_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span>,</span>
+<span>   subreferences <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>   subreferences_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alias"</span>, <span class="st">"name"</span>, <span class="st">"id"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 
 <p>Add, reorder, remove or rename subvariables on an an array variable <code>x</code>. The <code>add</code> argument is
 a list of variables or expressions, optionally named with the id they should have. <code>order</code>
@@ -239,7 +244,7 @@ from numeric variables or expressions (<code>year</code>, <code>month</code>, an
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

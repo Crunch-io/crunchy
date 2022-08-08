@@ -125,38 +125,39 @@ structure (option = <code>crunch.api.&lt;ID&gt;</code> or environment variable <
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="va">id</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>id</dt>
 <dd><p>A string indicating the id of the credentials</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Using crunch options:</span></span>
-<span class="r-in"><span class="fu"><a href="envOrOption.html">set_crunch_opts</a></span><span class="op">(</span></span>
-<span class="r-in">    crunch.api.account1 <span class="op">=</span> <span class="st">"https://company1.crunch.io/api/"</span>,</span>
-<span class="r-in">    crunch.api.key.account1 <span class="op">=</span> <span class="st">"MY KEY"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Or with environment variables</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="st">"R_CRUNCH_API_ACCOUNT2"</span> <span class="op">=</span> <span class="st">"https://company2.crunch.io/api/"</span>,</span>
-<span class="r-in">    <span class="st">"R_CRUNCH_API_KEY_ACCOUNT2"</span> <span class="op">=</span> <span class="st">"ANOTHER KEY"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Can now switch between accounts</span></span>
-<span class="r-in"><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="st">"account1"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="crunch_sitrep.html">crunch_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="st">"account2"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="crunch_sitrep.html">crunch_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Using crunch options:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="envOrOption.html">set_crunch_opts</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    crunch.api.account1 <span class="op">=</span> <span class="st">"https://company1.crunch.io/api/"</span>,</span></span>
+<span class="r-in"><span>    crunch.api.key.account1 <span class="op">=</span> <span class="st">"MY KEY"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Or with environment variables</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"R_CRUNCH_API_ACCOUNT2"</span> <span class="op">=</span> <span class="st">"https://company2.crunch.io/api/"</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"R_CRUNCH_API_KEY_ACCOUNT2"</span> <span class="op">=</span> <span class="st">"ANOTHER KEY"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Can now switch between accounts</span></span></span>
+<span class="r-in"><span><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="st">"account1"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="crunch_sitrep.html">crunch_sitrep</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">setupCrunchAuth</span><span class="op">(</span><span class="st">"account2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="crunch_sitrep.html">crunch_sitrep</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -171,7 +172,7 @@ structure (option = <code>crunch.api.&lt;ID&gt;</code> or environment variable <
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

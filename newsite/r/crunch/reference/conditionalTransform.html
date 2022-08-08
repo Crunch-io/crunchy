@@ -131,14 +131,14 @@ value, depending on the type of variable you're constructing.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">conditionalTransform</span><span class="op">(</span>
-  <span class="va">...</span>,
-  <span class="va">data</span>,
-  else_condition <span class="op">=</span> <span class="cn">NA</span>,
-  type <span class="op">=</span> <span class="cn">NULL</span>,
-  categories <span class="op">=</span> <span class="cn">NULL</span>,
-  formulas <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">conditionalTransform</span><span class="op">(</span></span>
+<span>  <span class="va">...</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  else_condition <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  categories <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  formulas <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -146,27 +146,42 @@ value, depending on the type of variable you're constructing.</p>
     <dl><dt>...</dt>
 <dd><p>a list of conditions to evaluate (as formulas, see Details) as well as
 other properties to pass to the new conditional variable (i.e. alias, description)</p></dd>
+
+
 <dt>data</dt>
 <dd><p>a Crunch dataset object to use</p></dd>
+
+
 <dt>else_condition</dt>
 <dd><p>a default value to use if none of the conditions are
 true (default: <code>NA</code>)</p></dd>
+
+
 <dt>type</dt>
 <dd><p>a character that is either "categorical", "text", "numeric" what
 type of output should be returned? If <code>NULL</code>, the type of the source
 variable will be used. (default: <code>NULL</code>) The source variables will be
 converted to this type if necessary.</p></dd>
+
+
 <dt>categories</dt>
 <dd><p>a vector of characters if <code>type="categorical"</code>, these are
 all of the categories that should be in the resulting variable, in the order
 they should be in the resulting variable or a set of Crunch categories.</p></dd>
+
+
 <dt>formulas</dt>
 <dd><p>a list of conditions to evaluate (as formulas, see Details). If
 specified, <code>...</code> must not contain other formulas specifying conditions.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a Crunch <code>VariableDefinition</code></p>
+    
+
+<p>a Crunch <code>VariableDefinition</code></p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -189,15 +204,15 @@ download the data necessary to construct the new variable.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">cat_opinion</span> <span class="op">&lt;-</span> <span class="fu">conditionalTransform</span><span class="op">(</span><span class="va">pet1</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion1</span>,</span>
-<span class="r-in">    <span class="va">pet2</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion2</span>,</span>
-<span class="r-in">    <span class="va">pet3</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion3</span>,</span>
-<span class="r-in">    data <span class="op">=</span> <span class="va">ds</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"Opinion of Cats"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">cat_opinion</span> <span class="op">&lt;-</span> <span class="fu">conditionalTransform</span><span class="op">(</span><span class="va">pet1</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion1</span>,</span></span>
+<span class="r-in"><span>    <span class="va">pet2</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion2</span>,</span></span>
+<span class="r-in"><span>    <span class="va">pet3</span> <span class="op">==</span> <span class="st">"Cat"</span> <span class="op">~</span> <span class="va">Opinion3</span>,</span></span>
+<span class="r-in"><span>    data <span class="op">=</span> <span class="va">ds</span>,</span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="st">"Opinion of Cats"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -212,7 +227,7 @@ download the data necessary to construct the new variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -659,6 +659,8 @@ is.na(x) &lt;- value
     <dl><dt>x</dt>
 <dd><p>a Crunch object (Dataset, Variable, <code>CrunchExpr</code>, Catalog,
 <code>CrunchCube</code>, etc.)</p></dd>
+
+
 <dt>i</dt>
 <dd><p>The elements to extract; as with R, this can generally be (1) a
 logical vector of length matching <code>x</code>; (2) a character vector of appropriate
@@ -667,17 +669,25 @@ identifier; (3) integer indices, potentially negative, to select. Datasets
 and Variables can also be subset by <code>CrunchExpr</code>. Note that when subsetting
 Datasets and variables by R vectors, the input <code>i</code> is turned into a
 <code>CrunchExpr</code> so that it can be used in API queries.</p></dd>
+
+
 <dt>j</dt>
 <dd><p>For two-dimensional objects, elements to take from the columnar
 dimension. Note that Datasets work like <code>data.frame</code>s in that you can extract
 columns either by <code>ds[, j]</code> or by the list-like <code>ds[i]</code> (with no comma).</p></dd>
+
+
 <dt>...</dt>
 <dd><p>additional arguments supported by some methods. For example, some
 catalogs support a <code>secondary</code> vector of elements to match
 against like <code>emails(x)</code> or <code>owners(x)</code>; by default this is <code>names(x)</code>. This
 lets (for example) you to look up variables by URL but fall back to name.</p></dd>
+
+
 <dt>drop</dt>
 <dd><p>Ignored and always assumed <code>FALSE</code></p></dd>
+
+
 <dt>value</dt>
 <dd><p>For updating, an object of the appropriate class and size to
 insert. This is generally the same class of object you would get from the
@@ -685,14 +695,22 @@ extract method; i.e. for <code>x[[i]] &lt;- value</code>, <code>value</code> mus
 as <code>x[[i]]</code>. Exceptions include <code>ds$var &lt;- VariableDefinition(...)</code> to create
 a new variable, and <code>ds$var[i] &lt;- value</code>, which can take R vectors and
 <code>CrunchExpr</code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>for <code>$</code>, the same as <code>i</code> for <code>[[</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>[</code> generally returns a subset of <code>x</code>, same class and "self" URL;
+    
+
+<p><code>[</code> generally returns a subset of <code>x</code>, same class and "self" URL;
 when subsetting with a <code>CrunchExpr</code>, the expression is recorded in an
-attribute of the object. <code>[[</code> and <code>$</code>return appropriate extractions from <code>x</code>, wherever possible without making an
+attribute of the object. <code>[[</code> and <code>$</code></p>
+
+
+<p>return appropriate extractions from <code>x</code>, wherever possible without making an
 additional API request. The assignment methods return <code>x</code> appropriately
 updated. Most assignment methods do not make an API request except where
 they clearly are used to create a new entity (as in assigning a variable
@@ -714,7 +732,7 @@ assignment happens in the <code>names&lt;-</code> method).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

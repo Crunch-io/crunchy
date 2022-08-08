@@ -133,9 +133,9 @@ more details.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">makeCaseVariable</span><span class="op">(</span><span class="va">...</span>, <span class="va">cases</span>, data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">name</span><span class="op">)</span>
-
-<span class="fu">caseExpr</span><span class="op">(</span><span class="va">...</span>, <span class="va">cases</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">makeCaseVariable</span><span class="op">(</span><span class="va">...</span>, <span class="va">cases</span>, data <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">name</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">caseExpr</span><span class="op">(</span><span class="va">...</span>, <span class="va">cases</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -143,19 +143,28 @@ more details.</p>
     <dl><dt>...</dt>
 <dd><p>a sequence of named expressions to use as cases as well as other
 properties to pass about the case variable (i.e. alias, description)</p></dd>
+
+
 <dt>cases</dt>
 <dd><p>a list of lists with each case condition to use each must
 include at least a <code>name</code> and an <code>expression</code> element. Cases may also include
 <code>missing</code> (logical) and <code>numeric_value</code> (numeric).</p></dd>
+
+
 <dt>data</dt>
 <dd><p>(optional) a crunch dataset to use. Specifying this means you
 don't have to put <code>dataset$</code> in front of each variable name.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>a character to use as the name of the case variable to create</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code><a href="VariableDefinition.html">VariableDefinition</a></code> that will create the new
+    
+
+<p>A <code><a href="VariableDefinition.html">VariableDefinition</a></code> that will create the new
 case variable when assigned into the Dataset.</p>
     </div>
     <div id="details">
@@ -176,30 +185,30 @@ details.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">makeCaseVariable</span><span class="op">(</span></span>
-<span class="r-in">    cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"case1"</span><span class="op">)</span>,</span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"case2"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"new case"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># different ways to specify else cases</span></span>
-<span class="r-in"><span class="fu">makeCaseVariable</span><span class="op">(</span></span>
-<span class="r-in">    cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"case1"</span><span class="op">)</span>,</span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"case2"</span><span class="op">)</span>,</span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="st">"else"</span>, name <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"new case"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, other <span class="op">=</span> <span class="st">"else"</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># the dataset can be specified with data=</span></span>
-<span class="r-in"><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, data <span class="op">=</span> <span class="va">ds</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">makeCaseVariable</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"case1"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"case2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="st">"new case"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># different ways to specify else cases</span></span></span>
+<span class="r-in"><span><span class="fu">makeCaseVariable</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    cases <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"case1"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, name <span class="op">=</span> <span class="st">"case2"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>expression <span class="op">=</span> <span class="st">"else"</span>, name <span class="op">=</span> <span class="st">"other"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    name <span class="op">=</span> <span class="st">"new case"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, other <span class="op">=</span> <span class="st">"else"</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># the dataset can be specified with data=</span></span></span>
+<span class="r-in"><span><span class="fu">makeCaseVariable</span><span class="op">(</span>case1 <span class="op">=</span> <span class="va">v1</span> <span class="op">==</span> <span class="fl">1</span>, case2 <span class="op">=</span> <span class="va">v2</span> <span class="op">==</span> <span class="fl">2</span>, data <span class="op">=</span> <span class="va">ds</span>, name <span class="op">=</span> <span class="st">"new case"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -214,7 +223,7 @@ details.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

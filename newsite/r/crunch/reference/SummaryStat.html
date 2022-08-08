@@ -137,55 +137,70 @@ statistic to an existing CrunchCube.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">SummaryStat</span><span class="op">(</span>
-  <span class="va">name</span>,
-  <span class="va">stat</span>,
-  categories <span class="op">=</span> <span class="cn">NULL</span>,
-  position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span><span class="op">)</span>,
-  after <span class="op">=</span> <span class="cn">NULL</span>,
-  before <span class="op">=</span> <span class="cn">NULL</span>,
-  includeNA <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">SummaryStat</span><span class="op">(</span>
-  <span class="va">name</span>,
-  <span class="va">stat</span>,
-  categories <span class="op">=</span> <span class="cn">NULL</span>,
-  position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span><span class="op">)</span>,
-  after <span class="op">=</span> <span class="cn">NULL</span>,
-  before <span class="op">=</span> <span class="cn">NULL</span>,
-  includeNA <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span>
-
-<span class="fu">is.SummaryStat</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">are.SummaryStats</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">SummaryStat</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  <span class="va">stat</span>,</span>
+<span>  categories <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
+<span>  after <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  before <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  includeNA <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">SummaryStat</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  <span class="va">stat</span>,</span>
+<span>  categories <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"relative"</span>, <span class="st">"top"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
+<span>  after <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  before <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  includeNA <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">is.SummaryStat</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">are.SummaryStats</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>name</dt>
 <dd><p>character the name of the summary statistic</p></dd>
+
+
 <dt>stat</dt>
 <dd><p>a function to calculate the summary (e.g. <code>mean</code> or <code>median</code>)</p></dd>
+
+
 <dt>categories</dt>
 <dd><p>character or numeric the category names or ids to be
 included in the summary statistic, if empty all categories</p></dd>
+
+
 <dt>position</dt>
 <dd><p>character one of "relative", "top", or "bottom". Determines
 the position of the subtotal or heading, either at the top, bottom, or
 relative to another category in the cube (default)</p></dd>
+
+
 <dt>after</dt>
 <dd><p>character or numeric if <code>position</code> is "relative", then the
 category name or id to position the subtotal or heading after</p></dd>
+
+
 <dt>before</dt>
 <dd><p>character or numeric if <code>position</code> is relative (and the
 insertion type allows it - currently only MR subtotals).</p></dd>
+
+
 <dt>includeNA</dt>
 <dd><p>should missing categories be included in the summary?</p></dd>
+
+
 <dt>x</dt>
 <dd><p>for <code>is.SummaryStat()</code> only, an object to test if
 it is a <code>SummaryStat</code> object</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -214,7 +229,7 @@ that generated the CrunchCube.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -125,12 +125,12 @@ variables in a CrunchDataset, expanding on the notation allowed in
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">crtabs</span><span class="op">(</span>
-  <span class="va">formula</span>,
-  <span class="va">data</span>,
-  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>,
-  useNA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"ifany"</span>, <span class="st">"always"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">crtabs</span><span class="op">(</span></span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  weight <span class="op">=</span> <span class="fu">crunch</span><span class="fu">::</span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>,</span>
+<span>  useNA <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"ifany"</span>, <span class="st">"always"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,19 +138,30 @@ variables in a CrunchDataset, expanding on the notation allowed in
     <dl><dt>formula</dt>
 <dd><p>a <a href="https://rdrr.io/r/stats/formula.html" class="external-link">stats::formula</a> object that specifies that query
 to calculate. See Details for more information.</p></dd>
+
+
 <dt>data</dt>
 <dd><p>an object of class <code>CrunchDataset</code></p></dd>
+
+
 <dt>weight</dt>
 <dd><p>a CrunchVariable that has been designated as a potential
 weight variable for <code>data</code>, or <code>NULL</code> for unweighted results.
 Default is the currently applied <code><a href="weight.html">weight()</a></code>.</p></dd>
+
+
 <dt>useNA</dt>
 <dd><p>whether to include missing values in tabular results. See
 <code><a href="https://rdrr.io/r/base/table.html" class="external-link">base::table()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an object of class <code>CrunchCube</code></p>
+    
+
+<p>an object of class <code>CrunchCube</code></p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -181,29 +192,29 @@ the <code>scorecard(..., vars = NULL)</code> (where <code>...</code> is a set of
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Crosstab of people by `age_cat`:</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Aggregation of means of income by `age_cat`</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="fu"><a href="crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span> <span class="op">~</span> <span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Scorecard of multiple MRs with aligned subvariables</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu">scorecard</span><span class="op">(</span><span class="va">trust_mr</span>, <span class="va">value_mr</span>, <span class="va">quality_mr</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Can also pre-define the variables in a scorecard with</span></span>
-<span class="r-in"><span class="va">mr_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">trust_mr</span>, <span class="va">ds</span><span class="op">$</span><span class="va">value_mr</span>, <span class="va">ds</span><span class="op">$</span><span class="va">quality_mr</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu">scorecard</span><span class="op">(</span>vars <span class="op">=</span> <span class="va">mr_list</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Crosstab of people by `age_cat` and the reasons for enjoying a brand (cat array)</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="va">age_cat</span> <span class="op">+</span> <span class="va">enjoy_array</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Crosstab of people by `age_cat` and the `enjoy_array` (cat array)</span></span>
-<span class="r-in"><span class="co"># But manually choosing the order of the dimensions</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">enjoy_array</span><span class="op">)</span> <span class="op">+</span> <span class="va">age_cat</span> <span class="op">+</span> <span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">enjoy_array</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Aggregation of means &amp; standard deviations of income by `age_cat`</span></span>
-<span class="r-in"><span class="fu">crtabs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fu"><a href="crunch-uni.html">sd</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span> <span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Crosstab of people by `age_cat`:</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Aggregation of means of income by `age_cat`</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="fu"><a href="crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span> <span class="op">~</span> <span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Scorecard of multiple MRs with aligned subvariables</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu">scorecard</span><span class="op">(</span><span class="va">trust_mr</span>, <span class="va">value_mr</span>, <span class="va">quality_mr</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Can also pre-define the variables in a scorecard with</span></span></span>
+<span class="r-in"><span><span class="va">mr_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">trust_mr</span>, <span class="va">ds</span><span class="op">$</span><span class="va">value_mr</span>, <span class="va">ds</span><span class="op">$</span><span class="va">quality_mr</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu">scorecard</span><span class="op">(</span>vars <span class="op">=</span> <span class="va">mr_list</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Crosstab of people by `age_cat` and the reasons for enjoying a brand (cat array)</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="va">age_cat</span> <span class="op">+</span> <span class="va">enjoy_array</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Crosstab of people by `age_cat` and the `enjoy_array` (cat array)</span></span></span>
+<span class="r-in"><span><span class="co"># But manually choosing the order of the dimensions</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">enjoy_array</span><span class="op">)</span> <span class="op">+</span> <span class="va">age_cat</span> <span class="op">+</span> <span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">enjoy_array</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Aggregation of means &amp; standard deviations of income by `age_cat`</span></span></span>
+<span class="r-in"><span><span class="fu">crtabs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="crunch-uni.html">mean</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, sd <span class="op">=</span> <span class="fu"><a href="crunch-uni.html">sd</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">~</span> <span class="va">age_cat</span>, <span class="va">ds</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -218,7 +229,7 @@ the <code>scorecard(..., vars = NULL)</code> (where <code>...</code> is a set of
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

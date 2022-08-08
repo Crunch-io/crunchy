@@ -123,13 +123,15 @@ file-system version, it does not require the folders to be empty.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rmdir</span><span class="op">(</span><span class="va">x</span>, <span class="va">path</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rmdir</span><span class="op">(</span><span class="va">x</span>, <span class="va">path</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A <code>CrunchDataset</code> or <code>Folder</code> (<code>VariableFolder</code> or <code>ProjectFolder</code>)</p></dd>
+
+
 <dt>path</dt>
 <dd><p>A character "path" to the folder: either a
 vector of nested folder names or a single string with nested folders
@@ -137,10 +139,15 @@ separated by a delimiter ("/" default, configurable via
 <code>options(crunch.delimiter)</code>). The path is interpreted as
 relative to the location of the folder <code>x</code> (when <code>x</code> is a dataset, that
 means the root, top-level folder). <code>path</code> may also be a <code>Folder</code> object.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>NULL</code></p>
+    
+
+<p><code>NULL</code></p>
+
+
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -151,14 +158,14 @@ from your local file system, which <code>rmdir()</code> does not do</p></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"Example survey"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">rmdir</span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Demographics"</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># Or with %&gt;%</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">ds</span> <span class="op">&lt;-</span> <span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">    <span class="fu">rmdir</span><span class="op">(</span><span class="st">"Demographics"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="loadDataset.html">loadDataset</a></span><span class="op">(</span><span class="st">"Example survey"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">rmdir</span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Demographics"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Or with %&gt;%</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="va">ds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>    <span class="fu">rmdir</span><span class="op">(</span><span class="st">"Demographics"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -173,7 +180,7 @@ from your local file system, which <code>rmdir()</code> does not do</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

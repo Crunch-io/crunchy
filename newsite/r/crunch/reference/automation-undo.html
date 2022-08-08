@@ -128,38 +128,43 @@ running such script.</p></li>
 </ul></div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="fu">scriptSavepoint</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset,Script</span>
-<span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset,ANY</span>
-<span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset,Script</span>
-<span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDataset,ANY</span>
-<span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Script</span>
-<span class="fu">scriptSavepoint</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scriptSavepoint</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset,Script</span></span>
+<span><span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset,ANY</span></span>
+<span><span class="fu">undoScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset,Script</span></span>
+<span><span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDataset,ANY</span></span>
+<span><span class="fu">revertScript</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Script</span></span>
+<span><span class="fu">scriptSavepoint</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dataset</dt>
 <dd><p>A <code>CrunchDataset</code></p></dd>
+
+
 <dt>x</dt>
 <dd><p>A <code>Script</code> or index for a <code>ScriptCatalog</code> (generally a number)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>For <code>undoScript()</code> and <code>revertSctipt()</code>, invisibly return the updated dataset.
+    
+
+<p>For <code>undoScript()</code> and <code>revertSctipt()</code>, invisibly return the updated dataset.
 For <code>scriptSavePoint()</code> a version list object that can be used in <code><a href="restoreVersion.html">restoreVersion()</a></code>.</p>
     </div>
     <div id="details">
@@ -187,7 +192,7 @@ script's record will remain in place.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

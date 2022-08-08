@@ -133,11 +133,11 @@ rather than a set of distinct variables.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">deriveArray</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">selections</span>, numeric <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">makeArray</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">makeMR</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">selections</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">deriveArray</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">selections</span>, numeric <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">makeArray</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">makeMR</span><span class="op">(</span><span class="va">subvariables</span>, <span class="va">name</span>, <span class="va">selections</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -145,9 +145,13 @@ rather than a set of distinct variables.</p>
     <dl><dt>subvariables</dt>
 <dd><p>a list of Variable objects to bind together, or a
 Dataset subset which contains only the Variables to bind.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>character, the name that the new Categorical Array variable
 should have.</p></dd>
+
+
 <dt>selections</dt>
 <dd><p>character (preferred, indicating the names of the
 categories), or numeric (indicating the IDs of the categories
@@ -155,71 +159,81 @@ in the combined array, which may not be the same as in the original
 variables - also note that a category's ID is not the same thing
 as its <code>numeric_value</code>). Required for <code>makeMR</code>; optional for
 <code>deriveArray</code>; ignored in <code>makeArray</code>.</p></dd>
+
+
 <dt>numeric</dt>
 <dd><p>Logical indicating whether the array should be a numeric
 array or categorical array. <code>NULL</code> the default will guess numeric if
 all variables are known to be numeric and categorical if all are
 categorical. If any subvariables are created from expressions, then
 their type cannot be guessed and so <code>numeric</code> must be specified.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Optional additional attributes to set on the new variable.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A VariableDefinition that when added to a Dataset will create the
+    
+
+<p>A VariableDefinition that when added to a Dataset will create the
 categorical-array or multiple-response variable. <code>deriveArray</code> will
 make a derived array expression (or a derived multiple response expression
-if <code>selections</code> are supplied), while <code>makeArray</code> and <code>makeMR</code>return an expression that "binds" variables together, removing them from
+if <code>selections</code> are supplied), while <code>makeArray</code> and <code>makeMR</code></p>
+
+
+<p>return an expression that "binds" variables together, removing them from
 independent existence.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Categorical Array - Variables from list of variables</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_cat2</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Enjoy activities"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Categorical Array - Variables from var catalog</span></span>
-<span class="r-in"><span class="co"># (result is the same as `ds$enjoy_cat1` above)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_cat2</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"enjoy1"</span>, <span class="st">"enjoy2"</span><span class="op">)</span><span class="op">]</span>,</span>
-<span class="r-in">    <span class="st">"Enjoy activities v2"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Multiple Response (selections as character names)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr1</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Enjoy activities very much or a little"</span>,</span>
-<span class="r-in">    selections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Very much"</span>, <span class="st">"A little"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Numeric Array</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">rating_numa</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">rating1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">rating2</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Activity Rating"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Using VarDef to specify metadata (and thus needing to specify type)</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        <span class="fu"><a href="VariableDefinition.html">VarDef</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span> <span class="op">==</span> <span class="st">"Very much"</span>, name <span class="op">=</span> <span class="st">"enjoy brand 1"</span><span class="op">)</span>,</span>
-<span class="r-in">        <span class="fu"><a href="VariableDefinition.html">VarDef</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span> <span class="op">==</span> <span class="st">"Very much"</span>, name <span class="op">=</span> <span class="st">"enjoy brand 2"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Enjoy activities with custom names"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Multiple Response (selections as ids, same as ds$enjoy_mr1)</span></span>
-<span class="r-in"><span class="co"># Be careful `ids(categories(ds$enjoy1))` is not necessarily the same as</span></span>
-<span class="r-in"><span class="co"># `values(categories(ds$enjoy1))`</span></span>
-<span class="r-in"><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr1</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span>
-<span class="r-in">    <span class="st">"Enjoy activities very much or a little v2"</span>,</span>
-<span class="r-in">    selections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Categorical Array - Variables from list of variables</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_cat2</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Enjoy activities"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Categorical Array - Variables from var catalog</span></span></span>
+<span class="r-in"><span><span class="co"># (result is the same as `ds$enjoy_cat1` above)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_cat2</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">ds</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"enjoy1"</span>, <span class="st">"enjoy2"</span><span class="op">)</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Enjoy activities v2"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Multiple Response (selections as character names)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr1</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Enjoy activities very much or a little"</span>,</span></span>
+<span class="r-in"><span>    selections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Very much"</span>, <span class="st">"A little"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Numeric Array</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">rating_numa</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">rating1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">rating2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Activity Rating"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using VarDef to specify metadata (and thus needing to specify type)</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="VariableDefinition.html">VarDef</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span> <span class="op">==</span> <span class="st">"Very much"</span>, name <span class="op">=</span> <span class="st">"enjoy brand 1"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        <span class="fu"><a href="VariableDefinition.html">VarDef</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span> <span class="op">==</span> <span class="st">"Very much"</span>, name <span class="op">=</span> <span class="st">"enjoy brand 2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Enjoy activities with custom names"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Multiple Response (selections as ids, same as ds$enjoy_mr1)</span></span></span>
+<span class="r-in"><span><span class="co"># Be careful `ids(categories(ds$enjoy1))` is not necessarily the same as</span></span></span>
+<span class="r-in"><span><span class="co"># `values(categories(ds$enjoy1))`</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy_mr1</span> <span class="op">&lt;-</span> <span class="fu">deriveArray</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">enjoy1</span>, <span class="va">ds</span><span class="op">$</span><span class="va">enjoy2</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="st">"Enjoy activities very much or a little v2"</span>,</span></span>
+<span class="r-in"><span>    selections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -234,7 +248,7 @@ independent existence.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -121,27 +121,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">newSlide</span><span class="op">(</span>
-  <span class="va">deck</span>,
-  query <span class="op">=</span> <span class="cn">NULL</span>,
-  display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  title <span class="op">=</span> <span class="st">""</span>,
-  subtitle <span class="op">=</span> <span class="st">""</span>,
-  filter <span class="op">=</span> <span class="cn">NULL</span>,
-  weight <span class="op">=</span> <span class="cn">NULL</span>,
-  viz_specs <span class="op">=</span> <span class="cn">NULL</span>,
-  transform <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">newSlide</span><span class="op">(</span></span>
+<span>  <span class="va">deck</span>,</span>
+<span>  query <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  filter <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  weight <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  viz_specs <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  transform <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>deck</dt>
 <dd><p>A Crunch Deck</p></dd>
+
+
 <dt>query</dt>
 <dd><p>A formula definition of a query to be used by the slide. See
 Details of <code><a href="crtabs.html">crtabs()</a></code> for more information about making queries.</p></dd>
+
+
 <dt>display_settings</dt>
 <dd><p>(optional) A list of display settings. If omitted,
 slide will be a table of column percentages with hypothesis test highlighting
@@ -151,29 +155,46 @@ enabled. The most common setting used is <code>vizType</code>, which can be:
 query formula is a wave variable) <code>timeplot</code>.
 In addition, <code>showValueLabels</code> (logical) controls whether the web app and
 exports show labels on bars or arcs of donuts.</p></dd>
+
+
 <dt>title</dt>
 <dd><p>The slide's title</p></dd>
+
+
 <dt>subtitle</dt>
 <dd><p>The slide's subtitle</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>a <code>CrunchLogicalExpression</code>, a crunch <code>filter</code> object or
 a vector of names of <code><a href="filter-catalog.html">filters</a></code> defined in the dataset (defaults
 to <code>NULL</code>, using all data).</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>A weight variable (defaults to NULL, meaning no weight)</p></dd>
+
+
 <dt>viz_specs</dt>
 <dd><p>Another set of options for the display of the slide, see
 the <a href="https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/" class="external-link">API documentation</a>
 for more information.</p></dd>
+
+
 <dt>transform</dt>
 <dd><p>A list of slide transformations, usually created using the function
 <code><a href="makeDimTransform.html">makeDimTransform()</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Further options to be passed on to the API</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>CrunchSlide object</p>
+    
+
+<p>CrunchSlide object</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -182,109 +203,109 @@ for more information.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">wt</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Cyl and Weight"</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Grouped bar plot</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span>
-<span class="r-in">    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span>,</span>
-<span class="r-in">        showValueLabels <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Horizontal stacked bars</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span>
-<span class="r-in">    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        vizType <span class="op">=</span> <span class="st">"horizontalStackedBarPlot"</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># A donut is only suitable for a single variable</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span> <span class="va">approval</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Approval of new feature"</span>,</span>
-<span class="r-in">    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        vizType <span class="op">=</span> <span class="st">"donut"</span>,</span>
-<span class="r-in">        showValueLabels <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># A Grouped bar plot with slide transformations to hide a category</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span>
-<span class="r-in">    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span>,</span>
-<span class="r-in">        showValueLabels <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rows_dimension <span class="op">=</span> <span class="fu"><a href="makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="st">"Neutral"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Example of advanced options being set:</span></span>
-<span class="r-in"><span class="co"># viz_specs can get quite long, see</span></span>
-<span class="r-in"><span class="co"># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span></span>
-<span class="r-in"><span class="va">viz_specs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">    default <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">            decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,</span>
-<span class="r-in">            show_empty <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span class="r-in">        <span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"col_percent"</span>, <span class="st">"pairwise_t_test"</span><span class="op">)</span>,</span>
-<span class="r-in">        page_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">            rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">                top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">                bottom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"base_unweighted"</span>, <span class="st">"scale_mean"</span>, <span class="st">"significant_columns"</span><span class="op">)</span></span>
-<span class="r-in">            <span class="op">)</span>,</span>
-<span class="r-in">            measure_layout <span class="op">=</span> <span class="st">"long"</span></span>
-<span class="r-in">        <span class="op">)</span>,</span>
-<span class="r-in">        pairwise_comparison <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sig_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">        format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pval_colors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    <span class="op">~</span><span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span>,</span>
-<span class="r-in">    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>viz_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"custom slide"</span>,</span>
-<span class="r-in">    filter <span class="op">=</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span>
-<span class="r-in">    weight <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span>,</span>
-<span class="r-in">    viz_specs <span class="op">=</span> <span class="va">viz_specs</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Can also specify `analyses` directly, which allows for very advanced use.</span></span>
-<span class="r-in"><span class="co"># `formulaToSlideQuery()` and `slideQueryEnv()` help describe the API</span></span>
-<span class="r-in"><span class="fu">newSlide</span><span class="op">(</span></span>
-<span class="r-in">    <span class="va">main_deck</span>,</span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"custom slide"</span>,</span>
-<span class="r-in">    analyses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">        query <span class="op">=</span> <span class="fu"><a href="analysis-methods.html">formulaToSlideQuery</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span>,</span>
-<span class="r-in">        query_environment <span class="op">=</span> <span class="fu"><a href="analysis-methods.html">slideQueryEnv</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span>
-<span class="r-in">        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>viz_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">        viz_specs <span class="op">=</span> <span class="va">viz_specs</span></span>
-<span class="r-in">    <span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">wt</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Cyl and Weight"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Grouped bar plot</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span></span>
+<span class="r-in"><span>    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span>,</span></span>
+<span class="r-in"><span>        showValueLabels <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Horizontal stacked bars</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span></span>
+<span class="r-in"><span>    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        vizType <span class="op">=</span> <span class="st">"horizontalStackedBarPlot"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># A donut is only suitable for a single variable</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span> <span class="va">approval</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Approval of new feature"</span>,</span></span>
+<span class="r-in"><span>    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        vizType <span class="op">=</span> <span class="st">"donut"</span>,</span></span>
+<span class="r-in"><span>        showValueLabels <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># A Grouped bar plot with slide transformations to hide a category</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span> <span class="va">approval</span> <span class="op">+</span> <span class="va">age4</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Approval by age group"</span>,</span></span>
+<span class="r-in"><span>    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span>,</span></span>
+<span class="r-in"><span>        showValueLabels <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    transform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rows_dimension <span class="op">=</span> <span class="fu"><a href="makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="st">"Neutral"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"2017 Data"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example of advanced options being set:</span></span></span>
+<span class="r-in"><span><span class="co"># viz_specs can get quite long, see</span></span></span>
+<span class="r-in"><span><span class="co"># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span></span></span>
+<span class="r-in"><span><span class="va">viz_specs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    default <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            decimal_places <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>percentages <span class="op">=</span> <span class="fl">0L</span>, other <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>            show_empty <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    table <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        measures <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"col_percent"</span>, <span class="st">"pairwise_t_test"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        page_layout <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            rows <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>                top <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                bottom <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"base_unweighted"</span>, <span class="st">"scale_mean"</span>, <span class="st">"significant_columns"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>            <span class="op">)</span>,</span></span>
+<span class="r-in"><span>            measure_layout <span class="op">=</span> <span class="st">"long"</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span>,</span></span>
+<span class="r-in"><span>        pairwise_comparison <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>sig_threshold <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.05</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pval_colors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    <span class="op">~</span><span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>viz_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"custom slide"</span>,</span></span>
+<span class="r-in"><span>    filter <span class="op">=</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    weight <span class="op">=</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span>,</span></span>
+<span class="r-in"><span>    viz_specs <span class="op">=</span> <span class="va">viz_specs</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Can also specify `analyses` directly, which allows for very advanced use.</span></span></span>
+<span class="r-in"><span><span class="co"># `formulaToSlideQuery()` and `slideQueryEnv()` help describe the API</span></span></span>
+<span class="r-in"><span><span class="fu">newSlide</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">main_deck</span>,</span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"custom slide"</span>,</span></span>
+<span class="r-in"><span>    analyses <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        query <span class="op">=</span> <span class="fu"><a href="analysis-methods.html">formulaToSlideQuery</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="var-categories.html">categories</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">fav_array</span><span class="op">)</span>, <span class="va">ds</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        query_environment <span class="op">=</span> <span class="fu"><a href="analysis-methods.html">slideQueryEnv</a></span><span class="op">(</span>filter <span class="op">=</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        display_settings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>viz_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"table"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        viz_specs <span class="op">=</span> <span class="va">viz_specs</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -299,7 +320,7 @@ for more information.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

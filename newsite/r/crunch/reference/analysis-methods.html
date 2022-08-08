@@ -131,202 +131,215 @@ get the <code>CrunchCube</code> from an analysis using <code>cube()</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchDeck,ANY</span>
-<span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchDeck</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchDeck,ANY</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for AnalysisCatalog</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for AnalysisCatalog,ANY</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,ANY</span>
-<span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">analyses</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchSlide</span>
-<span class="fu"><a href="type.html">type</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">analyses</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,formula</span>
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,Analysis</span>
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,list</span>
-<span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for AnalysisCatalog</span>
-<span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for AnalysisCatalog</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for AnalysisCatalog,list</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for AnalysisCatalog</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for AnalysisCatalog,list</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,formula</span>
-<span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">formulaToSlideQuery</span><span class="op">(</span><span class="va">query</span>, <span class="va">dataset</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis,ANY</span>
-<span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis,ANY</span>
-<span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for ANY</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,CrunchLogicalExpr</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,CrunchFilter</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,`NULL`</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis,list</span>
-<span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="fu">slideQueryEnv</span><span class="op">(</span><span class="va">weight</span>, <span class="va">filter</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchDeck</span>
-<span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide</span>
-<span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="co"># S4 method for CrunchAnalysisSlide,ANY</span>
-<span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span>
-
-<span class="co"># S4 method for Analysis</span>
-<span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDeck,ANY</span></span>
+<span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDeck</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDeck,ANY</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog,ANY</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,ANY</span></span>
+<span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">analyses</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchSlide</span></span>
+<span><span class="fu"><a href="type.html">type</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">analyses</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,formula</span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,Analysis</span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,list</span></span>
+<span><span class="fu">analysis</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog</span></span>
+<span><span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog,list</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for AnalysisCatalog,list</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,formula</span></span>
+<span><span class="fu">query</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">formulaToSlideQuery</span><span class="op">(</span><span class="va">query</span>, <span class="va">dataset</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu">cube</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,ANY</span></span>
+<span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,ANY</span></span>
+<span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for ANY</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu">filter</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,CrunchLogicalExpr</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,CrunchFilter</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,`NULL`</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis,list</span></span>
+<span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="fu">slideQueryEnv</span><span class="op">(</span><span class="va">weight</span>, <span class="va">filter</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchDeck</span></span>
+<span><span class="fu">cubes</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide</span></span>
+<span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for CrunchAnalysisSlide,ANY</span></span>
+<span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for Analysis</span></span>
+<span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a <code>CrunchSlide</code>, <code>AnalysisCatalog</code>, or <code>Analysis</code></p></dd>
+
+
 <dt>...</dt>
 <dd><p>ignored</p></dd>
+
+
 <dt>value</dt>
 <dd><p>for the setter, an object to set it</p></dd>
+
+
 <dt>query</dt>
 <dd><p>For <code>formulaToSlideQuery()</code>, a formula that specifies the query, as in
 <code><a href="newSlide.html">newSlide()</a></code>. See Details of <code><a href="crtabs.html">crtabs()</a></code> for more information.</p></dd>
+
+
 <dt>dataset</dt>
 <dd><p>For <code>formulaToSlideQuery()</code>, a <code>CrunchDataset</code> that the variables in
 <code>query</code> refer to.</p></dd>
+
+
 <dt>weight</dt>
 <dd><p>For <code>slideQueryEnv()</code> a crunch variable to use as a weight or <code>NULL</code>
 to indicate no weight should be used.</p></dd>
+
+
 <dt>filter</dt>
 <dd><p>for <code>slideQueryEnv()</code>, a <code>CrunchFilter</code> or <code>CrunchExpression</code> to filter
 the slide.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -341,39 +354,39 @@ on the analyses that are not otherwise available in <code>rcrunch</code>. The he
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Examples of setting analysis details (in general these setters work on</span></span>
-<span class="r-in"><span class="co"># the slide, analysis catalog and analysis, but for brevity the examples only</span></span>
-<span class="r-in"><span class="co"># show on the slide)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the filter</span></span>
-<span class="r-in"><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># to remove a filter</span></span>
-<span class="r-in"><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span></span>
-<span class="r-in"><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> <span class="co"># Can set multiple filter</span></span>
-<span class="r-in">    <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span>,</span>
-<span class="r-in">    <span class="va">ds</span><span class="op">$</span><span class="va">age_grp</span> <span class="op">==</span> <span class="st">"18-35"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span> <span class="co"># Can set the same filter on a whole deck too</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the weight</span></span>
-<span class="r-in"><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># to remove</span></span>
-<span class="r-in"><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span></span>
-<span class="r-in"><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span> <span class="co"># Can set the same weight on a whole deck too</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the transforms</span></span>
-<span class="r-in"><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rows_dimension <span class="op">=</span> <span class="fu"><a href="makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="st">"Neutral"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the displaySettings</span></span>
-<span class="r-in"><span class="fu">displaySettings</span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the vizSpecs</span></span>
-<span class="r-in"><span class="co"># viz_specs can get quite long, see</span></span>
-<span class="r-in"><span class="co"># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span></span>
-<span class="r-in"><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">viz_specs</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Change the query</span></span>
-<span class="r-in"><span class="co">#' query(slide) &lt;- ~ cyl + wt</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Examples of setting analysis details (in general these setters work on</span></span></span>
+<span class="r-in"><span><span class="co"># the slide, analysis catalog and analysis, but for brevity the examples only</span></span></span>
+<span class="r-in"><span><span class="co"># show on the slide)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the filter</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># to remove a filter</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span> <span class="co"># Can set multiple filter</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>    <span class="va">ds</span><span class="op">$</span><span class="va">age_grp</span> <span class="op">==</span> <span class="st">"18-35"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="filter-catalog.html">filters</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">[[</span><span class="st">"My filter"</span><span class="op">]</span><span class="op">]</span> <span class="co"># Can set the same filter on a whole deck too</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the weight</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span> <span class="co"># to remove</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="weight.html">weight</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">weight</span> <span class="co"># Can set the same weight on a whole deck too</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the transforms</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="Transforms.html">transforms</a></span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rows_dimension <span class="op">=</span> <span class="fu"><a href="makeDimTransform.html">makeDimTransform</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="st">"Neutral"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the displaySettings</span></span></span>
+<span class="r-in"><span><span class="fu">displaySettings</span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vizType <span class="op">=</span> <span class="st">"groupedBarPlot"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the vizSpecs</span></span></span>
+<span class="r-in"><span><span class="co"># viz_specs can get quite long, see</span></span></span>
+<span class="r-in"><span><span class="co"># https://crunch.io/api/reference/#post-/datasets/-dataset_id-/decks/-deck_id-/slides/</span></span></span>
+<span class="r-in"><span><span class="fu">vizSpecs</span><span class="op">(</span><span class="va">slide</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">viz_specs</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change the query</span></span></span>
+<span class="r-in"><span><span class="co">#' query(slide) &lt;- ~ cyl + wt</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -388,7 +401,7 @@ on the analyses that are not otherwise available in <code>rcrunch</code>. The he
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
