@@ -11867,6 +11867,7 @@ table td:nth-child(2) cr- {
 .btn-primary {
   background: transparent linear-gradient(270deg, #2477B6 0%, #18649A 100%) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
+  border: 0px;
   border-radius: 5px;
 }
 .btn-primary:focus, .btn-primary.focus, .btn-primary:hover {
@@ -12841,8 +12842,8 @@ table td:nth-child(2) cr- {
   width: 313px !important;
 }
 
-.footer .container-fluid, .footer .container-sm, .footer .container-md, .footer .container-lg, .footer .container-xl {
-  max-width: 1400px;
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  max-width: 1366px !important;
 }
 
 #page-content-wrapper .intro-content {
@@ -13341,6 +13342,71 @@ figure figcaption h4 {
     height: 500px;
   }
 }
+.carousel-indicators li {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: transparent !important;
+  background-clip: padding-box;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  border: solid 3px #0064a4;
+}
+.carousel-indicators li.active {
+  background-color: #0064a4 !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  background: transparent linear-gradient(270deg, #2477B6 0%, #18649A 100%) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  height: 50px;
+  border-radius: 50%;
+  width: 50px;
+}
+
+.carousel-control-next {
+  transform: translate(-50%, 248%);
+}
+
+.carousel-control-prev {
+  transform: translate(10%, 248%);
+}
+
+.carousel-inner {
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
+.carousel-inner .carousel-item img {
+  transform: translateY(30px);
+}
+.carousel-inner .carousel-caption {
+  height: 100%;
+  color: #1D1D26;
+  display: flex;
+}
+.carousel-inner .carousel-caption h4 {
+  font-family: "ProximaNova", serif;
+  font-weight: 700;
+  font-size: 20px;
+  transform: translateY(-20px);
+}
+.carousel-inner .carousel-caption p {
+  transform: translateY(-20px);
+}
+.carousel-inner .carousel-caption h5 {
+  font-family: "ProximaNova", serif;
+  font-weight: 700;
+  font-size: 17px;
+  transform: translateY(115px);
+}
+
 .cr-carousel .carousel-indicators li {
   width: 8px;
   height: 8px;
