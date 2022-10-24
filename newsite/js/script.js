@@ -7,6 +7,8 @@ $(window).scroll(function() {
     }
 });
 
+
+
 function filterSelection(c) {
   var x, i;
   x = document.getElementsByClassName("resources-filter");
