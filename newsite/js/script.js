@@ -14,8 +14,8 @@ function filterSelection(c) {
   x = document.getElementsByClassName("resources-filter");
   if (c == "all-filter") c = "";
   for (i = 0; i < x.length; i++) {
-    filterRemoveClass(x[i], "show-filter");
-    if (x[i].className.indexOf(c) > -1) filterAddClass(x[i], "show-filter");
+    filterRemoveClass(x[i], "d-flex");
+    if (x[i].className.indexOf(c) > -1) filterAddClass(x[i], "d-flex");
   }
 }
 
@@ -52,11 +52,16 @@ $(document).ready(function() {
     var btnContainer = document.getElementById("resources-filter-container");
     if (btnContainer) {
         var btns = btnContainer.getElementsByClassName("btn-filter");
+
         for (var i = 0; i < btns.length; i++) {
           btns[i].addEventListener("click", function(){
-            var current = document.getElementsByClassName("active-filter");
-            current[0].className = current[0].className.replace(" active-filter", "");
-            this.className += " active-filter";
+            const btn_filter = document.querySelectorAll('.btn-filter');
+            btn_filter.forEach(btn => {
+              // ✅ Remove class from each element
+              console.log(btn)
+              btn.classList.remove('btn-primary');
+            });
+            this.className += " btn-primary";
           });
         }
     }
@@ -191,3 +196,23 @@ $(document).ready(function() {
 
 // End
 });
+
+function carousel_controls(carousel_identifier) {
+
+  carousel_identifier.addEventListener('mouseenter', (e) => { 
+      show_dots_controls(carousel_identifier.querySelector(".carousel-indicators"));
+      show_dots_controls(carousel_identifier.querySelector(".carousel-controls"));
+  });
+
+  carousel_identifier.addEventListener('mouseleave', (e) => { 
+      hidden_dots_controls(carousel_identifier.querySelector(".carousel-indicators"));
+      hidden_dots_controls(carousel_identifier.querySelector(".carousel-controls"));
+  });
+}
+
+function show_dots_controls(target){
+  target.classList.remove("d-none");
+}
+function hidden_dots_controls(target){
+  target.classList.add("d-none");
+}
