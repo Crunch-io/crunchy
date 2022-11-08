@@ -11381,11 +11381,11 @@ ol li::before {
 
 /* MODULES  - Individual site components */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "ProximaNova", serif;
+  font-family: "proximanova-bold";
 }
 
 h1 {
-  font-family: "ProximaNova", serif;
+  font-family: "proximanova-bold";
   font-size: 2em;
 }
 h1 span {
@@ -11394,10 +11394,10 @@ h1 span {
 
 h2 {
   font-size: 1.5em;
-  font-family: "ProximaNova", serif;
+  font-family: "proximanova-bold";
 }
 h2.secondary-title {
-  font-family: "ProximaNova", serif;
+  font-family: "proximanova-bold";
   font-size: 1.8em;
   color: #107f65;
 }
@@ -11439,15 +11439,14 @@ h4 {
 
 .emphasis {
   color: #0064a4;
-  font-style: italic;
-  font-family: "ProximaNova", serif;
+  font-family: "proximanova";
   margin-bottom: 40px;
 }
 
 .emphasis-black {
   color: #1D1D26;
-  font-style: italic;
-  font-family: "ProximaNova", serif;
+  font-weight: 700;
+  font-family: "proximanova";
   margin-bottom: 40px;
 }
 
@@ -11875,9 +11874,16 @@ table td:nth-child(2) cr- {
   border: 0px;
   border-radius: 5px;
 }
+.btn-primary a, .btn-primary a:hover, .btn-primary a:active {
+  color: #fff !important;
+}
 .btn-primary:focus, .btn-primary.focus, .btn-primary:hover {
   background: transparent linear-gradient(270deg, #195E91 0%, #10476F 100%) 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
+}
+
+button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary a:active {
+  color: #fff !important;
 }
 
 .btn-secondary {
@@ -12640,6 +12646,7 @@ table td:nth-child(2) cr- {
 }
 
 #industry-product-resources .card-item {
+  cursor: pointer;
   max-width: 48%;
 }
 #industry-product-resources .card-item .d-flex.shadow {
@@ -12790,6 +12797,34 @@ table td:nth-child(2) cr- {
   font-family: "ProximaNova" !important;
   font-weight: 400;
   font-size: 1.6rem;
+}
+
+.crunch-reflection-container {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 570px;
+}
+.crunch-reflection-container .crunch-reflection-content {
+  background-color: #fff;
+  box-shadow: 0px 3px 20px #00000029;
+  border-radius: 18px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+}
+.crunch-reflection-container .crunch-reflection-effect {
+  border-radius: 20px;
+  background-color: #0b6752;
+  height: 99%;
+  position: absolute;
+  transform: translate(-29px, 40px);
+  width: 96%;
+  z-index: 1;
 }
 
 .crunch-form-hbspt {
@@ -13890,9 +13925,6 @@ a.carousel-control-next {
 .navbar {
   background-color: #ffffff;
 }
-.navbar .container {
-  max-width: 1450px;
-}
 .navbar .navbar-brand img {
   padding-top: 3px;
   width: 160px;
@@ -13904,6 +13936,7 @@ a.carousel-control-next {
 .navbar .navbar-nav .nav-item {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   margin-left: 30px;
 }
 .navbar .navbar-nav .nav-item .btn-primary {
@@ -14057,6 +14090,22 @@ a.carousel-control-next {
 
 .borderClass {
   border-bottom: 1px solid #e5e5e5;
+}
+
+a.circle,
+button.circle {
+  border-radius: 50px;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+}
+
+.circle[aria-expanded=true]::after {
+  content: "-";
+}
+
+.circle[aria-expanded=false]::after {
+  content: "+";
 }
 
 .footer {
@@ -14626,6 +14675,42 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
 
   #direcctor-comments .comments {
     margin-top: 120px;
+  }
+
+  #industry-product-resources .card-item {
+    max-width: 100%;
+  }
+  #industry-product-resources .card-item .d-flex.shadow {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .crunch-reflection-container {
+    position: relative;
+    display: block;
+    height: 100%;
+    min-height: 640px;
+  }
+  .crunch-reflection-container .crunch-reflection-content {
+    background-color: #fff;
+    box-shadow: 0px 3px 20px #00000029;
+    border-radius: 18px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+  }
+  .crunch-reflection-container .crunch-reflection-effect {
+    border-radius: 20px;
+    background-color: #0b6752;
+    height: 99%;
+    position: absolute;
+    transform: translate(-29px, 40px);
+    width: 96%;
+    z-index: 1;
   }
 }
 @media (max-width: 500px) {
