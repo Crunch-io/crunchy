@@ -12010,6 +12010,7 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
 .share-insights a {
   color: #1D1D26;
 }
+
 .crunch-interface img {
   margin: auto;
   margin-top: -500px;
@@ -12341,6 +12342,17 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   text-align: left;
 }
 
+#features .crunch-reflection-container {
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 280px;
+}
+
+.features-details {
+  font-size: 16px;
+}
+
 .page-not-found {
   min-height: 1200px;
   width: 100%;
@@ -12606,12 +12618,6 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   height: auto;
   color: #1D1D26;
 }
-#request-demo-content h1 {
-  font-family: ProximaNova, sans-serif;
-  font-size: 5em;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
 @media (min-width: 768px) {
   #request-demo-content .request-demo-copy {
     margin-left: 40px;
@@ -12799,6 +12805,33 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   font-size: 1.6rem;
 }
 
+.crunch-card-container {
+  background-color: transparent !important;
+  position: relative;
+  display: block;
+  height: 100%;
+  min-height: 570px;
+}
+.crunch-card-container .crunch-card-content {
+  background-color: #fff;
+  box-shadow: 0px 3px 20px #00000029;
+  border-radius: 18px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+.crunch-card-container .crunch-card-bg {
+  border-radius: 20px;
+  background-color: #0b6752;
+  height: 99%;
+  position: absolute;
+  transform: translate(-29px, 40px);
+  width: 96%;
+  z-index: 11;
+}
+
 .crunch-reflection-container {
   position: relative;
   display: block;
@@ -12811,6 +12844,7 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   border-radius: 18px;
   height: 100%;
   width: 100%;
+  overflow: hidden;
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -14084,8 +14118,6 @@ path#Path_146:hover {
 }
 .page-item .page-link {
   color: #0064a4;
-  font-family: "Libre Baskerville", serif;
-  font-style: italic;
   border: 0;
   border-radius: 0;
 }
@@ -14115,12 +14147,20 @@ button.circle {
   height: 60px;
 }
 
-.circle[aria-expanded=true]::after {
-  content: "-";
+#minus,
+#plus {
+  width: 22px;
+  margin: auto;
 }
 
-.circle[aria-expanded=false]::after {
-  content: "+";
+.circle[aria-expanded=true] #minus,
+.circle[aria-expanded=false] #plus {
+  display: block;
+}
+
+.circle[aria-expanded=false] #minus,
+.circle[aria-expanded=true] #plus {
+  display: none;
 }
 
 .footer {
@@ -14608,7 +14648,7 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
   }
 
   #self-services {
-    padding-top: 75px;
+    padding-top: 15px;
   }
   #self-services h1.crunch-h1 {
     font-size: 2.8em;
@@ -14627,6 +14667,10 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
     left: 0px;
     height: 100%;
     width: 90%;
+  }
+
+  .border-right {
+    border: 0px !important;
   }
 
   .crunch-reflection-left-top::before {
@@ -14671,27 +14715,6 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
     height: calc(100%);
     position: absolute;
     width: calc(100% - 12%);
-  }
-
-  .crunch-form-hbspt {
-    background-color: #fff;
-    box-shadow: 0px 3px 20px #00000029;
-    border-radius: 18px;
-    overflow: hidden;
-    padding: 21px 15px 15px 24px;
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-
-  .crunch-form-hbspt:before {
-    content: "";
-    border-radius: 20px;
-    background-color: #0B6752;
-    height: 94%;
-    position: absolute;
-    transform: translate(-47px, -2px);
-    width: 94%;
-    z-index: -1;
   }
 
   #webinar img {
@@ -14791,11 +14814,13 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
 
   a.circle, button.circle {
     border-radius: 80px;
+    display: flex;
     font-size: 2rem;
+    justify-content: center;
     width: 40px !important;
     height: 40px;
     position: absolute;
-    left: calc(81%);
+    left: calc(77%);
   }
 }
 @media (max-width: 500px) {

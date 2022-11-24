@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Prepare and analyze survey data quickly and easily.">
+    <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
+    <base href="//crunch-io.github.io/crunchy/newsite/">
+    <title>Crunch | Release Notes</title>
+
+    <link rel="icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta property="og:title" content="Release Notes &middot; Online survey data analysis">
+<meta property="og:description" content="Developer notes, bug fixes, documentation, API, and application changes.">
+<meta property="og:type" content="website" >
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/">
+<meta property="og:locale" content="en">
+
+    
+        
+            <meta property="og:image" content="//crunch-io.github.io/crunchy/newsite/img/logo-1200x630.png">
+        
+    
+
+
+  <meta property="og:updated_time" content="2021-01-20T14:08:35&#43;02:00">
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png"/>
+
+<meta name="twitter:title" content="Release Notes"/>
+<meta name="twitter:description" content="Developer notes, bug fixes, documentation, API, and application changes."/>
+
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5GB59T2');</script>
+    
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5GB59T2"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" aria-label="Crunch.io" href="/"><img class="d-inline-block align-top" src="img/crunch_logo.svg" alt="Crunch.io" height="auto" width="140"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="capabilities" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capabilities
+                  </a>
+                  <div class="dropdown-menu crunch-menu animate__fadeInDown px-sm-0 py-md-1 px-md-3" aria-labelledby="navbarDropdown">
+                      <div class="row">
+                          <div class="col-md-6 border-right py-md-3 mt-1">
+                            <p class="text-left  pb-1 mb-0 font-weight-bold">Crunch.io is for:</p>
+                            <a class="dropdown-item" href="for-insights-teams">Insights Teams</a>
+                            <a class="dropdown-item" href="market-researchers">Market Research Firms</a>
+                          </div>
+                          <div class="col-md-6  py-md-3 mt-1">
+                            <p class="text-left pb-1 mb-0 font-weight-bold">Crunch.io can deliver:
+                            </p>
+                            <a class="dropdown-item" href="powerful-survey-analytics">Powerful Survey Analytics</a>
+                            <a class="dropdown-item" href="visualization">Visualization and Delivery</a>
+                            <a class="dropdown-item" href="dashboards">Dashboards</a>
+                            <a class="dropdown-item" href="tracker-analytics">Tracker Analytics</a>
+                            <a class="dropdown-item" href="automation">Crunch Automation</a>
+                          </div>
+                        </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="company" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Company
+                  </a>
+                  <div class="dropdown-menu animate__fadeInDown" aria-labelledby="company">
+                      <a class="dropdown-item" href="about">About</a>
+                      <a class="dropdown-item" href="team">Team</a>
+                      <a class="dropdown-item" href="jobs">Careers</a>
+                      <a class="dropdown-item" href="contact">Contact Us</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="resources" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Resources
+                    </a>
+                    <div class="dropdown-menu animate__fadeInDown" aria-labelledby="resources">
+                        <a class="dropdown-item"  href="resources">Webinars & White Papers</a>
+                        <a class="dropdown-item" href="case-studies">Case Studies</a>
+                    </div>
+
+
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link" href="#" id="support" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Support
+                  </a>
+                  <div class="dropdown-menu animate__fadeInDown" aria-labelledby="support">
+                      <a class="dropdown-item" href="http://help.crunch.io/">Help Center</a>
+                      <a class="dropdown-item" href="api/reference/">API Reference</a>
+                      <a class="dropdown-item" href="dev/features/">Feature Announcements</a>
+                      <a class="dropdown-item" href="release-notes/">Release Notes</a>
+                      <a class="dropdown-item" href="https://help.crunch.io/hc/en-us/categories/360002688152-Developer-Guides">Developer Guides</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://app.crunch.io/" target="_blank" rel="noreferrer">Sign In</a>
+                </li>
+                <li class="nav-item mb-2 pt-1  mb-sm-0 ml-remove-on-mobile">
+                  <button type="button" class="btn btn-primary btn-sm mb-2" onclick="window.location.href='/request-demo'">Request a Demo</button>
+                </li>
+              </ul>
+            </div>
+        </div> 
+    </nav>
+
+
+
+<section id="features" class="crunch-gradient-gray py-sm-5  p-0">
+    <div class="container py-sm-5 py-0">
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="crunch-h1">Release Notes</h1>
+                <p class="semibold-string">Developer notes, bug fixes, documentation, API, and application changes.</p>
+            </div>
+            <div class="col-md-6 offset-md-1 offset-sm-0">
+                <div class="crunch-reflection-container">
+                    <div class="crunch-reflection-content">
+
+                        
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+     
+</style>
+<div id="mc_embed_signup">
+    <form action="https://crunch.us20.list-manage.com/subscribe/post?u=0d29cf89c3f465ed1f368bc02&amp;id=e2470fae4d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="padding-top: 0px;">
+        <div id="mc_embed_signup_scroll">
+            <h2 style="margin-top: 0; padding-top: 20px;">Subscribe to automatically receive release notes via email</h2>
+            <div class="mc-field-group" style="margin-bottom: 0px; font-family: 'ProximaNova'; font-weight: 100;">
+                <label for="mce-EMAIL">Email address </label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+            </div>
+            <div class="mc-field-group input-group" style="display: none;">
+                <strong>Interest Group </strong>
+                <ul>
+                    <li><input type="checkbox" value="1" name="group[7235][1]" id="mce-group[7235]-7235-0" checked><label for="mce-group[7235]-7235-0">Release Notes</label></li>
+                    <li><input type="checkbox" value="2" name="group[7235][2]" id="mce-group[7235]-7235-1"><label for="mce-group[7235]-7235-1">Feature announcements</label></li>
+                    <li><input type="checkbox" value="4" name="group[7235][4]" id="mce-group[7235]-7235-2"><label for="mce-group[7235]-7235-2">Monthly newsletter</label></li>
+                </ul>
+            </div>
+            <div id="mce-responses" class="clear" style="float: none; margin: 0; padding: 0; width: 100%;">
+                <div class="response" id="mce-error-response" style="display:none; font-family: 'ProximaNova', sans-serif; color:#fff; width: 100%; font-weight: 100;"></div>
+                <div class="response" id="mce-success-response" style="display:none; font-family: 'ProximaNova', sans-serif; color:#fff; width: 100%; font-weight: 100;"></div>
+            </div>    
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0d29cf89c3f465ed1f368bc02_e2470fae4d" tabindex="-1" value=""></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';fnames[7]='TITLE';ftypes[7]='text';fnames[8]='MESSAGE';ftypes[8]='text';fnames[9]='MMERGE9';ftypes[9]='text';fnames[10]='MMERGE10';ftypes[10]='text';fnames[11]='MMERGE11';ftypes[11]='text';fnames[12]='MMERGE12';ftypes[12]='text';fnames[13]='MMERGE13';ftypes[13]='text';fnames[14]='MMERGE14';ftypes[14]='text';fnames[15]='MMERGE15';ftypes[15]='text';fnames[16]='MMERGE16';ftypes[16]='text';fnames[17]='MMERGE17';ftypes[17]='text';fnames[18]='MMERGE18';ftypes[18]='text';fnames[19]='MMERGE19';ftypes[19]='text';fnames[20]='MMERGE20';ftypes[20]='text';fnames[21]='MMERGE21';ftypes[21]='text';fnames[22]='MMERGE22';ftypes[22]='text';fnames[23]='MMERGE23';ftypes[23]='text';fnames[24]='MMERGE24';ftypes[24]='text';fnames[25]='MMERGE25';ftypes[25]='text';fnames[26]='MMERGE26';ftypes[26]='text';fnames[27]='MMERGE27';ftypes[27]='text';fnames[28]='MMERGE28';ftypes[28]='text';fnames[29]='MMERGE29';ftypes[29]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+
+
+                    </div>
+                    <div class="crunch-reflection-effect crunch-reflection-left-bottom crunch-background-green"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-stretch">
+            
+            <div class="col-md-6 col-lg-4 py-4 d-flex">
+                
+                    <div class="card-body shadow rounded d-flex flex-wrap "  onclick="location.href='\/\/crunch-io.github.io\/crunchy\/newsite\/release-notes\/2021-01-29\/'">
+                        <div>
+                            <h4 class="post-title">Release 2021.2</h4>
+                        <p><span>January 29, 2021</span></p>
+                        <p></p>
+                        </div>
+                       
+
+                        <div class="row features-details col-12 d-flex justify-content-between flex-wrap align-self-end ">
+                          
+                            
+                            
+
+                          
+                                <a href="//crunch-io.github.io/crunchy/newsite/release-notes/2021-01-29/" aria-label="Learn More">Learn More &#10230;</a>
+                           
+                        </div>
+                    </div>
+               
+            </div>
+            
+            <div class="col-md-6 col-lg-4 py-4 d-flex">
+                
+                    <div class="card-body shadow rounded d-flex flex-wrap "  onclick="location.href='\/\/crunch-io.github.io\/crunchy\/newsite\/release-notes\/2021-01-22\/'">
+                        <div>
+                            <h4 class="post-title">Release 2021.1</h4>
+                        <p><span>January 22, 2021</span></p>
+                        <p></p>
+                        </div>
+                       
+
+                        <div class="row features-details col-12 d-flex justify-content-between flex-wrap align-self-end ">
+                          
+                            
+                            
+
+                          
+                                <a href="//crunch-io.github.io/crunchy/newsite/release-notes/2021-01-22/" aria-label="Learn More">Learn More &#10230;</a>
+                           
+                        </div>
+                    </div>
+               
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+       <div class="pb-5"> 
+
+<div class="row my-3">
+    <div class="col d-none d-md-block">
+        <div class="page-item">
+            <a href="/crunchy/newsite/release-notes/page/5/" class="page-link" aria-label="Previous"><span aria-hidden="true">&#10229; Previous</span></a>
+        </div>
+    </div>
+    <div class="col-md-6">
+        
+        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/">1</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/2/">2</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/3/">3</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item disabled">
+                <span aria-hidden="true">&nbsp;&hellip;&nbsp;</span>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/5/">5</a>
+            </li>
+            
+            
+        
+        
+        
+        
+            
+            
+        
+
+        <ul class="pagination justify-content-center">
+            
+            <li class="page-item active">
+                <a class="page-link page-number" href="/crunchy/newsite/release-notes/page/6/">6</a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    <div class="col d-none d-md-block text-right">
+        <div class="page-item disabled">
+            <a  class="page-link" aria-label="Next"><span aria-hidden="true">Next &#10230;</span></a>
+        </div>
+    </div>
+</div>
+
+</div>
+    </div>
+</section>
+
+
+
+</div>
+            <footer class="footer bg-black">
+                <div id="call-action" class="p-4">
+                    <div class="d-flex justify-content-center">
+                        <a href="/request-demo/" aria-label="Request a demo" class="btn btn-primary btn-lg cta">Request a demo</a>
+                    </div>
+                </div>
+
+                <div class="container" >
+                    <div class="d-flex justify-content-center flex-wrap">
+
+                        <div class="nav-footer col-md-3 pl-0 col-5">
+                            <ul class="list ">
+                                <li><a class="nav-link " aria-label="Company" href="about">About</a></li>
+                                <li><a class="nav-link" aria-label="Resources" href="resources">Resources</a></li>
+                                <li><a class="nav-link" aria-label="Support" href="http://help.crunch.io/">Support</a></li>
+                                <li><a class="nav-link" aria-label="Careers" href="jobs">Careers</a></li>
+                                
+                                <li><a class="nav-link" aria-label="" href="about/privacy">Privacy</a></li> 
+                                <li><a class="nav-link" aria-label="Sign in" href="https://app.crunch.io/">Sign in</a></li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="contact-us p-2 col-md-3 col-7">
+                            <h4 class="label mb-3">Contact us</h4>
+                            <ul class="ml-0 list">
+                                <li class="mb-3">
+                                    <a aria-label="Contact Phone: 202-780-5550" href="tel:2027805550">
+                                    <span>
+                                        <svg class="phone-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.88 25.81"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M6.24,2.69h0a.85.85,0,0,1,0-.22A.85.85,0,0,0,6.24,2.69Z"/><path d="M7.09,23.11h0a.88.88,0,0,1,.25-.6A.88.88,0,0,0,7.09,23.11Z"/><path d="M14.18,24.82H1.7a.58.58,0,0,1-.57-.57.58.58,0,0,0,.57.57H14.18a.58.58,0,0,0,.57-.57A.58.58,0,0,1,14.18,24.82Z"/><path d="M8.54,22.51a.84.84,0,0,1,.25.6h0A.84.84,0,0,0,8.54,22.51Z"/><path d="M9.08,2.27H6.81a.43.43,0,1,0,0,.85H9.08a.43.43,0,0,0,0-.85Z"/><path d="M9.6,2.47a.57.57,0,0,1,0,.22h0A.57.57,0,0,0,9.6,2.47Z"/><path d="M.75.15A1.69,1.69,0,0,0,0,1.56,1.69,1.69,0,0,1,.75.15Z"/><path d="M14.18,0H1.7A1.56,1.56,0,0,0,.14,1.56V24.25A1.56,1.56,0,0,0,1.7,25.81H14.18a1.56,1.56,0,0,0,1.56-1.56V1.56A1.56,1.56,0,0,0,14.18,0Zm.71,21.41v2.84a.71.71,0,0,1-.71.71H1.7A.71.71,0,0,1,1,24.25v-3h13.9Zm0-15.88V20.42H1v-15h13.9Zm0-1.13v.14H1v-3A.71.71,0,0,1,1.7.85H14.18a.71.71,0,0,1,.71.71Z"/><path d="M7.23,23.11a.71.71,0,1,0,.71-.7A.71.71,0,0,0,7.23,23.11Z"/><rect x="1.13" y="4.4" width="13.61"/><path d="M15.88,1.56A1.69,1.69,0,0,0,15.13.15,1.69,1.69,0,0,1,15.88,1.56Z"/></g></g></svg>
+                                    </span> 
+                                    202-780-5550
+                                </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a aria-label="Sales Contact: sales@crunch.io" href="mailto:sales@crunch.io">
+                                    <span> 
+                                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.41 17.86"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M25.22,0H1.2A1.19,1.19,0,0,0,0,1.19V16.66a1.2,1.2,0,0,0,1.2,1.2h24a1.19,1.19,0,0,0,1.19-1.2V1.19A1.19,1.19,0,0,0,25.22,0ZM10.6,8.85,13,10.7a.36.36,0,0,0,.47,0l2.37-1.85,9.29,8.26H1.32ZM1.42.75H25L13.21,9.93Zm15,7.63,9.24-7.21V16.61ZM10,8.38.75,16.61V1.19h0Z"/></g></g></svg>
+                                    </span>
+                                        sales@crunch.io
+                                    </a>
+                                    </li>
+                                <li class="mb-3">
+                                    <a  aria-label="Contact support: support@crunch.io" href="mailto:support@crunch.io">
+                                    <span> 
+                                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.41 17.86"><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path d="M25.22,0H1.2A1.19,1.19,0,0,0,0,1.19V16.66a1.2,1.2,0,0,0,1.2,1.2h24a1.19,1.19,0,0,0,1.19-1.2V1.19A1.19,1.19,0,0,0,25.22,0ZM10.6,8.85,13,10.7a.36.36,0,0,0,.47,0l2.37-1.85,9.29,8.26H1.32ZM1.42.75H25L13.21,9.93Zm15,7.63,9.24-7.21V16.61ZM10,8.38.75,16.61V1.19h0Z"/></g></g></svg>
+                                    </span>
+                                    support@crunch.io
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="d-block d-md-none">
+                                <h4 class="crunch-h4">Follow us</h4>
+        
+                                <div class="d-flex my-2 justify-content-start">
+                                    <a class="mr-3" href="https://twitter.com/crunchio" aria-label="Twitter" target="_blank" rel="noopener">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.753" height="18.491" viewBox="0 0 22.753 18.491">
+                                            <defs>
+                                            <clipPath id="clip-path">
+                                                <rect id="Rectangle_267" data-name="Rectangle 267" width="22.753" height="18.491" fill="#fff"/>
+                                            </clipPath>
+                                            </defs>
+                                            <g id="Group_933" data-name="Group 933" transform="translate(0 0)">
+                                            <g id="Group_932" data-name="Group 932" transform="translate(0 0)" clip-path="url(#clip-path)">
+                                                <path id="Path_146" data-name="Path 146" d="M22.753,2.189a9.288,9.288,0,0,1-2.681.735A4.678,4.678,0,0,0,22.124.341,9.344,9.344,0,0,1,19.16,1.474a4.672,4.672,0,0,0-7.954,4.257A13.249,13.249,0,0,1,1.584.854,4.673,4.673,0,0,0,3.028,7.087,4.645,4.645,0,0,1,.914,6.5c0,.019,0,.039,0,.059a4.671,4.671,0,0,0,3.745,4.577,4.674,4.674,0,0,1-1.23.164,4.625,4.625,0,0,1-.878-.084,4.673,4.673,0,0,0,4.36,3.242,9.365,9.365,0,0,1-5.8,2A9.53,9.53,0,0,1,0,16.394a13.212,13.212,0,0,0,7.156,2.1A13.191,13.191,0,0,0,20.437,5.209c0-.2,0-.4-.013-.6a9.473,9.473,0,0,0,2.329-2.416" transform="translate(0 0)" fill="#fff"/>
+                                            </g>
+                                            </g>
+                                        </svg>
+                                        
+                                    </a>
+                                    <a href="https://www.linkedin.com/company/crunch.io/" aria-label="Linkedin" target="_blank" rel="noopener">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.374" height="18.491" viewBox="0 0 18.374 18.491">
+                                            <defs>
+                                            <clipPath id="clip-path">
+                                                <rect id="Rectangle_268" data-name="Rectangle 268" width="18.374" height="18.491" fill="#fff"/>
+                                            </clipPath>
+                                            </defs>
+                                            <g id="Group_935" data-name="Group 935" transform="translate(0 0)">
+                                            <g id="Group_934" data-name="Group 934" transform="translate(0 0)" clip-path="url(#clip-path)">
+                                                <path id="Path_147" data-name="Path 147" d="M26.547,22.386v-.029l-.019.029Z" transform="translate(-16.666 -14.046)" fill="#fff"/>
+                                                <path id="Path_148" data-name="Path 148" d="M17.016,0H1.357A1.342,1.342,0,0,0,0,1.325V17.166a1.342,1.342,0,0,0,1.357,1.325H17.016a1.342,1.342,0,0,0,1.358-1.325V1.325A1.342,1.342,0,0,0,17.016,0M5.569,15.479H2.794V7.13H5.569ZM4.182,5.989H4.163A1.447,1.447,0,1,1,4.2,3.1a1.447,1.447,0,1,1-.018,2.885m11.394,9.49H12.8V11.012c0-1.122-.4-1.888-1.406-1.888a1.52,1.52,0,0,0-1.424,1.015,1.9,1.9,0,0,0-.091.677v4.663H7.105s.036-7.566,0-8.349H9.88V8.311a2.756,2.756,0,0,1,2.5-1.379c1.826,0,3.195,1.194,3.195,3.759Z" transform="translate(0 0)" fill="#fff"/>
+                                            </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <div class="follow-us p-2 col-md-6 col-12">
+                            <div class="d-none d-md-block">
+                            <h4 class="crunch-h4 label">Follow us</h4>
+
+                            <div class="d-flex my-2 justify-content-start">
+                                <a class="mr-3" href="https://twitter.com/crunchio" aria-label="Twitter" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22.753" height="18.491" viewBox="0 0 22.753 18.491">
+                                        <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_267" data-name="Rectangle 267" width="22.753" height="18.491" fill="#fff"/>
+                                        </clipPath>
+                                        </defs>
+                                        <g id="Group_933" data-name="Group 933" transform="translate(0 0)">
+                                        <g id="Group_932" data-name="Group 932" transform="translate(0 0)" clip-path="url(#clip-path)">
+                                            <path id="Path_146" data-name="Path 146" d="M22.753,2.189a9.288,9.288,0,0,1-2.681.735A4.678,4.678,0,0,0,22.124.341,9.344,9.344,0,0,1,19.16,1.474a4.672,4.672,0,0,0-7.954,4.257A13.249,13.249,0,0,1,1.584.854,4.673,4.673,0,0,0,3.028,7.087,4.645,4.645,0,0,1,.914,6.5c0,.019,0,.039,0,.059a4.671,4.671,0,0,0,3.745,4.577,4.674,4.674,0,0,1-1.23.164,4.625,4.625,0,0,1-.878-.084,4.673,4.673,0,0,0,4.36,3.242,9.365,9.365,0,0,1-5.8,2A9.53,9.53,0,0,1,0,16.394a13.212,13.212,0,0,0,7.156,2.1A13.191,13.191,0,0,0,20.437,5.209c0-.2,0-.4-.013-.6a9.473,9.473,0,0,0,2.329-2.416" transform="translate(0 0)" fill="#fff"/>
+                                        </g>
+                                        </g>
+                                    </svg>
+                                    
+                                </a>
+                                <a href="https://www.linkedin.com/company/crunch.io/" aria-label="linkedin" target="_blank" rel="noopener">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.374" height="18.491" viewBox="0 0 18.374 18.491">
+                                        <defs>
+                                        <clipPath id="clip-path">
+                                            <rect id="Rectangle_268" data-name="Rectangle 268" width="18.374" height="18.491" fill="#fff"/>
+                                        </clipPath>
+                                        </defs>
+                                        <g id="Group_935" data-name="Group 935" transform="translate(0 0)">
+                                        <g id="Group_934" data-name="Group 934" transform="translate(0 0)" clip-path="url(#clip-path)">
+                                            <path id="Path_147" data-name="Path 147" d="M26.547,22.386v-.029l-.019.029Z" transform="translate(-16.666 -14.046)" fill="#fff"/>
+                                            <path id="Path_148" data-name="Path 148" d="M17.016,0H1.357A1.342,1.342,0,0,0,0,1.325V17.166a1.342,1.342,0,0,0,1.357,1.325H17.016a1.342,1.342,0,0,0,1.358-1.325V1.325A1.342,1.342,0,0,0,17.016,0M5.569,15.479H2.794V7.13H5.569ZM4.182,5.989H4.163A1.447,1.447,0,1,1,4.2,3.1a1.447,1.447,0,1,1-.018,2.885m11.394,9.49H12.8V11.012c0-1.122-.4-1.888-1.406-1.888a1.52,1.52,0,0,0-1.424,1.015,1.9,1.9,0,0,0-.091.677v4.663H7.105s.036-7.566,0-8.349H9.88V8.311a2.756,2.756,0,0,1,2.5-1.379c1.826,0,3.195,1.194,3.195,3.759Z" transform="translate(0 0)" fill="#fff"/>
+                                        </g>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </div>
+                            </div>  
+                            <div id="suscribe" class="row flex-wrap">
+                                <p class=" mx-3">Sign up to the <a href="/">Crunch.io</a> newsletter for product updates, industry insights and more</p>
+                                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                                <script>
+                                    hbspt.forms.create({
+                                      region: "na1",
+                                      portalId: "3869056",
+                                      formId: "1d9b0565-b0af-44b5-a0fa-c389768043c7",
+                                      css:' label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 { display: none;} form#hsForm_1d9b0565-b0af-44b5-a0fa-c389768043c7{display:flex;flex-wrap:nowrap;justify-content:center} input#email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {\
+                                      padding: 0.65rem;\
+                                      border-radius: 4px;\
+                                      border: 0px;\
+                                      width: 100%;}\
+                                      font-size:14px\
+                                      .input {\
+                                        width: calc(23vw);\
+                                    } @media (max-width: 767px) {\
+                                        .input {\
+                                         margin:0 0 20px 0;\
+                                         width: calc(82vw);\
+                                        }\
+                                        form#hsForm_1d9b0565-b0af-44b5-a0fa-c389768043c7{display:flex;flex-wrap:wrap;justify-content:center}\
+                                        input.btn.btn-primary.btn-block.mx-2{\
+                                            width: calc(82vw);\
+                                        }\
+                                    }',
+                                      submitButtonClass:"btn btn-primary btn-block  mx-2 ",
+                                      onFormReady: function($form) {
+                                          var email_input = document.querySelector("#email-1d9b0565-b0af-44b5-a0fa-c389768043c7")
+                                          email_input.setAttribute("placeholder","Email address");
+                                          email_input.classList.add("p-2");
+                                          email_input.classList.add("col-md-6");
+                                          email_input.classList.add("mx-md-3 mx-2");
+                                      }
+                                    });
+                                </script>
+                            </div>
+                        </div> 
+
+                    </div> 
+                </div>
+                <div id="copy" class="border-top pt-4 px-4">
+              
+                    <a aria-label="Crunch.io" href="http://crunch.io">ⓒ Crunch.io 2022</a>
+                </div>
+                </div> 
+            </footer>
+
+        </div> 
+
+    </div> 
+
+</div> 
+
+
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+  <div class="cookiealert-container">
+      <div class="row">
+          <div class="col-sm-8 col-md-10 text-left">
+              Crunch.io uses cookies to ensure you get the best experience on our site. By using this site, you agree to the use of cookies in accordance with our <a href="about/privacy">Cookie Policy</a>.
+          </div>
+
+          <div class="col-sm-4 col-md-2">
+              <button type="button" class="btn btn-primary acceptcookies" aria-label="Close"> I accept </button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://js.hsforms.net/forms/shell.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script src="js/search.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
+
