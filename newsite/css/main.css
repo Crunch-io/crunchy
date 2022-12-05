@@ -12652,15 +12652,21 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
 
 #industry-product-resources .card-item {
   cursor: pointer;
-  max-width: 48%;
+  width: 48%;
+  min-height: 280px;
 }
 #industry-product-resources .card-item .d-flex.shadow {
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
+}
+#industry-product-resources .card-body > div {
+  height: calc(100% - 60px);
 }
 
 #upcoming-events .card {
   border: 0px;
+  height: 100%;
 }
 #upcoming-events .card .card-body {
   border-radius: 12px;
@@ -14542,6 +14548,12 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
   #self-services h1.crunch-h1 {
     font-size: 3em;
   }
+
+  #industry-product-resources .card-item {
+    cursor: pointer;
+    width: 100%;
+    min-height: 280px;
+  }
 }
 @media (max-width: 575.98px) {
   .crunch-h1 {
@@ -14607,7 +14619,7 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
 #all-your-data .btn,
 #self-services .btn {
     display: flex;
-    margin: 30px auto 60px;
+    margin: 30px auto 0px;
     justify-content: center;
     justify-self: center;
     text-align: center;
@@ -14736,10 +14748,12 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
 
   #industry-product-resources .card-item {
     max-width: 100%;
+    width: 100%;
   }
   #industry-product-resources .card-item .d-flex.shadow {
     border-radius: 8px;
     overflow: hidden;
+    width: 100%;
   }
 
   .crunch-reflection-container {
