@@ -12841,6 +12841,7 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   position: relative;
   display: block;
   height: 100%;
+  width: 100%;
 }
 .crunch-reflection-container .crunch-reflection-content {
   background-color: #fff;
@@ -12855,6 +12856,11 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   top: 0px;
   z-index: 10;
 }
+.crunch-reflection-container .crunch-reflection-content iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+}
 .crunch-reflection-container .crunch-reflection-effect {
   border-radius: 20px;
   background-color: #0b6752;
@@ -12864,6 +12870,27 @@ button.btn.btn-primary a, button.btn.btn-primary a:hover, button.btn.btn-primary
   top: 0px;
   width: 96%;
   z-index: 1;
+}
+.crunch-reflection-container .crunch-reflection-left-top {
+  transform: translate(-27px, -25px);
+}
+.crunch-reflection-container .crunch-reflection-left-bottom {
+  transform: translate(-10px, 30px);
+}
+.crunch-reflection-container .crunch-reflection-right-top {
+  transform: translate(48px, -30px);
+}
+.crunch-reflection-container .crunch-reflection-right-bottom {
+  transform: translate(48px, 25px);
+}
+.crunch-reflection-container .crunch-background-green {
+  background-color: #107f65;
+}
+.crunch-reflection-container .crunch-background-blue {
+  background-color: #0064a4;
+}
+.crunch-reflection-container .crunch-background-purple {
+  background-color: #722580;
 }
 
 .crunch-form-hbspt {
@@ -14069,13 +14096,21 @@ path#Path_146:hover {
   z-index: 999;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   #dot-nav {
     display: none;
   }
 
+  .navbar .dropdown .crunch-menu, .navbar .dropdown .dropdown-menu {
+    box-shadow: 1px 1px 15px 0px transparent;
+  }
+
   .navbar .navbar-nav .nav-item {
     margin-left: 4px;
+    display: block;
+  }
+  .navbar .navbar-nav .nav-item .border-right {
+    border-right: 0px !important;
   }
   .navbar .dropdown .dropdown-menu {
     border: 0;
@@ -14422,6 +14457,13 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
   }
 }
 @media (max-width: 767.98px) {
+  .carousel-inner .carousel-caption h5 {
+    font-family: "ProximaNova", serif;
+    font-weight: 700;
+    font-size: 17px;
+    transform: translateY(220px);
+  }
+
   #self-services {
     padding-top: 75px;
   }
@@ -14513,6 +14555,40 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
 
   .crunch-reflection-left-top::before {
     transform: translate(-27px, -26px);
+  }
+
+  .crunch-reflection-container {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+  .crunch-reflection-container .crunch-reflection-content {
+    background-color: #fff;
+    box-shadow: 0px 3px 20px #00000029;
+    border-radius: 18px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    z-index: 10;
+  }
+  .crunch-reflection-container .crunch-reflection-effect {
+    border-radius: 20px;
+    height: 99%;
+    position: absolute;
+    width: 96%;
+    z-index: 1;
+  }
+  .crunch-reflection-container .crunch-reflection-left-top {
+    transform: translate(-22px, -21px);
+  }
+  .crunch-reflection-container .crunch-reflection-right-top {
+    transform: translate(34px, -21px);
+  }
+  .crunch-reflection-container .crunch-reflection-right-bottom {
+    transform: translate(34px, 25px);
   }
 }
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -14775,12 +14851,19 @@ label#label-email-1d9b0565-b0af-44b5-a0fa-c389768043c7 {
   }
   .crunch-reflection-container .crunch-reflection-effect {
     border-radius: 20px;
-    background-color: #0b6752;
     height: 99%;
     position: absolute;
-    transform: translate(-29px, 40px);
     width: 96%;
     z-index: 1;
+  }
+  .crunch-reflection-container .crunch-reflection-left-top {
+    transform: translate(-22px, -21px);
+  }
+  .crunch-reflection-container .crunch-reflection-right-top {
+    transform: translate(34px, -21px);
+  }
+  .crunch-reflection-container .crunch-reflection-right-bottom {
+    transform: translate(10px, 25px);
   }
 
   .circle[aria-expanded=true]::after {
