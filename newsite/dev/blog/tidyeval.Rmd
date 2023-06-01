@@ -37,7 +37,7 @@ At Crunch, we use NSE a lot. One example is in reporting better error messages. 
 
 Despite working with this framework all the time, I'm pretty sure that I've never once gotten it right on the first try. The core reason is that whenever you are capturing an expression to evaluate later you need to also keep track of which environment you should evaluate that expression in. This makes it really difficult to pass unevaluated expressions between functions and have the evaluation occur without error. For instance, take this code which replaces a `missing` function argument with a logical value:
 
-```{r}
+```r
 
 f1 <- function(i, j, ...) {
     args <- eval(substitute(alist(i, j, ...)))
@@ -65,7 +65,7 @@ replace_missing <- function(args){
 
 This code captures an expression at the top level, and passes it down to a second function which returns `TRUE` if it can't find the argument, and evaluates expression if it can. (We use code very similar to this for [subsetting CrunchCube objects](https://github.com/Crunch-io/rcrunch/blob/master/R/cube-subset.R#L116-L131)) There's a tricky mistake here though: we aren't specifying in which environment we want that evaluation to take place. So if we happen to send a variable that is used somewhere in the call stack we'll get the wrong result:
 
-```{r}
+```r
 x <- 1
 y <- 1
 
@@ -85,7 +85,7 @@ Tidyeval offers a solution to this problem: it bundles the expression and its en
 
 Our first goal is to have a single function that will produce different plots based on the number of grouping variables in the tibble it receives. So the first step is to create a general plotting function which figures out which plotting sub-function to use:
 
-```{r}
+```r
 library(ggplot2)
 library(dplyr)
 
@@ -106,7 +106,7 @@ autoplot <- function(df) {
 
 What this does is inspect the dataset and then select a plotting function based on the number of groups in the data frame. It then captures the names of the dataset as a list of symbols and passes it down to the plotting function. The next step is to write the two plotting functions which actually do the work:
 
-```{r}
+```r
 plot_1d <- function(df, vars){
     groups <- vars[vars %in% groups(df)]
     measure <- vars[length(vars)][[1]]
@@ -127,7 +127,7 @@ diamonds %>%
 The convenient thing about using tidy eval in this case is that we can confidently pass the unevaluated names into both the `dplyr` and `ggplot2` code without worrying that the evaluation will fail. This means we can arrange the dataset based on the measure name, and then plot that measure even though we don't know ahead of time what the measure will be called. We can do the same thing with the 2d plot:
 
 
-```{r}
+```r
 plot_2d <- function(df, vars){
     groups <- vars[vars %in% groups(df)]
     measure <- vars[length(vars)][[1]]
@@ -149,7 +149,7 @@ This is basically the same code as the 1d plot, expect that we used the splice o
 
 What happens when you have more than three dimensions? The ggplot2 package allows us to use tidyeval to dynamically add facets.
 
-```{r}
+```r
 autoplot <- function(df) {
     # Add grouping variable which was stripped by summarize
     df <- df %>%
