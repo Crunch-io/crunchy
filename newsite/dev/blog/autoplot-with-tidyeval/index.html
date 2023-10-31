@@ -299,14 +299,14 @@ that figures out which plotting sub-function to use:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(ggplot2)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(dplyr)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df) {
+</span></span><span style="display:flex;"><span>autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">function</span>(df) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add grouping variable which was stripped by summarize</span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">group_by</span>(<span style="color:#f92672">!!!</span><span style="color:#a6e22e">groups</span>(df), <span style="color:#f92672">!!</span><span style="color:#a6e22e">sym</span>(<span style="color:#a6e22e">names</span>(df)<span style="color:#a6e22e">[length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        plot_fun <span style="color:#f92672">&lt;-</span> plot_1d
-</span></span><span style="display:flex;"><span>    } else {
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        plot_fun <span style="color:#f92672">&lt;-</span> plot_2d
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    vars <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(<span style="color:#a6e22e">names</span>(df))
@@ -317,7 +317,7 @@ function based on the number of groups in it. It then
 captures the names of the dataset as a list of symbols and passes it
 down to the plotting function. The next step is to write the two
 plotting functions that actually do the work:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>plot_1d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df, vars){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>plot_1d <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">function</span>(df, vars){
 </span></span><span style="display:flex;"><span>    groups <span style="color:#f92672">&lt;-</span> vars[vars <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">groups</span>(df)]
 </span></span><span style="display:flex;"><span>    measure <span style="color:#f92672">&lt;-</span> vars<span style="color:#a6e22e">[length</span>(vars)][[1]]
 </span></span><span style="display:flex;"><span>    df <span style="color:#f92672">%&gt;%</span>
@@ -339,7 +339,7 @@ confidently pass the unevaluated names into both the <code>dplyr</code> and
 means we can arrange the dataset based on the measure name, and then
 plot that measure even though we don&rsquo;t know ahead of time what the
 measure will be called. We can do the same thing with the 2d plot:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>plot_2d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df, vars){
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>plot_2d <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">function</span>(df, vars){
 </span></span><span style="display:flex;"><span>    groups <span style="color:#f92672">&lt;-</span> vars[vars <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">groups</span>(df)]
 </span></span><span style="display:flex;"><span>    measure <span style="color:#f92672">&lt;-</span> vars<span style="color:#a6e22e">[length</span>(vars)][[1]]
 </span></span><span style="display:flex;"><span>    df <span style="color:#f92672">%&gt;%</span>
@@ -360,26 +360,26 @@ splice operator (<code>!!!</code>) in the select call and added another grouping
 variable on the color dimension.</p>
 <p>What happens when you have more than three dimensions? The <code>ggplot2</code>
 package allows us to use tidyeval to dynamically add facets.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(df) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>autoplot <span style="color:#f92672">&lt;-</span> <span style="color:#66d9ef">function</span>(df) {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add grouping variable which was stripped by summarize</span>
 </span></span><span style="display:flex;"><span>    df <span style="color:#f92672">&lt;-</span> df <span style="color:#f92672">%&gt;%</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">group_by</span>(<span style="color:#f92672">!!!</span><span style="color:#a6e22e">groups</span>(df), <span style="color:#f92672">!!</span><span style="color:#a6e22e">sym</span>(<span style="color:#a6e22e">names</span>(df)<span style="color:#a6e22e">[length</span>(<span style="color:#a6e22e">groups</span>(df)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    groups <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">groups</span>(df)
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
 </span></span><span style="display:flex;"><span>        plot_fun <span style="color:#f92672">&lt;-</span> plot_1d
-</span></span><span style="display:flex;"><span>    } else {
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
 </span></span><span style="display:flex;"><span>        plot_fun <span style="color:#f92672">&lt;-</span> plot_2d
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    vars <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(<span style="color:#a6e22e">names</span>(df))
 </span></span><span style="display:flex;"><span>    out <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">plot_fun</span>(df, vars)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">if </span>(<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">length</span>(groups) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
 </span></span><span style="display:flex;"><span>        groups <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">syms</span>(groups)
 </span></span><span style="display:flex;"><span>        out <span style="color:#f92672">&lt;-</span> out <span style="color:#f92672">+</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">facet_wrap</span>(<span style="color:#a6e22e">vars</span>(<span style="color:#f92672">!!!</span>groups[3<span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(groups)]))
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">return</span>(out)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>(out)
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>diamonds <span style="color:#f92672">%&gt;%</span>
