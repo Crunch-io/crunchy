@@ -984,11 +984,10 @@
     "title": "Crunch API",
     "version": "1.1",
     "contact": {
+      "email": "support@crunch.io",
       "name": "Crunch Support",
-      "url": "https://help.crunch.io",
-      "email": "support@crunch.io"
-    },
-    "termsOfService": "https://crunch.io/about/privacy/"
+      "url": "https://help.crunch.io"
+    }
   },
   "openapi": "3.0.0",
   "paths": {
@@ -7550,494 +7549,6 @@
         ]
       }
     },
-    "/pptx/create/{datasetId}/{dashboardId}": {
-      "post": {
-        "operationId": "CreatePptx",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "datasetId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "dashboardId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "overrideSubdomain": {
-                  "style": "form"
-                },
-                "template": {
-                  "style": "form"
-                },
-                "updateable": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "overrideSubdomain": {
-                    "description": "Allows Crunch data to be fetched from a different subdomain than the host/subdomain this API runs on.",
-                    "type": "string"
-                  },
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  },
-                  "updateable": {
-                    "default": false,
-                    "description": "Allows chart data in the generated PowerPoint file to be updated in the future without modifying the rest of the document.",
-                    "type": "boolean"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.openxmlformats-officedocument.presentationml.presentation": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with PowerPoint responses",
-                  "example": "attachment; filename=\"name.pptx\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Create PowerPoint document",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
-    "/pptx/create/{datasetId}/{dashboardId}/groups": {
-      "post": {
-        "description": "Generate a PowerPoint document for every group in a Crunch dashboard.",
-        "operationId": "CreateGroupPptx",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "datasetId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "dashboardId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "overrideSubdomain": {
-                  "style": "form"
-                },
-                "template": {
-                  "style": "form"
-                },
-                "updateable": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "overrideSubdomain": {
-                    "description": "Allows Crunch data to be fetched from a different subdomain than the host/subdomain this API runs on.",
-                    "type": "string"
-                  },
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  },
-                  "updateable": {
-                    "default": false,
-                    "description": "Allows chart data in the generated PowerPoint file to be updated in the future without modifying the rest of the document.",
-                    "type": "boolean"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/zip": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with zip responses",
-                  "example": "attachment; filename=\"name.zip\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Create multiple group PowerPoint documents",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
-    "/pptx/create/{datasetId}/{dashboardId}/groups/pdf": {
-      "post": {
-        "operationId": "CreateGroupPdf",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "datasetId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "dashboardId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "overrideSubdomain": {
-                  "style": "form"
-                },
-                "template": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "overrideSubdomain": {
-                    "description": "Allows Crunch data to be fetched from a different subdomain than the host/subdomain this API runs on.",
-                    "type": "string"
-                  },
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/zip": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with zip responses",
-                  "example": "attachment; filename=\"name.zip\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Create multiple group PDF documents",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
-    "/pptx/create/{datasetId}/{dashboardId}/pdf": {
-      "post": {
-        "operationId": "CreatePdf",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "datasetId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "dashboardId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "overrideSubdomain": {
-                  "style": "form"
-                },
-                "template": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "overrideSubdomain": {
-                    "description": "Allows Crunch data to be fetched from a different subdomain than the host/subdomain this API runs on.",
-                    "type": "string"
-                  },
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/pdf": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with `application/pdf` responses",
-                  "example": "attachment; filename=\"name.pdf\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Create PDF document",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
-    "/pptx/create/{datasetId}/{dashboardId}/templates": {
-      "post": {
-        "description": "Download example PowerPoint templates and a PowerPoint of the dashboard using each template.",
-        "operationId": "templates",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "datasetId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "dashboardId",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "overrideSubdomain": {
-                  "style": "form"
-                },
-                "template": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "overrideSubdomain": {
-                    "description": "Allows Crunch data to be fetched from a different subdomain than the host/subdomain this API runs on.",
-                    "type": "string"
-                  },
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/zip": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with zip responses",
-                  "example": "attachment; filename=\"name.zip\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Download template library",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
-    "/pptx/update": {
-      "post": {
-        "description": "Update chart data inside existing PowerPoint slides.",
-        "operationId": "UpdatePptx",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "encoding": {
-                "template": {
-                  "style": "form"
-                },
-                "updateable": {
-                  "style": "form"
-                }
-              },
-              "schema": {
-                "properties": {
-                  "template": {
-                    "description": "A valid PowerPoint pptx file containing customized template slides. If blank, the Crunch default PowerPoint template will be used.",
-                    "format": "binary",
-                    "type": "string"
-                  },
-                  "updateable": {
-                    "default": false,
-                    "description": "Allows chart data in the generated PowerPoint file to be updated in the future without modifying the rest of the document.",
-                    "type": "boolean"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          },
-          "description": "Generate PowerPoint slides from Crunch dashboard."
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.openxmlformats-officedocument.presentationml.presentation": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
-            },
-            "description": "OK",
-            "headers": {
-              "Content-Disposition": {
-                "schema": {
-                  "description": "Used only with PowerPoint responses",
-                  "example": "attachment; filename=\"name.pptx\"",
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        },
-        "summary": "Update a previously-generated PowerPoint document",
-        "tags": [
-          "Dashboard export"
-        ]
-      }
-    },
     "/progress/{task_id}/": {
       "get": {
         "description": "Progress resources provide information about the current state of a long-running server process in Crunch. Some requests at certain endpoints may return 202 status containing a progress URL in the body, at which one can monitor the progress of the request that was accepted and not yet completed.\n\nThe progress value reported here is an integer between -1 and 100. Positive progress values indicate that the job is being processed. A negative value indicates that an error occurred in processing. A '0' value indicates that the job has not been started. A '100' value indicates the task has been completed.",
@@ -9457,60 +8968,32 @@
         ]
       }
     },
-    "/otp/authorize/": {
+    "/otp/generate": {
       "post": {
-        "description": "This endpoint exchanges an email/password combination for a one-time password (OTP) suitable for creating a link or redirect to automatically log in a user to Crunch's application and API. This should be called as a server-to-server operation, resulting in a link that can be used in the user's browser. Only one OTP may be active at any given time, so a second request will invalidate the previous OTP before generating a new one.\n\nCalling this endpoint with a valid browser session will invalidate the session if the credentials authenticate correctly and the users do not match.\n\nMore information regarding one-time passwords can be found in the [Crunch Help Center](https://help.crunch.io/hc/en-us/articles/360045141591-One-time-passwords).",
-        "operationId": "post-otp-authorize",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "email": "joe@example.com",
-                    "password": "4ZQ8fQlVtP@Z"
-                  }
-                }
-              },
-              "schema": {
-                "properties": {
-                  "email": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ],
-                "type": "object"
-              }
+        "description": "This endpoint allows an account administrator to create a one-time password for any account user who has authentication method \"otp\".",
+        "operationId": "get-otp-generate",
+        "parameters": [
+          {
+            "description": "The email address for the user you want to log in",
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "format": "email",
+              "type": "string"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "content": {
               "application/json": {
-                "examples": {
-                  "example-1": {
-                    "value": {
-                      "expires": "2020-06-17T03:57:02.157592+00:00",
-                      "token": "00002:244e07d61193dadc81295b2fd9700aff9fa9a8fe99309f1c3"
-                    }
-                  }
-                },
                 "schema": {
                   "properties": {
                     "expires": {
-                      "description": "Expiration is set for one hour from creation",
-                      "format": "date-time",
                       "type": "string"
                     },
                     "token": {
-                      "description": "cryptographically secure, encoded id token. Token consists of two hexadecimal numbers separated by a colon.",
                       "type": "string"
                     }
                   },
@@ -9519,26 +9002,17 @@
               }
             },
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         },
-        "security": [],
-        "summary": "Create one-time password",
+        "summary": "Create one-time password (otp)",
         "tags": [
           "Authenticate"
         ],
         "x-code-samples": [
           {
             "lang": "SHELL",
-            "source": "curl -X POST https://your-domain.crunch.io/api/otp/authorize \\\n  -H 'Authorization: Bearer 123456789A123456789B123456789C123456789D123=' \\\n  -H 'Content-Type: application/json' -d '\n{\n  \"email\": \"joe@example.com\",\n  \"password\": \"4ZQ8fQlVtP@Z\"\n}\n'",
+            "source": "export ADMIN_API_KEY=\"\"\nexport SUBDOMAIN = \"\"\nexport USER_TO_LOG_IN = \"\"\ncurl -X POST \"https://$SUBDOMAIN.crunch.io/api/otp/generate/?email=$USER_TO_LOG_IN\" -H \"Authorization: Bearer $ADMIN_API_KEY\" -d \"\"",
             "syntaxLang": "bash"
-          },
-          {
-            "lang": "JAVASCRIPT",
-            "source": "const postOtpAuthorize = await fetch(\n  'https://your-domain.crunch.io/api/otp/authorize', {\n   method: 'POST',\n   headers: {\n    'Authorization': 'Bearer 123456789A123456789B123456789C123456789D123=',\n    'Content-Type': 'application/json'\n   },\n   body: JSON.stringify({\n     \"email\": \"joe@example.com\",\n     \"password\": \"4ZQ8fQlVtP@Z\"\n   })\n })\n .then(response => response.json())",
-            "syntaxLang": "javascript"
           }
         ]
       }
@@ -9583,7 +9057,7 @@
           }
         },
         "security": [],
-        "summary": "Use one-time password",
+        "summary": "Use one-time password (otp)",
         "tags": [
           "Authenticate"
         ],
@@ -45109,7 +44583,7 @@
         "x-code-samples": [
           {
             "lang": "SHELL",
-            "source": "curl -X PATCH https://your-domain.crunch.io/api/datasets/0001a/variables/ \\\n  -H 'Authorization: Bearer 123456789A123456789B123456789C123456789D123=' \\\n  -H 'Content-Type: application/json' -d '\n{\n  \"element\": \"shoji:catalog\",\n  \"index\": {\n    \"https://your-domain.crunch.io/api/datasets/d542169be3ea4ace821464d1d74ac126/variables/4pTjoSCc5wGZCO5IQcmzAr000002/\":\n{\n      \"notes\": \"The third variable\"\n    },\n    \"https://your-domain.crunch.io/api/datasets/d542169be3ea4ace821464d1d74ac126/variables/4pTjoSCc5wGZCO5IQcmzAr000003/\":\n{\n      \"notes\": \"Fourth\"\n    }\n  }\n}\n'",
+            "source": "curl -X PATCH https://your-domain.crunch.io/api/datasets/0001a/variables/ \\\n  -H 'Authorization: Bearer 123456789A123456789B123456789C123456789D123=' \\\n  -H 'Content-Type: application/json' -d '\n{\n  \"element\": \"shoji:catalog\",\n  \"index\": {\n    \"https://your-domain.crunch.io/api/datasets/d542169be3ea4ace821464d1d74ac126/variables/4pTjoSCc5wGZCO5IQcmzAr000002/\":\n    {\n      \"notes\": \"The third variable\"\n    },\n    \"https://your-domain.crunch.io/api/datasets/d542169be3ea4ace821464d1d74ac126/variables/4pTjoSCc5wGZCO5IQcmzAr000003/\":\n{\n      \"notes\": \"Fourth\"\n    }\n  }\n}\n'",
             "syntaxLang": "bash"
           },
           {
@@ -45721,6 +45195,203 @@
           }
         }
       ]
+    },
+    "/datasets/{dataset_id}/variables/materialize/": {
+      "get": {
+        "description": "This endpoint does not return anything.",
+        "operationId": "get-datasets-dataset_id-variables-materialize",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            },
+            "description": "Success",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "tags": [
+          "Variables"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Unique ID of the dataset you are working with",
+          "in": "path",
+          "name": "dataset_id",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "post": {
+        "description": "This endpoint allows to materialize existing derived variables.",
+        "operationId": "post-datasets-dataset_id-variables-materialize",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "element": "shoji:catalog",
+                    "index": {
+                      "../F-0b868b69abffeb4da55022477497dbb0/": {},
+                      "../F-b171de61b61240a18ed2072fe7db3488/": {}
+                    },
+                    "self": "https://your-domain.crunch.io/api/datasets/8db17b4a6b3f4299959afef5e702bde9/variables/materialize/"
+                  }
+                }
+              },
+              "schema": {
+                "additionalProperties": false,
+                "element": {
+                  "$ref": "#/components/schemas/Shoji-catalog-element"
+                },
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "index": {
+                      "description": "The URLs of the variables to be materialized.",
+                      "properties": {
+                        "variable_url": {
+                          "additionalProperties": false,
+                          "description": "The variable URL is the actual reference to the entity to materialize. No other value is necessary to be passed.",
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "title": "VariableToMaterialize",
+                  "type": "object"
+                },
+                "minItems": 1,
+                "title": "DatasetsDatasetIDVariablesMaterializationPostRequest",
+                "type": "array",
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "element": "shoji:view",
+                      "self": "https://your-domain.crunch.io/api/datasets/a5a3d3890a6e453d85662e9c66a9b7e9/variables/materialize/",
+                      "value": "https://your-domain.crunch.io/api/progress/3Aa5a3d3890a6e453d85662e9c66a9b7e9%24a3af7cb7765f3fee01c49225bf34415d/"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/202-response"
+                }
+              }
+            },
+            "description": "Asynchronous task started.\n\nThe `location` header contains a URL for the referenced dataset.\n\nThe `value` element in the JSON response contains a progress URL which you can query to monitor task completion. See **Task progress** endpoint for more details.",
+            "headers": {
+              "Location": {
+                "description": "URL for the actual dataset.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "exception": [
+                        "ValidationError: Cannot materialize a non-derived variable"
+                      ],
+                      "message": "Cannot materialize a non-derived variable.",
+                      "status": 400
+                    }
+                  }
+                },
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "exception": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [],
+                  "title": "DatasetsDatasetIDVariablesPostRequest",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "exception": [
+                        "Dataset not found."
+                      ],
+                      "message": "Dataset not found.",
+                      "status": "404 Not Found"
+                    }
+                  }
+                },
+                "schema": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "exception": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "title": "DatasetsDatasetIDVariablesPostRequest",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Item not found"
+          }
+        },
+        "summary": "Materialize dataset variables",
+        "tags": [
+          "Variables"
+        ]
+      }
     },
     "/datasets/{dataset_id}/variables/personal/": {
       "get": {

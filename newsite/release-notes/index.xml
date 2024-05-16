@@ -8,6 +8,615 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jan 2021 14:08:35 +0200</lastBuildDate><atom:link href="//crunch-io.github.io/crunchy/newsite/release-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Release 2024.04</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2024-04-22/</link>
+      <pubDate>Mon, 22 Apr 2024 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2024-04-22/</guid>
+      <description>Crunch web application Added &amp;ldquo;Script&amp;rdquo; as an available option when a user hovers their mouse over a dashboard tile in the tray. This option can be selected in order to view or edit the script for that tile. Enabled mouse-hover responsiveness on Crunch graphs by highlighting the current bar, segment, or line (in early access). See the announcement for more information. Added a data exchange, which is a one-way bridge that allows a dataset owner who uses Crunch to share a view of a dataset with a receiving organization who also uses Crunch.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &amp;ldquo;Script&amp;rdquo; as an available option when a user hovers their mouse over a dashboard tile in the tray. This option can be selected in order to view or edit the script for that tile.&lt;/li&gt;
+&lt;li&gt;Enabled mouse-hover responsiveness on Crunch graphs by highlighting the current bar, segment, or line (in early access). See the &lt;a href=&#34;https://crunch.io/dev/features/graph-hover-behavior/&#34;&gt;announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Added a data exchange, which is a one-way bridge that allows a dataset owner who uses Crunch to share a view of a dataset with a receiving organization who also uses Crunch. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/25958080634509-Crunch-data-exchange&#34;&gt;help article&lt;/a&gt; to learn more about how to use a data exchange at Crunch.&lt;/li&gt;
+&lt;li&gt;Made speed improvements when creating and editing filters.&lt;/li&gt;
+&lt;li&gt;Corrected an issue that occurred when working with bar graphs in the ‘Edit’ panel: categories that were moved to the &amp;ldquo;Fixed to bottom&amp;rdquo; section were not appearing on the Colors tab, which has now been fixed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;backendcrunchdb&#34;&gt;Backend/CrunchDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Removed the constraint that subvariable codes (&amp;ldquo;aliases&amp;rdquo;) must be unique across the entire dataset. Subvariable codes must still be unique within the same array, and all references to subvariables by their alias are now required to be qualified by the alias of their parent array.&lt;/li&gt;
+&lt;li&gt;Improved dataset locking functionality to reduce any friction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new article that describes how to create pairwise tests with weighted data. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/23815837424397-Pairwise-tests-with-weighted-data&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2024.03</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2024-03-25/</link>
+      <pubDate>Mon, 25 Mar 2024 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2024-03-25/</guid>
+      <description>Crunch web application Made the following improvements: The edit panel for dashboard tiles now supports frequency analyses for text variables that include blank labels. Stacked bars have been added as an available visualization type for numeric-array bivariate analyses. Redesigned Grouped Bar Plots with a cleaner layout, more easily readable text, and the ability to display confidence intervals. Fixed how columns are aligned in the web app and within exports. Previously, multitables using filter columns could sometimes show misaligned rows of results for non-enumerated variable types (text, numeric, and datetime).</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made the following improvements:
+&lt;ul&gt;
+&lt;li&gt;The edit panel for dashboard tiles now supports frequency analyses for text variables that include blank labels.&lt;/li&gt;
+&lt;li&gt;Stacked bars have been added as an available visualization type for numeric-array bivariate analyses.&lt;/li&gt;
+&lt;li&gt;Redesigned &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/20500101668365-Confidence-intervals-on-graphs&#34;&gt;Grouped Bar Plots&lt;/a&gt; with a cleaner layout, more easily readable text, and the ability to display confidence intervals.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Fixed how columns are aligned in the web app and within exports. Previously, multitables using filter columns could sometimes show misaligned rows of results for non-enumerated variable types (text, numeric, and datetime).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/21987065472909-SUSPEND-UNSUSPEND-USERS-command&#34;&gt;UNSUSPEND USERS command&lt;/a&gt;, which allows you to reactivate suspended users.&lt;/li&gt;
+&lt;li&gt;Adjusted the &lt;code&gt;[]&lt;/code&gt; syntax for subvariables: a &lt;code&gt;subvariable_code&lt;/code&gt; is a regular identifier and cannot use &lt;code&gt;[]&lt;/code&gt; syntax (otherwise, an error occurs). Visit this &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042038132-CHANGE-command&#34;&gt;help article&lt;/a&gt; to view an example.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;backendcrunchdb&#34;&gt;Backend/CrunchDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Removed the ability to export datasets to Parquet format (through both the web app and the API) due to compatibility issues with the latest versions of Python. Please contact support if you need assistance with a Parquet export.&lt;/li&gt;
+&lt;li&gt;Added the capability to support ‘Just-in-time’ provisioning so that new users are automatically created in Crunch the first time the user logs into Crunch via OAuth or SAML. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360051387952-Creating-a-Seamless-Login-Experience&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2024.02</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2024-03-05/</link>
+      <pubDate>Tue, 05 Mar 2024 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2024-03-05/</guid>
+      <description>Crunch web application Added the ability to specify minimum and maximum widths for dashboards (in wide access), enabling a more consistent and visually appealing experience across various screen sizes. See the announcement and help article for more information. Improved the rendering of stacked bar and donut visualizations, which now use a new and improved method (using D3). Users may notice small changes to the layout. Added “Extend row labels” (default off) to the Properties tab, which makes a table use all the available horizontal space to better accommodate long labels.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the ability to specify minimum and maximum widths for dashboards (in wide access), enabling a more consistent and visually appealing experience across various screen sizes. See the &lt;a href=&#34;https://crunch.io/dev/features/min-max-width-dashboard/&#34;&gt;announcement&lt;/a&gt; and &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/22051616032653-Setting-the-width-of-a-dashboard&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Improved the rendering of stacked bar and donut visualizations, which now use a new and improved method (using D3). Users may notice small changes to the layout.&lt;/li&gt;
+&lt;li&gt;Added “Extend row labels” (default off) to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/9414277417741#properties-tab&#34;&gt;Properties tab&lt;/a&gt;, which makes a table use all the available horizontal space to better accommodate long labels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/23985586683917-REDEFINE-MULTIPLE-DICHOTOMY-FROM-CONDITIONS-command&#34;&gt;REDEFINE MULTIPLE DICHOTOMY FROM CONDITIONS command&lt;/a&gt;, which allows you to redefine a variable that was created using the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360056799552-CREATE-MULTIPLE-DICHOTOMY-FROM-CONDITIONS-command&#34;&gt;CREATE MULTIPLE DICHOTOMY FROM CONDITIONS&lt;/a&gt; command.&lt;/li&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042457091-CREATE-FILTER-command&#34;&gt;CREATE FILTER command&lt;/a&gt; so that it now supports a &lt;code&gt;COMPLETE CASES&lt;/code&gt; modifier.&lt;/li&gt;
+&lt;li&gt;Made the following performance improvements:
+&lt;ul&gt;
+&lt;li&gt;Decreased the time it takes to run large scripts.&lt;/li&gt;
+&lt;li&gt;System scripts that take longer to execute now show a progress bar and will no longer time out.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Added additional help information about the various &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/22536937705613#ca-scripts&#34;&gt;types of scripts&lt;/a&gt; you can use with Crunch Automation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;backendcrunchdb&#34;&gt;Backend/CrunchDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the error messaging when using the &lt;code&gt;copy-from&lt;/code&gt; operation: if it fails to copy artifacts from one dataset to another, it now properly marks it and provides a reason why it failed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360041300531-Editor-and-Viewer-permissions-on-a-dataset&#34;&gt;help article&lt;/a&gt; that describes the various permissions that Editors and Viewers have on a given dataset.&lt;/li&gt;
+&lt;li&gt;Added new and updated examples within the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360045984071-Recoding-case-level-missing-valid-values-rebasing&#34;&gt;help article&lt;/a&gt; that describes how to recode case-level values to be valid or missing.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2024.01</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2024-01-29/</link>
+      <pubDate>Mon, 29 Jan 2024 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2024-01-29/</guid>
+      <description>Crunch web application Made the following updates: Test statistics for pairwise hypothesis tests (‘set comparison’ or lettered indicators in exports) of weighted tables now account for the design effect of weights. This makes the tests more conservative by considering the effective sample size instead of the unadjusted unweighted N. When a dataset editor creates a new dashboard via the dataset Automation option, the editor&amp;rsquo;s current container in the tray is now updated to that dashboard.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Made the following updates&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Test statistics for pairwise hypothesis tests (‘set comparison’ or lettered indicators in exports) of weighted tables now account for the design effect of weights. This makes the tests more conservative by considering the effective sample size instead of the unadjusted unweighted N.&lt;/li&gt;
+&lt;li&gt;When a dataset editor creates a new dashboard via the dataset Automation option, the editor&amp;rsquo;s current container in the tray is now updated to that dashboard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Deck exports with quotes in the file names are now sanitized instead of failing.&lt;/li&gt;
+&lt;li&gt;When applying a dashboard group filter, a bivariate bar graph tile with a numeric array in the row position would fail to load if both of the following conditions were true: the tile was configured to show empty columns &lt;em&gt;&lt;strong&gt;and&lt;/strong&gt;&lt;/em&gt; applying the filter had yielded one or more empty columns.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created new user-related system commands, which allow you to perform the following functions:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/21986428377741-CREATE-USERS-command&#34;&gt;CREATE USERS command&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/21986841356301-ALTER-USERS-command&#34;&gt;ALTER USERS command&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/21987065472909-SUSPEND-USERS-command&#34;&gt;SUSPEND USERS command&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the following Crunch Automation articles (see the complete list &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/360010564152-Getting-started&#34;&gt;here&lt;/a&gt;):
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/22536937705613-What-is-Crunch-Automation-&#34;&gt;What is Crunch Automation?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360041769292-Writing-Crunch-Automation-declarations&#34;&gt;Writing Crunch Automation declarations&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.13</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-12-19/</link>
+      <pubDate>Tue, 19 Dec 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-12-19/</guid>
+      <description>Crunch web application Made the following updates: The dashboard design now allows you to specify minimum and maximum widths for your dashboards, enabling a more consistent and visually appealing experience across various screen sizes. (in early access). See the feature announcement for more information. The KPI comparisons feature is now in wide access in production. See the announcement and help article for more information. Fixed the following: Base sizes are now displayed in the tooltips (previously showed zero) in a numeric array column or row percentage share of sum graph.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Made the following updates&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The dashboard design now allows you to specify minimum and maximum widths for your dashboards, enabling a more consistent and visually appealing experience across various screen sizes. (in &lt;em&gt;early access&lt;/em&gt;). See the &lt;a href=&#34;https://crunch.io/dev/features/min-max-width-dashboard/&#34;&gt;feature announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;The KPI comparisons feature is now in wide access in production. See the &lt;a href=&#34;https://crunch.io/dev/features/kpi-comparisons/&#34;&gt;announcement&lt;/a&gt; and &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040045512-How-to-add-a-KPI-tile-to-a-dashboard&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Base sizes are now displayed in the tooltips (previously showed zero) in a numeric array column or row percentage share of sum graph.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;backendcrunchdb&#34;&gt;Backend/CrunchDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Improved how CSV files are handled: if you provide a CSV file that is compressed using PKWare (type 9 format) for import, you will now receive and error message requesting you to compress in a different format since Crunch cannot uncompress this type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/22051616032653-Setting-the-width-of-a-dashboard&#34;&gt;help article&lt;/a&gt; that describes how to set the width of a dashboard.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.12</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-11-13/</link>
+      <pubDate>Mon, 13 Nov 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-11-13/</guid>
+      <description>Crunch web application Released Crunch&amp;rsquo;s new KPI comparisons, which enable you to contextualize current performance by showing changes against relevant benchmarks (e.g. , previous waves), turning raw numbers into actionable insights. See the announcement for more information. Moved the ‘Subtotals-only/Categories-only’ options from the extended display controller, which now allows you to easily toggle between subtotals, categories, or both. See the announcement for more information. Improved the error message (”Something went wrong&amp;quot;) when applying one or more filters to a table that yielded a result with no rows.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Released Crunch&amp;rsquo;s new KPI comparisons, which enable you to contextualize current performance by showing changes against relevant benchmarks (e.g. , previous waves), turning raw numbers into actionable insights. See the &lt;a href=&#34;https://crunch.io/dev/features/kpi-comparisons/&#34;&gt;announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Moved the ‘Subtotals-only/Categories-only’ options from the extended display controller, which now allows you to easily toggle between subtotals, categories, or both. See the &lt;a href=&#34;https://crunch.io/dev/features/subtotals-toggle/&#34;&gt;announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Improved the error message (”&lt;code&gt;Something went wrong&lt;/code&gt;&amp;quot;) when applying one or more filters to a table that yielded a result with no rows. A more accurate “No valid data” message now appears.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Selecting the Export settings option was yielding a blank page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added new information about &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040045512-How-to-add-a-KPI-tile-to-a-dashboard-Scriptable-Dashboards-&#34;&gt;how to add a KPI tile to a dashboard&lt;/a&gt;, which now includes instructions about how to display the difference between your current KPI value and a different value of interest from the same table.&lt;/li&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/4416232124813-Graphing-Subtotals-and-Differences&#34;&gt;Graphing Subtotals and Differences&lt;/a&gt; help article with new information about how to toggle between subtotals, categories, or both in tables and graphs.&lt;/li&gt;
+&lt;li&gt;Added &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/9414277417741-Customizing-dashboards-and-dashboard-tiles-Scriptable-Dashboards-&#34;&gt;new information&lt;/a&gt; about how to how to adjust the fixed aspect ratio within univariate bar graphs in your dashboard analyses.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.11</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-10-24/</link>
+      <pubDate>Tue, 24 Oct 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-10-24/</guid>
+      <description>Crunch web application Updated the Manage Users panel in Crunch, including a cleaner layout, displaying the dates the user was added and last authenticated, and adding the ability to configure users as clients or organization users. Made significant enhancements to the Bar Plots in Crunch, including a cleaner layout, more readable text, and a new confidence interval display. See the help article for more information. Changed the label for the ‘Edit value’ button to &amp;ldquo;Edit KPI value”.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/20214383713165-Managing-a-user-in-the-Manage-users-panel&#34;&gt;Manage Users&lt;/a&gt; panel in Crunch, including a cleaner layout, displaying the dates the user was added and last authenticated, and adding the ability to configure users as clients or organization users.&lt;/li&gt;
+&lt;li&gt;Made significant enhancements to the &lt;a href=&#34;https://crunch.io/dev/features/new-bar-plots/&#34;&gt;Bar Plots in Crunch&lt;/a&gt;, including a cleaner layout, more readable text, and a new confidence interval display. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/20500101668365-Confidence-intervals-on-graphs&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Changed the label for the ‘Edit value’ button to &amp;ldquo;Edit KPI value”.
+&lt;ul&gt;
+&lt;li&gt;In cases where the user had already established a KPI + comparison value in an earlier session, the Properties panel then reflects the comparison cell selection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Improved the assignment of the maximum range in the value axis when exporting a PowerPoint stacked bar graph.&lt;/li&gt;
+&lt;li&gt;Enabled data streaming for numeric arrays.&lt;/li&gt;
+&lt;li&gt;Disallowed the ability to create a view with personal variables.&lt;/li&gt;
+&lt;li&gt;Fixed the following:
+&lt;ul&gt;
+&lt;li&gt;A table layout would sometimes render with extraneous line wrapping when selecting the &amp;ldquo;Empty rows/columns&amp;rdquo; option in the display controller.&lt;/li&gt;
+&lt;li&gt;Editing a tile for a time plot was not correctly persisting customizations to the Min and Max ranges or hiding the Title and Subtitle.&lt;/li&gt;
+&lt;li&gt;Tables with many rows would sometimes only display a few. Now, all the rows are displayed (unless hidden).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sdks-rcrunch-pycrunch-and-scrunch&#34;&gt;SDKs (&lt;code&gt;rCrunch&lt;/code&gt;, &lt;code&gt;pyCrunch&lt;/code&gt;, and &lt;code&gt;sCrunch&lt;/code&gt;)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated &lt;code&gt;scrunch&lt;/code&gt; to version version 0.16.0. See the &lt;a href=&#34;https://pypi.org/project/scrunch/&#34;&gt;official page&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Changed how variables are referred to in array. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360041769292#toc4&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;back-endcrunchdb&#34;&gt;Back-end/CrunchDB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Variable folders specified when creating a dataset from metadata now allow periods, commas, and dollar signs (&lt;code&gt;.&lt;/code&gt;, &lt;code&gt;,&lt;/code&gt;, &lt;code&gt;$&lt;/code&gt;).  Previously, these were replaced with URL-safe strings.  This replacement only occurred during the dataset creation process, as the characters are always allowed for variable folders in other circumstances.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360056505351-Finding-your-starting-point&#34;&gt;getting started help page&lt;/a&gt; so that it now provides quick access to popular articles for new users to Crunch.&lt;/li&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/15190286100877-Workspaces-in-Crunch&#34;&gt;Workspaces in Crunch&lt;/a&gt; help article, which defines workspaces in Crunch and how to use the workspace selector to find your Crunch workspace if you’re not sure where to go.&lt;/li&gt;
+&lt;li&gt;Added new help articles that show you how to use the Manage users panel to &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/20213533659405-Adding-a-user-in-the-Manage-users-panel&#34;&gt;add&lt;/a&gt;, &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/20213533659405-Adding-a-user-in-the-Manage-users-panel&#34;&gt;manage&lt;/a&gt;, or &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/9400918056333--Deleting-or-suspending-a-user-in-the-Manage-users-panel&#34;&gt;delete/suspend&lt;/a&gt; a user.&lt;/li&gt;
+&lt;li&gt;Updated the following help articles with new feature information:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10238199927565-Exporting-your-selected-analysis-to-PowerPoint&#34;&gt;Exporting your selected analysis to PowerPoint&lt;/a&gt; — Added new information that describes how to export to PowerPoint or Excel.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040498732-Exporting-a-tab-book-to-Excel&#34;&gt;Exporting a tab book&lt;/a&gt; — Updated with the latest information on how to export a tab book in either Excel or CSV format.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.10</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-08-28/</link>
+      <pubDate>Mon, 28 Aug 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-08-28/</guid>
+      <description>Crunch web application Updated the design of the Dataset Properties menu — it now includes many dataset actions that are available directly from the dataset menu. See the announcement for more information. Fixed the following:
+Opening the rich-text editor to create a new rich-text tile would sometimes display an image from a previous rich-text tile editing session. A variable could not be dragged directly from the sidebar onto an existing variable within the filter builder in order to create a parentheses group.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the design of the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040059632-Dataset-Properties&#34;&gt;Dataset Properties&lt;/a&gt; menu — it now includes many dataset actions that are available directly from the dataset menu. See the &lt;a href=&#34;https://crunch.io/dev/features/updated-dataset-properties/&#34;&gt;announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Fixed the following:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Opening the rich-text editor to create a new rich-text tile would sometimes display an image from a previous rich-text tile editing session.&lt;/li&gt;
+&lt;li&gt;A variable could not be dragged directly from the sidebar onto an existing variable within the filter builder in order to create a parentheses group.&lt;/li&gt;
+&lt;li&gt;For pairwise-comparison hypothesis testing, an incorrect cell shading was sometimes applied in crosstabs with a numeric array in the row dimension and hidden empty rows/columns.&lt;/li&gt;
+&lt;li&gt;The selection of group filters for a dashboard was not working correctly when working with variable summary-card tiles.&lt;/li&gt;
+&lt;li&gt;Deck exports for sum and percentage share of sum-numeric array analyses were not working correctly.&lt;/li&gt;
+&lt;li&gt;After switching a dataset from weighted to unweighted, tables with a base column would sometimes still render weighted values in that column.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/11309360322829-REVOKE-Permissions-command&#34;&gt;REVOKE&lt;/a&gt; folder command — added the ability to remove access to &lt;em&gt;all&lt;/em&gt; datasets and projects inside the given path.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made significant updates to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040059632-General-Dataset-Properties&#34;&gt;Dataset Properties&lt;/a&gt; help article to describe the recent updates made to various Crunch web app panel pages. See the list of &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040059632#dataset-properties-articles&#34;&gt;recently updated dataset-properties articles&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.09</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-07-31/</link>
+      <pubDate>Mon, 31 Jul 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-07-31/</guid>
+      <description>Crunch web application Fixed the following: It’s now possible to save to the dashboard tray when a table has a numeric array in the row position, a multiple response variable in the column position, and a column has been selected for pairwise-comparison hypothesis testing. An AND condition can now be changed to OR in the filter builder. Issues that occurred when applying or removing a filter in ‘dataset view’ have been fixed.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;It’s now possible to save to the dashboard tray when a table has a numeric array in the row position, a multiple response variable in the column position, and a column has been selected for pairwise-comparison hypothesis testing.&lt;/li&gt;
+&lt;li&gt;An &lt;code&gt;AND&lt;/code&gt; condition can now be changed to &lt;code&gt;OR&lt;/code&gt; in the filter builder.&lt;/li&gt;
+&lt;li&gt;Issues that occurred when applying or removing a filter in ‘dataset view’ have been fixed.&lt;/li&gt;
+&lt;li&gt;Dataset views now open when clicked from the folder browser..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Correction to the &lt;a href=&#34;https://crunch.io/release-notes/2023-06-26/&#34;&gt;Release Notes 2023.08&lt;/a&gt;, where it says ‘&lt;em&gt;Removed the ability to directly share datasets that are created in personal folders&lt;/em&gt;’ — this should instead read as “&lt;strong&gt;Stopped creating dataset shares for datasets created in personal folders&lt;/strong&gt;.”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/10343332025101-Folder-commands&#34;&gt;system scripts commands&lt;/a&gt; so that it’s now possible to refer to datasets when they share the same name within the same folder. The command refers to the dataset’s ID, using the &lt;code&gt;DATASET_ID()&lt;/code&gt; function.&lt;/li&gt;
+&lt;li&gt;An issue occurred where duplicated categories were created when using the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042039192-CREATE-CATEGORICAL-CASE-command&#34;&gt;CREATE CATEORICAL CASE command&lt;/a&gt;, which has now been fixed.&lt;/li&gt;
+&lt;li&gt;Added a &lt;code&gt;DISAMBIGUATE&lt;/code&gt; modifier to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521646996237-MOVE-DATASET-command&#34;&gt;MOVE DATASET&lt;/a&gt; and &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/11309460023565-MOVE-FOLDERS-command&#34;&gt;MOVE FOLDERS&lt;/a&gt; commands,  which allows you to rename moved objects in the destination folder to prevent naming conflicts.&lt;/li&gt;
+&lt;li&gt;Enhanced the &lt;code&gt;SET MISSING&lt;/code&gt; command so that it can now work on Multiple Response variables.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.08</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-06-26/</link>
+      <pubDate>Mon, 26 Jun 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-06-26/</guid>
+      <description>Crunch web application Enabled users with ‘Editor’ permissions to add, modify, and remove a PowerPoint template on a folder. Previously, only account admins had permission to manage a PPT template. Removed the ability to directly share datasets that are created in personal folders. Fixed the following: Filter footnotes were not displaying on dashboard tiles. Multitable rendering sometimes failed when a filter was either applied or removed. Deselecting the ‘Display Empty rows/columns’ option was not working when viewing numeric-array variable summary cards.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Enabled users with ‘Editor’ permissions to add, modify, and remove a PowerPoint template on a folder. Previously, only account admins had permission to manage a PPT template.&lt;/li&gt;
+&lt;li&gt;Removed the ability to directly share datasets that are created in personal folders.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Filter footnotes were not displaying on dashboard tiles.&lt;/li&gt;
+&lt;li&gt;Multitable rendering sometimes failed when a filter was either applied or removed.&lt;/li&gt;
+&lt;li&gt;Deselecting the ‘Display Empty rows/columns’ option was not working when viewing numeric-array variable summary cards.&lt;/li&gt;
+&lt;li&gt;Selecting the ‘Show values’ option was not rendering the values on line-graph dashboard tiles.&lt;/li&gt;
+&lt;li&gt;Integration-update issues occurred (including &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040119051-How-to-import-from-Decipher-into-Crunch&#34;&gt;Decipher&lt;/a&gt; and &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360060784772-How-to-import-from-Confirmit-into-Crunch&#34;&gt;Confirmit&lt;/a&gt;) when the source dataset had missing or duplicate variable titles, which then led to aliases that were missing or duplicated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/16329096980109-DEFINE-HOMEPAGE-command&#34;&gt;DEFINE HOMEPAGE&lt;/a&gt; command (folder scripts), which allows you to add a homepage to a folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added new content that describes &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360039306152-Tables-and-charts-with-drag-and-drop#toc4&#34;&gt;how to sort tables and graphs&lt;/a&gt;, where certain answers can now remain fixed to the end of tables and graphs when sorting. See the &lt;a href=&#34;https://crunch.io/dev/features/fix-categories-when-sorting/&#34;&gt;announcement&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.07</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-05-22/</link>
+      <pubDate>Mon, 22 May 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-05-22/</guid>
+      <description>Crunch web application Added folder location and &amp;lsquo;Move to&amp;rsquo; functionality on the Dataset properties menu. Fixed the following: The ‘Edit’ categories options for a saved-as-a-variable filter was not displaying all the variables in the definition. Publishing a draft dataset was prevented in some cases when the subvariables of a multiple response or categorical array variable had been rearranged. Recodes were not populating correctly within Qualtrics integrations. Crunch Automation Added the ability to add exceptions and VALID | MISSING expressions to the CREATE NUMERIC TALLY command.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added folder location and &amp;lsquo;Move to&amp;rsquo; functionality on the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040059632-General-Dataset-Properties&#34;&gt;Dataset properties&lt;/a&gt; menu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The ‘Edit’ categories options for a saved-as-a-variable filter was not displaying all the variables in the definition.&lt;/li&gt;
+&lt;li&gt;Publishing a draft dataset was prevented in some cases when the subvariables of a multiple response or categorical array variable had been rearranged.&lt;/li&gt;
+&lt;li&gt;Recodes were not populating correctly within &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/360013551691-Qualtrics&#34;&gt;Qualtrics integrations&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the ability to add exceptions and &lt;code&gt;VALID | MISSING&lt;/code&gt; expressions to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360049946672-CREATE-NUMERIC-TALLY-command&#34;&gt;CREATE NUMERIC TALLY command&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/15191525378445-DELETE-DATASETS-command&#34;&gt;DELETE DATASET&lt;/a&gt;, which is a new folder command that allows you to delete multiple datasets under the current folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new help article about how Crunch is &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/15190286100877-Transitioning-to-subdomains-in-Crunch&#34;&gt;rolling out subdomains&lt;/a&gt; in order to log into and see data within Crunch.&lt;/li&gt;
+&lt;li&gt;Added a new help section on &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10491415512461-New-permissions-framework-how-to-share-datasets-in-folders-with-members-in-your-organization#toc1&#34;&gt;how to share a folder with users from the dataset&lt;/a&gt; (folders &amp;amp; folder-based permissions).&lt;/li&gt;
+&lt;li&gt;Updated the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360040059632-General-Dataset-Properties&#34;&gt;General Dataset Properties&lt;/a&gt; help article to include new information about how to use the new properties menu to view and move datasets into different folders.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.06</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-04-17/</link>
+      <pubDate>Mon, 17 Apr 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-04-17/</guid>
+      <description>Crunch web application Fixed the following: Navigation between dashboard tabs was not working correctly. Hidden columns became visible after performing a column sort on a dashboard tile. Qualtrics integrations: Fixed an issue where Qualtrics fields in a loop-and-merge integration were not sequential (i.e., the index in the list of fields did not correspond to the id of the CSV header). Added support for “Authenticator” blocks that Qualtrics added to survey flows.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Navigation between dashboard tabs was not working correctly.&lt;/li&gt;
+&lt;li&gt;Hidden columns became visible after performing a column sort on a dashboard tile.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Qualtrics &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/360013551691-Qualtrics&#34;&gt;integrations&lt;/a&gt;:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed an issue where Qualtrics fields in a loop-and-merge integration were not sequential (i.e., the index in the list of fields did not correspond to the &lt;code&gt;id&lt;/code&gt; of the CSV header).&lt;/li&gt;
+&lt;li&gt;Added support for “Authenticator” blocks that Qualtrics added to survey flows.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;api-endpoints-and-api-reference&#34;&gt;API endpoints and API reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added new API endpoints that allow you to &lt;a href=&#34;https://crunch.io/api/reference/#get-/users/-user_id-/preferences/&#34;&gt;retrieve&lt;/a&gt; and &lt;a href=&#34;https://crunch.io/api/reference/#patch-/users/-user_id-/preferences/&#34;&gt;modify&lt;/a&gt; the preferences object for users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed an issue that occurred when executing a &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521631962381-CREATE-FOLDER-command&#34;&gt;CREATE FOLDER command&lt;/a&gt; on the account level.&lt;/li&gt;
+&lt;li&gt;Added new API instructions on how to run &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521594535309-Getting-started-with-folder-scripts&#34;&gt;account-level folder scripts&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;CORRECTION (&lt;em&gt;see updated link in the following&lt;/em&gt;): Created a new article that describes &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/14031750497677--Shared-with-me-folder-transitioning-to-folder-sharing&#34;&gt;how to transition&lt;/a&gt; away from dataset sharing to folder-based sharing.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.05</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-04-03/</link>
+      <pubDate>Mon, 03 Apr 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-04-03/</guid>
+      <description>Crunch web application Fixed the following: The summary row would not change from ‘Unweighted N’ to ‘Weighted N’ (or ‘Both’) when viewing in multitable view. Performance was slow when loading certain multitables. The rendering of numeric variables did not appear correctly when they have a valid count equal to zero. Variable names are now transformed into aliases when creating them though the Crunch web UI — the automatically-generated alias for the variable will no longer be an exact copy of the name of the variable.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The summary row would not change from ‘Unweighted N’ to ‘Weighted N’ (or ‘Both’) when viewing in multitable view.&lt;/li&gt;
+&lt;li&gt;Performance was slow when loading certain multitables.&lt;/li&gt;
+&lt;li&gt;The rendering of numeric variables did not appear correctly when they have a valid count equal to zero.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Variable names are now transformed into aliases when creating them though the Crunch web UI — the automatically-generated alias for the variable will no longer be an exact copy of the name of the variable. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/13535334060301-Variable-name-aliases&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sdks-rcrunch-pycrunch-and-scrunch&#34;&gt;SDKs (&lt;code&gt;rCrunch&lt;/code&gt;, &lt;code&gt;pyCrunch&lt;/code&gt;, and &lt;code&gt;sCrunch&lt;/code&gt;)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the ability to run Crunch Automation scripts on project folders.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/14055262411021-DROP-EMPTY-FOLDERS-command&#34;&gt;DROP EMPTY FOLDERS command&lt;/a&gt;, which allows you to delete all empty folders in a dataset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new article that describes &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/14055262411021-DROP-EMPTY-FOLDERS-command&#34;&gt;how to transition away from dataset sharing&lt;/a&gt; to folder-based sharing.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.04</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-03-13/</link>
+      <pubDate>Mon, 13 Mar 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-03-13/</guid>
+      <description>Crunch web application Fixed the following: A color assignment was sometimes incorrectly applied in PowerPoint exports when the categories for the analysis had been reordered. The selection of a single column for pairwise-comparison hypothesis testing sometimes caused multiple columns to be shaded as reference columns. Added support for low base warnings and suppression for numeric array analyses. Crunch Automation Added the following new folder script commands: SET command — allows you to change the value of a particular folder setting.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;A color assignment was sometimes incorrectly applied in PowerPoint exports when the categories for the analysis had been reordered.&lt;/li&gt;
+&lt;li&gt;The selection of a single column for pairwise-comparison hypothesis testing sometimes caused multiple columns to be shaded as reference columns.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Added support for low base warnings and suppression for numeric array analyses.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added the following new &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/10343332025101-Folder-commands&#34;&gt;folder script commands&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/13639703101709-SET-command&#34;&gt;SET command&lt;/a&gt; — allows you to change the value of a particular folder setting.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/13640380422157-REMOVE-DIRECT-SHARES-command&#34;&gt;REMOVE DIRECT SHARES command&lt;/a&gt; — allows you to delete all of the existing direct shares from the indicated datasets.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521651144333-DEFINE-VIEW-command&#34;&gt;DEFINE VIEW command&lt;/a&gt; — allows you to create views from datasets by indicating a selection of variables, variable folders, and a filter to use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Updated the following &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/360010677071-Dataset-commands&#34;&gt;dataset commands&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/13551320541325-CREATE-TEXT-CASE-command&#34;&gt;CREATE/REPLACE TEXT CASE command&lt;/a&gt; — new command that allows you to create your own text variable, within which you obtain values from multiple sources under different conditions (similar to the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360045656352-CREATE-NUMERIC-CASE-command&#34;&gt;CREATE NUMERIC CASE&lt;/a&gt; and &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042039192-CREATE-CATEGORICAL-CASE-command&#34;&gt;CREATE CATEGORICAL CASE&lt;/a&gt; commands).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042039512-CREATE-MULTIPLE-DICHOTOMY-FROM-command&#34;&gt;CREATE MULTIPLE DICHOTOMY FROM command&lt;/a&gt; — now requires you to create individual variables instead of accepting a multiple input in order to provide better control over the responses’ aliases. The previous version did not allow you to provide user-defined subvariable aliases for the newly created multiple response variables.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360057819011-OVERWRITE-VALUES-command&#34;&gt;OVERWRITE VALUES command&lt;/a&gt; — now replaces all rows in a dataset regardless of the applied exclusion filter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created a new article that provides an introduction to the new permissions framework. See the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/8462144449037-Introduction-to-the-new-permissions-framework&#34;&gt;help article&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;Updated the help article that provides &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360051387952-Creating-a-Seamless-Login-Experience&#34;&gt;detailed information&lt;/a&gt; on how to create a seamless login experience.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.03</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-02-27/</link>
+      <pubDate>Mon, 27 Feb 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-02-27/</guid>
+      <description>Crunch web application Fixed the following: The ‘Save’ and tray buttons would occasionally disappear. The mean of a categorical-scale univariate analysis was incorrectly suppressed when the ‘minimum base size warn’ handling was enabled. Mean cell values that were below the minimum base size for the warn scenario were incorrectly exported as percentages. In the extended settings of the Display Controller, the checkboxes for Subtotals, Categories, and Both have been replaced by radio buttons, which better reflect the single-choice nature of these options.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The ‘Save’ and tray buttons would occasionally disappear.&lt;/li&gt;
+&lt;li&gt;The mean of a categorical-scale univariate analysis was incorrectly suppressed when the ‘minimum base size warn’ handling was enabled.&lt;/li&gt;
+&lt;li&gt;Mean cell values that were below the minimum base size for the warn scenario were incorrectly exported as percentages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In the extended settings of the Display Controller, the checkboxes for Subtotals, Categories, and Both &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/4416232124813#display-controller-radio-button&#34;&gt;have been replaced by radio buttons&lt;/a&gt;, which better reflect the single-choice nature of these options. The &amp;ldquo;Empty rows/columns&amp;rdquo; checkbox option has been moved to the &amp;ldquo;Display&amp;rdquo; column on the left. To accompany this change, Crunch will now shift users to the &amp;ldquo;Categories and subtotals&amp;rdquo; setting if they try to load an analysis that would otherwise appear blank — because their setting is &amp;ldquo;Subtotals only&amp;rdquo; and the analysis has no subtotals.&lt;/li&gt;
+&lt;li&gt;Vastly improved browser performance for large lists of multitables, decks, and filters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made speed improvements when executing Crunch Automation scripts on large datasets with many derived variables.&lt;/li&gt;
+&lt;li&gt;Added further improvements to &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/10343332025101-Folder-commands&#34;&gt;folder scripts&lt;/a&gt; when running Crunch Automation commands at  the account level.&lt;/li&gt;
+&lt;li&gt;Enhanced the CREATE MULTIPLE DICHOTOMY FROM command by providing the ability to use a single array variable as input (instead of a list of variables). It also now allows the usage of an &lt;code&gt;ALIASES&lt;/code&gt; clause. See &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/360042039512-CREATE-MULTIPLE-DICHOTOMY-FROM-command&#34;&gt;documentation&lt;/a&gt; for more details and examples.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added new information about how to &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/9400918056333-Delete-or-suspend-a-user&#34;&gt;suspend a user&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Created a new article that describes &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/6357651895309-New-permissions-framework-editing-datasets-and-managing-users&#34;&gt;how to edit datasets and manage users&lt;/a&gt; within the new permissions framework.&lt;/li&gt;
+&lt;li&gt;Published the following &lt;em&gt;new&lt;/em&gt; &lt;a href=&#34;https://help.crunch.io/hc/en-us/sections/8865212545293-Folders-folder-based-permissions&#34;&gt;permissions-framework articles&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521122959117-New-permissions-framework-how-to-share-datasets-in-folders-with-client-users&#34;&gt;How to share datasets in folders with client users&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10491415512461-New-permissions-framework-how-to-share-datasets-in-folders-with-members-in-your-organization&#34;&gt;How to share datasets in folders with members in your organization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.02</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-02-06/</link>
+      <pubDate>Mon, 06 Feb 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-02-06/</guid>
+      <description>Crunch web application Fixed the following: Changes made to the subvariable names of a multiple response variable were not persisting correctly. An exclusion filter could be set but not applied during some operations under rare circumstances — the exclusion is now always applied by default to avoid an accidental failure to apply. Editing the title or description for a derived categorical array was not working. The ‘Save’ button for the deck tray could sometimes get stuck in a disabled state.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Changes made to the subvariable names of a multiple response variable were not persisting correctly.&lt;/li&gt;
+&lt;li&gt;An exclusion filter could be set but not applied during some operations under rare circumstances — the exclusion is now always applied by default to avoid an accidental failure to apply.&lt;/li&gt;
+&lt;li&gt;Editing the title or description for a derived categorical array was not working.&lt;/li&gt;
+&lt;li&gt;The ‘Save’ button for the deck tray could sometimes get stuck in a disabled state.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Added the following&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Support for exporting KPIs to PowerPoint for non-tabbed analyses.&lt;/li&gt;
+&lt;li&gt;For reasonably complex weight models with numerous marginal targets, the cutoff was previously set at 100 iterations and has now been raised to 200, which will allow for better convergence rates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crunch-automation&#34;&gt;Crunch Automation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;PUBLIC&lt;/code&gt; as a new syntax for &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/10521594535309-Getting-started-with-folder-scripts&#34;&gt;folders&lt;/a&gt; in Crunch Automation. Users can refer to the root folder using both keywords (&lt;code&gt;ROOT&lt;/code&gt; and &lt;code&gt;PUBLIC&lt;/code&gt;), which should now behave the same.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;help-desk-and-website-improvements&#34;&gt;Help desk and website improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Created the following the Scriptable Dashboards help articles, which provide a high-level description of new features and answers to commonly-asked FAQs:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/12483333579277-Scriptable-Dashboards-An-Overview&#34;&gt;Scriptable Dashboards overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/12794877407245-Scriptable-Dashboards-FAQs&#34;&gt;Scriptable Dashboards FAQs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
+      <title>Release 2023.01</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/2023-01-23/</link>
+      <pubDate>Mon, 23 Jan 2023 10:00:00 -0700</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/2023-01-23/</guid>
+      <description>Crunch web application Fixed the following: Incorrect cell colors sometimes appeared within three-way tables when switching tabs. Users were not able to open ‘Edit categories’ for logical variables (such as those created via the filter builder). The ‘Edit categories’ option was missing from the variable properties panel for a derived categorical. Categories sometimes could not be renamed in the variable properties panel. The full list of subvariables sometimes did not get displayed on numeric-array variable summary cards.</description>
+      <content:encoded>&lt;h3 id=&#34;crunch-web-application&#34;&gt;Crunch web application&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixed the following:
+&lt;ul&gt;
+&lt;li&gt;Incorrect cell colors sometimes appeared within three-way tables when switching tabs.&lt;/li&gt;
+&lt;li&gt;Users were not able to open ‘Edit categories’ for logical variables (such as those created via the filter builder).&lt;/li&gt;
+&lt;li&gt;The ‘Edit categories’ option was missing from the variable properties panel for a derived categorical.&lt;/li&gt;
+&lt;li&gt;Categories sometimes could not be renamed in the variable properties panel.&lt;/li&gt;
+&lt;li&gt;The full list of subvariables sometimes did not get displayed on numeric-array variable summary cards.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Added the following:
+&lt;ul&gt;
+&lt;li&gt;The ability to allow the owner of a dataset to make a filter public even if they are not the current editor.&lt;/li&gt;
+&lt;li&gt;Support the export of images on dashboard tiles to PowerPoint.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;api-endpoints-and-api-reference&#34;&gt;API endpoints and API reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Added three new endpoints that return the parents structure for special folders (Public, Secure, and Hidden):
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://crunch.io/api/reference/#get-/datasets/-dataset_id-/folders/public/&#34;&gt;List public variables and subfolders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://crunch.io/api/reference/#get-/datasets/-dataset_id-/folders/hidden/&#34;&gt;List hidden elements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://crunch.io/api/reference/#get-/datasets/-dataset_id-/folders/secure/&#34;&gt;List private variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Updated the docs for the &lt;a href=&#34;https://crunch.io/api/reference/#get-/datasets/-dataset_id-/folders/public/&#34;&gt;List public variables and subfolders&lt;/a&gt; endpoint , which now describes its current behavior: it returns a catalog of folder trees but no longer the contents of the public variable folder.&lt;/li&gt;
+&lt;li&gt;Modified the &lt;a href=&#34;https://crunch.io/api/reference/#get-/users/&#34;&gt;List account and team users&lt;/a&gt; endpoint to allow users to search for accounts using an email address.&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    
+    <item>
       <title>Release 2022.17</title>
       <link>//crunch-io.github.io/crunchy/newsite/release-notes/2022-12-12/</link>
       <pubDate>Mon, 12 Dec 2022 10:00:00 -0700</pubDate>
