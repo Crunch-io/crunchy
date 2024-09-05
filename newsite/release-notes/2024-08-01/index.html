@@ -7,15 +7,15 @@
     <meta name="description" content="Prepare and analyze survey data quickly and easily.">
     <meta name="keywords" content="Crunch, Crunch io, data, datasets, survey, analytics, analysis, technology, insights, research, software">
     <base href="//crunch-io.github.io/crunchy/newsite/">
-    <title>Crunch | Release 2021.17</title>
+    <title>Crunch | Release 2024.06</title>
 
     <link rel="icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <meta property="og:title" content="Release 2021.17 &middot; Online survey data analysis">
+    <meta property="og:title" content="Release 2024.06 &middot; Online survey data analysis">
 <meta property="og:description" content="Prepare and analyze survey data quickly and easily.">
 <meta property="og:type" content="website" >
-<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2021-05-14/">
+<meta property="og:url" content="//crunch-io.github.io/crunchy/newsite/release-notes/2024-08-01/">
 <meta property="og:locale" content="en">
 
 
@@ -25,14 +25,14 @@
 
 
 
-  <meta property="og:updated_time" content="2021-05-14T10:00:00-07:00">
+  <meta property="og:updated_time" content="2024-08-01T10:00:00-07:00">
 
 
     
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://crunch.io/img/logo-1200x630.png">
-  <meta name="twitter:title" content="Release 2021.17">
-  <meta name="twitter:description" content="Crunch web application Improved the time marker bar so that when you click the diamond symbol it now expands to display the margin of error when confidence bands are enabled in time plots. Improved the export settings functionality (for both deck and tab book exports), so that it now features a ‘bases’ options for numeric measures. Added performance improvements and fixed various bugs to the export settings crosstab sections (tab book and edit slide). Fixed how decks appear, which are now alphabetically sorted. Improved how long format exports are handled when “All variables on one sheet” is selected so that legends are now separately included for both crosstabs and numeric exports where applicable. Enhanced how calculations are performed when population estimates in a crosstab include a categorical date variable – each wave is now assumed to represent the entire population. API Endpoints and API Reference Updated the API email policy so that users with appropriate permissions may still change a user’s email through the /api/user/&lt;userID&gt;/change_email/ endpoint. SDKs (rCrunch, pyCrunch, and sCrunch) Fixed a bug that caused some sCrunch library commands to fail when fetching data from the /tables/ endpoint. Crunch Automation Fixed a bug in the Crunch Automation script runner that caused certain Unicode strings in categories to be incorrectly matched. Help desk and website improvements Created a new section and overview article for integrations, in order to help users easily find information on how to import data from popular data-collection platforms into Crunch. We’ll be adding new information on all of the platforms in the coming weeks. Added new information about how to use web app and Crunch Automation for nets on a multiple response variable. ">
+  <meta name="twitter:title" content="Release 2024.06">
+  <meta name="twitter:description" content="Crunch web application Added the following: Added support for smoothing when working with numeric array analyses that have the measure set to mean and with a categorical date in the column position. The ability to view the text definition of a filter, which is available from the three-dot (⋮) menu next to the Save button in the filter builder. The multitable builder now supports a ‘Save as’ option, which is available in a new three-dot (⋮) menu next to the Save button. The ability to export median for numeric measures, for both tab book and slide exports. Added new graph customizations (in early access), which provides more control over how your graphs are displayed in dashboards. See the announcement and help article for more information. Fixed the following: Variables with scale values would sometimes fail to display, which has now been fixed. The Edit filter panel now allows users to update definitions that refer to variables or categories that are not present in the dataset. This previously was not possible when variables or categories were deleted or if their names (or, aliases) had changed. Tables showing means of numeric variables now display correctly. Numeric array analyses showing percent share of sum now display correctly. The donut visualization type for CrunchBoxes has been corrected and no longer shows a blank display. ">
 
     
     <link rel="stylesheet" href="css/main.css">
@@ -160,11 +160,11 @@
                     <div class="container spacer-top">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <h2>Release 2021.17</h2>
+                                <h2>Release 2024.06</h2>
                                 <p><a href="/release-notes/" style="color: black;">&#8592; Other release notes</a></p>
                                 <hr>
                                 <p></p>
-                                <span>May 14, 2021 </span>
+                                <span>August 1, 2024 </span>
                             </div>
                         </div> 
                 </div> 
@@ -177,29 +177,24 @@
                       <div class="col-md-10 offset-md-1">
                           <h3 id="crunch-web-application">Crunch web application</h3>
 <ul>
-<li>Improved the time marker bar so that when you click the diamond symbol it now expands to display the margin of error when confidence bands are enabled in time plots.</li>
-<li>Improved the export settings functionality (for both deck and tab book exports), so that it now features a &lsquo;bases&rsquo; options for numeric measures.</li>
-<li>Added performance improvements and fixed various bugs to the export settings crosstab sections (tab book and edit slide).</li>
-<li>Fixed how decks appear, which are now alphabetically sorted.</li>
-<li>Improved how long format exports are handled when &ldquo;All variables on one sheet&rdquo; is selected so that legends are now separately included for both crosstabs and numeric exports where applicable.</li>
-<li>Enhanced how calculations are performed when population estimates in a crosstab include a categorical date variable – each wave is now assumed to represent the entire population.</li>
-</ul>
-<h3 id="api-endpoints-and-api-reference">API Endpoints and API Reference</h3>
+<li>Added the following:
 <ul>
-<li>Updated the API email policy so that users with appropriate permissions may still change a user&rsquo;s email through the <code>/api/user/&lt;userID&gt;/change_email/</code> endpoint.</li>
+<li>Added support for smoothing when working with numeric array analyses that have the measure set to mean and with a categorical date in the column position.</li>
+<li>The ability to view the text definition of a filter, which is available from the three-dot (⋮) menu next to the <strong>Save</strong> button in the filter builder.</li>
+<li>The multitable builder now supports a &lsquo;Save as&rsquo; option, which is available in a new three-dot (⋮) menu next to the <strong>Save</strong> button.</li>
+<li>The ability to <a href="https://help.crunch.io/hc/en-us/articles/360040498732-Exporting-a-tab-book#h_01J3KP5GEZ06Z259XRF02C3X7X">export median for numeric measures</a>, for both tab book and slide exports.</li>
+<li>Added new graph customizations (in early access), which provides more control over how your graphs are displayed in dashboards. See the <a href="https://crunch.io/dev/features/new-graph-customizations/">announcement</a> and <a href="https://help.crunch.io/hc/en-us/articles/9414277417741-Customizing-dashboards-and-dashboard-tiles#h_01J3XVABPZWWMTWAJS4RZY23F8">help article</a> for more information.</li>
 </ul>
-<h3 id="sdks-rcrunch-pycrunch-and-scrunch">SDKs (<code>rCrunch</code>, <code>pyCrunch</code>, and <code>sCrunch</code>)</h3>
+</li>
+<li>Fixed the following:
 <ul>
-<li>Fixed a bug that caused some sCrunch library commands to fail when fetching data from the <code>/tables/</code> endpoint.</li>
+<li>Variables with scale values would sometimes fail to display, which has now been fixed.</li>
+<li>The Edit filter panel now allows users to update definitions that refer to variables or categories that are not present in the dataset. This previously was not possible when variables or categories were deleted or if their names (or, <em>aliases</em>) had changed.</li>
+<li>Tables showing means of numeric variables now display correctly.</li>
+<li>Numeric array analyses showing percent share of sum now display correctly.</li>
+<li>The donut visualization type for CrunchBoxes has been corrected and no longer shows a blank display.</li>
 </ul>
-<h3 id="crunch-automation">Crunch Automation</h3>
-<ul>
-<li>Fixed a bug in the Crunch Automation script runner that caused certain Unicode strings in categories to be incorrectly matched.</li>
-</ul>
-<h3 id="help-desk-and-website-improvements">Help desk and website improvements</h3>
-<ul>
-<li>Created a new <a href="https://help.crunch.io/hc/en-us/categories/360006281331-Integrations">section</a> and <a href="https://help.crunch.io/hc/en-us/articles/360061204751-Crunch-importers-overview">overview</a> article for integrations, in order to help users easily find information on how to import data from popular data-collection platforms into Crunch. We&rsquo;ll be adding new information on all of the platforms in the coming weeks.</li>
-<li>Added new information about how to use web app and Crunch Automation for <a href="https://help.crunch.io/hc/en-us/articles/360045631232-Nets-on-a-multiple-response-variable">nets on a multiple response variable</a>.</li>
+</li>
 </ul>
 
                       </div>
