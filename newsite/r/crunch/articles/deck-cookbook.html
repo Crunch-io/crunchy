@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.30.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.31.0</span>
       </span>
     </div>
 
@@ -64,7 +64,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -129,7 +129,7 @@
 <li>
   <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -138,7 +138,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -146,34 +146,54 @@
 </div>
 <!--/.navbar -->
 
-      
 
-      </header><script src="deck-cookbook_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Crunch Deck Cookbook</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/deck-cookbook.Rmd" class="external-link"><code>vignettes/deck-cookbook.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/deck-cookbook.Rmd" class="external-link"><code>vignettes/deck-cookbook.Rmd</code></a></small>
       <div class="hidden name"><code>deck-cookbook.Rmd</code></div>
 
     </div>
 
     
     
-<p>Decks are a way to save a set of analyses so that you or your team can refer back to them later, export to Excel or PowerPoint, or create a Crunch Dashboard. Each <em>deck</em> is made up of a set of <em>slides</em>, and slides can either be <em>analysis</em> or <em>markdown</em> slides. All slides have a title &amp; subtitle, while analysis slides contain an analysis and markdown slides contain markdown formatted text.</p>
-<p>While a good slide generally appears simple to the viewer, a lot depends on getting the analysis exactly right, and so creating them does require setting the analysis’s attributes just right. The attributes of a slide’s analysis are:</p>
+<p>Decks are a way to save a set of analyses so that you or your team
+can refer back to them later, export to Excel or PowerPoint, or create a
+Crunch Dashboard. Each <em>deck</em> is made up of a set of
+<em>slides</em>, and slides can either be <em>analysis</em> or
+<em>markdown</em> slides. All slides have a title &amp; subtitle, while
+analysis slides contain an analysis and markdown slides contain markdown
+formatted text.</p>
+<p>While a good slide generally appears simple to the viewer, a lot
+depends on getting the analysis exactly right, and so creating them does
+require setting the analysis’s attributes just right. The attributes of
+a slide’s analysis are:</p>
 <ul>
 <li>
-<strong>a query</strong>: A set of variables and what calculation to perform (such as a count or mean)</li>
+<strong>a query</strong>: A set of variables and what calculation to
+perform (such as a count or mean)</li>
 <li>
-<strong>the query environment</strong>: Modifiers to the data that the query is performed on, like a filter or weight to use.</li>
+<strong>the query environment</strong>: Modifiers to the data that
+the query is performed on, like a filter or weight to use.</li>
 <li>
-<strong>dimension transformations</strong>: A dimension is a set of items that the calculation is enumerated along (a table based on a categorical array could have the categories in the “rows” dimension and the subvariables in the “columns” dimension). Dimension transformations are modifications to how those dimensions are displayed, such as reordering, renaming or assigning colors.</li>
+<strong>dimension transformations</strong>: A dimension is a set of
+items that the calculation is enumerated along (a table based on a
+categorical array could have the categories in the “rows” dimension and
+the subvariables in the “columns” dimension). Dimension transformations
+are modifications to how those dimensions are displayed, such as
+reordering, renaming or assigning colors.</li>
 <li>
-<strong>display settings and visual specifications</strong>: There’s a whole other collection of settings such as the type of visualization, number of decimals, and advanced options for how the slide is exported to Excel.</li>
+<strong>display settings and visual specifications</strong>: There’s
+a whole other collection of settings such as the type of visualization,
+number of decimals, and advanced options for how the slide is exported
+to Excel.</li>
 </ul>
-<p>The recipes in this cookbook all start from the pets example dataset (available from <code><a href="../reference/newExampleDataset.html">newExampleDataset()</a></code>).</p>
+<p>The recipes in this cookbook all start from the pets example dataset
+(available from <code><a href="../reference/newExampleDataset.html">newExampleDataset()</a></code>).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
@@ -197,8 +217,12 @@
 <div class="section level4">
 <h4 id="solution">Solution<a class="anchor" aria-label="anchor" href="#solution"></a>
 </h4>
-<p>A deck is created on a dataset with the command <code><a href="../reference/newDeck.html">newDeck()</a></code>. It takes the dataset, a title for the deck, and can take <code>is_public=TRUE</code> if the deck should be made public to other users of the dataset (it defaults to <code>FALSE</code>).</p>
-<p>After the deck is created, the <code><a href="../reference/newSlide.html">newSlide()</a></code> function adds a slide.</p>
+<p>A deck is created on a dataset with the command
+<code><a href="../reference/newDeck.html">newDeck()</a></code>. It takes the dataset, a title for the deck, and
+can take <code>is_public=TRUE</code> if the deck should be made public
+to other users of the dataset (it defaults to <code>FALSE</code>).</p>
+<p>After the deck is created, the <code><a href="../reference/newSlide.html">newSlide()</a></code> function adds
+a slide.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Q3 Pets Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">private_deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Private Deck"</span><span class="op">)</span></span>
@@ -229,7 +253,8 @@
 <div class="section level4">
 <h4 id="solution-1">Solution<a class="anchor" aria-label="anchor" href="#solution-1"></a>
 </h4>
-<p>The <code><a href="../reference/decks.html">decks()</a></code> function access the decks catalog for a dataset. You can select one name or position and then add to it.</p>
+<p>The <code><a href="../reference/decks.html">decks()</a></code> function access the decks catalog for a
+dataset. You can select one name or position and then add to it.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/decks.html">decks</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span>
@@ -255,7 +280,8 @@
 <div class="section level4">
 <h4 id="solution-2">Solution<a class="anchor" aria-label="anchor" href="#solution-2"></a>
 </h4>
-<p>You can create a new markdown slide with the function <code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
+<p>You can create a new markdown slide with the function
+<code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMarkdownSlide.html">newMarkdownSlide</a></span><span class="op">(</span><span class="va">deck</span>, <span class="st">"This survey included **10,000 participants**!"</span>, title <span class="op">=</span> <span class="st">"About"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -271,7 +297,10 @@
 <div class="section level4">
 <h4 id="solution-3">Solution<a class="anchor" aria-label="anchor" href="#solution-3"></a>
 </h4>
-<p>The function <code><a href="../reference/newMarkdownSlide.html">markdownSlideImage()</a></code> helps add an image to a markdown slide. The function takes a path to an image on your local machine, and you use it as an unnamed argument of <code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
+<p>The function <code><a href="../reference/newMarkdownSlide.html">markdownSlideImage()</a></code> helps add an image to
+a markdown slide. The function takes a path to an image on your local
+machine, and you use it as an unnamed argument of
+<code><a href="../reference/newMarkdownSlide.html">newMarkdownSlide()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMarkdownSlide.html">newMarkdownSlide</a></span><span class="op">(</span></span>
 <span>  <span class="va">deck</span>, </span>
@@ -291,8 +320,16 @@
 <div class="section level4">
 <h4 id="solution-4">Solution<a class="anchor" aria-label="anchor" href="#solution-4"></a>
 </h4>
-<p>Slides can be accessed from the deck’s slide catalog, available from the <code><a href="../reference/slides.html">slides()</a></code> command. You can retrieve them by their title or position.</p>
-<p>The helper functions <code>title&lt;-</code>, <code>subtitle&lt;-</code>, <code>query&lt;-</code>, <code>weight&lt;-</code>, <code>filters&lt;-</code>, <code>transforms&lt;-</code>, <code>displaySettings&lt;-</code> and <code>vizSpecs&lt;-</code> help set options on a analysis slide, and the function <code>slideMarkdown&lt;-</code> edits the text of a markdown slide.</p>
+<p>Slides can be accessed from the deck’s slide catalog, available from
+the <code><a href="../reference/slides.html">slides()</a></code> command. You can retrieve them by their title
+or position.</p>
+<p>The helper functions <code>title&lt;-</code>,
+<code>subtitle&lt;-</code>, <code>query&lt;-</code>,
+<code>weight&lt;-</code>, <code>filters&lt;-</code>,
+<code>transforms&lt;-</code>, <code>displaySettings&lt;-</code> and
+<code>vizSpecs&lt;-</code> help set options on a analysis slide, and the
+function <code>slideMarkdown&lt;-</code> edits the text of a markdown
+slide.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Move title to subtitle and change the title</span></span>
 <span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="st">"Table of Favorite Pet"</span><span class="op">]</span><span class="op">]</span></span>
@@ -323,7 +360,9 @@
 <div class="section level4">
 <h4 id="solution-5">Solution<a class="anchor" aria-label="anchor" href="#solution-5"></a>
 </h4>
-<p>Access a slide from the slide catalog and then use the <code><a href="../reference/delete.html">delete()</a></code> command to delete it (it will ask before deleting unless you use command <code><a href="../reference/consent.html">with_consent()</a></code>).</p>
+<p>Access a slide from the slide catalog and then use the
+<code><a href="../reference/delete.html">delete()</a></code> command to delete it (it will ask before deleting
+unless you use command <code><a href="../reference/consent.html">with_consent()</a></code>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/slides.html">slides</a></span><span class="op">(</span><span class="va">deck</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
 <span></span>
@@ -338,12 +377,14 @@
 <div class="section level4">
 <h4 id="problem-6">Problem<a class="anchor" aria-label="anchor" href="#problem-6"></a>
 </h4>
-<p>You want to change a deck from being private to public (or vice-versa).</p>
+<p>You want to change a deck from being private to public (or
+vice-versa).</p>
 </div>
 <div class="section level4">
 <h4 id="solution-6">Solution<a class="anchor" aria-label="anchor" href="#solution-6"></a>
 </h4>
-<p>The <code>is.public&lt;-</code> function can set the deck’s status.</p>
+<p>The <code>is.public&lt;-</code> function can set the deck’s
+status.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/is-public.html">is.public</a></span><span class="op">(</span><span class="va">private_deck</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">TRUE</span> <span class="co"># now public</span></span></code></pre></div>
 </div>
@@ -352,19 +393,24 @@
 <div class="section level2">
 <h2 id="query-types">Query types<a class="anchor" aria-label="anchor" href="#query-types"></a>
 </h2>
-<p>Queries define the variables and summary measures used for the slide’s analysis. They use the formula notation used by the crunch function <code><a href="../reference/crtabs.html">crtabs()</a></code> which is based on base R’s <code><a href="https://rdrr.io/r/stats/xtabs.html" class="external-link">xtabs()</a></code>.</p>
+<p>Queries define the variables and summary measures used for the
+slide’s analysis. They use the formula notation used by the crunch
+function <code><a href="../reference/crtabs.html">crtabs()</a></code> which is based on base R’s
+<code><a href="https://rdrr.io/r/stats/xtabs.html" class="external-link">xtabs()</a></code>.</p>
 <div class="section level3">
 <h3 id="univariate-frequencies">Univariate frequencies<a class="anchor" aria-label="anchor" href="#univariate-frequencies"></a>
 </h3>
 <div class="section level4">
 <h4 id="problem-7">Problem<a class="anchor" aria-label="anchor" href="#problem-7"></a>
 </h4>
-<p>You want to get the frequencies of a single categorical or multiple response variable.</p>
+<p>You want to get the frequencies of a single categorical or multiple
+response variable.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-7">Solution<a class="anchor" aria-label="anchor" href="#solution-7"></a>
 </h4>
-<p>The query for a univariate count query puts the variable on the right hand side of a formula (for example <code>~var</code>).</p>
+<p>The query for a univariate count query puts the variable on the right
+hand side of a formula (for example <code>~var</code>).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -379,12 +425,15 @@
 <div class="section level4">
 <h4 id="problem-8">Problem<a class="anchor" aria-label="anchor" href="#problem-8"></a>
 </h4>
-<p>You want to get a crosstab (or a frequency from two variables’ joint distribution)</p>
+<p>You want to get a crosstab (or a frequency from two variables’ joint
+distribution)</p>
 </div>
 <div class="section level4">
 <h4 id="solution-8">Solution<a class="anchor" aria-label="anchor" href="#solution-8"></a>
 </h4>
-<p>The query for a multivariate frequency uses the <code>+</code> to separate the variables on the right hand side of the formula (for example <code>~var1 + var2</code>).</p>
+<p>The query for a multivariate frequency uses the <code>+</code> to
+separate the variables on the right hand side of the formula (for
+example <code>~var1 + var2</code>).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -411,7 +460,12 @@
 <div class="section level4">
 <h4 id="solution-9">Solution<a class="anchor" aria-label="anchor" href="#solution-9"></a>
 </h4>
-<p>A categorical array contributes two dimensions to the analysis, a “categories” dimension and a “subvariables” dimension. If your query just specifies the variable, by default the categories dimension is used first and the categories second, but you can specify the order by using <code><a href="../reference/var-categories.html">categories()</a></code> and <code>subvaribles()</code> functions in your query.</p>
+<p>A categorical array contributes two dimensions to the analysis, a
+“categories” dimension and a “subvariables” dimension. If your query
+just specifies the variable, by default the categories dimension is used
+first and the categories second, but you can specify the order by using
+<code><a href="../reference/var-categories.html">categories()</a></code> and <code>subvaribles()</code> functions in
+your query.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -424,8 +478,18 @@
 <span>    <span class="op">~</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="../reference/Subvariables.html">subvariables</a></span><span class="op">(</span><span class="va">allpets</span><span class="op">)</span>, </span>
 <span>    title <span class="op">=</span> <span class="st">"Categorical array: categories on rows dimension"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>The “categories” dimension cannot be the first dimension (used in the “tabs” of the analysis in a Crunch Dashboard) of a slide analysis that has 3 dimensions. Instead, to get the “tabs” dimension have the categorical array variable, choose one category to select, and create a Multiple Response variable out of it.</p>
-<p>When trying to make a slide with a categorical array (<code>ca</code>) and another variables(<code>cat</code>), the following table shows the 6 queries that are valid and which dimension the web app will display on each of the “rows”, “columns” and “tabs” dimensions. Here we have chosen to select the category with name = <code>"category"</code> when using <code>selectCategories</code>, but any valid category id or name could be used instead.</p>
+<p>The “categories” dimension cannot be the first dimension (used in the
+“tabs” of the analysis in a Crunch Dashboard) of a slide analysis that
+has 3 dimensions. Instead, to get the “tabs” dimension have the
+categorical array variable, choose one category to select, and create a
+Multiple Response variable out of it.</p>
+<p>When trying to make a slide with a categorical array
+(<code>ca</code>) and another variables(<code>cat</code>), the following
+table shows the 6 queries that are valid and which dimension the web app
+will display on each of the “rows”, “columns” and “tabs” dimensions.
+Here we have chosen to select the category with name =
+<code>"category"</code> when using <code>selectCategories</code>, but
+any valid category id or name could be used instead.</p>
 <table class="table">
 <colgroup>
 <col width="45%">
@@ -491,7 +555,9 @@
 <div class="section level4">
 <h4 id="solution-10">Solution<a class="anchor" aria-label="anchor" href="#solution-10"></a>
 </h4>
-<p>A numeric summary measure like a mean goes on the left hand side of the formula in a query. The right hand side cannot be empty, but to get the mean of the whole dataset put <code>1</code>.</p>
+<p>A numeric summary measure like a mean goes on the left hand side of
+the formula in a query. The right hand side cannot be empty, but to get
+the mean of the whole dataset put <code>1</code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -512,12 +578,15 @@
 <div class="section level4">
 <h4 id="problem-11">Problem<a class="anchor" aria-label="anchor" href="#problem-11"></a>
 </h4>
-<p>You want to make comparisons of frequencies of a set of Multiple Response variables with the same items (response)</p>
+<p>You want to make comparisons of frequencies of a set of Multiple
+Response variables with the same items (response)</p>
 </div>
 <div class="section level4">
 <h4 id="solution-11">Solution<a class="anchor" aria-label="anchor" href="#solution-11"></a>
 </h4>
-<p>A scorecard is a rectangular grid of different Multiple Response variables with their items aligned. The query for a scorecard can be created using the <code>scorecard()</code> function.</p>
+<p>A scorecard is a rectangular grid of different Multiple Response
+variables with their items aligned. The query for a scorecard can be
+created using the <code>scorecard()</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># There's only one MR available on this dataset, so we repeat the same one twice to illustrate</span></span>
 <span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
@@ -531,20 +600,37 @@
 <div class="section level2">
 <h2 id="dimension-transforms">Dimension transforms<a class="anchor" aria-label="anchor" href="#dimension-transforms"></a>
 </h2>
-<p>Query results have “dimensions”, which are enumerated sets that the calculation’s results are formed in, such as the categories of a categorical variables or the items in a multiple response variables. Their behavior in the slide can be customized using dimension transforms.</p>
-<p>A query result generally has up to three dimensions. The first is the “rows_dimension”, second is the “columns” dimension and third is the “tabs_dimension”. When using the <code>transform</code> argument of <code><a href="../reference/newSlide.html">newSlide()</a></code> or setting the <code>transforms&lt;-</code> of a slide directly, you form a named list with these dimensions as the names. The helper function <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> can also help create the dimension changes.</p>
+<p>Query results have “dimensions”, which are enumerated sets that the
+calculation’s results are formed in, such as the categories of a
+categorical variables or the items in a multiple response variables.
+Their behavior in the slide can be customized using dimension
+transforms.</p>
+<p>A query result generally has up to three dimensions. The first is the
+“rows_dimension”, second is the “columns” dimension and third is the
+“tabs_dimension”. When using the <code>transform</code> argument of
+<code><a href="../reference/newSlide.html">newSlide()</a></code> or setting the <code>transforms&lt;-</code> of a
+slide directly, you form a named list with these dimensions as the
+names. The helper function <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> can also help
+create the dimension changes.</p>
 <div class="section level3">
 <h3 id="using-a-datasets-palette">Using a dataset’s palette<a class="anchor" aria-label="anchor" href="#using-a-datasets-palette"></a>
 </h3>
 <div class="section level4">
 <h4 id="problem-12">Problem<a class="anchor" aria-label="anchor" href="#problem-12"></a>
 </h4>
-<p>You want to make the colors of a dashboard tile use a pre-defined palette.</p>
+<p>You want to make the colors of a dashboard tile use a pre-defined
+palette.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-12">Solution<a class="anchor" aria-label="anchor" href="#solution-12"></a>
 </h4>
-<p>Each Crunch Dataset has a set of color palettes associated with it’s account and folder. You can access the palettes using the <code><a href="../reference/palettes.html">palettes()</a></code> or <code><a href="../reference/palettes.html">defaultPalette()</a></code> functions. Then using the <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> function you can use this palette. The colors are used in the order they appear and if more colors are needed than provided by the palette, the default colors are used.</p>
+<p>Each Crunch Dataset has a set of color palettes associated with it’s
+account and folder. You can access the palettes using the
+<code><a href="../reference/palettes.html">palettes()</a></code> or <code><a href="../reference/palettes.html">defaultPalette()</a></code> functions. Then
+using the <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> function you can use this
+palette. The colors are used in the order they appear and if more colors
+are needed than provided by the palette, the default colors are
+used.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -574,12 +660,14 @@
 <div class="section level4">
 <h4 id="problem-13">Problem<a class="anchor" aria-label="anchor" href="#problem-13"></a>
 </h4>
-<p>You want to make the colors of a dashboard tile use a set of colors you specify in the script</p>
+<p>You want to make the colors of a dashboard tile use a set of colors
+you specify in the script</p>
 </div>
 <div class="section level4">
 <h4 id="solution-13">Solution<a class="anchor" aria-label="anchor" href="#solution-13"></a>
 </h4>
-<p>If you want to specify the colors manually, you can also use a character vector of RGB hex codes.</p>
+<p>If you want to specify the colors manually, you can also use a
+character vector of RGB hex codes.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -598,12 +686,17 @@
 <div class="section level4">
 <h4 id="problem-14">Problem<a class="anchor" aria-label="anchor" href="#problem-14"></a>
 </h4>
-<p>You want to hide a dimension item (a category or subvariable) from the slide.</p>
+<p>You want to hide a dimension item (a category or subvariable) from
+the slide.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-14">Solution<a class="anchor" aria-label="anchor" href="#solution-14"></a>
 </h4>
-<p>The <code>hide</code> argument of <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code> takes a category name or id, if the dimension is made from categories, or a subvariable name or alias if the dimension is made from subvariables (as in a Multiple Response variable or a subvariables dimension of a Categorical Array or Numeric Array).</p>
+<p>The <code>hide</code> argument of <code><a href="../reference/makeDimTransform.html">makeDimTransform()</a></code>
+takes a category name or id, if the dimension is made from categories,
+or a subvariable name or alias if the dimension is made from
+subvariables (as in a Multiple Response variable or a subvariables
+dimension of a Categorical Array or Numeric Array).</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -631,7 +724,16 @@
 <div class="section level4">
 <h4 id="solution-15">Solution<a class="anchor" aria-label="anchor" href="#solution-15"></a>
 </h4>
-<p>The default display of a tile is the table, but the <code>vizType</code> display setting chooses between other options. The most commonly used <code>vizType</code>s are: - <code>table</code> (always available) - <code>groupedBarPlot</code>, <code>stackedBarPlot</code>, <code>horizontalBarPlot</code>, <code>horizontalStackedBarPlot</code> (available for queries based on a count in any number of dimensions) - <code>timeplot</code> (available when the second dimension has a time component) - <code>dotplot</code> (available for displays of means) - <code>donut</code> (available only for 1 dimensional count queries)</p>
+<p>The default display of a tile is the table, but the
+<code>vizType</code> display setting chooses between other options. The
+most commonly used <code>vizType</code>s are: - <code>table</code>
+(always available) - <code>groupedBarPlot</code>,
+<code>stackedBarPlot</code>, <code>horizontalBarPlot</code>,
+<code>horizontalStackedBarPlot</code> (available for queries based on a
+count in any number of dimensions) - <code>timeplot</code> (available
+when the second dimension has a time component) - <code>dotplot</code>
+(available for displays of means) - <code>donut</code> (available only
+for 1 dimensional count queries)</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
 <span>    <span class="va">deck</span>, </span>
@@ -655,12 +757,19 @@
 <div class="section level4">
 <h4 id="problem-16">Problem<a class="anchor" aria-label="anchor" href="#problem-16"></a>
 </h4>
-<p>You want to use the settings from an existing slide to create a new one (or modify an existing one).</p>
+<p>You want to use the settings from an existing slide to create a new
+one (or modify an existing one).</p>
 </div>
 <div class="section level4">
 <h4 id="solution-16">Solution<a class="anchor" aria-label="anchor" href="#solution-16"></a>
 </h4>
-<p>The functions <code><a href="../reference/analysis-methods.html">displaySettings()</a></code> and <code><a href="../reference/analysis-methods.html">vizSpecs()</a></code> give access to the settings on an existing slide. This slide can be a slide you’ve created from R or from the web app, so that you can use the visual editor to perfect the look for one slide and then use it for a whole set of slides. You can either set the attributes directly, or use <code><a href="https://rdrr.io/r/base/dput.html" class="external-link">dput()</a></code> to print out the object in a way that you can copy and paste into your code.</p>
+<p>The functions <code><a href="../reference/analysis-methods.html">displaySettings()</a></code> and
+<code><a href="../reference/analysis-methods.html">vizSpecs()</a></code> give access to the settings on an existing
+slide. This slide can be a slide you’ve created from R or from the web
+app, so that you can use the visual editor to perfect the look for one
+slide and then use it for a whole set of slides. You can either set the
+attributes directly, or use <code><a href="https://rdrr.io/r/base/dput.html" class="external-link">dput()</a></code> to print out the object
+in a way that you can copy and paste into your code.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">template_deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Templates"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">slide</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newSlide.html">newSlide</a></span><span class="op">(</span></span>
@@ -695,20 +804,39 @@
 <div class="section level2">
 <h2 id="bulk-creation-of-slides">Bulk creation of slides<a class="anchor" aria-label="anchor" href="#bulk-creation-of-slides"></a>
 </h2>
-<p>Sometimes you want to make many slides with related formatting to create a document that gives a good high level overview of a dataset. The [<code><a href="../reference/tabBook.html">tabBook()</a></code>] function is designed to create a basic “top line” report of simple crosstabs from a multitable, and is probably the first thing you should check if you’re thinking of making bulk analyses. However, <code><a href="../reference/tabBook.html">tabBook()</a></code> does not allow for all of the customization possible in a slide.</p>
-<p>The trickiest part of bulk creating slides from R is iterating over the variables. The general behind all of these cookbook recipes is to get a list of variable aliases, iterate over them using them to get other variable metadata. The trickiest part is to create a query formula from a string, but the <code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code> function helps with this. This cookbook uses base R functions <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> and <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>, but the “tidyverse” functions <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::walk()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue::glue()</a></code> are well-suited to this task.</p>
+<p>Sometimes you want to make many slides with related formatting to
+create a document that gives a good high level overview of a dataset.
+The [<code><a href="../reference/tabBook.html">tabBook()</a></code>] function is designed to create a basic “top
+line” report of simple crosstabs from a multitable, and is probably the
+first thing you should check if you’re thinking of making bulk analyses.
+However, <code><a href="../reference/tabBook.html">tabBook()</a></code> does not allow for all of the
+customization possible in a slide.</p>
+<p>The trickiest part of bulk creating slides from R is iterating over
+the variables. The general behind all of these cookbook recipes is to
+get a list of variable aliases, iterate over them using them to get
+other variable metadata. The trickiest part is to create a query formula
+from a string, but the <code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code> function helps with
+this. This cookbook uses base R functions <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> and
+<code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>, but the “tidyverse” functions
+<code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::walk()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue::glue()</a></code> are well-suited
+to this task.</p>
 <div class="section level3">
 <h3 id="basic-top-line-for-entire-dataset">Basic top line for entire dataset<a class="anchor" aria-label="anchor" href="#basic-top-line-for-entire-dataset"></a>
 </h3>
 <div class="section level4">
 <h4 id="problem-17">Problem<a class="anchor" aria-label="anchor" href="#problem-17"></a>
 </h4>
-<p>You want to create a simple report for every variable in a dataset.</p>
+<p>You want to create a simple report for every variable in a
+dataset.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-17">Solution<a class="anchor" aria-label="anchor" href="#solution-17"></a>
 </h4>
-<p>Use the <code><a href="../reference/variables.html">variables()</a></code> function to get the variables from a dataset, and the <code><a href="../reference/describe-catalog.html">aliases()</a></code> function to get their aliases. Then use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over the variable aliases and construct the slide using <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code> and <code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code>.</p>
+<p>Use the <code><a href="../reference/variables.html">variables()</a></code> function to get the variables from a
+dataset, and the <code><a href="../reference/describe-catalog.html">aliases()</a></code> function to get their aliases.
+Then use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over the variable aliases and
+construct the slide using <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code> and
+<code><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula()</a></code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Full Dataset Topline Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -728,12 +856,15 @@
 <div class="section level4">
 <h4 id="problem-18">Problem<a class="anchor" aria-label="anchor" href="#problem-18"></a>
 </h4>
-<p>You want to create a simple report for every variable in a particular folder.</p>
+<p>You want to create a simple report for every variable in a particular
+folder.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-18">Solution<a class="anchor" aria-label="anchor" href="#solution-18"></a>
 </h4>
-<p>The <code><a href="../reference/variables.html">variables()</a></code> function can also work on a folder, so we can make a deck from variables in a folder in a similar way to making one for a whole dataset.</p>
+<p>The <code><a href="../reference/variables.html">variables()</a></code> function can also work on a folder, so
+we can make a deck from variables in a folder in a similar way to making
+one for a whole dataset.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Folder Topline Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -750,12 +881,14 @@
 <div class="section level4">
 <h4 id="problem-19">Problem<a class="anchor" aria-label="anchor" href="#problem-19"></a>
 </h4>
-<p>You want to create crosstabs for many variables across a set of variables.</p>
+<p>You want to create crosstabs for many variables across a set of
+variables.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-19">Solution<a class="anchor" aria-label="anchor" href="#solution-19"></a>
 </h4>
-<p>You can use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over both the row and column variables of the crosstab.</p>
+<p>You can use <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> to iterate over both the row and
+column variables of the crosstab.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newDeck.html">newDeck</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"Crosstabs Deck"</span>, is_public <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
@@ -784,12 +917,15 @@
 <div class="section level4">
 <h4 id="problem-20">Problem<a class="anchor" aria-label="anchor" href="#problem-20"></a>
 </h4>
-<p>You want to create a report with slides that vary based on the variable’s type.</p>
+<p>You want to create a report with slides that vary based on the
+variable’s type.</p>
 </div>
 <div class="section level4">
 <h4 id="solution-20">Solution<a class="anchor" aria-label="anchor" href="#solution-20"></a>
 </h4>
-<p>You can create functions that create slides for a particular variable type and then choose which function to use based on the variable’s type while iterating.</p>
+<p>You can create functions that create slides for a particular variable
+type and then choose which function to use based on the variable’s type
+while iterating.</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cat_slide</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">alias</span>, <span class="va">ds</span>, <span class="va">deck</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">slide_query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/formula.html" class="external-link">as.formula</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"~"</span>, <span class="va">alias</span><span class="op">)</span><span class="op">)</span></span>
@@ -842,9 +978,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -857,17 +991,17 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',

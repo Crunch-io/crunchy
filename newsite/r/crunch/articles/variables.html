@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.30.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.31.0</span>
       </span>
     </div>
 
@@ -64,7 +64,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -129,7 +129,7 @@
 <li>
   <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -138,7 +138,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -146,15 +146,15 @@
 </div>
 <!--/.navbar -->
 
-      
 
-      </header><script src="variables_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Crunch Variables</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/variables.Rmd" class="external-link"><code>vignettes/variables.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/variables.Rmd" class="external-link"><code>vignettes/variables.Rmd</code></a></small>
       <div class="hidden name"><code>variables.Rmd</code></div>
 
     </div>
@@ -162,26 +162,72 @@
     
     
 <p><a href="crunch.html">Previous: Getting Started</a></p>
-<p>Once you’ve uploaded data to Crunch, you’ll likely want to spend some time cleaning up the metadata associated with your dataset. Legacy statistical programs offer only limited support for variable metadata, both in type and quality. Because Crunch facilitates data visualization, collaboration, and sharing results with others, making your dataset presentation-quality is worthwhile, and this often requires additional work after uploading a data file.</p>
-<p>Most of the operations described below can also be accomplished in the web client. However, users comfortable with scripting may find it faster or easier to automate these actions with <code>crunch</code>. Such edits made within R are carried out on the remote Crunch dataset, thereby keeping data in sync across all client applications.</p>
+<p>Once you’ve uploaded data to Crunch, you’ll likely want to spend some
+time cleaning up the metadata associated with your dataset. Legacy
+statistical programs offer only limited support for variable metadata,
+both in type and quality. Because Crunch facilitates data visualization,
+collaboration, and sharing results with others, making your dataset
+presentation-quality is worthwhile, and this often requires additional
+work after uploading a data file.</p>
+<p>Most of the operations described below can also be accomplished in
+the web client. However, users comfortable with scripting may find it
+faster or easier to automate these actions with <code>crunch</code>.
+Such edits made within R are carried out on the remote Crunch dataset,
+thereby keeping data in sync across all client applications.</p>
 <div class="section level2">
 <h2 id="a-rose-by-any-other-moniker-names-and-aliases">A rose by any other moniker: “names” and “aliases”<a class="anchor" aria-label="anchor" href="#a-rose-by-any-other-moniker-names-and-aliases"></a>
 </h2>
-<p>Crunch takes the principled stand that working with data in the 21st Century should not be constrained by legacies of the punch-card era. Variables should have “names” that are human-readable and searchable by their meaning—there is no reason to constrain variable names to be eight characters, all caps, etc. “Aided awareness: coffee roasters” is much nicer and more presentable than “Q2B_V1”.</p>
-<p>At the same time, shorter, user-defined, unique identifiers for variables do have their uses. For one, it’s what most any legacy statistical software uses for its identifiers, so retaining them on import will help us line up variables when appending a subsequent batch of imported data, for example. For another, when interacting with a dataset from the command line, it can be useful to have shorter, machine-friendlier references.</p>
-<p>So, Crunch stores two user-settable identifiers for variables. What you may have thought of as a variable “label”, Crunch elevates to the status of “name”. What you may be used to thinking of as a variable “name”, Crunch calls “alias”.</p>
-<p>Aliases and names have slightly different validation constraints. Aliases must be unique across the entire dataset, including among array <a href="array-variables.html">subvariables</a>. “Names”, however, only must be unique within <a href="variable-order.html">variable order groups</a>. Any string is valid for either alias or name, though you may want more machine-friendly strings as aliases. In most cases, you probably won’t even set aliases, though: they’ll be set when you import your dataset and will be whatever the names were in your source data.</p>
+<p>Crunch takes the principled stand that working with data in the 21st
+Century should not be constrained by legacies of the punch-card era.
+Variables should have “names” that are human-readable and searchable by
+their meaning—there is no reason to constrain variable names to be eight
+characters, all caps, etc. “Aided awareness: coffee roasters” is much
+nicer and more presentable than “Q2B_V1”.</p>
+<p>At the same time, shorter, user-defined, unique identifiers for
+variables do have their uses. For one, it’s what most any legacy
+statistical software uses for its identifiers, so retaining them on
+import will help us line up variables when appending a subsequent batch
+of imported data, for example. For another, when interacting with a
+dataset from the command line, it can be useful to have shorter,
+machine-friendlier references.</p>
+<p>So, Crunch stores two user-settable identifiers for variables. What
+you may have thought of as a variable “label”, Crunch elevates to the
+status of “name”. What you may be used to thinking of as a variable
+“name”, Crunch calls “alias”.</p>
+<p>Aliases and names have slightly different validation constraints.
+Aliases must be unique across the entire dataset, including among array
+<a href="array-variables.html">subvariables</a>. “Names”, however, only
+must be unique within <a href="variable-order.html">variable order
+groups</a>. Any string is valid for either alias or name, though you may
+want more machine-friendly strings as aliases. In most cases, you
+probably won’t even set aliases, though: they’ll be set when you import
+your dataset and will be whatever the names were in your source
+data.</p>
 <p>In sum, name is crunch alias, label is crunch name.</p>
-<p>Except in one place in <code>crunch</code>: referencing variables within a dataset.</p>
+<p>Except in one place in <code>crunch</code>: referencing variables
+within a dataset.</p>
 <div class="section level3">
 <h3 id="accessing-variables-within-a-dataset">Accessing variables within a dataset<a class="anchor" aria-label="anchor" href="#accessing-variables-within-a-dataset"></a>
 </h3>
-<p>When dealing with variables within a dataset, the alias is used to identify variables. This is because (1) aliases are typically what were used to identify variables in whatever format from which the dataset was imported, and consequently, (2) aliases are typically more machine-friendly as names, less likely to contain characters that are not valid as variable names in R.</p>
-<p>Because the <code>names</code> attribute is used for indexing elements in R, if we want to extract variables based on alias, it means that the <code>names</code> attribute of dataset must actually expose aliases. This may be dissonant, but it has some nice properties. For one, comparing our Crunch dataset with the <code>data.frame</code> from which it was created, their <code>names</code> attribute have the same contents:</p>
+<p>When dealing with variables within a dataset, the alias is used to
+identify variables. This is because (1) aliases are typically what were
+used to identify variables in whatever format from which the dataset was
+imported, and consequently, (2) aliases are typically more
+machine-friendly as names, less likely to contain characters that are
+not valid as variable names in R.</p>
+<p>Because the <code>names</code> attribute is used for indexing
+elements in R, if we want to extract variables based on alias, it means
+that the <code>names</code> attribute of dataset must actually expose
+aliases. This may be dissonant, but it has some nice properties. For
+one, comparing our Crunch dataset with the <code>data.frame</code> from
+which it was created, their <code>names</code> attribute have the same
+contents:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">economist</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<p>You can reference and extract variables from a dataset as if it were a <code>data.frame</code>, using the <code>$</code>, <code>[</code>, and <code>[[</code> methods.</p>
+<p>You can reference and extract variables from a dataset as if it were
+a <code>data.frame</code>, using the <code>$</code>, <code>[</code>, and
+<code>[[</code> methods.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">track.var</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="va">track</span></span>
 <span><span class="va">track.var</span></span></code></pre></div>
@@ -191,23 +237,30 @@
 <span><span class="co">## Off on the wrong track                    137</span></span>
 <span><span class="co">## Generally headed in the right direction    80</span></span>
 <span><span class="co">## Not sure                                   33</span></span></code></pre>
-<p>Like datasets, variables have various attributes like <code>name</code> and <code>description</code> that can be set naturally.</p>
+<p>Like datasets, variables have various attributes like
+<code>name</code> and <code>description</code> that can be set
+naturally.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Direction of country"</span></span>
 <span><span class="fu"><a href="../reference/describe-entity.html">description</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"In your opinon, is the country going in the right direction, or is it on the wrong track?"</span></span></code></pre></div>
-<p>Two caveats. First, because we first extracted the variable from the dataset before making edits, the dataset object has stale metadata for this variable.</p>
+<p>Two caveats. First, because we first extracted the variable from the
+dataset before making edits, the dataset object has stale metadata for
+this variable.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE</span></span></code></pre>
-<p>If we had instead modified <code>track</code> within <code>ds</code>, like</p>
+<p>If we had instead modified <code>track</code> within <code>ds</code>,
+like</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Not run</span></span>
 <span><span class="fu"><a href="../reference/describe-entity.html">name</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">track</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Direction of country"</span></span></code></pre></div>
 <p><code>ds</code> would be up to date.</p>
-<p>This can be remedied one of two ways. We could either assign <code>track.var</code> back to <code>ds</code>, as in</p>
+<p>This can be remedied one of two ways. We could either assign
+<code>track.var</code> back to <code>ds</code>, as in</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">track</span> <span class="op">&lt;-</span> <span class="va">track.var</span></span></code></pre></div>
-<p>or we can just refresh the dataset and fetch data from the server again:</p>
+<p>or we can just refresh the dataset and fetch data from the server
+again:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/refresh.html">refresh</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 <p>Now, <code>ds</code> has our edits:</p>
@@ -218,13 +271,22 @@
 <div class="section level3">
 <h3 id="addressing-the-variable-catalog">Addressing the variable catalog<a class="anchor" aria-label="anchor" href="#addressing-the-variable-catalog"></a>
 </h3>
-<p>It is not always convenient that the <code>names</code> attribute of the dataset actually yields <em>aliases</em>. Moreover, if we want to edit the Crunch names of many variables, we need a way of accessing the Crunch metadata more directly. It will be very slow to edit each variable in the dataset individually, referencing them with <code>$</code>, because each edit would send a request to the server. Instead, we’d rather bundle those into a single request. To do this, we can access the <code>variables</code> attribute of the dataset, which is a “variable catalog”:</p>
+<p>It is not always convenient that the <code>names</code> attribute of
+the dataset actually yields <em>aliases</em>. Moreover, if we want to
+edit the Crunch names of many variables, we need a way of accessing the
+Crunch metadata more directly. It will be very slow to edit each
+variable in the dataset individually, referencing them with
+<code>$</code>, because each edit would send a request to the server.
+Instead, we’d rather bundle those into a single request. To do this, we
+can access the <code>variables</code> attribute of the dataset, which is
+a “variable catalog”:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "VariableCatalog"</span></span>
 <span><span class="co">## attr(,"package")</span></span>
 <span><span class="co">## [1] "crunch"</span></span></code></pre>
-<p>In the variable catalog, Crunch names are names, and aliases are aliases. Hence,</p>
+<p>In the variable catalog, Crunch names are names, and aliases are
+aliases. Hence,</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/describe-catalog.html">aliases</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -232,12 +294,18 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span>, <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE</span></span></code></pre>
-<p>because “Direction of country” is the name for <code>ds$track</code></p>
+<p>because “Direction of country” is the name for
+<code>ds$track</code></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "perc_skipped"         "newsint2"             "Direction of country" "snowdenfav"           "snowdenleakapp"      </span></span>
 <span><span class="co">##  [6] "snowdenpros"          "snowdenpenalty"       "manningknowledge"     "manningfavorability"  "manningguilt"</span></span></code></pre>
-<p>These attributes all allow assignment with <code>&lt;-</code>. The methods <code>names</code> and <code>aliases</code> yield character vectors, and they take characters in assignment. Hence, you can use any vectorized string manipulation tools available in R, such as regular expressions, to edit variable names efficiently. You can also just supply a replacement vector, like</p>
+<p>These attributes all allow assignment with <code>&lt;-</code>. The
+methods <code>names</code> and <code>aliases</code> yield character
+vectors, and they take characters in assignment. Hence, you can use any
+vectorized string manipulation tools available in R, such as regular
+expressions, to edit variable names efficiently. You can also just
+supply a replacement vector, like</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/variables.html">variables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Favorability of Edward Snowden"</span>,</span>
 <span>                               <span class="st">"Approval of Snowden's Leak"</span>,</span>
@@ -253,8 +321,14 @@
 <div class="section level2">
 <h2 id="categorical-variables">Categorical variables<a class="anchor" aria-label="anchor" href="#categorical-variables"></a>
 </h2>
-<p>Many variables in survey data are categorical: respondents have a finite set of answers to the survey question, and the answers are first and foremost of a nominal, not quantitative nature. In R, this data type is represented as a <code>factor</code>. The response options, are contained in the factor’s “levels” as a character vector. Manipulation of these levels is limited and often challenging.</p>
-<p>In Crunch, categorical variables’ “categories” are objects with richer metadata.</p>
+<p>Many variables in survey data are categorical: respondents have a
+finite set of answers to the survey question, and the answers are first
+and foremost of a nominal, not quantitative nature. In R, this data type
+is represented as a <code>factor</code>. The response options, are
+contained in the factor’s “levels” as a character vector. Manipulation
+of these levels is limited and often challenging.</p>
+<p>In Crunch, categorical variables’ “categories” are objects with
+richer metadata.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/crunch-is.html">is.Categorical</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
@@ -268,7 +342,13 @@
 <div class="section level3">
 <h3 id="category-attributes">Category attributes<a class="anchor" aria-label="anchor" href="#category-attributes"></a>
 </h3>
-<p>Categories have <code>names</code>, the factor’s levels; numeric <code>values</code> which can be used when interpreting the categorical variable as numeric; and <code>ids</code>, which are analogous to the integer values that underlie an R factor. Categories also have their own “missing” status. Indeed, because Crunch supports more complex missing value support than does R, multiple categories can be marked as missing: there’s not a single “NA” value.</p>
+<p>Categories have <code>names</code>, the factor’s levels; numeric
+<code>values</code> which can be used when interpreting the categorical
+variable as numeric; and <code>ids</code>, which are analogous to the
+integer values that underlie an R factor. Categories also have their own
+“missing” status. Indeed, because Crunch supports more complex missing
+value support than does R, multiple categories can be marked as missing:
+there’s not a single “NA” value.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Generally headed in the right direction" "Off on the wrong track"                 </span></span>
@@ -285,7 +365,12 @@
 <span><span class="co">##                                   FALSE                                   FALSE                                   FALSE </span></span>
 <span><span class="co">##                                 No Data </span></span>
 <span><span class="co">##                                    TRUE</span></span></code></pre>
-<p>Names and values can be assigned into categories, but ids cannot: they are immutable references to values within the column of data on the server. Missingness can be set with <code>is.na</code>. Character values assigned will mark those categories as missing, leaving other categories unchanged. Logical values assigned will set the missing TRUE/FALSE accordingly.</p>
+<p>Names and values can be assigned into categories, but ids cannot:
+they are immutable references to values within the column of data on the
+server. Missingness can be set with <code>is.na</code>. Character values
+assigned will mark those categories as missing, leaving other categories
+unchanged. Logical values assigned will set the missing TRUE/FALSE
+accordingly.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Right track"</span>, <span class="st">"Wrong track"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/describe-catalog.html">values</a></span><span class="op">(</span><span class="fu"><a href="../reference/var-categories.html">categories</a></span><span class="op">(</span><span class="va">track.var</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
@@ -311,25 +396,39 @@
 <span><span class="co">## 1  1 Generally headed in the right direction     1   FALSE</span></span>
 <span><span class="co">## 2  2                             Wrong track    -1   FALSE</span></span>
 <span><span class="co">## 3  3                                Not sure     0    TRUE</span></span></code></pre>
-<p>As with all other metadata edits discussed, updating with these methods automatically sends the changes to the server, so your local edits are reflected in the cloud.</p>
+<p>As with all other metadata edits discussed, updating with these
+methods automatically sends the changes to the server, so your local
+edits are reflected in the cloud.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="hiding-variables">Hiding variables<a class="anchor" aria-label="anchor" href="#hiding-variables"></a>
 </h2>
-<p>Datasets often contain variables that you may want to use – perhaps through a derived variable, a transformation, or a recode – or that may simply not be relevant for the analytic tasks at hand. In short, you want to hide them. They aren’t deleted, so you can restore them if you need them later, but they no longer clutter the dataset “workspace”.</p>
-<p>As when working with a <code>data.frame</code>, you typically assign the return of a dataset-level function back to the variable representing the dataset in your R script or session.</p>
-<p>In our example dataset, we have two copies of a voter-registration variable, “votereg_new” and “votereg_old”. Let’s hide the old version:</p>
+<p>Datasets often contain variables that you may want to use – perhaps
+through a derived variable, a transformation, or a recode – or that may
+simply not be relevant for the analytic tasks at hand. In short, you
+want to hide them. They aren’t deleted, so you can restore them if you
+need them later, but they no longer clutter the dataset “workspace”.</p>
+<p>As when working with a <code>data.frame</code>, you typically assign
+the return of a dataset-level function back to the variable representing
+the dataset in your R script or session.</p>
+<p>In our example dataset, we have two copies of a voter-registration
+variable, “votereg_new” and “votereg_old”. Let’s hide the old
+version:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hide.html">hideVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"votereg_old"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "votereg_old"</span></span></code></pre>
-<p>As with the <code>is.na</code> function, you can update a variable by assigning it to the hidden variables list.</p>
+<p>As with the <code>is.na</code> function, you can update a variable by
+assigning it to the hidden variables list.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pid7others"</span></span>
 <span><span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "votereg_old"  "pid7others"</span></span></code></pre>
-<p>These variables are now hidden, both locally in your R session and remotely on the server, which you can see in the web application. And, just as you could restore them there, you can also restore them from R:</p>
+<p>These variables are now hidden, both locally in your R session and
+remotely on the server, which you can see in the web application. And,
+just as you could restore them there, you can also restore them from
+R:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/hide.html">unhideVariables</a></span><span class="op">(</span><span class="va">ds</span>, <span class="st">"pid7others"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/hide.html">hiddenVariables</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
@@ -338,26 +437,38 @@
 <div class="section level2">
 <h2 id="deleting-variables">Deleting variables<a class="anchor" aria-label="anchor" href="#deleting-variables"></a>
 </h2>
-<p>Sometimes you do want to delete variables permanently. Doing so is easy, but we have some protections in place to keep you from accidentally deleting things from a dataset that may be shared with many people on the server.</p>
-<p>To delete, you can assign <code>NULL</code> in to the dataset for that variable, just like you were removing a column from a <code>data.frame</code>. Let’s kill the “votereg_old” variable permanently:</p>
+<p>Sometimes you do want to delete variables permanently. Doing so is
+easy, but we have some protections in place to keep you from
+accidentally deleting things from a dataset that may be shared with many
+people on the server.</p>
+<p>To delete, you can assign <code>NULL</code> in to the dataset for
+that variable, just like you were removing a column from a
+<code>data.frame</code>. Let’s kill the “votereg_old” variable
+permanently:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ds</span><span class="op">$</span><span class="va">votereg_old</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <pre><code><span><span class="co">## Really delete "votereg_old"?</span></span></code></pre>
-<p>The delete function requires confirmation when you’re running from an interactive session, just to make sure you aren’t accidentally assigning something in that is NULL and deleting your variable. If you know that you want to delete the variable, you can give your approval in advance by wrapping it in a <code>with</code> statement, using the <code>consent</code> context manager:</p>
+<p>The delete function requires confirmation when you’re running from an
+interactive session, just to make sure you aren’t accidentally assigning
+something in that is NULL and deleting your variable. If you know that
+you want to delete the variable, you can give your approval in advance
+by wrapping it in a <code>with</code> statement, using the
+<code>consent</code> context manager:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="../reference/consent.html">consent</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">ds</span><span class="op">$</span><span class="va">votereg_old</span> <span class="op">&lt;-</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="st">"votereg_old"</span> <span class="op"><a href="../reference/expressions-internal.html">%in%</a></span> <span class="fu"><a href="../reference/describe-catalog.html">names</a></span><span class="op">(</span><span class="va">ds</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] FALSE</span></span></code></pre>
-<p>The <code>with(consent(), ...)</code> pattern works everywhere in <code>crunch</code> that requires confirmation to do an action, such as deleting datasets.</p>
-<p><a href="array-variables.html">Next: create and manipulate array variables</a></p>
+<p>The <code>with(consent(), ...)</code> pattern works everywhere in
+<code>crunch</code> that requires confirmation to do an action, such as
+deleting datasets.</p>
+<p><a href="array-variables.html">Next: create and manipulate array
+variables</a></p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -370,17 +481,17 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',

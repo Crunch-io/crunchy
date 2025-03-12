@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/simplex/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -35,7 +35,7 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,7 +49,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Crunch</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.30.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.31.0</span>
       </span>
     </div>
 
@@ -64,7 +64,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -129,7 +129,7 @@
 <li>
   <a href="https://github.com/Crunch-io/rcrunch/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -138,7 +138,7 @@
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
       </form>
-      
+
     </div>
 <!--/.nav-collapse -->
   </div>
@@ -146,15 +146,15 @@
 </div>
 <!--/.navbar -->
 
-      
 
-      </header><script src="subtotals_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Subtotals and Headings</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/HEAD/vignettes/subtotals.Rmd" class="external-link"><code>vignettes/subtotals.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Crunch-io/rcrunch/blob/master/vignettes/subtotals.Rmd" class="external-link"><code>vignettes/subtotals.Rmd</code></a></small>
       <div class="hidden name"><code>subtotals.Rmd</code></div>
 
     </div>
@@ -164,15 +164,32 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://crunch.io/r/crunch/" class="external-link">crunch</a></span><span class="op">)</span></span></code></pre></div>
 <p><a href="export.html">Previous: exporting data</a></p>
-<p>A common task in the market research world is to collapse two or more categories together to see how the collapsed categories compare to one another. For example, if you asked people to rate their preference on a scale of 1 to 10, you might want to see how the people who provide a rating between 1 and 5 compare to those who rated it between 6 and 10. This goes by a number of names, including “<em>Top Box</em>” or “<em>Nets</em>”, depending on the use case. In Crunch, we call this family of features <em>Subtotals</em>. This vignette shows how to define, manage, and analyze variables with subtotals.</p>
+<p>A common task in the market research world is to collapse two or more
+categories together to see how the collapsed categories compare to one
+another. For example, if you asked people to rate their preference on a
+scale of 1 to 10, you might want to see how the people who provide a
+rating between 1 and 5 compare to those who rated it between 6 and 10.
+This goes by a number of names, including “<em>Top Box</em>” or
+“<em>Nets</em>”, depending on the use case. In Crunch, we call this
+family of features <em>Subtotals</em>. This vignette shows how to
+define, manage, and analyze variables with subtotals.</p>
 <div class="section level2">
 <h2 id="getting-and-setting-subtotals-on-a-categorical-variable">Getting and setting subtotals on a categorical variable<a class="anchor" aria-label="anchor" href="#getting-and-setting-subtotals-on-a-categorical-variable"></a>
 </h2>
-<p>Subtotals can be applied to any Categorical or Categorical Array variable. In R, we can view and set subtotal definitions with the <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code> function. If there are no subtotals, the function will return <code>NULL</code>:</p>
+<p>Subtotals can be applied to any Categorical or Categorical Array
+variable. In R, we can view and set subtotal definitions with the
+<code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code> function. If there are no subtotals, the
+function will return <code>NULL</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">q1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## NULL</span></span></code></pre>
-<p>To add subtotals, we can assign a list of <code>Subtotal</code> objects. Each <code>Subtotal</code> object has three things: a <code>name</code> to identify it; a set of <code>categories</code> to pool together, referenced either by category name or id; and a location to show it, either <code>after</code> a given category or with <code>position="top"</code> or <code>"bottom"</code> to pin it first or last in the list.</p>
+<p>To add subtotals, we can assign a list of <code>Subtotal</code>
+objects. Each <code>Subtotal</code> object has three things: a
+<code>name</code> to identify it; a set of <code>categories</code> to
+pool together, referenced either by category name or id; and a location
+to show it, either <code>after</code> a given category or with
+<code>position="top"</code> or <code>"bottom"</code> to pin it first or
+last in the list.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">q1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span></span>
@@ -186,23 +203,160 @@
 <span>        after <span class="op">=</span> <span class="st">"Bird"</span></span>
 <span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Now, if we check <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code>, we can see that we have saved them. In this output we see a few different aspects of subtotals: the <code>anchor</code> is the id of the category to put the subtotal after (matching the <code>after</code> or <code>position</code> argument in <code><a href="../reference/SubtotalsHeadings.html">Subtotal()</a></code>), name, aggregation functions and <code>args</code>, which in the this case are the category ids to include in the subtotal.</p>
+<p>Now, if we check <code><a href="../reference/SubtotalsHeadings.html">subtotals()</a></code>, we can see that we have
+saved them. In this output we see a few different aspects of subtotals:
+the <code>anchor</code> is the id of the category to put the subtotal
+after (matching the <code>after</code> or <code>position</code> argument
+in <code><a href="../reference/SubtotalsHeadings.html">Subtotal()</a></code>), name, aggregation functions and
+<code>args</code>, which in the this case are the category ids to
+include in the subtotal.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">q1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   anchor                 name     func    args               kwargs</span></span>
 <span><span class="co">## 1      2              Mammals subtotal 1 and 2 positive: 1 and 2 | </span></span>
 <span><span class="co">## 2      3 Can speak on command subtotal 2 and 3 positive: 2 and 3 |</span></span></code></pre>
-<p>This shows up in the Categorical variable card on the web app like this:</p>
-<p><img src="images/webapp_subtotals.png"><!-- --></p>
-Crunch also supports “Subtotal Differences” (sometimes also called “Net Promoter Scores”
+<p>This shows up in the Categorical variable card on the web app like
+this:</p>
+<p><img src="images%2Fwebapp_subtotals.png"><!-- --></p>
+<p>Crunch also supports “Subtotal Differences” (sometimes also called
+“Net Promoter Scores”122). The <code>negative</code> argument of
+<code>Subtotal</code> specifies which categories to subtract.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_dogs</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span></span>
+<span>        name <span class="op">=</span> <span class="st">"Love minus Dislike &amp; Hate"</span>,</span>
+<span>        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Love"</span><span class="op">)</span>,</span>
+<span>        negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Dislike"</span>, <span class="st">"Hate"</span><span class="op">)</span>,</span>
+<span>        position <span class="op">=</span> <span class="st">"top"</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="subtotals-on-multiple-response-variables">Subtotals on multiple response variables<a class="anchor" aria-label="anchor" href="#subtotals-on-multiple-response-variables"></a>
+</h2>
+<p><a href="array-variables.html">Multiple Response variables</a> can
+also have subtotals. To specify, use the alias or name of the
+subvariables as the categories.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">allpets</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span></span>
+<span>        name <span class="op">=</span> <span class="st">"Any mammal"</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"allpets_1"</span>, <span class="st">"allpets_2"</span><span class="op">)</span>,</span>
+<span>        position <span class="op">=</span> <span class="st">"top"</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="removing-subtotals">Removing subtotals<a class="anchor" aria-label="anchor" href="#removing-subtotals"></a>
+</h2>
+<p>Subtotals and headings can be removed by assigning a
+<code>NULL</code> value.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_dogs</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="setting-many-subtotals">Setting many subtotals<a class="anchor" aria-label="anchor" href="#setting-many-subtotals"></a>
+</h2>
+<p>Sometimes there are a number of questions that have the same response
+categories. If the category names (or ids, if we’re using those) are the
+same, we can use the same set of subtotals across multiple
+variables.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pet_type_subtotals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="../reference/SubtotalsHeadings.html">Subtotal</a></span><span class="op">(</span></span>
+<span>        name <span class="op">=</span> <span class="st">"Love minus Dislike &amp; Hate"</span>,</span>
+<span>        categories <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Love"</span><span class="op">)</span>,</span>
+<span>        negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Dislike"</span>, <span class="st">"Hate"</span><span class="op">)</span>,</span>
+<span>        position <span class="op">=</span> <span class="st">"top"</span></span>
+<span>    <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_dogs</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">pet_type_subtotals</span></span>
+<span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_cats</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">pet_type_subtotals</span></span></code></pre></div>
+<p>Notice here, because each of the categories for these variables has
+slightly different ids, the <code>args</code> in the output differs
+slightly. But, because we used category names when we were constructing
+our list of subtotals, when we store them on the variable itself, Crunch
+does the right thing and converts them over to the correct ids.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_dogs</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   anchor                      name     func args                          kwargs</span></span>
+<span><span class="co">## 1    top Love minus Dislike &amp; Hate subtotal    1 positive: 1 | negative: 4 and 5</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/SubtotalsHeadings.html">subtotals</a></span><span class="op">(</span><span class="va">ds</span><span class="op">$</span><span class="va">like_cats</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   anchor                      name     func args                          kwargs</span></span>
+<span><span class="co">## 1    top Love minus Dislike &amp; Hate subtotal    5 positive: 5 | negative: 2 and 1</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="computing-with-subtotals">Computing with subtotals<a class="anchor" aria-label="anchor" href="#computing-with-subtotals"></a>
+</h2>
+<p>Now that we have defined subtotals on the congressional approval
+question, if we use it in a crosstab, we can see the subtotals.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">like_dogs</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                           </span></span>
+<span><span class="co">##                          </span></span>
+<span><span class="co">## <span style="color: #000000; font-style: italic;">Love minus Dislike &amp; Hate 0</span></span></span>
+<span><span class="co">##                      Love 4</span></span>
+<span><span class="co">##                      Like 4</span></span>
+<span><span class="co">##                   Neutral 8</span></span>
+<span><span class="co">##                   Dislike 2</span></span>
+<span><span class="co">##                      Hate 2</span></span></code></pre>
+<p>We can even get just the subtotals as an array from the result if we
+want to ignore the constituent groups:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/applyTransforms.html">subtotalArray</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">like_dogs</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Love minus Dislike &amp; Hate </span></span>
+<span><span class="co">##                         0</span></span></code></pre>
+<p>If you don’t want to see the subtotals as part of these summaries,
+you can suppress them from display with the <code><a href="../reference/noTransforms.html">noTransforms()</a></code>
+function around <code><a href="../reference/crtabs.html">crtabs()</a></code>.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/noTransforms.html">noTransforms</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">like_dogs</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## like_dogs</span></span>
+<span><span class="co">##    Love    Like Neutral Dislike    Hate </span></span>
+<span><span class="co">##       4       4       8       2       2</span></span></code></pre>
+<p>This does not modify the variable—the subtotals are still defined and
+visible in the web app—but they are removed from the current
+analysis.</p>
+</div>
+<div class="section level2">
+<h2 id="other-types-of-insertions">Other types of insertions<a class="anchor" aria-label="anchor" href="#other-types-of-insertions"></a>
+</h2>
+<p>Headings and Summary Statics are supported only by rcrunch and cannot
+be sent to the server. Therefore, they are only useful when working on
+<code>cube</code> objects that you’ve already requested. The
+<code>Heading</code> and <code>addSummaryStat</code> functions help you
+make these kinds of insertions.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># addSummaryStat is a convenient way to add mean/median</span></span>
+<span><span class="fu"><a href="../reference/addSummaryStat.html">addSummaryStat</a></span><span class="op">(</span><span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">q1</span>, <span class="va">ds</span><span class="op">)</span>, margin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##                                     </span></span>
+<span><span class="co">##                     </span></span>
+<span><span class="co">##                  Cat                6</span></span>
+<span><span class="co">##                  Dog                4</span></span>
+<span><span class="co">## <span style="color: #000000; font-style: italic;">             Mammals               10</span></span></span>
+<span><span class="co">##                 Bird                3</span></span>
+<span><span class="co">## <span style="color: #000000; font-style: italic;">Can speak on command                7</span></span></span>
+<span><span class="co">## <span style="color: #000000; font-style: italic;">                mean 1.76923076923077</span></span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cube</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crtabs.html">crtabs</a></span><span class="op">(</span><span class="op">~</span><span class="va">q1</span>, data <span class="op">=</span> <span class="va">ds</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Transforms.html">transforms</a></span><span class="op">(</span><span class="va">cube</span><span class="op">)</span><span class="op">$</span><span class="va">q1</span><span class="op">$</span><span class="va">insertions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="../reference/SubtotalsHeadings.html">Heading</a></span><span class="op">(</span><span class="st">"Mammals"</span>, position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span>, <span class="fu"><a href="../reference/SubtotalsHeadings.html">Heading</a></span><span class="op">(</span><span class="st">"Other"</span>, after <span class="op">=</span> <span class="st">"Dog"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">cube</span></span></code></pre></div>
+<pre><code><span><span class="co">##         </span></span>
+<span><span class="co">##        </span></span>
+<span><span class="co">## <span style="color: #555555; text-decoration: underline;">Mammals   </span></span></span>
+<span><span class="co">##     Cat 6</span></span>
+<span><span class="co">##     Dog 4</span></span>
+<span><span class="co">## <span style="color: #555555; text-decoration: underline;">  Other   </span></span></span>
+<span><span class="co">##    Bird 3</span></span></code></pre>
+<p><a href="crunch-internals.html">Next: Crunch internals</a></p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -215,17 +369,17 @@ Crunch also supports “Subtotal Differences” (sometimes also called “Net Pr
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script><script>
   docsearch({
-    
-    
+
+
     apiKey: '9fbcb3ae4d05600402e31f66b9b9501e',
     indexName: 'crunch',
     inputSelector: 'input#search-input.form-control',
