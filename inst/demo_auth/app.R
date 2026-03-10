@@ -1,7 +1,7 @@
 if (Sys.getenv('ENVIRONMENT_ROLE') == 'LOCAL') {
     api_url_host <- gsub("https?://", "", crunch::envOrOption('crunch.api'))
     dev_mode <- list(
-        # api_key = crunch::envOrOption('crunch.api.key'),
+        api_key = crunch::envOrOption('crunch.api.key'),
         domain = extract_domain(api_url_host),
         subdomain = extract_subdomain(api_url_host)
     )
@@ -40,24 +40,20 @@ server <- function(input, output, session) {
     )
 
     output$main_panel <- shiny::renderUI({
-        if (!auth$access()) {
-            tags$p("Not logged in...")
-        } else {
-            fluidRow(
-                column(
-                    3,
-                    textInput('ds_id', 'Dataset id'),
-                    actionButton('load_ds', 'Load Dataset'),
-                    selectizeInput('var_alias', 'Variable', choices = c('<DATASET NOT FOUND>' = '')),
-                    actionButton('tabulate', 'Tabulate'),
-                    uiOutput("download_container")
-                ),
-                column(
-                    9,
-                    verbatimTextOutput('results')
-                )
+        fluidRow(
+            column(
+                3,
+                textInput('ds_id', 'Dataset id'),
+                actionButton('load_ds', 'Load Dataset'),
+                selectizeInput('var_alias', 'Variable', choices = c('<DATASET NOT FOUND>' = '')),
+                actionButton('tabulate', 'Tabulate'),
+                uiOutput("download_container")
+            ),
+            column(
+                9,
+                verbatimTextOutput('results')
             )
-        }
+        )
     })
 
     ds_rx <- reactiveVal()
@@ -102,7 +98,6 @@ server <- function(input, output, session) {
     })
 
     output$download_container <- renderUI({
-        shiny::req(auth$access())
         shiny::downloadButton("download", "Download variable list")
     })
 
