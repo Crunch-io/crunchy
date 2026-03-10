@@ -56,8 +56,8 @@ server <- function(input, output, session) {
         )
     })
 
-    ds_rx <- reactiveVal()
-    var_options_rx <- reactiveVal()
+    ds_rx <- shiny::reactiveVal()
+    var_options_rx <- shiny::reactiveVal()
 
     observeEvent(input$load_ds, {
         with_temp_auth(auth, {

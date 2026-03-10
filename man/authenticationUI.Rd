@@ -37,8 +37,13 @@ To restrict it, add one or more named elements:
 }
 
 If multiple elements are supplied, the user will gain access if \strong{at least one} of them works.
+
+\code{\link[=crunchy_page_navbar]{crunchy_page_navbar()}} provides a simpler interface to the crunchy authentication flow
+that doesn't allow as much UI customization, but makes it easier to have your app
+require that users have access.
 }
 \examples{
+\dontrun{
 # UI should be a function, passing its argument to authenticationUI
 ui <- function(req){
      navbarPage(
@@ -68,5 +73,6 @@ server <- function(input, output, session){
          user      = auth$email,
          api_key   = auth$api_key
     )
+}
 }
 }

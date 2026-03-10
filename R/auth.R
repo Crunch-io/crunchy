@@ -10,7 +10,7 @@
 #' [`authenticationServer()`] modules, but note that your app may start to load its UI
 #' for anyone logged into crunch, whether or not they are supposed to have access to your app.
 #'
-#' @param ..., id Passed to the named arguments of [`bslib::page_navbar()`].
+#' @param ...,id Passed to the named arguments of [`bslib::page_navbar()`].
 #'   Note that instead of putting the unnamed `bslib::nav_panel()` arguments
 #'   the ui, as you would in `bslib::page_navbar()` you instead put them in the server
 #'   inside `crunchy_page_navbar_server()`. The authentication is put after your nav items,
@@ -21,6 +21,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' dev_mode <- list(
 #'     api_key = crunch::envOrOption('crunch.api.key'),
 #'     domain = extract_domain(gsub("https?://", "", crunch::envOrOption('crunch.api'))),
@@ -32,6 +33,7 @@
 #' server <- function(input, output, session){
 #'     auth <- crunchy_page_navbar_server(
 #'         dev_mode = dev_mode,
+#'         restrict_to = list(email_like = "@"),
 #'         bslib::nav_panel(
 #'             title = "Welcome",
 #'             uiOutput("welcome"),
@@ -47,6 +49,7 @@
 #'      })
 #' }
 #' shinyApp(ui, server)
+#' }
 crunchy_page_navbar <- function(..., id = "crunchy-page-navbar") {
     if (any(!...names() %in% names(formals(bslib::page_navbar)))) {
         warning(
@@ -58,7 +61,7 @@ crunchy_page_navbar <- function(..., id = "crunchy-page-navbar") {
 
     function(req) {
         bslib::page_navbar(
-            bslib::nav_panel("", tags$p("Authenticating..."), value = "loading-tab"),
+            bslib::nav_panel("", shiny::tags$p("Authenticating..."), value = "loading-tab"),
             ...,
             bslib::nav_spacer(),
             bslib::nav_item(authenticationUI("auth", req)),
@@ -74,9 +77,9 @@ crunchy_page_navbar <- function(..., id = "crunchy-page-navbar") {
 crunchy_page_navbar_server <- function(
         ...,
         id = "crunchy-page-navbar",
-        restrict_to = NULL,
+        restrict_to = list(),
         dev_mode = list(),
-        session = getDefaultReactiveDomain()
+        session = shiny::getDefaultReactiveDomain()
 ) {
     auth <- authenticationServer("auth", restrict_to = restrict_to, dev_mode = dev_mode)
     dots <- list(...)
@@ -111,6 +114,7 @@ crunchy_page_navbar_server <- function(
 #'
 #' @export
 #' @examples
+#' \dontrun{
 #' # UI should be a function, passing its argument to authenticationUI
 #' ui <- function(req){
 #'      navbarPage(
@@ -140,6 +144,7 @@ crunchy_page_navbar_server <- function(
 #'          user      = auth$email,
 #'          api_key   = auth$api_key
 #'     )
+#' }
 #' }
 authenticationUI <- function(id, req, invisible = FALSE){
     ns <- shiny::NS(id)
@@ -278,9 +283,9 @@ authenticationServer <- function(id, restrict_to = list(), dev_mode = list()){
             }
         })
 
-        show_modal_rx <- reactiveVal(0)
-        observeEvent(input$user_link, show_modal_rx(show_modal_rx() + 1))
-        observeEvent(n_failed_login_attempts(), if (n_failed_login_attempts() > 0) show_modal_rx(show_modal_rx() + 1))
+        show_modal_rx <- shiny::reactiveVal(0)
+        shiny::observeEvent(input$user_link, show_modal_rx(show_modal_rx() + 1))
+        shiny::observeEvent(n_failed_login_attempts(), if (n_failed_login_attempts() > 0) show_modal_rx(show_modal_rx() + 1))
 
         shiny::observeEvent(show_modal_rx(), {
             shiny::req(show_modal_rx() > 0)

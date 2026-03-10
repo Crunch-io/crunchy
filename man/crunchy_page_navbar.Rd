@@ -10,13 +10,13 @@ crunchy_page_navbar(..., id = "crunchy-page-navbar")
 crunchy_page_navbar_server(
   ...,
   id = "crunchy-page-navbar",
-  restrict_to = NULL,
+  restrict_to = list(),
   dev_mode = list(),
-  session = getDefaultReactiveDomain()
+  session = shiny::getDefaultReactiveDomain()
 )
 }
 \arguments{
-\item{..., }{id Passed to the named arguments of \code{\link[bslib:page_navbar]{bslib::page_navbar()}}.
+\item{..., id}{Passed to the named arguments of \code{\link[bslib:page_navbar]{bslib::page_navbar()}}.
 Note that instead of putting the unnamed \code{bslib::nav_panel()} arguments
 the ui, as you would in \code{bslib::page_navbar()} you instead put them in the server
 inside \code{crunchy_page_navbar_server()}. The authentication is put after your nav items,
@@ -43,6 +43,7 @@ access. A more customizable interface is possible with \code{\link[=authenticati
 for anyone logged into crunch, whether or not they are supposed to have access to your app.
 }
 \examples{
+\dontrun{
 dev_mode <- list(
     api_key = crunch::envOrOption('crunch.api.key'),
     domain = extract_domain(gsub("https?://", "", crunch::envOrOption('crunch.api'))),
@@ -54,6 +55,7 @@ ui <- crunchy_page_navbar(title = "Some App")
 server <- function(input, output, session){
     auth <- crunchy_page_navbar_server(
         dev_mode = dev_mode,
+        restrict_to = list(email_like = "@"),
         bslib::nav_panel(
             title = "Welcome",
             uiOutput("welcome"),
@@ -69,4 +71,5 @@ server <- function(input, output, session){
      })
 }
 shinyApp(ui, server)
+}
 }
