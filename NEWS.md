@@ -1,4 +1,5 @@
-# crunchy 0.3.4 (Development version)
+# crunchy 2.0.0 (Development version)
+* Completely re-written for the modern crunch shiny infrastructure
 
 # crunchy 0.3.3
 * Skip tests that are too dependent on shiny's internals. 
