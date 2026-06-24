@@ -8,6 +8,72 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Jan 2021 14:08:35 +0200</lastBuildDate><atom:link href="//crunch-io.github.io/crunchy/newsite/release-notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Release note 2026.5</title>
+      <link>//crunch-io.github.io/crunchy/newsite/release-notes/release-note-2026-5/</link>
+      <pubDate>Wed, 24 Jun 2026 12:33:37 +0000</pubDate>
+      
+      <guid>//crunch-io.github.io/crunchy/newsite/release-notes/release-note-2026-5/</guid>
+      <description>&lt;h3 id=&#34;crunch&#34;&gt;&lt;strong&gt;Crunch&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Search improvements:
+&lt;ul&gt;
+&lt;li&gt;Updated search to include folders and dashboards. Added new tabs for both Folder search and Dashboard search.&lt;/li&gt;
+&lt;li&gt;Update to make text selectable in search results.&lt;/li&gt;
+&lt;li&gt;Updated the search interface to improve clarity and make keyword search functionality easier to discover.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Retired legacy and fully transitioned search to a modern vector-based search experience, improving semantic relevance and reducing platform complexity.&lt;/li&gt;
+&lt;li&gt;AI Agent improvements:
+&lt;ul&gt;
+&lt;li&gt;Variables are now links in the agent response and open variables in Explore mode in a new tab.&lt;/li&gt;
+&lt;li&gt;Resolved an issue where the agent incorrectly stated it can perform tasks that are currently out of scope.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sharing and collaboration improvements:
+&lt;ul&gt;
+&lt;li&gt;Shared decks and dashboards now require users to enter Edit mode before making changes, with a notification explaining that edits will affect all users.&lt;/li&gt;
+&lt;li&gt;Shared artifacts now enforce sharing requirements: personal variables, filters, and analyses cannot be added to shared artifacts, multitables, or decks unless they have been shared first.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;api-endpoints-and-api-reference&#34;&gt;&lt;strong&gt;API endpoints and API reference&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Removed &lt;a href=&#34;https://crunch.io/api/reference/#get-/projects/-project_id-/datasets/&#34;&gt;List datasets in project&lt;/a&gt; endpoint. This endpoint was replaced with the &lt;a href=&#34;https://crunch.io/api/reference/#get-/projects/-project_id-/&#34;&gt;List project details&lt;/a&gt; endpoint.&lt;/p&gt;</description>
+      <content:encoded>&lt;h3 id=&#34;crunch&#34;&gt;&lt;strong&gt;Crunch&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Search improvements:
+&lt;ul&gt;
+&lt;li&gt;Updated search to include folders and dashboards. Added new tabs for both Folder search and Dashboard search.&lt;/li&gt;
+&lt;li&gt;Update to make text selectable in search results.&lt;/li&gt;
+&lt;li&gt;Updated the search interface to improve clarity and make keyword search functionality easier to discover.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Retired legacy and fully transitioned search to a modern vector-based search experience, improving semantic relevance and reducing platform complexity.&lt;/li&gt;
+&lt;li&gt;AI Agent improvements:
+&lt;ul&gt;
+&lt;li&gt;Variables are now links in the agent response and open variables in Explore mode in a new tab.&lt;/li&gt;
+&lt;li&gt;Resolved an issue where the agent incorrectly stated it can perform tasks that are currently out of scope.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sharing and collaboration improvements:
+&lt;ul&gt;
+&lt;li&gt;Shared decks and dashboards now require users to enter Edit mode before making changes, with a notification explaining that edits will affect all users.&lt;/li&gt;
+&lt;li&gt;Shared artifacts now enforce sharing requirements: personal variables, filters, and analyses cannot be added to shared artifacts, multitables, or decks unless they have been shared first.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;api-endpoints-and-api-reference&#34;&gt;&lt;strong&gt;API endpoints and API reference&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Removed &lt;a href=&#34;https://crunch.io/api/reference/#get-/projects/-project_id-/datasets/&#34;&gt;List datasets in project&lt;/a&gt; endpoint. This endpoint was replaced with the &lt;a href=&#34;https://crunch.io/api/reference/#get-/projects/-project_id-/&#34;&gt;List project details&lt;/a&gt; endpoint.&lt;/p&gt;
+&lt;p&gt;MCP (Beta) - we can now offer a direct connection to the datasets you upload to Crunch via MCP server, connected to your own AI agents and platforms.&lt;/p&gt;
+&lt;h3 id=&#34;lakehouse&#34;&gt;&lt;strong&gt;Lakehouse&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/43012931204877-Tabulating-Data-on-the-Lakehouse#toc4&#34;&gt;Lakehouse Tabulation APIs&lt;/a&gt; now supports numeric variable type and statistical operations&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/40974722113293-Exporting-Data-with-Crunch-Lakehouse-APIs#toc7&#34;&gt;Lakehouse Export APIs&lt;/a&gt; now support the ability to define variables/folders and inclusive data filters, providing more fine grained control over the data returned&lt;/p&gt;
+&lt;p&gt;Implemented significant improvements on the &lt;a href=&#34;https://help.crunch.io/hc/en-us/articles/43012931204877-Tabulating-Data-on-the-Lakehouse#toc4&#34;&gt;Lakehouse Tabulation APIs&lt;/a&gt; when tabulating large volumes of variables&lt;/p&gt;
+&lt;h3 id=&#34;backendcrunchdb&#34;&gt;&lt;strong&gt;Backend/CrunchDB&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Removed alter_users legacy permission.&lt;/p&gt;
+</content:encoded>
+    </item>
+    
+    <item>
       <title>Release 2026.04</title>
       <link>//crunch-io.github.io/crunchy/newsite/release-notes/release-2026-04/</link>
       <pubDate>Wed, 13 May 2026 13:46:10 +0000</pubDate>
